@@ -1,7 +1,7 @@
-﻿<Window x:Class="Yekoms.MainWindow"
+﻿<Window x:Class="Phamhilator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Yekoms" Height="700" Width="1200" WindowStartupLocation="CenterScreen" >
+        Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" >
     <Canvas>
         <WebBrowser Name="realtimeWb" Height="630" Width="550" Source="http://stackexchange.com/questions?tab=realtime" />
         <WebBrowser Name="chatWb" Height="630" Canvas.Left="550" Width="642" Source="http://meta.stackexchange.com/users/login"/>
@@ -9,9 +9,9 @@
         <Button Content="Jump to MSE Tavern" Canvas.Left="910" Canvas.Top="638" Width="137" Click="Button_Click_1"/>
         <Button Content="Start Monitoring" Canvas.Left="10" Canvas.Top="638" Width="109" Click="Button_Click_2"/>
         <Button Content="Cancel Monitoring" Canvas.Left="124" Canvas.Top="638" Width="124" Click="Button_Click_4"/>
-        <CheckBox Name="catchSpamCb" Content="Catch Spam" Canvas.Left="753" Canvas.Top="641" IsChecked="True" Checked="catchSpamCb_Checked" Unchecked="catchSpamCb_Unchecked"/>
-        <CheckBox Name="catchLQCb" Content="Catch LQ" Canvas.Left="683" Canvas.Top="641" IsChecked="True" Checked="catchLQCb_Checked" Unchecked="catchLQCb_Unchecked"/>
-        <CheckBox Name="catchOffCb" Content="Catch Off" Canvas.Left="838" Canvas.Top="641" IsChecked="True" Checked="catchOffCb_Checked" Unchecked="catchOffCb_Unchecked"/>
+        <CheckBox Content="Catch Spam" Canvas.Left="753" Canvas.Top="641" IsChecked="True" Checked="catchSpamCb_Checked" Unchecked="catchSpamCb_Unchecked"/>
+        <CheckBox Content="Catch LQ" Canvas.Left="683" Canvas.Top="641" IsChecked="True" Checked="catchLQCb_Checked" Unchecked="catchLQCb_Unchecked"/>
+        <CheckBox Content="Catch Off" Canvas.Left="838" Canvas.Top="641" IsChecked="True" Checked="catchOffCb_Checked" Unchecked="catchOffCb_Unchecked"/>
         <Button Content="Enable Quiet Mode" Canvas.Left="253" Canvas.Top="638" Width="127" Click="Button_Click_3"/>
 
     </Canvas>

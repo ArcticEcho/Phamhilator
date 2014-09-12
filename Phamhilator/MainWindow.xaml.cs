@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Reflection;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Threading;
+using Yekoms;
 
 
-using System.Linq;
 
-
-namespace Yekoms
+namespace Phamhilator
 {
 	public partial class MainWindow
 	{
@@ -19,7 +20,7 @@ namespace Yekoms
 		private bool catchOff = true;
 		private bool catchSpam = true;
 		private bool catchLQ = true;
-		private bool quietMode = false;
+		private bool quietMode;
 		private readonly List<Post> postedPosts = new List<Post>();
 
 
@@ -59,14 +60,13 @@ namespace Yekoms
 					} while (!startMonitoring);
 
 					dynamic doc = null;
-					var html = "";
 
 					Dispatcher.Invoke(() => doc = realtimeWb.Document);
 
 					if (doc == null) { continue; }
 					if (doc.documentElement == null) { continue; }
 
-					html = doc.documentElement.InnerHtml;
+					string html = doc.documentElement.InnerHtml;
 
 					if (!html.Contains("DIV class=metaInfo")) { continue; }	
 
@@ -81,7 +81,7 @@ namespace Yekoms
 		{
 			var posts = new List<Post>();
 
-			html = html.Substring(html.IndexOf("<BR class=cbo>"));
+			html = html.Substring(html.IndexOf("<BR class=cbo>", StringComparison.Ordinal));
 
 			while (html.Length > 10000)
 			{
@@ -96,7 +96,7 @@ namespace Yekoms
 					Site = GetSite(postURL),
 				});
 
-				var startIndex = html.IndexOf("question-container realtime-question", 100);
+				var startIndex = html.IndexOf("question-container realtime-question", 100, StringComparison.Ordinal);
 
 				html = html.Substring(startIndex);
 			}
@@ -106,57 +106,49 @@ namespace Yekoms
 
 		private string GetURL(string html)
 		{
-			var startIndex = html.IndexOf("href=") + 6;
-			var endIndex = html.IndexOf("\">", startIndex);
+			var startIndex = html.IndexOf("href=", StringComparison.Ordinal) + 6;
+			var endIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal);
 
-			var result = html.Substring(startIndex, endIndex - startIndex);
-
-			return result;
+			return html.Substring(startIndex, endIndex - startIndex).Trim();
 		}
 
 		private string GetTitle(string html)
 		{
-			var startIndex = html.IndexOf("href=") + 6;
-			startIndex = html.IndexOf("href=", startIndex);
-			startIndex = html.IndexOf("\">", startIndex) + 2;
+			var startIndex = html.IndexOf("href=", StringComparison.Ordinal) + 6;
+			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal);
+			startIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal) + 2;
 
-			var endIndex = html.IndexOf("</A></H2>", startIndex);
+			var endIndex = html.IndexOf("</A></H2>", startIndex, StringComparison.Ordinal);
 
-			var result = html.Substring(startIndex, endIndex - startIndex);
-
-			return System.Net.WebUtility.HtmlDecode(result.Trim());
+			return WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex).Trim());
 		}
 
 		private string GetAuthorLink(string html)
 		{
-			var startIndex = html.IndexOf("owner realtime-owner") + 21;
-			startIndex = html.IndexOf("href=", startIndex) + 6;
+			var startIndex = html.IndexOf("owner realtime-owner", StringComparison.Ordinal) + 21;
+			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal) + 6;
 
-			var endIndex = html.IndexOf("\">", startIndex);
+			var endIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal);
 
-			var result = html.Substring(startIndex, endIndex - startIndex);
-
-			return result;
+			return html.Substring(startIndex, endIndex - startIndex).Trim();
 		}
 
 		private string GetAuthorName(string html)
 		{
-			var startIndex = html.IndexOf("owner realtime-owner") + 21;
-			startIndex = html.IndexOf("href=", startIndex) + 6;
-			startIndex = html.IndexOf("\">", startIndex) + 2;
+			var startIndex = html.IndexOf("owner realtime-owner", StringComparison.Ordinal) + 21;
+			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal) + 6;
+			startIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal) + 2;
 
-			var endIndex = html.IndexOf("</A>", startIndex);
+			var endIndex = html.IndexOf("</A>", startIndex, StringComparison.Ordinal);
 
-			var result = html.Substring(startIndex, endIndex - startIndex);
-
-			return result;
+			return html.Substring(startIndex, endIndex - startIndex).Trim();
 		}
 
 		private string GetSite(string postURL)
 		{
-			var siteEndIndex = postURL.IndexOf("/", 7) - 7;
+			var siteEndIndex = postURL.IndexOf("/", 7, StringComparison.Ordinal) - 7;
 
-			return postURL.Substring(7, siteEndIndex);
+			return postURL.Substring(7, siteEndIndex).Trim();
 		}
 
 		private void CheckPosts(IEnumerable<Post> posts)
@@ -275,8 +267,8 @@ namespace Yekoms
 		{
 			Dispatcher.Invoke(() =>
 			{
-				var startIndex = chatWb.Source.AbsolutePath.IndexOf("rooms/") + 6;
-				var endIndex = chatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1);
+				var startIndex = chatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
+				var endIndex = chatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
 				var t = chatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
@@ -295,7 +287,7 @@ namespace Yekoms
 
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
-			chatWb.Source = new System.Uri("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");
+			chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");
 
 			GetRoomId();
 		}

@@ -10,3 +10,4 @@ C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.P
 C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.csproj.GenerateResource.Cache
 C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.exe
 C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.pdb
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.csprojResolveAssemblyReference.cache

@@ -9,7 +9,7 @@ namespace Yekoms
 	public static class PostChecker
 	{
 		private static readonly Regex offensive = new Regex("nigg|asshole|penis|bumhole|retard|bastard|bich|crap|fag|fuck|idiot|shit|whore");
-		private static readonly Regex lowQuality = new Regex("(homework|newbie|urgent|please|need?( halp| help| answer)|no(t)? work(ing|ed|d)?|(help|halp) need)");
+		private static readonly Regex lowQuality = new Regex("homework|newbie|beginner|asap|urgent|please|need?( halp| help| answer)|no(t)? work(ing|ed|d)?|(help|halp) need");
 		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|supplement(s)?|you know|best|get your|for me|body|smooth|sell(ing)?|food|customer review(s)?|wanted|help(s)? you(r)?|work out|buy(ing)?|muscle(s)?|weight loss|sure|brand|www|\.com|super herbal|benefi(t|ts|cial)|treatment|cheap(est)?|(wo)?m(a|e)n|natural(ly)?|product|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|exercise|ripped|full( movie| film)|free (trial|film|moive|help|assistance))\b");
 
 
