@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using Yekoms;
 
 
 
@@ -30,7 +29,7 @@ namespace Phamhilator
 			InitializeComponent();
 
 			HideScriptErrors(realtimeWb, true);
-			//HideScriptErrors(chatWb, true);
+			HideScriptErrors(chatWb, true);
 
 			new Thread(() =>
 			{

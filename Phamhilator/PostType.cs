@@ -1,4 +1,4 @@
-﻿namespace Yekoms
+﻿namespace Phamhilator
 {
 	public enum PostType
 	{

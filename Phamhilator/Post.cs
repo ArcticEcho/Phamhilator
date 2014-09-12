@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-
-namespace Yekoms
+﻿namespace Phamhilator
 {
 	public struct Post
 	{
@@ -27,14 +19,16 @@ namespace Yekoms
 
 			Body = GetBody(html);
 			Score = GetScore(html);
+
+			wb.Dispose();
 		}
 
 
 
 		private string GetBody(string html)
 		{
-			var startIndex = html.IndexOf("<p>") + 3;
-			var endIndex = html.IndexOf("</div>", startIndex) - 11;
+			var startIndex = html.IndexOf("<p>", System.StringComparison.Ordinal) + 3;
+			var endIndex = html.IndexOf("</div>", startIndex, System.StringComparison.Ordinal) - 11;
 
 			var result = html.Substring(startIndex, endIndex - startIndex);
 
@@ -43,8 +37,8 @@ namespace Yekoms
 
 		private int GetScore(string html)
 		{
-			var startIndex = html.IndexOf("vote-count-post") + 18;
-			var endIndex = html.IndexOf("</span>", startIndex);
+			var startIndex = html.IndexOf("vote-count-post", System.StringComparison.Ordinal) + 18;
+			var endIndex = html.IndexOf("</span>", startIndex, System.StringComparison.Ordinal);
 
 			var result = html.Substring(startIndex, endIndex - startIndex);
 
