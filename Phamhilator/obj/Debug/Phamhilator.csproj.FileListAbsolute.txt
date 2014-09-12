@@ -1,0 +1,12 @@
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\bin\Debug\Phamhilator.exe.config
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\bin\Debug\Phamhilator.exe
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\bin\Debug\Phamhilator.pdb
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\MainWindow.baml
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\MainWindow.g.cs
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\App.g.cs
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator_MarkupCompile.cache
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.g.resources
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.Properties.Resources.resources
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.csproj.GenerateResource.Cache
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.exe
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.pdb

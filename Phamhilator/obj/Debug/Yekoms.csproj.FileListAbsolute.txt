@@ -1,0 +1,13 @@
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\bin\Debug\Yekoms.exe.config
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\bin\Debug\Yekoms.exe
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\bin\Debug\Yekoms.pdb
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\Yekoms.csprojResolveAssemblyReference.cache
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\MainWindow.baml
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\MainWindow.g.cs
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\App.g.cs
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\Yekoms_MarkupCompile.cache
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\Yekoms.g.resources
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\Yekoms.Properties.Resources.resources
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\Yekoms.csproj.GenerateResource.Cache
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\Yekoms.exe
+C:\Users\Samuel\Documents\Visual Studio 2012\Projects\Yekoms\Yekoms\obj\Debug\Yekoms.pdb
