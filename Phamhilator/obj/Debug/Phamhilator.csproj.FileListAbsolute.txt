@@ -11,3 +11,7 @@ C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.c
 C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.exe
 C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.pdb
 C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\Phamhilator.csprojResolveAssemblyReference.cache
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\bin\Debug\MahApps.Metro.dll
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\bin\Debug\MahApps.Metro.xml
+C:\Users\Samuel\Documents\GitHub\Phamhilator\Phamhilator\obj\Debug\App.baml

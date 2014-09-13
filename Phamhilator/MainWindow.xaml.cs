@@ -19,6 +19,7 @@ namespace Phamhilator
 		private bool catchOff = true;
 		private bool catchSpam = true;
 		private bool catchLQ = true;
+		private bool catchBadTag = true;
 		private bool quietMode;
 		private readonly List<Post> postedPosts = new List<Post>();
 
@@ -35,12 +36,12 @@ namespace Phamhilator
 			{
 				while (true)
 				{
+					Dispatcher.Invoke(() => realtimeWb.Refresh());
+
 					do
 					{
-						Thread.Sleep(8000);
+						Thread.Sleep(10000);
 					} while (!startMonitoring);
-
-					Dispatcher.Invoke(() => realtimeWb.Refresh());
 				}
 			}).Start();
 
@@ -48,16 +49,11 @@ namespace Phamhilator
 			{
 				while (!startMonitoring)
 				{
-					Thread.Sleep(3000);
+					Thread.Sleep(5000);
 				}
 
 				while (!exit)
 				{
-					do
-					{
-						Thread.Sleep(3000);
-					} while (!startMonitoring);
-
 					dynamic doc = null;
 
 					Dispatcher.Invoke(() => doc = realtimeWb.Document);
@@ -72,9 +68,16 @@ namespace Phamhilator
 					var posts = GetAllPosts(html);
 
 					CheckPosts(posts);
+
+					do
+					{
+						Thread.Sleep(5000);
+					} while (!startMonitoring);
 				}
 			}).Start();
 		}
+
+
 
 		private IEnumerable<Post> GetAllPosts(string html)
 		{
@@ -84,15 +87,15 @@ namespace Phamhilator
 
 			while (html.Length > 10000)
 			{
-				var postURL = GetURL(html);
+				var postURL = HTMLScrapper.GetURL(html);
 
 				posts.Add(new Post
 				{
 					URL = postURL,
-					Title = GetTitle(html),
-					AuthorLink = GetAuthorLink(html),
-					AuthorName = GetAuthorName(html),
-					Site = GetSite(postURL),
+					Title = HTMLScrapper.GetTitle(html),
+					AuthorLink = HTMLScrapper.GetAuthorLink(html),
+					AuthorName = HTMLScrapper.GetAuthorName(html),
+					Site = HTMLScrapper.GetSite(postURL),
 				});
 
 				var startIndex = html.IndexOf("question-container realtime-question", 100, StringComparison.Ordinal);
@@ -101,53 +104,6 @@ namespace Phamhilator
 			}
 
 			return posts;
-		}
-
-		private string GetURL(string html)
-		{
-			var startIndex = html.IndexOf("href=", StringComparison.Ordinal) + 6;
-			var endIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal);
-
-			return html.Substring(startIndex, endIndex - startIndex).Trim();
-		}
-
-		private string GetTitle(string html)
-		{
-			var startIndex = html.IndexOf("href=", StringComparison.Ordinal) + 6;
-			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal);
-			startIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal) + 2;
-
-			var endIndex = html.IndexOf("</A></H2>", startIndex, StringComparison.Ordinal);
-
-			return WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex).Trim());
-		}
-
-		private string GetAuthorLink(string html)
-		{
-			var startIndex = html.IndexOf("owner realtime-owner", StringComparison.Ordinal) + 21;
-			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal) + 6;
-
-			var endIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal);
-
-			return html.Substring(startIndex, endIndex - startIndex).Trim();
-		}
-
-		private string GetAuthorName(string html)
-		{
-			var startIndex = html.IndexOf("owner realtime-owner", StringComparison.Ordinal) + 21;
-			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal) + 6;
-			startIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal) + 2;
-
-			var endIndex = html.IndexOf("</A>", startIndex, StringComparison.Ordinal);
-
-			return html.Substring(startIndex, endIndex - startIndex).Trim();
-		}
-
-		private string GetSite(string postURL)
-		{
-			var siteEndIndex = postURL.IndexOf("/", 7, StringComparison.Ordinal) - 7;
-
-			return postURL.Substring(7, siteEndIndex).Trim();
 		}
 
 		private void CheckPosts(IEnumerable<Post> posts)
@@ -171,6 +127,42 @@ namespace Phamhilator
 						else
 						{
 							PostMessage("**Offensive**" + message);
+							postedPosts.Add(post);
+						}
+
+						break;
+					}
+
+					case PostType.OffensiveUser:
+					{
+						if (!catchOff) { break; }
+
+						if (quietMode)
+						{
+							PostMessage("[Offensive Username](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible."));
+							postedPosts.Add(post);
+						}
+						else
+						{
+							PostMessage("**Offensive Username**" + message);
+							postedPosts.Add(post);
+						}
+
+						break;
+					}
+
+					case PostType.BadTagUsed:
+					{
+						if (!catchBadTag) { break; }
+
+						if (quietMode)
+						{
+							PostMessage("[Bad Tag Used](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible."));
+							postedPosts.Add(post);
+						}
+						else
+						{
+							PostMessage("**Bad Tag Used**" + message);
 							postedPosts.Add(post);
 						}
 
@@ -377,6 +369,26 @@ namespace Phamhilator
 			if (roomId != 0)
 			{
 				PostMessage("`Spam reports disabled.`");
+			}
+		}
+
+		private void CheckBox_Checked(object sender, RoutedEventArgs e)
+		{
+			catchBadTag = true;
+
+			if (roomId != 0)
+			{
+				PostMessage("`Bad Tag Used reports enabled.`");
+			}
+		}
+
+		private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+		{
+			catchBadTag = false;
+
+			if (roomId != 0)
+			{
+				PostMessage("`Bad Tags Used reports disabled.`");
 			}
 		}
 
