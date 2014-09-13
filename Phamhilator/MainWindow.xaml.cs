@@ -34,6 +34,11 @@ namespace Phamhilator
 
 			new Thread(() =>
 			{
+				do
+				{
+					Thread.Sleep(10000);
+				} while (!startMonitoring);
+
 				while (true)
 				{
 					Dispatcher.Invoke(() => realtimeWb.Refresh());
@@ -60,6 +65,7 @@ namespace Phamhilator
 
 					if (doc == null) { continue; }
 					if (doc.documentElement == null) { continue; }
+					if (doc.documentElement.InnerHtml == null) { continue; }
 
 					string html = doc.documentElement.InnerHtml;
 
@@ -258,14 +264,21 @@ namespace Phamhilator
 		{
 			Dispatcher.Invoke(() =>
 			{
-				var startIndex = chatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
-				var endIndex = chatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
+				try
+				{
+					var startIndex = chatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
+					var endIndex = chatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
-				var t = chatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
+					var t = chatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
-				if (!t.All(Char.IsDigit)) { return; }
+					if (!t.All(Char.IsDigit)) { return; }
 
-				roomId = int.Parse(t);
+					roomId = int.Parse(t);
+				}
+				catch (Exception)
+				{
+
+				}			
 			});
 		}
 
