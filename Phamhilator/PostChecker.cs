@@ -12,10 +12,10 @@ namespace Phamhilator
 	{
 		private static Dictionary<string, HashSet<string>> badTags = new Dictionary<string, HashSet<string>>();
 		private static readonly Regex phoneNumber = new Regex(@"\D*(\d\W*){8}");
-		private static readonly Regex badUser = new Regex("sumer|kolcak|indian hackers team");
+		private static readonly Regex badUser = new Regex("sumer|kolcak");
 		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bich|crap|fag|fuck|idiot|shit|whore)\b");
-		private static readonly Regex lowQuality = new Regex("homework|newbie|\bq\b|question|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
-		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|smooth|sell(ing)?|customer review(s)?|wanted|help(s)? you(r)?|work out|buy(ing)?|muscle(s)?|weight loss|brand|www|\.com|super herbal|treatment|cheap(est)?|(wo)?m(a|e)n|natural(ly)?|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|exercise|ripped|full( movie| film)|free (trial|film|moive|help|assistance))\b");
+		private static readonly Regex lowQuality = new Regex("homework|newbie|\bq\b|question|h(i|ello)|greeting(s)?|edited|error|solved|fixed|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
+		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|sell(ing)?|customer review(s)?|wanted|help(s)? you(r)?|work out|buy|muscle(s)?|weight loss|brand|www|\.com|super herbal|treatment|cheap(est)?|(wo)?m(a|e)n|natural(ly)?|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|exercise|ripped|full( movie| film)|free (trial|film|moive|help|assistance))\b");
 
 
 
@@ -62,9 +62,12 @@ namespace Phamhilator
 			if (post.Site.StartsWith("fitness") ||
 				((post.Site.StartsWith("stackoverflow") || post.Site.StartsWith("codereview") || post.Site.StartsWith("english")) && lower.Contains("best")) ||
 				((post.Site.StartsWith("buddhism") || post.Site.StartsWith("stackoverflow")) && lower.Contains("benefit")) ||
+				((post.Site.StartsWith("german") || post.Site.StartsWith("scifi")) && (lower.Contains("man") || lower.Contains("men") || lower.Contains("woman"))) ||
+				(post.Site.StartsWith("bitcoin") && lower.Contains("buy")) ||
 				(post.Site.StartsWith("math") && lower.Contains("work out")) ||
-				(post.Site.StartsWith("german") && lower.Contains("man")) ||
-				(post.Site.StartsWith("bitcoin") && lower.Contains("buy")))
+				(post.Site.StartsWith("serverfault") && lower.Contains("www")) ||
+				(post.Site.StartsWith("rgp") && lower.Contains("health")) ||
+				(post.Site.StartsWith("astronomy") && lower.Contains("natural")))
 			{
 				return false;
 			}

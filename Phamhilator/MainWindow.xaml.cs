@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -22,7 +23,9 @@ namespace Phamhilator
 		private bool catchBadTag = true;
 		private bool refreshBadTags;
 		private bool quietMode;
-		private readonly List<Post> postedPosts = new List<Post>();
+		private string previouslyPostMessagesPath =  Path.Combine(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName, "Previously Post Messages.txt");
+		private readonly HashSet<Post> postedMessages = new HashSet<Post>();
+		private readonly DateTime twentyTen = new DateTime(2010, 01, 01);
 
 
 
@@ -32,6 +35,8 @@ namespace Phamhilator
 
 			HideScriptErrors(realtimeWb, true);
 			HideScriptErrors(chatWb, true);
+
+			PopulatePostedMessages();
 
 			new Thread(() =>
 			{
@@ -120,7 +125,7 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
-			foreach (var post in posts.Where(p => postedPosts.All(pp => pp.Title != p.Title)))
+			foreach (var post in posts.Where(p => postedMessages.All(pp => pp.Title != p.Title)))
 			{
 				var info = PostChecker.CheckPost(post, refreshBadTags);
 				var message = (!info.InaccuracyPossible ? "" : " (possible)") + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
@@ -134,12 +139,12 @@ namespace Phamhilator
 						if (quietMode)
 						{
 							Task.Factory.StartNew(() => PostMessage("[Offensive](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 						else
 						{
 							Task.Factory.StartNew(() => PostMessage("**Offensive**" + message));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 
 						break;
@@ -152,12 +157,12 @@ namespace Phamhilator
 						if (quietMode)
 						{
 							Task.Factory.StartNew(() => PostMessage("[Bad Username](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 						else
 						{
 							Task.Factory.StartNew(() => PostMessage("**Bad Username**" + message));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 
 						break;
@@ -170,12 +175,12 @@ namespace Phamhilator
 						if (quietMode)
 						{
 							Task.Factory.StartNew(() => PostMessage("[Bad Tag Used](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 						else
 						{
 							Task.Factory.StartNew(() => PostMessage("**Bad Tag Used**" + message));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 
 						break;
@@ -188,12 +193,12 @@ namespace Phamhilator
 						if (quietMode)
 						{
 							Task.Factory.StartNew(() => PostMessage("[Low quality](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 						else
 						{
 							Task.Factory.StartNew(() => PostMessage("**Low quality**" + message));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 
 						break;
@@ -206,12 +211,12 @@ namespace Phamhilator
 						if (quietMode)
 						{
 							Task.Factory.StartNew(() => PostMessage("[Spam](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 						else
 						{
 							Task.Factory.StartNew(() => PostMessage("**Spam**" + message));
-							postedPosts.Add(post);
+							AddPost(post);
 						}
 
 						break;
@@ -293,6 +298,48 @@ namespace Phamhilator
 				}			
 			});
 		}
+
+		private void AddPost(Post post)
+		{
+			AddPost(post);
+
+			File.AppendAllText(previouslyPostMessagesPath, (DateTime.Now - new DateTime(2010, 01, 01)).TotalMinutes + "]" + post.Title + "\n");
+		}
+
+		private void PopulatePostedMessages()
+		{
+			if (!File.Exists(previouslyPostMessagesPath)) { return; }
+
+			var titles = new List<string>(File.ReadAllText(previouslyPostMessagesPath).Split('\n'));
+			var date = 0;
+
+			for (var i = 0; i < titles.Count; i++)
+			{
+				date = int.Parse(titles[i].Split(']')[0].Trim());
+
+				if ((DateTime.Now - twentyTen).TotalMinutes - date > 2880)
+				{
+					titles.Remove(titles[i]);
+
+					continue;
+				}
+
+				postedMessages.Add(new Post { Title = titles[i].Split(']')[1].Trim() });
+			}
+
+			File.WriteAllText(previouslyPostMessagesPath, "");
+
+			foreach (var post in titles)
+			{
+				File.AppendAllText(previouslyPostMessagesPath, post + "\n");
+			}
+		}
+
+
+
+		// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ UI Events ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+
+
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
