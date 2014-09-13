@@ -8,8 +8,10 @@ namespace Phamhilator
 {
 	public static class PostChecker
 	{
+		private static readonly Regex phoneNumber = new Regex(@"\D*(\d\W*){8}");
+		private static readonly Regex badUser = new Regex("sumer|kolcak|indian hackers team");
 		private static readonly Regex offensive = new Regex("nigg|asshole|piss|penis|bumhole|retard|bastard|bich|crap|fag|fuck|idiot|shit|whore");
-		private static readonly Regex lowQuality = new Regex("homework|newbie|question|beginner|asap|urgent|please|need?( halp| help| answer)|no(t)? work(ing|ed|d)?|(help|halp) need");
+		private static readonly Regex lowQuality = new Regex("homework|newbie|question|beginner|asap|urgent|please|need?( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp) need");
 		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|supplement(s)?|you know|best|get your|for me|body|smooth|sell(ing)?|food|customer review(s)?|wanted|help(s)? you(r)?|work out|buy(ing)?|muscle(s)?|weight loss|sure|brand|www|\.com|super herbal|benefi(t|ts|cial)|treatment|cheap(est)?|(wo)?m(a|e)n|natural(ly)?|product|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|exercise|ripped|full( movie| film)|free (trial|film|moive|help|assistance))\b");
 
 
@@ -23,9 +25,9 @@ namespace Phamhilator
 				info.Type = PostType.Offensive;
 				//info.InaccuracyPossible = post.AuthorName.Contains("user");
 			}
-			if (IsOffensiveUser(post))
+			if (IsBadUsername(post))
 			{
-				info.Type = PostType.OffensiveUser;
+				info.Type = PostType.BadUsername;
 				//info.InaccuracyPossible = post.AuthorName.Contains("user");
 			}
 			else if (IsBadTagUsed(post))
@@ -48,14 +50,15 @@ namespace Phamhilator
 
 		private static bool IsSpam(Post post)
 		{
-			if (!post.Site.Contains("fitness") || 
-				(post.Site.Contains("magento") && post.Title.ToLowerInvariant().Contains("product")) ||
-				(post.Site.Contains("math") && post.Title.Contains("product")))
+			if (post.Site.Contains("fitness") || 
+				((post.Site.Contains("magento") || post.Site.Contains("math")) && post.Title.ToLowerInvariant().Contains("product")))
 			{
 				return false;
 			}
 
-			return spam.IsMatch(post.Title) || post.Title.Count(Char.IsDigit) >= 7;
+			var lower = post.Title.ToLowerInvariant();
+
+			return spam.IsMatch(lower) || phoneNumber.IsMatch(lower);
 		}
 
 		private static bool IsLowQuality(Post post)
@@ -77,9 +80,11 @@ namespace Phamhilator
 			return offensive.IsMatch(post.Title.ToLowerInvariant());
 		}
 
-		private static bool IsOffensiveUser(Post post)
+		private static bool IsBadUsername(Post post)
 		{
-			return offensive.IsMatch(post.AuthorName.ToLowerInvariant());
+			var lower = post.AuthorName.ToLowerInvariant();
+
+			return offensive.IsMatch(lower) || badUser.IsMatch(lower);
 		}
 
 		private static bool IsBadTagUsed(Post post)

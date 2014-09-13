@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -39,7 +39,7 @@ namespace Phamhilator
 					Thread.Sleep(10000);
 				} while (!startMonitoring);
 
-				while (true)
+				while (!exit)
 				{
 					Dispatcher.Invoke(() => realtimeWb.Refresh());
 
@@ -60,14 +60,18 @@ namespace Phamhilator
 				while (!exit)
 				{
 					dynamic doc = null;
+					string html;
 
 					Dispatcher.Invoke(() => doc = realtimeWb.Document);
 
-					if (doc == null) { continue; }
-					if (doc.documentElement == null) { continue; }
-					if (doc.documentElement.InnerHtml == null) { continue; }
-
-					string html = doc.documentElement.InnerHtml;
+					try
+					{
+						html = doc.documentElement.InnerHtml;
+					}
+					catch (Exception)
+					{
+						continue;
+					}
 
 					if (!html.Contains("DIV class=metaInfo")) { continue; }	
 
@@ -117,7 +121,7 @@ namespace Phamhilator
 			foreach (var post in posts.Where(p => !postedPosts.Contains(p)))
 			{
 				var info = PostChecker.CheckPost(post);
-				var message = (info.InaccuracyPossible ? "" : " (possible)") + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+				var message = (!info.InaccuracyPossible ? "" : " (possible)") + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				
 				switch (info.Type)
 				{
@@ -127,30 +131,30 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							PostMessage("[Offensive](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible."));
+							Task.Factory.StartNew(() => PostMessage("[Offensive](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
 							postedPosts.Add(post);
 						}
 						else
 						{
-							PostMessage("**Offensive**" + message);
+							Task.Factory.StartNew(() => PostMessage("**Offensive**" + message));
 							postedPosts.Add(post);
 						}
 
 						break;
 					}
 
-					case PostType.OffensiveUser:
+					case PostType.BadUsername:
 					{
 						if (!catchOff) { break; }
 
 						if (quietMode)
 						{
-							PostMessage("[Offensive Username](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible."));
+							Task.Factory.StartNew(() => PostMessage("[Bad Username](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
 							postedPosts.Add(post);
 						}
 						else
 						{
-							PostMessage("**Offensive Username**" + message);
+							Task.Factory.StartNew(() => PostMessage("**Bad Username**" + message));
 							postedPosts.Add(post);
 						}
 
@@ -163,12 +167,12 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							PostMessage("[Bad Tag Used](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible."));
+							Task.Factory.StartNew(() => PostMessage("[Bad Tag Used](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
 							postedPosts.Add(post);
 						}
 						else
 						{
-							PostMessage("**Bad Tag Used**" + message);
+							Task.Factory.StartNew(() => PostMessage("**Bad Tag Used**" + message));
 							postedPosts.Add(post);
 						}
 
@@ -181,12 +185,12 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							PostMessage("[Low quality](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible."));
+							Task.Factory.StartNew(() => PostMessage("[Low quality](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
 							postedPosts.Add(post);
 						}
 						else
 						{
-							PostMessage("**Low quality**" + message);
+							Task.Factory.StartNew(() => PostMessage("**Low quality**" + message));
 							postedPosts.Add(post);
 						}
 
@@ -199,12 +203,12 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							PostMessage("[Spam](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible."));
+							Task.Factory.StartNew(() => PostMessage("[Spam](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
 							postedPosts.Add(post);
 						}
 						else
 						{
-							PostMessage("**Spam**" + message);
+							Task.Factory.StartNew(() => PostMessage("**Spam**" + message));
 							postedPosts.Add(post);
 						}
 
@@ -242,7 +246,9 @@ namespace Phamhilator
 
 			consecutiveMessageCount++;
 
-			Thread.Sleep((int)Math.Min((4.1484 * Math.Log(consecutiveMessageCount) + 1.02242), 20));
+			var delay = (int)Math.Min((4.1484 * Math.Log(consecutiveMessageCount) + 1.02242), 20) * 1000;
+
+			Thread.Sleep(delay);
 
 			PostMessage(message, consecutiveMessageCount);
 		}
@@ -316,13 +322,6 @@ namespace Phamhilator
 
 				PostMessage("`Phamhilator™ paused...`");
 			}
-		}
-
-		private void Button_Click_4(object sender, RoutedEventArgs e)
-		{
-			PostMessage("`Phamhilator™ stopped.`");
-
-			exit = true;
 		}
 
 		private void catchOffCb_Checked(object sender, RoutedEventArgs e)
@@ -423,6 +422,13 @@ namespace Phamhilator
 
 				PostMessage("`Quiet mode disabled.`");
 			}
+		}
+
+		private void MetroWindow_Closed(object sender, EventArgs e)
+		{
+			PostMessage("`Phamhilator™ stopped.`");
+
+			exit = true;
 		}
 	}
 }

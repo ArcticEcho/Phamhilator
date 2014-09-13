@@ -7,6 +7,6 @@
 		LowQuality,
 		Spam,
 		Offensive,
-		OffensiveUser
+		BadUsername
 	}
 }
