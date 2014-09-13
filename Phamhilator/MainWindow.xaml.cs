@@ -318,11 +318,13 @@ namespace Phamhilator
 			if (!File.Exists(previouslyPostMessagesPath)) { return; }
 
 			var titles = new List<string>(File.ReadAllText(previouslyPostMessagesPath).Split('\n'));
-			var date = 0;
+			var date = 0.0;
 
 			for (var i = 0; i < titles.Count; i++)
 			{
-				date = int.Parse(titles[i].Split(']')[0].Trim());
+				var t = titles[i].Split(']')[0].Trim();
+
+				date = double.Parse(titles[i].Split(']')[0].Trim());
 
 				if ((DateTime.Now - twentyTen).TotalMinutes - date > 2880)
 				{

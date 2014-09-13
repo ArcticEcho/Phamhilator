@@ -12,3 +12,11 @@
 2472394.24565547]Repurposing ICBMs
 2472394.85677214]Referencing Cells within Named Range in VBA
 2472395.46207213]What is the “essence of the earth and heaven” given to sage Gautama at his marriage?
+2472396.11060547]Why is this function a really good asymptotic for $\exp(x)\sqrt{x}$
+2472396.34535547]Which of these font communicates “luxury products” better?
+2472396.64865547]Turing machine algorithm and Natural number
+2472397.0691888]Real time interactive whiteboard for tutoring math
+2472397.06930547]how do i reboot my imac. cleared a virus and computer froze
+
+2472410.80655547]How to resolve BeanDefinitionStoreException IOException of missing applicationContext.xml Java Spring
+2472411.0089888]Windows 8 Indexing
