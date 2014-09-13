@@ -41,3 +41,6 @@ once
 version
 api
 pop
+error
+bug
+crash
