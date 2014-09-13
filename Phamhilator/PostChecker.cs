@@ -14,7 +14,7 @@ namespace Phamhilator
 		private static readonly Regex phoneNumber = new Regex(@"\D*(\d\W*){8}");
 		private static readonly Regex badUser = new Regex("sumer|kolcak");
 		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bich|crap|fag|fuck|idiot|shit|whore)\b");
-		private static readonly Regex lowQuality = new Regex("homework|newbie|\bq\b|question|\bh(i|ello)\b|\bgreeting(s)?\b|edited|error|solved|fixed|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
+		private static readonly Regex lowQuality = new Regex("homework|newbie|\bq\b|question|\bh(i|ello)\b|\bgreeting(s)?\b|edited|error(s)?|problem(s)?|solved|fixed|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
 		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|sell(ing)?|customer review(s)?|wanted|help(s)? you(r)?|work out|buy|muscle(s)?|weight loss|brand|www|\.com|super herbal|treatment|cheap(est)?|(wo)?m(a|e)n|natural(ly)?|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|exercise|ripped|full( movie| film)|free (trial|film|moive|help|assistance))\b");
 
 
