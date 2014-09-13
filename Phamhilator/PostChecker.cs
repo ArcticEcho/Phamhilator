@@ -13,7 +13,7 @@ namespace Phamhilator
 		private static Dictionary<string, HashSet<string>> badTags = new Dictionary<string, HashSet<string>>();
 		private static readonly Regex phoneNumber = new Regex(@"\D*(\d\W*){8}");
 		private static readonly Regex badUser = new Regex("sumer|kolcak|indian hackers team");
-		private static readonly Regex offensive = new Regex("nigg|asshole|piss|penis|bumhole|retard|bastard|bich|crap|fag|fuck|idiot|shit|whore");
+		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bich|crap|fag|fuck|idiot|shit|whore)\b");
 		private static readonly Regex lowQuality = new Regex("homework|newbie|\bq\b|question|correct this|school project|beginner|!|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
 		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|smooth|sell(ing)?|food|customer review(s)?|wanted|help(s)? you(r)?|work out|buy(ing)?|muscle(s)?|weight loss|brand|www|\.com|super herbal|beneficial|treatment|cheap(est)?|(wo)?m(a|e)n|natural(ly)?|product|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|exercise|ripped|full( movie| film)|free (trial|film|moive|help|assistance))\b");
 
