@@ -20,6 +20,7 @@ namespace Phamhilator
 		private bool catchSpam = true;
 		private bool catchLQ = true;
 		private bool catchBadTag = true;
+		private bool refreshBadTags;
 		private bool quietMode;
 		private readonly List<Post> postedPosts = new List<Post>();
 
@@ -106,6 +107,7 @@ namespace Phamhilator
 					AuthorLink = HTMLScrapper.GetAuthorLink(html),
 					AuthorName = HTMLScrapper.GetAuthorName(html),
 					Site = HTMLScrapper.GetSite(postURL),
+					Tags = HTMLScrapper.GetTags(html)
 				});
 
 				var startIndex = html.IndexOf("question-container realtime-question", 100, StringComparison.Ordinal);
@@ -118,9 +120,9 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
-			foreach (var post in posts.Where(p => !postedPosts.Contains(p)))
+			foreach (var post in posts.Where(p => postedPosts.All(pp => pp.Title != p.Title)))
 			{
-				var info = PostChecker.CheckPost(post);
+				var info = PostChecker.CheckPost(post, refreshBadTags);
 				var message = (!info.InaccuracyPossible ? "" : " (possible)") + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				
 				switch (info.Type)
@@ -216,6 +218,8 @@ namespace Phamhilator
 					}
 				}
 			}
+
+			if (refreshBadTags) { refreshBadTags = false; }
 		}
 
 		private void PostMessage(string message, int consecutiveMessageCount = 0)
@@ -247,6 +251,8 @@ namespace Phamhilator
 			consecutiveMessageCount++;
 
 			var delay = (int)Math.Min((4.1484 * Math.Log(consecutiveMessageCount) + 1.02242), 20) * 1000;
+
+			if (delay >= 20) { return; }
 
 			Thread.Sleep(delay);
 
@@ -424,11 +430,29 @@ namespace Phamhilator
 			}
 		}
 
-		private void MetroWindow_Closed(object sender, EventArgs e)
+		private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
+			if (roomId == 0) { return; }
+
+			e.Cancel = true;
+
 			PostMessage("`Phamhilator™ stopped.`");
 
 			exit = true;
+
+			Task.Factory.StartNew(() =>
+			{
+				Thread.Sleep(5000);
+
+				Dispatcher.Invoke(() => Application.Current.Shutdown());
+			});
+		}
+
+		private void Button_Click_4(object sender, RoutedEventArgs e)
+		{
+			refreshBadTags = true;
+
+			PostMessage("`Bad Tag definitions updated.`");
 		}
 	}
 }

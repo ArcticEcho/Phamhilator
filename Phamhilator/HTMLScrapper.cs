@@ -58,11 +58,33 @@ namespace Phamhilator
 			return postURL.Substring(7, siteEndIndex).Trim();
 		}
 
-		public static string GetTags(string html)
+		public static List<string> GetTags(string html)
 		{
-			return "";
+			var tags = new List<string>();
 
-			// TODO Finish implementation.
+			var startIndex = html.IndexOf("realtime-tags", StringComparison.Ordinal);
+			var endIndex = html.IndexOf("</SPAN>", startIndex, StringComparison.Ordinal);
+
+			while (true)
+			{
+				startIndex = html.IndexOf("href=", startIndex + 1, StringComparison.Ordinal);
+
+				if (startIndex != -1 && startIndex < endIndex)
+				{
+					var start = html.IndexOf("\">", startIndex, StringComparison.Ordinal) + 2;
+					var end = html.IndexOf("</A>", start, StringComparison.Ordinal);
+
+					var result = html.Substring(start, end - start).Trim().ToLowerInvariant();
+
+					tags.Add(result);
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			return tags;
 		}
 	}
 }

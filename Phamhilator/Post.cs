@@ -1,4 +1,8 @@
-﻿namespace Phamhilator
+﻿using System.Collections.Generic;
+
+
+
+namespace Phamhilator
 {
 	public struct Post
 	{
@@ -7,6 +11,7 @@
 		public string AuthorLink;
 		public string URL;
 		public string Site;
+		public List<string> Tags;
 		public int Score;
 		public string Body;
 

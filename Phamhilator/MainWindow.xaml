@@ -3,18 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
 
-        Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Closed="MetroWindow_Closed" >
-    <Canvas>
-        <WebBrowser Name="realtimeWb" Height="630" Width="550" Source="http://stackexchange.com/questions?tab=realtime" />
-        <WebBrowser Name="chatWb" Height="630" Canvas.Left="550" Width="642" Source="http://meta.stackexchange.com/users/login"/>
-        <Button Content="Jump to LQP" Canvas.Left="1052" Canvas.Top="638" Width="130" Click="Button_Click"/>
-        <Button Content="Jump to MSE Tavern" Canvas.Left="910" Canvas.Top="638" Width="137" Click="Button_Click_1"/>
-        <Button Content="Start Monitoring" Canvas.Left="10" Canvas.Top="638" Width="109" Click="Button_Click_2"/>
-        <CheckBox Content="Catch Spam" Canvas.Left="739" Canvas.Top="641" IsChecked="True" Checked="catchSpamCb_Checked" Unchecked="catchSpamCb_Unchecked"/>
-        <CheckBox Content="Catch LQ" Canvas.Left="662" Canvas.Top="641" IsChecked="True" Checked="catchLQCb_Checked" Unchecked="catchLQCb_Unchecked"/>
-        <CheckBox Content="Catch Off" Canvas.Left="831" Canvas.Top="641" IsChecked="True" Checked="catchOffCb_Checked" Unchecked="catchOffCb_Unchecked"/>
-        <CheckBox Content="Catch Bad Tag" Canvas.Left="557" Canvas.Top="641" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
-        <Button Content="Enable Quiet Mode" Canvas.Left="124" Canvas.Top="638" Width="127" Click="Button_Click_3"/>
+        Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing" ResizeMode="NoResize" SaveWindowPosition="True">
+    <Border BorderBrush="#FF41B1FF" BorderThickness="1">
+        <Canvas>
+            <WebBrowser Name="realtimeWb" Height="630" Width="550" Source="http://stackexchange.com/questions?tab=realtime" />
+            <WebBrowser Name="chatWb" Height="630" Canvas.Left="550" Width="642" Source="http://meta.stackexchange.com/users/login"/>
+            <Button Content="Jump to LQP" Canvas.Left="1052" Canvas.Top="638" Width="130" Click="Button_Click"/>
+            <Button Content="Jump to MSE Tavern" Canvas.Left="910" Canvas.Top="638" Width="137" Click="Button_Click_1"/>
+            <Button Content="Start Monitoring" Canvas.Left="10" Canvas.Top="638" Width="109" Click="Button_Click_2"/>
+            <CheckBox Content="Catch Spam" Canvas.Left="739" Canvas.Top="641" IsChecked="True" Checked="catchSpamCb_Checked" Unchecked="catchSpamCb_Unchecked"/>
+            <CheckBox Content="Catch LQ" Canvas.Left="662" Canvas.Top="641" IsChecked="True" Checked="catchLQCb_Checked" Unchecked="catchLQCb_Unchecked"/>
+            <CheckBox Content="Catch Off" Canvas.Left="831" Canvas.Top="641" IsChecked="True" Checked="catchOffCb_Checked" Unchecked="catchOffCb_Unchecked"/>
+            <CheckBox Content="Catch Bad Tag" Canvas.Left="557" Canvas.Top="641" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+            <Button Content="Enable Quiet Mode" Canvas.Left="124" Canvas.Top="638" Width="118" Click="Button_Click_3"/>
+            <Button Content="Refresh Bad Tag Definitions" Canvas.Left="247" Canvas.Top="638" Width="170" Click="Button_Click_4"/>
 
-    </Canvas>
+        </Canvas>
+    </Border>
 </controls:MetroWindow>
