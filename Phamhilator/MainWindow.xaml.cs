@@ -37,7 +37,7 @@ namespace Phamhilator
 			{
 				do
 				{
-					Thread.Sleep(10000);
+					Thread.Sleep(12000);
 				} while (!startMonitoring);
 
 				while (!exit)
@@ -46,7 +46,7 @@ namespace Phamhilator
 
 					do
 					{
-						Thread.Sleep(10000);
+						Thread.Sleep(12000);
 					} while (!startMonitoring);
 				}
 			}).Start();
@@ -55,7 +55,7 @@ namespace Phamhilator
 			{
 				while (!startMonitoring)
 				{
-					Thread.Sleep(5000);
+					Thread.Sleep(6000);
 				}
 
 				while (!exit)
@@ -82,7 +82,7 @@ namespace Phamhilator
 
 					do
 					{
-						Thread.Sleep(5000);
+						Thread.Sleep(6000);
 					} while (!startMonitoring);
 				}
 			}).Start();
