@@ -301,9 +301,16 @@ namespace Phamhilator
 
 		private void AddPost(Post post)
 		{
-			AddPost(post);
+			postedMessages.Add(post);
 
-			File.AppendAllText(previouslyPostMessagesPath, (DateTime.Now - new DateTime(2010, 01, 01)).TotalMinutes + "]" + post.Title + "\n");
+			if (File.Exists(previouslyPostMessagesPath))
+			{
+				File.AppendAllText(previouslyPostMessagesPath, (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Title + "\n");
+			}
+			else
+			{
+				File.WriteAllText(previouslyPostMessagesPath, (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Title + "\n");	
+			}
 		}
 
 		private void PopulatePostedMessages()
