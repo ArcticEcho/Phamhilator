@@ -44,3 +44,6 @@ pop
 error
 bug
 crash
+bukkit
+minecraft
+minecraft-forge
