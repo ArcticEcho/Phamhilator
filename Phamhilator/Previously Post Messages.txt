@@ -377,3 +377,38 @@
 2473571.87908838]How do I properly graph this table using diagrams? (including error bars)
 2473572.28701172]Use case actors
 2473577.87843153]Algorithm questions
+2473585.09636104]Did early American settlers have to buy their land from the government?
+2473587.66859149]An algebra question for vectors in R^2
+2473588.07814825]EMH reciting pi
+2473589.09918998]Is it okay to use exceptions as tools to “catch” errors early?
+2473590.06959549]Android AsyncTask error comunnication
+2473590.89044244]“Date and Time Settings” GUI in Ubuntu 14.04 is not working?
+2473591.91000075]How to switch off httpd/error_log message “Either the vistor clicked on the 'Stop' button …”
+2473597.09606405]Calling a field in views-view-fields--view-name.tpl.php -— Error
+2473597.5085043]Find Definition (F3) doesn't work within workspace or referenced projects
+2473598.24062951]Help with a bit of algebra.
+2473598.66248697]Can't import Contacts from abbu, errors in Notifications, FaceTime
+2473598.66263698]TrueCrypt mount fails with cryptic error
+2473598.66282033]Error while creating VM using virt-manager on Xen
+2473598.86814874]problem with succes and error messages Message module 'Friends'
+2473599.27432197]DCPROMO remove DC error
+2473599.88365682]Simple IVP question:
+2473601.10119312]PHP mysqli query result echo with foreach loop (SOLVED)
+2473602.11913468]Error when writing to different SD - cards
+2473606.52338659]Aptana Error-pydev: Port not bound (found port -1)?
+2473608.88943859]Do you know any open ressources about cosmetics and beauty/body products?
+2473609.89069586]$\mathbb{Q}$ can not be embedded in $\mathbb{Z}$
+2473610.09680765]Improving complex
+2473614.9174167]VC funding patterns
+2473618.02692789]Problems with Software Center
+2473618.12970043]First time using cmake gui. Getting an error about gcc and g++ path
+2473619.083755]Root cause of an “Invalid object name: dbo.etc” error?
+2473622.14059651]LiveSDK Windows Phone 8 UploadAsync Error
+2473625.32812883]looking for a word
+2473625.93758035]Is proof by contradiction same as $A \rightarrow B$ is true when $A$ is false?
+2473627.71196517]XML to PHP not working on my site
+2473628.52516169]Decreasing Enemy Base Health
+2473628.93141826]Automation Error Catastrophic Failure
+2473629.33759149]Need help compiling Tor really bad
+2473630.29217942]BackgroundUploadAsync Error object not set to an instance
+2473632.32956262]Code to remove duplicates from ArrayList does not work?

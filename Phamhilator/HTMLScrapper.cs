@@ -84,19 +84,26 @@ namespace Phamhilator
 			return tags;
 		}
 
-		public static Dictionary<string, string> GetChatMessages(string html)
+		public static KeyValuePair<string, string> GetLastChatMessages(string html)
 		{
-			var messages = new Dictionary<string, string>();
+			var startIndex = html.LastIndexOf("username owner", StringComparison.Ordinal);
+			var endIndex = html.IndexOf("TABLE id=input-table width", StringComparison.Ordinal);
 
-			var startIndex = html.IndexOf("username owner", System.StringComparison.Ordinal);
-			var endIndex = 0;
+			startIndex = html.IndexOf("<A class=\\\"signature user", startIndex + 1, StringComparison.Ordinal) + 25;
+			startIndex = html.IndexOf("users/", startIndex, StringComparison.Ordinal) + 7;
+			startIndex = html.IndexOf("//", startIndex, StringComparison.Ordinal) + 1;
+				
+			// Get username.
 
-			while (true)
-			{
-				// Get username.
+			var username = html.Substring(startIndex, html.IndexOf("\\\">", startIndex, StringComparison.Ordinal));
 
-				startIndex = 0;
-			}
+			// Get message.
+
+			startIndex = html.IndexOf("<DIV class=content>", startIndex) + 20;
+
+			var message = html.Substring(startIndex, html.IndexOf("</DIV>", startIndex));
+
+			return new KeyValuePair<string, string>(username, message);
 		}
 	}
 }
