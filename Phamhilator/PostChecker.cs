@@ -10,11 +10,11 @@ namespace Phamhilator
 {
 	public static class PostChecker
 	{
-		private static Dictionary<string, HashSet<string>> badTags = new Dictionary<string, HashSet<string>>();
+		private static readonly Dictionary<string, HashSet<string>> badTags = new Dictionary<string, HashSet<string>>();
 		private static readonly Regex phoneNumber = new Regex(@"\D*(\d\W*){8}");
 		private static readonly Regex badUser = new Regex("sumer|kolcak");
 		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bich|crap|fag|fuck|idiot|shit|whore)\b");
-		private static readonly Regex lowQuality = new Regex("homework|newbie|\bq\b|question|\bh(i|ello)\b|\bgreeting(s)?\b|edited|error(s)?|problem(s)?|solved|fixed|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
+		private static readonly Regex lowQuality = new Regex(@"homework|newbie|\bq\b|question|confusing|\bh(i|ello)\b|\bgreeting(s)?\b|error(s)?|problem(s)?|(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
 		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|sell(ing)?|customer review(s)?|wanted|help(s)? you(r)?|work out|buy|muscle(s)?|weight loss|brand|www|\.com|super herbal|treatment|cheap(est)?|(wo)?m(a|e)n|natural(ly)?|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|exercise|ripped|full( movie| film)|free (trial|film|moive|help|assistance))\b");
 
 
@@ -38,7 +38,7 @@ namespace Phamhilator
 			{
 				info.Type = PostType.BadUsername;
 			}
-			else if (IsBadTagUsed(post))
+			else if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
 			{
 				info.Type = PostType.BadTagUsed;
 			}
@@ -62,7 +62,7 @@ namespace Phamhilator
 			if (post.Site.StartsWith("fitness") ||
 				((post.Site.StartsWith("stackoverflow") || post.Site.StartsWith("codereview") || post.Site.StartsWith("english")) && lower.Contains("best")) ||
 				((post.Site.StartsWith("buddhism") || post.Site.StartsWith("stackoverflow")) && lower.Contains("benefit")) ||
-				((post.Site.StartsWith("german") || post.Site.StartsWith("scifi")) && (lower.Contains("man") || lower.Contains("men") || lower.Contains("woman"))) ||
+				((post.Site.StartsWith("german") || post.Site.StartsWith("scifi") || post.Site.StartsWith("skeptics")) && (lower.Contains("man") || lower.Contains("men") || lower.Contains("woman"))) ||
 				(post.Site.StartsWith("bitcoin") && lower.Contains("buy")) ||
 				(post.Site.StartsWith("math") && lower.Contains("work out")) ||
 				(post.Site.StartsWith("serverfault") && lower.Contains("www")) ||
@@ -87,8 +87,9 @@ namespace Phamhilator
 			}
 
 			return post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c)) ||
-			       wordCount <= 1 ||
+				   wordCount <= 1 ||
 				   lowQuality.IsMatch(lower) ||
+				   (lower.Contains("true") && lower.Contains("false")) ||
 				   (lower.Length < 35 && (lower.Contains("problem") || lower.Contains("issue")) && Char.IsLower(post.Title[0])) ||
 				   (lower.Length < 20 && !post.Site.Contains("codereview") && !post.Site.Contains("english") && !post.Site.Contains("math") && !post.Site.Contains("codegolf")) ||
 				   (lower.Contains("how do i") && post.Title.Length < 75 && Char.IsLower(post.Title[0])) ||
@@ -107,24 +108,26 @@ namespace Phamhilator
 			return offensive.IsMatch(lower) || badUser.IsMatch(lower);
 		}
 
-		private static bool IsBadTagUsed(Post post)
+		private static List<string> IsBadTagUsed(Post post)
 		{
+			var tags = new List<string>();
+
 			if (badTags.Count == 0)
 			{
 				PopulateBadTags();
 			}
 
-			if (!badTags.Keys.Contains(post.Site)) { return false; }
+			if (!badTags.Keys.Contains(post.Site)) { return tags; }
 
 			foreach (var tag in post.Tags)
 			{
 				if (badTags[post.Site].Contains(tag.ToLowerInvariant()))
 				{
-					return true;
+					tags.Add(tag);
 				}
 			}
 
-			return false;
+			return tags;
 		}
 
 

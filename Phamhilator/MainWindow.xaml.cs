@@ -23,7 +23,7 @@ namespace Phamhilator
 		private bool catchBadTag = true;
 		private bool refreshBadTags;
 		private bool quietMode;
-		private string previouslyPostMessagesPath =  Path.Combine(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName, "Previously Post Messages.txt");
+		private readonly string previouslyPostMessagesPath =  Path.Combine(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName, "Previously Post Messages.txt");
 		private readonly HashSet<Post> postedMessages = new HashSet<Post>();
 		private readonly DateTime twentyTen = new DateTime(2010, 01, 01);
 
@@ -128,8 +128,8 @@ namespace Phamhilator
 			foreach (var post in posts.Where(p => postedMessages.All(pp => pp.Title != p.Title)))
 			{
 				var info = PostChecker.CheckPost(post, refreshBadTags);
-				var message = (!info.InaccuracyPossible ? "" : " (possible)") + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
-				
+				var message = (!info.InaccuracyPossible ? "" : " (possible)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+
 				switch (info.Type)
 				{
 					case PostType.Offensive:
@@ -322,9 +322,14 @@ namespace Phamhilator
 
 			for (var i = 0; i < titles.Count; i++)
 			{
-				var t = titles[i].Split(']')[0].Trim();
+				var dateString = titles[i].Split(']')[0].Trim();
 
-				date = double.Parse(titles[i].Split(']')[0].Trim());
+				if (dateString == "")
+				{
+					continue;
+				}
+
+				date = double.Parse(dateString);
 
 				if ((DateTime.Now - twentyTen).TotalMinutes - date > 2880)
 				{
@@ -342,6 +347,18 @@ namespace Phamhilator
 			{
 				File.AppendAllText(previouslyPostMessagesPath, post + "\n");
 			}
+		}
+
+		private string FormatTags(List<string> tags)
+		{
+			var result = "";
+
+			foreach (var tag in tags)
+			{
+				result += "`[" + tag + "]` ";
+			}
+
+			return result;
 		}
 
 
@@ -500,7 +517,14 @@ namespace Phamhilator
 			{
 				Thread.Sleep(5000);
 
-				Dispatcher.Invoke(() => Application.Current.Shutdown());
+				try
+				{
+					Dispatcher.Invoke(() => Application.Current.Shutdown());
+				}
+				catch (Exception)
+				{
+					
+				}
 			});
 		}
 

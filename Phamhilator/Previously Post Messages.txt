@@ -20,3 +20,85 @@
 
 2472410.80655547]How to resolve BeanDefinitionStoreException IOException of missing applicationContext.xml Java Spring
 2472411.0089888]Windows 8 Indexing
+2472412.84737214]Why does Play report java.lang.NoClassDefFoundError for a class on Windows (while it works fine on Linux)?
+2472413.6553888]It's question about integration.
+2472413.8577888]PHP exec() problems
+2472414.66470547]Quick Question: dot product with del
+2472416.0133388]encfs error on OS X 10.9.4
+2472418.04142214]Errors when using gitlab-ctl uninstall
+2472418.6953388]can someone help me with the verification and also give me a hint metric spaces
+2472419.09122213]Installing OpenJDK Java 6 Runtime Takes forever/doesnt work
+2472420.6683888]Question regarding advanced calculus textbooks
+2472423.0537888]Ndiswrapper help needed!
+2472424.46992214]Grub dual boot, multiple drives, booting into windows encounter VSS SPP backup errors
+2472426.61312213]pandas to_sql method gives error with date column
+2472429.45382214]loop code is not working with mysql and php data?
+2472430.06005547]apt-get upgrade has no errors but no effect
+
+
+
+2473011.04302706]Uniform convergence and relative error?
+2473011.04319374]Jquery Drag and drop not working in Firefox, works fine in chrome and safari
+2473011.04334375]Rendering problem Magento 1.8
+2473012.56001383]Apache apr_sockaddr_info_get() failed error
+2473013.56902154]An unexpected error occurred. Please try again later. (-32600)
+2473014.88794698]Exponentiation expression
+2473018.3651792]What's the name of the song that plays during the plane scene in X-men Days of future past?
+2473020.53385324]Help to model time variant system
+2473023.38093275]XML Element Error
+2473023.98685074]Question about integrating differential forms
+2473025.60577667]LLBGen for dummies
+2473026.55409758]Error with Simple Express Server and Gulp
+2473029.38484282]VBA : Help needed for extracting a substring
+2473029.99049413]Do Python AIs work as well as C# or C++ AIs?
+2473033.70247311]Getting “Fatal error: Class not found” by bootstrapping external script and executing user_save function
+2473037.78283982]The limit of a product is the product of the limits — need help understanding proof.
+2473041.76676769]I have a error while creating an item in my menu?
+2473043.3823101]Sony QX1 Camera Remote API beta SDK v 1.70
+2473043.98902813]Using quadratic equations for problem solving
+2473044.19107302]When Pip freeze command was executed in virtual environment , error thrown by Windows
+2473044.39311791]wifi is not working with ubuntu 14.04
+2473045.40339236]Wifi connected but internet not working
+2473046.01024374]Suddenly bootstrap multiselect not workin on drupal site
+2473046.81263963]WiFi not working on dell inspirion 1520
+2473049.38020316]Unable To Call Rest APIs
+2473051.36511669]http://meta.stackexchange.com/questions/78573/why-is-the-time-limit-for-editing-comments-only-5-minutes
+2473051.76935648]Problem with running mathematica script involving Export on cygwin
+2473053.58751047]policy routing problem with load balanced ppp connections
+2473054.19281176]Linear Algebra - four “true or false” questions about matrices and linear systems
+2473059.41882733]joomla trigger my own event
+2473059.41894401]Is it possible that Quran was written by man?
+2473061.37477254]WordPress and WooCommerce Fatal Error Mesage
+2473062.79447041]Inverting (Buck-boost) converter polarity problem
+2473065.01581413]Applications hangs and touch events does not work in Samsung devices
+2473065.41958722]Dell vostro3446 touchpad not working in ubuntu ,working fine with windows
+2473065.41998725]hw0 part 1: “On Time AutograderSubprocess error: Program timed out”
+2473068.19726276]Another Case Solved - chaper 5 the hornets nest - How to complete all the achievements
+2473070.41843981]What Should I Watch
+2473070.82236291]How to go from newbie to manufactured?
+2473071.35779354]PTC / GPT Scripts Information
+2473072.57649658]What does 'by implication' mean, on chess for women? - Test 4, Q5, by Mark Shepherd
+2473079.40748729]Build cross compiler - error: libmpfr not found
+2473079.40760396]Spamassassin filter
+2473082.78576384]Word 2007-2013 Content control
+2473083.99759983]Integer grid problem
+2473085.81693722]Setup bcache how-to please
+2473087.43254629]Solving an initial value problem for the PDE $u_t + u_x = (x+t) \cos(xt)$
+
+2473090.03564518]I want to marry someone please suggest after reading everything
+2473090.03592853]Integrate $\int\frac{3x^2+1}{(x^2-1)^3}$
+2473090.13663429]Error when trying to call a function that will add data to vector
+2473090.77648755]Logging and Error MS SQL Server 2008 R2
+2473091.61466883]Homework: qn on central limit theorem
+2473093.86728101]What's the error 'by implication', on chess for women? - Test 4, Q5, by Mark Shepherd
+
+2473104.78547216]I am confusing about -exec command
+2473104.84709235]Functional Knapsack Problem in Python
+2473104.94881483]PHP $_POST syntax error
+2473104.94893151]Proof Explaination
+2473104.94909818]Dell vostro3446 touchpad not working in ubuntu
+2473105.65728869]Coin-tossing games
+2473106.43401645]Comparing the size of square roots
+
+2473108.32615801]geometric problem and optimisation
+2473108.32640802]I need help with a banner in LaTeX
