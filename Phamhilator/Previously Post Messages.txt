@@ -507,3 +507,7 @@
 2473786.51218136]Etekcity Scroll E1 Wireless USB mouse does not work with Ubuntu 14.04
 
 2473798.3345409]Django 1.7 Migration error with Heroku Postgres
+2473800.83536727]SKAction scaleTo not working on iPhone 5S
+2473804.1333059]Appending a div
+2473804.71462248]Use loops to find Sum in C
+2473807.15644548]JavaScript Pi Spigot Algorithm not working

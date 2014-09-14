@@ -289,12 +289,12 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							Task.Factory.StartNew(() => PostMessage("[Low quality](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
+							Task.Factory.StartNew(() => PostMessage("[Low Quality](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
 							AddPost(post);
 						}
 						else
 						{
-							Task.Factory.StartNew(() => PostMessage("**Low quality**" + message));
+							Task.Factory.StartNew(() => PostMessage("**Low Quality**" + message));
 							AddPost(post);
 						}
 
@@ -487,6 +487,8 @@ namespace Phamhilator
 		{
 			return username.Contains("user") && username.Remove(0, 4).All(Char.IsDigit);
 		}
+
+
 
 		// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ UI Events ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 
