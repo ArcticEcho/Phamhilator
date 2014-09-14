@@ -465,7 +465,7 @@ namespace Phamhilator
 
 		private bool SpamAbuseDetected(Post post)
 		{
-			if (IsDefaultUsername(post.AuthorName) && IsDefaultUsername(postedMessages[0].AuthorName))
+			if (IsDefaultUsername(post.AuthorName) && postedMessages[0].AuthorName != null && IsDefaultUsername(postedMessages[0].AuthorName))
 			{
 				var username0Id = int.Parse(post.AuthorName.Remove(0, 4));
 				var username1Id = int.Parse(postedMessages[0].AuthorName.Remove(0, 4));

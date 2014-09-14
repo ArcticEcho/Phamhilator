@@ -511,3 +511,14 @@
 2473804.1333059]Appending a div
 2473804.71462248]Use loops to find Sum in C
 2473807.15644548]JavaScript Pi Spigot Algorithm not working
+
+
+2473814.08649185]how do I fix base system device driver problem
+2473814.18828101]Trackpad not working: Ubuntu 13.10 installed on Hard Drive of Toshiba Satellite C650
+2473814.18843102]problem installing textstat (python module) on ubuntu 14.04 LTS
+2473814.18861436]InvokeCommandAction not working on Hyperlink
+
+
+
+
+2473821.24373456]Characteristic curves
