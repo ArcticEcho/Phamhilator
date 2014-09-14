@@ -412,3 +412,98 @@
 2473629.33759149]Need help compiling Tor really bad
 2473630.29217942]BackgroundUploadAsync Error object not set to an instance
 2473632.32956262]Code to remove duplicates from ArrayList does not work?
+2473637.32201484]VLC color problem in Ubuntu 14.04 LTS
+2473637.93126635]Error in running a python script for SUMO simulator
+2473641.93396196]Can someone help me please? it is about fitting tables
+2473643.9376099]Buddypress sign-up screen not working
+2473644.89948158]Error - Get-SPWeb in Powershell
+2473645.3096217]Tonw three sandhi
+2473646.89494571]How do i get spotify web player to play on C# webBrowser
+2473647.3167365]JBoss EAP 6.3.0 errors in Eclipse Servers View
+2473647.93218837]Problem with numeric keyboard
+2473650.1320642]Can't run cleanup
+2473650.33715926]Problems installing Betty in zsh
+2473651.72630538]i need help with the derivative of improper integral
+2473653.92846467]What are mistakes beginners should avoid in Dominion?
+2473655.78815438]Google Play Error - could not be downloaded due to an error(403)
+2473656.71195721]Problem solving super heterodyne receiver question
+2473656.71212389]Redirect & permalink problems after moving multisite to a new server
+2473659.30137199]Questions after watching X-Men days of future past
+2473660.53977615]Acora doesn't work with gzip-opened files
+2473660.7493048]Problem in proxifier when visit Https websites
+2473661.36003974]Is a sentence in $\Pi_1$ true given $Q \vdash \lnot\varphi$?
+2473662.52940662]Machine learning for light microscopy — problems to solve?
+2473662.73435167]Cache control header specified in .htaccess is not working for static files
+2473663.9586217]mysql function sometimes does not work
+2473664.95256188]Can more than 1 user log onto a single AWS Linux EC2 instance? (Beginner)
+2473665.72762288]Proof Question- Need Help
+2473667.99130236]A question about unit vectors in Hilbert space
+2473668.92967269]Questions about a lightweight PHP MVC Framework
+2473669.33987949]Can someone help me please? it is about width of the table
+2473670.35863776]Skipping pset8 questions?
+2473674.13423704]Problemas com Constraints no PostgreSQL
+2473675.35919044]Volume and Weight Please help
+2473675.7658137]CRC Error when extracting files
+2473680.15814826]instagram search hastgags isn't reliable - so can I do this?
+2473682.13756147]Is proof by contradiction “same thing” as $A \rightarrow B$ is true when $A$ is false?
+2473683.35976471]Question about $\gcd$
+2473684.17276121](SOLVED)Lubuntu allow non-admin to mount drive without admin password
+2473685.00525883]Problem changing desktop background in Mountain Lion (10.8.1)
+2473685.73775073]Prove ¬(¬a = a)
+2473686.34873567]Advanced calculus question on sequences
+2473686.34890235]gcc from 4.8 to 4.7
+2473692.91966151]What are these long www bitnik URL?
+2473695.81836064]unknown movie with scary scene (scary for men/women who plan on having babies) with doctor holding scissors
+2473695.81867732]Do you know any open resources about cosmetics and beauty/body products?
+2473696.54980247]Help me correct my mistake
+2473701.82507087]Why learn Gemara?
+2473705.93943953]If $|P_{n+1}-q|\le c|P_n - q|$ for all $n$, where $c<1$, then $P_n\to q$
+2473708.36617833]Matlab installation
+2473708.95286189]id-generating function sometimes doesn't work
+2473709.78527617]A C++ library used in multiple compilational units causes linker errors
+2473712.78583112]json_encode doesn't work with valid json string
+2473712.78598113]Problems with wifi driver?
+2473713.39783279]Show that (p→q)→(r→s) and (p→r)→(q→s) are not logically equivalent.
+2473715.58119101]Man gets vasectomy, fiance leaves, he sleeps around
+2473717.27158769]how do I compress all files within a folder on Unix?
+
+2473720.07011442]jsonencode doesn't work with valid json string
+2473720.19532159]Animation not working after appending node group
+2473721.4812118]Sentence patterns
+2473725.51680929]WHY DID I RECEIVE 100 REPUTATION ON MY PRIMARY SE NETWORK ACCOUNT?
+2473728.41195822]Ubuntu is freezing?
+2473728.61601989]Probability and Induction help
+2473729.24538922]Install PECLHTTP
+2473729.7828533]LOOKING AT YOUR NETWORK PROFILE YOU HAVE A STACK OVERFLOW ACCOUNT WITH A REP OF 732? THAT IS PART OF STACK EXCHANGE.
+2473730.4460579]Win XP Screen saver / power management not working
+2473731.51098547]lenovo e540 RTL8723be wifi not working
+2473733.07917517]YES, AND IT WAS 632 BEFORE I JOINED MUSIC PRACTICE & PERFORMANCE
+2473735.45126084]emacs C-h prefix key is not working
+2473735.7845299]Second derivative algebra help
+2473736.5176385]Restrited three body problem
+2473736.51787185]Object reference not set to an instance of an object.(Edited)
+2473742.42109283]PHP Function not working- Follow system
+2473743.9358628]Restricted three body problem
+2473744.99574009]pgfplots, circuitikz library colision problem
+2473747.42929595]LOOK AT 17TH AVATAR IN YOUR CHAT ROOM - WHAT DO YOU SEE?
+2473754.4282296]Button Formatting Help - Xcode 6
+2473756.33368858]iOS - CGAffineTransformInvert: singular matrix Error
+2473764.13398474]Monitor wakeup lag
+2473767.7349407]Level 3 Applescript
+2473769.8400611]CGAffineTransformInvert: singular matrix Error
+2473770.04408944]Name of manga please
+2473770.87140343]Creating elder magi
+2473773.99481541]Idiom help: If beauty is her Yin, then intelligence is her Yang
+2473773.99499875]Why is less bottling sugar required when naturally carbonating in a keg versus bottles?
+2473775.66466092]Cummulative sum in Excel with statment
+2473775.66477759]Calculus Derivative
+2473777.15547952]ADC count swapping
+
+2473780.77705333]Trying to use Boolean (difference) Modifier on a ring design and its not working correctly?
+2473780.77723667]ringer: help convert simple plugin to new QGIS 2.x
+2473780.77750336]Meek versus humble
+2473780.7776867]SharePoint 2013 Workflow - Error occurred in deployment step 'Activate Features'
+2473786.12722601]Is 6mths too early to negotiate a payrise at a new job?
+2473786.51218136]Etekcity Scroll E1 Wireless USB mouse does not work with Ubuntu 14.04
+
+2473798.3345409]Django 1.7 Migration error with Heroku Postgres

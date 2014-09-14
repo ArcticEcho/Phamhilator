@@ -14,8 +14,8 @@ namespace Phamhilator
 		private static readonly Regex phoneNumber = new Regex(@"\d(?!\d-?\d{2}-\d{4})(?>\W*\d){7}");
 		private static readonly Regex badUser = new Regex("sumer|kolcak");
 		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bitch|crap|fag|fuck|idiot|shit|whore)\b");
-		private static readonly Regex lowQuality = new Regex(@"homework|builtwith.com|newbie|\bq\b|question|tried|\bif (yes|no)\b|my best|says wrong|confusing|\bh(i|ello)\b|\bgreeting(s)?\b|error(s)?|problem(s)?|(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
-		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|selling|customer review(s)?|wanted|help(s)? you(r)?|work out|muscle(s)?|weight loss|\bbrand\b|www|\.com|super herbal|treatment|cheap(est)?|(wo)?m(a|e)n|naturally|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|ripped|full( movie| film)|free (trial|film|moive|movie|help|assistance))\b");
+		private static readonly Regex lowQuality = new Regex(@"homework|builtwith.com|newbie|\bq\b|question|tried|\bif (yes|no)\b|my best|our feelings|says wrong|confusing|\bh(i|ello)\b|\bgreeting(s)?\b|error(s)?|problem(s)?|(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
+		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|selling|customer review(s)?|wanted|help(s)? you(r)?|work out|muscle(s)?|weight loss|\bbrand\b|http://|\.com|super herbal|treatment|cheap(est)?|naturally|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|ripped|full( movie| film)|free (trial|film|moive|movie|help|assistance))\b");
 
 
 
@@ -33,8 +33,8 @@ namespace Phamhilator
 			if (IsOffensive(post))
 			{
 				info.Type = PostType.Offensive;
-			}
-			if (IsBadUsername(post))
+			} 
+			else if (IsBadUsername(post))
 			{
 				info.Type = PostType.BadUsername;
 			}
@@ -61,17 +61,15 @@ namespace Phamhilator
 
 			if (post.Site.StartsWith("fitness") ||
 				((post.Site.StartsWith("stackoverflow") || post.Site.StartsWith("codereview") || post.Site.StartsWith("english")) && lower.Contains("best")) ||
-				((post.Site.StartsWith("german") || post.Site.StartsWith("scifi") || post.Site.StartsWith("skeptics")) && (lower.Contains("man") || lower.Contains("men") || lower.Contains("woman"))) ||
+				(post.Site.StartsWith("homebrew") && lower.Contains("naturally")) ||
 				(post.Site.StartsWith("math") && lower.Contains("work out")) ||
-				(post.Site.StartsWith("serverfault") && lower.Contains("www")) ||
 				(post.Site.StartsWith("rpg") && lower.Contains("health")) ||
 				(lower.Contains("bettery") && lower.Contains("health")))
 			{
 				return false;
 			}
 
-			return spam.IsMatch(lower) ||
-					(phoneNumber.IsMatch(lower) && !post.Site.StartsWith("math") && !post.Site.StartsWith("patents") && !post.Site.StartsWith("history"));
+			return spam.IsMatch(lower) || (phoneNumber.IsMatch(lower) && !post.Site.StartsWith("math") && !post.Site.StartsWith("patents") && !post.Site.StartsWith("history"));
 		}
 
 		private static bool IsLowQuality(Post post)
@@ -81,6 +79,7 @@ namespace Phamhilator
 
 			if (((lower.Contains("question") || lower.Contains("help")) && post.Site.StartsWith("meta")) ||
 				(lower.Contains("problem") && (post.Site.StartsWith("math") || post.Site.StartsWith("gardening"))) ||
+				(lower.Contains("q") && post.Site.StartsWith("math")) ||
 				(lower.Contains("error") && (lower.Contains("certificate") || lower.Contains("results in") || post.Site.StartsWith("programmers"))))
 			{
 				return false;

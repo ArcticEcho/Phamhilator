@@ -25,7 +25,8 @@ namespace Phamhilator
 		private bool catchOff = true;
 		private bool catchLQ = true;
 		private readonly DateTime twentyTen = new DateTime(2010, 01, 01);
-		private readonly HashSet<Post> postedMessages = new HashSet<Post>();
+		private readonly List<Post> postedMessages = new List<Post>();
+		private readonly HashSet<int> spammers = new HashSet<int>();
 		private readonly string previouslyPostMessagesPath = DirectoryTools.GetPostPersitenceFile();
 
 
@@ -100,54 +101,54 @@ namespace Phamhilator
 
 		private void HookupListener()
 		{
-			Dispatcher.Invoke(() =>
-			{
-				chatWb.InvokeScript("eval", new object[] { @"
-                $.post('/chats/' + '" + roomId + @"' + '/events', { since: 0, mode: 'Messages', msgCount: 1, fkey: fkey().fkey }).success(
-                function (eve)
-                {
-                    console.log(eve.time);
-
-                    $.post('/ws-auth', { roomid: " + roomId + @" , fkey: fkey().fkey }).success(
-                    function (au)
-                    {
-                        console.log(au);
-
-                        var ws = new WebSocket(au.url + '?l=' + eve.time.toString());
-
-                        ws.onmessage = function (e)
-                        {
-                            var fld = 'r' + " + roomId + @", roomevent = JSON.parse(e.data)[fld], ce;
-
-                            if (roomevent && roomevent.e)
-                            {
-                                ce = roomevent.e;
-
-                                var element = document.getElementById('chatMessages');
-
-                                if (element == null)
-                                {
-                                    var ele = document.createElement('p');
-                                    ele.id = 'chatMessages';
-
-                                    var node = document.createTextNode(ce[0].user_name + ' -=- ' + ce[0].content);
-                                    ele.appendChild(node);
-
-                                    document.body.insertBefore(ele, document.body.firstChild);
-                                }
-                                else
-                               {
-                                    element.innerHTML = ce[0].content;
-                               }
-
-                               console.log(ce);
-                           }
-                       };
-                   ws.onerror = function (e) { console.log(e); };
-               });
-           });" 
-				});
-			});
+//			Dispatcher.Invoke(() =>
+//			{
+//				chatWb.InvokeScript("eval", new object[] { @"
+//                $.post('/chats/' + '" + roomId + @"' + '/events', { since: 0, mode: 'Messages', msgCount: 1, fkey: fkey().fkey }).success(
+//                function (eve)
+//                {
+//                    console.log(eve.time);
+//
+//                    $.post('/ws-auth', { roomid: " + roomId + @" , fkey: fkey().fkey }).success(
+//                    function (au)
+//                    {
+//                        console.log(au);
+//
+//                        var ws = new WebSocket(au.url + '?l=' + eve.time.toString());
+//
+//                        ws.onmessage = function (e)
+//                        {
+//                            var fld = 'r' + " + roomId + @", roomevent = JSON.parse(e.data)[fld], ce;
+//
+//                            if (roomevent && roomevent.e)
+//                            {
+//                                ce = roomevent.e;
+//
+//                                var element = document.getElementById('chatMessages');
+//
+//                                if (element == null)
+//                                {
+//                                    var ele = document.createElement('p');
+//                                    ele.id = 'chatMessages';
+//
+//                                    var node = document.createTextNode(ce[0].user_name + ' -=- ' + ce[0].content);
+//                                    ele.appendChild(node);
+//
+//                                    document.body.insertBefore(ele, document.body.firstChild);
+//                                }
+//                                else
+//                               {
+//                                    element.innerHTML = ce[0].content;
+//                               }
+//
+//                               console.log(ce);
+//                           }
+//                       };
+//                   ws.onerror = function (e) { console.log(e); };
+//               });
+//           });" 
+//				});
+//			});
 
 			new Thread(() =>
 			{
@@ -171,7 +172,7 @@ namespace Phamhilator
 
 					if (!html.Contains("chatMessages")) { continue; }
 
-					var startIndex = html.IndexOf("chatMessages") + 13;
+					var startIndex = html.IndexOf("username owner") + 14;
 					var endIndex = html.IndexOf("</p>", startIndex);
 
 					var t = html.Substring(startIndex, endIndex - startIndex);
@@ -211,10 +212,20 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
+			if (refreshBadTags) { refreshBadTags = false; }
+
 			foreach (var post in posts.Where(p => postedMessages.All(pp => pp.Title != p.Title)))
 			{
 				var info = PostChecker.CheckPost(post, refreshBadTags);
 				var message = (!info.InaccuracyPossible ? "" : " (possible)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+
+				if (SpamAbuseDetected(post))
+				{
+					Task.Factory.StartNew(() => PostMessage("[Spammer abuse](" + post.URL + ")."));
+					AddPost(post);
+
+					continue;
+				}
 
 				switch (info.Type)
 				{
@@ -224,7 +235,7 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							Task.Factory.StartNew(() => PostMessage("[Offensive](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
+							Task.Factory.StartNew(() => PostMessage("[Offensive](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
 							AddPost(post);
 						}
 						else
@@ -242,7 +253,7 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							Task.Factory.StartNew(() => PostMessage("[Bad Username](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
+							Task.Factory.StartNew(() => PostMessage("[Bad Username](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
 							AddPost(post);
 						}
 						else
@@ -260,7 +271,7 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							Task.Factory.StartNew(() => PostMessage("[Bad Tag Used](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
+							Task.Factory.StartNew(() => PostMessage("[Bad Tag Used](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
 							AddPost(post);
 						}
 						else
@@ -278,7 +289,7 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							Task.Factory.StartNew(() => PostMessage("[Low quality](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
+							Task.Factory.StartNew(() => PostMessage("[Low quality](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
 							AddPost(post);
 						}
 						else
@@ -296,7 +307,7 @@ namespace Phamhilator
 
 						if (quietMode)
 						{
-							Task.Factory.StartNew(() => PostMessage("[Spam](" + post.URL + ")" + (info.InaccuracyPossible ? "." : " possible.")));
+							Task.Factory.StartNew(() => PostMessage("[Spam](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
 							AddPost(post);
 						}
 						else
@@ -309,8 +320,6 @@ namespace Phamhilator
 					}
 				}
 			}
-
-			if (refreshBadTags) { refreshBadTags = false; }
 		}
 
 		private void PostMessage(string message, int consecutiveMessageCount = 0)
@@ -387,7 +396,14 @@ namespace Phamhilator
 
 		private void AddPost(Post post)
 		{
-			postedMessages.Add(post);
+			if (postedMessages.Count == 0)
+			{
+				postedMessages.Add(post);
+			}
+			else
+			{
+				postedMessages.Insert(0, post);
+			}
 
 			if (File.Exists(previouslyPostMessagesPath))
 			{
@@ -435,7 +451,7 @@ namespace Phamhilator
 			}
 		}
 
-		private string FormatTags(List<string> tags)
+		private string FormatTags(IEnumerable<string> tags)
 		{
 			var result = "";
 
@@ -447,7 +463,30 @@ namespace Phamhilator
 			return result;
 		}
 
+		private bool SpamAbuseDetected(Post post)
+		{
+			if (IsDefaultUsername(post.AuthorName) && IsDefaultUsername(postedMessages[0].AuthorName))
+			{
+				var username0Id = int.Parse(post.AuthorName.Remove(0, 4));
+				var username1Id = int.Parse(postedMessages[0].AuthorName.Remove(0, 4));
 
+				if (username0Id < username1Id + 5 || spammers.Contains(username0Id))
+				{
+					PostMessage("`Spammer abuse detected.`");
+
+					spammers.Add(username0Id);
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		private bool IsDefaultUsername(string username)
+		{
+			return username.Contains("user") && username.Remove(0, 4).All(Char.IsDigit);
+		}
 
 		// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ UI Events ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 
