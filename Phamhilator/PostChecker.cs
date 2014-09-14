@@ -11,11 +11,11 @@ namespace Phamhilator
 	public static class PostChecker
 	{
 		private static readonly Dictionary<string, HashSet<string>> badTags = new Dictionary<string, HashSet<string>>();
-		private static readonly Regex phoneNumber = new Regex(@"\D*(\d\W*){8}");
+		private static readonly Regex phoneNumber = new Regex(@"\d(?!\d-?\d{2}-\d{4})(?>\W*\d){7}");
 		private static readonly Regex badUser = new Regex("sumer|kolcak");
-		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bich|crap|fag|fuck|idiot|shit|whore)\b");
-		private static readonly Regex lowQuality = new Regex(@"homework|newbie|\bq\b|question|confusing|\bh(i|ello)\b|\bgreeting(s)?\b|error(s)?|problem(s)?|(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
-		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|sell(ing)?|customer review(s)?|wanted|help(s)? you(r)?|work out|buy|muscle(s)?|weight loss|brand|www|\.com|super herbal|treatment|cheap(est)?|(wo)?m(a|e)n|natural(ly)?|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|exercise|ripped|full( movie| film)|free (trial|film|moive|help|assistance))\b");
+		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bitch|crap|fag|fuck|idiot|shit|whore)\b");
+		private static readonly Regex lowQuality = new Regex(@"homework|newbie|\bq\b|question|tried|\bif (yes|no)\b|my best|says wrong|confusing|\bh(i|ello)\b|\bgreeting(s)?\b|error(s)?|problem(s)?|(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)|correct this|school project|beginner|promblem|asap|urgent|please|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|(help|halp)");
+		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|for me|selling|customer review(s)?|wanted|help(s)? you(r)?|work out|buy|muscle(s)?|weight loss|\bbrand\b|www|\.com|super herbal|treatment|cheap(est)?|(wo)?m(a|e)n|naturally|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|ripped|full( movie| film)|free (trial|film|moive|movie|help|assistance))\b");
 
 
 
@@ -49,7 +49,7 @@ namespace Phamhilator
 			else if (IsLowQuality(post))
 			{
 				info.Type = PostType.LowQuality;
-				info.InaccuracyPossible = !lowQuality.IsMatch(post.Title.ToLowerInvariant());
+				info.InaccuracyPossible = !lowQuality.IsMatch(post.Title.ToLowerInvariant()) || post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c));
 			}
 
 			return info;
@@ -61,13 +61,12 @@ namespace Phamhilator
 
 			if (post.Site.StartsWith("fitness") ||
 				((post.Site.StartsWith("stackoverflow") || post.Site.StartsWith("codereview") || post.Site.StartsWith("english")) && lower.Contains("best")) ||
-				((post.Site.StartsWith("buddhism") || post.Site.StartsWith("stackoverflow")) && lower.Contains("benefit")) ||
 				((post.Site.StartsWith("german") || post.Site.StartsWith("scifi") || post.Site.StartsWith("skeptics")) && (lower.Contains("man") || lower.Contains("men") || lower.Contains("woman"))) ||
 				(post.Site.StartsWith("bitcoin") && lower.Contains("buy")) ||
 				(post.Site.StartsWith("math") && lower.Contains("work out")) ||
 				(post.Site.StartsWith("serverfault") && lower.Contains("www")) ||
 				(post.Site.StartsWith("rgp") && lower.Contains("health")) ||
-				(post.Site.StartsWith("astronomy") && lower.Contains("natural")))
+				(lower.Contains("bettery") && lower.Contains("health")))
 			{
 				return false;
 			}
@@ -81,7 +80,9 @@ namespace Phamhilator
 			var wordCount = SpaceCount(post.Title);
 			var lower = post.Title.ToLowerInvariant();
 
-			if (lower.Contains("question") && post.Site.StartsWith("meta"))
+			if (((lower.Contains("question") || lower.Contains("help")) && post.Site.StartsWith("meta")) ||
+				(lower.Contains("problem") && (post.Site.StartsWith("math") || post.Site.StartsWith("gardening"))) ||
+				(lower.Contains("error") && (lower.Contains("certificate") || lower.Contains("results in"))))
 			{
 				return false;
 			}
@@ -91,7 +92,7 @@ namespace Phamhilator
 				   lowQuality.IsMatch(lower) ||
 				   (lower.Contains("true") && lower.Contains("false")) ||
 				   (lower.Length < 35 && (lower.Contains("problem") || lower.Contains("issue")) && Char.IsLower(post.Title[0])) ||
-				   (lower.Length < 20 && !post.Site.Contains("codereview") && !post.Site.Contains("english") && !post.Site.Contains("math") && !post.Site.Contains("codegolf")) ||
+				   (lower.Length < 20 && !post.Site.Contains("codereview") && !post.Site.Contains("ell") && !post.Site.Contains("english") && !post.Site.Contains("math") && !post.Site.Contains("codegolf")) ||
 				   (lower.Contains("how do i") && post.Title.Length < 75 && Char.IsLower(post.Title[0])) ||
 				   (lower.Contains("error") && (post.Title.Length < 35 || lower.Any(Char.IsDigit)));
 		}

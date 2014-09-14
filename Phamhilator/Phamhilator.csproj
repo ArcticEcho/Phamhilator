@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CommandProcessor.cs" />
+    <Compile Include="DirectoryTools.cs" />
+    <Compile Include="FilterTerms.cs" />
     <Compile Include="HTMLScrapper.cs" />
     <Compile Include="PostChecker.cs" />
     <Page Include="MainWindow.xaml">

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 
 
 namespace Phamhilator
 {
-	public static class HTMLScrapper
+	public static class HTMLScraper
 	{
 		public static string GetURL(string html)
 		{
@@ -27,7 +24,7 @@ namespace Phamhilator
 
 			var endIndex = html.IndexOf("</A></H2>", startIndex, StringComparison.Ordinal);
 
-			return WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex).Trim()).Replace(']', ')').Replace('[', '(');
+			return WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex).Trim()).Replace(']', ')').Replace('[', '(').Replace(@"\n", "");
 		}
 
 		public static string GetAuthorLink(string html)
@@ -48,7 +45,7 @@ namespace Phamhilator
 
 			var endIndex = html.IndexOf("</A>", startIndex, StringComparison.Ordinal);
 
-			return html.Substring(startIndex, endIndex - startIndex).Trim();
+			return html.Substring(startIndex, endIndex - startIndex).Trim().Replace(@"\n", "");
 		}
 
 		public static string GetSite(string postURL)
@@ -85,6 +82,21 @@ namespace Phamhilator
 			}
 
 			return tags;
+		}
+
+		public static Dictionary<string, string> GetChatMessages(string html)
+		{
+			var messages = new Dictionary<string, string>();
+
+			var startIndex = html.IndexOf("username owner", System.StringComparison.Ordinal);
+			var endIndex = 0;
+
+			while (true)
+			{
+				// Get username.
+
+				startIndex = 0;
+			}
 		}
 	}
 }

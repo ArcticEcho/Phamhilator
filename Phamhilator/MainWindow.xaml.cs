@@ -15,17 +15,18 @@ namespace Phamhilator
 	public partial class MainWindow
 	{
 		private int roomId;
-		private bool startMonitoring;
 		private bool exit;
-		private bool catchOff = true;
-		private bool catchSpam = true;
-		private bool catchLQ = true;
-		private bool catchBadTag = true;
-		private bool refreshBadTags;
 		private bool quietMode;
-		private readonly string previouslyPostMessagesPath =  Path.Combine(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName, "Previously Post Messages.txt");
-		private readonly HashSet<Post> postedMessages = new HashSet<Post>();
+		private bool refreshBadTags;
+		private bool startMonitoring;
+		private bool catchBadTag = true;
+		private bool firstStart = true;
+		private bool catchSpam = true;
+		private bool catchOff = true;
+		private bool catchLQ = true;
 		private readonly DateTime twentyTen = new DateTime(2010, 01, 01);
+		private readonly HashSet<Post> postedMessages = new HashSet<Post>();
+		private readonly string previouslyPostMessagesPath = DirectoryTools.GetPostPersitenceFile();
 
 
 
@@ -58,10 +59,12 @@ namespace Phamhilator
 
 			new Thread(() =>
 			{
-				while (!startMonitoring)
+				do
 				{
 					Thread.Sleep(6000);
-				}
+				} while (!startMonitoring);
+
+				HookupListener();
 
 				while (!exit)
 				{
@@ -95,6 +98,89 @@ namespace Phamhilator
 
 
 
+		private void HookupListener()
+		{
+			Dispatcher.Invoke(() =>
+			{
+				chatWb.InvokeScript("eval", new object[] { @"
+                $.post('/chats/' + '" + roomId + @"' + '/events', { since: 0, mode: 'Messages', msgCount: 1, fkey: fkey().fkey }).success(
+                function (eve)
+                {
+                    console.log(eve.time);
+
+                    $.post('/ws-auth', { roomid: " + roomId + @" , fkey: fkey().fkey }).success(
+                    function (au)
+                    {
+                        console.log(au);
+
+                        var ws = new WebSocket(au.url + '?l=' + eve.time.toString());
+
+                        ws.onmessage = function (e)
+                        {
+                            var fld = 'r' + " + roomId + @", roomevent = JSON.parse(e.data)[fld], ce;
+
+                            if (roomevent && roomevent.e)
+                            {
+                                ce = roomevent.e;
+
+                                var element = document.getElementById('chatMessages');
+
+                                if (element == null)
+                                {
+                                    var ele = document.createElement('p');
+                                    ele.id = 'chatMessages';
+
+                                    var node = document.createTextNode(ce[0].user_name + ' -=- ' + ce[0].content);
+                                    ele.appendChild(node);
+
+                                    document.body.insertBefore(ele, document.body.firstChild);
+                                }
+                                else
+                               {
+                                    element.innerHTML = ce[0].content;
+                               }
+
+                               console.log(ce);
+                           }
+                       };
+                   ws.onerror = function (e) { console.log(e); };
+               });
+           });" 
+				});
+			});
+
+			new Thread(() =>
+			{
+				while (!exit)
+				{		
+					Thread.Sleep(500);
+
+					dynamic doc = null;
+					string html;
+
+					Dispatcher.Invoke(() => doc = chatWb.Document);
+
+					try
+					{
+						html = doc.documentElement.InnerHtml;
+					}
+					catch (Exception)
+					{
+						continue;
+					}
+
+					if (!html.Contains("chatMessages")) { continue; }
+
+					var startIndex = html.IndexOf("chatMessages") + 13;
+					var endIndex = html.IndexOf("</p>", startIndex);
+
+					var t = html.Substring(startIndex, endIndex - startIndex);
+
+					CommandProcessor.ExacuteCommand(t);
+				}
+			}).Start();
+		}
+
 		private IEnumerable<Post> GetAllPosts(string html)
 		{
 			var posts = new List<Post>();
@@ -103,16 +189,16 @@ namespace Phamhilator
 
 			while (html.Length > 10000)
 			{
-				var postURL = HTMLScrapper.GetURL(html);
+				var postURL = HTMLScraper.GetURL(html);
 
 				posts.Add(new Post
 				{
 					URL = postURL,
-					Title = HTMLScrapper.GetTitle(html),
-					AuthorLink = HTMLScrapper.GetAuthorLink(html),
-					AuthorName = HTMLScrapper.GetAuthorName(html),
-					Site = HTMLScrapper.GetSite(postURL),
-					Tags = HTMLScrapper.GetTags(html)
+					Title = HTMLScraper.GetTitle(html),
+					AuthorLink = HTMLScraper.GetAuthorLink(html),
+					AuthorName = HTMLScraper.GetAuthorName(html),
+					Site = HTMLScraper.GetSite(postURL),
+					Tags = HTMLScraper.GetTags(html)
 				});
 
 				var startIndex = html.IndexOf("question-container realtime-question", 100, StringComparison.Ordinal);
@@ -391,7 +477,14 @@ namespace Phamhilator
 
 				b.Content = "Pause Monitoring";
 
-				PostMessage("`Phamhilator™ started...`");
+				if (System.Diagnostics.Debugger.IsAttached && firstStart)
+				{
+					PostMessage("`Phamhilator™ started (debug mode)...`");
+				}
+				else
+				{
+					PostMessage("`Phamhilator™ started...`");
+				}
 			}
 			else
 			{
