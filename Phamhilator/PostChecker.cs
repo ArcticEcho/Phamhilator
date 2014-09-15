@@ -15,7 +15,7 @@ namespace Phamhilator
 		private static readonly Regex badUser = new Regex("sumer|kolcak");
 		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bitch|crap|fag|fuck|idiot|shit|whore)\b");
 		private static readonly Regex lowQuality = new Regex(@"homework|builtwith.com|very difficult|newbie|\bq\b|question|tried|\bif (yes|no)\b|my best|our feelings|says wrong|confusing|\bh(i|ello)\b|\bgreeting(s)?\b|error(s)?|problem(s)?|(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)|correct this|school project|beginner|promblem|asap|urgent|pl(z|s|ease)|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|\b(help|halp)\b");
-		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|delhi|colon cleanse|is helpful|my huge|bulky figure|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|selling|customer review(s)?|wanted|help(s)? you(r)?|work out|body( building|builder(s)?| builder(s)?|building)|muscle(s)?|weight loss|\bbrand\b|super herbal|treatment|cheap(er)?|naturally|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|ripped|full( movie| film)|free (trial|film|moive|movie|help|assistance))\b");
+		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|delhi|colon cleanse|is helpful|my huge|bulky figure|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|selling|customer review(s)?|wanted|help(s)? you(r)?|work out|body( building|builder(s)?| builder(s)?|building)|muscle(s)?|weight loss|\bbrand\b|super herbal|treatment|cheaper|naturally|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|ripped|full( movie| film)|free (trial|film|moive|movie|help|assistance))\b");
 		private static string lower;
 
 
@@ -51,7 +51,7 @@ namespace Phamhilator
 			else if (IsLowQuality(post))
 			{
 				info.Type = PostType.LowQuality;
-				info.InaccuracyPossible = !lowQuality.IsMatch(lower) || !post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c));
+				info.InaccuracyPossible = !lowQuality.IsMatch(lower) && !post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c));
 			}
 
 			return info;
@@ -80,22 +80,23 @@ namespace Phamhilator
 			var wordCount = SpaceCount(post.Title);
 
 			if ((lower.Contains("q") && post.Site.StartsWith("math")) ||
-				((lower.Contains("question") || lower.Contains("help")) && post.Site.StartsWith("meta")) ||
 				(lower.Contains("error") && lower.Length > 40 && lower.All(c => !Char.IsDigit(c))) ||
+				(lower.Contains("beginner") && lower.Length > 45) ||
+				((lower.Contains("question") || lower.Contains("help")) && post.Site.StartsWith("meta")) ||
 				(lower.Contains("problem") && (post.Site.StartsWith("math") || post.Site.StartsWith("gardening"))) ||
-				(lower.Contains("error") && (lower.Contains("certificate") || lower.Contains("results in") || post.Site.StartsWith("programmers"))))
+				(lower.Contains("error") && (lower.Contains("certificate") || lower.Contains("results in") || post.Site.StartsWith("programmers"))) ||
+				(lower.Length > 20 && (post.Site.Contains("codereview") || post.Site.StartsWith("skeptics") || post.Site.Contains("ell") || post.Site.Contains("english") || post.Site.Contains("math") || post.Site.Contains("codegolf"))))
 			{
 				return false;
 			}
 
-			return post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c)) ||
-				   wordCount <= 1 ||
+			return wordCount <= 1 ||
 				   lowQuality.IsMatch(lower) ||
 				   (lower.Contains("true") && lower.Contains("false")) ||
-				   (lower.Length < 35 && (lower.Contains("problem") || lower.Contains("issue")) && Char.IsLower(post.Title[0])) ||
-				   (lower.Length < 20 && !post.Site.Contains("codereview") && !post.Site.Contains("ell") && !post.Site.Contains("english") && !post.Site.Contains("math") && !post.Site.Contains("codegolf")) ||
+				   post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c)) ||	   
+				   (lower.Contains("error") && (post.Title.Length < 35 || lower.Any(Char.IsDigit)) ||
 				   (lower.Contains("how do i") && post.Title.Length < 75 && Char.IsLower(post.Title[0])) ||
-				   (lower.Contains("error") && (post.Title.Length < 35 || lower.Any(Char.IsDigit)));
+				   (lower.Length < 35 && (lower.Contains("problem") || lower.Contains("issue")) && Char.IsLower(post.Title[0])));
 		}
 
 		private static bool IsOffensive(Post post)

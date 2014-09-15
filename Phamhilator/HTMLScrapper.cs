@@ -89,24 +89,20 @@ namespace Phamhilator
 			return tags;
 		}
 
-		public static KeyValuePair<string, string> GetLastChatMessages(string html)
+		public static KeyValuePair<string, string> GetLastChatMessage(string html)
 		{
 			var startIndex = html.LastIndexOf("username owner", StringComparison.Ordinal);
-			var endIndex = html.IndexOf("TABLE id=input-table width", StringComparison.Ordinal);
-
-			startIndex = html.IndexOf("<A class=\\\"signature user", startIndex + 1, StringComparison.Ordinal) + 25;
-			startIndex = html.IndexOf("users/", startIndex, StringComparison.Ordinal) + 7;
-			startIndex = html.IndexOf("//", startIndex, StringComparison.Ordinal) + 1;
+			startIndex = html.IndexOf(">", startIndex, StringComparison.Ordinal) + 1;
 				
 			// Get username.
 
-			var username = html.Substring(startIndex, html.IndexOf("\\\">", startIndex, StringComparison.Ordinal));
+			var username = html.Substring(startIndex, (html.IndexOf(">", startIndex + 1, StringComparison.Ordinal) - startIndex) - 5);
 
 			// Get message.
 
-			startIndex = html.IndexOf("<DIV class=content>", startIndex) + 20;
+			startIndex = html.IndexOf("<DIV class=content>", startIndex, StringComparison.Ordinal) + 19;
 
-			var message = html.Substring(startIndex, html.IndexOf("</DIV>", startIndex));
+			var message = html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex);
 
 			return new KeyValuePair<string, string>(username, message);
 		}

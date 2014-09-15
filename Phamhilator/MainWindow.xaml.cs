@@ -11,6 +11,10 @@ using System.Windows.Controls;
 
 
 
+// TODO: Implement post specific ignoring feature.
+
+
+
 namespace Phamhilator
 {
 	public partial class MainWindow
@@ -66,7 +70,7 @@ namespace Phamhilator
 					Thread.Sleep(refreshRate / 2 );
 				} while (!startMonitoring);
 
-				HookupListener();
+				StartListener();
 
 				while (!exit)
 				{
@@ -100,57 +104,8 @@ namespace Phamhilator
 
 
 
-		private void HookupListener()
+		private void StartListener()
 		{
-//			Dispatcher.Invoke(() =>
-//			{
-//				chatWb.InvokeScript("eval", new object[] { @"
-//                $.post('/chats/' + '" + roomId + @"' + '/events', { since: 0, mode: 'Messages', msgCount: 1, fkey: fkey().fkey }).success(
-//                function (eve)
-//                {
-//                    console.log(eve.time);
-//
-//                    $.post('/ws-auth', { roomid: " + roomId + @" , fkey: fkey().fkey }).success(
-//                    function (au)
-//                    {
-//                        console.log(au);
-//
-//                        var ws = new WebSocket(au.url + '?l=' + eve.time.toString());
-//
-//                        ws.onmessage = function (e)
-//                        {
-//                            var fld = 'r' + " + roomId + @", roomevent = JSON.parse(e.data)[fld], ce;
-//
-//                            if (roomevent && roomevent.e)
-//                            {
-//                                ce = roomevent.e;
-//
-//                                var element = document.getElementById('chatMessages');
-//
-//                                if (element == null)
-//                                {
-//                                    var ele = document.createElement('p');
-//                                    ele.id = 'chatMessages';
-//
-//                                    var node = document.createTextNode(ce[0].user_name + ' -=- ' + ce[0].content);
-//                                    ele.appendChild(node);
-//
-//                                    document.body.insertBefore(ele, document.body.firstChild);
-//                                }
-//                                else
-//                               {
-//                                    element.innerHTML = ce[0].content;
-//                               }
-//
-//                               console.log(ce);
-//                           }
-//                       };
-//                   ws.onerror = function (e) { console.log(e); };
-//               });
-//           });" 
-//				});
-//			});
-
 			new Thread(() =>
 			{
 				while (!exit)
@@ -171,14 +126,11 @@ namespace Phamhilator
 						continue;
 					}
 
-					if (!html.Contains("chatMessages")) { continue; }
+					if (html.IndexOf("username owner", StringComparison.Ordinal) == -1) { continue; }
 
-					var startIndex = html.IndexOf("username owner") + 14;
-					var endIndex = html.IndexOf("</p>", startIndex);
+					var message = HTMLScraper.GetLastChatMessage(html);
 
-					var t = html.Substring(startIndex, endIndex - startIndex);
-
-					CommandProcessor.ExacuteCommand(t);
+					CommandProcessor.ExacuteCommand(message);
 				}
 			}).Start();
 		}
@@ -220,7 +172,7 @@ namespace Phamhilator
 
 				if (SpamAbuseDetected(post))
 				{
-					/*Task.Factory.StartNew(() => */PostMessage("[Spammer abuse](" + post.URL + ").")/*)*/;
+					PostMessage("[Spammer abuse](" + post.URL + ").");
 					AddPost(post);
 
 					continue;
@@ -232,7 +184,7 @@ namespace Phamhilator
 					{
 						if (!catchOff) { break; }
 
-						/*Task.Factory.StartNew(() => */PostMessage("**Offensive**" + message)/*)*/;
+						PostMessage("**Offensive**" + message);
 						AddPost(post);
 						
 						break;
@@ -242,7 +194,7 @@ namespace Phamhilator
 					{
 						if (!catchOff) { break; }
 
-						/*Task.Factory.StartNew(() => */PostMessage("**Bad Username**" + message)/*)*/;
+						PostMessage("**Bad Username**" + message);
 						AddPost(post);
 						
 
@@ -253,7 +205,7 @@ namespace Phamhilator
 					{
 						if (!catchBadTag) { break; }
 
-						/*Task.Factory.StartNew(() => */PostMessage("**Bad Tag Used**" + message)/*)*/;
+						PostMessage("**Bad Tag Used**" + message);
 						AddPost(post);
 
 						break;
@@ -263,7 +215,7 @@ namespace Phamhilator
 					{
 						if (!catchLQ) { break; }
 
-						/*Task.Factory.StartNew(() =>*/ PostMessage("**Low Quality**" + message)/*)*/;
+						PostMessage("**Low Quality**" + message);
 						AddPost(post);
 
 						break;
@@ -273,7 +225,7 @@ namespace Phamhilator
 					{
 						if (!catchSpam) { break; }
 
-						/*Task.Factory.StartNew(() => */PostMessage("**Spam**" + message)/*)*/;
+						PostMessage("**Spam**" + message);
 						AddPost(post);	
 
 						break;
@@ -610,7 +562,7 @@ namespace Phamhilator
 		{
 			refreshBadTags = true;
 
-			PostMessage("`Bad Tag definitions updated.`");
+			PostMessage("`Bad Tag Definitions updated.`");
 		}
 
 		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -618,7 +570,14 @@ namespace Phamhilator
 			var refresh = 20000 - (int)e.NewValue;
 			refreshRate = refresh;
 
-			((Slider)sender).ToolTip = new ToolTip { Content = refresh + " milliseconds" };
+			var tt = (ToolTip)((Slider)sender).ToolTip;
+
+			if (tt == null)
+			{
+				tt = new ToolTip { Content = refresh + " milliseconds" };
+			}
+
+			tt.Content = refresh + " milliseconds";
 		}
 	}
 }

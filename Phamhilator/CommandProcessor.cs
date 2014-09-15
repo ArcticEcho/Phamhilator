@@ -6,31 +6,25 @@ using System.Threading.Tasks;
 
 
 
+// TODO: Current access list: Me, Uni, Fox, Rene & Jan.
+
+
+
 namespace Phamhilator
 {
 	public static class CommandProcessor
 	{
-		public static void ExacuteCommand(string input)
+		public static void ExacuteCommand(KeyValuePair<string, string> input)
 		{
-			var user = GetUser(input);
-			var command = GetCommand(input);
+			var command = input.Value.Replace(">>", "").Replace("@Sam", "").Replace("@sam", "").Trim();
+			var user = input.Key;
 
-			if (command.StartsWith("false pos"))
+			if (user != "Sam" && user != "Unihedron" && user != "ProgramFOX" && user != "Jan Dvorak" && user != "rene") { return; }
+
+			if (input.Value.Contains("false pos"))
 			{
 				
 			}
-		}
-
-
-
-		private static string GetUser(string input)
-		{
-			return input.Split(new[] { "-=-" } , 1, StringSplitOptions.RemoveEmptyEntries)[0];
-		}
-
-		private static string GetCommand(string input)
-		{
-			return input.Split(new[] { "-=-" }, 2, StringSplitOptions.RemoveEmptyEntries)[1];
 		}
 	}
 }

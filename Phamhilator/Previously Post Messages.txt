@@ -595,3 +595,136 @@
 
 
 
+2474671.51183524]Transfinite Induction
+2474671.59824018]If condition not working properly in android eclipse
+2474672.53181024]iOS: App crashes with error: NSArrayI objectAtIndex:: index 4 beyond bounds 0 .. 0
+2474675.44484353]What is people review about colon cleanse?
+2474675.74124381]Undo close tab (Ctrl+Shift+T) not working in firefox
+2474683.21885484]my dailler and contact is not working and showing on samsung galaxy y
+2474683.82843971]How to form WH question
+2474684.65772047]android save contacts and call them
+2474685.37669493]DISM inject drivers into WIM gives error 2
+2474685.6745953]If less than IE9
+2474685.97229566]Display problem - Random grid appears on screen
+2474686.12230424]Mountain Lion Installation Error
+
+2474688.88994587]Mailman Webinterface Administrative Requests not working
+2474689.5897359]TFS to VS Online Migration Error OH-SCM-009 item does not exist
+2474690.04567865]Trello POST /1/cards/card id or shortlink/actions/comments returns a 404
+2474690.21215484]javac not working in windows command prompt
+2474691.53093026]Was MH17 shot down?
+2474697.06869701]casting problem at CSWClientDemo of geotoolkit
+2474698.03940253]The unanswered questions
+2474698.75727692]onclick not working for few anchor tages
+2474702.85332787]Posting on facebook wall; fb error 191 - using facebook connect plugin
+2474703.14124434]onclick not working for few anchor tags
+2474707.7841599]Eigenvalue of the adiabatic Hamiltonian of Farhi's three qubit 2-SAT problem
+2474709.07371699]Integrate $intfrac{3x^2+1}{(x^2-1)^3}$
+2474709.89283051]Sessions / Cookies not working for user login, registration or shopping cart
+2474710.32268843]thepostthumbnail hard cropping not working no matter what
+2474711.18488774]Error System.HttpResponseStatus=Unauthorized, StatusCode=401 when updating currency table
+2474711.47248752]problem with spin connection term
+2474712.04583698]after update from 12.04 to 14.01 touch pad is not working
+2474714.010016]No Mobile Login
+2474714.9704876]Problems to get the selected row from PrimeFaces DataTable
+2474716.12890386]how do I know which softwares have visited my files?
+2474717.08157501]Animation in touchMoved method not working
+2474719.1083576]javascript object.function call through variable
+2474720.23752219]java.lang.NoClassDefFoundError: org/apache/log4j/Logger
+2474721.77721025]Pentagon Geometry
+2474726.85965095]'mount: error while loading shared libraries: libudev.so.0 : no such file or directory' error while booting
+2474728.26663143]XML Repeating Fade Animation
+2474730.08950236]Proportional Editing and Laptop Problem
+2474730.52312716]Can't remember the title of anime driving me crazy please help!
+2474732.24537566]Coalition Games
+
+
+2474745.72084642]Spring social SignIn with Facebook not working
+2474745.91382412]Ubuntu 12.04 wallpaper problem when using two monitors
+2474745.9139908]File Access problems with SLES 10 SP2 OES2 SP1
+2474745.91417414]How to build a RESTful API?
+
+2474749.76009412]Does stretching muscles help build / tone them?
+2474749.76137752]Unicode-math doesn't work at all
+
+2474764.03934418]Answer Conversion Problem Numerically in Kilometers Per Hour
+2474764.12603247]Cumulative Problem: Leak in the air conditioning system
+2474765.1412572]Help me identify this algorithm
+2474766.32320814]zip in cron doesn't work, but zip from command is working
+2474769.63643098]Question 1.15 from Hull's Financial Risk management CAPM
+2474770.30851942]Architecture objective
+2474774.83441162]JsTree contextmenu error
+2474775.44674664]Can anyone fix my php error?
+2474776.49540662]Help me about system switch control ladder light?
+2474777.17126195]browser problem on ubuntu 14.04
+2474778.07514698]Screen resolution in c++ for linux
+2474778.99301614]Problem with hadoop start-dfs.sh
+2474779.69200612]Blue screen caused by iaStor - error code 00000019
+2474780.87227363]Duplicate login details per user in SQL Server 2008 R2 Error Log
+2474781.04088327]ctrl+D not working in mail
+2474782.8514535]Control + D not working in mail
+2474783.18913948]modifying qformat: add the points at the end of the question in line with it
+2474784.53711658]Need help making background image responsive
+2474788.35191811]Why is my crontab not working, and how can I troubleshoot it?
+2474788.85809706]Binary search question
+2474790.20932435]How to handle query errors in Zend?
+2474791.17421287]SSIS Package truncation and possible data loss (error code: 0xC020901C)
+2474791.68202524]14.04 screensaver problem
+2474791.68232526]Would it be considered as a good move to offer help to manager who is overflown by work
+2474792.52557349]A question about finding average velocity and acceleration
+2474793.70580767]Hebrew chars in email sent with JavaMail appears as question marks
+2474794.83342216]Question 1.18 from Hull's Financial Risk management CAPM
+2474796.85085422]Error when using msmFit in R
+2474798.02995499]mysql error 1364 Field doesn't have a default values
+2474801.19943628]Jackiw-Pi identity
+2474801.36836261]Chida's statement
+2474802.88534937]Problems with converting text to date (YYYY-MM-DD) in Excel (Mac)
+2474803.05465906]Google Admin Api gives HTTP error 403: Not Authorized to access this resource/api
+2474803.52438592]-1001 error in OpenCL with Nvidia card in Ubuntu Linux
+2474803.69852922]error: XORG (EE) NVIDIA(GPU-0): Failed to initialize DMA using bumblebee
+2474806.10546689]USB OTG, some questions
+2474808.51023777]Flat Catalog Product - getSku do not work
+2474810.05017584]Problems with audio in cocos2d-javascript on mobile devices
+2474813.56221005]SSH not working on OpenElec Frodo
+2474814.4319098]Contact form(PHP) Not working
+2474816.03763497]Supplements, Natural Remedies, And Alternative Health
+2474817.25982154]A question about finding average velocity and average acceleration
+2474817.53440392]product page url issue
+2474817.87102317]Android Amazon DynamoDB 400 Bad Request error
+2474818.37698544]Thinkpad X61 (4965agn) wireless not working
+2474819.05327412]Find the approximate number of messages (n) that need to be tried
+2474820.53552557]Weird TypeError from json.dumps
+2474821.3805239]MySQL - Foreign Key Problem
+2474823.89501772]IBM MQ 7.1 RC 2035 MQRCNOTAUTHORIZED
+2474828.06715636]Export location
+2474830.05530341]Best Way to implement a Questionnaire in Salesforce?
+2474831.76178434]Binary Notation
+2474833.824669]D-BUS error after upgrading
+2474834.3327814]WAMP shows error 'MSVCR100.dll' is missing when install
+2474834.45347163]jquery in SharePoint 2010 layouts folder not working
+2474835.13746076]jQuery UI sortable 'cancel' option doesn't work in FF
+2474835.9372065]automatically generate API for existing database
+2474837.07992186]Cheap solution for shooting with multiple (>2) cameras in sync (genlock or LANC?)
+2474840.06370919]Override formend block for one form
+2474843.46672049]Bluetooth doesn't working ubuntu 14.04
+2474843.71756817]Maven charset enconding problems
+2474843.71771818]installation problems in ubuntu
+
+2474860.6047674]Can someone please translate this picture for me? Please i need help!
+2474861.22976982]Question concerning ODBC
+2474862.0850854]Online Judge giving a Runtime error?
+2474863.57652071]Absolute positioning inside relative positioning
+2474865.48167968]Problems with prototype when passing function as callback in Angular
+2474866.36059661]wpmail() is not working on server
+2474867.10135565]jboss weld CDI initilize error
+2474867.101589]Problems with prototype when passing function as callback
+2474869.41463796]Formatting Sandbox
+2474869.4147713]“Session expired or invalid” problem calling an @RestResource from Apex in Winter '15 preview; UserInfo.getSession returns null for Force.com Sites
+2474875.36881186]Layer with custom UI not working properly
+2474875.36902854]HC-0# Bluetooth module questions
+2474875.67366263]Search Yammer for threads between date & time range?
+2474875.94611154]Error installing R (3.1.0) package caret on Ubuntu 14.04.1 LTS
+2474876.92175068]What are the pros and cons of constant-aperture zoom lenses, for a relative beginner?
+2474877.09146039]Battery Problem In Ubuntu but better in windows
+2474882.59477516]Using example of Hiera NTP in puppet does not work
+2474883.60798311]Pulse generation
