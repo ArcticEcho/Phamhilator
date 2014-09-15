@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 
 
 
@@ -100,7 +101,7 @@ namespace Phamhilator
 
 			// Get message.
 
-			startIndex = html.IndexOf("<DIV class=content>", startIndex, StringComparison.Ordinal) + 19;
+			startIndex = html.LastIndexOf("<DIV class=content>", StringComparison.Ordinal) + 19;
 
 			var message = html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex);
 

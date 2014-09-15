@@ -9,87 +9,251 @@ using System.Threading.Tasks;
 // TODO: Current access list: Me, Uni, Fox, Rene & Jan.
 
 // Example commands.
+// >> add term name john
+// >> add term lq need help
+// >> dv john
+// >> uv need help
+// >> remove term name john
 
 
-
+  
 namespace Phamhilator
 {
 	public static class CommandProcessor
 	{
-		public static void ExacuteCommand(KeyValuePair<string, string> input)
+		public static string ExacuteCommand(KeyValuePair<string, string> input, int postedMessageCount)
 		{
-			var command = input.Value.Replace(">>", "").Replace("@Sam", "").Replace("@sam", "").Trim().ToLowerInvariant();
+			var command = input.Value.Replace("&gt;&gt;", "").Trim().ToLowerInvariant();
 			var user = input.Key;
 
-			if (user != "Sam" && user != "Unihedron" && user != "ProgramFOX" && user != "Jan Dvorak" && user != "rene") { return; }
+			if (command == "stats" || command == "info")
+			{
+				var totalTermCount = FilterTerms.BadUsernameTerms.Count + FilterTerms.LQTerms.Count + FilterTerms.OffensiveTerms.Count + FilterTerms.SpamTerms.Count;
+
+				return "`Owners: Sam, Unihedron & ProgramFOX. Users with command access: Jan Dvorak. Total terms: " + totalTermCount + ". Caught posts over last 2 days: " + postedMessageCount + ".`";
+			}
+
+			if (user != "Sam" && user != "Unihedron" && user != "ProgramFOX" && user != "Jan Dvorak" && user != "rene") { return ""; }
 
 			if (command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote"))
 			{
-				DownvoteTerm(command);
+				return DownvoteTerm(command);
 			}
-			else if (command.StartsWith("+1") || command.StartsWith("uv") || command.StartsWith("upvote"))
+
+			if (command.StartsWith("+1") || command.StartsWith("uv") || command.StartsWith("upvote"))
 			{
-				UpvoteTerm(command);
+				return UpvoteTerm(command);
 			}
-			else if (command.StartsWith("remove term"))
+
+			if (command.StartsWith("remove term"))
 			{
-				RemoveTerm(command);
+				return RemoveTerm(command);
 			}
-			else if (command.StartsWith("add term"))
+
+			if (command.StartsWith("add term"))
 			{
-				AddTerm(command);
+				return AddTerm(command);
 			}
+
+			return "`Command not recognised.`";
 		}
 
 
 
 
-		private static void DownvoteTerm(string command)
+		private static string DownvoteTerm(string command)
 		{
-			var term = command.Remove(14);
-
-			if (FilterTerms.OffensiveTerms.ContainsKey(command))
-			{
-				FilterTerms.OffensiveTerms[term]--;
-			}
-		}
-
-		private static void UpvoteTerm(string command)
-		{
-			var term = command.Remove(12);
-
-			if (FilterTerms.OffensiveTerms.ContainsKey(command))
-			{
-				FilterTerms.OffensiveTerms[term]++;
-			}
-		}
-
-		private static void AddTerm(string command)
-		{
-			var addCommand = command.Remove(9);
+			var dvCommand = command.Substring(command.IndexOf(" ") + 1);
 			var term = "";
 
-			if (addCommand.StartsWith("offensive") || addCommand.StartsWith("off"))
+			if (dvCommand.StartsWith("off"))
 			{
-				var startIndex = addCommand.IndexOf(' ');
+				term = dvCommand.Remove(0, 4);
 
-				term = addCommand.Substring(startIndex, addCommand.Length - startIndex).Trim();
+				if (!FilterTerms.OffensiveTerms.ContainsKey(command)) { return "`Term does not exist.`"; }
+
+				FilterTerms.OffensiveTerms[term]--;
+
+				return "`Term downvoted.`";
 			}
 
-			//if (FilterTerms.OffensiveTerms.ContainsKey(command))
-			//{
-			//	FilterTerms.AddTerm(PostType.term);
-			//}
+			if (dvCommand.StartsWith("spam"))
+			{
+				term = dvCommand.Remove(0, 5);
+
+				if (!FilterTerms.SpamTerms.ContainsKey(command)) { return "`Term does not exist.`"; }
+
+				FilterTerms.SpamTerms[term]--;
+
+				return "`Term downvoted.`";
+			}
+
+			if (dvCommand.StartsWith("lq"))
+			{
+				term = dvCommand.Remove(0, 3);
+
+				if (!FilterTerms.LQTerms.ContainsKey(command)) { return "`Term does not exist.`"; }
+
+				FilterTerms.LQTerms[term]--;
+
+				return "`Term downvoted.`";
+			}
+
+			if (dvCommand.StartsWith("name"))
+			{
+				term = dvCommand.Remove(0, 5);
+
+				if (!FilterTerms.BadUsernameTerms.ContainsKey(command)) { return "`Term does not exist.`"; }
+
+				FilterTerms.BadUsernameTerms[term]--;
+
+				return "`Term downvoted.`";
+			}
+
+			return "`Command not recognised.`";
 		}
 
-		private static void RemoveTerm(string command)
+		private static string UpvoteTerm(string command)
 		{
-			var term = command.Remove(9);
+			var uvCommand = command.Substring(command.IndexOf(" ") + 1);
+			var term = "";
 
-			if (FilterTerms.OffensiveTerms.ContainsKey(command))
+			if (uvCommand.StartsWith("off"))
 			{
-				FilterTerms.OffensiveTerms[term]--;
+				term = uvCommand.Remove(0, 4);
+
+				if (!FilterTerms.OffensiveTerms.ContainsKey(command))
+				{
+					return "`Term does not exist.`"; 
+					
+				}
+				FilterTerms.OffensiveTerms[term]++;
+
+				return "`Term upvoted.`";
 			}
+
+			if (uvCommand.StartsWith("spam"))
+			{
+				term = uvCommand.Remove(0, 5);
+
+				if (!FilterTerms.SpamTerms.ContainsKey(command)) { return "`Term does not exist.`"; }
+
+				FilterTerms.SpamTerms[term]++;
+
+				return "`Term upvoted.`";
+			}
+
+			if (uvCommand.StartsWith("lq"))
+			{
+				term = uvCommand.Remove(0, 3);
+
+				if (!FilterTerms.LQTerms.ContainsKey(command)) { return "`Term does not exist.`"; }
+
+				FilterTerms.LQTerms[term]++;
+
+				return "`Term upvoted.`";
+			}
+
+			if (uvCommand.StartsWith("name"))
+			{
+				term = uvCommand.Remove(0, 5);
+
+				if (!FilterTerms.BadUsernameTerms.ContainsKey(command)) { return "`Term does not exist.`"; }
+
+				FilterTerms.BadUsernameTerms[term]++;
+
+				return "`Term upvoted.`";
+			}
+
+			return "`Command not recognised.`";
+		}
+
+		private static string AddTerm(string command)
+		{
+			var addCommand = command.Substring(command.IndexOf(" ") + 1);
+			var term = "";
+
+			if (addCommand.StartsWith("off"))
+			{
+				term = addCommand.Remove(0, 4);
+
+				FilterTerms.AddTerm(PostType.Offensive, term);
+
+				return "`Term added.`";			
+			}
+
+			if (addCommand.StartsWith("spam"))
+			{
+				term = addCommand.Remove(0, 5);
+
+				FilterTerms.AddTerm(PostType.Spam, term);
+
+				return "`Term added.`";			
+			}
+
+			if (addCommand.StartsWith("lq"))
+			{
+				term = addCommand.Remove(0, 3);
+
+				FilterTerms.AddTerm(PostType.LowQuality, term);
+
+				return "`Term added.`";	
+			}
+
+			if (addCommand.StartsWith("name"))
+			{
+				term = addCommand.Remove(0, 5);
+
+				FilterTerms.AddTerm(PostType.BadUsername, term);
+
+				return "`Term added.`";			
+			}
+
+			return "`Command not recognised.`";
+		}
+
+		private static string RemoveTerm(string command)
+		{
+			var removeCommand = command.Substring(command.IndexOf(" ") + 1);
+			var term = "";
+
+			if (removeCommand.StartsWith("off"))
+			{
+				term = removeCommand.Remove(3);
+
+				FilterTerms.RemoveTerm(PostType.Offensive, term);
+
+				return "`Term removed.`";			
+			}
+
+			if (removeCommand.StartsWith("spam"))
+			{
+				term = removeCommand.Remove(4);
+
+				FilterTerms.RemoveTerm(PostType.Spam, term);
+
+				return "`Term removed.`";		
+			}
+
+			if (removeCommand.StartsWith("lq"))
+			{
+				term = removeCommand.Remove(2);
+
+				FilterTerms.RemoveTerm(PostType.LowQuality, term);
+
+				return "`Term removed.`";	
+			}
+
+			if (removeCommand.StartsWith("name"))
+			{
+				term = removeCommand.Remove(4);
+
+				FilterTerms.RemoveTerm(PostType.BadUsername, term);
+
+				return "`Term removed.`";	
+			}
+
+			return "`Command not recognised.`";
 		}
 	}
 }

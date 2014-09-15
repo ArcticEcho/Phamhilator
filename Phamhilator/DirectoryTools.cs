@@ -33,6 +33,11 @@ namespace Phamhilator
 				Directory.CreateDirectory(filterTermsPath);
 			}
 
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
 			return path;
 		}
 
@@ -43,6 +48,11 @@ namespace Phamhilator
 			if (!Directory.Exists(filterTermsPath))
 			{
 				Directory.CreateDirectory(filterTermsPath);
+			}
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
 			}
 
 			return path;
@@ -57,6 +67,11 @@ namespace Phamhilator
 				Directory.CreateDirectory(filterTermsPath);
 			}
 
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
 			return path;
 		}
 
@@ -69,12 +84,24 @@ namespace Phamhilator
 				Directory.CreateDirectory(filterTermsPath);
 			}
 
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
 			return path;
 		}
 
 		public static string GetPostPersitenceFile()
 		{
-			return Path.Combine(root, "Previously Post Messages.txt");
+			var path = Path.Combine(root, "Previously Post Messages.txt");
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
 		}
 	}
 }

@@ -1,38 +1,6 @@
-2472393.53880547]Http client cant get json data from web server
-2472393.53900547]problem solving logarithmic equation and reaching an equivalence
-2472393.5391388]Software center crashes immediately with KeyError: 'CODENAME' on elementaryOS Luna
-2472393.53925547]What is this fuction saying?
-2472393.5393388]Is $V= V_1 + V_2$? horrible question but im confused
-2472393.53942213]What is this discrete/combinatorial optimization problem?
-2472393.5395888]How to connect to JIRA via Delphi 7?
-2472393.5397388]How to Use BOONDOX Latex Calligraphic Font
-2472393.53987214]Firefox - Ubuntu 14.04 - Error: cannot open display: :0.0
-2472393.8423888]What is a derivative of this equation?
-2472394.0438888]Stupid question about product
-2472394.24565547]Repurposing ICBMs
-2472394.85677214]Referencing Cells within Named Range in VBA
-2472395.46207213]What is the “essence of the earth and heaven” given to sage Gautama at his marriage?
-2472396.11060547]Why is this function a really good asymptotic for $\exp(x)\sqrt{x}$
-2472396.34535547]Which of these font communicates “luxury products” better?
-2472396.64865547]Turing machine algorithm and Natural number
-2472397.0691888]Real time interactive whiteboard for tutoring math
-2472397.06930547]how do i reboot my imac. cleared a virus and computer froze
 
-2472410.80655547]How to resolve BeanDefinitionStoreException IOException of missing applicationContext.xml Java Spring
-2472411.0089888]Windows 8 Indexing
-2472412.84737214]Why does Play report java.lang.NoClassDefFoundError for a class on Windows (while it works fine on Linux)?
-2472413.6553888]It's question about integration.
-2472413.8577888]PHP exec() problems
-2472414.66470547]Quick Question: dot product with del
-2472416.0133388]encfs error on OS X 10.9.4
 2472418.04142214]Errors when using gitlab-ctl uninstall
-2472418.6953388]can someone help me with the verification and also give me a hint metric spaces
-2472419.09122213]Installing OpenJDK Java 6 Runtime Takes forever/doesnt work
-2472420.6683888]Question regarding advanced calculus textbooks
 2472423.0537888]Ndiswrapper help needed!
-2472424.46992214]Grub dual boot, multiple drives, booting into windows encounter VSS SPP backup errors
-2472426.61312213]pandas to_sql method gives error with date column
-2472429.45382214]loop code is not working with mysql and php data?
 2472430.06005547]apt-get upgrade has no errors but no effect
 
 
@@ -777,3 +745,168 @@
 2474996.83174247]OpenSSL ECDH not working when I pass in byte buffers for private and peer keys
 2474997.03657085]GOE convergence
 2474998.24053972]2012 iMac stuck at grey screen after reinstall, plus the inability to restore from backup prior to this. Please help!
+2474998.86574214]Access point IP range
+2474999.07190394]insert form data with PDO not work
+2474999.8509985]Headlight problem in my honda 125cc bike
+2475000.05587688]Jquery - .forEach() not working in IE8
+
+2475004.85536806]Display multiple data and timestamp overtime in rows Labview
+2475009.61010669]What is the best framework or most appropriate for a social networking site
+2475010.75502217].htaccess wp modrewrite causing error 500 on subdomain which does not run wp
+2475018.1411613]Why is this echo command not working?
+2475020.31335221]Post data not working
+2475024.84507808]Problem syncing new iphone
+2475025.41679411]Iterator freezing
+2475027.94850558]Best strategy you know of for winning at texas hold'em
+2475028.50652083]need help understanding a force diagram
+2475028.50718754]Twitter Bootstrap popover click event not working with dojo
+2475029.60941725]issues with py2exe?
+2475030.44338162]CAN I STILL ENTER ANY SCHENGEN MEMBER STATE IF I HAVE BEEN DENIED ENTRY IN ANOTHER?
+2475032.06455767]git returns http error 407 from proxy after CONNECT
+2475032.2730696]Is my solution near perfect if I get the max. score possible for a question on HackerRank.com?
+2475032.6908935]Linear interpolation
+2475032.90027214]Search results problems
+2475032.90050549]Help getting getting downloaded vector graphics from shutter stock download into illustrator
+2475033.68796719]problem when using ls on directory containing space
+
+2475039.02248898]Having Permission Problem over SFTP Pantheon File Manager
+2475039.57242043]ossim-extract-vertices.exe (in commandline) not working on WIN7 o
+2475045.45839042]Copying files from OSX to samba, force create mode not working
+2475046.00888858]advertising model
+2475046.37497618]System.Web.Security in Console application
+2475046.74089711]User permission Problem for workflows in wss-3.0
+2475046.74104712]Error message : Notice: Undefined offset: 4 in menutranslate()
+2475050.36153754]problem: showkeys printing labels on top of text in exam class questions
+2475062.80074902]Upsample function not working in octave
+2475065.08051274]invalid AES key length error
+2475068.55526149]tt and ttRU translation questions
+2475072.85800759]TypeError: n is undefined in D3.js , trying to replicate the Hierarchical Edge Bundling
+2475073.06453607]Need help understanding a force diagram
+2475077.12808516]Arduino Uno R3 not working after shorting 5V to GND
+2475081.06449364]SSIS: Error while adding ODBC Destination D.F. Component in C# - HRESULT: 0xC0048021
+2475081.8941411]Rails - Library not loaded: @@HOMEBREWPREFIX@@/opt/openssl/lib/libssl.1.0.0.dylib (LoadError)
+2475082.86452993]Excel Date Field Import Problem in Oracle SQL Developer
+2475085.76086226]Unable to 'make' anything.. Kernel-headers problem? Trying to get my RTL8723BE working
+2475090.65204202]Facebook PHP getLogoutUrl not work
+2475090.6522587]Why do I get this compile error when calculating arithmetic in C? Error C2143 missing ':' before type
+2475090.86165401]Problems with resource bundles in adding Azure ADAL library to an iOS native app
+2475091.06831583]Problema com câmera android/java
+2475091.06856584]Posting data to restify server from jsonClient is not working
+2475092.1081253]Radioactive Quines
+2475093.76420336]Why do I get Error C2143 missing ':' before type
+2475095.00752447]How to return data with 403 error in Django Rest Framework?
+2475098.25489355]Mutation observer not working for certain websites
+2475099.5036483]Problema com aspas ao fazer INSERT SQL
+2475102.53373828]Install driver for Xerox Phaser 4600/4620
+2475105.40160231]Server error 500 when adding .htaccess file in the root folder
+2475106.02015436]SpinFET Transistor
+2475106.02032103]Noob question - transferring files applications via USB on Mac
+2475106.95540785]Random Misfiring - Tried All Basic Fixes - Tech Says Engine Ground
+2475109.74645082]Help me remember the name of a movie (Possibly TV Show)
+2475110.57339812]Aspectj not working with eclipse Luna
+2475113.22011617]Group Policy installation failed error 1274
+2475120.42307816]Upgraded to 14.04 but have a problem editing grub
+2475123.51718847]Serialised Array not working
+2475125.8251038]Critique request: logo for a health product
+2475128.20065634]Javac installed but not working
+2475129.23606557]I wanted to make a page which is readonly but wen clicked on edit the user should be able to edit it
+2475131.25063079]cs169-2x HW1 Auto-grader doesn't works correctly
+2475131.66412111]How to best implement Android call-out to a service?
+2475132.0777281]Code Igniter decode not working on mac
+2475132.90402536]Website with address ' www' is not working in AWS EC2 Box
+2475133.5254609]A sql function that returns true/false with some data calculations problems
+2475135.79827424]function notations
+2475135.79859092]ASP.NET MVC Razor Errors After Fresh Installation of Visual Studio 2013 on Windows 8.1
+2475135.79877427]I wanted to make a page which is readonly but when clicked on edit the user should be able to edit it
+2475136.21303129]Error while connecting R to Twitter
+2475136.62652161]Can selling put equity options be a good business?
+2475139.44263268]Getting CLANG Error - Please help
+2475141.51991816]Expected probability
+2475148.88823961]Google Datastore returning “503 Backend Error”
+2475149.71478688]Got a bumblebee error: HP-Notebook bumblebeed3064: XORG (EE) Invalid isolated device specification
+2475152.19297863]Why gradient is not working in mozilla? It works fine is chrome
+2475158.13448513]Question about flavodiiron protein
+2475158.75537064]jQuery bind ajax:success not working in rails 3 app for newly created (ajax) items
+
+2475161.54741367]How can I mute the snapped TV app on the Xbox One?
+2475161.54763035]How to move an existing installation of Window 7 64bit to UEFI (from legacy)
+2475161.54786369]How does Volatility Pairs Trading work?
+2475161.54806371]How can I install Xubuntu 14.04 with wubi?
+2475164.86818694]how to count chars in substrings?
+2475164.95305846]How do I set FTP permissions?
+2475164.95327514]How to configure ufw to allow ruby gem installs on 12.04?
+
+2475184.23352791]Substituting logs
+2475184.23372792]How to know if you are sending correctly a JSON message in java
+2475184.23389459]OpenSSL::SSL::SSLError: SSLconnect SYSCALL returned=5 errno=0 state=SSLv3 read server hello A
+2475184.23406127]How to refresh the datagrid automatically, if a file is deleted from the folder
+2475184.23426128]How to clean-up/remove files in /dev/sda7?
+2475184.23439462]How can (in Dirac's terminology) the product of two “real” linear operators be “not real”?
+2475184.31929948]How to do multiple conditions for dbupdate by using OR condition?
+2475184.4035043]How long does a supernova last?
+2475184.40375431]How to keep a function in WCF service running on remote server, without an application consuming it ?
+2475184.48845916]How do I make two sessions running?
+2475185.33334081]How to clear Linkedin Share cache?
+2475185.67409364]Sharepoint: How to easily get related child items using JSOM
+2475185.78463329]How to create a list of JSON objects in Python 2.7
+2475186.1367701]How to structure a presentation for a Post Doctoral Research Fellowship
+2475186.47448942]What modules can I use to make a slideshow within a post?
+2475187.82319989]How can I use a Wamo Pro gamepad in a desktop Windows PC?
+2475188.16058586]Android - Convert Canvas to Bitmap
+2475188.49783848]How to set up automatic build in Emacs
+2475188.83469108]How to generate auto increment values for my duplicate column in my sql?
+2475189.17396048]Why does python say that “f” or “q” is not defined?
+2475189.80763006]How can I compile C code as 32 bit code and run in in 64-bit app? What toolchain can I use?
+2475190.99491464]How to WebRtc send video stream to url?
+2475190.99511465]How do I delete the col-right sidebar from the default theme?
+2475192.20655061]How can I reload dhclient without restarting network?
+2475192.48738333]SPA & Spring - how to load AngularJS 'resources' that require route params without the .html postfix
+2475192.48763335]How to combine select and reduce by minimum value by key in cub
+
+2475194.33182216]plsql script continue excution even there ar promt statement
+2475197.11836488]Twilio How to re-dial if call is not answered?
+2475197.96029637]Too much bass with 4 channel setup. Could Subwoofer help?
+2475198.12882267]Ubuntu 12.04 will not boot error “Screen,Graphics Card and Input Device could not be correctly detected”
+2475201.61582212]SSMS 2008 / 2014 showing different values for TempDB file sizes
+
+2475241.54993955]bashcompletion does not work in dtach
+2475241.55175632]Hi there, How to open checkout in new window? simplecartjs 3.0.5
+2475241.5541898]Please help idenify weird tree
+
+2475249.25788042]My shop is Magento 1.3. What is the problem when update to 1.9?
+2475249.25831378]jqBootstrapValidation asp:textbox
+2475250.30685708]Boot problem Ubuntu-Win7
+2475251.2954303]lipo error in iOS 8 SDK
+2475252.43752895]Problems with fourvector model and 2 level inheritance
+2475253.95869929]Swipe function using JQuery and iscroll doesn't work - Phonegap (Android)
+2475258.12913783]Hardware problems, can I reinstall OS?
+2475259.13961229]Swipe and Scroll function using JQuery and iscroll doesn't work - Phonegap (Android)
+2475259.92389048]KeePass URL with space in Notes not working
+
+2475264.04242605]Problems with foreign keys
+
+
+
+2475273.98927831]how do I get colour into smoke?
+
+2475284.3679386]Xcode doesn't work
+
+2475290.2510751]How to solve Robots.txt problem with WordPress fresh install?
+2475290.69011688]Equivalent sequence/stepper relay to “FINDER - 20.21.9.012.4000”
+2475291.0296863]Rails 4 error saving record. 406 and ActionController::UnknownFormat
+2475293.73354095]Help me remember a black and white movie with a song that became a jazz standard
+2475294.40766284]Parse order problem with CE Image?
+2475294.91369178]Invalid id error when using check50
+
+2475301.04977608]00 honda accord ex 3.0 coupe fuel pressure problems
+2475301.5548383]SMTP server error: 5.7.0 Must issue a STARTTLS command first
+2475302.06091725]Laravel 4 generate not working
+2475303.20261588]Why my GCM Client implementation is not working?
+2475303.70791145]question with javascript / jquery event.timeStamp
+2475304.38508352]Problem with Inserting a New Order Item
+
+2475322.51147029]“for loop” error in c++
+
+2475325.69913594]How and where do I report a problem with Twitter that will be dealt with, not ignored?
+2475325.69931929]Why this syntax error?
+2475327.13383467]Validation for inputFields inside Pageblock table is not working

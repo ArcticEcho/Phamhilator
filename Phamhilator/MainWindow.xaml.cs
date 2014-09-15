@@ -33,6 +33,7 @@ namespace Phamhilator
 		private readonly List<Post> postedMessages = new List<Post>();
 		private readonly HashSet<int> spammers = new HashSet<int>();
 		private readonly string previouslyPostMessagesPath = DirectoryTools.GetPostPersitenceFile();
+		private KeyValuePair<string, string> lastCommand = new KeyValuePair<string, string>();
 
 
 
@@ -110,7 +111,7 @@ namespace Phamhilator
 			{
 				while (!exit)
 				{		
-					Thread.Sleep(500);
+					Thread.Sleep(333);
 
 					dynamic doc = null;
 					string html;
@@ -130,7 +131,16 @@ namespace Phamhilator
 
 					var message = HTMLScraper.GetLastChatMessage(html);
 
-					CommandProcessor.ExacuteCommand(message);
+					if ((message.Key == lastCommand.Key && message.Value == lastCommand.Value) || !message.Value.StartsWith("&gt;&gt;")) { continue; }
+
+					var commandMessage = CommandProcessor.ExacuteCommand(message, postedMessages.Count);
+
+					if (commandMessage != "")
+					{
+						PostMessage(commandMessage);
+					}
+
+					lastCommand = new KeyValuePair<string,string>(message.Key, message.Value);
 				}
 			}).Start();
 		}
@@ -266,7 +276,7 @@ namespace Phamhilator
 
 			var delay = (int)Math.Min((4.1484 * Math.Log(consecutiveMessageCount) + 1.02242), 20) * 1000;
 
-			if (delay >= 20) { return; }
+			if (delay >= 20000) { return; }
 
 			Thread.Sleep(delay);
 
