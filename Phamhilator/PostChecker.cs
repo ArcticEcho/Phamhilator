@@ -16,6 +16,7 @@ namespace Phamhilator
 		private static readonly Regex offensive = new Regex("\b(nigg|asshole|piss|penis|bumhole|retard|bastard|bitch|crap|fag|fuck|idiot|shit|whore)\b");
 		private static readonly Regex lowQuality = new Regex(@"homework|builtwith.com|very difficult|newbie|\bq\b|question|tried|\bif (yes|no)\b|my best|our feelings|says wrong|confusing|\bh(i|ello)\b|\bgreeting(s)?\b|error(s)?|problem(s)?|(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)|correct this|school project|beginner|promblem|asap|urgent|pl(z|s|ease)|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|\b(help|halp)\b");
 		private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|mover(s)?|delhi|colon cleanse|is helpful|my huge|bulky figure|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|selling|customer review(s)?|wanted|help(s)? you(r)?|work out|body( building|builder(s)?| builder(s)?|building)|muscle(s)?|weight loss|\bbrand\b|super herbal|treatment|cheap(er)?|naturally|heal(ing|th|thly)?|care(ing)?|nurish(es|ing)?|ripped|full( movie| film)|free (trial|film|moive|movie|help|assistance))\b");
+		private static string lower;
 
 
 
@@ -29,6 +30,7 @@ namespace Phamhilator
 			}
 
 			var info = new PostTypeInfo();
+			lower = post.Title.ToLowerInvariant();
 
 			if (IsOffensive(post))
 			{
@@ -49,7 +51,7 @@ namespace Phamhilator
 			else if (IsLowQuality(post))
 			{
 				info.Type = PostType.LowQuality;
-				info.InaccuracyPossible = !lowQuality.IsMatch(post.Title.ToLowerInvariant()) || !post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c));
+				info.InaccuracyPossible = !lowQuality.IsMatch(lower) || !post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c));
 			}
 
 			return info;
@@ -57,8 +59,6 @@ namespace Phamhilator
 
 		private static bool IsSpam(Post post)
 		{
-			var lower = post.Title.ToLowerInvariant();
-
 			if (post.Site.StartsWith("fitness") ||
 				((post.Site.StartsWith("stackoverflow") || post.Site.StartsWith("codereview") || post.Site.StartsWith("english")) && lower.Contains("best")) ||
 				(post.Site.StartsWith("homebrew") && lower.Contains("naturally")) ||
@@ -78,7 +78,6 @@ namespace Phamhilator
 		private static bool IsLowQuality(Post post)
 		{
 			var wordCount = SpaceCount(post.Title);
-			var lower = post.Title.ToLowerInvariant();
 
 			if ((lower.Contains("q") && post.Site.StartsWith("math")) ||
 				((lower.Contains("question") || lower.Contains("help")) && post.Site.StartsWith("meta")) ||
@@ -106,8 +105,6 @@ namespace Phamhilator
 
 		private static bool IsBadUsername(Post post)
 		{
-			var lower = post.AuthorName.ToLowerInvariant();
-
 			return offensive.IsMatch(lower) || badUser.IsMatch(lower);
 		}
 

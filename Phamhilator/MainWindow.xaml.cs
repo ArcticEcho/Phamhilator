@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -212,8 +213,6 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
-			if (refreshBadTags) { refreshBadTags = false; }
-
 			foreach (var post in posts.Where(p => postedMessages.All(pp => pp.Title != p.Title)))
 			{
 				var info = PostChecker.CheckPost(post, refreshBadTags);
@@ -221,7 +220,7 @@ namespace Phamhilator
 
 				if (SpamAbuseDetected(post))
 				{
-					Task.Factory.StartNew(() => PostMessage("[Spammer abuse](" + post.URL + ")."));
+					/*Task.Factory.StartNew(() => */PostMessage("[Spammer abuse](" + post.URL + ").")/*)*/;
 					AddPost(post);
 
 					continue;
@@ -233,7 +232,7 @@ namespace Phamhilator
 					{
 						if (!catchOff) { break; }
 
-						Task.Factory.StartNew(() => PostMessage("**Offensive**" + message));
+						/*Task.Factory.StartNew(() => */PostMessage("**Offensive**" + message)/*)*/;
 						AddPost(post);
 						
 						break;
@@ -243,7 +242,7 @@ namespace Phamhilator
 					{
 						if (!catchOff) { break; }
 
-						Task.Factory.StartNew(() => PostMessage("**Bad Username**" + message));
+						/*Task.Factory.StartNew(() => */PostMessage("**Bad Username**" + message)/*)*/;
 						AddPost(post);
 						
 
@@ -254,7 +253,7 @@ namespace Phamhilator
 					{
 						if (!catchBadTag) { break; }
 
-						Task.Factory.StartNew(() => PostMessage("**Bad Tag Used**" + message));
+						/*Task.Factory.StartNew(() => */PostMessage("**Bad Tag Used**" + message)/*)*/;
 						AddPost(post);
 
 						break;
@@ -264,7 +263,7 @@ namespace Phamhilator
 					{
 						if (!catchLQ) { break; }
 
-						Task.Factory.StartNew(() => PostMessage("**Low Quality**" + message));
+						/*Task.Factory.StartNew(() =>*/ PostMessage("**Low Quality**" + message)/*)*/;
 						AddPost(post);
 
 						break;
@@ -274,13 +273,15 @@ namespace Phamhilator
 					{
 						if (!catchSpam) { break; }
 
-						Task.Factory.StartNew(() => PostMessage("**Spam**" + message));
+						/*Task.Factory.StartNew(() => */PostMessage("**Spam**" + message)/*)*/;
 						AddPost(post);	
 
 						break;
 					}
 				}
 			}
+	
+			if (refreshBadTags) { refreshBadTags = false; }
 		}
 
 		private void PostMessage(string message, int consecutiveMessageCount = 0)
@@ -381,7 +382,7 @@ namespace Phamhilator
 			if (!File.Exists(previouslyPostMessagesPath)) { return; }
 
 			var titles = new List<string>(File.ReadAllText(previouslyPostMessagesPath).Split('\n'));
-			var date = 0.0;
+			double date;
 
 			for (var i = 0; i < titles.Count; i++)
 			{
@@ -414,14 +415,14 @@ namespace Phamhilator
 
 		private string FormatTags(IEnumerable<string> tags)
 		{
-			var result = "";
+			var result = new StringBuilder();
 
 			foreach (var tag in tags)
 			{
-				result += "`[" + tag + "]` ";
+				result.Append("`[" + tag + "]` ");
 			}
 
-			return result;
+			return result.ToString();
 		}
 
 		private bool SpamAbuseDetected(Post post)
@@ -431,7 +432,7 @@ namespace Phamhilator
 				var username0Id = int.Parse(post.AuthorName.Remove(0, 4));
 				var username1Id = int.Parse(postedMessages[0].AuthorName.Remove(0, 4));
 
-				if (username0Id < username1Id + 5 || spammers.Contains(username0Id))
+				if ((username0Id > username1Id + 5 && username0Id < username1Id) || spammers.Contains(username0Id))
 				{
 					PostMessage("`Spammer abuse detected.`");
 
@@ -614,7 +615,10 @@ namespace Phamhilator
 
 		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
-			refreshRate = 20000 - (int)e.NewValue;
+			var refresh = 20000 - (int)e.NewValue;
+			refreshRate = refresh;
+
+			((Slider)sender).ToolTip = new ToolTip { Content = refresh + " milliseconds" };
 		}
 	}
 }

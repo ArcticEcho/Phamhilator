@@ -587,3 +587,11 @@
 2474645.36513973]Can't push to GitHub error: pack-objects died of signal 13
 2474645.36525641]socket.accept error 24: To many open files
 2474648.09032894]Audio card is not working using Kubuntu 14.04
+2474655.8936586]Unable to publish XACML policy in wso2 application manager and throwing NoSuchMethodError exception
+2474657.69301151]Java Read from file
+2474657.90922388]Which of the following relations are true for any motion?
+2474658.12735302]a question regarding “when”
+2474659.09565841]Homonymy & Polysemy (Not sure if I'm right, need help!)
+
+
+
