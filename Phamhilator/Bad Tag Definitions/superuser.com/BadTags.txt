@@ -3,3 +3,5 @@ devices
 external
 alert
 warning
+clicking-sound
+static
