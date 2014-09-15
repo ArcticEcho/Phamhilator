@@ -567,17 +567,7 @@ namespace Phamhilator
 
 		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
-			var refresh = 20000 - (int)e.NewValue;
-			refreshRate = refresh;
-
-			var tt = (ToolTip)((Slider)sender).ToolTip;
-
-			if (tt == null)
-			{
-				tt = new ToolTip { Content = refresh + " milliseconds" };
-			}
-
-			tt.Content = refresh + " milliseconds";
+			refreshRate = 20000 - (int)e.NewValue;
 		}
 	}
 }

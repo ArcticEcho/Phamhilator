@@ -8,17 +8,68 @@ namespace Phamhilator
 	public static class DirectoryTools
 	{
 		private static readonly string root = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName;
+		private static readonly string filterTermsPath = Path.Combine(root, "Filter Terms");
 
 
 
 		public static string GetBTDFolder()
 		{
-			return Path.Combine(root, "Bad Tag Definitions");
+			var path = Path.Combine(root, "Bad Tag Definitions");
+
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+
+			return path;
 		}
 
-		public static string GetFilterTermsFile()
+		public static string GetOffensiveTermsFile()
 		{
-			return Path.Combine(root, "Filter Terms.txt");
+			var path = Path.Combine(root, "Filter Terms", "Offensive Terms.txt");
+
+			if (!Directory.Exists(filterTermsPath))
+			{
+				Directory.CreateDirectory(filterTermsPath);
+			}
+
+			return path;
+		}
+
+		public static string GetBadUsernameTermsFile()
+		{
+			var path = Path.Combine(root, "Filter Terms", "Bad Username Terms.txt");
+
+			if (!Directory.Exists(filterTermsPath))
+			{
+				Directory.CreateDirectory(filterTermsPath);
+			}
+
+			return path;
+		}
+
+		public static string GetLQTermsFile()
+		{
+			var path = Path.Combine(root, "Filter Terms", "LQ Terms.txt");
+
+			if (!Directory.Exists(filterTermsPath))
+			{
+				Directory.CreateDirectory(filterTermsPath);
+			}
+
+			return path;
+		}
+
+		public static string GetSpamTermsFile()
+		{
+			var path = Path.Combine(root, "Filter Terms", "Spam Terms.txt");
+
+			if (!Directory.Exists(filterTermsPath))
+			{
+				Directory.CreateDirectory(filterTermsPath);
+			}
+
+			return path;
 		}
 
 		public static string GetPostPersitenceFile()

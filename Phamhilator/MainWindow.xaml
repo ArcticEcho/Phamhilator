@@ -16,7 +16,7 @@
             <CheckBox Content="Catch Off" Canvas.Left="891" Canvas.Top="641" IsChecked="True" Checked="catchOffCb_Checked" Unchecked="catchOffCb_Unchecked"/>
             <CheckBox Content="Catch Bad Tag" Canvas.Left="617" Canvas.Top="641" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
             <Button Content="Refresh Bad Tag Definitions" Canvas.Left="124" Canvas.Top="638" Width="170" Click="Button_Click_4"/>
-            <Slider Canvas.Left="378" Canvas.Top="641" Width="175" Maximum="20000" Minimum="2000" SmallChange="1000" LargeChange="3000" Value="10000" ValueChanged="Slider_ValueChanged" ToolTip="milliseconds"/>
+            <Slider Canvas.Left="378" Canvas.Top="641" Width="175" Maximum="20000" Minimum="2000" SmallChange="1000" LargeChange="3000" Value="10000" ValueChanged="Slider_ValueChanged"/>
             <Label Content="Refresh Rate:" Canvas.Left="299" Canvas.Top="637"/>
 
         </Canvas>

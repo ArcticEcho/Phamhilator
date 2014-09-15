@@ -728,3 +728,52 @@
 2474877.09146039]Battery Problem In Ubuntu but better in windows
 2474882.59477516]Using example of Hiera NTP in puppet does not work
 2474883.60798311]Pulse generation
+
+
+
+2474894.0216454]Apple Mach-O Linker Error: Undefined symbols for architecture i386
+2474894.98998412]Bluetooth doesn't working Ubuntu 1U4.04 LTS
+
+2474903.51365498]Mimetypes Madness
+2474904.39668882]Openni2 error when running make
+2474907.59030482]Sealing crawlspace
+2474907.87247096]A question about pexif info updated
+2474908.91911416]I tried to use the “Sunny 16 rule” but it didn't work, why?
+2474912.48048452]Problems starting virtual machine in VMWare ESXi 5.1
+2474913.75250728]ASP.NET MVC 4 ViewModel Error : Object reference not set to an instance of an object
+2474915.00696236]S3 Direct Upload Rails Not Working when I access from different network computer
+2474916.57840224]Loadlibrary failed with error 87
+2474917.50452188]Having problem with sign in
+2474920.58043115]Relative positioning Top with percentage doesn't work for in-line element
+2474920.83516238]“Transitive” keys
+2474922.50990817]Submit event doesn't work when specifying with class
+2474923.25070054]Http to Https redirect vs Error 426
+2474925.17694405]plpgsql query issue
+2474925.90185218]Terrain modeling
+2474925.90206886]Exchange 2003 mail non-delivery (NDR), spam activity? events 7002 & 7004
+2474926.71831555]Toggle Developer Dashboard not working
+2474928.18884966]Hello i am facing this notice in my web application that powered on Yii 1.14 on a sub domain in godaddy and it's crashes my application
+2474937.03492229]apt-get returns strange error
+2474939.73844359]Question about microaerophilic parasite tolerance for oxygen
+2474942.37091082]Yii 1.14 notice Undefined offset: 0 in CUrlManager.php
+2474944.1380619]My dialer and contact is not working and showing on Samsung Galaxy Y
+
+2474981.07357449]Why is this PNG so gigantic?
+2474981.07375783]Xcode6: Is there any easy way to copy constrains between size classes?
+2474981.27341925]APC cache error in Laravel 4
+2474981.46904711]Problem saving to database in custom extension
+2474981.56706938]utilizando console
+2474982.54562535]errors in extracting json object
+2474982.93709774]Button Background property not working
+2474982.93726442]Jquery String + Object + String
+2474982.9374311]Problem with Ethernet on Asus Zenbook UX32A
+2474983.53651536]$().SPServices.SPUpdateMultipleListItems
+2474984.87737539]Boot error after doing a hard reset in ubuntu 14.04
+2474988.06810789]DIY External Powered USB hub not working
+2474988.47896472]Cannot open Tex file - Default encoding setting (UTF-8) not working
+2474990.32970391]help for icloud
+2474992.13404045]I need to design an Android layout EXACTLY like this. Please help me
+2474993.38951225]c-sharp, asp.net - post data not working
+2474996.83174247]OpenSSL ECDH not working when I pass in byte buffers for private and peer keys
+2474997.03657085]GOE convergence
+2474998.24053972]2012 iMac stuck at grey screen after reinstall, plus the inability to restore from backup prior to this. Please help!
