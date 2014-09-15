@@ -47,3 +47,17 @@ crash
 bukkit
 minecraft
 minecraft-forge
+chess
+styles
+ids
+provider
+providers
+data
+readonly
+positioning
+option
+fuzzy
+adf
+http-status-code-500
+xmlns
+stackoverflow\.com
