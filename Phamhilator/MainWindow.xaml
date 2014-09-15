@@ -8,15 +8,16 @@
         <Canvas>
             <WebBrowser Name="realtimeWb" Height="630" Width="550" Source="http://stackexchange.com/questions?tab=realtime" />
             <WebBrowser Name="chatWb" Height="630" Canvas.Left="550" Width="642" Source="http://meta.stackexchange.com/users/login"/>
-            <Button Content="Jump to LQP" Canvas.Left="1052" Canvas.Top="638" Width="130" Click="Button_Click"/>
-            <Button Content="Jump to MSE Tavern" Canvas.Left="910" Canvas.Top="638" Width="137" Click="Button_Click_1"/>
+            <Button Content="Jump to LQP" Canvas.Left="1097" Canvas.Top="638" Width="85" Click="Button_Click"/>
+            <Button Content="Jump to MSE Tavern" Canvas.Left="970" Canvas.Top="638" Width="122" Click="Button_Click_1"/>
             <Button Content="Start Monitoring" Canvas.Left="10" Canvas.Top="638" Width="109" Click="Button_Click_2"/>
-            <CheckBox Content="Catch Spam" Canvas.Left="739" Canvas.Top="641" IsChecked="True" Checked="catchSpamCb_Checked" Unchecked="catchSpamCb_Unchecked"/>
-            <CheckBox Content="Catch LQ" Canvas.Left="662" Canvas.Top="641" IsChecked="True" Checked="catchLQCb_Checked" Unchecked="catchLQCb_Unchecked"/>
-            <CheckBox Content="Catch Off" Canvas.Left="831" Canvas.Top="641" IsChecked="True" Checked="catchOffCb_Checked" Unchecked="catchOffCb_Unchecked"/>
-            <CheckBox Content="Catch Bad Tag" Canvas.Left="557" Canvas.Top="641" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
-            <Button Content="Enable Quiet Mode" Canvas.Left="124" Canvas.Top="638" Width="118" Click="Button_Click_3"/>
-            <Button Content="Refresh Bad Tag Definitions" Canvas.Left="247" Canvas.Top="638" Width="170" Click="Button_Click_4"/>
+            <CheckBox Content="Catch Spam" Canvas.Left="799" Canvas.Top="641" IsChecked="True" Checked="catchSpamCb_Checked" Unchecked="catchSpamCb_Unchecked"/>
+            <CheckBox Content="Catch LQ" Canvas.Left="722" Canvas.Top="641" IsChecked="True" Checked="catchLQCb_Checked" Unchecked="catchLQCb_Unchecked"/>
+            <CheckBox Content="Catch Off" Canvas.Left="891" Canvas.Top="641" IsChecked="True" Checked="catchOffCb_Checked" Unchecked="catchOffCb_Unchecked"/>
+            <CheckBox Content="Catch Bad Tag" Canvas.Left="617" Canvas.Top="641" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+            <Button Content="Refresh Bad Tag Definitions" Canvas.Left="124" Canvas.Top="638" Width="170" Click="Button_Click_4"/>
+            <Slider Canvas.Left="378" Canvas.Top="641" Width="175" Maximum="20000" Minimum="2000" SmallChange="1000" LargeChange="3000" AutoToolTipPlacement="TopLeft" Value="10000" ValueChanged="Slider_ValueChanged"/>
+            <Label Content="Refresh Rate:" Canvas.Left="299" Canvas.Top="637"/>
 
         </Canvas>
     </Border>

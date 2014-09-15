@@ -16,7 +16,6 @@ namespace Phamhilator
 	{
 		private int roomId;
 		private bool exit;
-		private bool quietMode;
 		private bool refreshBadTags;
 		private bool startMonitoring;
 		private bool catchBadTag = true;
@@ -24,6 +23,7 @@ namespace Phamhilator
 		private bool catchSpam = true;
 		private bool catchOff = true;
 		private bool catchLQ = true;
+		private int refreshRate = 10000; // In milliseconds.
 		private readonly DateTime twentyTen = new DateTime(2010, 01, 01);
 		private readonly List<Post> postedMessages = new List<Post>();
 		private readonly HashSet<int> spammers = new HashSet<int>();
@@ -44,7 +44,7 @@ namespace Phamhilator
 			{
 				do
 				{
-					Thread.Sleep(12000);
+					Thread.Sleep(refreshRate);
 				} while (!startMonitoring);
 
 				while (!exit)
@@ -53,7 +53,7 @@ namespace Phamhilator
 
 					do
 					{
-						Thread.Sleep(12000);
+						Thread.Sleep(refreshRate);
 					} while (!startMonitoring);
 				}
 			}).Start();
@@ -62,7 +62,7 @@ namespace Phamhilator
 			{
 				do
 				{
-					Thread.Sleep(6000);
+					Thread.Sleep(refreshRate / 2 );
 				} while (!startMonitoring);
 
 				HookupListener();
@@ -91,7 +91,7 @@ namespace Phamhilator
 
 					do
 					{
-						Thread.Sleep(6000);
+						Thread.Sleep(refreshRate / 2);
 					} while (!startMonitoring);
 				}
 			}).Start();
@@ -233,17 +233,9 @@ namespace Phamhilator
 					{
 						if (!catchOff) { break; }
 
-						if (quietMode)
-						{
-							Task.Factory.StartNew(() => PostMessage("[Offensive](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
-							AddPost(post);
-						}
-						else
-						{
-							Task.Factory.StartNew(() => PostMessage("**Offensive**" + message));
-							AddPost(post);
-						}
-
+						Task.Factory.StartNew(() => PostMessage("**Offensive**" + message));
+						AddPost(post);
+						
 						break;
 					}
 
@@ -251,16 +243,9 @@ namespace Phamhilator
 					{
 						if (!catchOff) { break; }
 
-						if (quietMode)
-						{
-							Task.Factory.StartNew(() => PostMessage("[Bad Username](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
-							AddPost(post);
-						}
-						else
-						{
-							Task.Factory.StartNew(() => PostMessage("**Bad Username**" + message));
-							AddPost(post);
-						}
+						Task.Factory.StartNew(() => PostMessage("**Bad Username**" + message));
+						AddPost(post);
+						
 
 						break;
 					}
@@ -269,16 +254,8 @@ namespace Phamhilator
 					{
 						if (!catchBadTag) { break; }
 
-						if (quietMode)
-						{
-							Task.Factory.StartNew(() => PostMessage("[Bad Tag Used](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
-							AddPost(post);
-						}
-						else
-						{
-							Task.Factory.StartNew(() => PostMessage("**Bad Tag Used**" + message));
-							AddPost(post);
-						}
+						Task.Factory.StartNew(() => PostMessage("**Bad Tag Used**" + message));
+						AddPost(post);
 
 						break;
 					}
@@ -287,16 +264,8 @@ namespace Phamhilator
 					{
 						if (!catchLQ) { break; }
 
-						if (quietMode)
-						{
-							Task.Factory.StartNew(() => PostMessage("[Low Quality](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
-							AddPost(post);
-						}
-						else
-						{
-							Task.Factory.StartNew(() => PostMessage("**Low Quality**" + message));
-							AddPost(post);
-						}
+						Task.Factory.StartNew(() => PostMessage("**Low Quality**" + message));
+						AddPost(post);
 
 						break;
 					}
@@ -305,16 +274,8 @@ namespace Phamhilator
 					{
 						if (!catchSpam) { break; }
 
-						if (quietMode)
-						{
-							Task.Factory.StartNew(() => PostMessage("[Spam](" + post.URL + ")" + (!info.InaccuracyPossible ? "." : " possible.")));
-							AddPost(post);
-						}
-						else
-						{
-							Task.Factory.StartNew(() => PostMessage("**Spam**" + message));
-							AddPost(post);
-						}
+						Task.Factory.StartNew(() => PostMessage("**Spam**" + message));
+						AddPost(post);	
 
 						break;
 					}
@@ -465,7 +426,7 @@ namespace Phamhilator
 
 		private bool SpamAbuseDetected(Post post)
 		{
-			if (IsDefaultUsername(post.AuthorName) && postedMessages[0].AuthorName != null && IsDefaultUsername(postedMessages[0].AuthorName))
+			if (postedMessages[0].AuthorName != null && IsDefaultUsername(post.AuthorName) && IsDefaultUsername(postedMessages[0].AuthorName))
 			{
 				var username0Id = int.Parse(post.AuthorName.Remove(0, 4));
 				var username1Id = int.Parse(postedMessages[0].AuthorName.Remove(0, 4));
@@ -521,6 +482,8 @@ namespace Phamhilator
 				if (System.Diagnostics.Debugger.IsAttached && firstStart)
 				{
 					PostMessage("`Phamhilator™ started (debug mode)...`");
+
+					firstStart = false;
 				}
 				else
 				{
@@ -617,26 +580,6 @@ namespace Phamhilator
 			}
 		}
 
-		private void Button_Click_3(object sender, RoutedEventArgs e)
-		{
-			var b = (Button)sender;
-
-			if ((string)b.Content == "Enable Quiet Mode")
-			{
-				quietMode = true;
-				b.Content = "Disable Quiet Mode";
-
-				PostMessage("`Quiet mode enabled.`");
-			}
-			else
-			{
-				quietMode = false;
-				b.Content = "Enable Quiet Mode";
-
-				PostMessage("`Quiet mode disabled.`");
-			}
-		}
-
 		private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			if (roomId == 0) { return; }
@@ -667,6 +610,11 @@ namespace Phamhilator
 			refreshBadTags = true;
 
 			PostMessage("`Bad Tag definitions updated.`");
+		}
+
+		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			refreshRate = 20000 - (int)e.NewValue;
 		}
 	}
 }
