@@ -60,7 +60,7 @@ web
 website
 weight
 width
-xmlnstest
+xmlns
 usage
 manager
 triangle
