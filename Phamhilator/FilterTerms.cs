@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -20,6 +21,34 @@ namespace Phamhilator
 			get
 			{
 				return offensiveTerms.Count + lqTerms.Count + spamTerms.Count + badUsernameTerms.Count;
+			}
+		}
+
+		public static int AverageTermScore
+		{
+			get
+			{
+				var average = offensiveTerms.Values.Average();
+
+				average += lqTerms.Values.Average();
+				average += spamTerms.Values.Average();
+				average += badUsernameTerms.Values.Average();
+
+				return (int)average / 4;
+			}
+		}
+
+		public static int HighestTermScore
+		{
+			get
+			{
+				var highest = offensiveTerms.Values.Max();
+
+				highest = Math.Max(lqTerms.Values.Max(), highest);
+				highest = Math.Max(spamTerms.Values.Max(), highest);
+				highest = Math.Max(badUsernameTerms.Values.Max(), highest);
+
+				return highest;
 			}
 		}
 
@@ -87,7 +116,7 @@ namespace Phamhilator
 
 					offensiveTerms.Add(term, 0);
 
-					File.AppendAllText(DirectoryTools.GetOffensiveTermsFile(), "\n0]" + term);
+					File.AppendAllText(DirectoryTools.GetOffensiveTermsFile(), "\n" + AverageTermScore + "]" + term);
 
 					break;
 				}
@@ -97,7 +126,7 @@ namespace Phamhilator
 
 					lqTerms.Add(term, 0); // TODO: set to half score of highest scoring term
 
-					File.AppendAllText(DirectoryTools.GetLQTermsFile(), "\n0]" + term);
+					File.AppendAllText(DirectoryTools.GetLQTermsFile(), "\n" + AverageTermScore + "]" + term);
 
 					break;
 				}
@@ -107,7 +136,7 @@ namespace Phamhilator
 
 					spamTerms.Add(term, 0);
 
-					File.AppendAllText(DirectoryTools.GetSpamTermsFile(), "\n0]" + term);
+					File.AppendAllText(DirectoryTools.GetSpamTermsFile(), "\n" + AverageTermScore + "]" + term);
 
 					break;
 				}
@@ -117,7 +146,7 @@ namespace Phamhilator
 
 					badUsernameTerms.Add(term, 0);
 
-					File.AppendAllText(DirectoryTools.GetBadUsernameTermsFile(), "\n0]" + term);
+					File.AppendAllText(DirectoryTools.GetBadUsernameTermsFile(), "\n" + AverageTermScore + "]" + term);
 
 					break;
 				}
@@ -153,6 +182,140 @@ namespace Phamhilator
 					break;
 				}
 			}
+		}
+
+		public static void SetTermScore(PostType type, Regex term, int newScore)
+		{
+			switch (type)
+			{
+				case PostType.BadUsername:
+				{
+					for (var i = 0; i < BadUsernameTerms.Count; i++)
+					{
+						var key = BadUsernameTerms.Keys.ToArray()[i];
+
+						if (key.ToString() == term.ToString())
+						{
+							BadUsernameTerms[key] = newScore;
+						}
+					}
+
+					break;
+				}
+
+				case PostType.LowQuality:
+				{
+					for (var i = 0; i < LQTerms.Count; i++)
+					{
+						var key = LQTerms.Keys.ToArray()[i];
+
+						if (key.ToString() == term.ToString())
+						{
+							LQTerms[key] = newScore;
+						}
+					}
+
+					break;
+				}
+
+				case PostType.Offensive:
+				{
+					for (var i = 0; i < OffensiveTerms.Count; i++)
+					{
+						var key = OffensiveTerms.Keys.ToArray()[i];
+
+						if (key.ToString() == term.ToString())
+						{
+							OffensiveTerms[key] = newScore;
+						}
+					}
+
+					break;
+				}
+
+				case PostType.Spam:
+				{
+					for (var i = 0; i < SpamTerms.Count; i++)
+					{
+						var key = SpamTerms.Keys.ToArray()[i];
+
+						if (key.ToString() == term.ToString())
+						{
+							SpamTerms[key] = newScore;
+						}
+					}
+
+					break;
+				}
+			}
+		}
+
+		public static int GetTermScore(PostType type, Regex term)
+		{
+			switch (type)
+			{
+				case PostType.BadUsername:
+				{
+					for (var i = 0; i < BadUsernameTerms.Count; i++)
+					{
+						var key = BadUsernameTerms.Keys.ToArray()[i];
+
+						if (key.ToString() == term.ToString())
+						{
+							return BadUsernameTerms[key];
+						}
+					}
+
+					break;
+				}
+
+				case PostType.LowQuality:
+				{
+					for (var i = 0; i < LQTerms.Count; i++)
+					{
+						var key = LQTerms.Keys.ToArray()[i];
+
+						if (key.ToString() == term.ToString())
+						{
+							return LQTerms[key];
+						}
+					}
+
+					break;
+				}
+
+				case PostType.Offensive:
+				{
+					for (var i = 0; i < OffensiveTerms.Count; i++)
+					{
+						var key = OffensiveTerms.Keys.ToArray()[i];
+
+						if (key.ToString() == term.ToString())
+						{
+							return OffensiveTerms[key];
+						}
+					}
+
+					break;
+				}
+
+				case PostType.Spam:
+				{
+					for (var i = 0; i < SpamTerms.Count; i++)
+					{
+						var key = SpamTerms.Keys.ToArray()[i];
+
+						if (key.ToString() == term.ToString())
+						{
+							return SpamTerms[key];
+						}
+					}
+
+					break;
+				}
+			}
+
+			return 0;
 		}
 
 

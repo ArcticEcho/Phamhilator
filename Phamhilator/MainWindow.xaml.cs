@@ -125,7 +125,12 @@ namespace Phamhilator
 
 					var message = HTMLScraper.GetLastChatMessage(html);
 
-					if ((message.Key == lastCommand.Key && message.Value == lastCommand.Value) || (!message.Value.StartsWith("&gt;&gt;") && !message.Value.ToLowerInvariant().StartsWith("@sam"))) { continue; }
+					if ((message.Key == lastCommand.Key && message.Value == lastCommand.Value) || (!message.Value.StartsWith("&gt;&gt;") && !message.Value.ToLowerInvariant().StartsWith("@sam")))
+					{
+						lastCommand = new KeyValuePair<string, string>(message.Key, message.Value);
+
+						continue; 
+					}
 
 					var commandMessage = CommandProcessor.ExacuteCommand(message);
 
@@ -172,7 +177,7 @@ namespace Phamhilator
 			foreach (var post in posts.Where(p => postedMessages.All(pp => pp.Title != p.Title)))
 			{
 				var info = PostChecker.CheckPost(post);
-				var message = (info.Type == PostType.BadTagUsed ? "" : " (" + info.Accuracy + "%)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+				var message = (info.Type == PostType.BadTagUsed ? "" : " (" + Math.Round(info.Accuracy, 1) + "%)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 
 				if (SpamAbuseDetected(post))
 				{

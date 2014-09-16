@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 
@@ -27,7 +28,7 @@ namespace Phamhilator
 			//}
 
 			var info = new PostTypeInfo();
-			var accuracy = 0;
+			var accuracy = 0.0f;
 			//lower = post.Title.ToLowerInvariant();
 
 			if (IsOffensive(post, ref accuracy))
@@ -52,12 +53,14 @@ namespace Phamhilator
 				//info.InaccuracyPossible = !lowQuality.IsMatch(lower) && !post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c));
 			}
 
-			info.Accuracy = accuracy;
+			var highestScore = FilterTerms.HighestTermScore;
+
+			info.Accuracy = (accuracy / highestScore) * 100;
 
 			return info;
 		}
 
-		private static bool IsSpam(Post post, ref int accuracy)
+		private static bool IsSpam(Post post, ref float accuracy)
 		{
 			foreach (var ignoreFilter in IgnoreFilterTerms.SpamTerms)
 			{
@@ -67,6 +70,8 @@ namespace Phamhilator
 				}
 			}
 
+			var filtersUsed = 0;
+
 			for (var i = 0; i < FilterTerms.SpamTerms.Count; i++)
 			{
 				var filter = FilterTerms.SpamTerms.Keys.ElementAt(i);
@@ -75,8 +80,14 @@ namespace Phamhilator
 				{
 					accuracy += FilterTerms.SpamTerms[filter];
 
+					filtersUsed++;
+
+					FilterTerms.SetTermScore(PostType.Spam, filter, FilterTerms.GetTermScore(PostType.Spam, filter) + 1);
+
 					if (i == FilterTerms.SpamTerms.Count - 1)
 					{
+						accuracy /= filtersUsed;
+
 						return true;
 					}
 				}
@@ -99,7 +110,7 @@ namespace Phamhilator
 			//	(lower.Contains("http://") && lower.Contains(".com"));
 		}
 
-		private static bool IsLowQuality(Post post, ref int accuracy)
+		private static bool IsLowQuality(Post post, ref float accuracy)
 		{
 			foreach (var ignoreFilter in IgnoreFilterTerms.LQTerms)
 			{
@@ -109,6 +120,8 @@ namespace Phamhilator
 				}
 			}
 
+			var filtersUsed = 0;
+
 			for (var i = 0; i < FilterTerms.LQTerms.Count; i++)
 			{
 				var filter = FilterTerms.LQTerms.Keys.ElementAt(i);
@@ -117,8 +130,14 @@ namespace Phamhilator
 				{
 					accuracy += FilterTerms.LQTerms[filter];
 
+					filtersUsed++;
+
+					FilterTerms.SetTermScore(PostType.LowQuality, filter, FilterTerms.GetTermScore(PostType.LowQuality, filter) + 1);
+
 					if (i == FilterTerms.LQTerms.Count - 1)
 					{
+						accuracy /= filtersUsed;
+
 						return true;
 					}
 				}
@@ -147,7 +166,7 @@ namespace Phamhilator
 			//	   (lower.Length < 35 && (lower.Contains("problem") || lower.Contains("issue"))));
 		}
 
-		private static bool IsOffensive(Post post, ref int accuracy)
+		private static bool IsOffensive(Post post, ref float accuracy)
 		{
 			//return offensive.IsMatch(post.Title.ToLowerInvariant());
 
@@ -159,6 +178,8 @@ namespace Phamhilator
 				}
 			}
 
+			var filtersUsed = 0;
+
 			for (var i = 0; i < FilterTerms.OffensiveTerms.Count; i++)
 			{
 				var filter = FilterTerms.OffensiveTerms.Keys.ElementAt(i);
@@ -167,8 +188,14 @@ namespace Phamhilator
 				{
 					accuracy += FilterTerms.OffensiveTerms[filter];
 
+					filtersUsed++;
+					
+					FilterTerms.SetTermScore(PostType.Offensive, filter, FilterTerms.GetTermScore(PostType.Offensive, filter) + 1);
+
 					if (i == FilterTerms.OffensiveTerms.Count - 1)
 					{
+						accuracy /= filtersUsed;
+
 						return true;
 					}
 				}
@@ -177,7 +204,7 @@ namespace Phamhilator
 			return false;
 		}
 
-		private static bool IsBadUsername(Post post, ref int accuracy)
+		private static bool IsBadUsername(Post post, ref float accuracy)
 		{
 			foreach (var ignoreFilter in IgnoreFilterTerms.BadUsernameTerms)
 			{
@@ -187,6 +214,8 @@ namespace Phamhilator
 				}
 			}
 
+			var filtersUsed = 0;
+
 			for (var i = 0; i < FilterTerms.BadUsernameTerms.Count; i++)
 			{
 				var filter = FilterTerms.BadUsernameTerms.Keys.ElementAt(i);
@@ -195,8 +224,14 @@ namespace Phamhilator
 				{
 					accuracy += FilterTerms.BadUsernameTerms[filter];
 
+					filtersUsed++;
+
+					FilterTerms.SetTermScore(PostType.BadUsername, filter, FilterTerms.GetTermScore(PostType.BadUsername, filter) + 1);
+
 					if (i == FilterTerms.BadUsernameTerms.Count - 1)
 					{
+						accuracy /= filtersUsed;
+
 						return true;
 					}
 				}

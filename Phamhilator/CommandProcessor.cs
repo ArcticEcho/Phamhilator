@@ -1,22 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-
-
-// TODO: Current access list: Me, Uni, Fox, Rene & Jan.
-
-// Example commands.
-// >> add term name john
-// >> add term lq need help
-// >> dv name john
-// >> uv lq need help
-// >> remove term name john
-// >> addi term spam stackoverflow.com \btesting\b
-// >> removei term off superuser.com \bteh codez\b
 
 
   
@@ -146,7 +130,7 @@ namespace Phamhilator
 
 			if (command == "help" || command == "commands")
 			{
-
+				return "`See` [`here`](https://github.com/ArcticWinter/Phamhilator/blob/master/Phamhilator/Readme%20-%20Chat%20Commands.md) `for a list of commands.`";
 			}
 
 			return "`Command not recognised.`";
@@ -171,8 +155,9 @@ namespace Phamhilator
 						return "`Term does not exist.`";
 					}
 
-					FilterTerms.OffensiveTerms[term]--;
-					score = FilterTerms.OffensiveTerms[term];
+					score = FilterTerms.GetTermScore(PostType.Offensive, term) - 1;
+
+					FilterTerms.SetTermScore(PostType.Offensive, term, score);
 				}
 
 				if (dvCommand.StartsWith("spam"))
@@ -184,8 +169,9 @@ namespace Phamhilator
 						return "`Term does not exist.`";
 					}
 
-					FilterTerms.SpamTerms[term]--;
-					score = FilterTerms.SpamTerms[term];
+					score = FilterTerms.GetTermScore(PostType.Spam, term) - 1;
+
+					FilterTerms.SetTermScore(PostType.Spam, term, score);
 				}
 
 				if (dvCommand.StartsWith("lq"))
@@ -197,8 +183,9 @@ namespace Phamhilator
 						return "`Term does not exist.`";
 					}
 
-					FilterTerms.LQTerms[term]--;
-					score = FilterTerms.LQTerms[term];
+					score = FilterTerms.GetTermScore(PostType.LowQuality, term) - 1;
+
+					FilterTerms.SetTermScore(PostType.LowQuality, term, score);
 				}
 
 				if (dvCommand.StartsWith("name"))
@@ -210,11 +197,12 @@ namespace Phamhilator
 						return "`Term does not exist.`";
 					}
 
-					FilterTerms.BadUsernameTerms[term]--;
-					score = FilterTerms.BadUsernameTerms[term];
+					score = FilterTerms.GetTermScore(PostType.BadUsername, term) - 1;
+
+					FilterTerms.SetTermScore(PostType.BadUsername, term, score);
 				}
 
-				return "`Term downvoted. New score: " + score + ".";
+				return "`Term downvoted. New score: " + score + ".`";
 			}
 
 			return "`Command not recognised.`";
@@ -226,7 +214,7 @@ namespace Phamhilator
 
 			if (uvCommand.StartsWith("") || uvCommand.StartsWith("") || uvCommand.StartsWith("") || uvCommand.StartsWith(""))
 			{
-				var score = 0;
+				var score = -1;
 				Regex term;
 
 				if (uvCommand.StartsWith("off"))
@@ -238,8 +226,9 @@ namespace Phamhilator
 						return "`Term does not exist.`";
 					}
 
-					FilterTerms.OffensiveTerms[term]++;
-					score = FilterTerms.OffensiveTerms[term];
+					score = FilterTerms.GetTermScore(PostType.Offensive, term) + 1;
+
+					FilterTerms.SetTermScore(PostType.Offensive, term, score);
 				}
 
 				if (uvCommand.StartsWith("spam"))
@@ -251,8 +240,9 @@ namespace Phamhilator
 						return "`Term does not exist.`";
 					}
 
-					FilterTerms.SpamTerms[term]++;
-					score = FilterTerms.SpamTerms[term];
+					score = FilterTerms.GetTermScore(PostType.Spam, term) + 1;
+
+					FilterTerms.SetTermScore(PostType.Spam, term, score);
 				}
 
 				if (uvCommand.StartsWith("lq"))
@@ -264,8 +254,9 @@ namespace Phamhilator
 						return "`Term does not exist.`";
 					}
 
-					FilterTerms.LQTerms[term]++;
-					score = FilterTerms.LQTerms[term];
+					score = FilterTerms.GetTermScore(PostType.LowQuality, term) + 1;
+
+					FilterTerms.SetTermScore(PostType.LowQuality, term, score);
 				}
 
 				if (uvCommand.StartsWith("name"))
@@ -277,11 +268,12 @@ namespace Phamhilator
 						return "`Term does not exist.`";
 					}
 
-					FilterTerms.BadUsernameTerms[term]++;
-					score = FilterTerms.BadUsernameTerms[term];
+					score = FilterTerms.GetTermScore(PostType.BadUsername, term) + 1;
+
+					FilterTerms.SetTermScore(PostType.BadUsername, term, score);
 				}
 
-				return "`Term upvoted. New score: " + score + ".";
+				return "`Term upvoted. New score: " + score + ".`";
 			}
 
 			return "`Command not recognised.`";

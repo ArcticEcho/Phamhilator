@@ -1,26 +1,28 @@
-50]homework
-50]builtwith.com
-50]very difficult
-50]newbie
-50]\bq\b
-50]question
-50]tried
-50]\bif (yes|no)\b
-50]my best
-50]our feelings
-50]says wrong
-50]confusing
-50]\bh(i|ello)\b
-50]\bgreeting(s)?\b
-50]error(s)?
-50]problem(s)?
-50](\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
-50]correct this
-50]school project
-50]beginner
-50]asap
-50]urgent
-50]pl(z|s|ease)
-50](need|some)( halp| help| answer)
-50](no(t)?|doesn('t|t)?) work(ing|ed|d)?
-50]\b(help|halp)\b
+50](?i:homework)
+50](?i:builtwith.com)
+50](?i:(?i:very difficult)
+50](?i:newbie)
+50](?i:\bq\b)
+50](?i:question)
+50](?i:tried)
+50](?i:\bif (yes|no)\b)
+50](?i:my best)
+50](?i:our feelings)
+50](?i:says wrong)
+50](?i:confusing)
+50](?i:\bh(i|ello)\b)
+50](?i:\bgreeting(s)?\b)
+50](?i:error(s)?)
+50](?i:problem(s)?)
+50](?i:(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-))
+50](?i:correct this)
+50](?i:school project)
+50](?i:beginner)
+50](?i:asap)
+50](?i:urgent)
+50](?i:pl(z|s|ease))
+50](?i:(need|some)( halp| help| answer))
+50](?i:(?i:(no(t)?|doesn('t|t)?) work(ing|ed|d)?)
+50](?i:\b(help|halp)\b)
+50](?i:^[^a-z]*$)
+50](?i:\bgives error\b)
