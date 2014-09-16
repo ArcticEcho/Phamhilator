@@ -61,4 +61,6 @@ website
 weight
 width
 xmlnstest
-usagemanagertriangle
+usage
+manager
+triangle
