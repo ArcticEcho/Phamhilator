@@ -139,7 +139,7 @@ namespace Phamhilator
 
 		private static string DownvoteTerm(string command)
 		{
-			var dvCommand = command.Substring(command.IndexOf(" ") + 1);
+			var dvCommand = command.Substring(command.IndexOf(" ", StringComparison.Ordinal) + 1);
 
 			if (dvCommand.StartsWith("") || dvCommand.StartsWith("") || dvCommand.StartsWith("") || dvCommand.StartsWith(""))
 			{
@@ -210,7 +210,7 @@ namespace Phamhilator
 
 		private static string UpvoteTerm(string command)
 		{
-			var uvCommand = command.Substring(command.IndexOf(" ") + 1);
+			var uvCommand = command.Substring(command.IndexOf(" ", StringComparison.Ordinal) + 1);
 
 			if (uvCommand.StartsWith("") || uvCommand.StartsWith("") || uvCommand.StartsWith("") || uvCommand.StartsWith(""))
 			{
@@ -281,7 +281,7 @@ namespace Phamhilator
 
 		private static string AddTerm(string command)
 		{
-			var addCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ") + 1) + 1);
+			var addCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
 
 			if (addCommand.StartsWith("off") || addCommand.StartsWith("spam") || addCommand.StartsWith("lq") || addCommand.StartsWith("name"))
 			{
@@ -333,7 +333,7 @@ namespace Phamhilator
 
 		private static string RemoveTerm(string command)
 		{
-			var removeCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ") + 1) + 1);
+			var removeCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
 
 			if (removeCommand.StartsWith("off") || removeCommand.StartsWith("spam") || removeCommand.StartsWith("lq") || removeCommand.StartsWith("name"))
 			{
@@ -386,7 +386,7 @@ namespace Phamhilator
 
 		private static string AddIgnoreTerm(string command)
 		{
-			var addCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ") + 1) + 1);
+			var addCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
 
 			if (addCommand.StartsWith("off") || addCommand.StartsWith("spam") || addCommand.StartsWith("lq") || addCommand.StartsWith("name"))
 			{
@@ -397,10 +397,10 @@ namespace Phamhilator
 				{
 					addCommand = addCommand.Remove(0, 4);
 
-					if (addCommand.IndexOf(" ") == -1) { return "`Command not recognised.`"; }
+					if (addCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
 
-					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ") + 1));
-					site = addCommand.Substring(0, addCommand.IndexOf(" "));
+					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
 					if (IgnoreFilterTerms.OffensiveTerms.ContainsTerm(term)) { return "`Ignore term already exists.`"; }
 
@@ -411,10 +411,10 @@ namespace Phamhilator
 				{
 					addCommand = addCommand.Remove(0, 5);
 
-					if (addCommand.IndexOf(" ") == -1) { return "`Command not recognised.`"; }
+					if (addCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
 
-					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ") + 1));
-					site = addCommand.Substring(0, addCommand.IndexOf(" "));
+					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
 					if (IgnoreFilterTerms.SpamTerms.ContainsTerm(term)) { return "`Ignore term already exists.`"; }
 
@@ -425,10 +425,10 @@ namespace Phamhilator
 				{
 					addCommand = addCommand.Remove(0, 3);
 
-					if (addCommand.IndexOf(" ") == -1) { return "`Command not recognised.`"; }
+					if (addCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
 
-					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ") + 1));
-					site = addCommand.Substring(0, addCommand.IndexOf(" "));
+					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
 					if (IgnoreFilterTerms.LQTerms.ContainsTerm(term)) { return "`Ignore term already exists.`"; }
 					
@@ -439,10 +439,10 @@ namespace Phamhilator
 				{
 					addCommand = addCommand.Remove(0, 5);
 
-					if (addCommand.IndexOf(" ") == -1) { return "`Command not recognised.`"; }
+					if (addCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
 
-					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ") + 1));
-					site = addCommand.Substring(0, addCommand.IndexOf(" "));
+					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
 					if (IgnoreFilterTerms.BadUsernameTerms.ContainsTerm(term)) { return "`Ignore term already exists.`"; }
 
@@ -459,7 +459,7 @@ namespace Phamhilator
 
 		private static string RemoveIgnoreTerm(string command)
 		{
-			var removeCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ") + 1) + 1);
+			var removeCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
 
 			if (removeCommand.StartsWith("off") || removeCommand.StartsWith("spam") || removeCommand.StartsWith("lq") || removeCommand.StartsWith("name"))
 			{
@@ -470,10 +470,10 @@ namespace Phamhilator
 				{
 					removeCommand = removeCommand.Remove(0, 4);
 
-					if (removeCommand.IndexOf(" ") == -1) { return "`Command not recognised.`"; }
+					if (removeCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
 
-					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ") + 1));
-					site = removeCommand.Substring(0, removeCommand.IndexOf(" "));
+					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
 					if (!IgnoreFilterTerms.OffensiveTerms.ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
 
@@ -484,10 +484,10 @@ namespace Phamhilator
 				{
 					removeCommand = removeCommand.Remove(0, 5);
 
-					if (removeCommand.IndexOf(" ") == -1) { return "`Command not recognised.`"; }
+					if (removeCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
 
-					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ") + 1));
-					site = removeCommand.Substring(0, removeCommand.IndexOf(" "));
+					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
 					if (!IgnoreFilterTerms.SpamTerms.ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
 
@@ -498,10 +498,10 @@ namespace Phamhilator
 				{
 					removeCommand = removeCommand.Remove(0, 3);
 
-					if (removeCommand.IndexOf(" ") == -1) { return "`Command not recognised.`"; }
+					if (removeCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
 
-					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ") + 1));
-					site = removeCommand.Substring(0, removeCommand.IndexOf(" "));
+					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
 					if (!IgnoreFilterTerms.LQTerms.ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
 
@@ -512,10 +512,10 @@ namespace Phamhilator
 				{
 					removeCommand = removeCommand.Remove(0, 5);
 
-					if (removeCommand.IndexOf(" ") == -1) { return "`Command not recognised.`"; }
+					if (removeCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
 
-					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ") + 1));
-					site = removeCommand.Substring(0, removeCommand.IndexOf(" "));
+					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
 					if (!IgnoreFilterTerms.BadUsernameTerms.ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
 
@@ -548,10 +548,10 @@ namespace Phamhilator
 
 		private static string AddTag(string command)
 		{
-			var tagCommand = command.Remove(0, command.IndexOf("tag") + 4);
+			var tagCommand = command.Remove(0, command.IndexOf("tag", StringComparison.Ordinal) + 4);
 
-			var site = tagCommand.Substring(0, tagCommand.IndexOf(" "));
-			var tag = tagCommand.Remove(0, tagCommand.IndexOf(" ") + 1);
+			var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
+			var tag = tagCommand.Remove(0, tagCommand.IndexOf(" ", StringComparison.Ordinal) + 1);
 
 			if (BadTagDefinitions.BadTags.ContainsKey(site) && BadTagDefinitions.BadTags[site].Contains(tag)) { return "`Tag already exists.`"; }
 
@@ -562,10 +562,10 @@ namespace Phamhilator
 
 		private static string RemoveTag(string command)
 		{
-			var tagCommand = command.Remove(0, command.IndexOf("tag") + 4);
+			var tagCommand = command.Remove(0, command.IndexOf("tag", StringComparison.Ordinal) + 4);
 
-			var site = tagCommand.Substring(0, tagCommand.IndexOf(" "));
-			var tag = tagCommand.Remove(0, tagCommand.IndexOf(" ") + 1);
+			var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
+			var tag = tagCommand.Remove(0, tagCommand.IndexOf(" ", StringComparison.Ordinal) + 1);
 
 			if (BadTagDefinitions.BadTags.ContainsKey(site))
 			{

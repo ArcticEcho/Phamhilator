@@ -114,7 +114,7 @@ namespace Phamhilator
 				{
 					if (offensiveTerms.ContainsTerm(term)) { return; }
 
-					offensiveTerms.Add(term, 0);
+					offensiveTerms.Add(term, AverageTermScore);
 
 					File.AppendAllText(DirectoryTools.GetOffensiveTermsFile(), "\n" + AverageTermScore + "]" + term);
 
@@ -124,7 +124,7 @@ namespace Phamhilator
 				{
 					if (lqTerms.ContainsTerm(term)) { return; }
 
-					lqTerms.Add(term, 0); // TODO: set to half score of highest scoring term
+					lqTerms.Add(term, AverageTermScore);
 
 					File.AppendAllText(DirectoryTools.GetLQTermsFile(), "\n" + AverageTermScore + "]" + term);
 
@@ -134,7 +134,7 @@ namespace Phamhilator
 				{
 					if (spamTerms.ContainsTerm(term)) { return; }
 
-					spamTerms.Add(term, 0);
+					spamTerms.Add(term, AverageTermScore);
 
 					File.AppendAllText(DirectoryTools.GetSpamTermsFile(), "\n" + AverageTermScore + "]" + term);
 
@@ -144,7 +144,7 @@ namespace Phamhilator
 				{
 					if (badUsernameTerms.ContainsTerm(term)) { return; }
 
-					badUsernameTerms.Add(term, 0);
+					badUsernameTerms.Add(term, AverageTermScore);
 
 					File.AppendAllText(DirectoryTools.GetBadUsernameTermsFile(), "\n" + AverageTermScore + "]" + term);
 
@@ -330,7 +330,7 @@ namespace Phamhilator
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Remove(0, data[i].IndexOf("]") + 1) == term.ToString())
+				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) == term.ToString())
 				{
 					data.RemoveAt(i);
 
@@ -351,7 +351,7 @@ namespace Phamhilator
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Remove(0, data[i].IndexOf("]") + 1) == term.ToString())
+				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) == term.ToString())
 				{
 					data.RemoveAt(i);
 
@@ -393,7 +393,7 @@ namespace Phamhilator
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Remove(0, data[i].IndexOf("]") + 1) == term.ToString())
+				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) == term.ToString())
 				{
 					data.RemoveAt(i);
 
@@ -412,10 +412,10 @@ namespace Phamhilator
 
 			foreach (var termAndScore in data)
 			{
-				if (termAndScore.IndexOf("]") == -1) { continue; }
+				if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
-				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]"));
-				var termString = termAndScore.Substring(termAndScore.IndexOf("]") + 1);
+				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
+				var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 				var term = new Regex(termString);
 
 				if (offensiveTerms.ContainsTerm(term)) { continue; }
@@ -452,10 +452,10 @@ namespace Phamhilator
 
 			foreach (var termAndScore in data)
 			{
-				if (termAndScore.IndexOf("]") == -1) { continue; }
+				if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
-				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]"));
-				var termString = termAndScore.Substring(termAndScore.IndexOf("]") + 1);
+				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
+				var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 				var term = new Regex(termString);
 
 				if (spamTerms.ContainsTerm(term)) { continue; }
@@ -472,10 +472,10 @@ namespace Phamhilator
 
 			foreach (var termAndScore in data)
 			{
-				if (termAndScore.IndexOf("]") == -1) { continue; }
+				if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
-				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]"));
-				var termString = termAndScore.Substring(termAndScore.IndexOf("]") + 1);
+				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
+				var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 				var term = new Regex(termString);
 
 				if (badUsernameTerms.ContainsTerm(term)) { continue; }

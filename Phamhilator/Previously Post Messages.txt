@@ -15,67 +15,16 @@
 
 
 
-2473585.09636104]Did early American settlers have to buy their land from the government?
-2473597.5085043]Find Definition (F3) doesn't work within workspace or referenced projects
-2473601.10119312]PHP mysqli query result echo with foreach loop (SOLVED)
-2473618.12970043]First time using cmake gui. Getting an error about gcc and g++ path
-2473629.33759149]Need help compiling Tor really bad
-2473644.89948158]Error - Get-SPWeb in Powershell
-2473647.93218837]Problem with numeric keyboard
-2473653.92846467]What are mistakes beginners should avoid in Dominion?
-2473659.30137199]Questions after watching X-Men days of future past
-2473660.7493048]Problem in proxifier when visit Https websites
-2473662.52940662]Machine learning for light microscopy — problems to solve?
-2473663.9586217]mysql function sometimes does not work
-2473665.72762288]Proof Question- Need Help
-2473668.92967269]Questions about a lightweight PHP MVC Framework
-2473670.35863776]Skipping pset8 questions?
 2473675.35919044]Volume and Weight Please help
-2473680.15814826]instagram search hastgags isn't reliable - so can I do this?
-2473683.35976471]Question about $\gcd$
-2473685.00525883]Problem changing desktop background in Mountain Lion (10.8.1)
-2473686.34873567]Advanced calculus question on sequences
-2473692.91966151]What are these long www bitnik URL?
-2473695.81867732]Do you know any open resources about cosmetics and beauty/body products?
-2473701.82507087]Why learn Gemara?
-2473708.36617833]Matlab installation
-2473709.78527617]A C++ library used in multiple compilational units causes linker errors
-2473712.78598113]Problems with wifi driver?
-2473715.58119101]Man gets vasectomy, fiance leaves, he sleeps around
-
-2473720.19532159]Animation not working after appending node group
-2473725.51680929]WHY DID I RECEIVE 100 REPUTATION ON MY PRIMARY SE NETWORK ACCOUNT?
-2473728.61601989]Probability and Induction help
-2473729.7828533]LOOKING AT YOUR NETWORK PROFILE YOU HAVE A STACK OVERFLOW ACCOUNT WITH A REP OF 732? THAT IS PART OF STACK EXCHANGE.
-2473731.51098547]lenovo e540 RTL8723be wifi not working
-2473735.45126084]emacs C-h prefix key is not working
-2473736.5176385]Restrited three body problem
-2473742.42109283]PHP Function not working- Follow system
-2473744.99574009]pgfplots, circuitikz library colision problem
-2473754.4282296]Button Formatting Help - Xcode 6
-2473764.13398474]Monitor wakeup lag
-2473769.8400611]CGAffineTransformInvert: singular matrix Error
-2473770.87140343]Creating elder magi
-2473773.99499875]Why is less bottling sugar required when naturally carbonating in a keg versus bottles?
-2473775.66477759]Calculus Derivative
-
-2473780.77723667]ringer: help convert simple plugin to new QGIS 2.x
-2473780.7776867]SharePoint 2013 Workflow - Error occurred in deployment step 'Activate Features'
-2473786.51218136]Etekcity Scroll E1 Wireless USB mouse does not work with Ubuntu 14.04
-
-2473800.83536727]SKAction scaleTo not working on iPhone 5S
-2473804.71462248]Use loops to find Sum in C
-
-
-2473814.08649185]how do I fix base system device driver problem
-2473814.18828101]Trackpad not working: Ubuntu 13.10 installed on Hard Drive of Toshiba Satellite C650
-2473814.18843102]problem installing textstat (python module) on ubuntu 14.04 LTS
-2473814.18861436]InvokeCommandAction not working on Hyperlink
 
 
 
 
-2473821.24373456]Characteristic curves
+
+
+
+
+
 2474555.59297172]oauth.signpost.commonshttp.CommonsHttpOAuthProvider', referenced from method com.oDesk.api.OAuthClient?
 2474555.79509995]Responsive Webdesign: What is the lowest resolution one should test a website with?
 2474556.19883971]Issue in loading the .obj using three.js

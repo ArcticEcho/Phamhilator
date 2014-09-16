@@ -33,5 +33,5 @@
 50](?i:\bnurish(es|ing)?\b)
 50](?i:\bripped\b)
 50](?i:\bfull( movie| film)\b)
-50]\bfree (trial|film|moive|movie|help|assistance)\b)
+50](?i:\bfree (trial|film|moive|movie|help|assistance)\b)
 50](?i:\d(?!\d-?\d{2}-\d{4})(?>\W*\d){7})

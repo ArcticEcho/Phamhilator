@@ -1,6 +1,6 @@
 50](?i:homework)
 50](?i:builtwith.com)
-50](?i:(?i:very difficult)
+50](?i:very difficult)
 50](?i:newbie)
 50](?i:\bq\b)
 50](?i:question)
@@ -22,7 +22,7 @@
 50](?i:urgent)
 50](?i:pl(z|s|ease))
 50](?i:(need|some)( halp| help| answer))
-50](?i:(?i:(no(t)?|doesn('t|t)?) work(ing|ed|d)?)
+50](?i:(no(t)?|doesn('t|t)?) work(ing|ed|d)?)
 50](?i:\b(help|halp)\b)
-50](?i:^[^a-z]*$)
+50]^[^a-z]*$
 50](?i:\bgives error\b)
