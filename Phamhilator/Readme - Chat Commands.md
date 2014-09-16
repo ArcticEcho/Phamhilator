@@ -22,7 +22,7 @@
 
  - <code>>>add tag (site, e.g., stackoverflow.com) (tag name)</code> Adds a new tag for the specified site to the Bad Tag Definations.
  
- - <code>>> remove tag (site) (tag name)</code> Removes a tag from the specified site from the BTD.
+ - <code>>>remove tag (site) (tag name)</code> Removes a tag from the specified site from the BTD.
  
 <h2>Misc Commands:</h2>
 
