@@ -11,18 +11,12 @@ using System.Windows.Controls;
 
 
 
-// TODO: Implement post specific ignoring feature.
-
-
-
 namespace Phamhilator
 {
 	public partial class MainWindow
 	{
 		private int roomId;
 		private bool exit;
-		private bool refreshBadTags;
-		private bool startMonitoring;
 		private bool catchBadTag = true;
 		private bool firstStart = true;
 		private bool catchSpam = true;
@@ -51,7 +45,7 @@ namespace Phamhilator
 				do
 				{
 					Thread.Sleep(refreshRate);
-				} while (!startMonitoring);
+				} while (!Stats.BotRunning);
 
 				while (!exit)
 				{
@@ -60,7 +54,7 @@ namespace Phamhilator
 					do
 					{
 						Thread.Sleep(refreshRate);
-					} while (!startMonitoring);
+					} while (!Stats.BotRunning);
 				}
 			}).Start();
 
@@ -69,7 +63,7 @@ namespace Phamhilator
 				do
 				{
 					Thread.Sleep(refreshRate / 2 );
-				} while (!startMonitoring);
+				} while (!Stats.BotRunning);
 
 				StartListener();
 
@@ -98,9 +92,9 @@ namespace Phamhilator
 					do
 					{
 						Thread.Sleep(refreshRate / 2);
-					} while (!startMonitoring);
+					} while (!Stats.BotRunning);
 				}
-			}).Start();
+			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
 
@@ -131,9 +125,9 @@ namespace Phamhilator
 
 					var message = HTMLScraper.GetLastChatMessage(html);
 
-					if ((message.Key == lastCommand.Key && message.Value == lastCommand.Value) || !message.Value.StartsWith("&gt;&gt;")) { continue; }
+					if ((message.Key == lastCommand.Key && message.Value == lastCommand.Value) || (!message.Value.StartsWith("&gt;&gt;") && !message.Value.ToLowerInvariant().StartsWith("@sam"))) { continue; }
 
-					var commandMessage = CommandProcessor.ExacuteCommand(message, postedMessages.Count);
+					var commandMessage = CommandProcessor.ExacuteCommand(message);
 
 					if (commandMessage != "")
 					{
@@ -142,7 +136,7 @@ namespace Phamhilator
 
 					lastCommand = new KeyValuePair<string,string>(message.Key, message.Value);
 				}
-			}).Start();
+			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
 		private IEnumerable<Post> GetAllPosts(string html)
@@ -177,8 +171,8 @@ namespace Phamhilator
 		{
 			foreach (var post in posts.Where(p => postedMessages.All(pp => pp.Title != p.Title)))
 			{
-				var info = PostChecker.CheckPost(post, refreshBadTags);
-				var message = (!info.InaccuracyPossible ? "" : " (possible)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+				var info = PostChecker.CheckPost(post);
+				var message = (info.Type == PostType.BadTagUsed ? "" : " (" + info.Accuracy + "%)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 
 				if (SpamAbuseDetected(post))
 				{
@@ -243,7 +237,7 @@ namespace Phamhilator
 				}
 			}
 	
-			if (refreshBadTags) { refreshBadTags = false; }
+			//if (refreshBadTags) { refreshBadTags = false; }
 		}
 
 		private void PostMessage(string message, int consecutiveMessageCount = 0)
@@ -329,14 +323,8 @@ namespace Phamhilator
 				postedMessages.Insert(0, post);
 			}
 
-			if (File.Exists(previouslyPostMessagesPath))
-			{
-				File.AppendAllText(previouslyPostMessagesPath, (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Title + "\n");
-			}
-			else
-			{
-				File.WriteAllText(previouslyPostMessagesPath, (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Title + "\n");	
-			}
+			File.AppendAllText(previouslyPostMessagesPath, (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Title + "\n");
+			Stats.PostsCaught++;
 		}
 
 		private void PopulatePostedMessages()
@@ -365,13 +353,17 @@ namespace Phamhilator
 				}
 
 				postedMessages.Add(new Post { Title = titles[i].Split(']')[1].Trim() });
+				Stats.PostsCaught++;
 			}
 
 			File.WriteAllText(previouslyPostMessagesPath, "");
 
 			foreach (var post in titles)
 			{
-				File.AppendAllText(previouslyPostMessagesPath, post + "\n");
+				if (!String.IsNullOrEmpty(post))
+				{
+					File.AppendAllText(previouslyPostMessagesPath, post + "\n");
+				}
 			}
 		}
 
@@ -438,28 +430,36 @@ namespace Phamhilator
 
 			if ((string)b.Content == "Start Monitoring")
 			{
-				startMonitoring = true;
+				Stats.BotRunning = true;
 
 				b.Content = "Pause Monitoring";
 
-				if (System.Diagnostics.Debugger.IsAttached && firstStart)
+				if (firstStart)
 				{
-					PostMessage("`Phamhilator™ started (debug mode)...`");
+					if (System.Diagnostics.Debugger.IsAttached)
+					{
+						PostMessage("`Phamhilator™ started (debug mode).`");
+					}
+					else
+					{
+						PostMessage("`Phamhilator™ started.`");
+					}
 
 					firstStart = false;
+					Stats.UpTime = DateTime.UtcNow;
 				}
 				else
 				{
-					PostMessage("`Phamhilator™ started...`");
-				}
+					PostMessage("`Phamhilator™ started.`");
+				}	
 			}
 			else
 			{
-				startMonitoring = false;
+				Stats.BotRunning = false;
 
 				b.Content = "Start Monitoring";
 
-				PostMessage("`Phamhilator™ paused...`");
+				PostMessage("`Phamhilator™ paused.`");
 			}
 		}
 
@@ -570,9 +570,9 @@ namespace Phamhilator
 
 		private void Button_Click_4(object sender, RoutedEventArgs e)
 		{
-			refreshBadTags = true;
+			//refreshBadTags = true;
 
-			PostMessage("`Bad Tag Definitions updated.`");
+			//PostMessage("`Bad Tag Definitions updated.`");
 		}
 
 		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

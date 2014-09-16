@@ -9,6 +9,7 @@ namespace Phamhilator
 	{
 		private static readonly string root = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName;
 		private static readonly string filterTermsPath = Path.Combine(root, "Filter Terms");
+		private static readonly string ignoreFilterTermsPath = Path.Combine(root, "Ignore Filter Terms");
 
 
 
@@ -23,6 +24,19 @@ namespace Phamhilator
 
 			return path;
 		}
+
+		public static string GetPostPersitenceFile()
+		{
+			var path = Path.Combine(root, "Previously Post Messages.txt");
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
+		}
+
 
 		public static string GetOffensiveTermsFile()
 		{
@@ -92,9 +106,66 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetPostPersitenceFile()
+
+		public static string GetIgnoreOffensiveTermsFile()
 		{
-			var path = Path.Combine(root, "Previously Post Messages.txt");
+			var path = Path.Combine(ignoreFilterTermsPath, "Offensive Terms.txt");
+
+			if (!Directory.Exists(ignoreFilterTermsPath))
+			{
+				Directory.CreateDirectory(ignoreFilterTermsPath);
+			}
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
+		}
+
+		public static string GetIgnoreBadUsernameTermsFile()
+		{
+			var path = Path.Combine(ignoreFilterTermsPath, "Bad Username Terms.txt");
+
+			if (!Directory.Exists(ignoreFilterTermsPath))
+			{
+				Directory.CreateDirectory(ignoreFilterTermsPath);
+			}
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
+		}
+
+		public static string GetIgnoreLQTermsFile()
+		{
+			var path = Path.Combine(ignoreFilterTermsPath, "LQ Terms.txt");
+
+			if (!Directory.Exists(ignoreFilterTermsPath))
+			{
+				Directory.CreateDirectory(ignoreFilterTermsPath);
+			}
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
+		}
+
+		public static string GetIgnoreSpamTermsFile()
+		{
+			var path = Path.Combine(ignoreFilterTermsPath, "Spam Terms.txt");
+
+			if (!Directory.Exists(ignoreFilterTermsPath))
+			{
+				Directory.CreateDirectory(ignoreFilterTermsPath);
+			}
 
 			if (!File.Exists(path))
 			{

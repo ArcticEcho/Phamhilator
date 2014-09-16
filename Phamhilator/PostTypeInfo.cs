@@ -7,7 +7,7 @@ namespace Phamhilator
 	public class PostTypeInfo
 	{
 		public PostType Type;
-		public bool InaccuracyPossible;
+		public int Accuracy;
 		public List<string> BadTags = new List<string>();
 	}
 }

@@ -60,4 +60,4 @@ web
 website
 weight
 width
-xmlns
+xmlnstest

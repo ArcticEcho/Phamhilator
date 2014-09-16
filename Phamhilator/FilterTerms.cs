@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 
 
@@ -9,18 +10,24 @@ namespace Phamhilator
 {
 	public static class FilterTerms
 	{
-		private static readonly Dictionary<string, int> offensiveTerms = new Dictionary<string, int>();
-		private static readonly Dictionary<string, int> lqTerms = new Dictionary<string, int>();
-		private static readonly Dictionary<string, int> spamTerms = new Dictionary<string, int>();
-		private static readonly Dictionary<string, int> badUsernameTerms = new Dictionary<string, int>();
+		private static Dictionary<Regex, int> offensiveTerms;
+		private static Dictionary<Regex, int> lqTerms;
+		private static Dictionary<Regex, int> spamTerms;
+		private static Dictionary<Regex, int> badUsernameTerms;
 
-
-
-		public static Dictionary<string, int> OffensiveTerms
+		public static int TermCount
 		{
 			get
 			{
-				if (offensiveTerms.Count == 0)
+				return offensiveTerms.Count + lqTerms.Count + spamTerms.Count + badUsernameTerms.Count;
+			}
+		}
+
+		public static Dictionary<Regex, int> OffensiveTerms
+		{
+			get
+			{
+				if (offensiveTerms == null)
 				{
 					PopulateOffensiveTerms();
 				}
@@ -29,11 +36,11 @@ namespace Phamhilator
 			}
 		}
 
-		public static Dictionary<string, int> LQTerms
+		public static Dictionary<Regex, int> LQTerms
 		{
 			get
 			{
-				if (lqTerms.Count == 0)
+				if (lqTerms == null)
 				{
 					PopulateLQTerms();
 				}
@@ -42,11 +49,11 @@ namespace Phamhilator
 			}
 		}
 
-		public static Dictionary<string, int> SpamTerms
+		public static Dictionary<Regex, int> SpamTerms
 		{
 			get
 			{
-				if (spamTerms.Count == 0)
+				if (spamTerms == null)
 				{
 					PopulateSpamTerms();
 				}
@@ -55,11 +62,11 @@ namespace Phamhilator
 			}
 		}
 
-		public static Dictionary<string, int> BadUsernameTerms
+		public static Dictionary<Regex, int> BadUsernameTerms
 		{
 			get
 			{
-				if (badUsernameTerms.Count == 0)
+				if (badUsernameTerms == null)
 				{
 					PopulateBadUsernameTerms();
 				}
@@ -70,54 +77,54 @@ namespace Phamhilator
 
 
 
-		public static void AddTerm(PostType type, string term)
+		public static void AddTerm(PostType type, Regex term)
 		{
 			switch (type)
 			{
 				case PostType.Offensive:
 				{
-					if (offensiveTerms.ContainsKey(term)) { return; }
+					if (offensiveTerms.ContainsTerm(term)) { return; }
 
 					offensiveTerms.Add(term, 0);
 
-					File.AppendAllText(DirectoryTools.GetOffensiveTermsFile(), "0]" + term);
+					File.AppendAllText(DirectoryTools.GetOffensiveTermsFile(), "\n0]" + term);
 
 					break;
 				}
 				case PostType.LowQuality:
 				{
-					if (lqTerms.ContainsKey(term)) { return; }
+					if (lqTerms.ContainsTerm(term)) { return; }
 
-					lqTerms.Add(term, 0);
+					lqTerms.Add(term, 0); // TODO: set to half score of highest scoring term
 
-					File.AppendAllText(DirectoryTools.GetLQTermsFile(), "0]" + term);
+					File.AppendAllText(DirectoryTools.GetLQTermsFile(), "\n0]" + term);
 
 					break;
 				}
 				case PostType.Spam:
 				{
-					if (spamTerms.ContainsKey(term)) { return; }
+					if (spamTerms.ContainsTerm(term)) { return; }
 
 					spamTerms.Add(term, 0);
 
-					File.AppendAllText(DirectoryTools.GetSpamTermsFile(), "0]" + term);
+					File.AppendAllText(DirectoryTools.GetSpamTermsFile(), "\n0]" + term);
 
 					break;
 				}
 				case PostType.BadUsername:
 				{
-					if (badUsernameTerms.ContainsKey(term)) { return; }
+					if (badUsernameTerms.ContainsTerm(term)) { return; }
 
 					badUsernameTerms.Add(term, 0);
 
-					File.AppendAllText(DirectoryTools.GetBadUsernameTermsFile(), "0]" + term);
+					File.AppendAllText(DirectoryTools.GetBadUsernameTermsFile(), "\n0]" + term);
 
 					break;
 				}
 			}
 		}
 
-		public static void RemoveTerm(PostType type, string term)
+		public static void RemoveTerm(PostType type, Regex term)
 		{
 			switch (type)
 			{
@@ -150,9 +157,9 @@ namespace Phamhilator
 
 
 
-		private static void RemoveOffensiveTerm(string term)
+		private static void RemoveOffensiveTerm(Regex term)
 		{
-			if (!offensiveTerms.ContainsKey(term)) { return; }
+			if (!offensiveTerms.ContainsTerm(term)) { return; }
 
 			offensiveTerms.Remove(term);
 
@@ -160,7 +167,7 @@ namespace Phamhilator
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Split(']')[1] == term)
+				if (data[i].Remove(0, data[i].IndexOf("]") + 1) == term.ToString())
 				{
 					data.RemoveAt(i);
 
@@ -171,9 +178,9 @@ namespace Phamhilator
 			File.WriteAllLines(DirectoryTools.GetOffensiveTermsFile(), data);
 		}
 
-		private static void RemoveSpamTerm(string term)
+		private static void RemoveSpamTerm(Regex term)
 		{
-			if (!spamTerms.ContainsKey(term)) { return; }
+			if (!spamTerms.ContainsTerm(term)) { return; }
 
 			spamTerms.Remove(term);
 
@@ -181,7 +188,7 @@ namespace Phamhilator
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Split(']')[1] == term)
+				if (data[i].Remove(0, data[i].IndexOf("]") + 1) == term.ToString())
 				{
 					data.RemoveAt(i);
 
@@ -192,9 +199,9 @@ namespace Phamhilator
 			File.WriteAllLines(DirectoryTools.GetSpamTermsFile(), data);
 		}
 
-		private static void RemoveLQTerm(string term)
+		private static void RemoveLQTerm(Regex term)
 		{
-			if (!lqTerms.ContainsKey(term)) { return; }
+			if (!lqTerms.ContainsTerm(term)) { return; }
 
 			lqTerms.Remove(term);
 
@@ -202,20 +209,20 @@ namespace Phamhilator
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Split(']')[1] == term)
+				if (data[i].Remove(0, data[i].IndexOf("]") + 1) == term.ToString())
 				{
 					data.RemoveAt(i);
 
 					break;
 				}
-			}
+			} 
 
 			File.WriteAllLines(DirectoryTools.GetLQTermsFile(), data);
 		}
 
-		private static void RemoveBadUsernameTerm(string term)
+		private static void RemoveBadUsernameTerm(Regex term)
 		{
-			if (!badUsernameTerms.ContainsKey(term)) { return; }
+			if (!badUsernameTerms.ContainsTerm(term)) { return; }
 
 			badUsernameTerms.Remove(term);
 
@@ -223,7 +230,7 @@ namespace Phamhilator
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Split(']')[1] == term)
+				if (data[i].Remove(0, data[i].IndexOf("]") + 1) == term.ToString())
 				{
 					data.RemoveAt(i);
 
@@ -234,63 +241,84 @@ namespace Phamhilator
 			File.WriteAllLines(DirectoryTools.GetBadUsernameTermsFile(), data);
 		}
 
+
 		private static void PopulateOffensiveTerms()
 		{
-			var data = File.ReadAllText(DirectoryTools.GetOffensiveTermsFile()).Split('\n');
-			var termsWithScore = new List<string>();
+			var data = File.ReadAllLines(DirectoryTools.GetOffensiveTermsFile());
+			offensiveTerms = new Dictionary<Regex, int>();
 
 			foreach (var termAndScore in data)
 			{
-				var term = termAndScore.Split(']');
+				if (termAndScore.IndexOf("]") == -1) { continue; }
 
-				if (term.Length == 1 || offensiveTerms.ContainsKey(term[1])) { continue; }
+				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]"));
+				var termString = termAndScore.Substring(termAndScore.IndexOf("]") + 1);
+				var term = new Regex(termString);
 
-				offensiveTerms.Add(term[1].Trim(), int.Parse(term[0]));
+				if (offensiveTerms.ContainsTerm(term)) { continue; }
+
+				offensiveTerms.Add(term, int.Parse(termScore));
+				Stats.TermCount++;
 			}
 		}
 
 		private static void PopulateLQTerms()
 		{
-			var data = File.ReadAllText(DirectoryTools.GetLQTermsFile()).Split('\n');
-			var termsWithScore = new List<string>();
+			var data = File.ReadAllLines(DirectoryTools.GetLQTermsFile());
+			lqTerms = new Dictionary<Regex, int>();
 
 			foreach (var termAndScore in data)
 			{
-				var term = termAndScore.Split(']');
+				if (termAndScore.IndexOf("]") == -1) { continue; }
 
-				if (term.Length == 1 || lqTerms.ContainsKey(term[1])) { continue; }
+				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]"));
+				var termString = termAndScore.Substring(termAndScore.IndexOf("]") + 1);
+				var term = new Regex(termString);
 
-				lqTerms.Add(term[1].Trim(), int.Parse(term[0]));
+				if (lqTerms.ContainsTerm(term)) { continue; }
+
+				lqTerms.Add(term, int.Parse(termScore));
+				Stats.TermCount++;
 			}
 		}
 
 		private static void PopulateSpamTerms()
 		{
-			var data = File.ReadAllText(DirectoryTools.GetSpamTermsFile()).Split('\n');
-			var termsWithScore = new List<string>();
+			var data = File.ReadAllLines(DirectoryTools.GetSpamTermsFile());
+			spamTerms = new Dictionary<Regex, int>();
 
 			foreach (var termAndScore in data)
 			{
-				var term = termAndScore.Split(']');
+				if (termAndScore.IndexOf("]") == -1) { continue; }
 
-				if (term.Length == 1 || spamTerms.ContainsKey(term[1])) { continue; }
+				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]"));
+				var termString = termAndScore.Substring(termAndScore.IndexOf("]") + 1);
+				var term = new Regex(termString);
 
-				spamTerms.Add(term[1].Trim(), int.Parse(term[0]));
+				if (spamTerms.ContainsTerm(term)) { continue; }
+
+				spamTerms.Add(term, int.Parse(termScore));
+				Stats.TermCount++;
 			}
 		}
 
 		private static void PopulateBadUsernameTerms()
 		{
-			var data = File.ReadAllText(DirectoryTools.GetBadUsernameTermsFile()).Split('\n');
-			var termsWithScore = new List<string>();
+			var data = File.ReadAllLines(DirectoryTools.GetBadUsernameTermsFile());
+			badUsernameTerms = new Dictionary<Regex, int>();
 
 			foreach (var termAndScore in data)
 			{
-				var term = termAndScore.Split(']');
+				if (termAndScore.IndexOf("]") == -1) { continue; }
 
-				if (term.Length == 1 || badUsernameTerms.ContainsKey(term[1])) { continue; }
+				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]"));
+				var termString = termAndScore.Substring(termAndScore.IndexOf("]") + 1);
+				var term = new Regex(termString);
 
-				badUsernameTerms.Add(term[1].Trim(), int.Parse(term[0]));
+				if (badUsernameTerms.ContainsTerm(term)) { continue; }
+
+				badUsernameTerms.Add(term, int.Parse(termScore));
+				Stats.TermCount++;
 			}
 		}
 	}
