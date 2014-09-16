@@ -2,7 +2,7 @@
 
  - <code> >>add term (lq/spam/off/name) (regex term here)</code> - Adds a new regex term to the specified filter for catching posts. 
 
- - <code> >>remove term (lq/spam/off/name) (term)</code> - Removes the specified term from the specified filter for catching posts.
+ - <code> >>remove term (lq/spam/off/name) (term)</code> - Removes the a term from the specified filter for catching posts.
  
  - <code> >>addis term (lq/spam/off/name) (site, e.g., stackoverflow.com) (term)</code> - Adds a new term to the filter for ignoring posts from the specified site.
  
@@ -18,13 +18,13 @@
  
  - <code> >>pause</code> Pauses the bot.
  
-<h2>Tag Commands:<h2/>
+<h2>Tag Commands:</h2>
 
  - <code> >>add tag (site, e.g., stackoverflow.com) (tag name)</code> Adds a new tag for the specified site to the Bad Tag Definations.
  
  - <code> >> remove tag (site) (tag name)</code> Removes a tag from the specified site from the BTD.
  
-<h2>Misc Commands:<h2>
+<h2>Misc Commands:</h2>
 
  - <code> >>(stats/info)</code> Prints information about the bot.
  
