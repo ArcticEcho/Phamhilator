@@ -20,6 +20,26 @@ namespace Phamhilator
 		{
 			get
 			{
+				if (offensiveTerms == null)
+				{
+					PopulateIgnoreOffensiveTerms();
+				}
+
+				if (lqTerms == null)
+				{
+					PopulateIgnoreLQTerms();
+				}
+
+				if (spamTerms == null)
+				{
+					PopulateIgnoreSpamTerms();
+				}
+
+				if (badUsernameTerms == null)
+				{
+					PopulateIgnoreBadUsernameTerms();
+				}
+
 				return offensiveTerms.Count + lqTerms.Count + spamTerms.Count + badUsernameTerms.Count;
 			}
 		}

@@ -6,7 +6,7 @@
         Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing" ResizeMode="NoResize" SaveWindowPosition="True">
     <Border BorderBrush="#FF41B1FF" BorderThickness="1">
         <Canvas>
-            <WebBrowser Name="realtimeWb" Height="630" Width="550" Source="http://stackexchange.com/questions?tab=realtime" />
+            <WebBrowser Name="realtimeWb" Height="630" Width="550" Source="http://stackexchange.com/questions?tab=realtime"/>
             <WebBrowser Name="chatWb" Height="630" Canvas.Left="550" Width="642" Source="http://meta.stackexchange.com/users/login"/>
             <Button Content="Jump to LQP" Canvas.Left="1097" Canvas.Top="638" Width="85" Click="Button_Click"/>
             <Button Content="Jump to MSE Tavern" Canvas.Left="970" Canvas.Top="638" Width="122" Click="Button_Click_1"/>

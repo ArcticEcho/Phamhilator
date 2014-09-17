@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.Win32;
 
 
 
@@ -23,10 +24,7 @@ namespace Phamhilator
 		private bool catchOff = true;
 		private bool catchLQ = true;
 		private int refreshRate = 10000; // In milliseconds.
-		private readonly DateTime twentyTen = new DateTime(2010, 01, 01);
-		private readonly List<Post> postedMessages = new List<Post>();
 		private readonly HashSet<int> spammers = new HashSet<int>();
-		private readonly string previouslyPostMessagesPath = DirectoryTools.GetPostPersitenceFile();
 		private KeyValuePair<string, string> lastCommand;
 
 
@@ -35,10 +33,10 @@ namespace Phamhilator
 		{
 			InitializeComponent();
 
-			HideScriptErrors(realtimeWb, true);
-			HideScriptErrors(chatWb, true);
+			SwitchToIE9();
 
-			PopulatePostedMessages();
+			HideScriptErrors(realtimeWb, true);
+			//HideScriptErrors(chatWb, true);
 
 			new Thread(() =>
 			{
@@ -62,7 +60,7 @@ namespace Phamhilator
 			{
 				do
 				{
-					Thread.Sleep(refreshRate / 2 );
+					Thread.Sleep(refreshRate / 2);
 				} while (!Stats.BotRunning);
 
 				StartListener();
@@ -83,7 +81,7 @@ namespace Phamhilator
 						continue;
 					}
 
-					if (!html.Contains("DIV class=metaInfo")) { continue; }	
+					if (!html.Contains("DIV class=metaInfo")) { continue; }
 
 					var posts = GetAllPosts(html);
 
@@ -103,8 +101,13 @@ namespace Phamhilator
 		{
 			new Thread(() =>
 			{
+				while (!Stats.BotRunning)
+				{
+					Thread.Sleep(1000);
+				}
+
 				while (!exit)
-				{		
+				{
 					Thread.Sleep(333);
 
 					dynamic doc = null;
@@ -129,7 +132,7 @@ namespace Phamhilator
 					{
 						lastCommand = new KeyValuePair<string, string>(message.Key, message.Value);
 
-						continue; 
+						continue;
 					}
 
 					var commandMessage = CommandProcessor.ExacuteCommand(message);
@@ -139,7 +142,7 @@ namespace Phamhilator
 						PostMessage(commandMessage);
 					}
 
-					lastCommand = new KeyValuePair<string,string>(message.Key, message.Value);
+					lastCommand = new KeyValuePair<string, string>(message.Key, message.Value);
 				}
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
@@ -174,15 +177,20 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
-			foreach (var post in posts.Where(p => postedMessages.All(pp => pp.Title != p.Title)))
+			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.Title != p.Title)))
 			{
 				var info = PostChecker.CheckPost(post);
 				var message = (info.Type == PostType.BadTagUsed ? "" : " (" + Math.Round(info.Accuracy, 1) + "%)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 
+				if (float.IsNaN(info.Accuracy))
+				{
+					continue;
+				}
+
 				if (SpamAbuseDetected(post))
 				{
 					PostMessage("[Spammer abuse](" + post.URL + ").");
-					AddPost(post);
+					PostPersistence.AddPost(post);
 
 					continue;
 				}
@@ -194,7 +202,7 @@ namespace Phamhilator
 						if (!catchOff) { break; }
 
 						PostMessage("**Offensive**" + message);
-						AddPost(post);
+						PostPersistence.AddPost(post);
 						
 						break;
 					}
@@ -204,7 +212,7 @@ namespace Phamhilator
 						if (!catchOff) { break; }
 
 						PostMessage("**Bad Username**" + message);
-						AddPost(post);
+						PostPersistence.AddPost(post);
 						
 
 						break;
@@ -215,7 +223,7 @@ namespace Phamhilator
 						if (!catchBadTag) { break; }
 
 						PostMessage("**Bad Tag Used**" + message);
-						AddPost(post);
+						PostPersistence.AddPost(post);
 
 						break;
 					}
@@ -225,7 +233,7 @@ namespace Phamhilator
 						if (!catchLQ) { break; }
 
 						PostMessage("**Low Quality**" + message);
-						AddPost(post);
+						PostPersistence.AddPost(post);
 
 						break;
 					}
@@ -235,14 +243,12 @@ namespace Phamhilator
 						if (!catchSpam) { break; }
 
 						PostMessage("**Spam**" + message);
-						AddPost(post);	
+						PostPersistence.AddPost(post);	
 
 						break;
 					}
 				}
 			}
-	
-			//if (refreshBadTags) { refreshBadTags = false; }
 		}
 
 		private void PostMessage(string message, int consecutiveMessageCount = 0)
@@ -269,17 +275,17 @@ namespace Phamhilator
 				}		
 			});
 
-			if (!error) { return; }
+			//if (!error) { return; }
 
-			consecutiveMessageCount++;
+			//consecutiveMessageCount++;
 
-			var delay = (int)Math.Min((4.1484 * Math.Log(consecutiveMessageCount) + 1.02242), 20) * 1000;
+			//var delay = (int)(4.1484 * Math.Log(consecutiveMessageCount) + 1.02242) * 1000;
 
-			if (delay >= 20000) { return; }
+			//if (consecutiveMessageCount >= 20) { return; }
 
-			Thread.Sleep(delay);
+			//Thread.Sleep(delay);
 
-			PostMessage(message, consecutiveMessageCount);
+			//PostMessage(message, consecutiveMessageCount);
 		}
 
 		private void HideScriptErrors(WebBrowser wb, bool hide)
@@ -317,61 +323,6 @@ namespace Phamhilator
 			});
 		}
 
-		private void AddPost(Post post)
-		{
-			if (postedMessages.Count == 0)
-			{
-				postedMessages.Add(post);
-			}
-			else
-			{
-				postedMessages.Insert(0, post);
-			}
-
-			File.AppendAllText(previouslyPostMessagesPath, (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Title + "\n");
-			Stats.PostsCaught++;
-		}
-
-		private void PopulatePostedMessages()
-		{
-			if (!File.Exists(previouslyPostMessagesPath)) { return; }
-
-			var titles = new List<string>(File.ReadAllText(previouslyPostMessagesPath).Split('\n'));
-			double date;
-
-			for (var i = 0; i < titles.Count; i++)
-			{
-				var dateString = titles[i].Split(']')[0].Trim();
-
-				if (dateString == "")
-				{
-					continue;
-				}
-
-				date = double.Parse(dateString);
-
-				if ((DateTime.Now - twentyTen).TotalMinutes - date > 2880)
-				{
-					titles.Remove(titles[i]);
-
-					continue;
-				}
-
-				postedMessages.Add(new Post { Title = titles[i].Split(']')[1].Trim() });
-				Stats.PostsCaught++;
-			}
-
-			File.WriteAllText(previouslyPostMessagesPath, "");
-
-			foreach (var post in titles)
-			{
-				if (!String.IsNullOrEmpty(post))
-				{
-					File.AppendAllText(previouslyPostMessagesPath, post + "\n");
-				}
-			}
-		}
-
 		private string FormatTags(IEnumerable<string> tags)
 		{
 			var result = new StringBuilder();
@@ -386,10 +337,10 @@ namespace Phamhilator
 
 		private bool SpamAbuseDetected(Post post)
 		{
-			if (postedMessages[0].AuthorName != null && IsDefaultUsername(post.AuthorName) && IsDefaultUsername(postedMessages[0].AuthorName))
+			if (PostPersistence.Messages[0].AuthorName != null && IsDefaultUsername(post.AuthorName) && IsDefaultUsername(PostPersistence.Messages[0].AuthorName))
 			{
 				var username0Id = int.Parse(post.AuthorName.Remove(0, 4));
-				var username1Id = int.Parse(postedMessages[0].AuthorName.Remove(0, 4));
+				var username1Id = int.Parse(PostPersistence.Messages[0].AuthorName.Remove(0, 4));
 
 				if ((username0Id > username1Id + 5 && username0Id < username1Id) || spammers.Contains(username0Id))
 				{
@@ -407,6 +358,24 @@ namespace Phamhilator
 		private bool IsDefaultUsername(string username)
 		{
 			return username.Contains("user") && username.Remove(0, 4).All(Char.IsDigit);
+		}
+
+		private void SwitchToIE9()
+		{
+			const string installkey = @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION";
+			var entryLabel = "Phamhilator.exe";
+			var osInfo = Environment.OSVersion;
+
+			var version = osInfo.Version.Major.ToString() + '.' + osInfo.Version.Minor;
+			var editFlag = (uint)((version == "6.2") ? 0x2710 : 0x2328); // 6.2 = Windows 8 and therefore IE10
+
+			var existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, false); // readonly key
+
+			if (existingSubKey.GetValue(entryLabel) == null)
+			{
+				existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, true); // writable key
+				existingSubKey.SetValue(entryLabel, unchecked((int)editFlag), RegistryValueKind.DWord);
+			}
 		}
 
 

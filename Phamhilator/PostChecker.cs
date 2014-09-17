@@ -76,13 +76,13 @@ namespace Phamhilator
 					filtersUsed++;
 
 					Spam.SetScore(filter, Spam.GetScore(filter) + 1);
+				}
 
-					if (i == Spam.Terms.Count - 1)
-					{
-						accuracy /= filtersUsed;
+				if (i == Spam.Terms.Count - 1)
+				{
+					accuracy /= filtersUsed;
 
-						return true;
-					}
+					return true;
 				}
 			}
 
@@ -126,13 +126,13 @@ namespace Phamhilator
 					filtersUsed++;
 
 					LQ.SetScore(filter, LQ.GetScore(filter) + 1);
+				}
 
-					if (i == LQ.Terms.Count - 1)
-					{
-						accuracy /= filtersUsed;
+				if (i == LQ.Terms.Count - 1)
+				{
+					accuracy /= filtersUsed;
 
-						return true;
-					}
+					return true;
 				}
 			}
 
@@ -184,13 +184,13 @@ namespace Phamhilator
 					filtersUsed++;
 					
 					Offensive.SetScore(filter, Offensive.GetScore(filter) + 1);
+				}
 
-					if (i == Offensive.Terms.Count - 1)
-					{
-						accuracy /= filtersUsed;
+				if (i == Offensive.Terms.Count - 1)
+				{
+					accuracy /= filtersUsed;
 
-						return true;
-					}
+					return true;
 				}
 			}
 
@@ -220,13 +220,13 @@ namespace Phamhilator
 					filtersUsed++;
 
 					BadUsername.SetScore(filter, BadUsername.GetScore(filter) + 1);
+				}
 
-					if (i == BadUsername.Terms.Count - 1)
-					{
-						accuracy /= filtersUsed;
+				if (i == BadUsername.Terms.Count - 1)
+				{
+					accuracy /= filtersUsed;
 
-						return true;
-					}
+					return true;
 				}
 			}
 

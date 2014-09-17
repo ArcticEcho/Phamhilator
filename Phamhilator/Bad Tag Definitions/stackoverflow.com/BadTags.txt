@@ -64,3 +64,4 @@ xmlns
 usage
 manager
 triangle
+squid

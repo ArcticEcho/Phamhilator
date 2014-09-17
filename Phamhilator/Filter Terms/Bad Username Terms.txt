@@ -1,2 +1,2 @@
-50](?i:sumer)
-50](?i:kolcak)
+50](?si)sumer
+50](?si)kolcak

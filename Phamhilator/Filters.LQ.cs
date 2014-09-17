@@ -29,12 +29,28 @@ namespace Phamhilator
 
 			public static int AverageScore
 			{
-				get { return (int)Math.Round(terms.Values.Average(), 0); }
+				get
+				{
+					if (terms == null)
+					{
+						PopulateTerms();
+					}
+					
+					return (int)Math.Round(terms.Values.Average(), 0);
+				}
 			}
 
 			public static int HighestScore
 			{
-				get { return terms.Values.Max(); }
+				get
+				{
+					if (terms == null)
+					{
+						PopulateTerms();
+					}
+
+					return terms.Values.Max();
+				}
 			}
 
 
@@ -78,6 +94,25 @@ namespace Phamhilator
 					if (key.ToString() == term.ToString())
 					{
 						Terms[key] = newScore;
+
+						var data = File.ReadAllLines(DirectoryTools.GetLQTermsFile()); 
+
+						for (int ii = 0; ii < data.Length; ii++)
+						{
+							var line = data[ii];
+
+							if (!String.IsNullOrEmpty(line) && line.IndexOf("]") != 1)
+							{
+								var t = line.Remove(0, line.IndexOf("]") + 1);
+
+								if (t == key.ToString())
+								{
+									data[ii] = newScore + "]" + t;
+								}
+							}
+						}
+
+						File.WriteAllLines(DirectoryTools.GetLQTermsFile(), data);
 					}
 				}
 			}

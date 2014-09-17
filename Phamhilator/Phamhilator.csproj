@@ -79,6 +79,7 @@
     <Compile Include="IgnoreFilterTerms.cs" />
     <Compile Include="Filters.Offensive.cs" />
     <Compile Include="PostChecker.cs" />
+    <Compile Include="PostPersistence.cs" />
     <Compile Include="Stats.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

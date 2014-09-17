@@ -1,0 +1,4 @@
+math.stackexchange.com]^(?si).{0,30}$
+codegolf.stackexchange.com]^(?si).{0,30}$
+codereview.stackexchange.com]^(?si).{0,30}$
+meta.stackexchange.com](?si)error

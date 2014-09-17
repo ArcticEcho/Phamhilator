@@ -16,7 +16,7 @@ namespace Phamhilator
 		{
 			get
 			{
-				return Offensive.Terms.Count + Spam.Terms.Count + LQ.Terms.Count + BadUsername.Terms.Count + IgnoreFilterTerms.TermCount;
+				return Offensive.Terms.Count + Spam.Terms.Count + LQ.Terms.Count + BadUsername.Terms.Count + IgnoreFilterTerms.TermCount + BadTagDefinitions.BadTags.Count;
 			}
 		}
 	}
