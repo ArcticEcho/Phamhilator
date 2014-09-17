@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Phamhilator.Filters;
 
 
-  
+
 namespace Phamhilator
 {
 	public static class CommandProcessor
@@ -12,9 +13,9 @@ namespace Phamhilator
 		{
 			string command;
 
-			if (input.Value.StartsWith("&gt;&gt;"))
+			if (input.Value.StartsWith(">>"))
 			{
-				command = input.Value.Remove(0, 8).TrimStart();
+				command = input.Value.Remove(0, 2).TrimStart();
 			}
 			//else if (input.Value.ToLowerInvariant().StartsWith("@sam")) // TODO: Check if message is reply to a bot message. May need to create a new type to hold chat message data.
 			//{
@@ -150,56 +151,56 @@ namespace Phamhilator
 				{
 					term = new Regex(dvCommand.Remove(0, 4));
 
-					if (!FilterTerms.OffensiveTerms.ContainsTerm(term))
+					if (!Offensive.Terms.ContainsTerm(term))
 					{
 						return "`Term does not exist.`";
 					}
 
-					score = FilterTerms.GetTermScore(PostType.Offensive, term) - 1;
+					score = Offensive.GetScore(term) - 1;
 
-					FilterTerms.SetTermScore(PostType.Offensive, term, score);
+					Offensive.SetScore(term, score);
 				}
 
 				if (dvCommand.StartsWith("spam"))
 				{
 					term = new Regex(dvCommand.Remove(0, 5));
 
-					if (!FilterTerms.SpamTerms.ContainsTerm(term))
+					if (!Spam.Terms.ContainsTerm(term))
 					{
 						return "`Term does not exist.`";
 					}
 
-					score = FilterTerms.GetTermScore(PostType.Spam, term) - 1;
+					score = Spam.GetScore(term) - 1;
 
-					FilterTerms.SetTermScore(PostType.Spam, term, score);
+					Spam.SetScore(term, score);
 				}
 
 				if (dvCommand.StartsWith("lq"))
 				{
 					term = new Regex(dvCommand.Remove(0, 3));
 
-					if (!FilterTerms.LQTerms.ContainsTerm(term))
+					if (!LQ.Terms.ContainsTerm(term))
 					{
 						return "`Term does not exist.`";
 					}
 
-					score = FilterTerms.GetTermScore(PostType.LowQuality, term) - 1;
+					score = LQ.GetScore(term) - 1;
 
-					FilterTerms.SetTermScore(PostType.LowQuality, term, score);
+					LQ.SetScore(term, score);
 				}
 
 				if (dvCommand.StartsWith("name"))
 				{
 					term = new Regex(dvCommand.Remove(0, 5));
 
-					if (!FilterTerms.BadUsernameTerms.ContainsTerm(term))
+					if (!BadUsername.Terms.ContainsTerm(term))
 					{
 						return "`Term does not exist.`";
 					}
 
-					score = FilterTerms.GetTermScore(PostType.BadUsername, term) - 1;
+					score = BadUsername.GetScore(term) - 1;
 
-					FilterTerms.SetTermScore(PostType.BadUsername, term, score);
+					BadUsername.SetScore(term, score);
 				}
 
 				return "`Term downvoted. New score: " + score + ".`";
@@ -221,56 +222,56 @@ namespace Phamhilator
 				{
 					term = new Regex(uvCommand.Remove(0, 4));
 
-					if (!FilterTerms.OffensiveTerms.ContainsTerm(term))
+					if (!Offensive.Terms.ContainsTerm(term))
 					{
 						return "`Term does not exist.`";
 					}
 
-					score = FilterTerms.GetTermScore(PostType.Offensive, term) + 1;
+					score = Offensive.GetScore(term) + 1;
 
-					FilterTerms.SetTermScore(PostType.Offensive, term, score);
+					Offensive.SetScore(term, score);
 				}
 
 				if (uvCommand.StartsWith("spam"))
 				{
 					term = new Regex(uvCommand.Remove(0, 5));
 
-					if (!FilterTerms.SpamTerms.ContainsTerm(term))
+					if (!Spam.Terms.ContainsTerm(term))
 					{
 						return "`Term does not exist.`";
 					}
 
-					score = FilterTerms.GetTermScore(PostType.Spam, term) + 1;
+					score = Spam.GetScore(term) + 1;
 
-					FilterTerms.SetTermScore(PostType.Spam, term, score);
+					Spam.SetScore(term, score);
 				}
 
 				if (uvCommand.StartsWith("lq"))
 				{
 					term = new Regex(uvCommand.Remove(0, 3));
 
-					if (!FilterTerms.LQTerms.ContainsTerm(term))
+					if (!LQ.Terms.ContainsTerm(term))
 					{
 						return "`Term does not exist.`";
 					}
 
-					score = FilterTerms.GetTermScore(PostType.LowQuality, term) + 1;
+					score = LQ.GetScore(term) + 1;
 
-					FilterTerms.SetTermScore(PostType.LowQuality, term, score);
+					LQ.SetScore(term, score);
 				}
 
 				if (uvCommand.StartsWith("name"))
 				{
 					term = new Regex(uvCommand.Remove(0, 5));
 
-					if (!FilterTerms.BadUsernameTerms.ContainsTerm(term))
+					if (!BadUsername.Terms.ContainsTerm(term))
 					{
 						return "`Term does not exist.`";
 					}
 
-					score = FilterTerms.GetTermScore(PostType.BadUsername, term) + 1;
+					score = BadUsername.GetScore(term) + 1;
 
-					FilterTerms.SetTermScore(PostType.BadUsername, term, score);
+					BadUsername.SetScore(term, score);
 				}
 
 				return "`Term upvoted. New score: " + score + ".`";
@@ -291,39 +292,37 @@ namespace Phamhilator
 				{
 					term = new Regex(addCommand.Remove(0, 4));
 
-					if (FilterTerms.OffensiveTerms.ContainsTerm(term)) { return "`Term already exists.`"; }
+					if (Offensive.Terms.ContainsTerm(term)) { return "`Term already exists.`"; }
 
-					FilterTerms.AddTerm(PostType.Offensive, term);
+					Offensive.AddTerm(term);
 				}
 
 				if (addCommand.StartsWith("spam"))
 				{
 					term = new Regex(addCommand.Remove(0, 5));
 
-					if (FilterTerms.SpamTerms.ContainsTerm(term)) { return "`Term already exists.`"; }
+					if (Spam.Terms.ContainsTerm(term)) { return "`Term already exists.`"; }
 
-					FilterTerms.AddTerm(PostType.Spam, term);
+					Spam.AddTerm(term);
 				}
 
 				if (addCommand.StartsWith("lq"))
 				{
 					term = new Regex(addCommand.Remove(0, 3));
 
-					if (FilterTerms.LQTerms.ContainsTerm(term)) { return "`Term already exists.`"; }
+					if (LQ.Terms.ContainsTerm(term)) { return "`Term already exists.`"; }
 
-					FilterTerms.AddTerm(PostType.LowQuality, term);
+					LQ.AddTerm(term);
 				}
 
 				if (addCommand.StartsWith("name"))
 				{
 					term = new Regex(addCommand.Remove(0, 5));
 
-					if (FilterTerms.BadUsernameTerms.ContainsTerm(term)) { return "`Term already exists.`"; }
+					if (BadUsername.Terms.ContainsTerm(term)) { return "`Term already exists.`"; }
 
-					FilterTerms.AddTerm(PostType.BadUsername, term);
+					BadUsername.AddTerm(PostType.BadUsername, term);
 				}
-
-				Stats.TermCount = FilterTerms.TermCount + IgnoreFilterTerms.TermCount;
 
 				return "`Term added.`";
 			}
@@ -343,39 +342,37 @@ namespace Phamhilator
 				{
 					term = new Regex(removeCommand.Remove(0, 4));
 
-					if (!FilterTerms.OffensiveTerms.ContainsTerm(term)) { return "`Term does not exist.`"; }
+					if (!Offensive.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
 
-					FilterTerms.RemoveTerm(PostType.Offensive, term);
+					Offensive.RemoveTerm(term);
 				}
 
 				if (removeCommand.StartsWith("spam"))
 				{
 					term = new Regex(removeCommand.Remove(0, 5));
 
-					if (!FilterTerms.SpamTerms.ContainsTerm(term)) { return "`Term does not exist.`"; }
+					if (!Spam.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
 
-					FilterTerms.RemoveTerm(PostType.Spam, term);
+					Spam.RemoveTerm(term);
 				}
 
 				if (removeCommand.StartsWith("lq"))
 				{
 					term = new Regex(removeCommand.Remove(0, 3));
 
-					if (!FilterTerms.LQTerms.ContainsTerm(term)) { return "`Term does not exist.`"; }
+					if (!LQ.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
 
-					FilterTerms.RemoveTerm(PostType.LowQuality, term);
+					LQ.RemoveTerm( term);
 				}
 
 				if (removeCommand.StartsWith("name"))
 				{
 					term = new Regex(removeCommand.Remove(0, 5));
 
-					if (!FilterTerms.BadUsernameTerms.ContainsTerm(term)) { return "`Term does not exist.`"; }
+					if (!BadUsername.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
 
-					FilterTerms.RemoveTerm(PostType.BadUsername, term);
+					BadUsername.RemoveTerm(term);
 				}
-
-				Stats.TermCount = FilterTerms.TermCount + IgnoreFilterTerms.TermCount;
 
 				return "`Term removed.`";
 			}
@@ -449,8 +446,6 @@ namespace Phamhilator
 					IgnoreFilterTerms.AddTerm(PostType.BadUsername, term, site);
 				}
 
-				Stats.TermCount = FilterTerms.TermCount + IgnoreFilterTerms.TermCount;
-
 				return "`Ignore term added.`";
 			}
 
@@ -521,8 +516,6 @@ namespace Phamhilator
 
 					IgnoreFilterTerms.RemoveTerm(PostType.BadUsername, term, site);
 				}
-
-				Stats.TermCount = FilterTerms.TermCount + IgnoreFilterTerms.TermCount;
 
 				return "`Ignore Term removed.`";
 			}

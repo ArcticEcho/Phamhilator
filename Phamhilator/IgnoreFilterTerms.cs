@@ -259,7 +259,6 @@ namespace Phamhilator
 				if (offensiveTerms.ContainsTerm(term)) { continue; }
 
 				offensiveTerms.Add(term, termSite);
-				Stats.TermCount++;
 			}
 		}
 
@@ -279,7 +278,6 @@ namespace Phamhilator
 				if (lqTerms.ContainsTerm(term)) { continue; }
 
 				lqTerms.Add(term, termSite);
-				Stats.TermCount++;
 			}
 		}
 
@@ -299,7 +297,6 @@ namespace Phamhilator
 				if (spamTerms.ContainsTerm(term)) { continue; }
 
 				spamTerms.Add(term, termSite);
-				Stats.TermCount++;
 			}
 		}
 
@@ -319,7 +316,6 @@ namespace Phamhilator
 				if (badUsernameTerms.ContainsTerm(term)) { continue; }
 
 				badUsernameTerms.Add(term, termSite);
-				Stats.TermCount++;
 			}
 		}
 	}

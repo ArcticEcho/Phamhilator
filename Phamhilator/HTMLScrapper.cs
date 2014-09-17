@@ -97,13 +97,13 @@ namespace Phamhilator
 				
 			// Get username.
 
-			var username = html.Substring(startIndex, (html.IndexOf(">", startIndex + 1, StringComparison.Ordinal) - startIndex) - 5);
+			var username = WebUtility.HtmlDecode(html.Substring(startIndex, (html.IndexOf(">", startIndex + 1, StringComparison.Ordinal) - startIndex) - 5));
 
 			// Get message.
 
 			startIndex = html.LastIndexOf("<DIV class=content>", StringComparison.Ordinal) + 19;
 
-			var message = html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex);
+			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
 
 			return new KeyValuePair<string, string>(username, message);
 		}

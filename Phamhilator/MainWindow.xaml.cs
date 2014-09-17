@@ -27,7 +27,7 @@ namespace Phamhilator
 		private readonly List<Post> postedMessages = new List<Post>();
 		private readonly HashSet<int> spammers = new HashSet<int>();
 		private readonly string previouslyPostMessagesPath = DirectoryTools.GetPostPersitenceFile();
-		private KeyValuePair<string, string> lastCommand = new KeyValuePair<string, string>();
+		private KeyValuePair<string, string> lastCommand;
 
 
 
@@ -125,7 +125,7 @@ namespace Phamhilator
 
 					var message = HTMLScraper.GetLastChatMessage(html);
 
-					if ((message.Key == lastCommand.Key && message.Value == lastCommand.Value) || (!message.Value.StartsWith("&gt;&gt;") && !message.Value.ToLowerInvariant().StartsWith("@sam")))
+					if ((message.Key == lastCommand.Key && message.Value == lastCommand.Value) || (!message.Value.StartsWith(">>") && !message.Value.ToLowerInvariant().StartsWith("@sam")))
 					{
 						lastCommand = new KeyValuePair<string, string>(message.Key, message.Value);
 
@@ -573,16 +573,16 @@ namespace Phamhilator
 			});
 		}
 
-		private void Button_Click_4(object sender, RoutedEventArgs e)
-		{
-			//refreshBadTags = true;
-
-			//PostMessage("`Bad Tag Definitions updated.`");
-		}
-
 		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
-			refreshRate = 20000 - (int)e.NewValue;
+			var rate = (int)Math.Round(refreshRateS.Minimum + (refreshRateS.Maximum - e.NewValue), 0);
+
+			refreshRate = rate;
+
+			if (refreshRateL != null)
+			{
+				refreshRateL.Content = rate + " milliseconds";
+			}
 		}
 	}
 }

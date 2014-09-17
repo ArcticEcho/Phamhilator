@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
+using Phamhilator.Filters;
 
 
 
@@ -8,17 +8,7 @@ namespace Phamhilator
 {
 	public static class PostChecker
 	{
-		//private static readonly Dictionary<string, HashSet<string>> badTags = new Dictionary<string, HashSet<string>>();
-		//private static readonly Regex phoneNumber = new Regex(@"\d(?!\d-?\d{2}-\d{4})(?>\W*\d){7}");
-		//private static readonly Regex badUser = new Regex("sumer|kolcak");
-		//private static readonly Regex offensive = new Regex("\b(nigg(a|er)|asshole|piss|penis|bumhole|retard|bastard|bitch|crap|fag|fuck|idiot|shit|whore)\b");
-		//private static readonly Regex lowQuality = new Regex(@"homework|builtwith.com|very difficult|newbie|\bq\b|question|tried|\bif (yes|no)\b|my best|our feelings|says wrong|confusing|\bh(i|ello)\b|\bgreeting(s)?\b|error(s)?|problem(s)?|(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)|correct this|school project|beginner|promblem|asap|urgent|pl(z|s|ease)|(need|some)( halp| help| answer)|(no(t)?|doesn('t|t)?) work(ing|ed|d)?|\b(help|halp)\b");
-		//private static readonly Regex spam = new Regex(@"\b(yoga|relax(ing)?|beautiful(est)?|we lost|rolex watch|offer good|good offer|skin cream|mover(s)?|delhi|colon cleanse|is helpful|my huge|bulky figure|bangalore|supplement(s)?|you know|get your|got my|six(-pack|pack| pack)|(customer|people) review(s)?|help(s)? you(r)?|work out|body( building|builder(s)?| builder(s)?|building)|muscle(s)?|weight loss|\bbrand\b|super herbal|treatment|cheaper|naturally|heal(ing|thly)?|care(ing)?|nurish(es|ing)?|ripped|full( movie| film)|free (trial|film|moive|movie|help|assistance))\b");
-		//private static string lower;
-
-
-
-		public static PostTypeInfo CheckPost(Post post/*, bool refreshTag = false*/)
+		public static PostTypeInfo CheckPost(Post post)
 		{
 			//if (refreshTag)
 			//{
@@ -31,13 +21,11 @@ namespace Phamhilator
 			var accuracy = 0.0f;
 			//lower = post.Title.ToLowerInvariant();
 
-			if (IsOffensive(post, ref accuracy))
+			if (IsLowQuality(post, ref accuracy))
 			{
-				info.Type = PostType.Offensive;
-			}
-			else if (IsBadUsername(post, ref accuracy))
-			{
-				info.Type = PostType.BadUsername;
+				info.Type = PostType.LowQuality;
+
+				info.Accuracy = (accuracy / LQ.HighestScore) * 100;
 			}
 			else if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
 			{
@@ -46,16 +34,21 @@ namespace Phamhilator
 			else if (IsSpam(post, ref accuracy))
 			{
 				info.Type = PostType.Spam;
+
+				info.Accuracy = (accuracy / Spam.HighestScore) * 100;
 			}
-			else if (IsLowQuality(post, ref accuracy))
+			else if (IsOffensive(post, ref accuracy))
 			{
-				info.Type = PostType.LowQuality;
-				//info.InaccuracyPossible = !lowQuality.IsMatch(lower) && !post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c));
+				info.Type = PostType.Offensive;
+
+				info.Accuracy = (accuracy / Offensive.HighestScore) * 100;
 			}
+			else if (IsBadUsername(post, ref accuracy))
+			{
+				info.Type = PostType.BadUsername;
 
-			var highestScore = FilterTerms.HighestTermScore;
-
-			info.Accuracy = (accuracy / highestScore) * 100;
+				info.Accuracy = (accuracy / BadUsername.HighestScore) * 100;
+			}
 
 			return info;
 		}
@@ -72,19 +65,19 @@ namespace Phamhilator
 
 			var filtersUsed = 0;
 
-			for (var i = 0; i < FilterTerms.SpamTerms.Count; i++)
+			for (var i = 0; i < Spam.Terms.Count; i++)
 			{
-				var filter = FilterTerms.SpamTerms.Keys.ElementAt(i);
+				var filter = Spam.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					accuracy += FilterTerms.SpamTerms[filter];
+					accuracy += Spam.Terms[filter];
 
 					filtersUsed++;
 
-					FilterTerms.SetTermScore(PostType.Spam, filter, FilterTerms.GetTermScore(PostType.Spam, filter) + 1);
+					Spam.SetScore(filter, Spam.GetScore(filter) + 1);
 
-					if (i == FilterTerms.SpamTerms.Count - 1)
+					if (i == Spam.Terms.Count - 1)
 					{
 						accuracy /= filtersUsed;
 
@@ -122,19 +115,19 @@ namespace Phamhilator
 
 			var filtersUsed = 0;
 
-			for (var i = 0; i < FilterTerms.LQTerms.Count; i++)
+			for (var i = 0; i < LQ.Terms.Count; i++)
 			{
-				var filter = FilterTerms.LQTerms.Keys.ElementAt(i);
+				var filter = LQ.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					accuracy += FilterTerms.LQTerms[filter];
+					accuracy += LQ.Terms[filter];
 
 					filtersUsed++;
 
-					FilterTerms.SetTermScore(PostType.LowQuality, filter, FilterTerms.GetTermScore(PostType.LowQuality, filter) + 1);
+					LQ.SetScore(filter, LQ.GetScore(filter) + 1);
 
-					if (i == FilterTerms.LQTerms.Count - 1)
+					if (i == LQ.Terms.Count - 1)
 					{
 						accuracy /= filtersUsed;
 
@@ -180,19 +173,19 @@ namespace Phamhilator
 
 			var filtersUsed = 0;
 
-			for (var i = 0; i < FilterTerms.OffensiveTerms.Count; i++)
+			for (var i = 0; i < Offensive.Terms.Count; i++)
 			{
-				var filter = FilterTerms.OffensiveTerms.Keys.ElementAt(i);
+				var filter = Offensive.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					accuracy += FilterTerms.OffensiveTerms[filter];
+					accuracy += Offensive.Terms[filter];
 
 					filtersUsed++;
 					
-					FilterTerms.SetTermScore(PostType.Offensive, filter, FilterTerms.GetTermScore(PostType.Offensive, filter) + 1);
+					Offensive.SetScore(filter, Offensive.GetScore(filter) + 1);
 
-					if (i == FilterTerms.OffensiveTerms.Count - 1)
+					if (i == Offensive.Terms.Count - 1)
 					{
 						accuracy /= filtersUsed;
 
@@ -216,19 +209,19 @@ namespace Phamhilator
 
 			var filtersUsed = 0;
 
-			for (var i = 0; i < FilterTerms.BadUsernameTerms.Count; i++)
+			for (var i = 0; i < BadUsername.Terms.Count; i++)
 			{
-				var filter = FilterTerms.BadUsernameTerms.Keys.ElementAt(i);
+				var filter = BadUsername.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					accuracy += FilterTerms.BadUsernameTerms[filter];
+					accuracy += BadUsername.Terms[filter];
 
 					filtersUsed++;
 
-					FilterTerms.SetTermScore(PostType.BadUsername, filter, FilterTerms.GetTermScore(PostType.BadUsername, filter) + 1);
+					BadUsername.SetScore(filter, BadUsername.GetScore(filter) + 1);
 
-					if (i == FilterTerms.BadUsernameTerms.Count - 1)
+					if (i == BadUsername.Terms.Count - 1)
 					{
 						accuracy /= filtersUsed;
 
@@ -258,36 +251,5 @@ namespace Phamhilator
 
 			return tags;
 		}
-
-
-
-		//private static int SpaceCount(string input)
-		//{
-		//	return input.Count(c => c == ' ');
-		//}
-
-		//private static void PopulateBadTags()
-		//{
-		//	var tags = new List<string>();
-
-		//	foreach (var dir in Directory.EnumerateDirectories(DirectoryTools.GetBTDFolder()))
-		//	{
-		//		tags.AddRange(File.ReadAllLines(Path.Combine(dir, "BadTags.txt")));
-
-		//		for (var i = 0; i < tags.Count; i++)
-		//		{
-		//			tags[i] = tags[i].Trim();
-
-		//			if (tags[i] == "")
-		//			{
-		//				tags.RemoveAt(i);
-		//			}
-		//		}
-
-		//		badTags.Add(Path.GetFileName(dir), new HashSet<string>(tags));
-
-		//		tags.Clear();
-		//	}
-		//}
 	}
 }

@@ -72,9 +72,12 @@
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="FilterTerms.cs" />
+    <Compile Include="Filters.BadUsername.cs" />
+    <Compile Include="Filters.LQ.cs" />
+    <Compile Include="Filters.Spam.cs" />
     <Compile Include="HTMLScrapper.cs" />
     <Compile Include="IgnoreFilterTerms.cs" />
+    <Compile Include="Filters.Offensive.cs" />
     <Compile Include="PostChecker.cs" />
     <Compile Include="Stats.cs" />
     <Page Include="MainWindow.xaml">
