@@ -1,68 +1,9 @@
-2474988.47896472]Cannot open Tex file - Default encoding setting (UTF-8) not working
-2475004.85536806]Display multiple data and timestamp overtime in rows Labview
-2475028.50652083]need help understanding a force diagram
-2475032.90050549]Help getting getting downloaded vector graphics from shutter stock download into illustrator
-2475046.74104712]Error message : Notice: Undefined offset: 4 in menutranslate()
-2475081.06449364]SSIS: Error while adding ODBC Destination D.F. Component in C# - HRESULT: 0xC0048021
-2475091.06856584]Posting data to restify server from jsonClient is not working
-2475106.02015436]SpinFET Transistor
-2475125.8251038]Critique request: logo for a health product
-2475131.25063079]cs169-2x HW1 Auto-grader doesn't works correctly
-2475132.0777281]Code Igniter decode not working on mac
-2475133.5254609]A sql function that returns true/false with some data calculations problems
-2475135.79859092]ASP.NET MVC Razor Errors After Fresh Installation of Visual Studio 2013 on Windows 8.1
-2475136.21303129]Error while connecting R to Twitter
-2475139.44263268]Getting CLANG Error - Please help
 2475148.88823961]Google Datastore returning “503 Backend Error”
-2475152.19297863]Why gradient is not working in mozilla? It works fine is chrome
-2475158.75537064]jQuery bind ajax:success not working in rails 3 app for newly created (ajax) items
-2475161.54763035]How to move an existing installation of Window 7 64bit to UEFI (from legacy)
-2475161.54806371]How can I install Xubuntu 14.04 with wubi?
-2475164.95305846]How do I set FTP permissions?
-2475184.23352791]Substituting logs
-2475184.23372792]How to know if you are sending correctly a JSON message in java
-2475184.23389459]OpenSSL::SSL::SSLError: SSLconnect SYSCALL returned=5 errno=0 state=SSLv3 read server hello A
-2475184.23406127]How to refresh the datagrid automatically, if a file is deleted from the folder
-2475184.23426128]How to clean-up/remove files in /dev/sda7?
-2475184.23439462]How can (in Dirac's terminology) the product of two “real” linear operators be “not real”?
-2475184.31929948]How to do multiple conditions for dbupdate by using OR condition?
-2475184.4035043]How long does a supernova last?
-2475184.40375431]How to keep a function in WCF service running on remote server, without an application consuming it ?
-2475184.48845916]How do I make two sessions running?
 2475185.33334081]How to clear Linkedin Share cache?
-2475185.67409364]Sharepoint: How to easily get related child items using JSOM
-2475185.78463329]How to create a list of JSON objects in Python 2.7
-2475186.1367701]How to structure a presentation for a Post Doctoral Research Fellowship
-2475186.47448942]What modules can I use to make a slideshow within a post?
-2475187.82319989]How can I use a Wamo Pro gamepad in a desktop Windows PC?
-2475188.16058586]Android - Convert Canvas to Bitmap
-2475188.49783848]How to set up automatic build in Emacs
-2475188.83469108]How to generate auto increment values for my duplicate column in my sql?
-2475189.17396048]Why does python say that “f” or “q” is not defined?
-2475189.80763006]How can I compile C code as 32 bit code and run in in 64-bit app? What toolchain can I use?
-2475190.99491464]How to WebRtc send video stream to url?
-2475190.99511465]How do I delete the col-right sidebar from the default theme?
-2475192.20655061]How can I reload dhclient without restarting network?
-2475192.48738333]SPA & Spring - how to load AngularJS 'resources' that require route params without the .html postfix
-2475192.48763335]How to combine select and reduce by minimum value by key in cub
 2475194.33182216]plsql script continue excution even there ar promt statement
-2475197.11836488]Twilio How to re-dial if call is not answered?
-2475197.96029637]Too much bass with 4 channel setup. Could Subwoofer help?
-2475198.12882267]Ubuntu 12.04 will not boot error “Screen,Graphics Card and Input Device could not be correctly detected”
-2475201.61582212]SSMS 2008 / 2014 showing different values for TempDB file sizes
-2475241.54993955]bashcompletion does not work in dtach
-2475241.55175632]Hi there, How to open checkout in new window? simplecartjs 3.0.5
-2475241.5541898]Please help idenify weird tree
-2475249.25788042]My shop is Magento 1.3. What is the problem when update to 1.9?
 2475249.25831378]jqBootstrapValidation asp:textbox
-2475250.30685708]Boot problem Ubuntu-Win7
-2475251.2954303]lipo error in iOS 8 SDK
-2475252.43752895]Problems with fourvector model and 2 level inheritance
 2475253.95869929]Swipe function using JQuery and iscroll doesn't work - Phonegap (Android)
-2475258.12913783]Hardware problems, can I reinstall OS?
-2475259.13961229]Swipe and Scroll function using JQuery and iscroll doesn't work - Phonegap (Android)
 2475259.92389048]KeePass URL with space in Notes not working
-2475264.04242605]Problems with foreign keys
 2475273.98927831]how do I get colour into smoke?
 2475284.3679386]Xcode doesn't work
 2475290.2510751]How to solve Robots.txt problem with WordPress fresh install?
@@ -413,130 +354,49 @@
 2477799.2478924]$Metadata with WebAPi OData Attribute Routing Not Working
 2477800.29125208]MATLAB Newton's Method Help Needed
 2477800.29156877]Beginner issues with python script output
-2477800.29190212]CPT while loop not working
-2477801.06111278]Sorting/ Filtering attributes not working in Grid.Mvc
-2477802.93807014]Why GridLines->function does not work with LogPlot?
-2477803.74323286]What role-playing games should I pick for an absolute beginner group?
-2477805.72429617]A Question Regarding Weak Diamond
-2477807.75072874]Fix problematic number formatting
-2477807.75101209]Cannot get -javaagent to run without error
-2477808.0885814]Getting 500 Error when trying to export csv
-2477811.41317155]Blender GameKit addon do not work under OS Ubuntu 14.04x64 (Blender 2.71, Python 3.4)
-2477811.92368409]Fixed camera view
-2477814.58731977]Examples of intuition from fields other than Physics to solve math problems
-2477819.10467815]Angularjs: Error: ng:areq Argument 'HomeController' is not a function, got undefined
-2477819.10499483]“Unsupported file format” error when checking the format of BMP files in resize
-2477819.35700925]Blender GameKit problem under Ubuntu
-2477819.86132143]How can I calculate $ sum{j=0}^{49}binom{100}{2j+1}p^{n-(2j+1)} q^{(2j+1)} $?
-2477820.28621239]ScriptResource.axd throws 404 server error
-2477822.84962568]Cross product of the reals question
-2477823.85780001]Why do I get “wrong fs type, bad option, bad superblock” error?
-2477824.86712441]Multisim database BOM report problems; alternatives?
-2477826.37882754]How can I calculate $ sum{j=0}^{49}binom{100}{2j+1}p^{100-(2j+1)} q^{(2j+1)} $?
-2477827.64213313]Life after CS50!
-2477829.31922905]Workflow manager 1.0 Configuration | Not installing, having some error
-2477830.59480201]TSQL - For Each
-2477831.09879751]Scipy stats.skew — IndexError: tuple index out of range
-2477831.35077858]dependency error while installing gem
-2477838.83719012]App Script Add-on Event handler not working
-2477839.09360478]SyntaxError: missing : after property id 5 (ADOBE ACROBAT STAMP)
-2477839.85726513]You have one question to tell whether the number I'm thinking of is 1, 2, or 3
-2477840.87433997]Use linear quadratic regulator to minimize output error
-2477841.12705442]istree not working as expected wen ending with “else”
-2477841.63191663]Basic sampling problem - could use some advice
-2477841.88399772]please help explain the usage of one sentence
-2477844.15644436]game won't start
-2477844.66033985]AJAX Fires Error No Response Text
-2477845.4177165]error order evaluation in taylor expansion of a definite integral
-2477846.17359307]Help understanding proof for: Let $X$ be a set. Then $X notequiv P(X)$
-2477849.19724935]Missing files in /home directory after boot crash during software update! PLEASE HELP!
-2477850.71035256]Help understanding proof for: Let $X$ be a set. Then $X notapprox P(X)$ (where $approx$ is equivalence relation)
-2477852.97828228]Error Code: 1133. Can't find any matching row in the user table
-2477854.74299988]Are taweez haram?
-2477857.81365884]Help with GTA V
-2477858.82089979]Aborted (core dumped) error in breakout?
-2477866.34661357]Problemas ao enviar dados de um ListView para outra Activity
-2477866.34693025]Notepad++ spellcheck not work with “comment tag”
-2477880.02559596]C++ Cast and Stack
-2477882.58392562]Entity Framework property required error for properties set in insert procedure
-2477882.92584518]Error : org.apache.http.client.HttpResponseException: Unsupported Media Type
-2477884.19475109]Asus x552cl headphone output not working on 14.04
-2477886.37052554]How i can handling all errors in Kohana 3.3
-2477886.37092556]“cov vs pp” problem
-2477888.92475496]Less generic error message when post is removed
-2477889.99783301]View Post Timeline
-2477894.193773]Rails error in a SASS file when integration-testing
-2477894.75072152]Xubuntu 14 Nvidia drivers problem
-2477895.8670187]problem with the
-2477896.2213223]“Error: Could not find or load main class” when starting Hadoop
-2477896.22162232]Java in Chrome 34
-2477899.15193992]I m facing content encoding = utf-8 problem while testing a web application using jmeter
-2477899.15228994]Illustrator: Suddenly drawing (inside other shapes) does not work
-2477899.24099502]Library Linking Error on Ubuntu 12.04 LTS when compiling
-2477899.24132837]i am unable to download and upload app on my ipad mini ,! help me out
-2477900.8206687]How to check if USB WiFi-Adapter is not working or router is out of range?
-2477906.88976583]Where can I find a collection of tried and true Security Protocols?
-2477908.58184595]Calling a struts2 action on 404 error
-2477910.66729856]Wired Keyboard not working properly
-2477914.75216554]Windows 7 System Image Recovery: netsh error “The interface is unknown”
-2477915.26122799]Do we need to implement “God” mode for the standard edition of problem set 4?
-2477916.24021732]Brightness Problem
-2477919.06706234]Question about Holder functions
-2477919.92126119]Added Custom Post Type and the View Option Doesn't Work
-2477923.25825206]ThinkPad S430 touchpad not working well for mouse control
-2477925.7310935]BURG Bootloader Strange error(newbie)
-2477926.07322973]Appharbor SendGrid mail sending error
-2477926.07352975]HttpClient throws error for the following code
-2477926.07397978]What do they mean with “Hi how are you doing”?
-2477929.58246378]Error in grid.Call(LtextBounds, as.graphicsAnnot(x$label), x$x, x$y, : Polygon edge not found
-2477934.1051058]problem with static variable
-2477936.42853869]Beaglebone Black: RTC DS1307/DS1338 gives error in Android at bootup
-2477936.76619133]You Tube Videos Won't Play in Chrome at a Custom Speed, but Play in IE With Lots of Audio Problems
-2477937.90502314]PayPal REST API - RATE LIMIT REACHED error
-2477938.92783164]Why is it a security problem not to update our browser?
-2477942.42424829]Sitecore social media connector returns error after successful authentication
-2477944.59573916]Save Button does not work when editing web-forms
-2477946.2457002]Why is it a security problem not to update ones browser?
-2477949.10846394]Error message: Databinding methods such as Eval(), XPath(), and Bind() can only be used in the context of a databound control
-2477949.10934732]server-status not working if allowoverride is set to all
-2477949.61557628]Standard Intel Graphic driver causes COM Surrogate Error
-2477949.75193408]Error in estimation with continuous data
-2477949.92602737]Starting Resque worker with script doesnt work, starting by hand does
-2477950.0950537]Interview Question or Pathbreaking puzzle
-2477950.43232299]$0,n$ continuous function problem
-2477951.44256411]A question on ring homomorphisms and maximal ideals.
-2477953.76929719]list with error:badcfg Angularjs
-2477954.94861464]“Unable to acquire application service” error while launching Eclipse
-2477955.44235955]Arndale Octa: rtc not working
-2477958.08711082]Problem writing HTML content to Word document in ASP.NET
-2478008.42473997]Actioncaching not working when using thin
-2478008.42508999]Network Drawing
-2478009.58878988]I generalised my question, but now the correct answer doesn't help my specific problem
-2478012.23020763]Why do WhatsApp is not working properly after upgrading my Lumia 525 to Windows 8.1?
-2478013.11870845]DevicePolicyManager resetPassword not working some times
-2478014.21445446]Bootable USB drive not working, unable to access bios
-2478018.88222144]Encountered problem finding ETL testing or data validation software. Please, help, advise, suggest
-2478019.224291]Need help creating PowerPoint-type application
-2478023.37064483]History of 馬 and 梅
-2478023.70759743]How do I Solve this Coordinate Geometry Word Problem?
-2478024.2134597]VMs fail to start after reboot - Error starting domain
-2478025.89685599]Need help to identify minifigure
-2478026.06526562]rails + WebRCT audio recording + Carrierwave + fog + S3 + Ajax error
-2478026.73833745]Windows Phone sync error when syncing with iTunes on different Hard Drive
-2478029.06978747]How to check if USB WiFi-Adapter is not working or router is out of range? SOLVED
-2478030.53462125]Bundler throwing odd “You need to install git…” error, despite git being installed
-2478030.87144051]91 gmc accelerating problems
-2478031.54492904]Swipe and Scroll function using JQuery and iscroll doesn't work - PhoneGap (Android)
-2478032.53380226]dataTables fixed columns plugin NOT working
-2478033.12396935]Problem with topological space in probability theory.
-2478034.89610405]What’s the difference between Analytical and Numerical approaches to problems?
-2478035.56964257]What's your Ubuntu question? Be specific
-2478036.52151368]NSTask only returning standardError in release build
-2478039.22763513]MySQL update not working with msqli
-2478042.53944122]TransactionManager needed if no real transaction boundary?
-2478042.87732721]404 error when trying to access admin page magento
-2478043.38672302]VS 2013 SqlBuildTask 04018 Error
-2478044.90217636]Error “URL <File URL> does not exist” when trying to see modifications in log window
-2478048.12117714]Gerrit and repo
-2478048.12146049]Ipod nano charging
-2478048.12179385]potentially dangerous querystring error i can not seem to get around
+2478128.06368293]missing SELECT keyword error from INSERT statement
+2478128.06483299]Client see Windows Deployment Services but still get “selected boot device failed” error
+2478128.25796071]Yay, we have runnable code snippets; Do I go and edit all my questions (causing them to rise to the top)?
+2478128.2601775]Microsoft - Excel
+2478128.26059419]Getting 500 Error when trying to export csv
+2478128.2613109]Local solvability of nonlinear elliptic boundary value problems
+2478129.10309238]Please explain what happens when I run this Makefile
+2478129.10337573]eee pc 1000h wlan not working
+2478129.10365908]Problems with Realtek driver for TP-Link
+2478129.44411188]Never ending transaction problems after mysql 5.0->5.6 upgrade
+2478131.17274409]All recieved VLAN packets are becoming Error Vlan Packets
+2478131.17427751]Why i am getting 404 error on js included in html?
+2478131.43014214]Java 'extends Object' question
+2478131.43107553]Bundler throwing odd “You need to install git…” error, despite git being installed
+2478131.60020187]NGINX Proxy Pass to NodeJS App: Returning 502 error
+2478132.1059308]Mouse pad does not work on GNU/Linux for ASUS X552C laptop
+2478132.44310008]Understanding meteor error messages
+2478132.78536966]Is this question well posed?
+2478132.78593636]Ubuntu Apache2 Domain name change {Please Help
+2478138.25294905]Entity Framework property required error for properties set in insert procedure
+2478138.25356575]why my app doesn't work on android api 11
+2478138.25618257]I'm trying to write to a file and getting an error message in Windows Forms
+2478140.43362378]Webdriver - Problem with loading profile of Tor Browser Bundle
+2478140.43429049]SPD Workflow Approval Task- Unexpected Error When Viewing Task
+2478141.05594271]jQuery bootstrap dropdown not working
+2478146.14998407]External dispaly on Macbook pro retina not working
+2478146.15046743]second click on a dropdownbox to close it again leads to an error
+2478146.23463891]A question on ring homomorphisms and maximal ideals.
+2478148.6804288]OAuth2 Authentication Redirection error in PHP
+2478148.68072882]How can error correction codes reduce bit error rate, for same amount of energy
+2478149.18592438]How do I Solve this Coordinate Geometry Word Problem?
+2478149.52242696]How to find problems in MySQL storedProcedure?
+2478149.85956291]Is it okay to use exceptions as tools to “catch” errors early?
+2478149.85986293]git reset --hard error: Could not parse object
+2478155.49980218]How to get SQLCMD to output errors and warnings only?
+2478158.46518846]static eth0 adress
+2478158.63401478]Kerberos Configuration Manager for SQL Server error “unable to access user principal information from the system”
+2478160.49703801]Optimizing bcache
+2478163.30969888]windows: python os.unlink raise OSError, Error 5 Access is denied
+2478165.71321969]Bootable USB drive not working, unable to access bios
+2478166.65083998]ios 8 - buttons in horizontal scroll view intercepting pan event - scroll does not work
+2478167.66763148]Use linear quadratic regulator to minimize output error
+2478169.4944693]gmail account not working
+2478169.99499793]cec-command to switch to TV 0 from raspberry pi not working
+2478173.8087994]MonoGame SharpDX Error 'The Parameter is Incorrect' when using graphics.DrawUserPrimitives
+2478175.01128484]Object Required Error Copying Values Using Conditional Loop

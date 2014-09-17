@@ -174,5 +174,11 @@ namespace Phamhilator
 
 			return path;
 		}
+
+
+		public static string GetuSerAccessFile()
+		{
+			return Path.Combine(root, "User Access.txt");
+		}
 	}
 }

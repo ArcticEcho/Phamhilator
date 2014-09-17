@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
 
-        Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing" ResizeMode="NoResize" SaveWindowPosition="True">
+        Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing" ResizeMode="NoResize">
     <Border BorderBrush="#FF41B1FF" BorderThickness="1">
         <Canvas>
             <WebBrowser Name="realtimeWb" Height="630" Width="550" Source="http://stackexchange.com/questions?tab=realtime"/>

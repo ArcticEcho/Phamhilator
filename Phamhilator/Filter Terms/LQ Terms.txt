@@ -2,17 +2,17 @@
 50](?si)builtwith.com
 50](?si)very difficult
 51](?si)newbie
-58](?si)question
+64](?si)question
 51](?si)tried
 51](?si)\bif (yes|no)\b
 50](?si)my best
 50](?si)our feelings
 50](?si)says wrong
 50](?si)confusing
-51](?si)\bh(i|ello)\b
+52](?si)\bh(i|ello)\b
 50](?si)\bgreeting(s)?\b
-95](?si)error(s)?
-74](?si)problem(s)?
+120](?si)error(s)?
+83](?si)problem(s)?
 50](?si)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 50](?si)correct this
 50](?si)school project
@@ -20,11 +20,10 @@
 50](?si)asap
 50](?si)urgent
 50](?si)thanks
-53](?si)pl(z|s|ease)
+57](?si)pl(z|s|ease)
 52](?si)(need|some)( halp| help| answer)
-76](?si)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-61](?si)\b(help|halp)\b
+91](?si)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+63](?si)\b(help|halp)\b
 50]^[^a-z]*$
 51](?si)\bgives error\b
-
-65]^(?si).{0,18}$
+72]^(?si).{0,18}$

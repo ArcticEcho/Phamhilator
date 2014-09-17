@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Phamhilator.Filters;
 
@@ -9,34 +8,40 @@ namespace Phamhilator
 {
 	public static class CommandProcessor
 	{
-		public static string ExacuteCommand(KeyValuePair<string, string> input)
+		public static string ExacuteCommand(MessageInfo input)
 		{
 			string command;
 
-			if (input.Value.StartsWith(">>"))
+			if (input.Body.StartsWith(">>"))
 			{
-				command = input.Value.Remove(0, 2).TrimStart();
+				command = input.Body.Remove(0, 2).TrimStart();
 			}
-			//else if (input.Value.ToLowerInvariant().StartsWith("@sam")) // TODO: Check if message is reply to a bot message. May need to create a new type to hold chat message data.
-			//{
-			//	command = input.Value.Remove(0, 4).TrimStart();
-			//}
+			else if (input.Body.ToLowerInvariant().StartsWith("@sam")) // TODO: Check if message is reply to a bot message. May need to create a new type to hold chat message data.
+			{
+				command = input.Body.Remove(0, 4).TrimStart();
+			}
 			else
 			{
 				return "";
 			}
 
-			var user = input.Key;
+			var user = input.AuthorID;
 
 			if (IsNormalUserCommand(command))
 			{
 				return NormalUserCommands(command);
 			}
-			
-			if (user != "Sam" && user != "Unihedron" && user != "ProgramFOX" && user != "Jan Dvorak" && user != "rene") { return ""; }
+
 
 			if (IsPrivilegedUserCommand(command))
 			{
+				// Sam, Unihedron, ProgramFox, Jan Dvorak & rene (in that order).
+
+				if (user != 227577 && user != 266094 && user != 229438 && user != 194047 && user != 158100)
+				{
+					return "`Access denied.`"; 			
+				}
+
 				return PrivilegedUserCommands(command);			
 			}
 

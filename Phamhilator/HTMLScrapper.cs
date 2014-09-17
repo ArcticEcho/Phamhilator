@@ -90,14 +90,15 @@ namespace Phamhilator
 			return tags;
 		}
 
-		public static KeyValuePair<string, string> GetLastChatMessage(string html)
+		public static MessageInfo GetLastChatMessage(string html)
 		{
-			var startIndex = html.LastIndexOf("username owner", StringComparison.Ordinal);
-			startIndex = html.IndexOf(">", startIndex, StringComparison.Ordinal) + 1;
+			var startIndex = html.LastIndexOf("signature user-", StringComparison.Ordinal) + 15;
 				
 			// Get username.
 
-			var username = WebUtility.HtmlDecode(html.Substring(startIndex, (html.IndexOf(">", startIndex + 1, StringComparison.Ordinal) - startIndex) - 5));
+			var e = html.IndexOf(@"/", startIndex) - 8;
+
+			var authorID = html.Substring(startIndex, e - startIndex);//WebUtility.HtmlDecode(html.Substring(startIndex, (html.IndexOf(">", startIndex + 1, StringComparison.Ordinal) - startIndex) - 5));
 
 			// Get message.
 
@@ -105,7 +106,49 @@ namespace Phamhilator
 
 			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
 
-			return new KeyValuePair<string, string>(username, message);
+			return new MessageInfo 
+			{ 
+				Body = message, 
+				ReplyMessageID = GetMessageReplyID(html, message), 
+				AuthorID = int.Parse(authorID),
+				MessageID = GetMessageID(html)
+			};
+		}
+
+
+
+		private static int GetMessageID(string html)
+		{
+			// message actions\" href=\"/transcript/message/
+
+			var startIndex = html.LastIndexOf("click for message actions") + 53;
+
+			var t = html.Substring(startIndex, html.IndexOf("#", startIndex) - startIndex);
+
+			return int.Parse(t);
+		}
+
+		private static int GetMessageReplyID(string html, string messageContent)
+		{
+			var messageIndex = WebUtility.HtmlDecode(html).LastIndexOf(messageContent);
+
+			if (messageIndex == -1)
+			{
+				return -1;
+			}
+
+			var infoIndex = html.IndexOf("class=reply-info", messageIndex - 190);
+
+			if (messageIndex - infoIndex > 190 || infoIndex == -1) // Message isn't a replay
+			{
+				return -1;
+			}
+
+			infoIndex = html.IndexOf(@"/message/", infoIndex);
+
+			var t = html.Substring(infoIndex, html.IndexOf("#", infoIndex) - infoIndex);
+
+			return int.Parse(t);
 		}
 	}
 }

@@ -78,9 +78,11 @@
     <Compile Include="HTMLScrapper.cs" />
     <Compile Include="IgnoreFilterTerms.cs" />
     <Compile Include="Filters.Offensive.cs" />
+    <Compile Include="MessageInfo.cs" />
     <Compile Include="PostChecker.cs" />
     <Compile Include="PostPersistence.cs" />
     <Compile Include="Stats.cs" />
+    <Compile Include="UserAccess.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

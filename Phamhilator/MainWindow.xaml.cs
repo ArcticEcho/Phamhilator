@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -25,7 +24,7 @@ namespace Phamhilator
 		private bool catchLQ = true;
 		private int refreshRate = 10000; // In milliseconds.
 		private readonly HashSet<int> spammers = new HashSet<int>();
-		private KeyValuePair<string, string> lastCommand;
+		private MessageInfo lastCommand = new MessageInfo();
 
 
 
@@ -128,9 +127,9 @@ namespace Phamhilator
 
 					var message = HTMLScraper.GetLastChatMessage(html);
 
-					if ((message.Key == lastCommand.Key && message.Value == lastCommand.Value) || (!message.Value.StartsWith(">>") && !message.Value.ToLowerInvariant().StartsWith("@sam")))
+					if (message.MessageID == lastCommand.MessageID || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@sam")))
 					{
-						lastCommand = new KeyValuePair<string, string>(message.Key, message.Value);
+						lastCommand = message;
 
 						continue;
 					}
@@ -142,7 +141,7 @@ namespace Phamhilator
 						PostMessage(commandMessage);
 					}
 
-					lastCommand = new KeyValuePair<string, string>(message.Key, message.Value);
+					lastCommand = new MessageInfo { MessageID = message.MessageID };
 				}
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
@@ -182,7 +181,7 @@ namespace Phamhilator
 				var info = PostChecker.CheckPost(post);
 				var message = (info.Type == PostType.BadTagUsed ? "" : " (" + Math.Round(info.Accuracy, 1) + "%)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 
-				if (float.IsNaN(info.Accuracy))
+				if (float.IsNaN(info.Accuracy) || PostPersistence.Messages.Any(p => IsSimilar(p.Title, post.Title)))
 				{
 					continue;
 				}
@@ -376,6 +375,30 @@ namespace Phamhilator
 				existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, true); // writable key
 				existingSubKey.SetValue(entryLabel, unchecked((int)editFlag), RegistryValueKind.DWord);
 			}
+		}
+
+		private bool IsSimilar(string a, string b)
+		{
+			var diffAllowance = 0.1;
+			var aTotal = 0.0;
+			var bTotal = 0.0;
+
+			for (var i = 0; i < a.Length; i++)
+			{
+				aTotal += a[i];
+			}
+
+			for (var i = 0; i < b.Length; i++)
+			{
+				bTotal += b[i];
+			}
+
+			if (aTotal > bTotal)
+			{
+				return ((aTotal - bTotal) / Math.Max(aTotal, bTotal)) < diffAllowance;
+			}
+
+			return ((bTotal - aTotal) / Math.Max(aTotal, bTotal)) < diffAllowance;
 		}
 
 
