@@ -1,37 +1,37 @@
-50](?si)\byoga|relax(ing)?\b
-50](?si)\bbeautiful(est)?\b
-50](?si)\bwe lost\b
-50](?si)\brolex watch\b
-50](?si)\boffer good\b
-50](?si)\bgood offer\b
-50](?si)\bskin cream\b
-50](?si)\bmover(s)?\b
-50](?si)\bdelhi\b
-50](?si)\bcolon cleanse\b
-50](?si)\bis helpful\b
-50](?si)\bmy huge\b
-50](?si)\bbulky figure\b
-50](?si)\bbangalore\b
-50](?si)\bsupplement(s)?\b
-50](?si)\byou know\b
-50](?si)\bget your\b
-50](?si)\bgot my\b
-50](?si)\bsix(-pack|pack| pack)\b
-50](?si)\b(customer|people) review(s)?\b
-50](?si)\bhelp(s)? you(r)?\b
-50](?si)\bwork out\b
-50](?si)\bbody( building|builder(s)?| builder(s)?|building)\b
-50](?si)\bmuscle(s)?\b
-50](?si)\bweight loss\b
-50](?si)\bbrand\b
-50](?si)\bsuper herbal\b
-50](?si)\btreatment\b
-50](?si)\bcheaper\b
-50](?si)\bnaturally\b
-50](?si)\bheal(ing|thly)?\b
-50](?si)\bcare(ing)?\b
-50](?si)\bnurish(es|ing)?\b
-50](?si)\bripped\b
-50](?si)\bfull( movie| film)\b
-50](?si)\bfree (trial|film|moive|movie|help|assistance)\b
-50](?si)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
+50](?i)\byoga|relax(ing)?\b
+50](?i)\bbeautiful(est)?\b
+50](?i)\bwe lost\b
+50](?i)\brolex watch\b
+50](?i)\boffer good\b
+50](?i)\bgood offer\b
+50](?i)\bskin cream\b
+50](?i)\bmover(s)?\b
+50](?i)\bdelhi\b
+50](?i)\bcolon cleanse\b
+50](?i)\bis helpful\b
+50](?i)\bmy huge\b
+50](?i)\bbulky figure\b
+50](?i)\bbangalore\b
+50](?i)\bsupplement(s)?\b
+50](?i)\byou know\b
+50](?i)\bget your\b
+50](?i)\bgot my\b
+50](?i)\bsix(-pack|pack| pack)\b
+50](?i)\b(customer|people) review(s)?\b
+50](?i)\bhelp(s)? you(r)?\b
+50](?i)\bwork out\b
+50](?i)\bbody( building|builder(s)?| builder(s)?|building)\b
+50](?i)\bmuscle(s)?\b
+50](?i)\bweight loss\b
+50](?i)\bbrand\b
+50](?i)\bsuper herbal\b
+50](?i)\btreatment\b
+50](?i)\bcheaper\b
+50](?i)\bnaturally\b
+50](?i)\bheal(ing|thly)?\b
+50](?i)\bcare(ing)?\b
+50](?i)\bnurish(es|ing)?\b
+50](?i)\bripped\b
+50](?i)\bfull( movie| film)\b
+50](?i)\bfree (trial|film|moive|movie|help|assistance)\b
+50](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}

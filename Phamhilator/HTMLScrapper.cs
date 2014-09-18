@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text.RegularExpressions;
-using HtmlAgilityPack;
 
 
 
@@ -52,6 +51,17 @@ namespace Phamhilator
 			var endIndex = html.IndexOf("</A>", startIndex, StringComparison.Ordinal);
 
 			return escapeChars.Replace(html.Substring(startIndex, endIndex - startIndex).Trim(), "");
+		}
+
+		public static int GetMessageIDByReportTitle(string html, string reportTitle)
+		{
+			var startIndex = html.LastIndexOf(reportTitle) - 286;
+
+			startIndex = html.IndexOf("click for message actions", startIndex) + 53;
+
+			var t = html.Substring(startIndex, html.IndexOf("#", startIndex) - startIndex);
+
+			return int.Parse(t);
 		}
 
 		public static string GetSite(string postURL)
@@ -106,18 +116,20 @@ namespace Phamhilator
 
 			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
 
+			// TODTO: initialise retruen object's Report (and Post field?).
+
 			return new MessageInfo 
 			{ 
 				Body = message, 
 				ReplyMessageID = GetMessageReplyID(html, message), 
 				AuthorID = int.Parse(authorID),
-				MessageID = GetMessageID(html)
+				MessageID = GetLastestMessageID(html)
 			};
 		}
 
 
 
-		private static int GetMessageID(string html)
+		private static int GetLastestMessageID(string html)
 		{
 			// message actions\" href=\"/transcript/message/
 
@@ -144,7 +156,7 @@ namespace Phamhilator
 				return -1;
 			}
 
-			infoIndex = html.IndexOf(@"/message/", infoIndex);
+			infoIndex = html.IndexOf(@"/message/", infoIndex) + 9;
 
 			var t = html.Substring(infoIndex, html.IndexOf("#", infoIndex) - infoIndex);
 

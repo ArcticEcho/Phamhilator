@@ -1,53 +1,90 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 
 
 namespace Phamhilator
 {
-	public struct Post
+	public class Post
 	{
+		//private bool scoreBodyPopulated;
+		private int score = int.MinValue;
+		private string body = "";
+
 		public string Title;
 		public string AuthorName;
 		public string AuthorLink;
 		public string URL;
 		public string Site;
 		public List<string> Tags;
-		public int Score;
-		public string Body;
 
-
-
-		public void PopulateScoreAndBody()
+		public int Score
 		{
-			var wb = new System.Net.WebClient();
-			var html = wb.DownloadString(URL);
+			get
+			{
+				//if (!scoreBodyPopulated)
+				//{
+				//	PopulateScoreAndBody();
+				//}
 
-			Body = GetBody(html);
-			Score = GetScore(html);
+				return score;
+			}
+		}
 
-			wb.Dispose();
+		public string Body
+		{
+			get
+			{
+				//if (!scoreBodyPopulated)
+				//{
+				//	PopulateScoreAndBody();
+				//}
+
+				return body;
+			}
 		}
 
 
 
-		private string GetBody(string html)
-		{
-			var startIndex = html.IndexOf("<p>", System.StringComparison.Ordinal) + 3;
-			var endIndex = html.IndexOf("</div>", startIndex, System.StringComparison.Ordinal) - 11;
+		//private void PopulateScoreAndBody()
+		//{
+		//	try
+		//	{
+		//		var wb = new WebDownload();
+		//		var html = wb.DownloadString(URL);
 
-			var result = html.Substring(startIndex, endIndex - startIndex);
+		//		body = GetBody(html);
+		//		score = GetScore(html);
 
-			return result;
-		}
+		//		wb.Dispose();
 
-		private int GetScore(string html)
-		{
-			var startIndex = html.IndexOf("vote-count-post", System.StringComparison.Ordinal) + 18;
-			var endIndex = html.IndexOf("</span>", startIndex, System.StringComparison.Ordinal);
+		//		scoreBodyPopulated = true;
+		//	}
+		//	catch (Exception)
+		//	{
+		//		score = int.MinValue;
+		//		body = "";
+		//	}		
+		//}
 
-			var result = html.Substring(startIndex, endIndex - startIndex);
+		//private string GetBody(string html)
+		//{
+		//	var startIndex = html.IndexOf("<p>", StringComparison.Ordinal) + 3;
+		//	var endIndex = html.IndexOf("</div>", startIndex, StringComparison.Ordinal) - 11;
 
-			return int.Parse(result);
-		}
+		//	var result = html.Substring(startIndex, endIndex - startIndex);
+
+		//	return result;
+		//}
+
+		//private int GetScore(string html)
+		//{
+		//	var startIndex = html.IndexOf("vote-count-post", StringComparison.Ordinal) + 18;
+		//	var endIndex = html.IndexOf("</span>", startIndex, StringComparison.Ordinal);
+
+		//	var result = html.Substring(startIndex, endIndex - startIndex);
+
+		//	return int.Parse(result);
+		//}
 	}
 }

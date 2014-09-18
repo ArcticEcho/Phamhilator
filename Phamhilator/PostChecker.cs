@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using Phamhilator.Filters;
 
 
 
@@ -10,52 +9,56 @@ namespace Phamhilator
 	{
 		public static PostTypeInfo CheckPost(Post post)
 		{
-			//if (refreshTag)
-			//{
-			//	badTags.Clear();
-
-			//	PopulateBadTags();
-			//}
-
 			var info = new PostTypeInfo();
 			var accuracy = 0.0f;
-			//lower = post.Title.ToLowerInvariant();
 
-			if (IsLowQuality(post, ref accuracy))
+			if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
+			{
+				info.Type = PostType.BadTagUsed;
+
+				return info;
+			}
+
+			if (post.Score >= 2)
+			{
+				return info;
+			}
+
+			if (IsLowQuality(post, ref info))
 			{
 				info.Type = PostType.LowQuality;
 
-				info.Accuracy = (accuracy / LQ.HighestScore) * 100;
+				info.Accuracy = (accuracy / GlobalInfo.LQ.HighestScore) * 100;
 			}
 			else if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
 			{
 				info.Type = PostType.BadTagUsed;
 			}
-			else if (IsSpam(post, ref accuracy))
+			else if (IsSpam(post, ref info))
 			{
 				info.Type = PostType.Spam;
 
-				info.Accuracy = (accuracy / Spam.HighestScore) * 100;
+				info.Accuracy = (accuracy / GlobalInfo.Spam.HighestScore) * 100;
 			}
-			else if (IsOffensive(post, ref accuracy))
+			else if (IsOffensive(post, ref info))
 			{
 				info.Type = PostType.Offensive;
 
-				info.Accuracy = (accuracy / Offensive.HighestScore) * 100;
+				info.Accuracy = (accuracy / GlobalInfo.Off.HighestScore) * 100;
 			}
-			else if (IsBadUsername(post, ref accuracy))
+			else if (IsBadUsername(post, ref info))
 			{
 				info.Type = PostType.BadUsername;
 
-				info.Accuracy = (accuracy / BadUsername.HighestScore) * 100;
+				info.Accuracy = (accuracy / GlobalInfo.Name.HighestScore) * 100;
 			}
 
 			return info;
 		}
 
-		private static bool IsSpam(Post post, ref float accuracy)
+		private static bool IsSpam(Post post, ref PostTypeInfo info)
 		{
-			foreach (var ignoreFilter in IgnoreFilterTerms.SpamTerms)
+			foreach (var ignoreFilter in GlobalInfo.IgnoreSpam.Terms)
 			{
 				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))
 				{
@@ -65,22 +68,21 @@ namespace Phamhilator
 
 			var filtersUsed = 0;
 
-			for (var i = 0; i < Spam.Terms.Count; i++)
+			for (var i = 0; i < GlobalInfo.Spam.Terms.Count; i++)
 			{
-				var filter = Spam.Terms.Keys.ElementAt(i);
+				var filter = GlobalInfo.Spam.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					accuracy += Spam.Terms[filter];
+					info.Accuracy += GlobalInfo.Spam.Terms[filter];
+					info.TermsFound.Add(filter);
 
 					filtersUsed++;
-
-					Spam.SetScore(filter, Spam.GetScore(filter) + 1);
 				}
 
-				if (i == Spam.Terms.Count - 1)
+				if (i == GlobalInfo.Spam.Terms.Count - 1 && filtersUsed > 0)
 				{
-					accuracy /= filtersUsed;
+					info.Accuracy /= filtersUsed;
 
 					return true;
 				}
@@ -103,9 +105,9 @@ namespace Phamhilator
 			//	(lower.Contains("http://") && lower.Contains(".com"));
 		}
 
-		private static bool IsLowQuality(Post post, ref float accuracy)
+		private static bool IsLowQuality(Post post, ref PostTypeInfo info)
 		{
-			foreach (var ignoreFilter in IgnoreFilterTerms.LQTerms)
+			foreach (var ignoreFilter in GlobalInfo.IgnoreLQ.Terms)
 			{
 				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))
 				{
@@ -115,22 +117,21 @@ namespace Phamhilator
 
 			var filtersUsed = 0;
 
-			for (var i = 0; i < LQ.Terms.Count; i++)
+			for (var i = 0; i < GlobalInfo.LQ.Terms.Count; i++)
 			{
-				var filter = LQ.Terms.Keys.ElementAt(i);
+				var filter = GlobalInfo.LQ.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					accuracy += LQ.Terms[filter];
+					info.Accuracy += GlobalInfo.LQ.Terms[filter];
+					info.TermsFound.Add(filter);
 
 					filtersUsed++;
-
-					LQ.SetScore(filter, LQ.GetScore(filter) + 1);
 				}
 
-				if (i == LQ.Terms.Count - 1)
+				if (i == GlobalInfo.LQ.Terms.Count - 1 && filtersUsed > 0)
 				{
-					accuracy /= filtersUsed;
+					info.Accuracy /= filtersUsed;
 
 					return true;
 				}
@@ -159,11 +160,11 @@ namespace Phamhilator
 			//	   (lower.Length < 35 && (lower.Contains("problem") || lower.Contains("issue"))));
 		}
 
-		private static bool IsOffensive(Post post, ref float accuracy)
+		private static bool IsOffensive(Post post, ref PostTypeInfo info)
 		{
 			//return offensive.IsMatch(post.Title.ToLowerInvariant());
 
-			foreach (var ignoreFilter in IgnoreFilterTerms.OffensiveTerms)
+			foreach (var ignoreFilter in GlobalInfo.IgnoreOff.Terms)
 			{
 				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))
 				{
@@ -173,22 +174,21 @@ namespace Phamhilator
 
 			var filtersUsed = 0;
 
-			for (var i = 0; i < Offensive.Terms.Count; i++)
+			for (var i = 0; i < GlobalInfo.Off.Terms.Count; i++)
 			{
-				var filter = Offensive.Terms.Keys.ElementAt(i);
+				var filter = GlobalInfo.Off.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					accuracy += Offensive.Terms[filter];
+					info.Accuracy += GlobalInfo.Off.Terms[filter];
+					info.TermsFound.Add(filter);
 
 					filtersUsed++;
-					
-					Offensive.SetScore(filter, Offensive.GetScore(filter) + 1);
 				}
 
-				if (i == Offensive.Terms.Count - 1)
+				if (i == GlobalInfo.Off.Terms.Count - 1 && filtersUsed > 0)
 				{
-					accuracy /= filtersUsed;
+					info.Accuracy /= filtersUsed;
 
 					return true;
 				}
@@ -197,9 +197,9 @@ namespace Phamhilator
 			return false;
 		}
 
-		private static bool IsBadUsername(Post post, ref float accuracy)
+		private static bool IsBadUsername(Post post, ref PostTypeInfo info)
 		{
-			foreach (var ignoreFilter in IgnoreFilterTerms.BadUsernameTerms)
+			foreach (var ignoreFilter in GlobalInfo.IgnoreName.Terms)
 			{
 				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))
 				{
@@ -209,30 +209,27 @@ namespace Phamhilator
 
 			var filtersUsed = 0;
 
-			for (var i = 0; i < BadUsername.Terms.Count; i++)
+			for (var i = 0; i < GlobalInfo.Name.Terms.Count; i++)
 			{
-				var filter = BadUsername.Terms.Keys.ElementAt(i);
+				var filter = GlobalInfo.Name.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					accuracy += BadUsername.Terms[filter];
+					info.Accuracy += GlobalInfo.Name.Terms[filter];
+					info.TermsFound.Add(filter);
 
 					filtersUsed++;
-
-					BadUsername.SetScore(filter, BadUsername.GetScore(filter) + 1);
 				}
 
-				if (i == BadUsername.Terms.Count - 1)
+				if (i == GlobalInfo.Name.Terms.Count - 1 && filtersUsed > 0)
 				{
-					accuracy /= filtersUsed;
+					info.Accuracy /= filtersUsed;
 
 					return true;
 				}
 			}
 
 			return false;
-
-			//return offensive.IsMatch(lower) || badUser.IsMatch(lower);
 		}
 
 		private static List<string> IsBadTagUsed(Post post)

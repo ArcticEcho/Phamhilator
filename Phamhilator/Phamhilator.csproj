@@ -36,9 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\..\..\Downloads\HtmlAgilityPack.1.4.6\Net45\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.0.14.0.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -76,13 +73,19 @@
     <Compile Include="Filters.LQ.cs" />
     <Compile Include="Filters.Spam.cs" />
     <Compile Include="HTMLScrapper.cs" />
-    <Compile Include="IgnoreFilterTerms.cs" />
+    <Compile Include="IgnoreFilters.BadUsername.cs" />
+    <Compile Include="IgnoreFilters.LQ.cs" />
+    <Compile Include="IgnoreFilters.Offensive.cs" />
+    <Compile Include="IgnoreFilters.Spam.cs" />
     <Compile Include="Filters.Offensive.cs" />
     <Compile Include="MessageInfo.cs" />
     <Compile Include="PostChecker.cs" />
     <Compile Include="PostPersistence.cs" />
-    <Compile Include="Stats.cs" />
+    <Compile Include="GlobalInfo.cs" />
     <Compile Include="UserAccess.cs" />
+    <Compile Include="WebDownload.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

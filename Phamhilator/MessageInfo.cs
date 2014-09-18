@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-
-namespace Phamhilator
+﻿namespace Phamhilator
 {
 	public class MessageInfo
 	{
-		public Post Report;
+		public PostTypeInfo Report;
+		public Post Post;
 		public string Body;
 		public int MessageID;
 		public int AuthorID;

@@ -38,7 +38,7 @@ namespace Phamhilator
 			}
 
 			File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Title + "\n");
-			Stats.PostsCaught++;
+			GlobalInfo.PostsCaught++;
 		}
 
 
@@ -71,7 +71,7 @@ namespace Phamhilator
 				}
 
 				messages.Add(new Post { Title = titles[i].Split(']')[1].Trim() });
-				Stats.PostsCaught++;
+				GlobalInfo.PostsCaught++;
 			}
 
 			File.WriteAllText(DirectoryTools.GetPostPersitenceFile(), "");

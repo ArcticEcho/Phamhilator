@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -25,6 +28,7 @@ namespace Phamhilator
 		private int refreshRate = 10000; // In milliseconds.
 		private readonly HashSet<int> spammers = new HashSet<int>();
 		private MessageInfo lastCommand = new MessageInfo();
+		private static readonly List<string> previouslyFoundPosts = new List<string>();
 
 
 
@@ -35,14 +39,14 @@ namespace Phamhilator
 			SwitchToIE9();
 
 			HideScriptErrors(realtimeWb, true);
-			//HideScriptErrors(chatWb, true);
+			HideScriptErrors(chatWb, true);
 
 			new Thread(() =>
 			{
 				do
 				{
 					Thread.Sleep(refreshRate);
-				} while (!Stats.BotRunning);
+				} while (!GlobalInfo.BotRunning);
 
 				while (!exit)
 				{
@@ -51,7 +55,7 @@ namespace Phamhilator
 					do
 					{
 						Thread.Sleep(refreshRate);
-					} while (!Stats.BotRunning);
+					} while (!GlobalInfo.BotRunning);
 				}
 			}).Start();
 
@@ -60,7 +64,7 @@ namespace Phamhilator
 				do
 				{
 					Thread.Sleep(refreshRate / 2);
-				} while (!Stats.BotRunning);
+				} while (!GlobalInfo.BotRunning);
 
 				StartListener();
 
@@ -80,16 +84,19 @@ namespace Phamhilator
 						continue;
 					}
 
-					if (!html.Contains("DIV class=metaInfo")) { continue; }
+					if (html.IndexOf("DIV class=metaInfo", StringComparison.Ordinal) == -1) { continue; }
 
 					var posts = GetAllPosts(html);
 
-					CheckPosts(posts);
+					if (posts.Count != 0)
+					{
+						CheckPosts(posts);
+					}
 
 					do
 					{
 						Thread.Sleep(refreshRate / 2);
-					} while (!Stats.BotRunning);
+					} while (!GlobalInfo.BotRunning);
 				}
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
@@ -100,7 +107,7 @@ namespace Phamhilator
 		{
 			new Thread(() =>
 			{
-				while (!Stats.BotRunning)
+				while (!GlobalInfo.BotRunning)
 				{
 					Thread.Sleep(1000);
 				}
@@ -127,7 +134,9 @@ namespace Phamhilator
 
 					var message = HTMLScraper.GetLastChatMessage(html);
 
-					if (message.MessageID == lastCommand.MessageID || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@sam")))
+					if (message.MessageID == lastCommand.MessageID ||
+						!GlobalInfo.PostedReports.ContainsKey(message.ReplyMessageID) || 
+						(!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@sam")))
 					{
 						lastCommand = message;
 
@@ -146,7 +155,7 @@ namespace Phamhilator
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
-		private IEnumerable<Post> GetAllPosts(string html)
+		private List<Post> GetAllPosts(string html)
 		{
 			var posts = new List<Post>();
 
@@ -156,7 +165,7 @@ namespace Phamhilator
 			{
 				var postURL = HTMLScraper.GetURL(html);
 
-				posts.Add(new Post
+				var post = new Post
 				{
 					URL = postURL,
 					Title = HTMLScraper.GetTitle(html),
@@ -164,7 +173,18 @@ namespace Phamhilator
 					AuthorName = HTMLScraper.GetAuthorName(html),
 					Site = HTMLScraper.GetSite(postURL),
 					Tags = HTMLScraper.GetTags(html)
-				});
+				};
+
+				if (!previouslyFoundPosts.Contains(post.Title))
+				{
+					posts.Add(post);
+					previouslyFoundPosts.Add(post.Title);
+				}
+
+				if (previouslyFoundPosts.Count > 500)
+				{
+					previouslyFoundPosts.RemoveAt(29);
+				}
 
 				var startIndex = html.IndexOf("question-container realtime-question", 100, StringComparison.Ordinal);
 
@@ -176,22 +196,36 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
+			//Parallel.ForEach(posts.Where(p => PostPersistence.Messages.All(pp => pp.Title != p.Title)), post =>
 			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.Title != p.Title)))
 			{
 				var info = PostChecker.CheckPost(post);
-				var message = (info.Type == PostType.BadTagUsed ? "" : " (" + Math.Round(info.Accuracy, 1) + "%)") + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+				string message;
 
-				if (float.IsNaN(info.Accuracy) || PostPersistence.Messages.Any(p => IsSimilar(p.Title, post.Title)))
+				if (post.Score != int.MinValue)
 				{
-					continue;
+					message = " (" + Math.Round(info.Accuracy, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), score " + post.Score + ", by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
+				else if (info.Type == PostType.BadTagUsed)
+				{
+					message = ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+				} 
+				else
+				{
+					message = " (" + Math.Round(info.Accuracy, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+				}
+
+				//if (float.IsNaN(info.Accuracy) && info.Type != PostType.BadTagUsed)
+				//{
+				//	return;
+				//}
 
 				if (SpamAbuseDetected(post))
 				{
 					PostMessage("[Spammer abuse](" + post.URL + ").");
 					PostPersistence.AddPost(post);
 
-					continue;
+					return;
 				}
 
 				switch (info.Type)
@@ -200,9 +234,9 @@ namespace Phamhilator
 					{
 						if (!catchOff) { break; }
 
-						PostMessage("**Offensive**" + message);
+						PostMessage("**Offensive**" + message, post, info);
 						PostPersistence.AddPost(post);
-						
+
 						break;
 					}
 
@@ -210,9 +244,8 @@ namespace Phamhilator
 					{
 						if (!catchOff) { break; }
 
-						PostMessage("**Bad Username**" + message);
+						PostMessage("**Bad Username**" + message, post, info);
 						PostPersistence.AddPost(post);
-						
 
 						break;
 					}
@@ -231,7 +264,7 @@ namespace Phamhilator
 					{
 						if (!catchLQ) { break; }
 
-						PostMessage("**Low Quality**" + message);
+						PostMessage("**Low Quality**" + message, post, info);
 						PostPersistence.AddPost(post);
 
 						break;
@@ -241,8 +274,8 @@ namespace Phamhilator
 					{
 						if (!catchSpam) { break; }
 
-						PostMessage("**Spam**" + message);
-						PostPersistence.AddPost(post);	
+						PostMessage("**Spam**" + message, post, info);
+						PostPersistence.AddPost(post);
 
 						break;
 					}
@@ -250,7 +283,7 @@ namespace Phamhilator
 			}
 		}
 
-		private void PostMessage(string message, int consecutiveMessageCount = 0)
+		private void PostMessage(string message, Post post = null, PostTypeInfo report = null/* int consecutiveMessageCount = 0*/)
 		{
 			if (roomId == 0)
 			{
@@ -266,7 +299,7 @@ namespace Phamhilator
 					chatWb.InvokeScript("eval", new object[]
 					{
 						"$.post('/chats/" + roomId + "/messages/new', { text: '" + message + "', fkey: fkey().fkey });"
-					});
+					});				
 				}
 				catch (Exception)
 				{
@@ -274,7 +307,34 @@ namespace Phamhilator
 				}		
 			});
 
-			//if (!error) { return; }
+			if (error || report == null) { return; }
+
+			Thread.Sleep(5000);
+
+			dynamic doc = null;
+			var html = "";
+
+			var title = WebUtility.HtmlEncode(post.Title);
+
+			while (html.IndexOf(title, StringComparison.Ordinal) == -1)
+			{
+				Dispatcher.Invoke(() => doc = chatWb.Document);
+
+				try
+				{
+					html = doc.documentElement.InnerHtml;
+				}
+				catch (Exception)
+				{
+					return;
+				}
+
+				Thread.Sleep(5000);
+			}		
+
+			var id = HTMLScraper.GetMessageIDByReportTitle(html, title);
+
+			GlobalInfo.PostedReports.Add(id, new MessageInfo{ Post = post, Report = report });
 
 			//consecutiveMessageCount++;
 
@@ -343,8 +403,6 @@ namespace Phamhilator
 
 				if ((username0Id > username1Id + 5 && username0Id < username1Id) || spammers.Contains(username0Id))
 				{
-					PostMessage("`Spammer abuse detected.`");
-
 					spammers.Add(username0Id);
 
 					return true;
@@ -379,26 +437,32 @@ namespace Phamhilator
 
 		private bool IsSimilar(string a, string b)
 		{
-			var diffAllowance = 0.1;
-			var aTotal = 0.0;
-			var bTotal = 0.0;
+			//var diffAllowance = 0.08;
+			//var aTotal = 0.0;
+			//var bTotal = 0.0;
 
-			for (var i = 0; i < a.Length; i++)
-			{
-				aTotal += a[i];
-			}
+			//for (var i = 0; i < a.Length; i++)
+			//{
+			//	aTotal += a[i];
+			//}
 
-			for (var i = 0; i < b.Length; i++)
-			{
-				bTotal += b[i];
-			}
+			//for (var i = 0; i < b.Length; i++)
+			//{
+			//	bTotal += b[i];
+			//}
 
-			if (aTotal > bTotal)
-			{
-				return ((aTotal - bTotal) / Math.Max(aTotal, bTotal)) < diffAllowance;
-			}
+			var t = false;
 
-			return ((bTotal - aTotal) / Math.Max(aTotal, bTotal)) < diffAllowance;
+			//if (aTotal > bTotal)
+			//{
+			//	t = ((aTotal - bTotal) / Math.Max(aTotal, bTotal)) > diffAllowance;
+			//}
+			//else
+			//{
+			//	t = ((bTotal - aTotal) / Math.Max(aTotal, bTotal)) > diffAllowance;
+			//}
+
+			return t;
 		}
 
 
@@ -414,12 +478,12 @@ namespace Phamhilator
 			GetRoomId();
 		}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e)
-		{
-			chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");
+		//private void Button_Click_1(object sender, RoutedEventArgs e)
+		//{
+		//	chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");
 
-			GetRoomId();
-		}
+		//	GetRoomId();
+		//}
 
 		private void Button_Click_2(object sender, RoutedEventArgs e)
 		{
@@ -427,13 +491,13 @@ namespace Phamhilator
 
 			if ((string)b.Content == "Start Monitoring")
 			{
-				Stats.BotRunning = true;
+				GlobalInfo.BotRunning = true;
 
 				b.Content = "Pause Monitoring";
 
 				if (firstStart)
 				{
-					if (System.Diagnostics.Debugger.IsAttached)
+					if (Debugger.IsAttached)
 					{
 						PostMessage("`Phamhilator™ started (debug mode).`");
 					}
@@ -443,7 +507,7 @@ namespace Phamhilator
 					}
 
 					firstStart = false;
-					Stats.UpTime = DateTime.UtcNow;
+					GlobalInfo.UpTime = DateTime.UtcNow;
 				}
 				else
 				{
@@ -452,7 +516,7 @@ namespace Phamhilator
 			}
 			else
 			{
-				Stats.BotRunning = false;
+				GlobalInfo.BotRunning = false;
 
 				b.Content = "Start Monitoring";
 
@@ -540,7 +604,7 @@ namespace Phamhilator
 			}
 		}
 
-		private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		private void MetroWindow_Closing(object sender, CancelEventArgs e)
 		{
 			if (roomId == 0) { return; }
 

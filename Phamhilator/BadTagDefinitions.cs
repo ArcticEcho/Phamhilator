@@ -75,6 +75,10 @@ namespace Phamhilator
 
 			foreach (var dir in Directory.EnumerateDirectories(DirectoryTools.GetBTDFolder()))
 			{
+				var key = Path.GetFileName(dir);
+
+				if (badTags.ContainsKey(key)) { continue; }
+
 				tags.AddRange(File.ReadAllLines(Path.Combine(dir, "BadTags.txt")));
 
 				for (var i = 0; i < tags.Count; i++)
@@ -87,7 +91,7 @@ namespace Phamhilator
 					}
 				}
 
-				badTags.Add(Path.GetFileName(dir), new HashSet<string>(tags));
+				badTags.Add(key, new HashSet<string>(tags));
 
 				tags.Clear();
 			}

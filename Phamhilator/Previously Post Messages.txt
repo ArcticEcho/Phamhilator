@@ -1,105 +1,4 @@
-2475148.88823961]Google Datastore returning “503 Backend Error”
-2475185.33334081]How to clear Linkedin Share cache?
-2475194.33182216]plsql script continue excution even there ar promt statement
-2475249.25831378]jqBootstrapValidation asp:textbox
-2475253.95869929]Swipe function using JQuery and iscroll doesn't work - Phonegap (Android)
-2475259.92389048]KeePass URL with space in Notes not working
-2475273.98927831]how do I get colour into smoke?
-2475284.3679386]Xcode doesn't work
-2475290.2510751]How to solve Robots.txt problem with WordPress fresh install?
-2475290.69011688]Equivalent sequence/stepper relay to “FINDER - 20.21.9.012.4000”
-2475291.0296863]Rails 4 error saving record. 406 and ActionController::UnknownFormat
-2475293.73354095]Help me remember a black and white movie with a song that became a jazz standard
-2475294.40766284]Parse order problem with CE Image?
-2475294.91369178]Invalid id error when using check50
-2475301.04977608]00 honda accord ex 3.0 coupe fuel pressure problems
-2475301.5548383]SMTP server error: 5.7.0 Must issue a STARTTLS command first
-2475302.06091725]Laravel 4 generate not working
-2475303.20261588]Why my GCM Client implementation is not working?
-2475303.70791145]question with javascript / jquery event.timeStamp
-2475304.38508352]Problem with Inserting a New Order Item
-2475322.51147029]“for loop” error in c++
-2475325.69913594]How and where do I report a problem with Twitter that will be dealt with, not ignored?
-2475325.69931929]Why this syntax error?
-2475327.13383467]Validation for inputFields inside Pageblock table is not working
-2475332.62856562]Someone can help how to display the Grid line on QGis Print composer. I put a check on the GRID but it doesnt appear
-2475333.64095686]Trademark Law Question
-2475856.02049736]foreach() loop error in R
-2475856.02064737]DirectX11 Linker error
-2475880.71360972]why validation with extend doesn't work?
-2475881.1340171]Decidable problems - is Language of arbitrary TM recursive?
-2475883.1596663]Problem with accessing the layer legend using pyqgis in QGIS 2.4
-2475883.83318815]login issue in magento
-2475886.1448037]Validate Secfic URL in EditText for android
-2475887.16047846]What does WCF Error 404.17 mean?
-2475889.62560279]Geometric locus
-2475892.49951717]WiFi not working in Ubuntu 13.10 with Ralink RT3290
-2475892.49973385]angularjs Rest API
-2475892.66941022]http upload error as a subscribed user
-2475893.00829627]The server was unable to save the form at this time. please try again
-2475894.88097005]org.springframework.data.web.PageableHandlerMethodArgumentResolver.isFallbackPageable
-2475897.00762502]hi…i m not experienced but i had dual boot Ubuntu and Windows 7. i deleted Ubuntu and freed memory using disk manager…now
-2475897.00787504]Converting PHP Array to Json Object
-2475898.9823713]facebook login Permissions error
-2475899.48855026]Requirejs conflict
-2475900.67175126]Maintaining session info through out all the pages is not working
-2475901.17681349]Please identify the name of this angular typeface?
-2475901.68309244]Dropdown zip-codes
-2475902.18778798]Google Drive API does not return full user object
-2475918.48046986]Jsoup.connect Throws error
-2475918.48065321]MySQL LOAD DATA INFILE in Python not working using variable
-2475918.48081988]how to create ajax auto-complete search using webservice jquery send two values
-2475919.45775909]wget “ERROR 400: Bad Request” or “ERROR 403: Forbidden” while following provided example
-2475944.1474546]Restart daemon from bash script executed from java app doesn't work on linux fedora
-2475954.7535279]Relationship between an NP-hard problems with the subsets of them (part 2)?
-2475955.2577234]Help with Shell Scripts, creating a list of options for users
-2475971.02359183]Only check facebook login but behind a firewall
-2475971.22035308]Master Page v4.master
-2475974.76903939]How to get an edu email?
-2475975.55565104]labelling residuals
-2475978.86092343]Friedmann equations question
-2475978.86110677]Chromium profile “could not be opened correctly” errors
-2475983.19892155]Training images
-2475983.54024107]Adding a Math.celi
-2475984.99199077]Please explain The Bias-Dependence Change of Barrier Height of Schottky Diodes under applied Bias
-2475987.1819327]Problem enabling local targets in Jitterbit
-2476146.72924161]how to change this date format 1-Jul-03 into 20030701 ( most left 4 digits represent year then 2 digits as month then 2 as date)
-2476146.81556322]Apple reject app “We found that your app crashed on iPhone 5s running iOS 7.1.2 ”
-2476157.08996755]magento SQLSTATE42000 1044 Access denied for user to Database
-2476218.64848849]Checking target webpage for specific updates and posting them into form on site that requires logging in - what's the tool for this (windows pc)
-2476260.03870588]Unit testing database triggers
-2476274.02168899]Saving files on external storage on Nexus 7 and retrieving from PC
-2476296.44240472]How To Understand and Symbolicate Crash Report on Jailbroken iPhone 5
-2476300.15883395]How to make Terminal bounce its application Dock icon in OS X
-2476359.42265698]Hibernate Insert is trying to update identity column
-2476359.75967626]Convert String into Component name in Java
-2476362.32628973]The difference between final static and static final
-2476368.67438615]Web Api Security client and user
-2476412.14217237]Need help displaying output for Golf Game
-2476412.81687762]Disabled, no-income except SS, on various programs that help…What if I receive a windfall?
-2476412.8170443]What is the square root of 50 623 225?
-2476417.11007318]Linux, Xorg, & KDE: Run Evolution As Different User
-2476421.98268521]limit with two variables. headscratcher(or not)! please help!
-2476427.1862495]How to give rank permissions with Enums
-2476432.01169217]Need help with flaws statistical reasoning
-2476439.10461453]CraftBukkit Permissions.yml syntax
-2476445.32442028]What is the meaning of 00406434 dword406434 dd 0?
-2476455.74346622]Can someone help me to find a counter example that shows that a congruent to b mod m does not imply (a+b)^m congruent to a^m +b^m mod m
-2476468.59628469]Can someone help me to find a counter example that shows that $a equiv b mod m$ does not imply $(a+b)^m equiv a^m +b^m mod m$
-2476480.37679183]When I join particles they somehow multipy - halp
-2476486.50752582]Minecraft crashing 1.7.10 with Forge 10.13.0.1180
-2476488.00441144]Google Analytics on domain redirected
-2476504.02564446]Need help with an expression involving the ceiling function
-2476539.5061405]AVAudioPlayer AudioToolbox AudioSessionPropertyListeners Crash
-2476541.81555593]Get two Data in one PFFile
-2476550.49216887]Representing Fraction of Second with ISO 8601:2004
-2476553.64084896]Best way to store large data
-2476592.19530415]Can't set width of AlertDialog
-2476600.52158038]Need help with flaws in statistical reasoning
-2476609.68673793]Backbone Marionette App not loading in IE8 and no errors to help find issue
-2476628.54359982]C# Selenium Web Driver Exception after using SendKeys Function
 2476653.04146768]Need some vector calculus help
-2476660.19932709]What can I do on the ground in order to help my body acclimate to aerobatics?
 2476708.2058229]How to integrate KeyPass2 and Chrome/Chromium using ChromIPass in Ubuntu 13.04 & 13.10
 2476725.49089489]Bulk sms gaitway provider in India
 2476727.47420833]Error while reading image data:SqlException: jcc10120119364.11.77 Invalid operation: Lob is closed. ERRORCODE=-4470, SQLSTATE=null
@@ -400,3 +299,101 @@
 2478169.99499793]cec-command to switch to TV 0 from raspberry pi not working
 2478173.8087994]MonoGame SharpDX Error 'The Parameter is Incorrect' when using graphics.DrawUserPrimitives
 2478175.01128484]Object Required Error Copying Values Using Conditional Loop
+2478957.5726392]Spring @Transactional is not working
+2478957.65752739]Receving 500 error when changing certain configuration options
+2478957.65771073].htaccess does not work on pages reached from form post
+2478961.27018402]permalink problem in my .htaccess page
+2478961.27051737]Why “две ванные”?
+2478961.88606925]Getting error while creating table in magento1.9 via setup script
+2478963.75159261]it's show error (System.NullPointerException: Attempt to de-reference a null object)
+2478965.58093058]After importing Database on host my joomla site dose not worked well
+2478966.42664562]Update Panel doesn't work inside web part zone
+2478966.95687595]nginx Permission denied error
+2478967.2206577]Getting an error when uploading audio file via flash
+2478969.41704999]iOS 8 Push Notification Action not working in background activation mode
+2478969.75411927]How to use -n flag in a sed script, I used it and it is giving error
+2478969.92237889]Turbo C++ the increment is stuck with 2 in my BUS No. Please help me, can't use any compiler just turbo C++
+2478970.42764113]How to solve Error of import re2 in Python in Mac OS X?
+2478970.59590075]What does “amor non conosce travaglio” mean please?
+2478973.41852886]problems with animation when deleting the last row of tableView ios7
+2478973.59310552]Redirection from observer not working (Fullpage Cache + APC turned on)
+2478974.73022055]Problema ao passar Bean polulada para controller e inserir no BD utilizando Java com Spring mvc
+2478975.4075593]Formatting help: vertical rule, headers
+2478978.94262816]ZF2 Skeleton Application out of memory error
+2478978.94344487]CorelDraw X6 Shadow problem when Exporting to pdf
+2478979.47142507]Frame error size in IOS8
+2478987.73334763]Excel C# Com Chart Multiple Series Problem
+2478988.23952658]Help with PN512 basic PCB antenna design
+2478989.60017107]Linked questions does not display
+2478990.91529629]Salesforce exam
+2478992.61209334]Auto Layout with Visual Format Language not working as aspected?
+2478994.24235325]Why do WhatsApp is not working properly after upgrading my Lumia 525 to Windows 8.1?
+2478997.95038201]Problem with DataAnnotations in partial class
+2478998.17484485]MS Word Formatting Question
+2479000.40310563]Sorry, unrecognized username or password error even after login
+2479029.6601957]Boot problem Ubuntu-Win7
+2479034.45963688]Drupal 7 form loaded via ajax but ajax submit not working
+2479042.01805253]Errors while building Cassandra debian package
+2479042.03553687]Marketo “Import Lead” fails with error 610 Requested resource not found
+2479047.08364227]How do I get editing help for technical (mathematic/statistic) paper publishing?
+2479053.64603428]Where for help on English Reasoning Questions?
+2479054.9278576]Fatal Error : Call to undefined method Gridmodel::getentry()
+2479055.56009376]There is an error when it comes to cvReleaseImage from openCV
+2479061.66782644]SKLightNode not working on real device iPhone 5
+2479068.86098786]Container view with constrains will not work properly
+2479073.7307664]MS Access error, how to fix it?
+2479076.69193577]Alinhamento Footer
+2479190.66015438]getterms from registered taxonomies not working
+2479194.43720374]UIScrollView Setting contentoffset in viewwillappear not working
+2479195.93293929]Can't fix Else Without If error
+2479201.20284072]how can i make the image disappear by just answering math question using javascript?
+2479256.81112133]Ajax in AspNetMvc error request
+2479275.25137605]Sum of (example: 0+1+2+3 = 6 , 0+1+2+3+4+5+6+7 = 28 and so on)
+2479275.33574754]Spreading Vector
+2479275.33588088]Getting error 500 when trying to obtain access token from authorization code
+2479275.54804302]ap-hotspot error “Another process is already runnung”
+2479277.82240644]How to stop error messages in terminal
+2479278.49856178]beginner level! very new. declaring a variable
+2479281.98614459]Spreading vector
+2479283.67197435]Bing Map REST API is not working
+2479283.84040065]use android apps like whats app on ubuntu (old answers do not work )
+2479285.65052084]3D data visualisation
+2479286.81163726]euclideandistances error in scikit-learn?
+2479288.30583939]Unification Theory
+2479288.6523092]repartition does not work with SparkSQL
+2479290.34293924]Periodic Points Homework Help
+2479291.18562077]GDAL Python Not Working Correctly - Raster Calculations
+2479291.65103072]Cross-browser HTML5 video compatibility not working with multiple video formats
+2479295.51418502]Problem in creating neighbors,area and perimeter in spatial econometrics using R
+2479296.63651587]I dont understand how this Maclaurin series got manipulated into looking like this other Maclaurin series. Help Please
+2479299.84558276]iOS Data Security
+2479302.00888983]PayPal connectivity - Intermittent problems with PDT
+2479302.51413539]4x4 3D Matrix Manipulation
+2479303.02451458]Error: Cannot find one or more components. Please reinstall application
+2479307.52580537]'None' is not None
+2479308.20231073]mysqldump error: Got packet bigger than maxallowedpacket'
+2479310.01001413]Error in MD5 checksums when trying to install AMPPS stack
+2479313.07435607]code in c on local machine is fine but runtime error on hackerrank in algorithm warm up exercise “angry children”?
+2479315.88618356]iMessage not working, contacts are red
+2479390.4196633]iOS 8 Handoff does not work between iPhone and iPad
+2479393.30367825]Two Card Probability Problem
+2479460.7536195]Struct at overrun error and framing error in USART PIC18F4550
+2479460.82114003]RadioButton setChecked() not working
+2479466.13552733]PHP - SOAP-ERROR: Encoding: object hasn't property 'xxxx'
+2479466.45281215]Opportunity Queues
+2479472.93111602]Astrophysics Homework Question
+2479476.15465039]Subtracts A from B
+2479506.01989192]Copyright question
+2479507.68382042]Backbone fetch producing 404 error
+2479509.587896]XML Parser Returning unexpected token error and null pointer exception for some of the URLs used
+2479509.75690567]Draw a car wheel
+2479509.92429857]Tags is cut off
+2479510.17612964]Mac bluetooth speaker/mic not working properly when switching to soft phone
+2479510.34475596]Error 001359 when publishing map service to ArcGIS server 10.1
+2479579.72634102]I can't download apps on my Android phone, I've tried everything
+2479581.58053041]PSEXEC The system cannot find the file specified error
+2479581.74793998]Firefox/Icecat: SQLite Version Error: The application has been updatet, but your version of SQLite is too old and the application cannot run
+2479582.35432467]dataTables fixed columns plugin NOT working
+2479582.69857769]Store a FIND result as a variable, then test it for errors. Batch
+2479583.3765998]Need help for awk script. Cut and merge characters in a line
+2479583.62833087]Codeigniter URI error with permitted characters
