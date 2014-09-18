@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -134,9 +135,7 @@ namespace Phamhilator
 
 					var message = HTMLScraper.GetLastChatMessage(html);
 
-					if (message.MessageID == lastCommand.MessageID ||
-						!GlobalInfo.PostedReports.ContainsKey(message.ReplyMessageID) || 
-						(!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@sam")))
+					if (message.MessageID == lastCommand.MessageID || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@sam")))
 					{
 						lastCommand = message;
 
@@ -202,11 +201,11 @@ namespace Phamhilator
 				var info = PostChecker.CheckPost(post);
 				string message;
 
-				if (post.Score != int.MinValue)
+				/*if (post.Score != int.MinValue)
 				{
 					message = " (" + Math.Round(info.Accuracy, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), score " + post.Score + ", by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
-				else if (info.Type == PostType.BadTagUsed)
+				else*/ if (info.Type == PostType.BadTagUsed)
 				{
 					message = ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				} 
@@ -420,10 +419,10 @@ namespace Phamhilator
 		private void SwitchToIE9()
 		{
 			const string installkey = @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION";
-			var entryLabel = "Phamhilator.exe";
+			const string entryLabel = "Phamhilator.exe";
 			var osInfo = Environment.OSVersion;
 
-			var version = osInfo.Version.Major.ToString() + '.' + osInfo.Version.Minor;
+			var version = osInfo.Version.Major.ToString(CultureInfo.InvariantCulture) + '.' + osInfo.Version.Minor;
 			var editFlag = (uint)((version == "6.2") ? 0x2710 : 0x2328); // 6.2 = Windows 8 and therefore IE10
 
 			var existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, false); // readonly key

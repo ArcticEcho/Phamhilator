@@ -19,7 +19,7 @@ namespace Phamhilator
 			{
 				command = input.Body.Remove(0, 2).TrimStart();
 			}
-			else if (input.Body.ToLowerInvariant().StartsWith("@sam") && GlobalInfo.PostedReports.ContainsKey(input.ReplyMessageID)) // TODO: Check if message is reply to a bot message. May need to create a new type to hold chat message data.
+			else if (input.Body.ToLowerInvariant().StartsWith("@sam") && GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID)) // TODO: Check if message is reply to a bot message. May need to create a new type to hold chat message data.
 			{
 				command = input.Body.Remove(0, 4).TrimStart();
 			}

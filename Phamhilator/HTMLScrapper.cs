@@ -55,13 +55,11 @@ namespace Phamhilator
 
 		public static int GetMessageIDByReportTitle(string html, string reportTitle)
 		{
-			var startIndex = html.LastIndexOf(reportTitle) - 286;
+			var startIndex = html.LastIndexOf(reportTitle, StringComparison.Ordinal) - 286;
 
-			startIndex = html.IndexOf("click for message actions", startIndex) + 53;
+			startIndex = html.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
 
-			var t = html.Substring(startIndex, html.IndexOf("#", startIndex) - startIndex);
-
-			return int.Parse(t);
+			return int.Parse(html.Substring(startIndex, html.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
 		}
 
 		public static string GetSite(string postURL)
@@ -104,11 +102,9 @@ namespace Phamhilator
 		{
 			var startIndex = html.LastIndexOf("signature user-", StringComparison.Ordinal) + 15;
 				
-			// Get username.
+			// Get user ID.
 
-			var e = html.IndexOf(@"/", startIndex) - 8;
-
-			var authorID = html.Substring(startIndex, e - startIndex);//WebUtility.HtmlDecode(html.Substring(startIndex, (html.IndexOf(">", startIndex + 1, StringComparison.Ordinal) - startIndex) - 5));
+			var authorID = html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.Ordinal) - 8) - startIndex);
 
 			// Get message.
 
@@ -116,51 +112,51 @@ namespace Phamhilator
 
 			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
 
-			// TODTO: initialise retruen object's Report (and Post field?).
-
-			return new MessageInfo 
+			var info = new MessageInfo 
 			{ 
 				Body = message, 
-				ReplyMessageID = GetMessageReplyID(html, message), 
+				RepliesToMessageID = GetMessageReplyID(html, message), 
 				AuthorID = int.Parse(authorID),
 				MessageID = GetLastestMessageID(html)
 			};
+
+			if (info.RepliesToMessageID != -1 && GlobalInfo.PostedReports.ContainsKey(info.RepliesToMessageID))
+			{
+				info.Report = GlobalInfo.PostedReports[info.RepliesToMessageID].Report;
+				info.Post = GlobalInfo.PostedReports[info.RepliesToMessageID].Post;
+			}
+
+			return info;
 		}
 
 
 
 		private static int GetLastestMessageID(string html)
 		{
-			// message actions\" href=\"/transcript/message/
+			var startIndex = html.LastIndexOf("click for message actions", StringComparison.Ordinal) + 53;
 
-			var startIndex = html.LastIndexOf("click for message actions") + 53;
-
-			var t = html.Substring(startIndex, html.IndexOf("#", startIndex) - startIndex);
-
-			return int.Parse(t);
+			return int.Parse(html.Substring(startIndex, html.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
 		}
 
 		private static int GetMessageReplyID(string html, string messageContent)
 		{
-			var messageIndex = WebUtility.HtmlDecode(html).LastIndexOf(messageContent);
+			var messageIndex = WebUtility.HtmlDecode(html).LastIndexOf(messageContent, StringComparison.Ordinal);
 
 			if (messageIndex == -1)
 			{
 				return -1;
 			}
 
-			var infoIndex = html.IndexOf("class=reply-info", messageIndex - 190);
+			var infoIndex = html.IndexOf("class=reply-info", messageIndex - 190, StringComparison.Ordinal);
 
 			if (messageIndex - infoIndex > 190 || infoIndex == -1) // Message isn't a replay
 			{
 				return -1;
 			}
 
-			infoIndex = html.IndexOf(@"/message/", infoIndex) + 9;
+			infoIndex = html.IndexOf(@"/message/", infoIndex, StringComparison.Ordinal) + 9;
 
-			var t = html.Substring(infoIndex, html.IndexOf("#", infoIndex) - infoIndex);
-
-			return int.Parse(t);
+			return int.Parse(html.Substring(infoIndex, html.IndexOf("#", infoIndex, StringComparison.Ordinal) - infoIndex));
 		}
 	}
 }

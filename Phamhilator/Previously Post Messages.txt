@@ -1,8 +1,4 @@
-2476653.04146768]Need some vector calculus help
-2476708.2058229]How to integrate KeyPass2 and Chrome/Chromium using ChromIPass in Ubuntu 13.04 & 13.10
-2476725.49089489]Bulk sms gaitway provider in India
 2476727.47420833]Error while reading image data:SqlException: jcc10120119364.11.77 Invalid operation: Lob is closed. ERRORCODE=-4470, SQLSTATE=null
-2476728.83075258]NetSuite Web Services API - How to “partially” fulfil a sales order
 2477345.34493064]How does this code works without error?
 2477345.79090615]qooxdoo VirtualTree setMaxHeight for item like in normal Tree
 2477345.79127284]Finite Automata
@@ -397,3 +393,12 @@
 2479582.69857769]Store a FIND result as a variable, then test it for errors. Batch
 2479583.3765998]Need help for awk script. Cut and merge characters in a line
 2479583.62833087]Codeigniter URI error with permitted characters
+2479645.70424402]Why is it a security problem not to update ones browser?
+2479646.5465922]Store code in index.php not working - But website works (?)
+2479647.67774023]Windows 7 Mobile Device center Xperia x1 problem
+2479649.37428726]NA are not allowed
+2479649.54183018]OpenCL barrier() not working even inside one workgroup
+2479649.71013981]Ajuda em trabalho
+2479649.96205421]Cairo-dock removal problem
+2479650.12954713]iMessage not working as contacts are red
+2479651.25281138]Transmembrane Protein Problem
