@@ -1,8 +1,8 @@
 <h2>Term Commands:</h2>
 
- - <code>>>add term (lq/spam/off/name) (regex term here)</code> Adds a new regex term to the specified filter for catching posts. 
+ - <code>>>add term (lq/spam/off/name) (regex term here)</code> Adds a new regex term to the specified filter for catching posts (lq = low quality filter, spam = spam filter, off = offensive filter, name = username filter). 
 
- - <code>>>remove term (lq/spam/off/name) (term)</code> Removes the a term from the specified filter for catching posts.
+ - <code>>>remove term (lq/spam/off/name) (term)</code> Removes a term from the specified filter for catching posts.
  
  - <code>>>addis term (lq/spam/off/name) (site, e.g., stackoverflow.com) (term)</code> Adds a new term to the filter for ignoring posts from the specified site.
  
