@@ -1,4 +1,3 @@
-2476727.47420833]Error while reading image data:SqlException: jcc10120119364.11.77 Invalid operation: Lob is closed. ERRORCODE=-4470, SQLSTATE=null
 2477345.34493064]How does this code works without error?
 2477345.79090615]qooxdoo VirtualTree setMaxHeight for item like in normal Tree
 2477345.79127284]Finite Automata
@@ -402,3 +401,12 @@
 2479649.96205421]Cairo-dock removal problem
 2479650.12954713]iMessage not working as contacts are red
 2479651.25281138]Transmembrane Protein Problem
+2479669.22075575]Help me in this excercise with Hermetian scalar product.
+2479669.3895154]How to deal with “Clang LLVM 1.0 error”?
+2479669.55814171]Matrix Algebra $(A+B)^2$ help
+2479669.72576797]Regression problem without complete data set
+2479669.97944915]Accidentally rm -r the wrong etc folder… Help?
+2479672.35670178]java.lang.OutOfMemoryError in recursive threads
+2479674.67866792]Gateway Error when doing a credit memo
+2479677.92230345]Two Dimensional Kinematics. Help needed
+2479679.36961957]Logging in to AWS

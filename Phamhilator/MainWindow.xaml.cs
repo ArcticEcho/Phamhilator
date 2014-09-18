@@ -214,6 +214,8 @@ namespace Phamhilator
 					message = " (" + Math.Round(info.Accuracy, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
 
+				// TODO: Check if post title is similar to any previously posted reports.
+
 				//if (float.IsNaN(info.Accuracy) && info.Type != PostType.BadTagUsed)
 				//{
 				//	return;
@@ -434,34 +436,29 @@ namespace Phamhilator
 			}
 		}
 
+		// TODO: verify method returns correct value.
 		private bool IsSimilar(string a, string b)
 		{
-			//var diffAllowance = 0.08;
-			//var aTotal = 0.0;
-			//var bTotal = 0.0;
+			var diffAllowance = 0.1;
+			var aTotal = 0.0;
+			var bTotal = 0.0;
 
-			//for (var i = 0; i < a.Length; i++)
-			//{
-			//	aTotal += a[i];
-			//}
+			for (var i = 0; i < a.Length; i++)
+			{
+				aTotal += a[i];
+			}
 
-			//for (var i = 0; i < b.Length; i++)
-			//{
-			//	bTotal += b[i];
-			//}
+			for (var i = 0; i < b.Length; i++)
+			{
+				bTotal += b[i];
+			}
 
-			var t = false;
+			if (aTotal > bTotal)
+			{
+				return ((aTotal - bTotal) / Math.Max(aTotal, bTotal)) < diffAllowance;
+			}
 
-			//if (aTotal > bTotal)
-			//{
-			//	t = ((aTotal - bTotal) / Math.Max(aTotal, bTotal)) > diffAllowance;
-			//}
-			//else
-			//{
-			//	t = ((bTotal - aTotal) / Math.Max(aTotal, bTotal)) > diffAllowance;
-			//}
-
-			return t;
+			return ((bTotal - aTotal) / Math.Max(aTotal, bTotal)) < diffAllowance;
 		}
 
 

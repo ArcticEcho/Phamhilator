@@ -607,7 +607,7 @@ namespace Phamhilator
 						GlobalInfo.LQ.SetScore(term, GlobalInfo.LQ.GetScore(term) - 1);
 					}
 
-					return "FP registered.";
+					return "`FP registered.`";
 				}
 
 				case PostType.Offensive:
@@ -618,7 +618,7 @@ namespace Phamhilator
 						GlobalInfo.Off.SetScore(term, GlobalInfo.Off.GetScore(term) - 1);
 					}
 
-					return "FP registered.";
+					return "`FP registered.`";
 				}
 
 				case PostType.Spam:
@@ -628,7 +628,7 @@ namespace Phamhilator
 						GlobalInfo.Spam.SetScore(term, GlobalInfo.Spam.GetScore(term) - 1);
 					}
 
-					return "FP registered.";
+					return "`FP registered.`";
 				}
 
 				case PostType.BadUsername:
@@ -638,7 +638,7 @@ namespace Phamhilator
 						GlobalInfo.Name.SetScore(term, GlobalInfo.Name.GetScore(term) - 1);
 					}
 
-					return "FP registered.";
+					return "`FP registered.`";
 				}
 			} 
 			
@@ -656,7 +656,7 @@ namespace Phamhilator
 						GlobalInfo.LQ.SetScore(term, GlobalInfo.LQ.GetScore(term) + 1);
 					}
 
-					return "TP registered.";
+					return "`TP registered.`";
 				}
 
 				case PostType.Offensive:
@@ -666,7 +666,7 @@ namespace Phamhilator
 						GlobalInfo.Off.SetScore(term, GlobalInfo.Off.GetScore(term) + 1);
 					}
 
-					return "TP registered.";
+					return "`TP registered.`";
 				}
 
 				case PostType.Spam:
@@ -676,7 +676,7 @@ namespace Phamhilator
 						GlobalInfo.Spam.SetScore(term, GlobalInfo.Spam.GetScore(term) + 1);
 					}
 
-					return "TP registered.";
+					return "`TP registered.`";
 				}
 
 				case PostType.BadUsername:
@@ -686,7 +686,7 @@ namespace Phamhilator
 						GlobalInfo.Name.SetScore(term, GlobalInfo.Name.GetScore(term) + 1);
 					}
 
-					return "TP registered.";
+					return "`TP registered.`";
 				}
 			}
 

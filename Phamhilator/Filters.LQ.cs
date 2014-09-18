@@ -106,11 +106,15 @@ namespace Phamhilator
 								if (t == key.ToString())
 								{
 									data[ii] = newScore + "]" + t;
+
+									break;
 								}
 							}
 						}
 
 						File.WriteAllLines(DirectoryTools.GetLQTermsFile(), data);
+
+						return;
 					}
 				}
 			}

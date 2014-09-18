@@ -10,7 +10,6 @@ namespace Phamhilator
 		public static PostTypeInfo CheckPost(Post post)
 		{
 			var info = new PostTypeInfo();
-			var accuracy = 0.0f;
 
 			if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
 			{
@@ -19,16 +18,16 @@ namespace Phamhilator
 				return info;
 			}
 
-			if (post.Score >= 2)
-			{
-				return info;
-			}
+			//if (post.Score >= 2)
+			//{
+			//	return info;
+			//}
 
 			if (IsLowQuality(post, ref info))
 			{
 				info.Type = PostType.LowQuality;
 
-				info.Accuracy = (accuracy / GlobalInfo.LQ.HighestScore) * 100;
+				info.Accuracy = (info.Accuracy / GlobalInfo.LQ.HighestScore) * 100;
 			}
 			else if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
 			{
@@ -38,19 +37,19 @@ namespace Phamhilator
 			{
 				info.Type = PostType.Spam;
 
-				info.Accuracy = (accuracy / GlobalInfo.Spam.HighestScore) * 100;
+				info.Accuracy = (info.Accuracy / GlobalInfo.Spam.HighestScore) * 100;
 			}
 			else if (IsOffensive(post, ref info))
 			{
 				info.Type = PostType.Offensive;
 
-				info.Accuracy = (accuracy / GlobalInfo.Off.HighestScore) * 100;
+				info.Accuracy = (info.Accuracy / GlobalInfo.Off.HighestScore) * 100;
 			}
 			else if (IsBadUsername(post, ref info))
 			{
 				info.Type = PostType.BadUsername;
 
-				info.Accuracy = (accuracy / GlobalInfo.Name.HighestScore) * 100;
+				info.Accuracy = (info.Accuracy / GlobalInfo.Name.HighestScore) * 100;
 			}
 
 			return info;
@@ -89,20 +88,6 @@ namespace Phamhilator
 			}
 
 			return false;
-			//if (post.Site.StartsWith("fitness") ||
-			//	((post.Site.StartsWith("stackoverflow") || post.Site.StartsWith("codereview") || post.Site.StartsWith("english")) && lower.Contains("best")) ||
-			//	(post.Site.StartsWith("homebrew") && lower.Contains("naturally")) ||
-			//	(post.Site.StartsWith("math") && lower.Contains("work out")) ||
-			//	(post.Site.StartsWith("rpg") && lower.Contains("health")) ||
-			//	(phoneNumber.IsMatch(lower) && lower.Contains("error")) ||
-			//	(lower.Contains("bettery") && lower.Contains("health")))
-			//{
-			//	return false;
-			//}
-
-			//return spam.IsMatch(lower) ||
-			//	(phoneNumber.IsMatch(lower) && !post.Site.StartsWith("math") && !post.Site.StartsWith("patents") && !post.Site.StartsWith("history")) ||
-			//	(lower.Contains("http://") && lower.Contains(".com"));
 		}
 
 		private static bool IsLowQuality(Post post, ref PostTypeInfo info)
@@ -138,32 +123,10 @@ namespace Phamhilator
 			}
 
 			return false;
-			//var wordCount = SpaceCount(post.Title);
-
-			//if ((lower.Contains("q") && post.Site.StartsWith("math")) ||
-			//	(lower.Contains("beginner") && lower.Length > 45) ||
-			//	((lower.Contains("question") || lower.Contains("help")) && post.Site.StartsWith("meta")) ||
-			//	(lower.Contains("problem") && (post.Site.StartsWith("math") || post.Site.StartsWith("gardening"))) ||
-			//	(lower.Contains("error") && (lower.Contains("certificate") || lower.Contains("results in") || post.Site.StartsWith("programmers"))) ||
-			//	(lower.Length > 20 && (post.Site.Contains("codereview") || post.Site.StartsWith("skeptics") || post.Site.Contains("ell") || post.Site.Contains("english") || post.Site.Contains("math") || post.Site.Contains("codegolf"))))
-			//{
-			//	return false;
-			//}
-
-			//return wordCount <= 2 ||
-			//	   lowQuality.IsMatch(lower) ||
-			//	   (lower.Contains("true") && lower.Contains("false")) ||
-			//	   post.Title.All(c => Char.IsUpper(c) || !Char.IsLetter(c)) ||	   
-			//	   (lower.Length < 25 && lower.All(c => Char.IsLower(c) || !Char.IsLetter(c))) ||
-			//	   (lower.Contains("error") && (post.Title.Length < 35 || lower.Any(Char.IsDigit)) ||
-			//	   (lower.Contains("how do i") && post.Title.Length < 75 && Char.IsLower(post.Title[0])) ||
-			//	   (lower.Length < 35 && (lower.Contains("problem") || lower.Contains("issue"))));
 		}
 
 		private static bool IsOffensive(Post post, ref PostTypeInfo info)
 		{
-			//return offensive.IsMatch(post.Title.ToLowerInvariant());
-
 			foreach (var ignoreFilter in GlobalInfo.IgnoreOff.Terms)
 			{
 				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))

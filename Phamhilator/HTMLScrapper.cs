@@ -55,11 +55,13 @@ namespace Phamhilator
 
 		public static int GetMessageIDByReportTitle(string html, string reportTitle)
 		{
-			var startIndex = html.LastIndexOf(reportTitle, StringComparison.Ordinal) - 286;
+			var decoded = WebUtility.HtmlDecode(html);
 
-			startIndex = html.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
+			var startIndex = decoded.LastIndexOf(reportTitle, StringComparison.Ordinal) - 286;
 
-			return int.Parse(html.Substring(startIndex, html.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
+			startIndex = decoded.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
+
+			return int.Parse(decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
 		}
 
 		public static string GetSite(string postURL)

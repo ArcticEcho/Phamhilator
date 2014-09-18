@@ -8,8 +8,8 @@ namespace Phamhilator
 	public class Post
 	{
 		//private bool scoreBodyPopulated;
-		private int score = int.MinValue;
-		private string body = "";
+		//private int score = int.MinValue;
+		//private string body = "";
 
 		public string Title;
 		public string AuthorName;
@@ -18,31 +18,31 @@ namespace Phamhilator
 		public string Site;
 		public List<string> Tags;
 
-		public int Score
-		{
-			get
-			{
-				//if (!scoreBodyPopulated)
-				//{
-				//	PopulateScoreAndBody();
-				//}
+		//public int Score
+		//{
+		//	get
+		//	{
+		//if (!scoreBodyPopulated)
+		//{
+		//	PopulateScoreAndBody();
+		//}
 
-				return score;
-			}
-		}
+		//		return score;
+		//	}
+		//}
 
-		public string Body
-		{
-			get
-			{
-				//if (!scoreBodyPopulated)
-				//{
-				//	PopulateScoreAndBody();
-				//}
+		//public string Body
+		//{
+		//	get
+		//	{
+		//if (!scoreBodyPopulated)
+		//{
+		//	PopulateScoreAndBody();
+		//}
 
-				return body;
-			}
-		}
+		//		return body;
+		//	}
+		//}
 
 
 
