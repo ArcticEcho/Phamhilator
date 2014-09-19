@@ -8,9 +8,9 @@
  
  - <code>>>wremove term (lq/spam/off/name) (site, e.g., stackoverflow.com) (term)</code> Removes a term from the specified subfilter of the whitelist.
  
- - <code>>>(+1/uv/upvote) (lq/spam/off/name) (term)</code> Increments the score of the specicifed trem.
+ - <code>>>(+1/uv/upvote) (lq/spam/off/name) (term)</code> Increments the score of the specified trem.
  
- - <code>>>(-1/dv/downvote) (lq/spam/off/name) (term)</code> Decrements the score of the specicifed trem.
+ - <code>>>(-1/dv/downvote) (lq/spam/off/name) (term)</code> Decrements the score of the specified trem.
  
 <h2>Bot Operation Commands:</h2>
 
@@ -24,7 +24,6 @@
  
  - <code>>>remove tag (site) (tag name)</code> Removes a tag from the specified site from the BTD.
  
-
 <h2>FP/TP Commands:</h2>
 
  - <code>@sam (fp/false/false pos/false positive)</code> (Assuming you're replying to a previous report) registers that the replied-to report was a false positive (which internally alters the score of the terms used to catch said post).
