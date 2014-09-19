@@ -1,12 +1,12 @@
 <h2>Term Commands:</h2>
 
- - <code>>>add term (lq/spam/off/name) (regex term here)</code> Adds a new regex term to the specified filter for catching posts (<code>lq</code> = low quality filter, <code>spam</code> = spam filter, <code>off</code> = offensive filter, <code>name</code> = username filter). 
+ - <code>>>badd term (lq/spam/off/name) (regex term here)</code> Adds a new regex term to the specified subfilter of the blacklist (<code>lq</code> = low quality filter, <code>spam</code> = spam filter, <code>off</code> = offensive filter, <code>name</code> = username filter). 
 
- - <code>>>remove term (lq/spam/off/name) (term)</code> Removes a term from the specified filter for catching posts.
+ - <code>>>bremove term (lq/spam/off/name) (term)</code> Removes a term from the subspecified filter of the blacklist.
  
- - <code>>>addis term (lq/spam/off/name) (site, e.g., stackoverflow.com) (term)</code> Adds a new term to the filter for ignoring posts from the specified site.
+ - <code>>>wadd term (lq/spam/off/name) (site, e.g., stackoverflow.com) (term)</code> Adds a new term to the specified subfilter of the whitelist.
  
- - <code>>>removeis term (lq/spam/off/name) (site, e.g., stackoverflow.com) (term)</code> Removes a term from the filter for ignoring posts from the specifed site.
+ - <code>>>wremove term (lq/spam/off/name) (site, e.g., stackoverflow.com) (term)</code> Removes a term from the specified subfilter of the whitelist.
  
  - <code>>>(+1/uv/upvote) (lq/spam/off/name) (term)</code> Increments the score of the specicifed trem.
  
