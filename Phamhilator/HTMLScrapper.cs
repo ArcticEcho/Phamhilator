@@ -57,11 +57,13 @@ namespace Phamhilator
 		{
 			var decoded = WebUtility.HtmlDecode(html);
 
-			var startIndex = decoded.LastIndexOf(reportTitle, StringComparison.Ordinal) - 286;
+			var startIndex = decoded.LastIndexOf(reportTitle, StringComparison.Ordinal) - 350;
 
 			startIndex = decoded.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
 
-			return int.Parse(decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
+			var t = decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex);
+
+			return int.Parse(t);
 		}
 
 		public static string GetSite(string postURL)
@@ -112,11 +114,11 @@ namespace Phamhilator
 
 			startIndex = html.LastIndexOf("<DIV class=content>", StringComparison.Ordinal) + 19;
 
-			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
+			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));//.Replace(@"<SPAN class=mention>", "").Replace("</SPAN>", "");
 
 			var info = new MessageInfo 
 			{ 
-				Body = message, 
+				Body = message.Replace(@"<SPAN class=mention>", "").Replace("</SPAN>", ""), 
 				RepliesToMessageID = GetMessageReplyID(html, message), 
 				AuthorID = int.Parse(authorID),
 				MessageID = GetLastestMessageID(html)
@@ -142,7 +144,7 @@ namespace Phamhilator
 
 		private static int GetMessageReplyID(string html, string messageContent)
 		{
-			var messageIndex = WebUtility.HtmlDecode(html).LastIndexOf(messageContent, StringComparison.Ordinal);
+			var messageIndex = html.LastIndexOf(messageContent, StringComparison.Ordinal);
 
 			if (messageIndex == -1)
 			{

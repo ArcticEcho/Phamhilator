@@ -1,26 +1,8 @@
-2477345.34493064]How does this code works without error?
-2477345.79090615]qooxdoo VirtualTree setMaxHeight for item like in normal Tree
-2477345.79127284]Finite Automata
-2477347.4334001]Error installing gdb-arm-linux-gnueabi
-2477375.90466189]Proftpd - SFTP with Virtual Users
-2477389.94593167]Error In Insering Date In Mysql Using PHP : 000-00-00
-2477430.62315828]Number is randomising repeatedly per click. C#
-2477465.95041221]How to get version of SharePoint installed?
-2477497.14531313]Is there any API available that is translating on the basis of country code also
-2477539.79100232]Reconstructing an old site
-2477546.56352302]Unable to add object to a list in loop in Java
-2477584.72145553]algorithmic package
-2477584.72185555]FileUpload with JaxRS
 2477588.51700595]hello progrmmer C
-2477597.5205876]How to prevent page loading via AJAX, after loading 2 or 3 pages only?
 2477598.36368582]A second crack?
-2477599.03729101]Steam friends login
 2477599.64497577]Modal-verb ellipsis
-2477602.38228234]“Order on behalf of”
 2477606.56817175]How to determine number of I/O operations required for file modification operations?
-2477607.027048]Teamviewer Raspberry
 2477610.56760051]CopyFile error code 2
-2477614.76802409]How do I set permissions recursively on a dir (with ACL enabled)?
 2477614.76822411]Is it possible to calculate the energy required to speak a word?
 2477624.99205888]$3times3$ linear system organization
 2477625.20977133]Does the iodoform reaction form hydrogen iodide or water?
@@ -410,3 +392,106 @@
 2479674.67866792]Gateway Error when doing a credit memo
 2479677.92230345]Two Dimensional Kinematics. Help needed
 2479679.36961957]Logging in to AWS
+2480315.72655352]UIFont not working on all devices
+2480315.89504649]Problem I have - Double Degree equivalent to 2 single degrees?
+2480317.31896126]Google cloud Messaging(gcm) is not working due to deprecated. What would be the best alternate solution
+2480317.48867097]adding the Sum of numbers in NSArray
+2480319.14351562]Server won't physically fit in rack: which technical problems will I face in future if I force the mount?
+2480320.16232389]Custom posttype 404 error
+2480320.93685153]Questions about the angler quests?
+2480321.44909749]I've tried to reduce my battery usage, now Google Maps is horribly inaccurate
+2480322.30994673]A drug treatment
+2480323.27995221]Does Nlog use MSMQ
+2480323.61672147]Fullscreen black screen error?
+2480326.28370735]HTTP Status 404 error in iOS POST Request
+2480327.34770154]Some stupid question maybe .
+2480329.31229724]recaptcha fails with “invalid request cookie” error code in IE9
+2480330.33892263]Sencha Cmd build error: java.lang.NullPointerException
+2480330.68190891]WooCommerce translation error?
+2480331.29021037]Environment specific siteUrl settings not working
+2480333.47835219]network adapter driver problem in Windows 7
+2480334.35830252]How to go from newbie to manufactured?
+2480335.64167593]nginx map accept header to subdirectory for api strange behaviour
+2480335.80933552]AJAX callback not working on select list added via previous AJAX call
+2480336.82452692]Aggregations do not work in ElasticSearch 1.1
+2480337.07749138]Copy paste not working on Ubuntu 14.04
+2480337.33402273]Bending of edges
+2480337.50211567]Dynamic resources
+2480338.18483806]Google plus login error
+2480338.43698581]Problem of using natbib with showkeys
+2480338.68960026]Unable to understand the error in simple cuda function
+2480339.51654756]OpenVPN + Samba share not working on very fast connection
+2480345.55719306]What's the parametric equation for the general form of an ellipse rotated by any amount? Thanks.
+2480345.97711708]Please help: Drawing the Region in $mathbb{R}^3$
+2480346.22966486]vb.net datetime picker problems
+2480351.21831686]Steganography with stepic outputs decode error
+2480351.55440275]Is finding if a graph has k isolated nodes a NP-Complete problem?
+2480352.56382715]Could venoms evolve naturally in mammals?
+2480353.06790599]How to suppress error from a single line of script
+2480353.23546557]timer.cancel() not working in android
+2480353.907404]Windows 8 Dell Computer Disk errors
+2480354.57959245]Overfitting with low test error
+2480354.74715203]French question marks in titles
+2480354.99964981]Did I compile nginx wrong due to this error
+2480355.16720939]Replacing subkeys.
+2480360.05713908]Hilbert's Hotel
+2480360.56173461]Updated Intel display driver causing errors when booting
+2480399.1763099]can't run the system … its keeps restarting and its looks like a package error
+2480405.6569139]How to structure content in a private wiki where information grows naturally?
+2480405.82502352]Why does random not work in GUI in REBOL?
+2480405.99334981]TRUNC two times divided by 0.20833333333
+2480415.84836349]Live website preview from url
+2480416.01612308]chosen jquery not working dynamic html options
+2480418.79893225]Swift: closure as parameter reports error
+2480420.3126855]Testlink error 404 on Internet explorer when try to link defects
+2480422.61038359]How should I quote errors when measurements are asymetrically clustered?
+2480423.45078166]Network Security
+2480423.61850792]Network sniffer
+2480423.8711057]Need help with a complex 3d scene (using Ogre and bullet)
+2480424.80025884]Simplexml list doesn't work
+2480424.96795177]c/c++ graphics bounce circle error
+2480428.10428115]iOS cordova push notification error: no valid 'aps-environment' entitlement string found for application
+2480429.45402502]Export performance
+2480429.79126098]Linked Server from SQL Server 2008 to Oracle not working
+2480431.30604762]Getting “The remote server returned an error: (404) Not Found” exception -WCF
+2480431.64313356]error : missing $ before end document
+2480432.31608872]kkernel: crs.exe12206: segfault at 0000000000000000 rip 000000000804e4dd rsp 00000000ffb600f0 error 6
+2480434.27118388]a colouring / matching problem
+2480434.43921016]show validation error messages on submit in angularjs
+2480436.12350649]External HDD is not working on Mac notebook
+2480436.47719339]Error: redirecturimismatch in gae django project
+2480436.81531273]quick view popup not working in ipad/iphone?
+2480440.05581474]Zoopla API, try to get some values from JSON in swift
+2480440.74222067]Help get SC-91JB Android tablet back - restore / recovery
+2480445.981437]Cydia Sub-process problem
+2480446.50636703]Problems with setting up JIRA/Confluence
+2480448.71100979]Paypal buy it now form not working
+2480448.79539795]Beyond a welch's t-test…help!
+2480450.68232254]Xscreensaver error xubuntu
+2480450.76787744]Can't work out the logic for formula
+2480451.19331844]encapsulation vs abstraction real world example
+2480451.52960434]Xcode 6 error when submitting app: doesn't contain info.plist
+2480452.20220948]What are the advantages and disadvantages of telling to the employer that I don't care for the salary?
+2480452.70695501]kpfonts: no errors, no warnings but no PDF
+2480454.40308536]ELANTECH Touchpad Not Working in Ubuntu 14.04
+2480458.70886497]overflow:hidden working in android kitkat not working in other version
+2480460.22248488]Sun Tzu Art of war
+2480465.58754174]Why is it a security problem not to update one's browser?
+2480466.01258272]OAuth 2.0 (Tokens) for Login Functionality
+2480468.74793917]Not “On the Rocks”
+2480468.91554876]my weed eater quit eating weeds! plz help
+2480471.67920683]Web Scraping in Ruby : Issues Scraping Data that comes from Database
+2480474.88417348]Trinidad2.0.1 not working with IE11
+2480475.57337956]String interpolation inside href in erb files doesn't work
+2480480.83084694]Two trigger questions (Magic: the Gathering)
+2480481.88094033]scp command with password not working
+2480482.89263153]help please quikly
+2480483.56515333]SQL Server 08 Express error when connecting to localhost - “Timeout expired”. Works with ::1 or 127.0.0.1
+2480483.81758444]Shift key not working on Windows 7 64-bit HP Compaq Pro 6300 SFF
+2480486.69461566]Questions like starting a project
+2480490.04820748]Bluetooth doesn't work on HP Probook 440 (xubuntu 14.04)
+2480494.03513552]non-static method getContentPane() cannot be referenced from a static context error in java swing
+2480494.11994037]random Soap Error: Couldn't load from
+2480494.42294103]meta tags itemprop
+2480498.42720339]What does “Thanks! Sounds like XYZ forgetting that he’s changed teams to me” mean?
+2480501.44022573]Error Cannot read property '0' of undefined

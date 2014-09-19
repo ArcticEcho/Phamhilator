@@ -3,3 +3,5 @@ stackoverflow.com](\d(?!\d-?\d{2}-\d{4})(?>\W*\d){7})(?i:(.*?error.*?))
 meta.stackexchange.com](?i)question|help
 tex.stackexchange.com](\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8})
 puzzling.stackexchange.com]problem
+gaming.stackexchange.com](?i)error
+english.stackexchange.com](?i)thanks

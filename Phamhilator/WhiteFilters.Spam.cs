@@ -8,17 +8,17 @@ using System.Text.RegularExpressions;
 
 namespace Phamhilator
 {
-	namespace IgnoreFilters
+	namespace WhiteFilters
 	{
-		public class Offensive
+		public class Spam
 		{
 			public Dictionary<Regex, string> Terms { get; private set; }
 
 
 
-			public Offensive()
+			public Spam()
 			{
-				var data = File.ReadAllLines(DirectoryTools.GetIgnoreOffensiveTermsFile());
+				var data = File.ReadAllLines(DirectoryTools.GetIgnoreSpamTermsFile());
 				Terms = new Dictionary<Regex, string>();
 
 				foreach (var termAndScore in data)
@@ -43,7 +43,7 @@ namespace Phamhilator
 
 				Terms.Add(term, site);
 
-				File.AppendAllText(DirectoryTools.GetIgnoreOffensiveTermsFile(), "\n" + site + "]" + term);
+				File.AppendAllText(DirectoryTools.GetIgnoreSpamTermsFile(), "\n" + site + "]" + term);
 			}
 
 			public void RemoveTerm(Regex term, string site)
@@ -52,7 +52,7 @@ namespace Phamhilator
 
 				Terms.Remove(term);
 
-				var data = File.ReadAllLines(DirectoryTools.GetIgnoreOffensiveTermsFile()).ToList();
+				var data = File.ReadAllLines(DirectoryTools.GetIgnoreSpamTermsFile()).ToList();
 
 				for (var i = 0; i < data.Count; i++)
 				{
@@ -64,7 +64,7 @@ namespace Phamhilator
 					}
 				}
 
-				File.WriteAllLines(DirectoryTools.GetIgnoreOffensiveTermsFile(), data);
+				File.WriteAllLines(DirectoryTools.GetIgnoreSpamTermsFile(), data);
 			}
 		}
 	}

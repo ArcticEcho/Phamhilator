@@ -19,7 +19,7 @@ namespace Phamhilator
 			{
 				command = input.Body.Remove(0, 2).TrimStart();
 			}
-			else if (input.Body.ToLowerInvariant().StartsWith("@sam") && GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID)) // TODO: Check if message is reply to a bot message. May need to create a new type to hold chat message data.
+			else if (input.Body.ToLowerInvariant().StartsWith("@sam") && GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID))
 			{
 				command = input.Body.Remove(0, 4).TrimStart();
 			}
@@ -57,17 +57,18 @@ namespace Phamhilator
 		private static bool IsPrivilegedUserCommand(string command)
 		{
 			return command.StartsWith("fp") || command.StartsWith("false") || command.StartsWith("false pos") || command.StartsWith("false positive") ||
-				   command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive") ||
-				   command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote") ||
-				   command.StartsWith("+1") || command.StartsWith("uv") || command.StartsWith("upvote") ||
-				   command.StartsWith("remove term") ||
-				   command.StartsWith("add term") ||
-				   command.StartsWith("removeis term") ||
-				   command.StartsWith("addis term") ||
-				   command.StartsWith("add tag") ||
-				   command.StartsWith("remove tag") ||
-				   command.StartsWith("start") ||
-				   command.StartsWith("pause");
+			       command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive") ||
+			       command.StartsWith("analyse") || command.StartsWith("analyze") || command.StartsWith("inspect") ||
+			       command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote") ||
+			       command.StartsWith("+1") || command.StartsWith("uv") || command.StartsWith("upvote") ||
+			       command.StartsWith("remove term") ||
+			       command.StartsWith("add term") ||
+			       command.StartsWith("removeis term") ||
+			       command.StartsWith("addis term") ||
+			       command.StartsWith("add tag") ||
+			       command.StartsWith("remove tag") ||
+			       command.StartsWith("start") ||
+			       command.StartsWith("pause");
 		}
 
 		private static string PrivilegedUserCommands(string command)
@@ -76,9 +77,15 @@ namespace Phamhilator
 			{
 				return FalsePositive(command);
 			}
+			
 			if (command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive"))
 			{
 				return TruePositive(command);
+			}
+
+			if (command.StartsWith("analyse") || command.StartsWith("analyze") || command.StartsWith("inspect"))
+			{
+				return AnalysePost(command);
 			}
 
 			if (command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote"))
@@ -647,7 +654,7 @@ namespace Phamhilator
 
 		private static string TruePositive(string command)
 		{
-			switch (message.Report.Type) // TODO: Object reference not set to an instance of an object.
+			switch (message.Report.Type)
 			{
 				case PostType.LowQuality:
 				{
@@ -691,6 +698,12 @@ namespace Phamhilator
 			}
 
 			return "`Command not recognised.`";
+		}
+
+
+		private static string AnalysePost(string command)
+		{
+			return "";
 		}
 	}
 }

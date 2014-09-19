@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Phamhilator
 {
-	namespace Filters
+	namespace BlackFilters
 	{
 		public class BadUsername
 		{

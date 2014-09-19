@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Phamhilator.Filters;
+using Phamhilator.BlackFilters;
 
 
 
@@ -9,10 +9,10 @@ namespace Phamhilator
 	public static class GlobalInfo
 	{
 		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>();
-		public static readonly IgnoreFilters.BadUsername IgnoreName = new IgnoreFilters.BadUsername();
-		public static readonly IgnoreFilters.Offensive IgnoreOff = new IgnoreFilters.Offensive();
-		public static readonly IgnoreFilters.Spam IgnoreSpam = new IgnoreFilters.Spam();
-		public static readonly IgnoreFilters.LQ IgnoreLQ = new IgnoreFilters.LQ();	
+		public static readonly WhiteFilters.BadUsername IgnoreName = new WhiteFilters.BadUsername();
+		public static readonly WhiteFilters.Offensive IgnoreOff = new WhiteFilters.Offensive();
+		public static readonly WhiteFilters.Spam IgnoreSpam = new WhiteFilters.Spam();
+		public static readonly WhiteFilters.LQ IgnoreLQ = new WhiteFilters.LQ();	
 		public static readonly BadUsername Name = new BadUsername();
 		public static readonly Offensive Off = new Offensive();
 		public static readonly Spam Spam = new Spam();

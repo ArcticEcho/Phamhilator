@@ -8,9 +8,9 @@ using System.Text.RegularExpressions;
 
 namespace Phamhilator
 {
-	namespace Filters
+	namespace BlackFilters
 	{
-		public class Spam
+		public class Offensive
 		{
 			public Dictionary<Regex, int> Terms { get; private set; }
 
@@ -32,20 +32,26 @@ namespace Phamhilator
 
 
 
-			public Spam()
+			public Offensive()
 			{
-				var data = File.ReadAllLines(DirectoryTools.GetSpamTermsFile());
+				var data = File.ReadAllLines(DirectoryTools.GetOffensiveTermsFile());
 				Terms = new Dictionary<Regex, int>();
 
 				foreach (var termAndScore in data)
 				{
-					if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
+					if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1)
+					{
+						continue;
+					}
 
 					var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
 					var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 					var term = new Regex(termString);
 
-					if (Terms.ContainsTerm(term)) { continue; }
+					if (Terms.ContainsTerm(term))
+					{
+						continue;
+					}
 
 					Terms.Add(term, int.Parse(termScore));
 				}
@@ -55,20 +61,26 @@ namespace Phamhilator
 
 			public void AddTerm(Regex term)
 			{
-				if (Terms.ContainsTerm(term)) { return; }
+				if (Terms.ContainsTerm(term))
+				{
+					return;
+				}
 
 				Terms.Add(term, AverageScore);
 
-				File.AppendAllText(DirectoryTools.GetSpamTermsFile(), "\n" + AverageScore + "]" + term);
+				File.AppendAllText(DirectoryTools.GetOffensiveTermsFile(), "\n" + AverageScore + "]" + term);
 			}
 
 			public void RemoveTerm(Regex term)
 			{
-				if (!Terms.ContainsTerm(term)) { return; }
+				if (!Terms.ContainsTerm(term))
+				{
+					return;
+				}
 
 				Terms.Remove(term);
 
-				var data = File.ReadAllLines(DirectoryTools.GetSpamTermsFile()).ToList();
+				var data = File.ReadAllLines(DirectoryTools.GetOffensiveTermsFile()).ToList();
 
 				for (var i = 0; i < data.Count; i++)
 				{
@@ -80,7 +92,7 @@ namespace Phamhilator
 					}
 				}
 
-				File.WriteAllLines(DirectoryTools.GetSpamTermsFile(), data);
+				File.WriteAllLines(DirectoryTools.GetOffensiveTermsFile(), data);
 			}
 
 			public void SetScore(Regex term, int newScore)
@@ -93,7 +105,7 @@ namespace Phamhilator
 					{
 						Terms[key] = newScore;
 
-						var data = File.ReadAllLines(DirectoryTools.GetSpamTermsFile());
+						var data = File.ReadAllLines(DirectoryTools.GetOffensiveTermsFile());
 
 						for (int ii = 0; ii < data.Length; ii++)
 						{

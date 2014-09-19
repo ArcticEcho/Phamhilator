@@ -2,7 +2,7 @@
 50](?i)builtwith.com
 50](?i)very difficult
 50](?i)newbie
-50](?i)question
+51](?i)question
 50](?i)tried
 50](?i)\bif (yes|no)\b
 50](?i)my best
@@ -11,7 +11,7 @@
 50](?i)confusing
 50](?i)\bh(i|ello)\b
 50](?i)\bgreeting(s)?\b
-50](?i)error(s)?
+52](?i)error(s)?
 50](?i)problem(s)?
 50](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 50](?i)correct this
@@ -22,9 +22,12 @@
 50](?i)thanks
 50](?i)pl(z|s|ease)
 50](?i)(need|some)( halp| help| answer)
-49](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+50](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
 50](?i)\b(help|halp)\b
 50]^[^a-z]*$
 50](?i)\bgives error\b
 50]^(?i).{0,18}$
 50]how do i
+
+50]packers
+50]movers
