@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 
@@ -39,14 +40,29 @@ namespace Phamhilator
 			{
 				message = input;
 
-				// Sam, Unihedron, ProgramFox, Jan Dvorak, rene Infinite Recursion (in that order).
-
-				if (user != 227577 && user != 266094 && user != 229438 && user != 194047 && user != 158100 && user != 245167)
+				if (!UserAccess.CommandAccessUsers.Contains(user) && !UserAccess.Owners.Contains(user))
 				{
-					return "`Access denied.`"; 			
+					return "`Access denied.`"; 
 				}
 
+				// Sam, Unihedron, ProgramFox, Jan Dvorak, rene, Infinite Recursion & Braiam (in that order).
+
+				//if (user != 227577 && user != 266094 && user != 229438 && user != 194047 && user != 158100 && user != 245167 && user != 213575)
+				//{
+								
+				//}
+
 				return PrivilegedUserCommands(command);			
+			}
+			
+			if (IsOwnerCommand(command))
+			{
+				if (!UserAccess.Owners.Contains(user))
+				{
+					return "`Access denied.`";
+				}
+
+				return OwnerCommand(command);
 			}
 
 			return "`Command not recognised.`";
@@ -54,11 +70,28 @@ namespace Phamhilator
 
 
 
+		private static bool IsOwnerCommand(string command)
+		{
+			return command.StartsWith("add user");
+		}
+
+		private static string OwnerCommand(string command)
+		{
+			if (command.StartsWith("add user"))
+			{
+				return AddUser(command);
+			}
+
+			return "`Command not recognised.`";
+		}
+
+
 		private static bool IsPrivilegedUserCommand(string command)
 		{
 			return command.StartsWith("fp") || command.StartsWith("false") || command.StartsWith("false pos") || command.StartsWith("false positive") ||
-			       command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive") ||
-			       command.StartsWith("analyse") || command.StartsWith("analyze") || command.StartsWith("inspect") ||
+				   command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive") ||
+				   command.StartsWith("white analyse") || command.StartsWith("white analyze") || command.StartsWith(" white inspect") ||
+				   command.StartsWith("black analyse") || command.StartsWith("black analyze") || command.StartsWith(" black inspect") ||
 			       command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote") ||
 			       command.StartsWith("+1") || command.StartsWith("uv") || command.StartsWith("upvote") ||
 			       command.StartsWith("remove term") ||
@@ -75,17 +108,22 @@ namespace Phamhilator
 		{
 			if (command.StartsWith("fp") || command.StartsWith("false") || command.StartsWith("false pos") || command.StartsWith("false positive"))
 			{
-				return FalsePositive(command);
+				return FalsePositive();
 			}
 			
 			if (command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive"))
 			{
-				return TruePositive(command);
+				return TruePositive();
 			}
 
-			if (command.StartsWith("analyse") || command.StartsWith("analyze") || command.StartsWith("inspect"))
+			if (command.StartsWith("white analyse") || command.StartsWith("white analyze") || command.StartsWith("white inspect"))
 			{
-				return AnalysePost(command);
+				return WhiteAnalysePost(command);
+			}
+
+			if (command.StartsWith("black analyse") || command.StartsWith("black analyze") || command.StartsWith("black inspect"))
+			{
+				return BlackAnalysePost(command);
 			}
 
 			if (command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote"))
@@ -98,22 +136,22 @@ namespace Phamhilator
 				return UpvoteTerm(command);
 			}
 
-			if (command.StartsWith("remove term"))
+			if (command.StartsWith("bremove term"))
 			{
 				return RemoveTerm(command);
 			}
 
-			if (command.StartsWith("add term"))
+			if (command.StartsWith("badd term"))
 			{
 				return AddTerm(command);
 			}
 
-			if (command.StartsWith("removeis term"))
+			if (command.StartsWith("wremove term"))
 			{
 				return RemoveIgnoreTerm(command);
 			}
 
-			if (command.StartsWith("addis term"))
+			if (command.StartsWith("wadd term"))
 			{
 				return AddIgnoreTerm(command);
 			}
@@ -153,12 +191,12 @@ namespace Phamhilator
 		{
 			if (command == "stats" || command == "info")
 			{
-				return "`Owners: " + GlobalInfo.Owners + ". Users with command access: Jan Dvorak, rene & Infinite Recursion. Total terms: " + GlobalInfo.TermCount + ". Caught posts over last 2 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Caught posts over last 2 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
 			}
 
 			if (command == "help" || command == "commands")
 			{
-				return "`See` [`here`](https://github.com/ArcticWinter/Phamhilator/blob/master/Phamhilator/Readme%20-%20Chat%20Commands.md) `for a list of commands.`";
+				return "`See` [`here`](https://github.com/ArcticWinter/Phamhilator/blob/master/Phamhilator/Readme%20-%20Chat%20Commands.md) `for a full list of commands.`";
 			}
 
 			return "`Command not recognised.`";
@@ -603,7 +641,7 @@ namespace Phamhilator
 		}
 
 
-		private static string FalsePositive(string command)
+		private static string FalsePositive()
 		{
 			switch (message.Report.Type)
 			{
@@ -652,7 +690,7 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
-		private static string TruePositive(string command)
+		private static string TruePositive()
 		{
 			switch (message.Report.Type)
 			{
@@ -701,9 +739,50 @@ namespace Phamhilator
 		}
 
 
-		private static string AnalysePost(string command)
+		private static string AddUser(string command)
+		{
+			var id = command.Replace("add user", "").Trim();
+
+			UserAccess.AddUser(int.Parse(id));
+
+			return "`User added.`";
+		}
+
+
+
+
+		private static string WhiteAnalysePost(string command)
 		{
 			return "";
+		}
+
+		private static string BlackAnalysePost(string command)
+		{
+			return "";
+		}
+
+		private static List<Regex> AnalysePost(string title)
+		{
+			var terms = new List<Regex>();
+
+			var words = title.Split(' ');
+
+			if (words.Length >= 3)
+			{
+				
+			}
+
+			for (var i = 0; i < words.Length - 1; i++)
+			{
+				if (words[i].Length > 8)
+				{
+					continue;
+				}
+
+				terms.Add(new Regex(""));
+			}
+
+			return terms;
 		}
 	}
 }

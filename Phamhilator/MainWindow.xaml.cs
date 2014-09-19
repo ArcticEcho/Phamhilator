@@ -195,7 +195,6 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
-			//Parallel.ForEach(posts.Where(p => PostPersistence.Messages.All(pp => pp.Title != p.Title)), post =>
 			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.Title != p.Title)))
 			{
 				var info = PostChecker.CheckPost(post);
@@ -214,11 +213,9 @@ namespace Phamhilator
 					message = " (" + Math.Round(info.Accuracy, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
 
-				// TODO: Check if post title is similar to any previously posted reports.
-
-				//if (float.IsNaN(info.Accuracy) && info.Type != PostType.BadTagUsed)
+				//if (PostPersistence.Messages.Any(p => IsSimilar(p.Title, post.Title)))
 				//{
-				//	return;
+				//	continue;
 				//}
 
 				if (SpamAbuseDetected(post))

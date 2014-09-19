@@ -35,3 +35,5 @@
 50](?i)\bfull( movie| film)\b
 50](?i)\bfree (trial|film|moive|movie|help|assistance)\b
 50](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
+50](?i)the perfect
+50](?i)good slim

@@ -176,9 +176,16 @@ namespace Phamhilator
 		}
 
 
-		public static string GetuSerAccessFile()
+		public static string GetCommandAccessUsersFile()
 		{
-			return Path.Combine(root, "User Access.txt");
+			var path = Path.Combine(root, "Command Access Users.txt");
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
 		}
 	}
 }

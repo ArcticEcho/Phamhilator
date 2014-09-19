@@ -39,7 +39,7 @@ namespace Phamhilator
 
 				Directory.CreateDirectory(path);
 
-				badTags[site].Add(tag);
+				badTags.Add(site, new HashSet<string> { tag });
 
 				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), tag);
 			}

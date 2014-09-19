@@ -20,10 +20,10 @@
 50](?i)asap
 50](?i)urgent
 50](?i)thanks
-50](?i)pl(z|s|ease)
+51](?i)pl(z|s|ease)
 50](?i)(need|some)( halp| help| answer)
 50](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-50](?i)\b(help|halp)\b
+51](?i)\b(help|halp)\b
 50]^[^a-z]*$
 50](?i)\bgives error\b
 50]^(?i).{0,18}$
