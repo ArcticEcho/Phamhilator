@@ -65,4 +65,7 @@ usage
 manager
 triangle
 squid
-internet-explorerfacebookhardwarestackoverflow
+internet-explorer
+facebook
+hardware
+stackoverflow

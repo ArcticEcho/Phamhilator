@@ -57,7 +57,7 @@ namespace Phamhilator
 		{
 			var decoded = WebUtility.HtmlDecode(html);
 
-			var startIndex = decoded.LastIndexOf(reportTitle, StringComparison.Ordinal) - 350;
+			var startIndex = decoded.IndexOf(reportTitle, StringComparison.Ordinal) - 350;
 
 			startIndex = decoded.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
 

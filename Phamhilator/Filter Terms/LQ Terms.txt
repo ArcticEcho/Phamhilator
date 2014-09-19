@@ -12,22 +12,19 @@
 50](?i)\bh(i|ello)\b
 50](?i)\bgreeting(s)?\b
 52](?i)error(s)?
-50](?i)problem(s)?
+51](?i)problem(s)?
 50](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 50](?i)correct this
 50](?i)school project
-50](?i)beginner
+51](?i)beginner
 50](?i)asap
 50](?i)urgent
 50](?i)thanks
-51](?i)pl(z|s|ease)
+52](?i)pl(z|s|ease)
 50](?i)(need|some)( halp| help| answer)
 50](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-51](?i)\b(help|halp)\b
+52](?i)\b(help|halp)\b
 50]^[^a-z]*$
 50](?i)\bgives error\b
 50]^(?i).{0,18}$
 50]how do i
-
-50]packers
-50]movers

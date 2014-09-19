@@ -31,7 +31,7 @@ namespace Phamhilator
 			{
 				badTags[site].Add(tag);
 
-				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), tag);
+				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), "\n" + tag);
 			}
 			else
 			{
@@ -41,7 +41,7 @@ namespace Phamhilator
 
 				badTags.Add(site, new HashSet<string> { tag });
 
-				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), tag);
+				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), "\n" + tag);
 			}
 		}
 

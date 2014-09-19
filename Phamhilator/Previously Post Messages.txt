@@ -1,36 +1,6 @@
-2477718.07976652]biopython installation: error: command 'gcc' failed with exit status 1
-2477725.06291593]Excel to Google Sheets - Error: Formula parse error
-2477726.07347374]Fatal Error - Fatal error: Unsupported operand types in publichtml/includes/common.inc on line 2999
-2477728.77896181]Help: Trying to setup an ArcPad applet (Python) that calls arcgisscripting
-2477732.37651758]regression test or two bloc PLS model to prove a gene expression matrix relationship
-2477732.37666759]why has a August update caused a display problem in ubuntu 14.04.1 running on Parallel Desktop 9 Hosted by Mac OS X 10.9
-2477732.37678426]Confusing name error: undefined local variable or method user'
-2477733.06232347]Binary Search in Ruby
-2477733.39975944]Finding maximal set
-2477735.08263903]Linear transformation
-2477735.58856797]Submit form not works in Mobile
-2477735.92523722]Local variable rails
-2477735.9254039]Handle and tracking the javascript errors
-2477736.59887575]Invalid Use of Void expression error in lambda expression
-2477736.59920911]curve edge of plane
 2477736.59939245]Is there any collection of different types of problems that can be tackled via linear programming?
-2477737.15770772]TypeError: undefined is not a function - Angular Animate
-2477738.06410956]Render array in Jade
-2477739.07306727]setting a session for dialogue editing (question about John Purcell book)
-2477739.07323394]Countdown and recycle
-2477739.40943651]Let $f:(mathbb{R}setminusmathbb{Q})cap 0,1to mathbb{Q}cap 0,1$. Prove $f$ is continuous
-2477739.40961985]Insufficient memory error in google playstore even though i have enough space
-2477741.09836644]PHP error or EE syntax error?
-2477741.94059795]XmlPullParser error
-2477745.42506392]Error when running ansible-playbook
-2477747.10777683]Output two files
 2477747.92174005]alias mysql in .bashrc not working after login/reboot
-2477747.92189006]Geo Search and Long Query Error Logs
-2477747.92212341]runas /trustlevel:0x20000 cmd gives error
-2477750.10829845]Problems which are solvable using Linear Programming
 2477751.60543408]Error loading audio files on a server
-2477752.40667991]Cheerio: SyntaxError: Malformed attribute selector: object global?
-2477753.76020733]mysqli prepare fails with SQL syntax error for seemingly valid query
 2477757.40881601]Ubuntu to Windows
 2477758.7599933]FTGL alternative
 2477758.76020997]What is the probability the best case occurs? (Comp Sci Type Question)
@@ -241,3 +211,106 @@
 2480605.22286176]Screen Scaling Problem
 2480609.30174506]Why manual config setting of session is not working in codeIgniter?
 2480609.63814763]Why is it a security problem not to update one's browser?
+2480611.45113466]Sony Vaio VPCEH25EN function keys not working
+2480613.33155888]ubuntu ethernet not working without turning 801.2x security on and off
+2480613.50051855]Google Transliteration not working in https://xxx.com (SSL Certified Domain)
+2480614.75132342]Problem in ray diagrams in convex mirrors
+2480615.01688861]Very Confusing natural logrithm integral, could someone provide some input?
+2480615.27056979]In windowless mode, FireBreath can not drawing in chrome 37.0.2062.120
+2480615.69194389]Ubuntu ethernet not working without turning 801.2x security on and off
+2480616.7510878]JS and CSS files fail to load due to error 401
+2480617.35170549]multirow and longtabu long text wrapping cell hieght adjustment not working
+2480617.60445328]Conky error with gcalcli
+2480619.20282803]“TypeError: decoding Unicode is not supported” with gcalcli
+2480619.37100432]Mathematica 8: EdgeList and CommunityStructureAssignment shadowing problem
+2480620.9546449]Cron Job in magento is not working
+2480628.78877632]Mysql Server Login and Permission Deny Error
+2480628.9563359]“unauthorized” error when running db.eval on a MongoHQ/Compose hosted database
+2480629.12382881]photo electric effect question
+2480629.29165508]Keep getting invalid package error when downloading app from Play store
+2480629.54456955]Webapp2 security
+2480631.82628339]Facebook drops SSL
+2480633.14332538]ONLY CHANCE HOW TO WIN MONEY
+2480638.06230673]SQL Server 08 Express error when connecting to localhost - “Timeout expired”. Works with ::1 or 127.0.0.1
+2480638.06250674]Can't compile iOS project on Visual Studio with Xamarin: Error executing tool 'actool'
+2480638.23021634]Biber compiling but no bibliography appears although there are no errors
+2480638.83211743]Drag and Drop to Document Library doesn't work on Site Home page
+2480639.34584681]AJAX auto load on scroll is not working properly
+2480641.03344334]Books for beginners
+2480645.23590037]Toggleclass not working?
+2480645.48841481]ADFS 2.0 Client Certificate Log in Error pages
+2480646.68648334]ggplot2 error : Discrete value supplied to continuous scale
+2480647.69585774]Error: Unknown Puppet subcommand 'module'
+2480648.70513213]when I type “sudo apt-get update” I get the error?
+2480651.22684303]WSGI : How to see what the html form has posted w/o using “import cgi” ? a = environ'wsgi.input' is not working.
+2480652.74192969]Help with creating random passdown
+2480652.99377743]Oracle Select from dual not working
+2480653.33961388]how do i examine code for display artifacts
+2480654.3494383]apache deflate module not working
+2480654.68694094]Problem in WireShark
+2480656.75352581]Help with lexmark printer X4650 on 64 bit Ubuntu 14.04
+2480658.05180007]modrewrite multiple question marks
+2480658.38775261]a colouring / matching problem
+2480659.73736314]Ubuntu freezes after login when I tried to reboot after installing nvidia drivers
+2480660.07331569]Store confirmation emails not working
+2480661.25146641]Linked List Destructor - I have looked at previous posts. Still having problems :(
+2480661.70067543]WSGI : How to see what the html form has posted w/o using “import cgi” ? a = environ'wsgi.input' is not working
+2480662.04201163]WSDL File location in eclipse
+2480665.54189514]Saving picture using jQuery
+2480666.92495758]swift refresh control fatal error: unexpectedly found nil while unwrapping an Optional value
+2480667.45995485]Data Validation, Input Message, Application Defined Error for .InputTitle line in property definitions
+2480668.75552895]Disable html errors in nginx
+2480671.54833869]How can i increse the height / depth of the shapes using ExtrudeGeometry in Three js
+2480671.91090943]Meshes wont Render
+2480672.24807871]Android library from maven ExceptionInInitializerError (IntelliJ IDEA 12)
+2480672.92345067]Disable html error reporting on nginx
+2480675.20843137]Magento createBlock method not working, displaying static block data
+2480675.37804107]Order to study web programming
+2480676.38713212]how do i install light table?
+2480676.89171098]Taxonomy not working with the ECK module
+2480678.24317161]Vinyl cut vectors
+2480678.57942418]at what point is mysql primary key error thrown? pymysql + mysql
+2480678.91741018]Any way to avoid chat heads like facebook chat over acticity?
+2480680.43543033]Safari (Windows) returns timeout error when using geolocation
+2480681.88436321]Archive validation error
+2480682.55920181]Gif player in iPad
+2480682.89520436]C++ and Lua - Unprotected Error (bad callback)? How is this possible
+2480684.27231646]Show error messages from collapsed sections
+2480684.44104278]Echo 'string' while every long loop iteration (flush() not working)
+2480686.053385]I have an error with the mail function
+2480686.73672408]Patent status of hazard pointers: us20040107227
+2480686.90416699]Having problems with a scoring loop by reading from a text file
+2480687.15611474]Problems with plotting the imaginary part of an eigenvalue
+2480687.74388169]Limiting Reagents
+2480689.7641139]Guys please help be bypassing the webfilter at my institute
+2480690.27022619]Javascript + SCRIPT5007
+2480690.94363137]Failed to re-package in unity3d with facebook SDK
+2480692.89194281]Which water-soluble, alkaline oxide is formed? (Multiple choice question)
+2480698.95553963]How to conform a synchronous API to an API that requires synchronicity?
+2480699.88589284]Magento Connect (to) System Backup (to) Blank Screen (to) Fixed Permissions (to) tmp in file.php (to)?
+2480700.22174538]Plank Progressions
+2480701.90487499]Africa's role in the U.S. efforts against terrorism?
+2480703.0851925]Windows 7: Keyboard is not working for several seconds on loginscreen
+2480703.33745692]“A Java Runtime Error Environment…No Java virtual machine was found after searching…”
+2480703.58927133]2 dimensional Kinematics and projectile motion help needed
+2480704.93628171]Is there any way to avoid chat heads like facebook chat over activity?
+2480706.11433242]Problemas com o Mongodb no Ubuntu 14.04
+2480707.76307672]Fix server hacked
+2480709.11508738]Removing shadow from button WPF
+2480709.64211753]Hyper-V dynamic ram not working with Debian
+2480710.77114877]Perl Program error
+2480711.10835139]Help! Thailand's coup might disable internet nationwide
+2480711.78225661]Syntax error in INSERT INTO statement vb
+2480714.06968744]Do I need to apply for a new ESTA? URGENT
+2480714.40582333]:last-child pseudo-class mixed with attribute selector not working
+2480715.0784118]How to structure content in a private wiki where information grows naturally?
+2480717.43614666]Do any tracking networks or ad networks not use JavaScript and only track based on IP address? If yes, how can they be prevented?
+2480718.44538772]Could venoms evolve naturally in mammals?
+2480719.11790951]Pulse Detection
+2480721.42622488]Is “map” a loop?
+2480721.93760413]trying to follow qGIS training manual. I've a problem in 3.3 - error message
+2480721.93785414]How to conform a synchronous API to an API that requires asynchronicity?
+2480722.10539705]JS does not work indirect execution
+2480724.61575731]Ubuntu on Lenovo Yoga 2 Pro
+2480725.28887914]Problem with Mono and .exe file
+2480725.79282463]Need help to optimze a code for radio button

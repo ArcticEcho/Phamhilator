@@ -27,7 +27,6 @@
 50](?i)\bsuper herbal\b
 50](?i)\btreatment\b
 50](?i)\bcheaper\b
-50](?i)\bnaturally\b
 50](?i)\bheal(ing|thly)?\b
 50](?i)\bcare(ing)?\b
 50](?i)\bnurish(es|ing)?\b
@@ -37,3 +36,7 @@
 50](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
 50](?i)the perfect
 50](?i)good slim
+50](?i)packers
+50](?i)movers
+50](?i)want to look like
+50](?i)wanna look like

@@ -45,13 +45,6 @@ namespace Phamhilator
 					return "`Access denied.`"; 
 				}
 
-				// Sam, Unihedron, ProgramFox, Jan Dvorak, rene, Infinite Recursion & Braiam (in that order).
-
-				//if (user != 227577 && user != 266094 && user != 229438 && user != 194047 && user != 158100 && user != 245167 && user != 213575)
-				//{
-								
-				//}
-
 				return PrivilegedUserCommands(command);			
 			}
 			
@@ -94,10 +87,10 @@ namespace Phamhilator
 				   command.StartsWith("black analyse") || command.StartsWith("black analyze") || command.StartsWith(" black inspect") ||
 			       command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote") ||
 			       command.StartsWith("+1") || command.StartsWith("uv") || command.StartsWith("upvote") ||
-			       command.StartsWith("remove term") ||
-			       command.StartsWith("add term") ||
-			       command.StartsWith("removeis term") ||
-			       command.StartsWith("addis term") ||
+			       command.StartsWith("bremove term") ||
+			       command.StartsWith("badd term") ||
+			       command.StartsWith("wremove term") ||
+			       command.StartsWith("wadd term") ||
 			       command.StartsWith("add tag") ||
 			       command.StartsWith("remove tag") ||
 			       command.StartsWith("start") ||
