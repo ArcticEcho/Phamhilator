@@ -24,6 +24,13 @@
  
  - <code>>>remove tag (site) (tag name)</code> Removes a tag from the specified site from the BTD.
  
+
+<h2>FP/TP Commands:</h2>
+
+ - <code>@sam (fp/false/false pos/false positive)</code> (Assuming you're replying to a previous report) registers that the replied-to report was a false positive (which internally alters the score of the terms used to catch said post).
+ 
+ - <code>@sam (tp/true/true pos/true positive)</code> (Assuming you're replying to a previous report) registers that the replied-to report was a true positive.
+ 
 <h2>Misc Commands:</h2>
 
  - <code>>>(stats/info)</code> Prints information about the bot.
