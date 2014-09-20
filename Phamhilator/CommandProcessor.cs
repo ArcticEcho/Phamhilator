@@ -106,16 +106,6 @@ namespace Phamhilator
 				return TruePositive();
 			}
 
-			//if (command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote"))
-			//{
-			//	return DownvoteTerm(command);
-			//}
-
-			//if (command.StartsWith("+1") || command.StartsWith("uv") || command.StartsWith("upvote"))
-			//{
-			//	return UpvoteTerm(command);
-			//}
-
 			if (command.StartsWith("bremove term"))
 			{
 				return RemoveBlackTerm(command);
@@ -157,8 +147,6 @@ namespace Phamhilator
 			}
 
 			return "`Command not recognised.`";
-
-			// TODO: Add commands to: get term score,
 		}
 
 
@@ -171,7 +159,7 @@ namespace Phamhilator
 		{
 			if (command == "stats" || command == "info")
 			{
-				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Caught posts over last 2 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Posts caught over last 2 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
 			}
 
 			if (command == "help" || command == "commands")
@@ -182,148 +170,6 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
-
-		//private static string DownvoteTerm(string command)
-		//{
-		//	var dvCommand = command.Substring(command.IndexOf(" ", StringComparison.Ordinal) + 1);
-
-		//	if (dvCommand.StartsWith("") || dvCommand.StartsWith("") || dvCommand.StartsWith("") || dvCommand.StartsWith(""))
-		//	{
-		//		var score = 0;
-		//		Regex term;
-
-		//		if (dvCommand.StartsWith("off"))
-		//		{
-		//			term = new Regex(dvCommand.Remove(0, 4));
-
-		//			if (!GlobalInfo.BlackOff.Terms.ContainsTerm(term))
-		//			{
-		//				return "`Term does not exist.`";
-		//			}
-
-		//			score = GlobalInfo.BlackOff.GetScore(term) - 1;
-
-		//			GlobalInfo.BlackOff.SetScore(term, score);
-		//		}
-
-		//		if (dvCommand.StartsWith("spam"))
-		//		{
-		//			term = new Regex(dvCommand.Remove(0, 5));
-
-		//			if (!GlobalInfo.BlackSpam.Terms.ContainsTerm(term))
-		//			{
-		//				return "`Term does not exist.`";
-		//			}
-
-		//			score = GlobalInfo.BlackSpam.GetScore(term) - 1;
-
-		//			GlobalInfo.BlackSpam.SetScore(term, score);
-		//		}
-
-		//		if (dvCommand.StartsWith("lq"))
-		//		{
-		//			term = new Regex(dvCommand.Remove(0, 3));
-
-		//			if (!GlobalInfo.BlackLQ.Terms.ContainsTerm(term))
-		//			{
-		//				return "`Term does not exist.`";
-		//			}
-
-		//			score = GlobalInfo.BlackLQ.GetScore(term) - 1;
-
-		//			GlobalInfo.BlackLQ.SetScore(term, score);
-		//		}
-
-		//		if (dvCommand.StartsWith("name"))
-		//		{
-		//			term = new Regex(dvCommand.Remove(0, 5));
-
-		//			if (!GlobalInfo.BlackName.Terms.ContainsTerm(term))
-		//			{
-		//				return "`Term does not exist.`";
-		//			}
-
-		//			score = GlobalInfo.BlackName.GetScore(term) - 1;
-
-		//			GlobalInfo.BlackName.SetScore(term, score);
-		//		}
-
-		//		return "`Term downvoted. New score: " + score + ".`";
-		//	}
-
-		//	return "`Command not recognised.`";
-		//}
-
-		//private static string UpvoteTerm(string command)
-		//{
-		//	var uvCommand = command.Substring(command.IndexOf(" ", StringComparison.Ordinal) + 1);
-
-		//	if (uvCommand.StartsWith("") || uvCommand.StartsWith("") || uvCommand.StartsWith("") || uvCommand.StartsWith(""))
-		//	{
-		//		var score = -1;
-		//		Regex term;
-
-		//		if (uvCommand.StartsWith("off"))
-		//		{
-		//			term = new Regex(uvCommand.Remove(0, 4));
-
-		//			if (!GlobalInfo.BlackOff.Terms.ContainsTerm(term))
-		//			{
-		//				return "`Term does not exist.`";
-		//			}
-
-		//			score = GlobalInfo.BlackOff.GetScore(term) + 1;
-
-		//			GlobalInfo.BlackOff.SetScore(term, score);
-		//		}
-
-		//		if (uvCommand.StartsWith("spam"))
-		//		{
-		//			term = new Regex(uvCommand.Remove(0, 5));
-
-		//			if (!GlobalInfo.BlackSpam.Terms.ContainsTerm(term))
-		//			{
-		//				return "`Term does not exist.`";
-		//			}
-
-		//			score = GlobalInfo.BlackSpam.GetScore(term) + 1;
-
-		//			GlobalInfo.BlackSpam.SetScore(term, score);
-		//		}
-
-		//		if (uvCommand.StartsWith("lq"))
-		//		{
-		//			term = new Regex(uvCommand.Remove(0, 3));
-
-		//			if (!GlobalInfo.BlackLQ.Terms.ContainsTerm(term))
-		//			{
-		//				return "`Term does not exist.`";
-		//			}
-
-		//			score = GlobalInfo.BlackLQ.GetScore(term) + 1;
-
-		//			GlobalInfo.BlackLQ.SetScore(term, score);
-		//		}
-
-		//		if (uvCommand.StartsWith("name"))
-		//		{
-		//			term = new Regex(uvCommand.Remove(0, 5));
-
-		//			if (!GlobalInfo.BlackName.Terms.ContainsTerm(term))
-		//			{
-		//				return "`Term does not exist.`";
-		//			}
-
-		//			score = GlobalInfo.BlackName.GetScore(term) + 1;
-
-		//			GlobalInfo.BlackName.SetScore(term, score);
-		//		}
-
-		//		return "`Term upvoted. New score: " + score + ".`";
-		//	}
-
-		//	return "`Command not recognised.`";
-		//}
 
 		private static string AddBlackTerm(string command)
 		{
@@ -631,8 +477,6 @@ namespace Phamhilator
 					{
 						if (GlobalInfo.BlackLQ.Terms.ContainsTerm(term))
 						{
-							GlobalInfo.BlackLQ.SetScore(term, GlobalInfo.BlackLQ.GetScore(term) - 1);
-
 							if (!(GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term)))
 							{
 								GlobalInfo.WhiteLQ.AddTerm(term, message.Post.Site, 5);
@@ -645,7 +489,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`FP registered.`";
+					return "`FP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -655,8 +499,6 @@ namespace Phamhilator
 					{
 						if (GlobalInfo.BlackOff.Terms.ContainsTerm(term))
 						{
-							GlobalInfo.BlackOff.SetScore(term, GlobalInfo.BlackOff.GetScore(term) - 1);
-
 							if (!(GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term)))
 							{
 								GlobalInfo.WhiteOff.AddTerm(term, message.Post.Site, 5);
@@ -669,7 +511,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`FP registered.`";
+					return "`FP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -678,8 +520,6 @@ namespace Phamhilator
 					{
 						if (GlobalInfo.BlackSpam.Terms.ContainsTerm(term))
 						{
-							GlobalInfo.BlackSpam.SetScore(term, GlobalInfo.BlackSpam.GetScore(term) - 1);
-
 							if (!(GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term)))
 							{
 								GlobalInfo.WhiteSpam.AddTerm(term, message.Post.Site, 5);
@@ -692,7 +532,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`FP registered.`";
+					return "`FP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -701,8 +541,6 @@ namespace Phamhilator
 					{
 						if (GlobalInfo.BlackName.Terms.ContainsTerm(term))
 						{
-							GlobalInfo.BlackName.SetScore(term, GlobalInfo.BlackName.GetScore(term) - 1);
-
 							if (!(GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term)))
 							{
 								GlobalInfo.WhiteName.AddTerm(term, message.Post.Site, 5);
@@ -715,7 +553,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`FP registered.`";
+					return "`FP acknowledged.`";
 				}
 			} 
 			
@@ -741,7 +579,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP registered.`";
+					return "`TP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -759,7 +597,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP registered.`";
+					return "`TP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -777,7 +615,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP registered.`";
+					return "`TP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -795,7 +633,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP registered.`";
+					return "`TP acknowledged.`";
 				}
 			}
 

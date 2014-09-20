@@ -30,7 +30,6 @@ namespace Phamhilator
 		private readonly HashSet<int> spammers = new HashSet<int>();
 		private MessageInfo lastCommand = new MessageInfo();
 		private static readonly List<string> previouslyFoundPosts = new List<string>();
-		private bool errorMessageSent;
 
 
 
@@ -64,11 +63,11 @@ namespace Phamhilator
 				}
 				catch (Exception)
 				{
-					errorMessageSent = true;
-
-					Thread.Sleep(5000); // Wait for chaos to calm down.
+					Thread.Sleep(5000); // Wait for the chaos to calm down.
 
 					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
+
+					exit = true;
 				}
 				
 			}).Start();
@@ -117,12 +116,11 @@ namespace Phamhilator
 				}
 				catch (Exception)
 				{
-					errorMessageSent = true;
-
-					Thread.Sleep(5000); // Wait for chaos to calm down.
+					Thread.Sleep(5000); // Wait for the chaos to calm down.
 
 					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
 
+					exit = true;
 				}		
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
@@ -142,7 +140,7 @@ namespace Phamhilator
 
 					while (!exit)
 					{
-						Thread.Sleep(250);
+						Thread.Sleep(333);
 
 						dynamic doc = null;
 						string html;
@@ -181,11 +179,11 @@ namespace Phamhilator
 				}
 				catch (Exception)
 				{
-					errorMessageSent = true;
-
-					Thread.Sleep(5000); // Wait for chaos to calm down.
+					Thread.Sleep(5000); // Wait for the chaos to calm down.
 
 					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
+
+					exit = true;
 				}			
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
@@ -339,17 +337,18 @@ namespace Phamhilator
 				}		
 			});
 
-			if (error || report == null) { return; }
+			if (error || post == null || report == null) { return; }
 
 			Thread.Sleep(3000);
 
 			dynamic doc = null;
+			var i = 0;
 			var html = "";
 
-			var title = WebUtility.HtmlEncode(post.Title);
-
-			while (html.IndexOf(title, StringComparison.Ordinal) == -1)
+			while (html.IndexOf(post.Title, StringComparison.Ordinal) == -1)
 			{
+				if (i >= 5) { return; }
+
 				Dispatcher.Invoke(() => doc = chatWb.Document);
 
 				try
@@ -361,10 +360,12 @@ namespace Phamhilator
 					return;
 				}
 
-				Thread.Sleep(3000);
-			}		
+				i++;
 
-			var id = HTMLScraper.GetMessageIDByReportTitle(html, title);
+				Thread.Sleep(3000);
+			}
+
+			var id = HTMLScraper.GetMessageIDByReportTitle(html, post.Title);
 
 			GlobalInfo.PostedReports.Add(id, new MessageInfo{ Post = post, Report = report });
 
@@ -468,28 +469,17 @@ namespace Phamhilator
 		}
 
 		// TODO: verify method returns correct value.
-		private bool IsSimilar(string a, string b)
+		private bool HasBeenPosted(Post post)
 		{
-			var diffAllowance = 0.1;
-			var aTotal = 0.0;
-			var bTotal = 0.0;
-
-			for (var i = 0; i < a.Length; i++)
+			foreach (var p in PostPersistence.Messages)
 			{
-				aTotal += a[i];
+				if (post.AuthorName == p.AuthorName && post.Site == p.Site)
+				{
+					return true;
+				}
 			}
 
-			for (var i = 0; i < b.Length; i++)
-			{
-				bTotal += b[i];
-			}
-
-			if (aTotal > bTotal)
-			{
-				return ((aTotal - bTotal) / Math.Max(aTotal, bTotal)) < diffAllowance;
-			}
-
-			return ((bTotal - aTotal) / Math.Max(aTotal, bTotal)) < diffAllowance;
+			return false;
 		}
 
 

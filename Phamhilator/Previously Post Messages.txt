@@ -325,7 +325,6 @@
 2482315.46368315]How to count number in certain line?
 2482381.99908876]Why this does not work
 2482382.10037789]A Jew at heart?
-
 2482383.54262704]Convert object to float, errors to nans
 2482383.64404951]Proof Help - Summation of Combination
 2482383.74533864]simple probability questions
@@ -380,3 +379,16 @@
 2482466.6374798]Ocaml type error (folding)
 2482467.37890554]ShadowCopy Error 7001 (Unable to create a shadow copy) but SC got created and works fine, what to do?
 2482469.00354846]JVM error with multipe MDB operations: EXCEPTIONACCESSVIOLATION
+2482476.1438402]Bluetooth does not work in ubuntu 14.04 lts
+2482480.0082779]OCaml type error (folding)
+2482480.57247683]Estimating Standard Errors for Markov Transition Probability with Multiple Observations (in R)
+2482486.03293916]Heartbeat 3 binding socket error
+2482486.76804787]Non-Diagonal Pointing Problem
+2482487.5041233]I need to contact a real person as I cannot fix my problem
+
+2482505.40059692]Use facebook api to send notification to his user
+2482505.55350567]How to answer question on moving to another country for job?
+2482505.82473785]Tem como mover meu app para o cartão de memoria?
+2482506.32489979]Counting principles question - team photo
+2482506.78159258]Unstable solution for an optimization problem
+2482507.65890942]Problem after trying to install dropbox
