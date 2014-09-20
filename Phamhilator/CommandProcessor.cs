@@ -481,10 +481,12 @@ namespace Phamhilator
 							{
 								GlobalInfo.WhiteLQ.AddTerm(term, message.Post.Site, 5);
 							}
-						}
+						}		
 
 						if (GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term))
 						{
+							// TODO: This seems to never be executed.
+
 							GlobalInfo.WhiteLQ.SetScore(term, message.Post.Site, GlobalInfo.WhiteLQ.GetScore(term, message.Post.Site) + 1);
 						}
 					}

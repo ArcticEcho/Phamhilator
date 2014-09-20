@@ -21,11 +21,7 @@ namespace Phamhilator
 	{
 		private int roomId;
 		private bool exit;
-		private bool catchBadTag = true;
 		private bool firstStart = true;
-		private bool catchSpam = true;
-		private bool catchOff = true;
-		private bool catchLQ = true;
 		private int refreshRate = 10000; // In milliseconds.
 		private readonly HashSet<int> spammers = new HashSet<int>();
 		private MessageInfo lastCommand = new MessageInfo();
@@ -262,8 +258,6 @@ namespace Phamhilator
 				{
 					case PostType.Offensive:
 					{
-						if (!catchOff) { break; }
-
 						PostMessage("**Offensive**" + message, post, info);
 						PostPersistence.AddPost(post);
 
@@ -272,8 +266,6 @@ namespace Phamhilator
 
 					case PostType.BadUsername:
 					{
-						if (!catchOff) { break; }
-
 						PostMessage("**Bad Username**" + message, post, info);
 						PostPersistence.AddPost(post);
 
@@ -282,8 +274,6 @@ namespace Phamhilator
 
 					case PostType.BadTagUsed:
 					{
-						if (!catchBadTag) { break; }
-
 						PostMessage("**Bad Tag Used**" + message);
 						PostPersistence.AddPost(post);
 
@@ -292,8 +282,6 @@ namespace Phamhilator
 
 					case PostType.LowQuality:
 					{
-						if (!catchLQ) { break; }
-
 						PostMessage("**Low Quality**" + message, post, info);
 						PostPersistence.AddPost(post);
 
@@ -302,8 +290,6 @@ namespace Phamhilator
 
 					case PostType.Spam:
 					{
-						if (!catchSpam) { break; }
-
 						PostMessage("**Spam**" + message, post, info);
 						PostPersistence.AddPost(post);
 
@@ -531,86 +517,6 @@ namespace Phamhilator
 				b.Content = "Start Monitoring";
 
 				PostMessage("`Phamhilator™ paused.`");
-			}
-		}
-
-		private void catchOffCb_Checked(object sender, RoutedEventArgs e)
-		{
-			catchOff = true;
-
-			if (roomId != 0)
-			{
-				PostMessage("`Offensive reports enabled.`");
-			}
-		}
-
-		private void catchOffCb_Unchecked(object sender, RoutedEventArgs e)
-		{
-			catchOff = false;
-
-			if (roomId != 0)
-			{
-				PostMessage("`Offensive reports disabled.`");
-			}
-		}
-
-		private void catchLQCb_Checked(object sender, RoutedEventArgs e)
-		{
-			catchLQ = true;
-
-			if (roomId != 0)
-			{
-				PostMessage("`Low Quality reports enabled.`");
-			}
-		}
-
-		private void catchLQCb_Unchecked(object sender, RoutedEventArgs e)
-		{
-			catchLQ = false;
-
-			if (roomId != 0)
-			{
-				PostMessage("`Low Quality reports disabled.`");
-			}
-		}
-
-		private void catchSpamCb_Checked(object sender, RoutedEventArgs e)
-		{
-			catchSpam = true;
-
-			if (roomId != 0)
-			{
-				PostMessage("`Spam reports enabled.`");
-			}
-		}
-
-		private void catchSpamCb_Unchecked(object sender, RoutedEventArgs e)
-		{
-			catchSpam = false;
-
-			if (roomId != 0)
-			{
-				PostMessage("`Spam reports disabled.`");
-			}
-		}
-
-		private void CheckBox_Checked(object sender, RoutedEventArgs e)
-		{
-			catchBadTag = true;
-
-			if (roomId != 0)
-			{
-				PostMessage("`Bad Tag Used reports enabled.`");
-			}
-		}
-
-		private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-		{
-			catchBadTag = false;
-
-			if (roomId != 0)
-			{
-				PostMessage("`Bad Tags Used reports disabled.`");
 			}
 		}
 

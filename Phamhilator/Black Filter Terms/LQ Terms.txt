@@ -12,7 +12,7 @@
 11](?i)\bh(i|ello)\b
 10](?i)\bgreeting(s)?\b
 13](?i)error(s)?
-19](?i)problem(s)?
+20](?i)problem(s)?
 10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 10](?i)correct this
 10](?i)school project
