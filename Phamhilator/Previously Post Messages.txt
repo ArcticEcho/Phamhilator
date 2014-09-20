@@ -368,3 +368,15 @@
 2482443.25399234]Agile Web Development with Rails 4: MiniTest error for Update action in lineitemscontrollertest.rb
 2482445.5134049]“usb 1-1.1: string descriptor 0 read error: -22”
 2482450.33974762]“This is test order, You will not be charged” Error
+2482454.51081953]How to add device with address 192.168.0.254 to a network 192.168.1.1/24?
+2482455.63136695]Is Robocasting Development in Ceramic Multimaterial Deposition Prior Art? US20100327479 A1
+2482455.81862766]Parsley storage
+2482456.27537045]How to get LinkSys EA6400 setup working with error
+2482458.31248697]Question about ${n+1choose k} = {nchoose k} + {nchoose k-1}$ proof?
+2482459.15953542]Store activation key in separated table using myisam
+2482462.64590149]Having problem with fonts in vim-airline
+2482463.93099166]Tensor notation
+2482463.93172504]Change color of progress bar on Android
+2482466.6374798]Ocaml type error (folding)
+2482467.37890554]ShadowCopy Error 7001 (Unable to create a shadow copy) but SC got created and works fine, what to do?
+2482469.00354846]JVM error with multipe MDB operations: EXCEPTIONACCESSVIOLATION

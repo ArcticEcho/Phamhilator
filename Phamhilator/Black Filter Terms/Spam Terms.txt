@@ -43,3 +43,11 @@
 10](?i)skin care
 10](?i)baba
 10](?i)research questionnaire
+10]bodyweight
+10](?i)wrinkle cream
+10](?i)\bskin\b
+10](?i)\bexclusive\b
+10](?i)royalty free
+10](?i)rolex
+10](?i)\byou(\'ll|ll) (learn|get|feel|look)\b
+10](?i)free access
