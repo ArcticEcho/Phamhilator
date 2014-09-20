@@ -633,7 +633,7 @@ namespace Phamhilator
 						{
 							GlobalInfo.BlackLQ.SetScore(term, GlobalInfo.BlackLQ.GetScore(term) - 1);
 
-							if (!GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && !GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term))
+							if (!(GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term)))
 							{
 								GlobalInfo.WhiteLQ.AddTerm(term, message.Post.Site, 5);
 							}
@@ -657,7 +657,7 @@ namespace Phamhilator
 						{
 							GlobalInfo.BlackOff.SetScore(term, GlobalInfo.BlackOff.GetScore(term) - 1);
 
-							if (!GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) && !GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term))
+							if (!(GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term)))
 							{
 								GlobalInfo.WhiteOff.AddTerm(term, message.Post.Site, 5);
 							}
@@ -680,7 +680,7 @@ namespace Phamhilator
 						{
 							GlobalInfo.BlackSpam.SetScore(term, GlobalInfo.BlackSpam.GetScore(term) - 1);
 
-							if (!GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) && !GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term))
+							if (!(GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term)))
 							{
 								GlobalInfo.WhiteSpam.AddTerm(term, message.Post.Site, 5);
 							}
@@ -703,7 +703,7 @@ namespace Phamhilator
 						{
 							GlobalInfo.BlackName.SetScore(term, GlobalInfo.BlackName.GetScore(term) - 1);
 
-							if (!GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) && !GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term))
+							if (!(GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term)))
 							{
 								GlobalInfo.WhiteName.AddTerm(term, message.Post.Site, 5);
 							}

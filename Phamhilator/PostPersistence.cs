@@ -63,12 +63,13 @@ namespace Phamhilator
 
 				date = double.Parse(dateString);
 
-				if ((DateTime.Now - twentyTen).TotalMinutes - date > 2880)
-				{
-					titles.Remove(titles[i]);
+				//TODO: reenable whenever.
+				//if ((DateTime.Now - twentyTen).TotalMinutes - date > 2880)
+				//{
+				//	titles.Remove(titles[i]);
 
-					continue;
-				}
+				//	continue;
+				//}
 
 				messages.Add(new Post { Title = titles[i].Split(']')[1].Trim() });
 				GlobalInfo.PostsCaught++;

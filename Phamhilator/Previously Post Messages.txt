@@ -1,32 +1,17 @@
-2478146.14998407]External dispaly on Macbook pro retina not working
 2478961.88606925]Getting error while creating table in magento1.9 via setup script
-2478978.94344487]CorelDraw X6 Shadow problem when Exporting to pdf
 2479047.08364227]How do I get editing help for technical (mathematic/statistic) paper publishing?
-2479068.86098786]Container view with constrains will not work properly
 2479076.69193577]Alinhamento Footer
-2479190.66015438]getterms from registered taxonomies not working
 2479194.43720374]UIScrollView Setting contentoffset in viewwillappear not working
-2479195.93293929]Can't fix Else Without If error
 2479201.20284072]how can i make the image disappear by just answering math question using javascript?
-2479256.81112133]Ajax in AspNetMvc error request
 2479275.25137605]Sum of (example: 0+1+2+3 = 6 , 0+1+2+3+4+5+6+7 = 28 and so on)
-2479275.33574754]Spreading Vector
 2479275.33588088]Getting error 500 when trying to obtain access token from authorization code
-2479275.54804302]ap-hotspot error “Another process is already runnung”
 2479277.82240644]How to stop error messages in terminal
-2479278.49856178]beginner level! very new. declaring a variable
 2479281.98614459]Spreading vector
-2479283.67197435]Bing Map REST API is not working
 2479283.84040065]use android apps like whats app on ubuntu (old answers do not work )
-2479285.65052084]3D data visualisation
 2479286.81163726]euclideandistances error in scikit-learn?
-2479288.30583939]Unification Theory
 2479288.6523092]repartition does not work with SparkSQL
-2479290.34293924]Periodic Points Homework Help
 2479291.18562077]GDAL Python Not Working Correctly - Raster Calculations
-2479291.65103072]Cross-browser HTML5 video compatibility not working with multiple video formats
 2479295.51418502]Problem in creating neighbors,area and perimeter in spatial econometrics using R
-2479296.63651587]I dont understand how this Maclaurin series got manipulated into looking like this other Maclaurin series. Help Please
 2479299.84558276]iOS Data Security
 2479302.00888983]PayPal connectivity - Intermittent problems with PDT
 2479302.51413539]4x4 3D Matrix Manipulation
@@ -233,5 +218,153 @@
 2481941.20552031]Domain and range
 2481941.37362992]add times in-line
 2481945.3588412]PyPy Numpy installation error
-
 2481963.82868095]Simple graphic problem
+2482179.99313468]I have and will
+2482180.16621125]Triangulate to faces Problem
+2482180.33432086]linux-generic error while install apt-get installation
+2482180.50364721]Need help to identify potentiometers, please
+2482180.50389723]PHP: How can I load only a part of a website?
+2482180.60661977]Help! My controller isn't working in Ubuntu 14.04!
+2482180.94578917]Girl Boy Vashikaran Specialist+91-9950211818
+2482181.63494525]Sound not working in Debian except in google chrome and test utilities
+2482181.80288819]inputenc error: problems reading in .bib file from jabref
+2482182.82678009]Angular get error “$digest already in progress” when set the restrict attribut to 'E'
+2482183.16663286]Help me hack this speaker, where would I introduce DC voltage
+2482184.3141985]jira rest api error in creating issue
+2482185.19903244]Lipschitz condition question
+2482185.40612762]user-defined java Script function doesn't work properly till being followed by standard one
+2482186.31839646]display the correct answer for the questions that has been answered wrong Android Quiz
+2482186.65569909]Confused about how to use semantic tableau to answer questions of satisfiability
+2482187.16217806]Problem with NumberForm when exporting
+2482187.67864093]Binary Subtraction
+2482188.11229907]A matrix question
+2482188.78965448]Question: Distance matrix with different length sequences
+2482188.96056425]Defining / assigning one variable more than one time in scope with ALGOL rules
+2482189.46790994]Autoresizingmask is not working correct
+2482191.33743354]Triangulates to Quads Problem
+2482194.68124146]What's a word for someone who just gets other people to deal with problems
+2482195.01737735]Pstricks compilation problem
+2482196.24419752]iPhone 5 does not work while charging
+2482196.59648434]Nikon D7000 and Nikkor 28 2.8 is not working together
+2482197.56875661]Ethernet problem
+2482197.73858299]Could you please answer these i have an exam tommorow
+2482199.17009821]Logical problem with a database model
+2482202.36136407]Just tell me where i am wrong,please
+2482202.46461998]how to get image by API?
+2482203.63270345]GTA IV problem ; isdone.dll
+2482215.48826489]Is my circuit analysis correct in this problem?
+2482215.59032072]Permission Error when trying to extract files to home
+2482215.69120983]Need help for loops
+2482215.79283231]How to suppress DEVENV launching help window on error
+2482216.05281384]Problem in wien bridge oscillator
+2482216.67499943]undefined index error in jquery ajax request
+2482216.7595376]Android App Restarts upon Crash/force close
+2482218.68736453]Help in hooking into the begin{frame} environment in beamer article mode, so as to produce a list of frames per subsection
+2482219.29651604]Abstraction of class methods interaction with database not working,
+2482220.16359896]Salesforce JAVA streaming client TransportExchange error
+2482221.3157482]Conditional probability plane problem
+2482221.90639865]Problem about Dirac delta function used in Ampère's law in physics
+2482222.56590304]MSAccess error : No Value given for a required parameter when trying to join more than 2 tables
+2482222.80214988]PSTricks compilation problem
+2482222.95410857]GraphIntersection Problem
+2482224.35057178]Read only file-system error while downloading file from FTP in Android
+2482224.82316548]php parse error in arrays
+2482225.98529861]Why can questions be flagged but not closed for very low quality?
+2482229.79504985]Why does “Error occured during initialization of VM Could not reserve enough space for object heap” keep happening in Android Studio?
+2482232.27552506]mythbuntu network manager wlan problem
+2482232.54504048]cannot connect OLedb connection string is 2012. pl help
+2482232.89901072]Wireless card unstable on Lenovo Yoga 2 Pro
+2482236.20926673]toElement not work in Opera browser JavaScript
+2482237.32968081]Error When Compiling App
+2482239.03369494]file share error if Sql Compact 4 in windows application
+2482241.06714458]Retrieve Data Properties of An Individual using OWL API in eclipse
+2482241.67551271]General problem solving steps when print jobs hang in AIX?
+2482243.0582418]Why does “Error occured during initialization of VM Could not reserve enough space for object heap” keep happening?
+2482243.40071139]Advice for Designing a Web API Infrastructure
+2482249.70823882]UPDATE mysql error
+2482250.230002]Does God have DNA?
+2482250.71712986]Why do some questions not start with an auxiliary verb?
+2482251.1654055]Debian Server Login Error
+2482255.37812979]polyglossia error when section is used
+2482255.73436683]TCPDF ERROR: Could not include font definition file: calibri
+2482264.01639054]Extract string of numbers from URL using regex PIG
+2482264.4866341]Hi .. Can any explain me what is output of this program
+2482265.00991403]Proof by induction
+2482265.11163651]I need help in my code
+2482267.70633492]Is 'where' used as a noun or pronoun in question?
+2482268.4484107]Ubuntu 14.04 suspend problem
+2482272.46267364]Microsoft DacServices Powershell error on constructor when calling new-object
+2482272.64796756]“error: function already defined” when trying to use the function
+2482273.93689129]Cannot configure Exchange Server 2010 on mobile device because “the connection to the server failed” error
+2482274.62809749]hsv and inrange doesnt work properly
+2482275.31963704]Could we have a Help Center page on disassociating posts?
+2482275.62207101]Slow Sql Execution
+2482275.80764829]Uniqueness of solution of a nonconvex optimization problem
+2482276.98869918]Visual Studio Error: (407: Proxy Authentication Required)
+2482277.08982163]Cyborg R.A.T. 9 - mouse clicks not working after login
+2482279.13372186]Unexpected syntax error using php if shorthand
+2482280.22736775]bloomberg python api blpapi3.5.5 install gcc error
+2482281.33793127]Help with math problem please
+2482285.06524446]Swift - Do something every x minutes
+2482299.0864631]A strange notation
+2482299.18750221]History Command
+2482299.28839131]Gmod wont Install! Please help
+2482299.38944709]Are the Szpiro ratios of 37b1 over certain number fields {33,39,42,48,51,66}?
+2482299.49153626]Error : Fatal error: Call to undefined method MageCatalogModelResourceProductCollection
+2482301.61675782]The digit 3 and 2 digit number question
+2482303.06707411]Updated ipad to Ios 8, then 400 bad request error in safari
+2482304.66584888]What is the best 3d engine for Java considering that I want one with the below and in what way makes it the best choice?
+2482305.60931951]Total probability
+2482306.55945719]Error with a webservice call in Android using Complex types
+2482307.4169729]Help with this code your help is much appreciated
+2482308.22746926]Please tell me the way to solve the following question
+2482309.92578307]DNS Server Not working with VmWare Player Machine
+2482310.27903661]Anagramming Code
+2482313.25392343]kpfonts: no errors, no warnings but no PDF
+2482314.615968]Predicate Logic Proof Question
+2482315.46368315]How to count number in certain line?
+2482381.99908876]Why this does not work
+2482382.10037789]A Jew at heart?
+
+2482383.54262704]Convert object to float, errors to nans
+2482383.64404951]Proof Help - Summation of Combination
+2482383.74533864]simple probability questions
+2482384.06682369]Table off the page
+2482385.10103285]JS write to file
+2482385.54030797]Convert pandas.Series from dtype object to float, and errors to nans
+2482387.42216561]Need help with some equivalent statements of measurability
+2482387.69926479]A limit theorem in Rudin. Please elaborate?
+2482387.70013151]Crashlytics's Initialize the SDK does not work
+2482391.65219089]Can you help with this calculus problem? Optimization
+2482392.66601554]Twilio api curl post request
+2482393.10390725]Ajax loader not working in mobile site
+2482394.55219009]Installation Question
+2482395.74780847]Image upload error. unable to create directory
+2482395.93651927]PHP array syntax
+2482396.76183314]Python NameError with write function?
+2482399.57094381]bluetooth does not work in ubuntu 14.04 lts
+2482405.13569543]Compatibility problems with Internet Explorer 10/11 and an old .net framework 1.1 website
+2482408.94209648]Fn hotkeys not working correctly
+2482419.73904736]Iteration program
+2482419.89338952]Question about definition of $C^1$ functions
+2482421.47588004]Debugging a MapCache / MapServer error
+2482421.74616216]sudo apt-get not working in 13.04
+2482422.94096383]Java error when converting String in ArrayList to int
+2482427.67386787]Robotc color sensor error
+2482427.85922848]Vectors (Pre-Cal)
+2482429.23409045]Vostro 1500 wifi not working
+2482429.48667156]Facebook Friend List Import using fboauth, see for local account and display using views
+2482432.24824618]List item align not working properly
+2482433.11012881]I have some problems when the system starts
+2482433.46389905]Problem working out a diceroll in Anydice
+2482435.9254065]Symfony Console Questionn Helper - How to prompt the default value
+2482437.34203753]Agile Web Development / Rails 4.0: MiniTest (?) error for Update action in lineitemscontrollertest.rb
+2482437.57810103]Hilbert triples
+2482439.28243185]How to fix the recovery mode error?
+2482440.14283106]Is it no better and easy to way to make a question?
+2482440.58315624]SharePoint Rest Api Filter not working and restrict to a site collection
+2482442.29013721]Chosen.js doesnt work well eith Angular directive
+2482442.64567421]A question about how to express a fraction as ${1over q1}+{1over q2}+ cdots+{1over qN}$
+2482443.25399234]Agile Web Development with Rails 4: MiniTest error for Update action in lineitemscontrollertest.rb
+2482445.5134049]“usb 1-1.1: string descriptor 0 read error: -22”
+2482450.33974762]“This is test order, You will not be charged” Error

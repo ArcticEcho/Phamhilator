@@ -1,32 +1,31 @@
-50](?i)homework
-50](?i)builtwith.com
-50](?i)very difficult
-50](?i)newbie
-51](?i)question
-50](?i)tried
-50](?i)\bif (yes|no)\b
-50](?i)my best
-50](?i)our feelings
-50](?i)says wrong
-50](?i)confusing
-50](?i)\bh(i|ello)\b
-50](?i)\bgreeting(s)?\b
-52](?i)error(s)?
-51](?i)problem(s)?
-50](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
-50](?i)correct this
-50](?i)school project
-51](?i)beginner
-50](?i)asap
-50](?i)urgent
-50](?i)thanks
-52](?i)pl(z|s|ease)
-50](?i)(need|some)( halp| help| answer)
-51](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-52](?i)\b(help|halp)\b
-50]^[^a-z]*$
-50](?i)\bgives error\b
-50]^(?i).{0,18}$
-50]how do i
-
-50](?i:need help|help me)
+10](?i)homework
+10](?i)builtwith.com
+10](?i)very difficult
+10](?i)newbie
+9](?i)question
+10](?i)tried
+10](?i)\bif (yes|no)\b
+10](?i)my best
+10](?i)our feelings
+10](?i)says wrong
+10](?i)confusing
+11](?i)\bh(i|ello)\b
+10](?i)\bgreeting(s)?\b
+14](?i)error(s)?
+17](?i)problem(s)?
+10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
+10](?i)correct this
+10](?i)school project
+11](?i)beginner
+10](?i)asap
+10](?i)urgent
+10](?i)thanks
+18](?i)pl(z|s|ease)
+12](?i)(need|some)( halp| help| answer)
+15](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+16](?i)\b(help|halp)\b
+10]^[^a-z]*$
+10](?i)\bgives error\b
+11]^(?i).{0,18}$
+10]how do i
+12](?i:need help|help me)

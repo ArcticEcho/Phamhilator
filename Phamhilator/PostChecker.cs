@@ -18,38 +18,21 @@ namespace Phamhilator
 				return info;
 			}
 
-			//if (post.Score >= 2)
-			//{
-			//	return info;
-			//}
-
 			if (IsLowQuality(post, ref info))
 			{
 				info.Type = PostType.LowQuality;
-
-				info.Score = (info.Score / GlobalInfo.BlackLQ.HighestScore) * 100;
-			}
-			else if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
-			{
-				info.Type = PostType.BadTagUsed;
 			}
 			else if (IsSpam(post, ref info))
 			{
 				info.Type = PostType.Spam;
-
-				info.Score = (info.Score / GlobalInfo.BlackSpam.HighestScore) * 100;
 			}
 			else if (IsOffensive(post, ref info))
 			{
 				info.Type = PostType.Offensive;
-
-				info.Score = (info.Score / GlobalInfo.BlackOff.HighestScore) * 100;
 			}
 			else if (IsBadUsername(post, ref info))
 			{
 				info.Type = PostType.BadUsername;
-
-				info.Score = (info.Score / GlobalInfo.BlackName.HighestScore) * 100;
 			}
 
 			return info;
@@ -74,12 +57,12 @@ namespace Phamhilator
 				}
 			}
 
-			if (filtersUsed != 0)
-			{
-				info.Score /= filtersUsed;
-			}
+			//if (filtersUsed != 0)
+			//{
+			//	info.Score /= filtersUsed;
+			//}
 
-			filtersUsed = 0;
+			//filtersUsed = 0;
 
 			// Loop over blacklist.
 
@@ -99,6 +82,8 @@ namespace Phamhilator
 			if (filtersUsed != 0)
 			{
 				info.Score /= filtersUsed;
+				info.Score /= GlobalInfo.BlackSpam.HighestScore;
+				info.Score *= 100;
 
 				return true;
 			}
@@ -127,12 +112,12 @@ namespace Phamhilator
 				}
 			}
 
-			if (filtersUsed != 0)
-			{
-				info.Score /= filtersUsed;
-			}
+			//if (filtersUsed != 0)
+			//{
+			//	info.Score /= filtersUsed;
+			//}
 
-			filtersUsed = 0;
+			//filtersUsed = 0;
 
 			// Loop over blacklist.
 
@@ -152,6 +137,8 @@ namespace Phamhilator
 			if (filtersUsed != 0)
 			{
 				info.Score /= filtersUsed;
+				info.Score /= GlobalInfo.BlackLQ.HighestScore;
+				info.Score *= 100;
 
 				return true;
 			}
@@ -180,10 +167,10 @@ namespace Phamhilator
 				}
 			}
 
-			if (filtersUsed != 0)
-			{
-				info.Score /= filtersUsed;
-			}
+			//if (filtersUsed != 0)
+			//{
+			//	info.Score /= filtersUsed;
+			//}
 
 			filtersUsed = 0;
 
@@ -205,6 +192,8 @@ namespace Phamhilator
 			if (filtersUsed != 0)
 			{
 				info.Score /= filtersUsed;
+				info.Score /= GlobalInfo.BlackOff.HighestScore;
+				info.Score *= 100;
 
 				return true;
 			}
@@ -233,10 +222,10 @@ namespace Phamhilator
 				}
 			}
 
-			if (filtersUsed != 0)
-			{
-				info.Score /= filtersUsed;
-			}
+			//if (filtersUsed != 0)
+			//{
+			//	info.Score /= filtersUsed;
+			//}
 
 			filtersUsed = 0;
 
@@ -258,6 +247,8 @@ namespace Phamhilator
 			if (filtersUsed != 0)
 			{
 				info.Score /= filtersUsed;
+				info.Score /= GlobalInfo.BlackName.HighestScore;
+				info.Score *= 100;
 
 				return true;
 			}

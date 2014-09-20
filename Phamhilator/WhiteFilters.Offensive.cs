@@ -13,7 +13,7 @@ namespace Phamhilator
 		public class Offensive
 		{
 			public Dictionary<string, Dictionary<Regex, int>> Terms { get; private set; }
-
+			
 
 
 			public Offensive()

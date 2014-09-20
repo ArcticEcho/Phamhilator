@@ -1,42 +1,45 @@
-50](?i)\byoga|relax(ing)?\b
-50](?i)\bbeautiful(est)?\b
-50](?i)\bwe lost\b
-50](?i)\brolex watch\b
-50](?i)\boffer good\b
-50](?i)\bgood offer\b
-50](?i)\bskin cream\b
-50](?i)\bmover(s)?\b
-50](?i)\bdelhi\b
-50](?i)\bcolon cleanse\b
-50](?i)\bis helpful\b
-50](?i)\bmy huge\b
-50](?i)\bbulky figure\b
-50](?i)\bbangalore\b
-50](?i)\bsupplement(s)?\b
-50](?i)\byou know\b
-50](?i)\bget your\b
-50](?i)\bgot my\b
-50](?i)\bsix(-pack|pack| pack)\b
-50](?i)\b(customer|people) review(s)?\b
-50](?i)\bhelp(s)? you(r)?\b
-50](?i)\bwork out\b
-50](?i)\bbody( building|builder(s)?| builder(s)?|building)\b
-50](?i)\bmuscle(s)?\b
-50](?i)\bweight loss\b
-50](?i)\bbrand\b
-50](?i)\bsuper herbal\b
-50](?i)\btreatment\b
-50](?i)\bcheaper\b
-50](?i)\bheal(ing|thly)?\b
-50](?i)\bcare(ing)?\b
-50](?i)\bnurish(es|ing)?\b
-50](?i)\bripped\b
-50](?i)\bfull( movie| film)\b
-50](?i)\bfree (trial|film|moive|movie|help|assistance)\b
-50](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
-50](?i)the perfect
-50](?i)good slim
-50](?i)packers
-50](?i)movers
-50](?i)want to look like
-50](?i)wanna look like
+10](?i)\byoga|relax(ing)?\b
+10](?i)\bbeautiful(est)?\b
+10](?i)\bwe lost\b
+10](?i)\brolex watch\b
+10](?i)\boffer good\b
+10](?i)\bgood offer\b
+10](?i)\bskin cream\b
+10](?i)\bmover(s)?\b
+10](?i)\bdelhi\b
+10](?i)\bcolon cleanse\b
+10](?i)\bis helpful\b
+10](?i)\bmy huge\b
+10](?i)\bbulky figure\b
+10](?i)\bbangalore\b
+10](?i)\bsupplement(s)?\b
+10](?i)\byou know\b
+10](?i)\bget your\b
+10](?i)\bgot my\b
+10](?i)\bsix(-pack|pack| pack)\b
+10](?i)\b(customer|people) review(s)?\b
+10](?i)\bhelp(s)? you(r)?\b
+10](?i)\bwork out\b
+10](?i)\bbody( building|builder(s)?| builder(s)?|building)\b
+10](?i)\bmuscle(s)?\b
+10](?i)\bweight loss\b
+10](?i)\bbrand\b
+10](?i)\bsuper herbal\b
+10](?i)\btreatment\b
+10](?i)\bcheaper\b
+10](?i)\bheal(ing|thly)?\b
+10](?i)\bcare(ing)?\b
+10](?i)\bnurish(es|ing)?\b
+10](?i)\bripped\b
+10](?i)\bfull( movie| film)\b
+10](?i)\bfree (trial|film|moive|movie|help|assistance)\b
+10](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
+10](?i)the perfect
+10](?i)good slim
+10](?i)packers
+10](?i)movers
+10](?i)want to look like
+10](?i)wanna look like
+10](?i)skin care
+10](?i)baba
+10](?i)research questionnaire

@@ -30,6 +30,7 @@ namespace Phamhilator
 		private readonly HashSet<int> spammers = new HashSet<int>();
 		private MessageInfo lastCommand = new MessageInfo();
 		private static readonly List<string> previouslyFoundPosts = new List<string>();
+		private bool errorMessageSent;
 
 
 
@@ -44,61 +45,85 @@ namespace Phamhilator
 
 			new Thread(() =>
 			{
-				do
+				try
 				{
-					Thread.Sleep(refreshRate);
-				} while (!GlobalInfo.BotRunning);
-
-				while (!exit)
-				{
-					Dispatcher.Invoke(() => realtimeWb.Refresh());
-
 					do
 					{
 						Thread.Sleep(refreshRate);
 					} while (!GlobalInfo.BotRunning);
+
+					while (!exit)
+					{
+						Dispatcher.Invoke(() => realtimeWb.Refresh());
+
+						do
+						{
+							Thread.Sleep(refreshRate);
+						} while (!GlobalInfo.BotRunning);
+					}
 				}
+				catch (Exception)
+				{
+					errorMessageSent = true;
+
+					Thread.Sleep(5000); // Wait for chaos to calm down.
+
+					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
+				}
+				
 			}).Start();
 
 			new Thread(() =>
 			{
-				do
+				try
 				{
-					Thread.Sleep(refreshRate / 2);
-				} while (!GlobalInfo.BotRunning);
-
-				StartListener();
-
-				while (!exit)
-				{
-					dynamic doc = null;
-					string html;
-
-					Dispatcher.Invoke(() => doc = realtimeWb.Document);
-
-					try
-					{
-						html = doc.documentElement.InnerHtml;
-					}
-					catch (Exception)
-					{
-						continue;
-					}
-
-					if (html.IndexOf("DIV class=metaInfo", StringComparison.Ordinal) == -1) { continue; }
-
-					var posts = GetAllPosts(html);
-
-					if (posts.Count != 0)
-					{
-						CheckPosts(posts);
-					}
-
 					do
 					{
 						Thread.Sleep(refreshRate / 2);
 					} while (!GlobalInfo.BotRunning);
+
+					StartListener();
+
+					while (!exit)
+					{
+						dynamic doc = null;
+						string html;
+
+						Dispatcher.Invoke(() => doc = realtimeWb.Document);
+
+						try
+						{
+							html = doc.documentElement.InnerHtml;
+						}
+						catch (Exception)
+						{
+							continue;
+						}
+
+						if (html.IndexOf("DIV class=metaInfo", StringComparison.Ordinal) == -1) { continue; }
+
+						var posts = GetAllPosts(html);
+
+						if (posts.Count != 0)
+						{
+							CheckPosts(posts);
+						}
+
+						do
+						{
+							Thread.Sleep(refreshRate / 2);
+						} while (!GlobalInfo.BotRunning);
+					}
 				}
+				catch (Exception)
+				{
+					errorMessageSent = true;
+
+					Thread.Sleep(5000); // Wait for chaos to calm down.
+
+					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
+
+				}		
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
@@ -108,49 +133,60 @@ namespace Phamhilator
 		{
 			new Thread(() =>
 			{
-				while (!GlobalInfo.BotRunning)
+				try
 				{
-					Thread.Sleep(1000);
-				}
+					while (!GlobalInfo.BotRunning)
+					{
+						Thread.Sleep(1000);
+					}
 
-				while (!exit)
+					while (!exit)
+					{
+						Thread.Sleep(250);
+
+						dynamic doc = null;
+						string html;
+
+						Dispatcher.Invoke(() => doc = chatWb.Document);
+
+						try
+						{
+							html = doc.documentElement.InnerHtml;
+						}
+						catch (Exception)
+						{
+							continue;
+						}
+
+						if (html.IndexOf("username owner", StringComparison.Ordinal) == -1) { continue; }
+
+						var message = HTMLScraper.GetLastChatMessage(html);
+
+						if (message.MessageID == lastCommand.MessageID || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@sam")))
+						{
+							lastCommand = message;
+
+							continue;
+						}
+
+						var commandMessage = CommandProcessor.ExacuteCommand(message);
+
+						if (commandMessage != "")
+						{
+							PostMessage(commandMessage);
+						}
+
+						lastCommand = new MessageInfo { MessageID = message.MessageID };
+					}
+				}
+				catch (Exception)
 				{
-					Thread.Sleep(333);
+					errorMessageSent = true;
 
-					dynamic doc = null;
-					string html;
+					Thread.Sleep(5000); // Wait for chaos to calm down.
 
-					Dispatcher.Invoke(() => doc = chatWb.Document);
-
-					try
-					{
-						html = doc.documentElement.InnerHtml;
-					}
-					catch (Exception)
-					{
-						continue;
-					}
-
-					if (html.IndexOf("username owner", StringComparison.Ordinal) == -1) { continue; }
-
-					var message = HTMLScraper.GetLastChatMessage(html);
-
-					if (message.MessageID == lastCommand.MessageID || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@sam")))
-					{
-						lastCommand = message;
-
-						continue;
-					}
-
-					var commandMessage = CommandProcessor.ExacuteCommand(message);
-
-					if (commandMessage != "")
-					{
-						PostMessage(commandMessage);
-					}
-
-					lastCommand = new MessageInfo { MessageID = message.MessageID };
-				}
+					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
+				}			
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
@@ -200,11 +236,7 @@ namespace Phamhilator
 				var info = PostChecker.CheckPost(post);
 				string message;
 
-				/*if (post.Score != int.MinValue)
-				{
-					message = " (" + Math.Round(info.Accuracy, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), score " + post.Score + ", by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
-				}
-				else*/ if (info.Type == PostType.BadTagUsed)
+				if (info.Type == PostType.BadTagUsed)
 				{
 					message = ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				} 
@@ -213,10 +245,12 @@ namespace Phamhilator
 					message = " (" + Math.Round(info.Score, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
 
+				// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TODO: EXPERIMENTAL! ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 				//if (PostPersistence.Messages.Any(p => IsSimilar(p.Title, post.Title)))
 				//{
 				//	continue;
 				//}
+				// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TODO: EXPERIMENTAL! ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 
 				if (SpamAbuseDetected(post))
 				{
@@ -307,7 +341,7 @@ namespace Phamhilator
 
 			if (error || report == null) { return; }
 
-			Thread.Sleep(5000);
+			Thread.Sleep(3000);
 
 			dynamic doc = null;
 			var html = "";
@@ -327,7 +361,7 @@ namespace Phamhilator
 					return;
 				}
 
-				Thread.Sleep(5000);
+				Thread.Sleep(3000);
 			}		
 
 			var id = HTMLScraper.GetMessageIDByReportTitle(html, title);
@@ -470,13 +504,6 @@ namespace Phamhilator
 
 			GetRoomId();
 		}
-
-		//private void Button_Click_1(object sender, RoutedEventArgs e)
-		//{
-		//	chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");
-
-		//	GetRoomId();
-		//}
 
 		private void Button_Click_2(object sender, RoutedEventArgs e)
 		{
