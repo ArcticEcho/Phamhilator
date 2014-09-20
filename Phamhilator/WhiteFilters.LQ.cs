@@ -12,51 +12,93 @@ namespace Phamhilator
 	{
 		public class LQ
 		{
-			public Dictionary<Regex, string> Terms { get; private set; }
+			public Dictionary<string, Dictionary<Regex, int>> Terms { get; private set; }
 
 
 
 			public LQ()
 			{
-				var data = File.ReadAllLines(DirectoryTools.GetIgnoreLQTermsFile());
-				Terms = new Dictionary<Regex, string>();
+				Terms = new Dictionary<string, Dictionary<Regex, int>>();
 
-				foreach (var termAndScore in data)
+				var sites = Directory.EnumerateDirectories(DirectoryTools.GetWhiteLQTermsDir()).ToArray();
+
+				for (var i = 0; i < sites.Length; i++)
 				{
-					if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
+					sites[i] = Path.GetFileName(sites[i]);
+				}
 
-					var termSite = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
-					var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
-					var term = new Regex(termString);
+				foreach (var site in sites)
+				{
+					var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetWhiteLQTermsDir(), site, "Terms.txt"));
 
-					if (Terms.ContainsTerm(term)) { continue; }
+					Terms.Add(site, new Dictionary<Regex, int>());
 
-					Terms.Add(term, termSite);
+					foreach (var termAndScore in data)
+					{
+						if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1)
+						{
+							continue;
+						}
+
+						var termScore = int.Parse(termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal)));
+						var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
+						var term = new Regex(termString);
+
+						if (Terms[site].ContainsTerm(term))
+						{
+							continue;
+						}
+
+						Terms[site].Add(term, termScore);
+					}
 				}
 			}
 
 
 
-			public void AddTerm(Regex term, string site)
+			public void AddTerm(Regex term, string site, int score = -1)
 			{
-				if (Terms.ContainsTerm(term)) { return; }
+				var file = Path.Combine(DirectoryTools.GetWhiteLQTermsDir(), site, "Terms.txt");
 
-				Terms.Add(term, site);
+				if (!Terms.ContainsKey(site))
+				{
+					Terms.Add(site, new Dictionary<Regex, int>());
 
-				File.AppendAllText(DirectoryTools.GetIgnoreLQTermsFile(), "\n" + site + "]" + term);
+					Directory.CreateDirectory(Path.Combine(DirectoryTools.GetWhiteLQTermsDir(), site));
+				}
+
+				if (score == -1)
+				{
+					if (Terms[site].Count == 0)
+					{
+						score = 10;
+					}
+					else
+					{
+						score = (int)Math.Round(Terms[site].Values.Average(), 0);
+					}
+				}
+
+				Terms[site].Add(term, score);
+
+				File.AppendAllText(file, "\n" + score + "]" + term);
 			}
 
 			public void RemoveTerm(Regex term, string site)
 			{
-				if (!Terms.ContainsTerm(term)) { return; }
+				if (!Terms.ContainsKey(site) || !Terms[site].ContainsTerm(term))
+				{
+					return;
+				}
 
-				Terms.Remove(term);
+				Terms[site].Remove(term);
 
-				var data = File.ReadAllLines(DirectoryTools.GetIgnoreLQTermsFile()).ToList();
+				var file = Path.Combine(DirectoryTools.GetWhiteLQTermsDir(), site, "Terms.txt");
+				var data = File.ReadAllLines(file).ToList();
 
 				for (var i = 0; i < data.Count; i++)
 				{
-					if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) == term.ToString() && data[i].Substring(0, data[i].IndexOf("]", StringComparison.Ordinal)) == site)
+					if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) == term.ToString())
 					{
 						data.RemoveAt(i);
 
@@ -64,7 +106,64 @@ namespace Phamhilator
 					}
 				}
 
-				File.WriteAllLines(DirectoryTools.GetIgnoreLQTermsFile(), data);
+				File.WriteAllLines(file, data);
+			}
+
+			public void SetScore(Regex term, string site, int newScore)
+			{
+				if (!Terms.ContainsKey(site)) { return; }
+
+				var file = Path.Combine(DirectoryTools.GetWhiteLQTermsDir(), site, "Terms.txt");
+
+				for (var i = 0; i < Terms[site].Count; i++)
+				{
+					var key = Terms[site].Keys.ToArray()[i];
+
+					if (key.ToString() == term.ToString())
+					{
+						Terms[site][key] = newScore;
+
+						var data = File.ReadAllLines(file);
+
+						for (int ii = 0; ii < data.Length; ii++)
+						{
+							var line = data[ii];
+
+							if (!String.IsNullOrEmpty(line) && line.IndexOf("]", StringComparison.Ordinal) != 1)
+							{
+								var t = line.Remove(0, line.IndexOf("]", StringComparison.Ordinal) + 1);
+
+								if (t == key.ToString())
+								{
+									data[ii] = newScore + "]" + t;
+
+									break;
+								}
+							}
+						}
+
+						File.WriteAllLines(file, data);
+
+						return;
+					}
+				}
+			}
+
+			public int GetScore(Regex term, string site)
+			{
+				if (!Terms.ContainsKey(site)) { return -1; }
+
+				for (var i = 0; i < Terms[site].Count; i++)
+				{
+					var key = Terms[site].Keys.ToArray()[i];
+
+					if (key.ToString() == term.ToString())
+					{
+						return Terms[site][key];
+					}
+				}
+
+				return -1;
 			}
 		}
 	}

@@ -210,7 +210,7 @@ namespace Phamhilator
 				} 
 				else
 				{
-					message = " (" + Math.Round(info.Accuracy, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+					message = " (" + Math.Round(info.Score, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
 
 				//if (PostPersistence.Messages.Any(p => IsSimilar(p.Title, post.Title)))

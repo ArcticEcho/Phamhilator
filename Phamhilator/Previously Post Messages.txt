@@ -1,111 +1,8 @@
-2477736.59939245]Is there any collection of different types of problems that can be tackled via linear programming?
-2477747.92174005]alias mysql in .bashrc not working after login/reboot
-2477751.60543408]Error loading audio files on a server
-2477757.40881601]Ubuntu to Windows
-2477758.7599933]FTGL alternative
-2477758.76020997]What is the probability the best case occurs? (Comp Sci Type Question)
-2477758.76047666]SD Card cant read
-2477760.4460064]Outlook/Exchange certificate errors
-2477760.75479073]Apache DDoS Attack
-2477760.83912888]umount Device or resource busy; already tried: mount, lsof, fuser, exportfs, ps axf
-2477763.10990876]Pay to Play Gigs
-2477763.97612497]Let $f:(mathbb{R}setminusmathbb{Q})cap 0,1to mathbb{Q}cap 0,1$. Prove there exists a continuous$f$.
-2477763.97674168]Netezza Error Record size 120000 exceeds internal limit of 65535 bytes
-2477763.97702503]Probabilities and random variable problem
-2477763.97720837]markdown2pdf latex error
-2477764.24784052]Huawei y530 internal storage problem after rooting with TowelRoot
-2477799.2478924]$Metadata with WebAPi OData Attribute Routing Not Working
-2477800.29125208]MATLAB Newton's Method Help Needed
-2477800.29156877]Beginner issues with python script output
-2478128.06368293]missing SELECT keyword error from INSERT statement
-2478128.06483299]Client see Windows Deployment Services but still get “selected boot device failed” error
-2478128.25796071]Yay, we have runnable code snippets; Do I go and edit all my questions (causing them to rise to the top)?
-2478128.2601775]Microsoft - Excel
-2478128.26059419]Getting 500 Error when trying to export csv
-2478128.2613109]Local solvability of nonlinear elliptic boundary value problems
-2478129.10309238]Please explain what happens when I run this Makefile
-2478129.10337573]eee pc 1000h wlan not working
-2478129.10365908]Problems with Realtek driver for TP-Link
-2478129.44411188]Never ending transaction problems after mysql 5.0->5.6 upgrade
-2478131.17274409]All recieved VLAN packets are becoming Error Vlan Packets
-2478131.17427751]Why i am getting 404 error on js included in html?
-2478131.43014214]Java 'extends Object' question
-2478131.43107553]Bundler throwing odd “You need to install git…” error, despite git being installed
-2478131.60020187]NGINX Proxy Pass to NodeJS App: Returning 502 error
-2478132.1059308]Mouse pad does not work on GNU/Linux for ASUS X552C laptop
-2478132.44310008]Understanding meteor error messages
-2478132.78536966]Is this question well posed?
-2478132.78593636]Ubuntu Apache2 Domain name change {Please Help
-2478138.25294905]Entity Framework property required error for properties set in insert procedure
-2478138.25356575]why my app doesn't work on android api 11
-2478138.25618257]I'm trying to write to a file and getting an error message in Windows Forms
-2478140.43362378]Webdriver - Problem with loading profile of Tor Browser Bundle
-2478140.43429049]SPD Workflow Approval Task- Unexpected Error When Viewing Task
-2478141.05594271]jQuery bootstrap dropdown not working
 2478146.14998407]External dispaly on Macbook pro retina not working
-2478146.15046743]second click on a dropdownbox to close it again leads to an error
-2478146.23463891]A question on ring homomorphisms and maximal ideals.
-2478148.6804288]OAuth2 Authentication Redirection error in PHP
-2478148.68072882]How can error correction codes reduce bit error rate, for same amount of energy
-2478149.18592438]How do I Solve this Coordinate Geometry Word Problem?
-2478149.52242696]How to find problems in MySQL storedProcedure?
-2478149.85956291]Is it okay to use exceptions as tools to “catch” errors early?
-2478149.85986293]git reset --hard error: Could not parse object
-2478155.49980218]How to get SQLCMD to output errors and warnings only?
-2478158.46518846]static eth0 adress
-2478158.63401478]Kerberos Configuration Manager for SQL Server error “unable to access user principal information from the system”
-2478160.49703801]Optimizing bcache
-2478163.30969888]windows: python os.unlink raise OSError, Error 5 Access is denied
-2478165.71321969]Bootable USB drive not working, unable to access bios
-2478166.65083998]ios 8 - buttons in horizontal scroll view intercepting pan event - scroll does not work
-2478167.66763148]Use linear quadratic regulator to minimize output error
-2478169.4944693]gmail account not working
-2478169.99499793]cec-command to switch to TV 0 from raspberry pi not working
-2478173.8087994]MonoGame SharpDX Error 'The Parameter is Incorrect' when using graphics.DrawUserPrimitives
-2478175.01128484]Object Required Error Copying Values Using Conditional Loop
-2478957.5726392]Spring @Transactional is not working
-2478957.65752739]Receving 500 error when changing certain configuration options
-2478957.65771073].htaccess does not work on pages reached from form post
-2478961.27018402]permalink problem in my .htaccess page
-2478961.27051737]Why “две ванные”?
 2478961.88606925]Getting error while creating table in magento1.9 via setup script
-2478963.75159261]it's show error (System.NullPointerException: Attempt to de-reference a null object)
-2478965.58093058]After importing Database on host my joomla site dose not worked well
-2478966.42664562]Update Panel doesn't work inside web part zone
-2478966.95687595]nginx Permission denied error
-2478967.2206577]Getting an error when uploading audio file via flash
-2478969.41704999]iOS 8 Push Notification Action not working in background activation mode
-2478969.75411927]How to use -n flag in a sed script, I used it and it is giving error
-2478969.92237889]Turbo C++ the increment is stuck with 2 in my BUS No. Please help me, can't use any compiler just turbo C++
-2478970.42764113]How to solve Error of import re2 in Python in Mac OS X?
-2478970.59590075]What does “amor non conosce travaglio” mean please?
-2478973.41852886]problems with animation when deleting the last row of tableView ios7
-2478973.59310552]Redirection from observer not working (Fullpage Cache + APC turned on)
-2478974.73022055]Problema ao passar Bean polulada para controller e inserir no BD utilizando Java com Spring mvc
-2478975.4075593]Formatting help: vertical rule, headers
-2478978.94262816]ZF2 Skeleton Application out of memory error
 2478978.94344487]CorelDraw X6 Shadow problem when Exporting to pdf
-2478979.47142507]Frame error size in IOS8
-2478987.73334763]Excel C# Com Chart Multiple Series Problem
-2478988.23952658]Help with PN512 basic PCB antenna design
-2478989.60017107]Linked questions does not display
-2478990.91529629]Salesforce exam
-2478992.61209334]Auto Layout with Visual Format Language not working as aspected?
-2478994.24235325]Why do WhatsApp is not working properly after upgrading my Lumia 525 to Windows 8.1?
-2478997.95038201]Problem with DataAnnotations in partial class
-2478998.17484485]MS Word Formatting Question
-2479000.40310563]Sorry, unrecognized username or password error even after login
-2479029.6601957]Boot problem Ubuntu-Win7
-2479034.45963688]Drupal 7 form loaded via ajax but ajax submit not working
-2479042.01805253]Errors while building Cassandra debian package
-2479042.03553687]Marketo “Import Lead” fails with error 610 Requested resource not found
 2479047.08364227]How do I get editing help for technical (mathematic/statistic) paper publishing?
-2479053.64603428]Where for help on English Reasoning Questions?
-2479054.9278576]Fatal Error : Call to undefined method Gridmodel::getentry()
-2479055.56009376]There is an error when it comes to cvReleaseImage from openCV
-2479061.66782644]SKLightNode not working on real device iPhone 5
 2479068.86098786]Container view with constrains will not work properly
-2479073.7307664]MS Access error, how to fix it?
 2479076.69193577]Alinhamento Footer
 2479190.66015438]getterms from registered taxonomies not working
 2479194.43720374]UIScrollView Setting contentoffset in viewwillappear not working
@@ -314,3 +211,27 @@
 2480724.61575731]Ubuntu on Lenovo Yoga 2 Pro
 2480725.28887914]Problem with Mono and .exe file
 2480725.79282463]Need help to optimze a code for radio button
+2481008.58696774]Help Identifying an Alternative History Novel
+2481008.75472733]Hiding User Input
+2481008.92272028]Problem to initiate update for iOS 8
+2481009.09076322]distutils byte-compiling error in python 2
+2481009.25828947]Update a datemodified MySQL Record Field ONLY when other fields have changed using CASE statement not working?
+2481769.05227371]How can I install Xcode 6 along side Xcode 5?
+2481926.46614393]Function should have a prototype error
+2481926.4679607]Magento catalog price rule condition 'contains' not working
+2481926.63555362]Help translating 海南鸡饭 - 3
+2481926.80322988]video is working in chrome and IE9 but not working inIE8?
+2481927.1177812]Touchpad on keyboard not working
+2481927.28540746]If the solution to a problem can be quickly verified by a computer, can the computer also solve that problem quickly?
+2481927.45343373]Directx fbx loader
+2481928.91858421]kNN with kdtrees
+2481930.28251222]Exception in template helper: Error: Can't use $ on component with no DOM
+2481930.45138854]How to assign model validation error to a key
+2481930.95750082]Getting Failed writectrl (t 134) error while uploading data to server in android phonegap
+2481936.48141677]Babel for hebrew
+2481936.64919304]How do you solve this trig/geometry question?
+2481941.20552031]Domain and range
+2481941.37362992]add times in-line
+2481945.3588412]PyPy Numpy installation error
+
+2481963.82868095]Simple graphic problem

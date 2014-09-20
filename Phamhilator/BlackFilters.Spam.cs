@@ -34,7 +34,7 @@ namespace Phamhilator
 
 			public Spam()
 			{
-				var data = File.ReadAllLines(DirectoryTools.GetSpamTermsFile());
+				var data = File.ReadAllLines(DirectoryTools.GetBlackSpamTermsFile());
 				Terms = new Dictionary<Regex, int>();
 
 				foreach (var termAndScore in data)
@@ -59,7 +59,7 @@ namespace Phamhilator
 
 				Terms.Add(term, AverageScore);
 
-				File.AppendAllText(DirectoryTools.GetSpamTermsFile(), "\n" + AverageScore + "]" + term);
+				File.AppendAllText(DirectoryTools.GetBlackSpamTermsFile(), "\n" + AverageScore + "]" + term);
 			}
 
 			public void RemoveTerm(Regex term)
@@ -68,7 +68,7 @@ namespace Phamhilator
 
 				Terms.Remove(term);
 
-				var data = File.ReadAllLines(DirectoryTools.GetSpamTermsFile()).ToList();
+				var data = File.ReadAllLines(DirectoryTools.GetBlackSpamTermsFile()).ToList();
 
 				for (var i = 0; i < data.Count; i++)
 				{
@@ -80,7 +80,7 @@ namespace Phamhilator
 					}
 				}
 
-				File.WriteAllLines(DirectoryTools.GetSpamTermsFile(), data);
+				File.WriteAllLines(DirectoryTools.GetBlackSpamTermsFile(), data);
 			}
 
 			public void SetScore(Regex term, int newScore)
@@ -93,7 +93,7 @@ namespace Phamhilator
 					{
 						Terms[key] = newScore;
 
-						var data = File.ReadAllLines(DirectoryTools.GetSpamTermsFile());
+						var data = File.ReadAllLines(DirectoryTools.GetBlackSpamTermsFile());
 
 						for (int ii = 0; ii < data.Length; ii++)
 						{

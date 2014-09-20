@@ -34,7 +34,7 @@ namespace Phamhilator
 
 			public LQ()
 			{
-				var data = File.ReadAllLines(DirectoryTools.GetLQTermsFile());
+				var data = File.ReadAllLines(DirectoryTools.GetBlackLQTermsFile());
 				Terms = new Dictionary<Regex, int>();
 
 				foreach (var termAndScore in data)
@@ -59,7 +59,7 @@ namespace Phamhilator
 
 				Terms.Add(term, AverageScore);
 
-				File.AppendAllText(DirectoryTools.GetLQTermsFile(), "\n" + AverageScore + "]" + term);
+				File.AppendAllText(DirectoryTools.GetBlackLQTermsFile(), "\n" + AverageScore + "]" + term);
 			}
 
 			public void RemoveTerm(Regex term)
@@ -68,7 +68,7 @@ namespace Phamhilator
 
 				Terms.Remove(term);
 
-				var data = File.ReadAllLines(DirectoryTools.GetLQTermsFile()).ToList();
+				var data = File.ReadAllLines(DirectoryTools.GetBlackLQTermsFile()).ToList();
 
 				for (var i = 0; i < data.Count; i++)
 				{
@@ -80,7 +80,7 @@ namespace Phamhilator
 					}
 				}
 
-				File.WriteAllLines(DirectoryTools.GetLQTermsFile(), data);
+				File.WriteAllLines(DirectoryTools.GetBlackLQTermsFile(), data);
 			}
 
 			public void SetScore(Regex term, int newScore)
@@ -93,7 +93,7 @@ namespace Phamhilator
 					{
 						Terms[key] = newScore;
 
-						var data = File.ReadAllLines(DirectoryTools.GetLQTermsFile()); 
+						var data = File.ReadAllLines(DirectoryTools.GetBlackLQTermsFile()); 
 
 						for (int ii = 0; ii < data.Length; ii++)
 						{
@@ -112,7 +112,7 @@ namespace Phamhilator
 							}
 						}
 
-						File.WriteAllLines(DirectoryTools.GetLQTermsFile(), data);
+						File.WriteAllLines(DirectoryTools.GetBlackLQTermsFile(), data);
 
 						return;
 					}

@@ -8,8 +8,8 @@ namespace Phamhilator
 	public static class DirectoryTools
 	{
 		private static readonly string root = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName;
-		private static readonly string filterTermsPath = Path.Combine(root, "Filter Terms");
-		private static readonly string ignoreFilterTermsPath = Path.Combine(root, "Ignore Filter Terms");
+		private static readonly string blackFilterTermsPath = Path.Combine(root, "Black Filter Terms");
+		private static readonly string whiteFilterTermsPath = Path.Combine(root, "White Filter Terms");
 
 
 
@@ -38,13 +38,13 @@ namespace Phamhilator
 		}
 
 
-		public static string GetOffensiveTermsFile()
+		public static string GetBlackOffensiveTermsFile()
 		{
-			var path = Path.Combine(root, "Filter Terms", "Offensive Terms.txt");
+			var path = Path.Combine(blackFilterTermsPath, "Offensive Terms.txt");
 
-			if (!Directory.Exists(filterTermsPath))
+			if (!Directory.Exists(blackFilterTermsPath))
 			{
-				Directory.CreateDirectory(filterTermsPath);
+				Directory.CreateDirectory(blackFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -55,13 +55,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetBadUsernameTermsFile()
+		public static string GetBlackBadUsernameTermsFile()
 		{
-			var path = Path.Combine(root, "Filter Terms", "Bad Username Terms.txt");
+			var path = Path.Combine(blackFilterTermsPath, "Bad Username Terms.txt");
 
-			if (!Directory.Exists(filterTermsPath))
+			if (!Directory.Exists(blackFilterTermsPath))
 			{
-				Directory.CreateDirectory(filterTermsPath);
+				Directory.CreateDirectory(blackFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -72,13 +72,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetLQTermsFile()
+		public static string GetBlackLQTermsFile()
 		{
-			var path = Path.Combine(root, "Filter Terms", "LQ Terms.txt");
+			var path = Path.Combine(blackFilterTermsPath, "LQ Terms.txt");
 
-			if (!Directory.Exists(filterTermsPath))
+			if (!Directory.Exists(blackFilterTermsPath))
 			{
-				Directory.CreateDirectory(filterTermsPath);
+				Directory.CreateDirectory(blackFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -89,13 +89,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetSpamTermsFile()
+		public static string GetBlackSpamTermsFile()
 		{
-			var path = Path.Combine(root, "Filter Terms", "Spam Terms.txt");
+			var path = Path.Combine(blackFilterTermsPath, "Spam Terms.txt");
 
-			if (!Directory.Exists(filterTermsPath))
+			if (!Directory.Exists(blackFilterTermsPath))
 			{
-				Directory.CreateDirectory(filterTermsPath);
+				Directory.CreateDirectory(blackFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -107,69 +107,69 @@ namespace Phamhilator
 		}
 
 
-		public static string GetIgnoreOffensiveTermsFile()
+		public static string GetWhiteOffensiveTermsDir()
 		{
-			var path = Path.Combine(ignoreFilterTermsPath, "Offensive Terms.txt");
+			var path = Path.Combine(whiteFilterTermsPath, "Offensive");
 
-			if (!Directory.Exists(ignoreFilterTermsPath))
+			if (!Directory.Exists(whiteFilterTermsPath))
 			{
-				Directory.CreateDirectory(ignoreFilterTermsPath);
+				Directory.CreateDirectory(whiteFilterTermsPath);
 			}
 
-			if (!File.Exists(path))
+			if (!Directory.Exists(path))
 			{
-				File.Create(path).Dispose();
+				Directory.CreateDirectory(path);
 			}
 
 			return path;
 		}
 
-		public static string GetIgnoreBadUsernameTermsFile()
+		public static string GetWhiteBadUsernameTermsDir()
 		{
-			var path = Path.Combine(ignoreFilterTermsPath, "Bad Username Terms.txt");
+			var path = Path.Combine(whiteFilterTermsPath, "Bad Username");
 
-			if (!Directory.Exists(ignoreFilterTermsPath))
+			if (!Directory.Exists(whiteFilterTermsPath))
 			{
-				Directory.CreateDirectory(ignoreFilterTermsPath);
+				Directory.CreateDirectory(whiteFilterTermsPath);
 			}
 
-			if (!File.Exists(path))
+			if (!Directory.Exists(path))
 			{
-				File.Create(path).Dispose();
+				Directory.CreateDirectory(path);
 			}
 
 			return path;
 		}
 
-		public static string GetIgnoreLQTermsFile()
+		public static string GetWhiteLQTermsDir()
 		{
-			var path = Path.Combine(ignoreFilterTermsPath, "LQ Terms.txt");
+			var path = Path.Combine(whiteFilterTermsPath, "LQ");
 
-			if (!Directory.Exists(ignoreFilterTermsPath))
+			if (!Directory.Exists(whiteFilterTermsPath))
 			{
-				Directory.CreateDirectory(ignoreFilterTermsPath);
+				Directory.CreateDirectory(whiteFilterTermsPath);
 			}
 
-			if (!File.Exists(path))
+			if (!Directory.Exists(path))
 			{
-				File.Create(path).Dispose();
+				Directory.CreateDirectory(path);
 			}
 
 			return path;
 		}
 
-		public static string GetIgnoreSpamTermsFile()
+		public static string GetWhiteSpamTermsDir()
 		{
-			var path = Path.Combine(ignoreFilterTermsPath, "Spam Terms.txt");
+			var path = Path.Combine(whiteFilterTermsPath, "Spam");
 
-			if (!Directory.Exists(ignoreFilterTermsPath))
+			if (!Directory.Exists(whiteFilterTermsPath))
 			{
-				Directory.CreateDirectory(ignoreFilterTermsPath);
+				Directory.CreateDirectory(whiteFilterTermsPath);
 			}
 
-			if (!File.Exists(path))
+			if (!Directory.Exists(path))
 			{
-				File.Create(path).Dispose();
+				Directory.CreateDirectory(path);
 			}
 
 			return path;

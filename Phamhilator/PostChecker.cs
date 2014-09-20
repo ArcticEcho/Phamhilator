@@ -27,7 +27,7 @@ namespace Phamhilator
 			{
 				info.Type = PostType.LowQuality;
 
-				info.Accuracy = (info.Accuracy / GlobalInfo.LQ.HighestScore) * 100;
+				info.Score = (info.Score / GlobalInfo.BlackLQ.HighestScore) * 100;
 			}
 			else if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
 			{
@@ -37,19 +37,19 @@ namespace Phamhilator
 			{
 				info.Type = PostType.Spam;
 
-				info.Accuracy = (info.Accuracy / GlobalInfo.Spam.HighestScore) * 100;
+				info.Score = (info.Score / GlobalInfo.BlackSpam.HighestScore) * 100;
 			}
 			else if (IsOffensive(post, ref info))
 			{
 				info.Type = PostType.Offensive;
 
-				info.Accuracy = (info.Accuracy / GlobalInfo.Off.HighestScore) * 100;
+				info.Score = (info.Score / GlobalInfo.BlackOff.HighestScore) * 100;
 			}
 			else if (IsBadUsername(post, ref info))
 			{
 				info.Type = PostType.BadUsername;
 
-				info.Accuracy = (info.Accuracy / GlobalInfo.Name.HighestScore) * 100;
+				info.Score = (info.Score / GlobalInfo.BlackName.HighestScore) * 100;
 			}
 
 			return info;
@@ -57,140 +57,212 @@ namespace Phamhilator
 
 		private static bool IsSpam(Post post, ref PostTypeInfo info)
 		{
-			foreach (var ignoreFilter in GlobalInfo.IgnoreSpam.Terms)
+			var filtersUsed = 0;
+
+			// Loop over whitelist.
+
+			if (GlobalInfo.WhiteSpam.Terms.ContainsKey(post.Site))
 			{
-				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))
+				foreach (var whiteFilter in GlobalInfo.WhiteSpam.Terms[post.Site])
 				{
-					return false;
+					if (whiteFilter.Key.IsMatch(post.Title))
+					{
+						info.Score -= whiteFilter.Value;
+						info.TermsFound.Add(whiteFilter.Key);
+						filtersUsed++;
+					}
 				}
 			}
 
-			var filtersUsed = 0;
-
-			for (var i = 0; i < GlobalInfo.Spam.Terms.Count; i++)
+			if (filtersUsed != 0)
 			{
-				var filter = GlobalInfo.Spam.Terms.Keys.ElementAt(i);
+				info.Score /= filtersUsed;
+			}
+
+			filtersUsed = 0;
+
+			// Loop over blacklist.
+
+			for (var i = 0; i < GlobalInfo.BlackSpam.Terms.Count; i++)
+			{
+				var filter = GlobalInfo.BlackSpam.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					info.Accuracy += GlobalInfo.Spam.Terms[filter];
+					info.Score += GlobalInfo.BlackSpam.Terms[filter];
 					info.TermsFound.Add(filter);
 
 					filtersUsed++;
 				}
+			} 
+			
+			if (filtersUsed != 0)
+			{
+				info.Score /= filtersUsed;
 
-				if (i == GlobalInfo.Spam.Terms.Count - 1 && filtersUsed > 0)
-				{
-					info.Accuracy /= filtersUsed;
-
-					return true;
-				}
+				return true;
 			}
+
+			// Otherwise, if no terms were found, assume the post is clean.
 
 			return false;
 		}
 
 		private static bool IsLowQuality(Post post, ref PostTypeInfo info)
 		{
-			foreach (var ignoreFilter in GlobalInfo.IgnoreLQ.Terms)
+			var filtersUsed = 0;
+
+			// Loop over whitelist.
+
+			if (GlobalInfo.WhiteLQ.Terms.ContainsKey(post.Site))
 			{
-				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))
+				foreach (var whiteFilter in GlobalInfo.WhiteLQ.Terms[post.Site])
 				{
-					return false;
+					if (whiteFilter.Key.IsMatch(post.Title))
+					{
+						info.Score -= whiteFilter.Value;
+						info.TermsFound.Add(whiteFilter.Key);
+						filtersUsed++;
+					}
 				}
 			}
 
-			var filtersUsed = 0;
-
-			for (var i = 0; i < GlobalInfo.LQ.Terms.Count; i++)
+			if (filtersUsed != 0)
 			{
-				var filter = GlobalInfo.LQ.Terms.Keys.ElementAt(i);
+				info.Score /= filtersUsed;
+			}
+
+			filtersUsed = 0;
+
+			// Loop over blacklist.
+
+			for (var i = 0; i < GlobalInfo.BlackLQ.Terms.Count; i++)
+			{
+				var filter = GlobalInfo.BlackLQ.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					info.Accuracy += GlobalInfo.LQ.Terms[filter];
+					info.Score += GlobalInfo.BlackLQ.Terms[filter];
 					info.TermsFound.Add(filter);
 
 					filtersUsed++;
 				}
-
-				if (i == GlobalInfo.LQ.Terms.Count - 1 && filtersUsed > 0)
-				{
-					info.Accuracy /= filtersUsed;
-
-					return true;
-				}
 			}
+
+			if (filtersUsed != 0)
+			{
+				info.Score /= filtersUsed;
+
+				return true;
+			}
+
+			// Otherwise, if no terms were found, assume the post is clean.
 
 			return false;
 		}
 
 		private static bool IsOffensive(Post post, ref PostTypeInfo info)
 		{
-			foreach (var ignoreFilter in GlobalInfo.IgnoreOff.Terms)
+			var filtersUsed = 0;
+
+			// Loop over whitelist.
+
+			if (GlobalInfo.WhiteOff.Terms.ContainsKey(post.Site))
 			{
-				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))
+				foreach (var whiteFilter in GlobalInfo.WhiteOff.Terms[post.Site])
 				{
-					return false;
+					if (whiteFilter.Key.IsMatch(post.Title))
+					{
+						info.Score -= whiteFilter.Value;
+						info.TermsFound.Add(whiteFilter.Key);
+						filtersUsed++;
+					}
 				}
 			}
 
-			var filtersUsed = 0;
-
-			for (var i = 0; i < GlobalInfo.Off.Terms.Count; i++)
+			if (filtersUsed != 0)
 			{
-				var filter = GlobalInfo.Off.Terms.Keys.ElementAt(i);
+				info.Score /= filtersUsed;
+			}
+
+			filtersUsed = 0;
+
+			// Loop over blacklist.
+
+			for (var i = 0; i < GlobalInfo.BlackOff.Terms.Count; i++)
+			{
+				var filter = GlobalInfo.BlackOff.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					info.Accuracy += GlobalInfo.Off.Terms[filter];
+					info.Score += GlobalInfo.BlackOff.Terms[filter];
 					info.TermsFound.Add(filter);
 
 					filtersUsed++;
 				}
-
-				if (i == GlobalInfo.Off.Terms.Count - 1 && filtersUsed > 0)
-				{
-					info.Accuracy /= filtersUsed;
-
-					return true;
-				}
 			}
+
+			if (filtersUsed != 0)
+			{
+				info.Score /= filtersUsed;
+
+				return true;
+			}
+
+			// Otherwise, if no terms were found, assume the post is clean.
 
 			return false;
 		}
 
 		private static bool IsBadUsername(Post post, ref PostTypeInfo info)
 		{
-			foreach (var ignoreFilter in GlobalInfo.IgnoreName.Terms)
+			var filtersUsed = 0;
+
+			// Loop over whitelist.
+
+			if (GlobalInfo.WhiteName.Terms.ContainsKey(post.Site))
 			{
-				if (ignoreFilter.Key.IsMatch(post.Title) && post.Site.StartsWith(ignoreFilter.Value))
+				foreach (var whiteFilter in GlobalInfo.WhiteName.Terms[post.Site])
 				{
-					return false;
+					if (whiteFilter.Key.IsMatch(post.Title))
+					{
+						info.Score -= whiteFilter.Value;
+						info.TermsFound.Add(whiteFilter.Key);
+						filtersUsed++;
+					}
 				}
 			}
 
-			var filtersUsed = 0;
-
-			for (var i = 0; i < GlobalInfo.Name.Terms.Count; i++)
+			if (filtersUsed != 0)
 			{
-				var filter = GlobalInfo.Name.Terms.Keys.ElementAt(i);
+				info.Score /= filtersUsed;
+			}
+
+			filtersUsed = 0;
+
+			// Loop over blacklist.
+
+			for (var i = 0; i < GlobalInfo.BlackName.Terms.Count; i++)
+			{
+				var filter = GlobalInfo.BlackName.Terms.Keys.ElementAt(i);
 
 				if (filter.IsMatch(post.Title))
 				{
-					info.Accuracy += GlobalInfo.Name.Terms[filter];
+					info.Score += GlobalInfo.BlackName.Terms[filter];
 					info.TermsFound.Add(filter);
 
 					filtersUsed++;
 				}
-
-				if (i == GlobalInfo.Name.Terms.Count - 1 && filtersUsed > 0)
-				{
-					info.Accuracy /= filtersUsed;
-
-					return true;
-				}
 			}
+
+			if (filtersUsed != 0)
+			{
+				info.Score /= filtersUsed;
+
+				return true;
+			}
+
+			// Otherwise, if no terms were found, assume the post is clean.
 
 			return false;
 		}
