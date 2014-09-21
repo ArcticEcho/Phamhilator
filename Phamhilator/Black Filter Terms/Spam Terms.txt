@@ -51,3 +51,9 @@
 10](?i)rolex
 10](?i)\byou(\'ll|ll) (learn|get|feel|look)\b
 10](?i)free access
+10](?i)loan(s)? available
+10](?i)make money
+10](?i)got you
+10](?i)it is possible
+10](?i)this product
+10](?i)affordable
