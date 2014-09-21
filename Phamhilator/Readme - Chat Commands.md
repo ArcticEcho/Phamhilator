@@ -16,7 +16,7 @@
  
 <h2>Tag Commands:</h2>
 
- - <code>>>add tag (site, e.g., stackoverflow.com) (tag name)</code> Adds a new tag for the specified site to the Bad Tag Definations.
+ - <code>>>add tag (site, e.g., stackoverflow.com) (tag name) (optional: related meta discussion link. E.g., http://meta.stackoverflow.com/questions/271822/split-realm-tag)</code> Adds a new tag for the specified site to the Bad Tag Definations.
  
  - <code>>>remove tag (site, e.g., stackoverflow.com) (tag name)</code> Removes a tag from the specified site from the BTD.
  
