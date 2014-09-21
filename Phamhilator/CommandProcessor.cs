@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 
@@ -435,11 +436,26 @@ namespace Phamhilator
 			var tagCommand = command.Remove(0, command.IndexOf("tag", StringComparison.Ordinal) + 4);
 
 			var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
-			var tag = tagCommand.Remove(0, tagCommand.IndexOf(" ", StringComparison.Ordinal) + 1);
+			var metaPost = "";
+			string tag; 
 
-			if (BadTagDefinitions.BadTags.ContainsKey(site) && BadTagDefinitions.BadTags[site].Contains(tag)) { return "`Tag already exists.`"; }
+			if (tagCommand.IndexOf("href", StringComparison.Ordinal) != -1)
+			{
+				tag = tagCommand.Substring(site.Length + 1, tagCommand.IndexOf(" ", site.Length + 1, StringComparison.Ordinal) - 1 - site.Length);
 
-			BadTagDefinitions.AddTag(site, tag);
+				var startIndex = tagCommand.IndexOf("href", StringComparison.Ordinal) + 6;
+				var endIndex = tagCommand.LastIndexOf("\">", StringComparison.Ordinal);
+
+				metaPost = tagCommand.Substring(startIndex, endIndex - startIndex);
+			}
+			else
+			{
+				tag = tagCommand.Remove(0, tagCommand.IndexOf(" ", StringComparison.Ordinal) + 1);
+			}
+
+			if (BadTagDefinitions.BadTags.ContainsKey(site) && BadTagDefinitions.BadTags[site].ContainsKey(tag)) { return "`Tag already exists.`"; }
+
+			BadTagDefinitions.AddTag(site, tag, metaPost);
 
 			return "`Tag added.`";
 		}
@@ -453,7 +469,7 @@ namespace Phamhilator
 
 			if (BadTagDefinitions.BadTags.ContainsKey(site))
 			{
-				if (BadTagDefinitions.BadTags[site].Contains(tag))
+				if (BadTagDefinitions.BadTags[site].ContainsKey(tag))
 				{
 					BadTagDefinitions.RemoveTag(site, tag);
 

@@ -9,7 +9,7 @@ namespace Phamhilator
 	{
 		public PostType Type;
 		public float Score;
-		public List<string> BadTags = new List<string>();
+		public Dictionary<string, string> BadTags = new Dictionary<string, string>();
 		public readonly List<Regex> TermsFound = new List<Regex>();
 	}
 }

@@ -24,8 +24,13 @@
 12](?i)(need|some)( halp| help| answer)
 16](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
 16](?i)\b(help|halp)\b
-10]^[^a-z]*$
+11]^[^a-z]*$
 10](?i)\bgives error\b
 11]^(?i).{0,18}$
 10]how do i
 12](?i:need help|help me)
+
+11](?i)help me
+
+11](?i)i( just)? wan(t|na) to know
+11](?i)i want to

@@ -57,3 +57,4 @@
 10](?i)it is possible
 10](?i)this product
 10](?i)affordable
+10](?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h

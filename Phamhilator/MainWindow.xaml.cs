@@ -233,11 +233,11 @@ namespace Phamhilator
 
 				if (info.Type == PostType.BadTagUsed)
 				{
-					message = ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+					message = ": " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				} 
 				else
 				{
-					message = " (" + Math.Round(info.Score, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+					message = " (" + Math.Round(info.Score, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
 
 				if (SpamAbuseDetected(post))
@@ -395,13 +395,20 @@ namespace Phamhilator
 			});
 		}
 
-		private string FormatTags(IEnumerable<string> tags)
+		private string FormatTags(Dictionary<string, string> tags)
 		{
 			var result = new StringBuilder();
 
 			foreach (var tag in tags)
 			{
-				result.Append("`[" + tag + "]` ");
+				if (tag.Value == "")
+				{
+					result.Append("`[" + tag.Key + "]` ");
+				}
+				else
+				{
+					result.Append("[`[" + tag.Key + "]`](" + tag.Value + ") ");
+				}
 			}
 
 			return result.ToString();

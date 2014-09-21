@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -8,9 +9,9 @@ namespace Phamhilator
 {
 	public static class BadTagDefinitions
 	{
-		private static Dictionary<string, HashSet<string>> badTags;
+		private static Dictionary<string, Dictionary<string, string>> badTags;
 
-		public static Dictionary<string, HashSet<string>> BadTags
+		public static Dictionary<string, Dictionary<string, string>> BadTags
 		{
 			get
 			{
@@ -25,13 +26,13 @@ namespace Phamhilator
 
 
 
-		public static void AddTag(string site, string tag)
+		public static void AddTag(string site, string tag, string metaPost = "")
 		{
 			if (badTags.ContainsKey(site))
 			{
-				badTags[site].Add(tag);
+				badTags[site].Add(tag, metaPost);
 
-				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), "\n" + tag);
+				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), "\n" + tag + (metaPost == "" ? "" : " " + metaPost));
 			}
 			else
 			{
@@ -39,15 +40,15 @@ namespace Phamhilator
 
 				Directory.CreateDirectory(path);
 
-				badTags.Add(site, new HashSet<string> { tag });
+				badTags.Add(site, new Dictionary<string, string> { { tag, metaPost } });
 
-				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), "\n" + tag);
+				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), "\n" + tag + (metaPost == "" ? "" : " " + metaPost));
 			}
 		}
 
 		public static void RemoveTag(string site, string tag)
 		{
-			if (!badTags.ContainsKey(site) || !badTags[site].Contains(tag)) { return; }
+			if (!badTags.ContainsKey(site) || !badTags[site].ContainsKey(tag)) { return; }
 
 			badTags[site].Remove(tag);
 
@@ -55,12 +56,28 @@ namespace Phamhilator
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i] == tag)
-				{
-					data.RemoveAt(i);
+				var g = data[i].IndexOf(" ", StringComparison.Ordinal);
 
-					break;
+				if (data[i].IndexOf(" ", StringComparison.Ordinal) != -1)
+				{
+					var t = data[i].Remove(data[i].IndexOf(" ", StringComparison.Ordinal));
+
+					if (t == tag)
+					{
+						data.RemoveAt(i);
+
+						break;
+					}
 				}
+				else
+				{
+					if (data[i] == tag)
+					{
+						data.RemoveAt(i);
+
+						break;
+					}
+				}			
 			}
 
 			File.WriteAllLines(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), data);
@@ -70,30 +87,43 @@ namespace Phamhilator
 
 		private static void PopulateBadTags()
 		{
-			var tags = new List<string>();
-			badTags = new Dictionary<string, HashSet<string>>();
+			badTags = new Dictionary<string, Dictionary<string, string>>();
 
 			foreach (var dir in Directory.EnumerateDirectories(DirectoryTools.GetBTDFolder()))
 			{
-				var key = Path.GetFileName(dir);
+				var site = Path.GetFileName(dir);
 
-				if (badTags.ContainsKey(key)) { continue; }
+				badTags.Add(site, new Dictionary<string, string>());
 
-				tags.AddRange(File.ReadAllLines(Path.Combine(dir, "BadTags.txt")));
+				//if (badTags.ContainsKey(key)) { continue; }
 
-				for (var i = 0; i < tags.Count; i++)
+				var lines = File.ReadAllLines(Path.Combine(dir, "BadTags.txt")).ToArray();
+
+				for (var i = 0; i < lines.Length; i++)
 				{
-					tags[i] = tags[i].Trim();
+					lines[i] = lines[i].Trim();
 
-					if (tags[i] == "")
+					if (!String.IsNullOrWhiteSpace(lines[i]))
 					{
-						tags.RemoveAt(i);
+						var tag = "";
+						var metaPost = "";
+
+						if (lines[i].IndexOf(" ", StringComparison.Ordinal) != -1) // Check if tag has meta post
+						{
+							tag = lines[i].Substring(0, lines[i].IndexOf(" ", StringComparison.Ordinal));
+							metaPost = lines[i].Remove(0, lines[i].IndexOf(" ", StringComparison.Ordinal) + 1);
+						}
+						else
+						{
+							tag = lines[i];
+						}
+
+						if (!badTags[site].ContainsKey(tag))
+						{
+							badTags[site].Add(tag, metaPost);	
+						}
 					}
 				}
-
-				badTags.Add(key, new HashSet<string>(tags));
-
-				tags.Clear();
 			}
 		}
 	}

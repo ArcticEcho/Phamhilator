@@ -1,0 +1,3 @@
+
+5](?i)pl(z|s|ease)
+5](?i)\b(help|halp)\b

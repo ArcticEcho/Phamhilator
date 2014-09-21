@@ -234,17 +234,17 @@ namespace Phamhilator
 			return false;
 		}
 
-		private static List<string> IsBadTagUsed(Post post)
+		private static Dictionary<string, string> IsBadTagUsed(Post post)
 		{
-			var tags = new List<string>();
+			var tags = new Dictionary<string, string>();
 
 			if (!BadTagDefinitions.BadTags.Keys.Contains(post.Site)) { return tags; }
 
 			foreach (var tag in post.Tags)
 			{
-				if (BadTagDefinitions.BadTags[post.Site].Contains(tag.ToLowerInvariant()))
+				if (BadTagDefinitions.BadTags[post.Site].ContainsKey(tag.ToLowerInvariant()))
 				{
-					tags.Add(tag);
+					tags.Add(tag, BadTagDefinitions.BadTags[post.Site][tag]);
 				}
 			}
 
