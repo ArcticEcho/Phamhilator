@@ -37,7 +37,7 @@ namespace Phamhilator
 				Messages.Insert(0, post);
 			}
 
-			File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), "\n" + (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Title);
+			File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), "\n" + (DateTime.Now - twentyTen).TotalMinutes + "]" + post.URL);
 			GlobalInfo.PostsCaught++;
 		}
 
@@ -47,23 +47,24 @@ namespace Phamhilator
 		{
 			if (!File.Exists(DirectoryTools.GetPostPersitenceFile())) { return; }
 
-			var titles = new List<string>(File.ReadAllLines(DirectoryTools.GetPostPersitenceFile()));
-			double date;
+			var urls = new List<string>(File.ReadAllLines(DirectoryTools.GetPostPersitenceFile()));
+			//double date;
 
 			messages = new List<Post>();
 
-			for (var i = 0; i < titles.Count; i++)
+			for (var i = 0; i < urls.Count; i++)
 			{
-				var dateString = titles[i].Split(']')[0].Trim();
+				var dateString = urls[i].Split(']')[0].Trim();
 
 				if (dateString == "")
 				{
 					continue;
 				}
 
-				date = double.Parse(dateString);
-
 				//TODO: reenable whenever.
+
+				//date = double.Parse(dateString);
+		
 				//if ((DateTime.Now - twentyTen).TotalMinutes - date > 2880)
 				//{
 				//	titles.Remove(titles[i]);
@@ -71,17 +72,17 @@ namespace Phamhilator
 				//	continue;
 				//}
 
-				messages.Add(new Post { Title = titles[i].Split(']')[1].Trim() });
+				messages.Add(new Post { URL = urls[i].Split(']')[1].Trim() });
 				GlobalInfo.PostsCaught++;
 			}
 
 			File.WriteAllText(DirectoryTools.GetPostPersitenceFile(), "");
 
-			foreach (var post in titles)
+			foreach (var post in urls)
 			{
 				if (!String.IsNullOrEmpty(post))
 				{
-					File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), post + "\n");
+					File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), "\n" + post);
 				}
 			}
 		}

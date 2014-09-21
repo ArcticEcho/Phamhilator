@@ -18,7 +18,9 @@ namespace Phamhilator
 			var startIndex = html.IndexOf("href=", StringComparison.Ordinal) + 6;
 			var endIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal);
 
-			return html.Substring(startIndex, endIndex - startIndex).Trim();
+			var url = html.Substring(startIndex, endIndex - startIndex).Trim();
+
+			return url.Substring(0, url.LastIndexOf("/", StringComparison.Ordinal));
 		}
 
 		public static string GetTitle(string html)

@@ -475,23 +475,21 @@ namespace Phamhilator
 				{
 					foreach (var term in message.Report.TermsFound)
 					{
+						if (GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term))
+						{
+							GlobalInfo.WhiteLQ.SetScore(term, message.Post.Site, GlobalInfo.WhiteLQ.GetScore(term, message.Post.Site) + 1);
+						}
+
 						if (GlobalInfo.BlackLQ.Terms.ContainsTerm(term))
 						{
-							if (!(GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term)))
+							if (!GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term))
 							{
 								GlobalInfo.WhiteLQ.AddTerm(term, message.Post.Site, 5);
 							}
-						}		
-
-						if (GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term))
-						{
-							// TODO: This seems to never be executed.
-
-							GlobalInfo.WhiteLQ.SetScore(term, message.Post.Site, GlobalInfo.WhiteLQ.GetScore(term, message.Post.Site) + 1);
 						}
 					}
 
-					return "`FP acknowledged.`";
+					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -499,63 +497,63 @@ namespace Phamhilator
 
 					foreach (var term in message.Report.TermsFound)
 					{
-						if (GlobalInfo.BlackOff.Terms.ContainsTerm(term))
-						{
-							if (!(GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term)))
-							{
-								GlobalInfo.WhiteOff.AddTerm(term, message.Post.Site, 5);
-							}
-						}
-
 						if (GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term))
 						{
 							GlobalInfo.WhiteOff.SetScore(term, message.Post.Site, GlobalInfo.WhiteOff.GetScore(term, message.Post.Site) + 1);
 						}
+
+						if (GlobalInfo.BlackOff.Terms.ContainsTerm(term))
+						{
+							if (!GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term))
+							{
+								GlobalInfo.WhiteOff.AddTerm(term, message.Post.Site, 5);
+							}
+						}
 					}
 
-					return "`FP acknowledged.`";
+					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 
 				case PostType.Spam:
 				{
 					foreach (var term in message.Report.TermsFound)
 					{
-						if (GlobalInfo.BlackSpam.Terms.ContainsTerm(term))
-						{
-							if (!(GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term)))
-							{
-								GlobalInfo.WhiteSpam.AddTerm(term, message.Post.Site, 5);
-							}
-						}
-
 						if (GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term))
 						{
 							GlobalInfo.WhiteSpam.SetScore(term, message.Post.Site, GlobalInfo.WhiteSpam.GetScore(term, message.Post.Site) + 1);
 						}
+
+						if (GlobalInfo.BlackSpam.Terms.ContainsTerm(term))
+						{
+							if (!GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term))
+							{
+								GlobalInfo.WhiteSpam.AddTerm(term, message.Post.Site, 5);
+							}
+						}			
 					}
 
-					return "`FP acknowledged.`";
+					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 
 				case PostType.BadUsername:
 				{
 					foreach (var term in message.Report.TermsFound)
 					{
-						if (GlobalInfo.BlackName.Terms.ContainsTerm(term))
-						{
-							if (!(GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term)))
-							{
-								GlobalInfo.WhiteName.AddTerm(term, message.Post.Site, 5);
-							}
-						}
-
 						if (GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term))
 						{
 							GlobalInfo.WhiteName.SetScore(term, message.Post.Site, GlobalInfo.WhiteName.GetScore(term, message.Post.Site) + 1);
 						}
+
+						if (GlobalInfo.BlackName.Terms.ContainsTerm(term))
+						{
+							if (!GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term))
+							{
+								GlobalInfo.WhiteName.AddTerm(term, message.Post.Site, 5);
+							}
+						}
 					}
 
-					return "`FP acknowledged.`";
+					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 			} 
 			
@@ -581,7 +579,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP acknowledged.`";
+					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -599,7 +597,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP acknowledged.`";
+					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -617,7 +615,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP acknowledged.`";
+					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -635,7 +633,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP acknowledged.`";
+					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 			}
 

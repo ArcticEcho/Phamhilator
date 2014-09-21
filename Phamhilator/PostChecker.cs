@@ -57,13 +57,6 @@ namespace Phamhilator
 				}
 			}
 
-			//if (filtersUsed != 0)
-			//{
-			//	info.Score /= filtersUsed;
-			//}
-
-			//filtersUsed = 0;
-
 			// Loop over blacklist.
 
 			for (var i = 0; i < GlobalInfo.BlackSpam.Terms.Count; i++)
@@ -112,13 +105,6 @@ namespace Phamhilator
 				}
 			}
 
-			//if (filtersUsed != 0)
-			//{
-			//	info.Score /= filtersUsed;
-			//}
-
-			//filtersUsed = 0;
-
 			// Loop over blacklist.
 
 			for (var i = 0; i < GlobalInfo.BlackLQ.Terms.Count; i++)
@@ -166,11 +152,6 @@ namespace Phamhilator
 					}
 				}
 			}
-
-			//if (filtersUsed != 0)
-			//{
-			//	info.Score /= filtersUsed;
-			//}
 
 			filtersUsed = 0;
 
@@ -221,11 +202,6 @@ namespace Phamhilator
 					}
 				}
 			}
-
-			//if (filtersUsed != 0)
-			//{
-			//	info.Score /= filtersUsed;
-			//}
 
 			filtersUsed = 0;
 

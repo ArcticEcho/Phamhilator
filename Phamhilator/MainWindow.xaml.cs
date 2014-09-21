@@ -57,15 +57,15 @@ namespace Phamhilator
 						} while (!GlobalInfo.BotRunning);
 					}
 				}
-				catch (Exception)
+				finally
 				{
-					Thread.Sleep(5000); // Wait for the chaos to calm down.
+					if (!exit)
+					{
+						Thread.Sleep(1000);
 
-					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
-
-					exit = true;
-				}
-				
+						PostMessage("`Warning: post refresher thread has died.`");
+					}
+				}					
 			}).Start();
 
 			new Thread(() =>
@@ -110,13 +110,14 @@ namespace Phamhilator
 						} while (!GlobalInfo.BotRunning);
 					}
 				}
-				catch (Exception)
+				finally
 				{
-					Thread.Sleep(5000); // Wait for the chaos to calm down.
+					if (!exit)
+					{
+						Thread.Sleep(2000);
 
-					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
-
-					exit = true;
+						PostMessage("`Warning: post catcher thread has died.`");
+					}
 				}		
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
@@ -129,11 +130,6 @@ namespace Phamhilator
 			{
 				try
 				{
-					while (!GlobalInfo.BotRunning)
-					{
-						Thread.Sleep(1000);
-					}
-
 					while (!exit)
 					{
 						Thread.Sleep(333);
@@ -171,16 +167,22 @@ namespace Phamhilator
 						}
 
 						lastCommand = new MessageInfo { MessageID = message.MessageID };
+
+						while (!GlobalInfo.BotRunning)
+						{
+							Thread.Sleep(1000);
+						}
 					}
 				}
-				catch (Exception)
+				finally
 				{
-					Thread.Sleep(5000); // Wait for the chaos to calm down.
+					if (!exit)
+					{
+						Thread.Sleep(3000);
 
-					PostMessage("`An immensely catastrophic error of epic proportions has instantaneously destroyed Phamhilator™. Panic is not advised, although it is recommended.`");
-
-					exit = true;
-				}			
+						PostMessage("`Warning: chat command listener thread has died.`");
+					}
+				}		
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
@@ -225,7 +227,7 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
-			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.Title != p.Title)))
+			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.URL != p.URL)))
 			{
 				var info = PostChecker.CheckPost(post);
 				string message;
@@ -238,13 +240,6 @@ namespace Phamhilator
 				{
 					message = " (" + Math.Round(info.Score, 1) + "%)" + ": " + FormatTags(info.BadTags) + "[" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
-
-				// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TODO: EXPERIMENTAL! ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
-				//if (PostPersistence.Messages.Any(p => IsSimilar(p.Title, post.Title)))
-				//{
-				//	continue;
-				//}
-				// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TODO: EXPERIMENTAL! ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 
 				if (SpamAbuseDetected(post))
 				{
@@ -452,20 +447,6 @@ namespace Phamhilator
 				existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, true); // writable key
 				existingSubKey.SetValue(entryLabel, unchecked((int)editFlag), RegistryValueKind.DWord);
 			}
-		}
-
-		// TODO: verify method returns correct value.
-		private bool HasBeenPosted(Post post)
-		{
-			foreach (var p in PostPersistence.Messages)
-			{
-				if (post.AuthorName == p.AuthorName && post.Site == p.Site)
-				{
-					return true;
-				}
-			}
-
-			return false;
 		}
 
 
