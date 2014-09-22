@@ -14,6 +14,7 @@ namespace Phamhilator
 			if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
 			{
 				info.Type = PostType.BadTagUsed;
+				info.Accuracy = 100;
 
 				return info;
 			}
@@ -50,7 +51,7 @@ namespace Phamhilator
 				{
 					if (whiteFilter.Key.IsMatch(post.Title))
 					{
-						info.Score -= whiteFilter.Value;
+						info.Accuracy -= whiteFilter.Value;
 						info.TermsFound.Add(whiteFilter.Key);
 						filtersUsed++;
 					}
@@ -65,7 +66,7 @@ namespace Phamhilator
 
 				if (filter.IsMatch(post.Title))
 				{
-					info.Score += GlobalInfo.BlackSpam.Terms[filter];
+					info.Accuracy += GlobalInfo.BlackSpam.Terms[filter];
 					info.TermsFound.Add(filter);
 
 					filtersUsed++;
@@ -74,9 +75,9 @@ namespace Phamhilator
 			
 			if (filtersUsed != 0)
 			{
-				info.Score /= filtersUsed;
-				info.Score /= GlobalInfo.BlackSpam.HighestScore;
-				info.Score *= 100;
+				info.Accuracy /= filtersUsed;
+				info.Accuracy /= GlobalInfo.BlackSpam.HighestScore;
+				info.Accuracy *= 100;
 
 				return true;
 			}
@@ -98,7 +99,7 @@ namespace Phamhilator
 				{
 					if (whiteFilter.Key.IsMatch(post.Title))
 					{
-						info.Score -= whiteFilter.Value;
+						info.Accuracy -= whiteFilter.Value;
 						info.TermsFound.Add(whiteFilter.Key);
 						filtersUsed++;
 					}
@@ -113,7 +114,7 @@ namespace Phamhilator
 
 				if (filter.IsMatch(post.Title))
 				{
-					info.Score += GlobalInfo.BlackLQ.Terms[filter];
+					info.Accuracy += GlobalInfo.BlackLQ.Terms[filter];
 					info.TermsFound.Add(filter);
 
 					filtersUsed++;
@@ -122,9 +123,9 @@ namespace Phamhilator
 
 			if (filtersUsed != 0)
 			{
-				info.Score /= filtersUsed;
-				info.Score /= GlobalInfo.BlackLQ.HighestScore;
-				info.Score *= 100;
+				info.Accuracy /= filtersUsed;
+				info.Accuracy /= GlobalInfo.BlackLQ.HighestScore;
+				info.Accuracy *= 100;
 
 				return true;
 			}
@@ -146,7 +147,7 @@ namespace Phamhilator
 				{
 					if (whiteFilter.Key.IsMatch(post.Title))
 					{
-						info.Score -= whiteFilter.Value;
+						info.Accuracy -= whiteFilter.Value;
 						info.TermsFound.Add(whiteFilter.Key);
 						filtersUsed++;
 					}
@@ -163,7 +164,7 @@ namespace Phamhilator
 
 				if (filter.IsMatch(post.Title))
 				{
-					info.Score += GlobalInfo.BlackOff.Terms[filter];
+					info.Accuracy += GlobalInfo.BlackOff.Terms[filter];
 					info.TermsFound.Add(filter);
 
 					filtersUsed++;
@@ -172,9 +173,9 @@ namespace Phamhilator
 
 			if (filtersUsed != 0)
 			{
-				info.Score /= filtersUsed;
-				info.Score /= GlobalInfo.BlackOff.HighestScore;
-				info.Score *= 100;
+				info.Accuracy /= filtersUsed;
+				info.Accuracy /= GlobalInfo.BlackOff.HighestScore;
+				info.Accuracy *= 100;
 
 				return true;
 			}
@@ -196,7 +197,7 @@ namespace Phamhilator
 				{
 					if (whiteFilter.Key.IsMatch(post.Title))
 					{
-						info.Score -= whiteFilter.Value;
+						info.Accuracy -= whiteFilter.Value;
 						info.TermsFound.Add(whiteFilter.Key);
 						filtersUsed++;
 					}
@@ -213,7 +214,7 @@ namespace Phamhilator
 
 				if (filter.IsMatch(post.Title))
 				{
-					info.Score += GlobalInfo.BlackName.Terms[filter];
+					info.Accuracy += GlobalInfo.BlackName.Terms[filter];
 					info.TermsFound.Add(filter);
 
 					filtersUsed++;
@@ -222,9 +223,9 @@ namespace Phamhilator
 
 			if (filtersUsed != 0)
 			{
-				info.Score /= filtersUsed;
-				info.Score /= GlobalInfo.BlackName.HighestScore;
-				info.Score *= 100;
+				info.Accuracy /= filtersUsed;
+				info.Accuracy /= GlobalInfo.BlackName.HighestScore;
+				info.Accuracy *= 100;
 
 				return true;
 			}

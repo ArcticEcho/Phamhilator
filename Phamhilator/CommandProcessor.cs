@@ -65,7 +65,10 @@ namespace Phamhilator
 
 		private static bool IsOwnerCommand(string command)
 		{
-			return command.StartsWith("add user");
+			return command.StartsWith("add user") ||
+				   command.StartsWith("start") ||
+				   command.StartsWith("pause") ||
+				   command.StartsWith("threshold");
 		}
 
 		private static string OwnerCommand(string command)
@@ -73,6 +76,21 @@ namespace Phamhilator
 			if (command.StartsWith("add user"))
 			{
 				return AddUser(command);
+			}
+
+			if (command.StartsWith("start"))
+			{
+				return StartBot();
+			}
+
+			if (command.StartsWith("pause"))
+			{
+				return PauseBot();
+			}
+
+			if (command.StartsWith("threshold"))
+			{
+				return SetThreshold(command);
 			}
 
 			return "`Command not recognised.`";
@@ -83,16 +101,12 @@ namespace Phamhilator
 		{
 			return command.StartsWith("fp") || command.StartsWith("false") || command.StartsWith("false pos") || command.StartsWith("false positive") ||
 				   command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive") ||
-				   //command.StartsWith("-1") || command.StartsWith("dv") || command.StartsWith("downvote") ||
-				   //command.StartsWith("+1") || command.StartsWith("uv") || command.StartsWith("upvote") ||
 			       command.StartsWith("bremove term") ||
 			       command.StartsWith("badd term") ||
 			       command.StartsWith("wremove term") ||
 			       command.StartsWith("wadd term") ||
 			       command.StartsWith("add tag") ||
-			       command.StartsWith("remove tag") ||
-			       command.StartsWith("start") ||
-			       command.StartsWith("pause");
+			       command.StartsWith("remove tag");
 		}
 
 		private static string PrivilegedUserCommands(string command)
@@ -127,16 +141,6 @@ namespace Phamhilator
 				return AddWhiteTerm(command);
 			}
 
-			if (command.StartsWith("start"))
-			{
-				return StartBot();
-			}
-
-			if (command.StartsWith("pause"))
-			{
-				return PauseBot();
-			}
-
 			if (command.StartsWith("add tag"))
 			{
 				return AddTag(command);
@@ -160,7 +164,7 @@ namespace Phamhilator
 		{
 			if (command == "stats" || command == "info")
 			{
-				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Posts caught over last 2 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + ". Posts caught over last 2 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
 			}
 
 			if (command == "help" || command == "commands")
@@ -435,6 +439,8 @@ namespace Phamhilator
 		{
 			var tagCommand = command.Remove(0, command.IndexOf("tag", StringComparison.Ordinal) + 4);
 
+			if (tagCommand.Count(c => c == ' ') != 1 && tagCommand.Count(c => c == ' ') != 2) { return "`Command not recognised.`"; }
+
 			var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
 			var metaPost = "";
 			string tag; 
@@ -463,6 +469,8 @@ namespace Phamhilator
 		private static string RemoveTag(string command)
 		{
 			var tagCommand = command.Remove(0, command.IndexOf("tag", StringComparison.Ordinal) + 4);
+
+			if (tagCommand.Count(c => c == ' ') != 1) { return "`Command not recognised.`"; }
 
 			var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
 			var tag = tagCommand.Remove(0, tagCommand.IndexOf(" ", StringComparison.Ordinal) + 1);
@@ -664,6 +672,19 @@ namespace Phamhilator
 			UserAccess.AddUser(int.Parse(id));
 
 			return "`User added.`";
+		}
+
+
+		private static string SetThreshold(string command)
+		{
+			if (command.IndexOf(" ", StringComparison.Ordinal) == -1 || command.All(c => !Char.IsDigit(c))) { return "`Command not recognised.`"; }
+
+			var newLimit = command.Remove(0, 10);
+			var t = Single.Parse(newLimit);
+
+			GlobalInfo.AccuracyThreshold = t;
+
+			return "`Threshold updated.`";
 		}
 	}
 }

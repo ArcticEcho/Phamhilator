@@ -187,5 +187,18 @@ namespace Phamhilator
 
 			return path;
 		}
+
+
+		public static string GetAccuracyThresholdFile()
+		{
+			var path = Path.Combine(root, "Accuracy Threshold.txt");
+
+			if (!File.Exists(path))
+			{
+				File.WriteAllText(path, "15"); // Default threshold = 15%
+			}
+
+			return path;
+		}
 	}
 }

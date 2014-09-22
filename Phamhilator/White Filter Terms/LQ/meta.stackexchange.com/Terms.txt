@@ -1,3 +1,6 @@
-5](?i)question
+7](?i)question
 
 5](?i)\b(help|halp)\b
+5]^(?i).{0,18}$
+
+5](?i)error(s)?

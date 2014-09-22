@@ -8,7 +8,7 @@ namespace Phamhilator
 	public class PostTypeInfo
 	{
 		public PostType Type;
-		public float Score;
+		public float Accuracy;
 		public Dictionary<string, string> BadTags = new Dictionary<string, string>();
 		public readonly List<Regex> TermsFound = new List<Regex>();
 	}

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 
 
@@ -17,10 +19,23 @@ namespace Phamhilator
 		public static readonly BlackFilters.Offensive BlackOff = new BlackFilters.Offensive();
 		public static readonly BlackFilters.Spam BlackSpam = new BlackFilters.Spam();
 		public static readonly BlackFilters.LQ BlackLQ = new BlackFilters.LQ();
+		public const string Owners = "Sam, Unihedron & ProgramFOX";
 		public static int PostsCaught;
 		public static DateTime UpTime;
-		public const string Owners = "Sam, Unihedron & ProgramFOX";
 		public static bool BotRunning;
+
+		public static float AccuracyThreshold
+		{
+			get
+			{
+				return Single.Parse(File.ReadAllText(DirectoryTools.GetAccuracyThresholdFile()));
+			}
+
+			set
+			{
+				File.WriteAllText(DirectoryTools.GetAccuracyThresholdFile(), value.ToString(CultureInfo.InvariantCulture));			
+			}
+		}
 
 		public static int TermCount
 		{

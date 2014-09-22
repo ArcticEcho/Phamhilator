@@ -1,67 +1,66 @@
 adf
-api
-beta
-block
+api http://meta.stackoverflow.com/questions/255437/burninate-the-api-tag-in-stack-overflow
+beta http://meta.stackoverflow.com/questions/256306/burninate-beta
+block http://meta.stackoverflow.com/questions/267662/burninate-blacklist-block
 bug
 bukkit
-call
+call http://meta.stackoverflow.com/questions/255920/burninate-retag-call
 chess
-chr
-countup
-crash
-crash
-crockford
-data
-deleted
-do
+creation http://meta.stackoverflow.com/questions/253141/destroy-creation
+chr http://meta.stackoverflow.com/questions/270566/burninate-chr-and-ord
+countup http://meta.stackoverflow.com/questions/258548/burninate-countup
+crockford http://meta.stackoverflow.com/questions/253760/burninate-the-crockford-tag
+data http://meta.stackoverflow.com/questions/256746/request-to-burninate-the-data-tag
+dark http://meta.stackoverflow.com/questions/266041/the-dark-side-do-not-join-lied-they-did-about-their-cookies
+deleted http://meta.stackoverflow.com/questions/262044/what-have-we-deleted
 error
-extract
+extract http://meta.stackoverflow.com/questions/260827/burninate-extract
 fuzzy
-height
-home
-homepage
+height http://meta.stackoverflow.com/questions/268173/burninate-the-width-and-height-tags
+home http://meta.stackoverflow.com/questions/262893/do-we-need-a-home
+homepage http://meta.stackoverflow.com/questions/258700/the-website-sucks-especially-the-homepage
 http-status-code-500
 ids
-inconsistency
-internet
-language
+inconsistency http://meta.stackoverflow.com/questions/269477/do-we-need-an-inconsistency
+internet http://meta.stackoverflow.com/questions/255169/i-want-to-delete-the-internet
+language http://meta.stackoverflow.com/questions/254210/clean-up-the-language-tags
 minecraft
 minecraft-forge
-modified
-modify
+modified http://meta.stackoverflow.com/questions/262699/anyone-up-for-modified-questions
+modify http://meta.stackoverflow.com/questions/268930/burninate-the-modify-tag
 object
-once
-optimal
+once http://meta.stackoverflow.com/questions/258571/burninate-once
 option
-ord
-percent
-pop
+ord http://meta.stackoverflow.com/questions/270566/burninate-chr-and-ord
+percent http://meta.stackoverflow.com/questions/270556/burninate-the-percent-tag
+pop http://meta.stackoverflow.com/questions/261320/what-should-we-do-with-the-pop-tag
 positioning
-programming-languages
+programming-languages http://meta.stackoverflow.com/questions/254102/remove-programming-languages
 provider
 providers
 readonly
-repeat
-repeated
-repeating
-save
-size
-sony
-space
-stacking
+result http://meta.stackoverflow.com/questions/251011/remove-the-result
+repeat http://meta.stackoverflow.com/questions/255432/should-we-burninate-the-tags-repeated-repeat-and-repeating
+repeated http://meta.stackoverflow.com/questions/255432/should-we-burninate-the-tags-repeated-repeat-and-repeating
+repeating http://meta.stackoverflow.com/questions/255432/should-we-burninate-the-tags-repeated-repeat-and-repeating
+save http://meta.stackoverflow.com/questions/260214/what-value-does-the-save-tag-provide-on-stack-overflow
+size http://meta.stackoverflow.com/questions/253139/remove-and-ban-size
+sony http://meta.stackoverflow.com/questions/253528/clean-up-the-sony-tag-is-it-useful-at-all-or-should-we-re-tag-and-clean-up
+space http://meta.stackoverflow.com/questions/267659/burninate-space
+stacking http://meta.stackoverflow.com/questions/267943/burninate-stacking
 stackoverflow.com
 styles
-sum
-tape
-unresponsive
-user
-version
-web
-website
-weight
-width
+sum http://meta.stackoverflow.com/questions/254688/do-we-need-the-sum-tag
+tape http://meta.stackoverflow.com/questions/262962/burninate-the-tape-tag
+unresponsive http://meta.stackoverflow.com/questions/255681/burninate-unresponsive
+user http://meta.stackoverflow.com/questions/268187/burninate-the-user-with-fire
+version http://meta.stackoverflow.com/questions/251012/remove-version
+web http://meta.stackoverflow.com/questions/250190/burninate-the-web-tag
+website http://meta.stackoverflow.com/questions/258700/the-website-sucks-especially-the-homepage
+weight http://meta.stackoverflow.com/questions/269165/do-we-really-need-the-weight-tag
+width http://meta.stackoverflow.com/questions/268173/burninate-the-width-and-height-tags
 xmlns
-usage
+usage http://meta.stackoverflow.com/questions/271429/remove-this-usage
 manager
 triangle
 squid
@@ -69,4 +68,4 @@ internet-explorer
 facebook
 hardware
 stackoverflow
-rules
+rules http://meta.stackoverflow.com/questions/271750/is-rules-a-useful-tag-at-all

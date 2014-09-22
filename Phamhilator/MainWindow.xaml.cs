@@ -205,10 +205,10 @@ namespace Phamhilator
 					Tags = HTMLScraper.GetTags(html)
 				};
 
-				if (!previouslyFoundPosts.Contains(post.Title))
+				if (!previouslyFoundPosts.Contains(post.URL))
 				{
 					posts.Add(post);
-					previouslyFoundPosts.Add(post.Title);
+					previouslyFoundPosts.Add(post.URL);
 				}
 
 				if (previouslyFoundPosts.Count > 500)
@@ -229,16 +229,9 @@ namespace Phamhilator
 			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.URL != p.URL)))
 			{
 				var info = PostChecker.CheckPost(post);
-				string message;
+				var message = GetReportMessage(info, post);
 
-				if (info.Type == PostType.BadTagUsed)
-				{
-					message = ": " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
-				} 
-				else
-				{
-					message = " (" + Math.Round(info.Score, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
-				}
+				if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { continue; }
 
 				if (SpamAbuseDetected(post))
 				{
@@ -291,6 +284,16 @@ namespace Phamhilator
 					}
 				}
 			}
+		}
+
+		private string GetReportMessage(PostTypeInfo info, Post post)
+		{
+			if (info.Type == PostType.BadTagUsed)
+			{
+				return ": " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+			}
+
+			return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 		}
 
 		private void PostMessage(string message, Post post = null, PostTypeInfo report = null/* int consecutiveMessageCount = 0*/)
