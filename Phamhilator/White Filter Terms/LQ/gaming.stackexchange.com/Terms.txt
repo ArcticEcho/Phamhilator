@@ -1,4 +1,4 @@
 
-5](?i)pl(z|s|ease)
-5](?i)\b(help|halp)\b
+3](?i)pl(z|s|ease)
+3](?i)\b(help|halp)\b
 5](?i)problem(s)?

@@ -48,7 +48,7 @@ namespace Phamhilator
 			if (!File.Exists(DirectoryTools.GetPostPersitenceFile())) { return; }
 
 			var urls = new List<string>(File.ReadAllLines(DirectoryTools.GetPostPersitenceFile()));
-			//double date;
+			double date;
 
 			messages = new List<Post>();
 
@@ -61,16 +61,14 @@ namespace Phamhilator
 					continue;
 				}
 
-				//TODO: reenable whenever.
+				date = double.Parse(dateString);
 
-				//date = double.Parse(dateString);
-		
-				//if ((DateTime.Now - twentyTen).TotalMinutes - date > 2880)
-				//{
-				//	titles.Remove(titles[i]);
+				if ((DateTime.Now - twentyTen).TotalMinutes - date > 10080) // Remove posts older than 1 week
+				{
+					urls.Remove(urls[i]);
 
-				//	continue;
-				//}
+					continue;
+				}
 
 				messages.Add(new Post { URL = urls[i].Split(']')[1].Trim() });
 				GlobalInfo.PostsCaught++;

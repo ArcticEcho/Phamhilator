@@ -164,7 +164,7 @@ namespace Phamhilator
 		{
 			if (command == "stats" || command == "info")
 			{
-				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + ". Posts caught over last 2 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + "%. Posts caught over last 7 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
 			}
 
 			if (command == "help" || command == "commands")
@@ -439,7 +439,7 @@ namespace Phamhilator
 		{
 			var tagCommand = command.Remove(0, command.IndexOf("tag", StringComparison.Ordinal) + 4);
 
-			if (tagCommand.Count(c => c == ' ') != 1 && tagCommand.Count(c => c == ' ') != 2) { return "`Command not recognised.`"; }
+			if (tagCommand.Count(c => c == ' ') != 1 && tagCommand.Count(c => c == ' ') != 3) { return "`Command not recognised.`"; }
 
 			var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
 			var metaPost = "";

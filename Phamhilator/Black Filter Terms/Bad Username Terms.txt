@@ -1,4 +1,4 @@
 10](?i)sumer
 10](?i)kolcak
-10]Sümer
-10]Kolçak
+10](?i)sümer
+10](?i)kolçak

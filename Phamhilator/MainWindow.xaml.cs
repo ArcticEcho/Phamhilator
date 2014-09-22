@@ -350,7 +350,10 @@ namespace Phamhilator
 
 			var id = HTMLScraper.GetMessageIDByReportTitle(html, post.Title);
 
-			GlobalInfo.PostedReports.Add(id, new MessageInfo{ Post = post, Report = report });
+			if (!GlobalInfo.PostedReports.ContainsKey(id))
+			{
+				GlobalInfo.PostedReports.Add(id, new MessageInfo{ Post = post, Report = report });
+			}		
 
 			//consecutiveMessageCount++;
 

@@ -43,7 +43,7 @@
 10](?i)skin care
 10](?i)baba
 10](?i)research questionnaire
-10]bodyweight
+10](?i)bodyweight
 10](?i)wrinkle cream
 10](?i)\bskin\b
 10](?i)\bexclusive\b
@@ -59,3 +59,8 @@
 10](?i)affordable
 10](?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h
 10](?i)get free
+10](?i)online job
+10](?i)(feel|look|taste|get)(s|ing)? (good|nice|amazing|fabulous)
+10](?i)how to (feel|look|reduce|buy|increase)
+10](?i)^also
+10](?i)you want

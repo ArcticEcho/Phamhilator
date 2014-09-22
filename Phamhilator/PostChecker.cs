@@ -11,30 +11,27 @@ namespace Phamhilator
 		{
 			var info = new PostTypeInfo();
 
-			if ((info.BadTags = IsBadTagUsed(post)).Count != 0)
+			if ((info.BadTags = IsBadTagUsed(post, ref info)).Count != 0)
 			{
-				info.Type = PostType.BadTagUsed;
-				info.Accuracy = 100;
+				return info;
+			}
 
+			if (IsSpam(post, ref info))
+			{
 				return info;
 			}
 
 			if (IsLowQuality(post, ref info))
 			{
-				info.Type = PostType.LowQuality;
+				return info;
 			}
-			else if (IsSpam(post, ref info))
+
+			if (IsOffensive(post, ref info))
 			{
-				info.Type = PostType.Spam;
+				return info;
 			}
-			else if (IsOffensive(post, ref info))
-			{
-				info.Type = PostType.Offensive;
-			}
-			else if (IsBadUsername(post, ref info))
-			{
-				info.Type = PostType.BadUsername;
-			}
+
+			IsBadUsername(post, ref info);
 
 			return info;
 		}
@@ -78,6 +75,7 @@ namespace Phamhilator
 				info.Accuracy /= filtersUsed;
 				info.Accuracy /= GlobalInfo.BlackSpam.HighestScore;
 				info.Accuracy *= 100;
+				info.Type = PostType.Spam;
 
 				return true;
 			}
@@ -126,6 +124,7 @@ namespace Phamhilator
 				info.Accuracy /= filtersUsed;
 				info.Accuracy /= GlobalInfo.BlackLQ.HighestScore;
 				info.Accuracy *= 100;
+				info.Type = PostType.LowQuality;
 
 				return true;
 			}
@@ -176,6 +175,7 @@ namespace Phamhilator
 				info.Accuracy /= filtersUsed;
 				info.Accuracy /= GlobalInfo.BlackOff.HighestScore;
 				info.Accuracy *= 100;
+				info.Type = PostType.Offensive;
 
 				return true;
 			}
@@ -226,6 +226,7 @@ namespace Phamhilator
 				info.Accuracy /= filtersUsed;
 				info.Accuracy /= GlobalInfo.BlackName.HighestScore;
 				info.Accuracy *= 100;
+				info.Type = PostType.BadUsername;
 
 				return true;
 			}
@@ -235,7 +236,7 @@ namespace Phamhilator
 			return false;
 		}
 
-		private static Dictionary<string, string> IsBadTagUsed(Post post)
+		private static Dictionary<string, string> IsBadTagUsed(Post post, ref PostTypeInfo info)
 		{
 			var tags = new Dictionary<string, string>();
 
@@ -247,6 +248,12 @@ namespace Phamhilator
 				{
 					tags.Add(tag, BadTagDefinitions.BadTags[post.Site][tag]);
 				}
+			}
+
+			if (tags.Count != 0)
+			{
+				info.Accuracy = 100;
+				info.Type = PostType.BadTagUsed;
 			}
 
 			return tags;

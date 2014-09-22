@@ -1,145 +1,3 @@
-
-2478961.88606925]Getting error while creating table in magento1.9 via setup script
-2479047.08364227]How do I get editing help for technical (mathematic/statistic) paper publishing?
-2479076.69193577]Alinhamento Footer
-2479194.43720374]UIScrollView Setting contentoffset in viewwillappear not working
-2479201.20284072]how can i make the image disappear by just answering math question using javascript?
-2479275.25137605]Sum of (example: 0+1+2+3 = 6 , 0+1+2+3+4+5+6+7 = 28 and so on)
-2479275.33588088]Getting error 500 when trying to obtain access token from authorization code
-2479277.82240644]How to stop error messages in terminal
-2479281.98614459]Spreading vector
-2479283.84040065]use android apps like whats app on ubuntu (old answers do not work )
-2479286.81163726]euclideandistances error in scikit-learn?
-2479288.6523092]repartition does not work with SparkSQL
-2479291.18562077]GDAL Python Not Working Correctly - Raster Calculations
-2479295.51418502]Problem in creating neighbors,area and perimeter in spatial econometrics using R
-2479299.84558276]iOS Data Security
-2479302.00888983]PayPal connectivity - Intermittent problems with PDT
-2479302.51413539]4x4 3D Matrix Manipulation
-2479303.02451458]Error: Cannot find one or more components. Please reinstall application
-2479307.52580537]'None' is not None
-2479308.20231073]mysqldump error: Got packet bigger than maxallowedpacket'
-2479310.01001413]Error in MD5 checksums when trying to install AMPPS stack
-2479313.07435607]code in c on local machine is fine but runtime error on hackerrank in algorithm warm up exercise “angry children”?
-2479315.88618356]iMessage not working, contacts are red
-2479390.4196633]iOS 8 Handoff does not work between iPhone and iPad
-2479393.30367825]Two Card Probability Problem
-2479460.7536195]Struct at overrun error and framing error in USART PIC18F4550
-2479460.82114003]RadioButton setChecked() not working
-2479466.13552733]PHP - SOAP-ERROR: Encoding: object hasn't property 'xxxx'
-2479466.45281215]Opportunity Queues
-2479472.93111602]Astrophysics Homework Question
-2479476.15465039]Subtracts A from B
-2479506.01989192]Copyright question
-2479507.68382042]Backbone fetch producing 404 error
-2479509.587896]XML Parser Returning unexpected token error and null pointer exception for some of the URLs used
-2479509.75690567]Draw a car wheel
-2479509.92429857]Tags is cut off
-2479510.17612964]Mac bluetooth speaker/mic not working properly when switching to soft phone
-2479510.34475596]Error 001359 when publishing map service to ArcGIS server 10.1
-2479579.72634102]I can't download apps on my Android phone, I've tried everything
-2479581.58053041]PSEXEC The system cannot find the file specified error
-2479581.74793998]Firefox/Icecat: SQLite Version Error: The application has been updatet, but your version of SQLite is too old and the application cannot run
-2479582.35432467]dataTables fixed columns plugin NOT working
-2479582.69857769]Store a FIND result as a variable, then test it for errors. Batch
-2479583.3765998]Need help for awk script. Cut and merge characters in a line
-2479583.62833087]Codeigniter URI error with permitted characters
-2479645.70424402]Why is it a security problem not to update ones browser?
-2479646.5465922]Store code in index.php not working - But website works (?)
-2479647.67774023]Windows 7 Mobile Device center Xperia x1 problem
-2479649.37428726]NA are not allowed
-2479649.54183018]OpenCL barrier() not working even inside one workgroup
-2479649.71013981]Ajuda em trabalho
-2479649.96205421]Cairo-dock removal problem
-2479650.12954713]iMessage not working as contacts are red
-2479651.25281138]Transmembrane Protein Problem
-2479669.22075575]Help me in this excercise with Hermetian scalar product.
-2479669.3895154]How to deal with “Clang LLVM 1.0 error”?
-2479669.55814171]Matrix Algebra $(A+B)^2$ help
-2479669.72576797]Regression problem without complete data set
-2479669.97944915]Accidentally rm -r the wrong etc folder… Help?
-2479672.35670178]java.lang.OutOfMemoryError in recursive threads
-2479674.67866792]Gateway Error when doing a credit memo
-2479677.92230345]Two Dimensional Kinematics. Help needed
-2479679.36961957]Logging in to AWS
-2480315.72655352]UIFont not working on all devices
-2480315.89504649]Problem I have - Double Degree equivalent to 2 single degrees?
-2480317.31896126]Google cloud Messaging(gcm) is not working due to deprecated. What would be the best alternate solution
-2480317.48867097]adding the Sum of numbers in NSArray
-2480319.14351562]Server won't physically fit in rack: which technical problems will I face in future if I force the mount?
-2480546.11984792]super() in Java
-2480546.28739084]“Error HRESULT EFAIL has been returned from a call to a COM component.” during using geoprocessor by VB.net
-2480546.5385552]dynamically added button on click not working
-2480547.39702097]Problems with creating IPA for Ad hoc distribution in Xcode 6 beta
-2480549.38416797]Error on CMDEXEC job step even with proxy account defined
-2480549.55186089]Multiline Regex does not work with tabs
-2480550.05630641]Uncaught ReferenceError: servertime is not defined
-2480550.89733785]Syntax Highlighter of Avalon Text editor is not working for Sql file
-2480552.34277052]Location Parse Help Please
-2480552.67958979]Error access admin
-2480553.01647572]sharepoint 2013 user profile sync permissions problems
-2480556.21880889]Mobile Broadband not working Ubuntu 14.04 64 bit, booting live usb
-2480557.23115012]Simplexml list doesn't work
-2480559.17822815]Seemingly random Error CS1583: “.tmp' is not a valid Win32 resource file”
-2480559.68155694]Two trigger questions (Magic: the Gathering)
-2480595.79022224]How to close Dialog box? plz Need help
-2480596.97400662]Windows 8.1 VPN error 800 when connecting to Mikrotik VPN router
-2480599.30759009]Converting string stored in variable to object with JSON.parse
-2480599.3153072]Boris Group or 'the' Boris Group? Is article omission an error?
-2480602.3475973]Problem with NetBeans 7.0.1 on Ubuntu 14.04
-2480602.49007212]How can I copy a specific data from an html pages?
-2480602.49088883]Web Api Security client and user
-2480602.99706778]Lock wait timeout exceeded; try restarting transaction Error in in-out message
-2480603.33423707]Error posting JSON to Web API 2 : The request entity's media type 'text/plain' is not supported for this resource
-2480605.22286176]Screen Scaling Problem
-2480609.30174506]Why manual config setting of session is not working in codeIgniter?
-2480609.63814763]Why is it a security problem not to update one's browser?
-2480611.45113466]Sony Vaio VPCEH25EN function keys not working
-2480613.33155888]ubuntu ethernet not working without turning 801.2x security on and off
-2480613.50051855]Google Transliteration not working in https://xxx.com (SSL Certified Domain)
-2480614.75132342]Problem in ray diagrams in convex mirrors
-2480615.01688861]Very Confusing natural logrithm integral, could someone provide some input?
-2480615.27056979]In windowless mode, FireBreath can not drawing in chrome 37.0.2062.120
-2480615.69194389]Ubuntu ethernet not working without turning 801.2x security on and off
-2480616.7510878]JS and CSS files fail to load due to error 401
-2480617.35170549]multirow and longtabu long text wrapping cell hieght adjustment not working
-2480617.60445328]Conky error with gcalcli
-2480619.20282803]“TypeError: decoding Unicode is not supported” with gcalcli
-2480619.37100432]Mathematica 8: EdgeList and CommunityStructureAssignment shadowing problem
-2480620.9546449]Cron Job in magento is not working
-2480628.78877632]Mysql Server Login and Permission Deny Error
-2480628.9563359]“unauthorized” error when running db.eval on a MongoHQ/Compose hosted database
-2480629.12382881]photo electric effect question
-2480629.29165508]Keep getting invalid package error when downloading app from Play store
-2480629.54456955]Webapp2 security
-2480631.82628339]Facebook drops SSL
-2480633.14332538]ONLY CHANCE HOW TO WIN MONEY
-2480638.06230673]SQL Server 08 Express error when connecting to localhost - “Timeout expired”. Works with ::1 or 127.0.0.1
-2480638.06250674]Can't compile iOS project on Visual Studio with Xamarin: Error executing tool 'actool'
-2480638.23021634]Biber compiling but no bibliography appears although there are no errors
-2480638.83211743]Drag and Drop to Document Library doesn't work on Site Home page
-2480639.34584681]AJAX auto load on scroll is not working properly
-2480641.03344334]Books for beginners
-2480645.23590037]Toggleclass not working?
-2480645.48841481]ADFS 2.0 Client Certificate Log in Error pages
-2480646.68648334]ggplot2 error : Discrete value supplied to continuous scale
-2480647.69585774]Error: Unknown Puppet subcommand 'module'
-2480648.70513213]when I type “sudo apt-get update” I get the error?
-2480651.22684303]WSGI : How to see what the html form has posted w/o using “import cgi” ? a = environ'wsgi.input' is not working.
-2480652.74192969]Help with creating random passdown
-2480652.99377743]Oracle Select from dual not working
-2480653.33961388]how do i examine code for display artifacts
-2480654.3494383]apache deflate module not working
-2480654.68694094]Problem in WireShark
-2480656.75352581]Help with lexmark printer X4650 on 64 bit Ubuntu 14.04
-2480658.05180007]modrewrite multiple question marks
-2480658.38775261]a colouring / matching problem
-2480659.73736314]Ubuntu freezes after login when I tried to reboot after installing nvidia drivers
-2480660.07331569]Store confirmation emails not working
-2480661.25146641]Linked List Destructor - I have looked at previous posts. Still having problems :(
-2480661.70067543]WSGI : How to see what the html form has posted w/o using “import cgi” ? a = environ'wsgi.input' is not working
-2480662.04201163]WSDL File location in eclipse
-2480665.54189514]Saving picture using jQuery
 2483252.56414216]http://stackoverflow.com/questions/25947210
 2483255.32208324]http://stackoverflow.com/questions/1794185
 2483255.42312235]http://mathoverflow.net/questions/181345
@@ -559,3 +417,257 @@
 2484982.96235928]http://salesforce.stackexchange.com/questions/49983
 2484983.79524025]http://gis.stackexchange.com/questions/91104
 2484985.41496623]http://askubuntu.com/questions/527117
+2484990.45715463]http://worldbuilding.stackexchange.com/questions/426
+2484990.56237731]http://stackoverflow.com/questions/25968730
+2484990.66356643]http://stackoverflow.com/questions/25977845
+2484991.27753488]http://askubuntu.com/questions/362790
+2484991.46514561]http://android.stackexchange.com/questions/19155
+2484992.40713282]http://stackoverflow.com/questions/25977870
+2484993.09705562]http://opendata.stackexchange.com/questions/3649
+2484998.86641894]http://sqa.stackexchange.com/questions/6878
+2484998.9671247]http://unix.stackexchange.com/questions/156881
+2484999.06816381]http://sharepoint.stackexchange.com/questions/58194
+2485000.58798408]http://stackoverflow.com/questions/25978020
+2485000.85788285]http://stackoverflow.com/questions/25766040
+2485002.85573045]http://gis.stackexchange.com/questions/114687
+2485003.76463244]http://gaming.stackexchange.com/questions/184793
+2485005.38454176]http://cs50.stackexchange.com/questions/2923
+2485008.54252238]http://stackoverflow.com/questions/25978140
+2485009.48485962]http://dba.stackexchange.com/questions/77294
+2485010.67967795]http://stackoverflow.com/questions/25959580
+2485012.09169205]http://stackoverflow.com/questions/25978210
+2485014.21236335]http://serverfault.com/questions/630354
+2485016.70458923]http://math.stackexchange.com/questions/941739
+2485018.16013914]http://stackoverflow.com/questions/25978325
+2485018.3452664]http://pt.stackoverflow.com/questions/33431
+2485018.53054366]http://superuser.com/questions/814807
+2485019.18239762]http://math.stackexchange.com/questions/941741
+2485019.36784156]http://math.stackexchange.com/questions/941578
+2485019.64520742]http://math.stackexchange.com/questions/941745
+2485021.85216699]http://askubuntu.com/questions/487840
+2485024.57180587]http://mechanics.stackexchange.com/questions/12372
+2485027.41436846]http://craftcms.stackexchange.com/questions/2662
+2485029.0526455]http://gis.stackexchange.com/questions/114686
+2485029.32302763]http://stackoverflow.com/questions/25978495
+2485034.21949102]http://stackoverflow.com/questions/25941675
+2485036.88034321]http://tex.stackexchange.com/questions/202575
+2485038.38156241]http://stackoverflow.com/questions/25978635
+2485041.52085864]http://mathematica.stackexchange.com/questions/60396
+2485041.52400882]http://stackoverflow.com/questions/25943450
+2485042.04542197]http://stackoverflow.com/questions/25978695
+2485042.39429193]http://stackoverflow.com/questions/8840750
+2485043.00671029]http://meta.stackexchange.com/questions/239769
+2485047.79831769]http://unix.stackexchange.com/questions/156889
+2485049.19126402]http://stackoverflow.com/questions/25978825
+2485049.71449395]http://programmers.stackexchange.com/questions/256844
+2485049.96719174]http://superuser.com/questions/772845
+2485051.34392048]http://diy.stackexchange.com/questions/47961
+2485051.76506124]http://stackoverflow.com/questions/25978885
+2485051.86873383]http://graphicdesign.stackexchange.com/questions/37230
+2485053.23172846]http://askubuntu.com/questions/527134
+2485054.17498241]http://stackoverflow.com/questions/25902040
+2485058.28145062]http://stackoverflow.com/questions/25978990
+2485059.12346545]http://stackoverflow.com/questions/25979005
+2485059.56122382]http://stackoverflow.com/questions/25979015
+2485059.83973975]http://expressionengine.stackexchange.com/questions/25799
+2485060.02513369]http://stackoverflow.com/questions/17186195
+2485060.72269025]http://meta.stackexchange.com/questions/239771
+2485063.22961697]http://physics.stackexchange.com/questions/136743
+2485065.87373487]http://dba.stackexchange.com/questions/77298
+2485068.75098278]http://stats.stackexchange.com/questions/116337
+2485071.52172459]http://askubuntu.com/questions/422357
+2485071.87581151]http://stackoverflow.com/questions/25937210
+2485074.46159274]http://stackoverflow.com/questions/9384025
+2485076.81664411]http://stackoverflow.com/questions/23605125
+2485078.06069859]http://gaming.stackexchange.com/questions/158291
+2485078.91999775]http://stackoverflow.com/questions/24971625
+2485079.24338291]http://askubuntu.com/questions/527142
+2485080.42591721]http://stackoverflow.com/questions/25979355
+2485081.5441645]http://diy.stackexchange.com/questions/49143
+2485086.77164683]http://stackoverflow.com/questions/25762635
+2485088.28563343]http://stackoverflow.com/questions/25979510
+2485089.61535948]http://stackoverflow.com/questions/25979525
+2485090.12048838]http://askubuntu.com/questions/295764
+2485093.24766724]http://stackoverflow.com/questions/4338950
+2485094.28842677]http://stackoverflow.com/questions/23591325
+2485096.07266215]http://tex.stackexchange.com/questions/202500
+2485098.78001701]http://salesforce.stackexchange.com/questions/50162
+2485101.76393768]http://english.stackexchange.com/questions/197695
+2485102.22414733]http://travel.stackexchange.com/questions/36733
+2485104.42815673]http://stackoverflow.com/questions/25979755
+2485104.74817503]http://salesforce.stackexchange.com/questions/50062
+2485106.7913919]http://stackoverflow.com/questions/25979790
+2485108.62581349]http://stackoverflow.com/questions/25979820
+2485108.81404092]http://stackoverflow.com/questions/25979825
+2485108.99933485]http://islam.stackexchange.com/questions/17501
+2485109.53089859]http://sqa.stackexchange.com/questions/9230
+2485111.22999577]http://photo.stackexchange.com/questions/53700
+2485111.48261022]http://stackoverflow.com/questions/25979865
+2485112.25575444]http://android.stackexchange.com/questions/75210
+2485113.3752018]http://askubuntu.com/questions/525644
+2485115.58257806]http://askubuntu.com/questions/527151
+2485116.10474126]http://programmers.stackexchange.com/questions/256904
+2485116.54271631]http://security.stackexchange.com/questions/67930
+2485117.46795256]http://stackoverflow.com/questions/25979950
+2485118.57914945]http://stackoverflow.com/questions/25979975
+2485118.76426004]http://stackoverflow.com/questions/6500925
+2485120.08006863]http://stackoverflow.com/questions/25960125
+2485120.66885231]http://serverfault.com/questions/395647
+2485121.106344]http://electronics.stackexchange.com/questions/130326
+2485125.70210686]http://askubuntu.com/questions/510151
+2485126.72759885]http://webapps.stackexchange.com/questions/67356
+2485126.98012996]http://islam.stackexchange.com/questions/17592
+2485127.75359087]http://math.stackexchange.com/questions/941864
+2485133.93224427]http://stackoverflow.com/questions/25945605
+2485134.90398318]http://stackoverflow.com/questions/25980225
+2485134.98838801]http://stackoverflow.com/questions/25923310
+2485136.94103303]http://salesforce.stackexchange.com/questions/50171
+2485137.21121515]http://math.stackexchange.com/questions/941876
+2485137.73337834]http://expressionengine.stackexchange.com/questions/24161
+2485138.92666326]http://pt.stackoverflow.com/questions/33451
+2485141.05835186]http://stackoverflow.com/questions/25980340
+2485142.42156316]http://stackoverflow.com/questions/25980370
+2485142.52233559]http://codereview.stackexchange.com/questions/1973
+2485142.71608001]http://stackoverflow.com/questions/25971095
+2485144.93497359]http://stackoverflow.com/questions/25755770
+2485145.39700001]http://stackoverflow.com/questions/25980410
+2485146.0862061]http://askubuntu.com/questions/527164
+2485147.23598853]http://pt.stackoverflow.com/questions/33452
+2485147.33784436]http://electronics.stackexchange.com/questions/130226
+2485148.61738421]http://stackoverflow.com/questions/25980475
+2485149.07362697]http://english.stackexchange.com/questions/197697
+2485149.07382698]http://stackoverflow.com/questions/25980480
+2485151.11262693]http://stackoverflow.com/questions/25899405
+2485151.46634716]http://english.stackexchange.com/questions/197698
+2485152.61326276]http://stackoverflow.com/questions/25980540
+2485154.27119092]http://stackoverflow.com/questions/25980575
+2485155.64276937]http://math.stackexchange.com/questions/941899
+2485156.58909016]http://electronics.stackexchange.com/questions/130333
+2485157.11738705]http://superuser.com/questions/815161
+2485160.02066977]http://ell.stackexchange.com/questions/34073
+2485162.7304581]http://askubuntu.com/questions/525794
+2485166.26564363]http://stackoverflow.com/questions/4270705
+2485166.77115588]http://math.stackexchange.com/questions/941911
+2485169.40663995]http://stackoverflow.com/questions/25980815
+2485169.59173387]http://stackoverflow.com/questions/25980820
+2485171.07583542]http://stats.stackexchange.com/questions/116352
+2485171.16022358]http://unix.stackexchange.com/questions/156908
+2485171.52566115]http://wordpress.stackexchange.com/questions/84324
+2485172.45233082]http://stackoverflow.com/questions/25980855
+2485173.9904188]http://robotics.stackexchange.com/questions/4591
+2485174.09122456]http://math.stackexchange.com/questions/941919
+2485176.5396146]http://stackoverflow.com/questions/25980925
+2485176.90183532]http://unix.stackexchange.com/questions/156910
+2485179.1277293]http://fitness.stackexchange.com/questions/19015
+2485179.5689212]http://gis.stackexchange.com/questions/114707
+2485179.56935456]http://stackoverflow.com/questions/25980970
+2485180.43057048]http://askubuntu.com/questions/271180
+2485180.62001465]http://stackoverflow.com/questions/25980985
+2485180.70490284]http://serverfault.com/questions/147925
+2485182.35211372]http://stackoverflow.com/questions/25981025
+2485185.56003054]http://stackoverflow.com/questions/25981085
+2485187.17118936]http://stackoverflow.com/questions/25981110
+2485188.11282655]http://stackoverflow.com/questions/25963710
+2485189.16862027]http://math.stackexchange.com/questions/928531
+2485192.02500031]http://quant.stackexchange.com/questions/14829
+2485196.72500247]http://stackoverflow.com/questions/25981235
+2485197.16939456]http://pt.stackoverflow.com/questions/33470
+2485197.89416935]http://stackoverflow.com/questions/25981260
+2485198.6702804]http://stackoverflow.com/questions/25981270
+2485198.855541]http://dsp.stackexchange.com/questions/18311
+2485201.02629849]http://stackoverflow.com/questions/25981320
+2485204.35432218]http://stackoverflow.com/questions/23365495
+2485204.79173053]http://gamedev.stackexchange.com/questions/77823
+2485205.55157399]http://math.stackexchange.com/questions/741951
+2485208.18107439]http://salesforce.stackexchange.com/questions/35080
+2485210.97361745]http://stackoverflow.com/questions/25981465
+2485211.49816412]http://superuser.com/questions/815180
+2485215.5966152]http://stats.stackexchange.com/questions/116357
+2485215.95358562]http://pt.stackoverflow.com/questions/33479
+2485216.81303478]http://electronics.stackexchange.com/questions/130339
+2485216.99807869]http://askubuntu.com/questions/431879
+2485219.36544743]http://stackoverflow.com/questions/25981610
+2485221.55172248]http://stackoverflow.com/questions/21548040
+2485222.83042895]http://math.stackexchange.com/questions/941968
+2485223.693745]http://codegolf.stackexchange.com/questions/38008
+2485226.82644084]http://stackoverflow.com/questions/25981720
+2485227.24809829]http://sharepoint.stackexchange.com/questions/116014
+2485231.67226801]http://android.stackexchange.com/questions/48209
+2485234.02851944]http://physics.stackexchange.com/questions/136774
+2485234.21353003]http://math.stackexchange.com/questions/941889
+2485234.82013139]http://stackoverflow.com/questions/25981835
+2485234.90478623]http://stackoverflow.com/questions/25981840
+2485235.39318083]http://askubuntu.com/questions/527188
+2485236.06775275]http://stackoverflow.com/questions/25981860
+2485236.24369615]http://superuser.com/questions/815192
+2485238.36883436]http://stackoverflow.com/questions/25981890
+2485238.45368922]http://magento.stackexchange.com/questions/36710
+2485238.97998599]http://superuser.com/questions/814265
+2485239.67052548]http://raspberrypi.stackexchange.com/questions/15458
+2485240.02679586]http://fitness.stackexchange.com/questions/6828
+2485240.6389142]http://stackoverflow.com/questions/25981935
+2485243.39165499]http://skeptics.stackexchange.com/questions/19128
+2485243.49252742]http://math.stackexchange.com/questions/941992
+2485243.68007148]http://stackoverflow.com/questions/25981970
+2485245.31111477]http://expatriates.stackexchange.com/questions/2953
+2485246.00073755]http://apple.stackexchange.com/questions/146486
+2485248.44049376]http://stackoverflow.com/questions/25982050
+2485249.03152757]http://askubuntu.com/questions/527190
+2485250.1720428]http://cstheory.stackexchange.com/questions/25828
+2485250.35713672]http://ell.stackexchange.com/questions/34082
+2485251.31192467]http://stackoverflow.com/questions/25982095
+2485253.01877229]http://superuser.com/questions/815204
+2485253.88008822]http://math.stackexchange.com/questions/942003
+2485255.21076433]http://stackoverflow.com/questions/25982145
+2485288.78640142]http://meta.stackexchange.com/questions/239791
+2485288.88787389]http://superuser.com/questions/815209
+2485288.98932969]http://dsp.stackexchange.com/questions/18315
+2485289.09010212]http://unix.stackexchange.com/questions/100967
+2485291.42906924]http://wordpress.stackexchange.com/questions/83897
+2485292.54309962]http://pt.stackoverflow.com/questions/32987
+2485298.61618031]http://drupal.stackexchange.com/questions/106665
+2485298.88857923]http://bitcoin.stackexchange.com/questions/27061
+2485300.97593195]http://serverfault.com/questions/299301
+2485302.7625008]http://stats.stackexchange.com/questions/116375
+2485302.76355086]http://stackoverflow.com/questions/9712605
+2485307.44495196]http://expressionengine.stackexchange.com/questions/25802
+2485307.71566744]http://stackoverflow.com/questions/25982860
+2485309.07867874]http://stackoverflow.com/questions/25982885
+2485309.6002419]http://gis.stackexchange.com/questions/114488
+2485311.10122775]http://stackoverflow.com/questions/25982900
+2485312.54959393]http://stackoverflow.com/questions/21679390
+2485315.47764474]http://money.stackexchange.com/questions/37063
+2485315.47806143]http://stackoverflow.com/questions/25982960
+2485315.66445542]http://cstheory.stackexchange.com/questions/25827
+2485319.73523826]http://serverfault.com/questions/630418
+2485319.92071553]http://superuser.com/questions/411568
+2485322.27146665]http://graphicdesign.stackexchange.com/questions/39009
+2485326.46807335]http://mathematica.stackexchange.com/questions/60408
+2485326.73727208]http://math.stackexchange.com/questions/942068
+2485326.92224933]http://gamedev.stackexchange.com/questions/83840
+2485333.09338563]http://gaming.stackexchange.com/questions/137870
+2485339.28934002]http://gaming.stackexchange.com/questions/184606
+2485340.0629676]http://stackoverflow.com/questions/25983280
+2485340.80282659]http://arduino.stackexchange.com/questions/4271
+2485341.03832339]http://stackoverflow.com/questions/25983290
+2485341.29157121]http://stackoverflow.com/questions/18064060
+2485341.72927957]http://askubuntu.com/questions/527219
+2485345.5965341]http://stackoverflow.com/questions/15887820
+2485346.04079285]http://stackoverflow.com/questions/25983350
+2485351.31459449]http://stackoverflow.com/questions/25983420
+2485351.50195521]http://unix.stackexchange.com/questions/86409
+2485351.94023028]http://graphicdesign.stackexchange.com/questions/29111
+2485352.20972902]http://stackoverflow.com/questions/25983440
+2485353.24375483]http://gis.stackexchange.com/questions/77950
+2485356.15178783]http://stackoverflow.com/questions/25679720
+2485357.26373476]http://magento.stackexchange.com/questions/36719
+2485359.92668707]http://patents.stackexchange.com/questions/6280
+2485360.02749284]http://german.stackexchange.com/questions/15812
+2485363.99415305]http://serverfault.com/questions/629786
+2485366.63430406]http://movies.stackexchange.com/questions/24772
+2485368.27124769]http://tex.stackexchange.com/questions/202619
+2485373.81324801]http://chemistry.stackexchange.com/questions/16617
+2485374.2672073]http://stackoverflow.com/questions/25983685
+2485376.30844072]http://stackoverflow.com/questions/10750880
+2485377.4392554]http://stackoverflow.com/questions/25983725
+2485378.07934201]http://askubuntu.com/questions/449283
