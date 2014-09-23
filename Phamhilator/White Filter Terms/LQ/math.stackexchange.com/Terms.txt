@@ -1,8 +1,11 @@
 
-7](?i)question
+7.777778](?i)question
 
 17](?i)problem(s)?
 
 9]^(?i).{0,18}$
 
-5](?i)\b(help|halp)\b
+6](?i)\b(help|halp)\b
+
+11.5](?i)(need|some)( halp| help| answer)
+11.5](?i:need help|help me)
