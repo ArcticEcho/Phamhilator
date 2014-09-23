@@ -1,2 +1,3 @@
 
 5](?i)\bmuscle(s)?\b
+5](?i)\bsupplement(s)?\b

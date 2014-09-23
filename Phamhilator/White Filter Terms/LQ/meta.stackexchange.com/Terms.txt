@@ -1,4 +1,7 @@
-9](?i)question
+11](?i)question
 9](?i)\b(help|halp)\b
 7]^(?i).{0,18}$
 5](?i)error(s)?
+
+5](?i)pl(z|s|ease)
+5](?i)thanks

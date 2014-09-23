@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 
 
@@ -20,9 +21,9 @@ namespace Phamhilator
 			{
 				command = input.Body.Remove(0, 2).TrimStart();
 			}
-			else if (input.Body.ToLowerInvariant().StartsWith("@sam") && GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID))
+			else if (input.Body.ToLowerInvariant().StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant()) && GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID))
 			{
-				command = input.Body.Remove(0, 4).TrimStart();
+				command = input.Body.Remove(0, 5).TrimStart();
 			}
 			else
 			{
@@ -497,20 +498,17 @@ namespace Phamhilator
 			{
 				case PostType.LowQuality:
 				{
-					foreach (var term in message.Report.TermsFound)
+					foreach (var term in message.Report.BlackTermsFound)
 					{
-						if (GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term))
+						if (!GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term.Key))
 						{
-							GlobalInfo.WhiteLQ.SetScore(term, message.Post.Site, GlobalInfo.WhiteLQ.GetScore(term, message.Post.Site) + 1);
+							GlobalInfo.WhiteLQ.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
 						}
+					}
 
-						if (GlobalInfo.BlackLQ.Terms.ContainsTerm(term))
-						{
-							if (!GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term))
-							{
-								GlobalInfo.WhiteLQ.AddTerm(term, message.Post.Site, 5);
-							}
-						}
+					foreach (var term in message.Report.WhiteTermsFound)
+					{
+						GlobalInfo.WhiteLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
 					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
@@ -518,21 +516,17 @@ namespace Phamhilator
 
 				case PostType.Offensive:
 				{
-
-					foreach (var term in message.Report.TermsFound)
+					foreach (var term in message.Report.BlackTermsFound)
 					{
-						if (GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term))
+						if (!GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term.Key))
 						{
-							GlobalInfo.WhiteOff.SetScore(term, message.Post.Site, GlobalInfo.WhiteOff.GetScore(term, message.Post.Site) + 1);
+							GlobalInfo.WhiteOff.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
 						}
+					}
 
-						if (GlobalInfo.BlackOff.Terms.ContainsTerm(term))
-						{
-							if (!GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term))
-							{
-								GlobalInfo.WhiteOff.AddTerm(term, message.Post.Site, 5);
-							}
-						}
+					foreach (var term in message.Report.WhiteTermsFound)
+					{
+						GlobalInfo.WhiteOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
 					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
@@ -540,20 +534,17 @@ namespace Phamhilator
 
 				case PostType.Spam:
 				{
-					foreach (var term in message.Report.TermsFound)
+					foreach (var term in message.Report.BlackTermsFound)
 					{
-						if (GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term))
+						if (!GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term.Key))
 						{
-							GlobalInfo.WhiteSpam.SetScore(term, message.Post.Site, GlobalInfo.WhiteSpam.GetScore(term, message.Post.Site) + 1);
+							GlobalInfo.WhiteSpam.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
 						}
+					}
 
-						if (GlobalInfo.BlackSpam.Terms.ContainsTerm(term))
-						{
-							if (!GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term))
-							{
-								GlobalInfo.WhiteSpam.AddTerm(term, message.Post.Site, 5);
-							}
-						}			
+					foreach (var term in message.Report.WhiteTermsFound)
+					{
+						GlobalInfo.WhiteSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
 					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
@@ -561,20 +552,17 @@ namespace Phamhilator
 
 				case PostType.BadUsername:
 				{
-					foreach (var term in message.Report.TermsFound)
+					foreach (var term in message.Report.BlackTermsFound)
 					{
-						if (GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term))
+						if (!GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term.Key))
 						{
-							GlobalInfo.WhiteName.SetScore(term, message.Post.Site, GlobalInfo.WhiteName.GetScore(term, message.Post.Site) + 1);
+							GlobalInfo.WhiteName.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
 						}
+					}
 
-						if (GlobalInfo.BlackName.Terms.ContainsTerm(term))
-						{
-							if (!GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term))
-							{
-								GlobalInfo.WhiteName.AddTerm(term, message.Post.Site, 5);
-							}
-						}
+					foreach (var term in message.Report.WhiteTermsFound)
+					{
+						GlobalInfo.WhiteName.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
 					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
@@ -590,34 +578,50 @@ namespace Phamhilator
 			{
 				case PostType.LowQuality:
 				{
-					foreach (var term in message.Report.TermsFound)
+					foreach (var blackTerm in message.Report.BlackTermsFound)
 					{
-						if (GlobalInfo.BlackLQ.Terms.ContainsTerm(term))
-						{
-							GlobalInfo.BlackLQ.SetScore(term, GlobalInfo.BlackLQ.GetScore(term) + 1);
-						}
+						GlobalInfo.BlackLQ.SetScore(blackTerm.Key, blackTerm.Value + 1);
 
-						if (GlobalInfo.WhiteLQ.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteLQ.Terms[message.Post.Site].ContainsTerm(term))
+						foreach (var site in GlobalInfo.WhiteLQ.Terms)
 						{
-							GlobalInfo.WhiteLQ.SetScore(term, message.Post.Site, GlobalInfo.WhiteLQ.GetScore(term, message.Post.Site) - 1);
+							for (var i = 0; i < site.Value.Count; i++)
+							{
+								var whiteTerm = site.Value.ElementAt(i);
+
+								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								{
+									var oldWhiteScore = GlobalInfo.WhiteLQ.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.WhiteLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+								}
+							}
 						}
-					}
+					}		
 
 					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
 				}
 
 				case PostType.Offensive:
 				{
-					foreach (var term in message.Report.TermsFound)
+					foreach (var blackTerm in message.Report.BlackTermsFound)
 					{
-						if (GlobalInfo.BlackOff.Terms.ContainsTerm(term))
-						{
-							GlobalInfo.BlackOff.SetScore(term, GlobalInfo.BlackOff.GetScore(term) + 1);
-						}
+						GlobalInfo.BlackOff.SetScore(blackTerm.Key, blackTerm.Value + 1);
 
-						if (GlobalInfo.WhiteOff.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteOff.Terms[message.Post.Site].ContainsTerm(term))
+						foreach (var site in GlobalInfo.WhiteOff.Terms)
 						{
-							GlobalInfo.WhiteOff.SetScore(term, message.Post.Site, GlobalInfo.WhiteOff.GetScore(term, message.Post.Site) - 1);
+							for (var i = 0; i < site.Value.Count; i++)
+							{
+								var whiteTerm = site.Value.ElementAt(i);
+
+								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								{
+									var oldWhiteScore = GlobalInfo.WhiteOff.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.WhiteOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+								}
+							}
 						}
 					}
 
@@ -626,16 +630,24 @@ namespace Phamhilator
 
 				case PostType.Spam:
 				{
-					foreach (var term in message.Report.TermsFound)
+					foreach (var blackTerm in message.Report.BlackTermsFound)
 					{
-						if (GlobalInfo.BlackSpam.Terms.ContainsTerm(term))
-						{
-							GlobalInfo.BlackSpam.SetScore(term, GlobalInfo.BlackSpam.GetScore(term) + 1);
-						}
+						GlobalInfo.BlackSpam.SetScore(blackTerm.Key, blackTerm.Value + 1);
 
-						if (GlobalInfo.WhiteSpam.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteSpam.Terms[message.Post.Site].ContainsTerm(term))
+						foreach (var site in GlobalInfo.WhiteSpam.Terms)
 						{
-							GlobalInfo.WhiteSpam.SetScore(term, message.Post.Site, GlobalInfo.WhiteSpam.GetScore(term, message.Post.Site) - 1);
+							for (var i = 0; i < site.Value.Count; i++)
+							{
+								var whiteTerm = site.Value.ElementAt(i);
+
+								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								{
+									var oldWhiteScore = GlobalInfo.WhiteSpam.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.WhiteSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+								}
+							}
 						}
 					}
 
@@ -644,16 +656,24 @@ namespace Phamhilator
 
 				case PostType.BadUsername:
 				{
-					foreach (var term in message.Report.TermsFound)
+					foreach (var blackTerm in message.Report.BlackTermsFound)
 					{
-						if (GlobalInfo.BlackName.Terms.ContainsTerm(term))
-						{
-							GlobalInfo.BlackName.SetScore(term, GlobalInfo.BlackName.GetScore(term) + 1);
-						}
+						GlobalInfo.BlackName.SetScore(blackTerm.Key, blackTerm.Value + 1);
 
-						if (GlobalInfo.WhiteName.Terms.ContainsKey(message.Post.Site) && GlobalInfo.WhiteName.Terms[message.Post.Site].ContainsTerm(term))
+						foreach (var site in GlobalInfo.WhiteName.Terms)
 						{
-							GlobalInfo.WhiteName.SetScore(term, message.Post.Site, GlobalInfo.WhiteName.GetScore(term, message.Post.Site) - 1);
+							for (var i = 0; i < site.Value.Count; i++)
+							{
+								var whiteTerm = site.Value.ElementAt(i);
+
+								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								{
+									var oldWhiteScore = GlobalInfo.WhiteName.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.WhiteName.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+								}
+							}
 						}
 					}
 

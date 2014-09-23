@@ -1,0 +1,5 @@
+
+5](?i)pl(z|s|ease)
+5]^(?i).{0,18}$
+9.5](?i)\berror(s)?\b
+9](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?

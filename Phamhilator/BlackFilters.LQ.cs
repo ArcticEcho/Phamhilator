@@ -12,17 +12,17 @@ namespace Phamhilator
 	{
 		public class LQ
 		{
-			public Dictionary<Regex, int> Terms { get; private set; }
+			public Dictionary<Regex, float> Terms { get; private set; }
 
-			public int AverageScore
+			public float AverageScore
 			{
 				get
 				{
-					return (int)Math.Round(Terms.Values.Average(), 0);
+					return Terms.Values.Average();
 				}
 			}
 
-			public int HighestScore
+			public float HighestScore
 			{
 				get
 				{
@@ -35,7 +35,7 @@ namespace Phamhilator
 			public LQ()
 			{
 				var data = File.ReadAllLines(DirectoryTools.GetBlackLQTermsFile());
-				Terms = new Dictionary<Regex, int>();
+				Terms = new Dictionary<Regex, float>();
 
 				foreach (var termAndScore in data)
 				{
@@ -83,7 +83,7 @@ namespace Phamhilator
 				File.WriteAllLines(DirectoryTools.GetBlackLQTermsFile(), data);
 			}
 
-			public void SetScore(Regex term, int newScore)
+			public void SetScore(Regex term, float newScore)
 			{
 				for (var i = 0; i < Terms.Count; i++)
 				{
@@ -95,7 +95,7 @@ namespace Phamhilator
 
 						var data = File.ReadAllLines(DirectoryTools.GetBlackLQTermsFile()); 
 
-						for (int ii = 0; ii < data.Length; ii++)
+						for (var ii = 0; ii < data.Length; ii++)
 						{
 							var line = data[ii];
 
@@ -119,7 +119,7 @@ namespace Phamhilator
 				}
 			}
 
-			public int GetScore(Regex term)
+			public float GetScore(Regex term)
 			{
 				for (var i = 0; i < Terms.Count; i++)
 				{

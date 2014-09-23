@@ -22,7 +22,7 @@ namespace Phamhilator
 			return false;
 		}
 
-		public static bool ContainsTerm(this Dictionary<Regex, int> input, Regex term)
+		public static bool ContainsTerm(this Dictionary<Regex, float> input, Regex term)
 		{
 			if (input.Count == 0) { return false; }
 

@@ -12,13 +12,13 @@ namespace Phamhilator
 	{
 		public class Offensive
 		{
-			public Dictionary<string, Dictionary<Regex, int>> Terms { get; private set; }
+			public Dictionary<string, Dictionary<Regex, float>> Terms { get; private set; }
 			
 
 
 			public Offensive()
 			{			
-				Terms = new Dictionary<string, Dictionary<Regex, int>>();
+				Terms = new Dictionary<string, Dictionary<Regex, float>>();
 
 				var sites = Directory.EnumerateDirectories(DirectoryTools.GetWhiteOffensiveTermsDir()).ToArray();
 
@@ -31,13 +31,13 @@ namespace Phamhilator
 				{
 					var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetWhiteOffensiveTermsDir(), site, "Terms.txt"));
 
-					Terms.Add(site, new Dictionary<Regex, int>());
+					Terms.Add(site, new Dictionary<Regex, float>());
 
 					foreach (var termAndScore in data)
 					{
 						if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
-						var termScore = int.Parse(termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal)));
+						var termScore = float.Parse(termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal)));
 						var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 						var term = new Regex(termString);
 
@@ -50,13 +50,13 @@ namespace Phamhilator
 
 
 
-			public void AddTerm(Regex term, string site, int score = -1)
+			public void AddTerm(Regex term, string site, float score = -1)
 			{
 				var file = Path.Combine(DirectoryTools.GetWhiteOffensiveTermsDir(), site, "Terms.txt");
 
 				if (!Terms.ContainsKey(site))
 				{
-					Terms.Add(site, new Dictionary<Regex, int>());
+					Terms.Add(site, new Dictionary<Regex, float>());
 
 					Directory.CreateDirectory(Path.Combine(DirectoryTools.GetWhiteOffensiveTermsDir(), site));
 				}
@@ -69,7 +69,7 @@ namespace Phamhilator
 					}
 					else
 					{
-						score = (int)Math.Round(Terms[site].Values.Average(), 0);
+						score = Terms[site].Values.Average();
 					}
 				}
 
@@ -100,7 +100,7 @@ namespace Phamhilator
 				File.WriteAllLines(file, data);
 			}
 
-			public void SetScore(Regex term, string site, int newScore)
+			public void SetScore(Regex term, string site, float newScore)
 			{
 				if (!Terms.ContainsKey(site)) { return; }
 
@@ -116,7 +116,7 @@ namespace Phamhilator
 
 						var data = File.ReadAllLines(file);
 
-						for (int ii = 0; ii < data.Length; ii++)
+						for (var ii = 0; ii < data.Length; ii++)
 						{
 							var line = data[ii];
 
@@ -140,7 +140,7 @@ namespace Phamhilator
 				}
 			}
 
-			public int GetScore(Regex term, string site)
+			public float GetScore(Regex term, string site)
 			{
 				if (!Terms.ContainsKey(site)) { return -1; }
 

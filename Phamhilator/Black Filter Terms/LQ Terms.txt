@@ -11,7 +11,7 @@
 10](?i)confusing
 11](?i)\bh(i|ello)\b
 10](?i)\bgreeting(s)?\b
-17](?i)\berror(s)?\b
+19](?i)\berror(s)?\b
 23](?i)problem(s)?
 10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 10](?i)correct this
@@ -20,15 +20,15 @@
 10](?i)asap
 10](?i)urgent
 11](?i)thanks
-24](?i)pl(z|s|ease)
+25](?i)pl(z|s|ease)
 12](?i)(need|some)( halp| help| answer)
 18](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-22](?i)\b(help|halp)\b
+23](?i)\b(help|halp)\b
 13]^[^a-z]*$
 10](?i)\bgives error\b
-16]^(?i).{0,18}$
+17]^(?i).{0,18}$
 10]how do i
-15](?i:need help|help me)
+16](?i:need help|help me)
 11](?i)i( just)? wan(t|na) to know
 11](?i)i want to
 12](?i)plz help me!

@@ -64,3 +64,8 @@
 10](?i)how to (feel|look|reduce|buy|increase)
 10](?i)^also
 10](?i)you want
+10](?i)lose weight
+10](?i)fifa
+10](?i)health
+10](?i)tell you
+10](?i)vashikaran

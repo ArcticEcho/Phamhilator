@@ -10,6 +10,7 @@ namespace Phamhilator
 {
 	public static class GlobalInfo
 	{
+		public const string BotUsername = "pham"; // TODO: change this to the username of your account which the bot will be using.
 		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>();
 		public static readonly WhiteFilters.BadUsername WhiteName = new WhiteFilters.BadUsername();
 		public static readonly WhiteFilters.Offensive WhiteOff = new WhiteFilters.Offensive();

@@ -37,151 +37,250 @@ namespace Phamhilator
 			HideScriptErrors(realtimeWb, true);
 			HideScriptErrors(chatWb, true);
 
-			new Thread(() =>
-			{
-				try
-				{
-					do
-					{
-						Thread.Sleep(refreshRate);
-					} while (!GlobalInfo.BotRunning);
+			PostRefresher();
 
-					while (!exit)
-					{
-						Dispatcher.Invoke(() => realtimeWb.Refresh());
+			PostCatcher();
 
-						do
-						{
-							Thread.Sleep(refreshRate);
-						} while (!GlobalInfo.BotRunning);
-					}
-				}
-				finally
-				{
-					if (!exit)
-					{
-						Thread.Sleep(1000);
-
-						PostMessage("`Warning: post refresher thread has died.`");
-					}
-				}					
-			}).Start();
-
-			new Thread(() =>
-			{
-				try
-				{
-					do
-					{
-						Thread.Sleep(refreshRate / 2);
-					} while (!GlobalInfo.BotRunning);
-
-					StartListener();
-
-					while (!exit)
-					{
-						dynamic doc = null;
-						string html;
-
-						Dispatcher.Invoke(() => doc = realtimeWb.Document);
-
-						try
-						{
-							html = doc.documentElement.InnerHtml;
-						}
-						catch (Exception)
-						{
-							continue;
-						}
-
-						if (html.IndexOf("DIV class=metaInfo", StringComparison.Ordinal) == -1) { continue; }
-
-						var posts = GetAllPosts(html);
-
-						if (posts.Count != 0)
-						{
-							CheckPosts(posts);
-						}
-
-						do
-						{
-							Thread.Sleep(refreshRate / 2);
-						} while (!GlobalInfo.BotRunning);
-					}
-				}
-				finally
-				{
-					if (!exit)
-					{
-						Thread.Sleep(2000);
-
-						PostMessage("`Warning: post catcher thread has died.`");
-					}
-				}		
-			}) { Priority = ThreadPriority.Lowest }.Start();
+			CommandListener();
 		}
 
 
 
-		private void StartListener()
+		private void PostCatcher()
 		{
+			var postSuccessMessage = false;
+
 			new Thread(() =>
 			{
-				try
+				for (var i = 1; i < 5; i++)
 				{
-					while (!exit)
+					try
 					{
-						Thread.Sleep(333);
-
-						dynamic doc = null;
-						string html;
-
-						Dispatcher.Invoke(() => doc = chatWb.Document);
-
-						try
+						do
 						{
-							html = doc.documentElement.InnerHtml;
-						}
-						catch (Exception)
+							Thread.Sleep(refreshRate / 2);
+						} while (!GlobalInfo.BotRunning);
+
+						if (i != 1)
 						{
-							continue;
+							postSuccessMessage = true;
 						}
 
-						if (html.IndexOf("username owner", StringComparison.Ordinal) == -1) { continue; }
-
-						var message = HTMLScraper.GetLastChatMessage(html);
-
-						if (message.MessageID == lastCommand.MessageID || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@sam")))
+						while (!exit)
 						{
-							lastCommand = message;
+							dynamic doc = null;
+							string html;
 
-							continue;
+							Dispatcher.Invoke(() => doc = realtimeWb.Document);
+
+							try
+							{
+								html = doc.documentElement.InnerHtml;
+							}
+							catch (Exception)
+							{
+								continue;
+							}
+
+							if (html.IndexOf("DIV class=metaInfo", StringComparison.Ordinal) == -1) { continue; }
+
+							var posts = GetAllPosts(html);
+
+							if (posts.Count != 0)
+							{
+								CheckPosts(posts);
+							}
+
+							do
+							{
+								Thread.Sleep(refreshRate / 2);
+							} while (!GlobalInfo.BotRunning); 
+							
+							if (postSuccessMessage)
+							{
+								PostMessage("`Restart successful!`");
+
+								postSuccessMessage = false;
+							}
+						}
+					}
+					finally
+					{
+						if (!exit)
+						{
+							Thread.Sleep(2000);
+
+							if (i == 4)
+							{
+								PostMessage("`Warning: post catcher thread has died, again. 3 attempts to restart the thread have failed. Shutting down...`");
+
+								exit = true;
+							}
+							else
+							{
+								PostMessage("`Warning: post catcher thread has died. Attempting to restart...`");
+							}
+						}
+					}
+
+					if (exit) { return; }
+				}		
+			}) { Priority = ThreadPriority.Lowest }.Start();
+		}
+
+		private void PostRefresher()
+		{
+			var postSuccessMessage = false;
+
+			new Thread(() =>
+			{
+				for (var i = 1; i < 5; i++)
+				{
+					try
+					{
+						do
+						{
+							Thread.Sleep(refreshRate);
+						} while (!GlobalInfo.BotRunning);
+
+						if (i != 1)
+						{
+							postSuccessMessage = true;
 						}
 
-						var commandMessage = CommandProcessor.ExacuteCommand(message);
-
-						if (commandMessage != "")
+						while (!exit)
 						{
-							PostMessage(commandMessage);
+							Dispatcher.Invoke(() => realtimeWb.Refresh());
+
+							do
+							{
+								Thread.Sleep(refreshRate);
+							} while (!GlobalInfo.BotRunning);
+
+							if (postSuccessMessage)
+							{
+								PostMessage("`Restart successful!`");
+
+								postSuccessMessage = false;
+							}
 						}
-
-						lastCommand = new MessageInfo { MessageID = message.MessageID };
-
-						while (!GlobalInfo.BotRunning)
+					}
+					finally
+					{
+						if (!exit)
 						{
 							Thread.Sleep(1000);
+
+							if (i == 4)
+							{
+								PostMessage("`Warning: post refresher thread has died, again. 3 attempts to restart the thread have failed. Shutting down...`");
+
+								exit = true;
+							}
+							else
+							{
+								PostMessage("`Warning: post refresher thread has died. Attempting to restart...`");
+							}
 						}
 					}
-				}
-				finally
-				{
-					if (!exit)
-					{
-						Thread.Sleep(3000);
 
-						PostMessage("`Warning: chat command listener thread has died.`");
+					if (exit) { return; }
+				}
+			}) { Priority = ThreadPriority.Lowest }.Start();
+		}
+
+		private void CommandListener()
+		{
+			var postSuccessMessage = false;
+
+			new Thread(() =>
+			{
+				for (var i = 1; i < 5; i++)
+				{
+					try
+					{
+						do
+						{
+							Thread.Sleep(refreshRate / 2);
+						} while (!GlobalInfo.BotRunning);
+
+						if (i != 1)
+						{
+							postSuccessMessage = true;
+						}
+
+						while (!exit)
+						{
+							Thread.Sleep(333);
+
+							dynamic doc = null;
+							string html;
+
+							Dispatcher.Invoke(() => doc = chatWb.Document);
+
+							try
+							{
+								html = doc.documentElement.InnerHtml;
+							}
+							catch (Exception)
+							{
+								continue;
+							}
+
+							if (html.IndexOf("username owner", StringComparison.Ordinal) == -1) { continue; }
+
+							var message = HTMLScraper.GetLastChatMessage(html);
+
+							if (message.MessageID == lastCommand.MessageID || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant())))
+							{
+								lastCommand = message;
+
+								continue;
+							}
+
+							var commandMessage = CommandProcessor.ExacuteCommand(message);
+
+							if (commandMessage != "")
+							{
+								PostMessage(commandMessage);
+							}
+
+							lastCommand = new MessageInfo { MessageID = message.MessageID };
+
+							while (!GlobalInfo.BotRunning)
+							{
+								Thread.Sleep(1000);
+							} 
+							
+							if (postSuccessMessage)
+							{
+								PostMessage("`Restart successful!`");
+
+								postSuccessMessage = false;
+							}
+						}
 					}
-				}		
+					finally
+					{
+						if (!exit)
+						{
+							Thread.Sleep(3000);
+
+							if (i == 4)
+							{
+								PostMessage("`Warning: command listener thread has died, again. 3 attempts to restart the thread have failed. Shutting down...`");
+
+								exit = true;
+							}
+							else
+							{
+								PostMessage("`Warning: command listener thread has died. Attempting to restart...`");
+							}
+						}
+					}
+
+					if (exit) { return; }		
+				}
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
@@ -233,13 +332,13 @@ namespace Phamhilator
 
 				if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { continue; }
 
-				if (SpamAbuseDetected(post))
-				{
-					PostMessage("[Spammer abuse](" + post.URL + ").");
-					PostPersistence.AddPost(post);
+				//if (SpamAbuseDetected(post))
+				//{
+				//	PostMessage("[Spammer abuse](" + post.URL + ").");
+				//	PostPersistence.AddPost(post);
 
-					return;
-				}
+				//	return;
+				//}
 
 				switch (info.Type)
 				{

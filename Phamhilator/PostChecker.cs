@@ -44,12 +44,12 @@ namespace Phamhilator
 
 			if (GlobalInfo.WhiteSpam.Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteFilter in GlobalInfo.WhiteSpam.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteSpam.Terms[post.Site])
 				{
-					if (whiteFilter.Key.IsMatch(post.Title))
+					if (whiteTerm.Key.IsMatch(post.Title))
 					{
-						info.Accuracy -= whiteFilter.Value;
-						info.TermsFound.Add(whiteFilter.Key);
+						info.Accuracy -= whiteTerm.Value;
+						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
 						filtersUsed++;
 					}
 				}
@@ -57,18 +57,29 @@ namespace Phamhilator
 
 			// Loop over blacklist.
 
-			for (var i = 0; i < GlobalInfo.BlackSpam.Terms.Count; i++)
+			foreach (var blackTerm in GlobalInfo.BlackSpam.Terms)
 			{
-				var filter = GlobalInfo.BlackSpam.Terms.Keys.ElementAt(i);
-
-				if (filter.IsMatch(post.Title))
+				if (blackTerm.Key.IsMatch(post.Title))
 				{
-					info.Accuracy += GlobalInfo.BlackSpam.Terms[filter];
-					info.TermsFound.Add(filter);
+					info.Accuracy += blackTerm.Value;
+					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
 
 					filtersUsed++;
 				}
-			} 
+			}
+
+			//for (var i = 0; i < GlobalInfo.BlackSpam.Terms.Count; i++)
+			//{				
+				//var filter = GlobalInfo.BlackSpam.Terms.Keys.ElementAt(i);
+
+				//if (filter.IsMatch(post.Title))
+				//{
+				//	info.Accuracy += GlobalInfo.BlackSpam.Terms[filter];
+				//	info.BlackTermsFound.Add(filter);
+
+				//	filtersUsed++;
+				//}
+			//} 
 			
 			if (filtersUsed != 0)
 			{
@@ -93,12 +104,12 @@ namespace Phamhilator
 
 			if (GlobalInfo.WhiteLQ.Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteFilter in GlobalInfo.WhiteLQ.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteLQ.Terms[post.Site])
 				{
-					if (whiteFilter.Key.IsMatch(post.Title))
+					if (whiteTerm.Key.IsMatch(post.Title))
 					{
-						info.Accuracy -= whiteFilter.Value;
-						info.TermsFound.Add(whiteFilter.Key);
+						info.Accuracy -= whiteTerm.Value;
+						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
 						filtersUsed++;
 					}
 				}
@@ -106,14 +117,12 @@ namespace Phamhilator
 
 			// Loop over blacklist.
 
-			for (var i = 0; i < GlobalInfo.BlackLQ.Terms.Count; i++)
+			foreach (var blackTerm in GlobalInfo.BlackLQ.Terms)
 			{
-				var filter = GlobalInfo.BlackLQ.Terms.Keys.ElementAt(i);
-
-				if (filter.IsMatch(post.Title))
+				if (blackTerm.Key.IsMatch(post.Title))
 				{
-					info.Accuracy += GlobalInfo.BlackLQ.Terms[filter];
-					info.TermsFound.Add(filter);
+					info.Accuracy += blackTerm.Value;
+					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
 
 					filtersUsed++;
 				}
@@ -142,29 +151,25 @@ namespace Phamhilator
 
 			if (GlobalInfo.WhiteOff.Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteFilter in GlobalInfo.WhiteOff.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteOff.Terms[post.Site])
 				{
-					if (whiteFilter.Key.IsMatch(post.Title))
+					if (whiteTerm.Key.IsMatch(post.Title))
 					{
-						info.Accuracy -= whiteFilter.Value;
-						info.TermsFound.Add(whiteFilter.Key);
+						info.Accuracy -= whiteTerm.Value;
+						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
 						filtersUsed++;
 					}
 				}
 			}
 
-			filtersUsed = 0;
-
 			// Loop over blacklist.
 
-			for (var i = 0; i < GlobalInfo.BlackOff.Terms.Count; i++)
+			foreach (var blackTerm in GlobalInfo.BlackOff.Terms)
 			{
-				var filter = GlobalInfo.BlackOff.Terms.Keys.ElementAt(i);
-
-				if (filter.IsMatch(post.Title))
+				if (blackTerm.Key.IsMatch(post.Title))
 				{
-					info.Accuracy += GlobalInfo.BlackOff.Terms[filter];
-					info.TermsFound.Add(filter);
+					info.Accuracy += blackTerm.Value;
+					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
 
 					filtersUsed++;
 				}
@@ -193,29 +198,25 @@ namespace Phamhilator
 
 			if (GlobalInfo.WhiteName.Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteFilter in GlobalInfo.WhiteName.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteName.Terms[post.Site])
 				{
-					if (whiteFilter.Key.IsMatch(post.Title))
+					if (whiteTerm.Key.IsMatch(post.Title))
 					{
-						info.Accuracy -= whiteFilter.Value;
-						info.TermsFound.Add(whiteFilter.Key);
+						info.Accuracy -= whiteTerm.Value;
+						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
 						filtersUsed++;
 					}
 				}
 			}
 
-			filtersUsed = 0;
-
 			// Loop over blacklist.
 
-			for (var i = 0; i < GlobalInfo.BlackName.Terms.Count; i++)
+			foreach (var blackTerm in GlobalInfo.BlackName.Terms)
 			{
-				var filter = GlobalInfo.BlackName.Terms.Keys.ElementAt(i);
-
-				if (filter.IsMatch(post.Title))
+				if (blackTerm.Key.IsMatch(post.Title))
 				{
-					info.Accuracy += GlobalInfo.BlackName.Terms[filter];
-					info.TermsFound.Add(filter);
+					info.Accuracy += blackTerm.Value;
+					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
 
 					filtersUsed++;
 				}

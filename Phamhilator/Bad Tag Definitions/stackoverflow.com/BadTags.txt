@@ -70,3 +70,4 @@ hardware
 stackoverflow
 rules http://meta.stackoverflow.com/questions/271750/is-rules-a-useful-tag-at-all
 percentage http://meta.stackoverflow.com/questions/270556/burninate-the-percent-tag
+commercial http://meta.stackoverflow.com/questions/271959/whats-the-point-of-the-commercial-tag
