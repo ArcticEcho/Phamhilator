@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Phamhilator
 {
-	public class PostTypeInfo
+	public class PostAnalysis
 	{
 		public PostType Type;
 		public float Accuracy;

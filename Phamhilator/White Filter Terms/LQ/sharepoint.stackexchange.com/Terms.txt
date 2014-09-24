@@ -1,2 +1,2 @@
 
-5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+6.277778](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?

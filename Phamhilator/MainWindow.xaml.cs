@@ -49,6 +49,8 @@ namespace Phamhilator
 		private void PostCatcher()
 		{
 			var postSuccessMessage = false;
+			dynamic doc = null;
+			string html;
 
 			new Thread(() =>
 			{
@@ -68,9 +70,6 @@ namespace Phamhilator
 
 						while (!exit)
 						{
-							dynamic doc = null;
-							string html;
-
 							Dispatcher.Invoke(() => doc = realtimeWb.Document);
 
 							try
@@ -86,7 +85,7 @@ namespace Phamhilator
 
 							var posts = GetAllPosts(html);
 
-							if (posts.Count != 0)
+							if (posts.Length != 0)
 							{
 								CheckPosts(posts);
 							}
@@ -104,7 +103,7 @@ namespace Phamhilator
 							}
 						}
 					}
-					finally
+					catch (Exception)
 					{
 						if (!exit)
 						{
@@ -112,7 +111,7 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: post catcher thread has died, again. 3 attempts to restart the thread have failed. Shutting down...`");
+								PostMessage("`Warning: 3 attempts to restart the post catcher thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
@@ -165,7 +164,7 @@ namespace Phamhilator
 							}
 						}
 					}
-					finally
+					catch (Exception)
 					{
 						if (!exit)
 						{
@@ -173,7 +172,7 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: post refresher thread has died, again. 3 attempts to restart the thread have failed. Shutting down...`");
+								PostMessage("`Warning: 3 attempts to restart the post refresher thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
@@ -192,6 +191,8 @@ namespace Phamhilator
 		private void CommandListener()
 		{
 			var postSuccessMessage = false;
+			dynamic doc = null;
+			string html;
 
 			new Thread(() =>
 			{
@@ -212,9 +213,6 @@ namespace Phamhilator
 						while (!exit)
 						{
 							Thread.Sleep(333);
-
-							dynamic doc = null;
-							string html;
 
 							Dispatcher.Invoke(() => doc = chatWb.Document);
 
@@ -260,7 +258,7 @@ namespace Phamhilator
 							}
 						}
 					}
-					finally
+					catch (Exception)
 					{
 						if (!exit)
 						{
@@ -268,7 +266,7 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: command listener thread has died, again. 3 attempts to restart the thread have failed. Shutting down...`");
+								PostMessage("`Warning: 3 attempts to restart the command listener thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
@@ -284,7 +282,7 @@ namespace Phamhilator
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
-		private List<Post> GetAllPosts(string html)
+		private Post[] GetAllPosts(string html)
 		{
 			var posts = new List<Post>();
 
@@ -320,15 +318,18 @@ namespace Phamhilator
 				html = html.Substring(startIndex);
 			}
 
-			return posts;
+			return posts.ToArray();
 		}
 
 		private void CheckPosts(IEnumerable<Post> posts)
 		{
+			PostAnalysis info;
+			string message;
+
 			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.URL != p.URL)))
 			{
-				var info = PostChecker.CheckPost(post);
-				var message = GetReportMessage(info, post);
+				info = PostChecker.CheckPost(post);
+				message = GetReportMessage(info, post);
 
 				if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { continue; }
 
@@ -385,7 +386,7 @@ namespace Phamhilator
 			}
 		}
 
-		private string GetReportMessage(PostTypeInfo info, Post post)
+		private string GetReportMessage(PostAnalysis info, Post post)
 		{
 			if (info.Type == PostType.BadTagUsed)
 			{
@@ -395,7 +396,7 @@ namespace Phamhilator
 			return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 		}
 
-		private void PostMessage(string message, Post post = null, PostTypeInfo report = null/* int consecutiveMessageCount = 0*/)
+		private void PostMessage(string message, Post post = null, PostAnalysis report = null/* int consecutiveMessageCount = 0*/)
 		{
 			if (roomId == 0)
 			{
@@ -487,11 +488,11 @@ namespace Phamhilator
 					var startIndex = chatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
 					var endIndex = chatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
-					var t = chatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
+					var id = chatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
-					if (!t.All(Char.IsDigit)) { return; }
+					if (!id.All(Char.IsDigit)) { return; }
 
-					roomId = int.Parse(t);
+					roomId = int.Parse(id);
 				}
 				catch (Exception)
 				{
@@ -569,6 +570,13 @@ namespace Phamhilator
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts");
+
+			GetRoomId();
+		}
+
+		private void Button_Click_1(object sender, RoutedEventArgs e)
+		{
+			chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/651/sandbox");
 
 			GetRoomId();
 		}

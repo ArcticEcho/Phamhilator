@@ -1,7 +1,9 @@
 
-6](?i)error(s)?
+7](?i)error(s)?
 
-5](?i)problem(s)?
-7]^(?i).{0,18}$
+7.217391](?i)problem(s)?
+7.411765]^(?i).{0,18}$
 
-9](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+9.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+
+9.5](?i)\berror(s)?\b

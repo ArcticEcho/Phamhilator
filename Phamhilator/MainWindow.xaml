@@ -7,12 +7,13 @@
     <Border BorderBrush="#FF41B1FF" BorderThickness="1">
         <Canvas>
             <WebBrowser Name="realtimeWb" Height="630" Width="550" Source="http://stackexchange.com/questions?tab=realtime"/>
-            <WebBrowser Name="chatWb" Height="630" Canvas.Left="550" Width="642" Source="http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts"/>
+            <WebBrowser Name="chatWb" Height="630" Canvas.Left="550" Width="642" Source="http://chat.meta.stackexchange.com/rooms/"/>
             <Button Content="Jump to LQP" Canvas.Left="1097" Canvas.Top="638" Width="85" Click="Button_Click"/>
             <Button Content="Start Monitoring" Canvas.Left="10" Canvas.Top="638" Width="109" Click="Button_Click_2"/>
             <Slider Name="refreshRateS" Canvas.Left="203" Canvas.Top="641" Width="250" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged"/>
             <Label Content="Refresh Rate:" Canvas.Left="124" Canvas.Top="637"/>
             <Label Name="refreshRateL" Content="10000 milliseconds" Canvas.Left="458" Canvas.Top="637"/>
+            <Button Content="Jump to Sandbox" Canvas.Left="981" Canvas.Top="638" Width="111" Click="Button_Click_1"/>
         </Canvas>
     </Border>
 </controls:MetroWindow>

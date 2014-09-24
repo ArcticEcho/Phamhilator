@@ -102,7 +102,7 @@
   <ItemGroup>
     <Compile Include="Post.cs" />
     <Compile Include="PostType.cs" />
-    <Compile Include="PostTypeInfo.cs" />
+    <Compile Include="PostAnalysis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

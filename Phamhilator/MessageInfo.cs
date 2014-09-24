@@ -2,7 +2,7 @@
 {
 	public class MessageInfo
 	{
-		public PostTypeInfo Report;
+		public PostAnalysis Report;
 		public Post Post;
 		public string Body;
 		public int MessageID;

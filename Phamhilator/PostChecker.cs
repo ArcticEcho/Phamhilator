@@ -7,9 +7,9 @@ namespace Phamhilator
 {
 	public static class PostChecker
 	{
-		public static PostTypeInfo CheckPost(Post post)
+		public static PostAnalysis CheckPost(Post post)
 		{
-			var info = new PostTypeInfo();
+			var info = new PostAnalysis();
 
 			if ((info.BadTags = IsBadTagUsed(post, ref info)).Count != 0)
 			{
@@ -36,7 +36,7 @@ namespace Phamhilator
 			return info;
 		}
 
-		private static bool IsSpam(Post post, ref PostTypeInfo info)
+		private static bool IsSpam(Post post, ref PostAnalysis info)
 		{
 			var filtersUsed = 0;
 
@@ -96,7 +96,7 @@ namespace Phamhilator
 			return false;
 		}
 
-		private static bool IsLowQuality(Post post, ref PostTypeInfo info)
+		private static bool IsLowQuality(Post post, ref PostAnalysis info)
 		{
 			var filtersUsed = 0;
 
@@ -143,7 +143,7 @@ namespace Phamhilator
 			return false;
 		}
 
-		private static bool IsOffensive(Post post, ref PostTypeInfo info)
+		private static bool IsOffensive(Post post, ref PostAnalysis info)
 		{
 			var filtersUsed = 0;
 
@@ -190,7 +190,7 @@ namespace Phamhilator
 			return false;
 		}
 
-		private static bool IsBadUsername(Post post, ref PostTypeInfo info)
+		private static bool IsBadUsername(Post post, ref PostAnalysis info)
 		{
 			var filtersUsed = 0;
 
@@ -237,7 +237,7 @@ namespace Phamhilator
 			return false;
 		}
 
-		private static Dictionary<string, string> IsBadTagUsed(Post post, ref PostTypeInfo info)
+		private static Dictionary<string, string> IsBadTagUsed(Post post, ref PostAnalysis info)
 		{
 			var tags = new Dictionary<string, string>();
 

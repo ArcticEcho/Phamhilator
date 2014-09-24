@@ -2,3 +2,7 @@
 7](?i)problem(s)?
 
 8.5]^(?i).{0,18}$
+9.5](?i)\berror(s)?\b
+11.5](?i)(need|some)( halp| help| answer)
+12.5](?i)\b(help|halp)\b
+12.21875](?i:need help|help me)

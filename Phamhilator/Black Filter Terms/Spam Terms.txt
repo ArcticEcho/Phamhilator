@@ -69,3 +69,4 @@
 10](?i)health
 10](?i)tell you
 10](?i)vashikaran
+10](?i)anti( |\-)?aging

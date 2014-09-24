@@ -98,6 +98,8 @@ namespace Phamhilator
 				//if (badTags.ContainsKey(key)) { continue; }
 
 				var lines = File.ReadAllLines(Path.Combine(dir, "BadTags.txt")).ToArray();
+				var metaPost = "";
+				var tag = "";
 
 				for (var i = 0; i < lines.Length; i++)
 				{
@@ -105,9 +107,6 @@ namespace Phamhilator
 
 					if (!String.IsNullOrWhiteSpace(lines[i]))
 					{
-						var tag = "";
-						var metaPost = "";
-
 						if (lines[i].IndexOf(" ", StringComparison.Ordinal) != -1) // Check if tag has meta post
 						{
 							tag = lines[i].Substring(0, lines[i].IndexOf(" ", StringComparison.Ordinal));
@@ -116,6 +115,7 @@ namespace Phamhilator
 						else
 						{
 							tag = lines[i];
+							metaPost = "";
 						}
 
 						if (!badTags[site].ContainsKey(tag))

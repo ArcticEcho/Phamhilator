@@ -6,5 +6,5 @@
 5](?i)\bexclusive\b
 5](?i)\bskin\b
 5](?i)\bcare(ing)?\b
-5](?i)\bbeautiful(est)?\b
-5](?i)how to (feel|look|reduce|buy|increase)
+6](?i)\bbeautiful(est)?\b
+6](?i)how to (feel|look|reduce|buy|increase)

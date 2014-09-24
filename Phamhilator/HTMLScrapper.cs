@@ -9,7 +9,7 @@ namespace Phamhilator
 {
 	public static class HTMLScraper
 	{
-		private static readonly Regex escapeChars = new Regex(@"([_*\\`\[\]])");
+		private static readonly Regex escapeChars = new Regex(@"\]");
 
 
 
@@ -63,9 +63,9 @@ namespace Phamhilator
 
 			startIndex = decoded.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
 
-			var t = decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex);
+			var id = decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex);
 
-			return int.Parse(t);
+			return int.Parse(id);
 		}
 
 		public static string GetSite(string postURL)
@@ -116,7 +116,7 @@ namespace Phamhilator
 
 			startIndex = html.LastIndexOf("<DIV class=content>", StringComparison.Ordinal) + 19;
 
-			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));//.Replace(@"<SPAN class=mention>", "").Replace("</SPAN>", "");
+			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
 
 			var info = new MessageInfo 
 			{ 
