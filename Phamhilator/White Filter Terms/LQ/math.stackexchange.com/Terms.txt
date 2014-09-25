@@ -11,3 +11,5 @@
 12.21875](?i:need help|help me)
 
 12.5](?i)pl(z|s|ease)
+
+8]^[^a-z]*$

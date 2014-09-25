@@ -2,3 +2,6 @@
 7.304348](?i)problem(s)?
 
 5.555556](?i)question
+
+12.5](?i)\b(help|halp)\b
+12.5](?i:need help|help me)

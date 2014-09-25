@@ -31,7 +31,9 @@ namespace Phamhilator
 				return info;
 			}
 
-			IsBadUsername(post, ref info);
+			// TODO: Returning false positives, even when name dose not contain any blacklisted name terms.
+
+			//IsBadUsername(post, ref info);
 
 			return info;
 		}

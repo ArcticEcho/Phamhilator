@@ -9,7 +9,7 @@
 10](?i)our feelings
 10](?i)says wrong
 10](?i)confusing
-11](?i)\bh(i|ello)\b
+12](?i)\bh(i|ello)\b
 10](?i)\bgreeting(s)?\b
 19](?i)\berror(s)?\b
 24](?i)problem(s)?
