@@ -31,9 +31,7 @@ namespace Phamhilator
 				return info;
 			}
 
-			// TODO: Returning false positives, even when name dose not contain any blacklisted name terms.
-
-			//IsBadUsername(post, ref info);
+			IsBadUsername(post, ref info);
 
 			return info;
 		}
@@ -202,7 +200,7 @@ namespace Phamhilator
 			{
 				foreach (var whiteTerm in GlobalInfo.WhiteName.Terms[post.Site])
 				{
-					if (whiteTerm.Key.IsMatch(post.Title))
+					if (whiteTerm.Key.IsMatch(post.AuthorName))
 					{
 						info.Accuracy -= whiteTerm.Value;
 						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
@@ -215,7 +213,7 @@ namespace Phamhilator
 
 			foreach (var blackTerm in GlobalInfo.BlackName.Terms)
 			{
-				if (blackTerm.Key.IsMatch(post.Title))
+				if (blackTerm.Key.IsMatch(post.AuthorName))
 				{
 					info.Accuracy += blackTerm.Value;
 					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
