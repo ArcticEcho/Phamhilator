@@ -16,9 +16,9 @@
  
 <h2>FP/TP Commands:</h2>
 
- - <code>@sam (fp/false/false pos/false positive)</code> (Assuming you're replying to a previous report) registers that the replied-to report was a false positive (which internally alters the score of the terms used to catch said post).
+ - <code>@BotUsername (fp/false/false pos/false positive)</code> (Assuming you're replying to a previous report) registers that the replied-to report was a false positive (which internally alters the score of the terms used to catch said post).
  
- - <code>@sam (tp/true/true pos/true positive)</code> (Assuming you're replying to a previous report) registers that the replied-to report was a true positive.
+ - <code>@BotUsername (tp/true/true pos/true positive)</code> (Assuming you're replying to a previous report) registers that the replied-to report was a true positive.
  
 <h2>Misc. Commands:</h2>
 
