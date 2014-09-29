@@ -1,2 +1,3 @@
 
 5](?i)\bwork out\b
+5](?i)\bskin\b

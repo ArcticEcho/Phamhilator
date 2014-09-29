@@ -5,11 +5,11 @@
 
 9.529412]^(?i).{0,18}$
 
-8.695652](?i)\b(help|halp)\b
+9.043478](?i)\b(help|halp)\b
 
 11.5](?i)(need|some)( halp| help| answer)
 12.21875](?i:need help|help me)
 
 12.5](?i)pl(z|s|ease)
 
-8]^[^a-z]*$
+8.5]^[^a-z]*$

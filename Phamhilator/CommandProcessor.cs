@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Windows.Input;
 
 
 
@@ -100,8 +99,8 @@ namespace Phamhilator
 
 		private static bool IsPrivilegedUserCommand(string command)
 		{
-			return command.StartsWith("fp") || command.StartsWith("false") || command.StartsWith("false pos") || command.StartsWith("false positive") ||
-				   command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive") ||
+			return command == "fp" || command == "false" || command == "false pos" || command == "false positive" ||
+				   command == "tp" || command == "true" || command == "true pos" || command == "true positive" ||
 			       command.StartsWith("bremove term") ||
 			       command.StartsWith("badd term") ||
 			       command.StartsWith("wremove term") ||
@@ -112,12 +111,12 @@ namespace Phamhilator
 
 		private static string PrivilegedUserCommands(string command)
 		{
-			if (command.StartsWith("fp") || command.StartsWith("false") || command.StartsWith("false pos") || command.StartsWith("false positive"))
+			if (command == "fp" || command == "false" || command == "false pos" || command == "false positive")
 			{
 				return FalsePositive();
 			}
 			
-			if (command.StartsWith("tp") || command.StartsWith("true") || command.StartsWith("true pos") || command.StartsWith("true positive"))
+			if (command == "tp" || command == "true" || command == "true pos" || command == "true positive")
 			{
 				return TruePositive();
 			}

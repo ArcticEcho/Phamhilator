@@ -1,3 +1,3 @@
 
-12.5](?i)\b(help|halp)\b
-12.21875](?i:need help|help me)
+14](?i)\b(help|halp)\b
+12.9375](?i:need help|help me)

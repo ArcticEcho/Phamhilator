@@ -67,19 +67,6 @@ namespace Phamhilator
 					filtersUsed++;
 				}
 			}
-
-			//for (var i = 0; i < GlobalInfo.BlackSpam.Terms.Count; i++)
-			//{				
-				//var filter = GlobalInfo.BlackSpam.Terms.Keys.ElementAt(i);
-
-				//if (filter.IsMatch(post.Title))
-				//{
-				//	info.Accuracy += GlobalInfo.BlackSpam.Terms[filter];
-				//	info.BlackTermsFound.Add(filter);
-
-				//	filtersUsed++;
-				//}
-			//} 
 			
 			if (filtersUsed != 0)
 			{

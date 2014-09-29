@@ -1,2 +1,3 @@
 
 5](?i)\bcare(ing)?\b
+5](?i)\bbrand\b

@@ -111,7 +111,7 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: 3 attempts to restart the post catcher thread have failed. Now shutting down...`");
+								PostMessage("`Warning: 3 attempts to restart post catcher thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
@@ -172,7 +172,7 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: 3 attempts to restart the post refresher thread have failed. Now shutting down...`");
+								PostMessage("`Warning: 3 attempts to restart post refresher thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
@@ -244,11 +244,6 @@ namespace Phamhilator
 							}
 
 							lastCommand = new MessageInfo { MessageID = message.MessageID };
-
-							while (!GlobalInfo.BotRunning)
-							{
-								Thread.Sleep(1000);
-							} 
 							
 							if (postSuccessMessage)
 							{
@@ -266,7 +261,7 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: 3 attempts to restart the command listener thread have failed. Now shutting down...`");
+								PostMessage("`Warning: 3 attempts to restart command listener thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
@@ -333,13 +328,13 @@ namespace Phamhilator
 
 				if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { continue; }
 
-				//if (SpamAbuseDetected(post))
-				//{
-				//	PostMessage("[Spammer abuse](" + post.URL + ").");
-				//	PostPersistence.AddPost(post);
+				if (SpamAbuseDetected(post))
+				{
+					PostMessage("[Spammer abuse](" + post.URL + ").");
+					PostPersistence.AddPost(post);
 
-				//	return;
-				//}
+					return;
+				}
 
 				switch (info.Type)
 				{
@@ -524,12 +519,12 @@ namespace Phamhilator
 		{
 			if (PostPersistence.Messages[0].AuthorName != null && IsDefaultUsername(post.AuthorName) && IsDefaultUsername(PostPersistence.Messages[0].AuthorName))
 			{
-				var username0Id = int.Parse(post.AuthorName.Remove(0, 4));
-				var username1Id = int.Parse(PostPersistence.Messages[0].AuthorName.Remove(0, 4));
+				var latestUsernameId = int.Parse(post.AuthorName.Remove(0, 4));
+				var lastMessageUsernameId = int.Parse(PostPersistence.Messages[0].AuthorName.Remove(0, 4));
 
-				if ((username0Id > username1Id + 5 && username0Id < username1Id) || spammers.Contains(username0Id))
+				if ((latestUsernameId > lastMessageUsernameId + 5 && latestUsernameId < lastMessageUsernameId) || spammers.Contains(latestUsernameId))
 				{
-					spammers.Add(username0Id);
+					spammers.Add(latestUsernameId);
 
 					return true;
 				}
@@ -540,7 +535,7 @@ namespace Phamhilator
 
 		private bool IsDefaultUsername(string username)
 		{
-			return username.Contains("user") && username.Remove(0, 4).All(Char.IsDigit);
+			return username.StartsWith("user") && username.Remove(0, 4).All(Char.IsDigit);
 		}
 
 		private void SwitchToIE9()

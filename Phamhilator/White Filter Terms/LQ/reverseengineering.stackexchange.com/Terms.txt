@@ -1,2 +1,2 @@
 
-12.5](?i)\b(help|halp)\b
+14](?i)\b(help|halp)\b

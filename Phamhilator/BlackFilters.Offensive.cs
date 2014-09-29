@@ -53,7 +53,7 @@ namespace Phamhilator
 						continue;
 					}
 
-					Terms.Add(term, int.Parse(termScore));
+					Terms.Add(term, float.Parse(termScore));
 				}
 			}
 
