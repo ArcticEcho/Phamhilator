@@ -1,6 +1,6 @@
 
 7.304348](?i)problem(s)?
 
-9.5](?i)\berror(s)?\b
+10](?i)\berror(s)?\b
 9]^(?i).{0,18}$
 9.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?

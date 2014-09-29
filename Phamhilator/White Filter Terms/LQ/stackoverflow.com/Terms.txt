@@ -1,5 +1,5 @@
 
-10](?i)\berror(s)?\b
+10.52632](?i)\berror(s)?\b
 
 13](?i)problem(s)?
 5](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)

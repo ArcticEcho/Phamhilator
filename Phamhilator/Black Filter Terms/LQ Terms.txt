@@ -11,7 +11,7 @@
 10](?i)confusing
 13](?i)\bh(i|ello)\b
 10](?i)\bgreeting(s)?\b
-19](?i)\berror(s)?\b
+20](?i)\berror(s)?\b
 24](?i)problem(s)?
 10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 10](?i)correct this

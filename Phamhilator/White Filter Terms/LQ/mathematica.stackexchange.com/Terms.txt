@@ -1,8 +1,8 @@
 
-7](?i)problem(s)?
+8](?i)problem(s)?
 
 8.5]^(?i).{0,18}$
-9.5](?i)\berror(s)?\b
+10](?i)\berror(s)?\b
 11.5](?i)(need|some)( halp| help| answer)
 14](?i)\b(help|halp)\b
 12.9375](?i:need help|help me)

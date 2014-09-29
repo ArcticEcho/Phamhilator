@@ -1,6 +1,8 @@
 
-7.277778](?i)\berror(s)?\b
+8.660819](?i)\berror(s)?\b
 
 10.05882]^(?i).{0,18}$
 
 12.5](?i)pl(z|s|ease)
+
+9.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
