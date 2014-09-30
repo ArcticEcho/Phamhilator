@@ -1,8 +1,8 @@
 
 9](?i)error(s)?
 
-5.555556](?i)question
-6.217391](?i)problem(s)?
+6.17284](?i)question
+6.735507](?i)problem(s)?
 
-9]^(?i).{0,18}$
-15](?i)\b(help|halp)\b
+10]^(?i).{0,18}$
+15.53571](?i)\b(help|halp)\b

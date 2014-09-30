@@ -1,9 +1,9 @@
-12.22222](?i)question
-12.17392](?i)\b(help|halp)\b
-7.411765]^(?i).{0,18}$
+13.58025](?i)question
+12.6087](?i)\b(help|halp)\b
+8.235294]^(?i).{0,18}$
 5](?i)error(s)?
 
-5](?i)pl(z|s|ease)
+6](?i)pl(z|s|ease)
 5](?i)thanks
 
 5](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)

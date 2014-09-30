@@ -33,7 +33,14 @@ namespace Phamhilator
 
 			if (IsNormalUserCommand(command))
 			{
-				return NormalUserCommands(command);
+				try
+				{
+					return NormalUserCommands(command);
+				}
+				catch (Exception)
+				{
+					return "`Error parsing command.`";
+				}
 			}
 
 			if (IsPrivilegedUserCommand(command))
@@ -42,10 +49,17 @@ namespace Phamhilator
 
 				if (!UserAccess.CommandAccessUsers.Contains(user) && !UserAccess.Owners.Contains(user))
 				{
-					return "`Access denied.`"; 
+					return "`Access denied.`";
 				}
 
-				return PrivilegedUserCommands(command);			
+				try
+				{
+					return PrivilegedUserCommands(command);
+				}
+				catch (Exception)
+				{
+					return "`Error parsing command.`";
+				}		
 			}
 			
 			if (IsOwnerCommand(command))
@@ -54,8 +68,15 @@ namespace Phamhilator
 				{
 					return "`Access denied.`";
 				}
-
-				return OwnerCommand(command);
+				
+				try
+				{
+					return OwnerCommand(command);
+				}
+				catch (Exception)
+				{
+					return "`Error parsing command.`";
+				}
 			}
 
 			return "`Command not recognised.`";

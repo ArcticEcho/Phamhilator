@@ -2,4 +2,4 @@
 5](?i)\bmover(s)?\b
 5](?i)movers
 5](?i)health
-5](?i)\bheal(ing|thly)?\b
+6](?i)\bheal(ing|thly)?\b

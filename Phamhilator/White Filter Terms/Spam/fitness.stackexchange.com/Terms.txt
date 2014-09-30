@@ -2,3 +2,5 @@
 6.5](?i)\bmuscle(s)?\b
 6.05](?i)\bsupplement(s)?\b
 5](?i)\byoga|relax(ing)?\b
+
+5](?i)health

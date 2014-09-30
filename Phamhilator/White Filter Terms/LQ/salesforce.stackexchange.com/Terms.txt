@@ -1,6 +1,6 @@
 
 6](?i)error(s)?
-9.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+10](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
 10](?i)\berror(s)?\b
 
-9]^(?i).{0,18}$
+10]^(?i).{0,18}$

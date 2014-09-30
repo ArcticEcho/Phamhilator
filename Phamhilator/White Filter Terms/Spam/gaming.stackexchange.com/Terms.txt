@@ -1,8 +1,8 @@
 
-5](?i)\bget your\b
-5](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
+6](?i)\bget your\b
+5.5](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
 5](?i)how to (feel|look|reduce|buy|increase)
 6](?i)health
 5](?i)make money
 
-5](?i)fifa
+6](?i)fifa

@@ -1,4 +1,4 @@
 
 12.5](?i)pl(z|s|ease)
-14.58333](?i)\b(help|halp)\b
+15.10416](?i)\b(help|halp)\b
 14.0625](?i:need help|help me)

@@ -12,7 +12,7 @@
 13](?i)\bh(i|ello)\b
 10](?i)\bgreeting(s)?\b
 20](?i)\berror(s)?\b
-24](?i)problem(s)?
+26](?i)problem(s)?
 10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 10](?i)correct this
 10](?i)school project
@@ -22,11 +22,11 @@
 11](?i)thanks
 25](?i)pl(z|s|ease)
 12](?i)(need|some)( halp| help| answer)
-19](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-28](?i)\b(help|halp)\b
+20](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+29](?i)\b(help|halp)\b
 17]^[^a-z]*$
 10](?i)\bgives error\b
-18]^(?i).{0,18}$
+20]^(?i).{0,18}$
 10]how do i
 18](?i:need help|help me)
 11](?i)i( just)? wan(t|na) to know

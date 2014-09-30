@@ -1,11 +1,11 @@
 
-7.777778](?i)question
+8.641975](?i)question
 
-17.73913](?i)problem(s)?
+19.21739](?i)problem(s)?
 
-9.529412]^(?i).{0,18}$
+10.58824]^(?i).{0,18}$
 
-9.043478](?i)\b(help|halp)\b
+9.366459](?i)\b(help|halp)\b
 
 11.5](?i)(need|some)( halp| help| answer)
 12.21875](?i:need help|help me)
@@ -14,4 +14,4 @@
 
 8.5]^[^a-z]*$
 
-9.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+10](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
