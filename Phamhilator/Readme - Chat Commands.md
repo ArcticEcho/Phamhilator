@@ -38,6 +38,8 @@
 
  - <code>>>threshold (percentage, e.g., 12.75)</code> Sets the lower limit of the report accuracy percentage filter (do <i>not</i> include the percentage sign).
  
+ - <code>>>kill-it-with-no-regrets-for-sure</code> Tells the bot to shutdown.
+ 
 <br>
 
  <sup><i>Note: all commands <b>are</b> case sensitive.</i></sup>
