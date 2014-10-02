@@ -1,5 +1,4 @@
 
-2488248.55142943]http://ham.stackexchange.com/questions/158
 2493751.08000261]http://stackoverflow.com/questions/26087605
 2493754.33125523]http://math.stackexchange.com/questions/948621
 2493755.55232508]http://stackoverflow.com/questions/9629125
@@ -1016,3 +1015,25 @@
 2499645.58132262]http://askubuntu.com/questions/531537
 2499649.19729611]http://arduino.stackexchange.com/questions/4429
 2499654.00987137]http://gis.stackexchange.com/questions/115983
+2499655.93194798]http://physics.stackexchange.com/questions/138432
+2499660.3406168]http://stackoverflow.com/questions/26168675
+2499665.26998208]http://math.stackexchange.com/questions/955959
+2499669.18208917]http://stackoverflow.com/questions/26168815
+2499669.9728344]http://english.stackexchange.com/questions/199466
+2499671.78362131]http://electronics.stackexchange.com/questions/131720
+2499677.35774013]http://stackoverflow.com/questions/26168930
+2499684.64162341]http://askubuntu.com/questions/498680
+2499686.85036641]http://askubuntu.com/questions/531332
+2499686.95313895]http://programmers.stackexchange.com/questions/257908
+2499688.82312924]http://drupal.stackexchange.com/questions/131555
+2499704.81114371]http://stackoverflow.com/questions/17907445
+2499705.58275451]http://academia.stackexchange.com/questions/29310
+2499708.04786217]http://softwarerecs.stackexchange.com/questions/11892
+2499709.58343333]http://judaism.stackexchange.com/questions/46019
+2499712.12074513]http://stackoverflow.com/questions/26169465
+2499715.74600248]http://islam.stackexchange.com/questions/17761
+2499724.77051865]http://android.stackexchange.com/questions/83947
+2499727.3857849]http://bitcoin.stackexchange.com/questions/12567
+2499733.24115314]http://diy.stackexchange.com/questions/44732
+2499734.07036724]http://physics.stackexchange.com/questions/100311
+2499739.46912603]http://stackoverflow.com/questions/26169825

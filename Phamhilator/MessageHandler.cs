@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 
@@ -88,6 +84,24 @@ namespace Phamhilator
 					GlobalInfo.ChatWb.InvokeScript("eval", new object[]
 					{
 						@"$.post('http://chat.meta.stackexchange.com/messages/" + messageID + "', { text: '" + newMessage + "', fkey: fkey().fkey });"
+					});
+				}
+				catch (Exception)
+				{
+
+				}
+			});
+		}
+
+		public static void DeleteMessage(int messageID)
+		{
+			Application.Current.Dispatcher.Invoke(() =>
+			{
+				try
+				{
+					GlobalInfo.ChatWb.InvokeScript("eval", new object[]
+					{
+						@"$.post('http://chat.meta.stackexchange.com/messages/" + messageID + "/delete" + "', { fkey: fkey().fkey });"
 					});
 				}
 				catch (Exception)

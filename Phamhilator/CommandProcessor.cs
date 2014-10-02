@@ -537,7 +537,9 @@ namespace Phamhilator
 						GlobalInfo.WhiteLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					MessageHandler.DeleteMessage(message.RepliesToMessageID);
+
+					return "";
 				}
 
 				case PostType.Offensive:
@@ -555,7 +557,9 @@ namespace Phamhilator
 						GlobalInfo.WhiteOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					MessageHandler.DeleteMessage(message.RepliesToMessageID);
+
+					return "";
 				}
 
 				case PostType.Spam:
@@ -573,7 +577,9 @@ namespace Phamhilator
 						GlobalInfo.WhiteSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					MessageHandler.DeleteMessage(message.RepliesToMessageID);
+
+					return "";
 				}
 
 				case PostType.BadUsername:
@@ -591,7 +597,9 @@ namespace Phamhilator
 						GlobalInfo.WhiteName.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					MessageHandler.DeleteMessage(message.RepliesToMessageID);
+
+					return "";
 				}
 			} 
 			
