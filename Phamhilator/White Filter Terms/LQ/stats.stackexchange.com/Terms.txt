@@ -2,7 +2,7 @@
 9](?i)error(s)?
 
 6.17284](?i)question
-6.735507](?i)problem(s)?
+6.994565](?i)problem(s)?
 
-10]^(?i).{0,18}$
-15.53571](?i)\b(help|halp)\b
+10.5]^(?i).{0,18}$
+16.60714](?i)\b(help|halp)\b

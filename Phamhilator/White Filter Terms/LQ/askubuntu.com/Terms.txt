@@ -1,3 +1,7 @@
 
-10](?i)\berror(s)?\b
+10.5](?i)\berror(s)?\b
 6](?i)i want to
+
+14.5](?i)pl(z|s|ease)
+15.5](?i)\b(help|halp)\b
+4.5](?i)question

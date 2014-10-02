@@ -1,5 +1,5 @@
 
-5](?i)\bmover(s)?\b
-5](?i)movers
-5](?i)health
+5.5](?i)\bmover(s)?\b
+5.5](?i)movers
+6](?i)health
 6](?i)\bheal(ing|thly)?\b

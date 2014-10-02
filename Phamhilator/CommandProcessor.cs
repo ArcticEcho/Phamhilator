@@ -122,7 +122,8 @@ namespace Phamhilator
 		{
 			return command == "fp" || command == "false" || command == "false pos" || command == "false positive" ||
 				   command == "tp" || command == "true" || command == "true pos" || command == "true positive" ||
-			       command.StartsWith("bremove term") ||
+				   command == "clean" || command ==  "sanitise" || command ==  "sanitize" ||
+				   command.StartsWith("bremove term") ||
 			       command.StartsWith("badd term") ||
 			       command.StartsWith("wremove term") ||
 			       command.StartsWith("wadd term") ||
@@ -140,6 +141,11 @@ namespace Phamhilator
 			if (command == "tp" || command == "true" || command == "true pos" || command == "true positive")
 			{
 				return TruePositive();
+			}
+
+			if (command == "clean" || command == "sanitise" || command == "sanitize")
+			{
+				return CleanPost();
 			}
 
 			if (command.StartsWith("bremove term"))
@@ -725,6 +731,36 @@ namespace Phamhilator
 			GlobalInfo.AccuracyThreshold = t;
 
 			return "`Threshold updated.`";
+		}
+
+
+		private static string CleanPost()
+		{
+			var reportID = message.RepliesToMessageID;
+
+			if (GlobalInfo.PostedReports.ContainsKey(reportID))
+			{
+				var oldTitle = GlobalInfo.PostedReports[reportID].Post.Title;
+				var newTitle = "";
+
+				foreach (var c in oldTitle)
+				{
+					if (c == ' ')
+					{
+						newTitle += ' ';
+					}
+					else
+					{
+						newTitle += '*';
+					}
+				}
+
+				var newMessage = GlobalInfo.PostedReports[reportID].Body.Replace(oldTitle, newTitle);
+
+				MessageHandler.EditMessage(newMessage, reportID);
+			}
+
+			return "";
 		}
 	}
 }

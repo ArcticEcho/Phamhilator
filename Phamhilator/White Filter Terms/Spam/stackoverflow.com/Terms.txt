@@ -4,11 +4,11 @@
 5](?i)this product
 5](?i)\bcheaper\b
 5](?i)\bexclusive\b
-6](?i)\bskin\b
-5](?i)\bcare(ing)?\b
+7.854546](?i)\bskin\b
+6.545455](?i)\bcare(ing)?\b
 6](?i)\bbeautiful(est)?\b
 6](?i)how to (feel|look|reduce|buy|increase)
 
 5](?i)\bbrand\b
 
-5](?i)health
+6](?i)health

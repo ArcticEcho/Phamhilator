@@ -21,12 +21,12 @@ namespace Phamhilator
 				return info;
 			}
 
-			if (IsLowQuality(post, ref info))
+			if (IsOffensive(post, ref info))
 			{
 				return info;
 			}
 
-			if (IsOffensive(post, ref info))
+			if (IsLowQuality(post, ref info))
 			{
 				return info;
 			}

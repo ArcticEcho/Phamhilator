@@ -1,4 +1,4 @@
 
-10](?i)\berror(s)?\b
+10.5](?i)\berror(s)?\b
 
-14.5](?i)\b(help|halp)\b
+15.5](?i)\b(help|halp)\b

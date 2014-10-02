@@ -1,6 +1,8 @@
 
 3.125](?i)pl(z|s|ease)
-3.782609](?i)\b(help|halp)\b
-5.652174](?i)problem(s)?
+4.043478](?i)\b(help|halp)\b
+5.869565](?i)problem(s)?
 
 6](?i)i want to
+
+10.5]^(?i).{0,18}$

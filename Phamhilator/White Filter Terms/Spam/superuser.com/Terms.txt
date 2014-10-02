@@ -3,3 +3,6 @@
 
 5](?i)how to (feel|look|reduce|buy|increase)
 6](?i)\bbrand\b
+
+5](?i)you want
+5](?i)health

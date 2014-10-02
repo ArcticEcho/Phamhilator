@@ -18,13 +18,17 @@ namespace Phamhilator
 {
 	public partial class MainWindow
 	{
-		private int roomId;
+		//private int RoomID;
 		private bool exit;
 		private bool firstStart = true;
 		private int refreshRate = 10000; // In milliseconds.
 		private readonly HashSet<int> spammers = new HashSet<int>();
-		private MessageInfo lastCommand = new MessageInfo();
 		private static readonly List<string> previouslyFoundPosts = new List<string>();
+		private Thread commandListenerThread;
+		private Thread postCatcherThread;
+		private Thread postRefresherThread;
+		private DateTime requestedDieTime;
+		private bool die;
 
 
 
@@ -32,10 +36,16 @@ namespace Phamhilator
 		{
 			InitializeComponent();
 
+			GlobalInfo.ChatWb = chatWb;
+
 			SwitchToIE9();
 
 			HideScriptErrors(realtimeWb, true);
 			HideScriptErrors(chatWb, true);
+
+			BotKiller();
+
+			KillListener();
 
 			PostRefresher();
 
@@ -52,7 +62,7 @@ namespace Phamhilator
 			dynamic doc = null;
 			string html;
 
-			new Thread(() =>
+			postCatcherThread = new Thread(() =>
 			{
 				for (var i = 1; i < 5; i++)
 				{
@@ -81,7 +91,10 @@ namespace Phamhilator
 								continue;
 							}
 
-							if (html.IndexOf("DIV class=metaInfo", StringComparison.Ordinal) == -1) { continue; }
+							if (html.IndexOf("DIV class=metaInfo", StringComparison.Ordinal) == -1)
+							{
+								continue;
+							}
 
 							var posts = GetAllPosts(html);
 
@@ -93,11 +106,11 @@ namespace Phamhilator
 							do
 							{
 								Thread.Sleep(refreshRate / 2);
-							} while (!GlobalInfo.BotRunning); 
-							
+							} while (!GlobalInfo.BotRunning);
+
 							if (postSuccessMessage)
 							{
-								PostMessage("`Restart successful!`");
+								MessageHandler.PostMessage("`Restart successful!`");
 
 								postSuccessMessage = false;
 							}
@@ -111,27 +124,32 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: 3 attempts to restart post catcher thread have failed. Now shutting down...`");
+								MessageHandler.PostMessage("`Warning: 3 attempts to restart post catcher thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
 							else
 							{
-								PostMessage("`Warning: post catcher thread has died. Attempting to restart...`");
+								MessageHandler.PostMessage("`Warning: post catcher thread has died. Attempting to restart...`");
 							}
 						}
 					}
 
-					if (exit) { return; }
-				}		
-			}) { Priority = ThreadPriority.Lowest }.Start();
+					if (exit)
+					{
+						break;
+					}
+				}
+			}) { Priority = ThreadPriority.Lowest };
+
+			postCatcherThread.Start();
 		}
 
 		private void PostRefresher()
 		{
 			var postSuccessMessage = false;
 
-			new Thread(() =>
+			postRefresherThread = new Thread(() =>
 			{
 				for (var i = 1; i < 5; i++)
 				{
@@ -158,7 +176,7 @@ namespace Phamhilator
 
 							if (postSuccessMessage)
 							{
-								PostMessage("`Restart successful!`");
+								MessageHandler.PostMessage("`Restart successful!`");
 
 								postSuccessMessage = false;
 							}
@@ -172,29 +190,30 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: 3 attempts to restart post refresher thread have failed. Now shutting down...`");
+								MessageHandler.PostMessage("`Warning: 3 attempts to restart post refresher thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
 							else
 							{
-								PostMessage("`Warning: post refresher thread has died. Attempting to restart...`");
+								MessageHandler.PostMessage("`Warning: post refresher thread has died. Attempting to restart...`");
 							}
 						}
 					}
 
-					if (exit) { return; }
+					if (exit) { break; }
 				}
-			}) { Priority = ThreadPriority.Lowest }.Start();
+			}) { Priority = ThreadPriority.Lowest };
+
+			postRefresherThread.Start();
 		}
 
 		private void CommandListener()
 		{
 			var postSuccessMessage = false;
-			dynamic doc = null;
-			string html;
+			var lastChatMessage = new MessageInfo();
 
-			new Thread(() =>
+			commandListenerThread = new Thread(() =>
 			{
 				for (var i = 1; i < 5; i++)
 				{
@@ -214,24 +233,11 @@ namespace Phamhilator
 						{
 							Thread.Sleep(333);
 
-							Dispatcher.Invoke(() => doc = chatWb.Document);
+							var message = GetLatestMessage();
 
-							try
+							if (message.MessageID == lastChatMessage.MessageID || message.Body == ">>kill-it-with-no-regrets-for-sure" || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant())))
 							{
-								html = doc.documentElement.InnerHtml;
-							}
-							catch (Exception)
-							{
-								continue;
-							}
-
-							if (html.IndexOf("username owner", StringComparison.Ordinal) == -1) { continue; }
-
-							var message = HTMLScraper.GetLastChatMessage(html);
-
-							if (message.MessageID == lastCommand.MessageID || (!message.Body.StartsWith(">>") && !message.Body.ToLowerInvariant().StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant())))
-							{
-								lastCommand = message;
+								lastChatMessage = message;
 
 								continue;
 							}
@@ -240,14 +246,14 @@ namespace Phamhilator
 
 							if (commandMessage != "")
 							{
-								PostMessage(commandMessage);
+								MessageHandler.PostMessage(commandMessage);
 							}
 
-							lastCommand = new MessageInfo { MessageID = message.MessageID };
+							lastChatMessage = new MessageInfo { MessageID = message.MessageID };
 							
 							if (postSuccessMessage)
 							{
-								PostMessage("`Restart successful!`");
+								MessageHandler.PostMessage("`Restart successful!`");
 
 								postSuccessMessage = false;
 							}
@@ -261,20 +267,173 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostMessage("`Warning: 3 attempts to restart command listener thread have failed. Now shutting down...`");
+								MessageHandler.PostMessage("`Warning: 3 attempts to restart command listener thread have failed. Now shutting down...`");
 
 								exit = true;
 							}
 							else
 							{
-								PostMessage("`Warning: command listener thread has died. Attempting to restart...`");
+								MessageHandler.PostMessage("`Warning: command listener thread has died. Attempting to restart...`");
 							}
 						}
 					}
 
-					if (exit) { return; }		
+					if (exit) { break; }		
 				}
-			}) { Priority = ThreadPriority.Lowest }.Start();
+			}) { Priority = ThreadPriority.Lowest };
+
+			commandListenerThread.Start();
+		}
+
+		private void KillListener()
+		{
+			var lastChatMessage = new MessageInfo();
+
+			new Thread(() =>
+			{
+				do
+				{
+					Thread.Sleep(refreshRate / 2);
+				} while (!GlobalInfo.BotRunning);
+
+				while (!exit)
+				{
+					Thread.Sleep(333);
+
+					var message = GetLatestMessage();
+
+					if (message.MessageID == lastChatMessage.MessageID || message.Body != ">>kill-it-with-no-regrets-for-sure")
+					{
+						lastChatMessage = message;
+
+						continue;
+					}
+
+					if (UserAccess.Owners.Contains(message.AuthorID))
+					{
+						MessageHandler.PostMessage("`Killing...`");
+
+						exit = true;
+						die = true;
+						requestedDieTime = DateTime.UtcNow;
+					}
+					else
+					{
+						lastChatMessage = new MessageInfo { MessageID = message.MessageID };
+
+						MessageHandler.PostMessage("`Access denied.`");
+					}
+				}
+			}) { Priority = ThreadPriority.Lowest }.Start();		
+		}
+
+		private void BotKiller()
+		{
+			var postCatcherMessagePosted = false;
+			var postRefresherMessagePosted = false;
+			var commandListenerMessagePosted = false;
+
+			new Thread(() =>
+			{
+				while (true)
+				{
+					Thread.Sleep(1000);
+
+					if (!die)
+					{
+						continue;
+					}
+
+					if (!commandListenerThread.IsAlive && !postRefresherThread.IsAlive && !postCatcherThread.IsAlive && !die)
+					{
+						return;
+					}
+
+					if (!postCatcherMessagePosted)
+					{			
+						if (!postCatcherThread.IsAlive)
+						{
+							MessageHandler.PostMessage("`Post catcher thread has died...`");
+
+							postCatcherMessagePosted = true;
+						}
+						else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000)
+						{
+							MessageHandler.PostMessage("`Warning: 5 seconds have pasted since kill command was issued and post catcher thread is still alive. Now forcing thread death...`");
+
+							postCatcherThread.Abort();
+						}
+					}
+
+					Thread.Sleep(1000);
+
+					if (!postRefresherMessagePosted)
+					{
+						if (!postRefresherThread.IsAlive)
+						{
+							MessageHandler.PostMessage("`Post refresher thread has died...`");
+
+							postRefresherMessagePosted = true;
+						}
+						else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000)
+						{
+							MessageHandler.PostMessage("`Warning: 5 seconds have pasted since kill command was issued and post refresher thread is still alive. Now forcing thread death...`");
+
+							postRefresherThread.Abort();
+						}
+					}
+
+					Thread.Sleep(1000);
+
+					if (!commandListenerMessagePosted)
+					{
+						if (!commandListenerThread.IsAlive)
+						{
+							MessageHandler.PostMessage("`Command listener thread has died...`");
+
+							commandListenerMessagePosted = true;
+						}
+						else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000)
+						{
+							MessageHandler.PostMessage("`Warning: 5 seconds have pasted since kill command was issued and command listener thread is still alive. Now forcing thread death...`");
+
+							commandListenerThread.Abort();
+						}
+					}
+
+					Thread.Sleep(1000);
+
+					if (!commandListenerThread.IsAlive && !postRefresherThread.IsAlive && !postCatcherThread.IsAlive && die)
+					{
+						MessageHandler.PostMessage("`All threads have died. Kill successful!`");
+
+						Dispatcher.Invoke(() => Application.Current.Shutdown());
+
+						return;
+					}
+				}
+			}) { Priority = ThreadPriority.Lowest }.Start();	
+		}
+
+		private MessageInfo GetLatestMessage()
+		{
+			dynamic doc = null;
+			string html;
+
+			Dispatcher.Invoke(() => doc = chatWb.Document);
+
+			try
+			{
+				html = doc.documentElement.InnerHtml;
+			}
+			catch (Exception)
+			{
+				return new MessageInfo();
+			}
+
+			if (html.IndexOf("username owner", StringComparison.Ordinal) == -1) { return new MessageInfo(); }
+
+			return HTMLScraper.GetLastChatMessage(html);
 		}
 
 		private Post[] GetAllPosts(string html)
@@ -330,7 +489,7 @@ namespace Phamhilator
 
 				if (SpamAbuseDetected(post))
 				{
-					PostMessage("[Spammer abuse](" + post.URL + ").");
+					MessageHandler.PostMessage("[Spammer abuse](" + post.URL + ").");
 					PostPersistence.AddPost(post);
 
 					return;
@@ -340,7 +499,7 @@ namespace Phamhilator
 				{
 					case PostType.Offensive:
 					{
-						PostMessage("**Offensive**" + message, post, info);
+						MessageHandler.PostMessage("**Offensive**" + message, post, info);
 						PostPersistence.AddPost(post);
 
 						break;
@@ -348,7 +507,7 @@ namespace Phamhilator
 
 					case PostType.BadUsername:
 					{
-						PostMessage("**Bad Username**" + message, post, info);
+						MessageHandler.PostMessage("**Bad Username**" + message, post, info);
 						PostPersistence.AddPost(post);
 
 						break;
@@ -356,7 +515,7 @@ namespace Phamhilator
 
 					case PostType.BadTagUsed:
 					{
-						PostMessage("**Bad Tag Used**" + message);
+						MessageHandler.PostMessage("**Bad Tag Used**" + message);
 						PostPersistence.AddPost(post);
 
 						break;
@@ -364,7 +523,7 @@ namespace Phamhilator
 
 					case PostType.LowQuality:
 					{
-						PostMessage("**Low Quality**" + message, post, info);
+						MessageHandler.PostMessage("**Low Quality**" + message, post, info);
 						PostPersistence.AddPost(post);
 
 						break;
@@ -372,7 +531,7 @@ namespace Phamhilator
 
 					case PostType.Spam:
 					{
-						PostMessage("**Spam**" + message, post, info);
+						MessageHandler.PostMessage("**Spam**" + message, post, info);
 						PostPersistence.AddPost(post);
 
 						break;
@@ -391,75 +550,90 @@ namespace Phamhilator
 			return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 		}
 
-		private void PostMessage(string message, Post post = null, PostAnalysis report = null/* int consecutiveMessageCount = 0*/)
-		{
-			if (roomId == 0)
-			{
-				GetRoomId();
-			}
+		//private void PostMessage(string message, Post post = null, PostAnalysis report = null/* int consecutiveMessageCount = 0*/)
+		//{
+		//	if (GlobalInfo.RoomID == 0) { return; }
 
-			var error = false;
+		//	var error = false;
 			
-			Dispatcher.Invoke(() =>
-			{
-				try
-				{
-					chatWb.InvokeScript("eval", new object[]
-					{
-						"$.post('/chats/" + roomId + "/messages/new', { text: '" + message + "', fkey: fkey().fkey });"
-					});				
-				}
-				catch (Exception)
-				{
-					error = true;
-				}		
-			});
+		//	Dispatcher.Invoke(() =>
+		//	{
+		//		try
+		//		{
+		//			chatWb.InvokeScript("eval", new object[]
+		//			{
+		//				"$.post('/chats/" + GlobalInfo.RoomID + "/messages/new', { text: '" + message + "', fkey: fkey().fkey });"
+		//			});				
+		//		}
+		//		catch (Exception)
+		//		{
+		//			error = true;
+		//		}		
+		//	});
 
-			if (error || post == null || report == null) { return; }
+		//	if (error || post == null || report == null) { return; }
 
-			Thread.Sleep(3000);
+		//	Thread.Sleep(3000);
 
-			dynamic doc = null;
-			var i = 0;
-			var html = "";
+		//	dynamic doc = null;
+		//	var i = 0;
+		//	var html = "";
 
-			while (html.IndexOf(post.Title, StringComparison.Ordinal) == -1)
-			{
-				if (i >= 5) { return; }
+		//	while (html.IndexOf(post.Title, StringComparison.Ordinal) == -1)
+		//	{
+		//		if (i >= 5) { return; }
 
-				Dispatcher.Invoke(() => doc = chatWb.Document);
+		//		Dispatcher.Invoke(() => doc = chatWb.Document);
 
-				try
-				{
-					html = doc.documentElement.InnerHtml;
-				}
-				catch (Exception)
-				{
-					return;
-				}
+		//		try
+		//		{
+		//			html = doc.documentElement.InnerHtml;
+		//		}
+		//		catch (Exception)
+		//		{
+		//			return;
+		//		}
 
-				i++;
+		//		i++;
 
-				Thread.Sleep(3000);
-			}
+		//		Thread.Sleep(3000);
+		//	}
 
-			var id = HTMLScraper.GetMessageIDByReportTitle(html, post.Title);
+		//	var id = HTMLScraper.GetMessageIDByReportTitle(html, post.Title);
 
-			if (!GlobalInfo.PostedReports.ContainsKey(id))
-			{
-				GlobalInfo.PostedReports.Add(id, new MessageInfo{ Post = post, Report = report });
-			}		
+		//	if (!GlobalInfo.PostedReports.ContainsKey(id))
+		//	{
+		//		GlobalInfo.PostedReports.Add(id, new MessageInfo{ Post = post, Report = report });
+		//	}		
 
-			//consecutiveMessageCount++;
+		//	//consecutiveMessageCount++;
 
-			//var delay = (int)(4.1484 * Math.Log(consecutiveMessageCount) + 1.02242) * 1000;
+		//	//var delay = (int)(4.1484 * Math.Log(consecutiveMessageCount) + 1.02242) * 1000;
 
-			//if (consecutiveMessageCount >= 20) { return; }
+		//	//if (consecutiveMessageCount >= 20) { return; }
 
-			//Thread.Sleep(delay);
+		//	//Thread.Sleep(delay);
 
-			//PostMessage(message, consecutiveMessageCount);
-		}
+		//	//PostMessage(message, consecutiveMessageCount);
+		//}
+
+		//private void EditMessage(string newMessage, int messageID)
+		//{
+		//	Dispatcher.Invoke(() =>
+		//	{
+		//		try
+		//		{
+		//			chatWb.InvokeScript("eval", new object[]
+		//			{
+		//				@"$.post('https://chat.meta.stackexchange.com/messages/" + messageID + "', { text: '" + newMessage + "', fkey: fkey().fkey });"
+		//			});
+		//		}
+		//		catch (Exception)
+		//		{
+
+		//		}
+		//	});
+		//}
 
 		private void HideScriptErrors(WebBrowser wb, bool hide)
 		{
@@ -474,27 +648,27 @@ namespace Phamhilator
 			objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { hide });
 		}
 
-		private void GetRoomId()
-		{
-			Dispatcher.Invoke(() =>
-			{
-				try
-				{
-					var startIndex = chatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
-					var endIndex = chatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
+		//private void GetRoomId()
+		//{
+		//	Dispatcher.Invoke(() =>
+		//	{
+		//		try
+		//		{
+		//			var startIndex = chatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
+		//			var endIndex = chatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
-					var id = chatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
+		//			var id = chatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
-					if (!id.All(Char.IsDigit)) { return; }
+		//			if (!id.All(Char.IsDigit)) { return; }
 
-					roomId = int.Parse(id);
-				}
-				catch (Exception)
-				{
+		//			GlobalInfo.RoomID = int.Parse(id);
+		//		}
+		//		catch (Exception)
+		//		{
 
-				}			
-			});
-		}
+		//		}			
+		//	});
+		//}
 
 		private string FormatTags(Dictionary<string, string> tags)
 		{
@@ -522,7 +696,7 @@ namespace Phamhilator
 				var latestUsernameId = int.Parse(post.AuthorName.Remove(0, 4));
 				var lastMessageUsernameId = int.Parse(PostPersistence.Messages[0].AuthorName.Remove(0, 4));
 
-				if ((latestUsernameId > lastMessageUsernameId + 5 && latestUsernameId < lastMessageUsernameId) || spammers.Contains(latestUsernameId))
+				if ((latestUsernameId > lastMessageUsernameId + 8 && latestUsernameId < lastMessageUsernameId) || spammers.Contains(latestUsernameId))
 				{
 					spammers.Add(latestUsernameId);
 
@@ -566,14 +740,14 @@ namespace Phamhilator
 		{
 			chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts");
 
-			GetRoomId();
+			//GetRoomId();
 		}
 
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
 			chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/651/sandbox");
 
-			GetRoomId();
+			//GetRoomId();
 		}
 
 		private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -590,11 +764,11 @@ namespace Phamhilator
 				{
 					if (Debugger.IsAttached)
 					{
-						PostMessage("`Phamhilator™ started (debug mode).`");
+						MessageHandler.PostMessage("`Phamhilator™ started (debug mode).`");
 					}
 					else
 					{
-						PostMessage("`Phamhilator™ started.`");
+						MessageHandler.PostMessage("`Phamhilator™ started.`");
 					}
 
 					firstStart = false;
@@ -602,7 +776,7 @@ namespace Phamhilator
 				}
 				else
 				{
-					PostMessage("`Phamhilator™ started.`");
+					MessageHandler.PostMessage("`Phamhilator™ started.`");
 				}	
 			}
 			else
@@ -611,17 +785,17 @@ namespace Phamhilator
 
 				b.Content = "Start Monitoring";
 
-				PostMessage("`Phamhilator™ paused.`");
+				MessageHandler.PostMessage("`Phamhilator™ paused.`");
 			}
 		}
 
 		private void MetroWindow_Closing(object sender, CancelEventArgs e)
 		{
-			if (roomId == 0) { return; }
+			if (GlobalInfo.RoomID == 0) { return; }
 
 			e.Cancel = true;
 
-			PostMessage("`Phamhilator™ stopped.`");
+			MessageHandler.PostMessage("`Phamhilator™ stopped.`");
 
 			exit = true;
 

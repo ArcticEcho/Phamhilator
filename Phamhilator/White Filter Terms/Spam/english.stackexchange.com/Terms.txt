@@ -1,3 +1,5 @@
 
 5](?i)\byou know\b
-5](?i)health
+6](?i)health
+
+5](?i)\bcare(ing)?\b

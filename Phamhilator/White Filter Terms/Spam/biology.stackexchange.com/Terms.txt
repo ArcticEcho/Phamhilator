@@ -1,2 +1,2 @@
 
-5](?i)\bmuscle(s)?\b
+6.6](?i)\bmuscle(s)?\b

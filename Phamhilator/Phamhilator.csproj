@@ -73,6 +73,7 @@
     <Compile Include="BlackFilters.LQ.cs" />
     <Compile Include="BlackFilters.Spam.cs" />
     <Compile Include="HTMLScrapper.cs" />
+    <Compile Include="MessageHandler.cs" />
     <Compile Include="WhiteFilters.BadUsername.cs" />
     <Compile Include="WhiteFilters.LQ.cs" />
     <Compile Include="WhiteFilters.Offensive.cs" />
