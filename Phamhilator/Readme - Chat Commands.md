@@ -26,6 +26,8 @@
  
  - <code>>>(help/commands)</code> Prints a link to this page.
  
+ - <code>@BotUsername (sanitise/sanitize/clean)</code> (Assuming you're replying to a previous report) tells the bot to censor the report's title.
+ 
 <br>
 
 <h2>Owner Commands:</h2>
