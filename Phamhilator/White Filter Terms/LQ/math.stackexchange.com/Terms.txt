@@ -15,3 +15,5 @@
 9.5]^[^a-z]*$
 
 10.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+
+10.5](?i)\berror(s)?\b

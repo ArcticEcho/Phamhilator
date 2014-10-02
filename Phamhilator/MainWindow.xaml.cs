@@ -18,7 +18,6 @@ namespace Phamhilator
 {
 	public partial class MainWindow
 	{
-		//private int RoomID;
 		private bool exit;
 		private bool firstStart = true;
 		private int refreshRate = 10000; // In milliseconds.
@@ -550,91 +549,6 @@ namespace Phamhilator
 			return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 		}
 
-		//private void PostMessage(string message, Post post = null, PostAnalysis report = null/* int consecutiveMessageCount = 0*/)
-		//{
-		//	if (GlobalInfo.RoomID == 0) { return; }
-
-		//	var error = false;
-			
-		//	Dispatcher.Invoke(() =>
-		//	{
-		//		try
-		//		{
-		//			chatWb.InvokeScript("eval", new object[]
-		//			{
-		//				"$.post('/chats/" + GlobalInfo.RoomID + "/messages/new', { text: '" + message + "', fkey: fkey().fkey });"
-		//			});				
-		//		}
-		//		catch (Exception)
-		//		{
-		//			error = true;
-		//		}		
-		//	});
-
-		//	if (error || post == null || report == null) { return; }
-
-		//	Thread.Sleep(3000);
-
-		//	dynamic doc = null;
-		//	var i = 0;
-		//	var html = "";
-
-		//	while (html.IndexOf(post.Title, StringComparison.Ordinal) == -1)
-		//	{
-		//		if (i >= 5) { return; }
-
-		//		Dispatcher.Invoke(() => doc = chatWb.Document);
-
-		//		try
-		//		{
-		//			html = doc.documentElement.InnerHtml;
-		//		}
-		//		catch (Exception)
-		//		{
-		//			return;
-		//		}
-
-		//		i++;
-
-		//		Thread.Sleep(3000);
-		//	}
-
-		//	var id = HTMLScraper.GetMessageIDByReportTitle(html, post.Title);
-
-		//	if (!GlobalInfo.PostedReports.ContainsKey(id))
-		//	{
-		//		GlobalInfo.PostedReports.Add(id, new MessageInfo{ Post = post, Report = report });
-		//	}		
-
-		//	//consecutiveMessageCount++;
-
-		//	//var delay = (int)(4.1484 * Math.Log(consecutiveMessageCount) + 1.02242) * 1000;
-
-		//	//if (consecutiveMessageCount >= 20) { return; }
-
-		//	//Thread.Sleep(delay);
-
-		//	//PostMessage(message, consecutiveMessageCount);
-		//}
-
-		//private void EditMessage(string newMessage, int messageID)
-		//{
-		//	Dispatcher.Invoke(() =>
-		//	{
-		//		try
-		//		{
-		//			chatWb.InvokeScript("eval", new object[]
-		//			{
-		//				@"$.post('https://chat.meta.stackexchange.com/messages/" + messageID + "', { text: '" + newMessage + "', fkey: fkey().fkey });"
-		//			});
-		//		}
-		//		catch (Exception)
-		//		{
-
-		//		}
-		//	});
-		//}
-
 		private void HideScriptErrors(WebBrowser wb, bool hide)
 		{
 			var fiComWebBrowser = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -647,28 +561,6 @@ namespace Phamhilator
 			}
 			objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { hide });
 		}
-
-		//private void GetRoomId()
-		//{
-		//	Dispatcher.Invoke(() =>
-		//	{
-		//		try
-		//		{
-		//			var startIndex = chatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
-		//			var endIndex = chatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
-
-		//			var id = chatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
-
-		//			if (!id.All(Char.IsDigit)) { return; }
-
-		//			GlobalInfo.RoomID = int.Parse(id);
-		//		}
-		//		catch (Exception)
-		//		{
-
-		//		}			
-		//	});
-		//}
 
 		private string FormatTags(Dictionary<string, string> tags)
 		{
@@ -739,15 +631,11 @@ namespace Phamhilator
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts");
-
-			//GetRoomId();
 		}
 
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
 			chatWb.Source = new Uri("http://chat.meta.stackexchange.com/rooms/651/sandbox");
-
-			//GetRoomId();
 		}
 
 		private void Button_Click_2(object sender, RoutedEventArgs e)
