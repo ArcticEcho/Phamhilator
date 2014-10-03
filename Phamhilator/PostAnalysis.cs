@@ -7,10 +7,8 @@ namespace Phamhilator
 {
 	public class PostAnalysis
 	{
-		public PostType Type;
-		public float Accuracy;
-		public Dictionary<string, string> BadTags = new Dictionary<string, string>();
-		public readonly Dictionary<Regex, float> WhiteTermsFound = new Dictionary<Regex, float>();
-		public readonly Dictionary<Regex, float> BlackTermsFound = new Dictionary<Regex, float>();
+		public QuestionAnalysis QRsults = new QuestionAnalysis();
+
+		public List<AnswerAnalysis> AResults = new List<AnswerAnalysis>();
 	}
 }

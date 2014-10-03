@@ -2,3 +2,6 @@
 6.17284](?i)question
 
 10.5]^(?i).{0,18}$
+
+15.5](?i)\b(help|halp)\b
+15.5](?i:need help|help me)

@@ -11,18 +11,32 @@ namespace Phamhilator
 {
 	public static class GlobalInfo
 	{
+		public static readonly QuestionFilters.WhiteFilters.BadUsername QWhiteName = new QuestionFilters.WhiteFilters.BadUsername();
+		public static readonly QuestionFilters.WhiteFilters.Offensive QWhiteOff = new QuestionFilters.WhiteFilters.Offensive();
+		public static readonly QuestionFilters.WhiteFilters.Spam QWhiteSpam = new QuestionFilters.WhiteFilters.Spam();
+		public static readonly QuestionFilters.WhiteFilters.LQ QWhiteLQ = new QuestionFilters.WhiteFilters.LQ();
+
+		public static readonly QuestionFilters.BlackFilters.BadUsername QBlackName = new QuestionFilters.BlackFilters.BadUsername();
+		public static readonly QuestionFilters.BlackFilters.Offensive QBlackOff = new QuestionFilters.BlackFilters.Offensive();
+		public static readonly QuestionFilters.BlackFilters.Spam QBlackSpam = new QuestionFilters.BlackFilters.Spam();
+		public static readonly QuestionFilters.BlackFilters.LQ QBlackLQ = new QuestionFilters.BlackFilters.LQ();
+
+
+		public static readonly AnswerFilters.BlackFilters.BadUsername ABlackName = new AnswerFilters.BlackFilters.BadUsername();
+		public static readonly AnswerFilters.BlackFilters.Offensive ABlackOff = new AnswerFilters.BlackFilters.Offensive();
+		public static readonly AnswerFilters.BlackFilters.Spam ABlackSpam = new AnswerFilters.BlackFilters.Spam();
+		public static readonly AnswerFilters.BlackFilters.LQ ABlackLQ = new AnswerFilters.BlackFilters.LQ();
+
+		public static readonly AnswerFilters.WhiteFilters.BadUsername AWhiteName = new AnswerFilters.WhiteFilters.BadUsername();
+		public static readonly AnswerFilters.WhiteFilters.Offensive AWhiteOff = new AnswerFilters.WhiteFilters.Offensive();
+		public static readonly AnswerFilters.WhiteFilters.Spam AWhiteSpam = new AnswerFilters.WhiteFilters.Spam();
+		public static readonly AnswerFilters.WhiteFilters.LQ AWhiteLQ = new AnswerFilters.WhiteFilters.LQ();
+
+
 		public const string BotUsername = "pham"; // TODO: change this to the username of your account which the bot will be using.
 		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
-		public static readonly WhiteFilters.BadUsername WhiteName = new WhiteFilters.BadUsername();
-		public static readonly WhiteFilters.Offensive WhiteOff = new WhiteFilters.Offensive();
-		public static readonly WhiteFilters.Spam WhiteSpam = new WhiteFilters.Spam();
-		public static readonly WhiteFilters.LQ WhiteLQ = new WhiteFilters.LQ();
-		public static readonly BlackFilters.BadUsername BlackName = new BlackFilters.BadUsername();
-		public static readonly BlackFilters.Offensive BlackOff = new BlackFilters.Offensive();
-		public static readonly BlackFilters.Spam BlackSpam = new BlackFilters.Spam();
-		public static readonly BlackFilters.LQ BlackLQ = new BlackFilters.LQ();
-		public static WebBrowser ChatWb;
 		public const string Owners = "Sam, Unihedron & ProgramFOX";
+		public static WebBrowser ChatWb;
 		public static int PostsCaught;
 		public static DateTime UpTime;
 		public static bool BotRunning;
@@ -36,7 +50,7 @@ namespace Phamhilator
 
 			set
 			{
-				File.WriteAllText(DirectoryTools.GetAccuracyThresholdFile(), value.ToString(CultureInfo.InvariantCulture));			
+				File.WriteAllText(DirectoryTools.GetAccuracyThresholdFile(), value.ToString(CultureInfo.InvariantCulture));
 			}
 		}
 
@@ -44,8 +58,8 @@ namespace Phamhilator
 		{
 			get
 			{
-				return BlackOff.Terms.Count + BlackSpam.Terms.Count + BlackLQ.Terms.Count + BlackName.Terms.Count +
-					   WhiteName.Terms.Values.Sum(x => x.Count) + WhiteOff.Terms.Values.Sum(x => x.Count) + WhiteSpam.Terms.Values.Sum(x => x.Count) + WhiteLQ.Terms.Values.Sum(x => x.Count) + 
+				return QBlackOff.Terms.Count + QBlackSpam.Terms.Count + QBlackLQ.Terms.Count + QBlackName.Terms.Count +
+					   QWhiteName.Terms.Values.Sum(x => x.Count) + QWhiteOff.Terms.Values.Sum(x => x.Count) + QWhiteSpam.Terms.Values.Sum(x => x.Count) + QWhiteLQ.Terms.Values.Sum(x => x.Count) + 
 					   BadTagDefinitions.BadTags.Count;
 			}
 		}

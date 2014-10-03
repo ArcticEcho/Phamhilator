@@ -3,3 +3,4 @@
 6](?i)health
 
 5](?i)\bcare(ing)?\b
+5](?i)\bbeautiful(est)?\b

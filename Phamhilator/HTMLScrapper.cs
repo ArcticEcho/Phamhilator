@@ -135,6 +135,24 @@ namespace Phamhilator
 			return info;
 		}
 
+		public static string GetQuestionBody(string html)
+		{
+			var startIndex = html.IndexOf("<p>", StringComparison.Ordinal) + 3;
+			var endIndex = html.IndexOf("</div>", startIndex, StringComparison.Ordinal) - 11;
+
+			return html.Substring(startIndex, endIndex - startIndex);
+		}
+
+		public static int GetQuestionScore(string html)
+		{
+			var startIndex = html.IndexOf("vote-count-post", StringComparison.Ordinal) + 18;
+			var endIndex = html.IndexOf("</span>", startIndex, StringComparison.Ordinal);
+
+			var score = html.Substring(startIndex, endIndex - startIndex);
+
+			return int.Parse(score);
+		}
+
 
 
 		private static int GetLastestMessageID(string html)

@@ -3,7 +3,7 @@
 	public class MessageInfo
 	{
 		public PostAnalysis Report;
-		public Post Post;
+		public Question Post;
 		public string Body;
 		public int MessageID;
 		public int AuthorID;

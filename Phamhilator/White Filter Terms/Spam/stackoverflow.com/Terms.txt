@@ -1,6 +1,6 @@
 
 
-5.5](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
+6.5](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
 5](?i)this product
 5](?i)\bcheaper\b
 5](?i)\bexclusive\b

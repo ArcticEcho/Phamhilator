@@ -18,8 +18,8 @@ namespace Phamhilator
 {
 	public partial class MainWindow
 	{
+		private bool die;
 		private bool exit;
-		private bool firstStart = true;
 		private int refreshRate = 10000; // In milliseconds.
 		private readonly HashSet<int> spammers = new HashSet<int>();
 		private static readonly List<string> previouslyFoundPosts = new List<string>();
@@ -27,7 +27,6 @@ namespace Phamhilator
 		private Thread postCatcherThread;
 		private Thread postRefresherThread;
 		private DateTime requestedDieTime;
-		private bool die;
 
 
 
@@ -435,9 +434,9 @@ namespace Phamhilator
 			return HTMLScraper.GetLastChatMessage(html);
 		}
 
-		private Post[] GetAllPosts(string html)
+		private Question[] GetAllPosts(string html)
 		{
-			var posts = new List<Post>();
+			var posts = new List<Question>();
 
 			html = html.Substring(html.IndexOf("<BR class=cbo>", StringComparison.Ordinal));
 
@@ -445,7 +444,7 @@ namespace Phamhilator
 			{
 				var postURL = HTMLScraper.GetURL(html);
 
-				var post = new Post
+				var post = new Question
 				{
 					URL = postURL,
 					Title = HTMLScraper.GetTitle(html),
@@ -474,14 +473,14 @@ namespace Phamhilator
 			return posts.ToArray();
 		}
 
-		private void CheckPosts(IEnumerable<Post> posts)
+		private void CheckPosts(IEnumerable<Question> posts)
 		{
 			PostAnalysis info;
 			string message;
 
 			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.URL != p.URL)))
 			{
-				info = PostChecker.CheckPost(post);
+				info = PostAnalyser.CheckPost(post);
 				message = GetReportMessage(info, post);
 
 				if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { continue; }
@@ -539,27 +538,86 @@ namespace Phamhilator
 			}
 		}
 
-		private string GetReportMessage(PostAnalysis info, Post post)
+		private void CheckQuestion(QuestionAnalysis info)
 		{
-			if (info.Type == PostType.BadTagUsed)
-			{
-				return ": " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
-			}
-
-			return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+			
 		}
 
-		private void HideScriptErrors(WebBrowser wb, bool hide)
+		private void PostReport(Question q, string message, QuestionAnalysis info)
 		{
-			var fiComWebBrowser = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
-			if (fiComWebBrowser == null) return;
-			var objComWebBrowser = fiComWebBrowser.GetValue(wb);
-			if (objComWebBrowser == null)
+			if (SpamAbuseDetected(q))
 			{
-				wb.Loaded += (o, s) => HideScriptErrors(wb, hide);
+				MessageHandler.PostMessage("[Spammer abuse](" + q.URL + ").");
+				PostPersistence.AddPost(q);
+
 				return;
 			}
-			objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { hide });
+
+			switch (q.Type)
+			{
+				case PostType.Offensive:
+				{
+					MessageHandler.PostMessage("**Offensive**" + message, q, info);
+					PostPersistence.AddPost(q);
+
+					break;
+				}
+
+				case PostType.BadUsername:
+				{
+					MessageHandler.PostMessage("**Bad Username**" + message, q, info);
+					PostPersistence.AddPost(q);
+
+					break;
+				}
+
+				case PostType.BadTagUsed:
+				{
+					MessageHandler.PostMessage("**Bad Tag Used**" + message);
+					PostPersistence.AddPost(q);
+
+					break;
+				}
+
+				case PostType.LowQuality:
+				{
+					MessageHandler.PostMessage("**Low Quality**" + message, q, info);
+					PostPersistence.AddPost(q);
+
+					break;
+				}
+
+				case PostType.Spam:
+				{
+					MessageHandler.PostMessage("**Spam**" + message, q, info);
+					PostPersistence.AddPost(q);
+
+					break;
+				}
+			}
+		}
+
+		private string GetQReportMessage(QuestionAnalysis info, Question post)
+		{
+			switch (info.QuestionType)
+			{
+				case PostType.BadTagUsed:
+				{
+					return ": " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+				}
+
+				default:
+				{
+					return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+				}
+			}
+		}
+
+		private string GetAReportMessage(AnswerAnalysis info, Answer post)
+		{
+			var excerpt = post.Body.Length > 30 ? post.Body.Substring(0, 27) + "..." : post.Body;
+
+			return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + excerpt + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 		}
 
 		private string FormatTags(Dictionary<string, string> tags)
@@ -581,7 +639,7 @@ namespace Phamhilator
 			return result.ToString();
 		}
 
-		private bool SpamAbuseDetected(Post post)
+		private bool SpamAbuseDetected(Question post)
 		{
 			if (PostPersistence.Messages[0].AuthorName != null && IsDefaultUsername(post.AuthorName) && IsDefaultUsername(PostPersistence.Messages[0].AuthorName))
 			{
@@ -602,6 +660,20 @@ namespace Phamhilator
 		private bool IsDefaultUsername(string username)
 		{
 			return username.StartsWith("user") && username.Remove(0, 4).All(Char.IsDigit);
+		}
+
+
+		private void HideScriptErrors(WebBrowser wb, bool hide)
+		{
+			var fiComWebBrowser = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
+			if (fiComWebBrowser == null) return;
+			var objComWebBrowser = fiComWebBrowser.GetValue(wb);
+			if (objComWebBrowser == null)
+			{
+				wb.Loaded += (o, s) => HideScriptErrors(wb, hide);
+				return;
+			}
+			objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { hide });
 		}
 
 		private void SwitchToIE9()
@@ -642,38 +714,22 @@ namespace Phamhilator
 		{
 			var b = ((Button)sender);
 
-			if ((string)b.Content == "Start Monitoring")
+			if (b.IsEnabled)
 			{
 				GlobalInfo.BotRunning = true;
 
-				b.Content = "Pause Monitoring";
-
-				if (firstStart)
+				b.IsEnabled = false;
+				
+				if (Debugger.IsAttached)
 				{
-					if (Debugger.IsAttached)
-					{
-						MessageHandler.PostMessage("`Phamhilator™ started (debug mode).`");
-					}
-					else
-					{
-						MessageHandler.PostMessage("`Phamhilator™ started.`");
-					}
-
-					firstStart = false;
-					GlobalInfo.UpTime = DateTime.UtcNow;
+					MessageHandler.PostMessage("`Phamhilator™ started (debug mode).`");
 				}
 				else
 				{
 					MessageHandler.PostMessage("`Phamhilator™ started.`");
-				}	
-			}
-			else
-			{
-				GlobalInfo.BotRunning = false;
+				}
 
-				b.Content = "Start Monitoring";
-
-				MessageHandler.PostMessage("`Phamhilator™ paused.`");
+				GlobalInfo.UpTime = DateTime.UtcNow;
 			}
 		}
 
