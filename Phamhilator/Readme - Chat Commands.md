@@ -1,12 +1,20 @@
 <h2>Term Commands:</h2>
 
- - <code>>>badd term (lq/spam/off/name) (regex term)</code> Adds a new regex term to the specified subfilter of the blacklist (<code>lq</code> = low quality filter, <code>spam</code> = spam filter, <code>off</code> = offensive filter, <code>name</code> = username filter). 
+ - <code>>>bqadd term (lq/spam/off/name) (regex term)</code> Adds a new regex term to the specified subfilter of the question blacklist (<code>lq</code> = low quality filter, <code>spam</code> = spam filter, <code>off</code> = offensive filter, <code>name</code> = username filter). 
 
- - <code>>>bremove term (lq/spam/off/name) (regex term)</code> Removes a term from the specified subfilter of the blacklist.
+ - <code>>>bqremove term (lq/spam/off/name) (regex term)</code> Removes a term from the specified subfilter of the question blacklist.
  
- - <code>>>wadd term (lq/spam/off/name) (site, e.g., stackoverflow.com) (regex term)</code> Adds a new term to the specified subfilter of the whitelist.
+ - <code>>>wqadd term (lq/spam/off/name) (site, e.g., stackoverflow.com) (regex term)</code> Adds a new term to the specified subfilter of the question whitelist.
  
- - <code>>>wremove term (lq/spam/off/name) (site, e.g., stackoverflow.com) (regex term)</code> Removes a term from the specified subfilter of the whitelist.
+ - <code>>>wqremove term (lq/spam/off/name) (site, e.g., stackoverflow.com) (regex term)</code> Removes a term from the specified subfilter of the question whitelist.
+
+ - <code>>>baadd term (lq/spam/off/name) (regex term)</code> Adds a new regex term to the specified subfilter of the answer blacklist. 
+
+ - <code>>>baremove term (lq/spam/off/name) (regex term)</code> Removes a term from the specified subfilter of the answer blacklist.
+ 
+ - <code>>>waadd term (lq/spam/off/name) (site, e.g., stackoverflow.com) (regex term)</code> Adds a new term to the specified subfilter of the answer whitelist.
+ 
+ - <code>>>waremove term (lq/spam/off/name) (site, e.g., stackoverflow.com) (regex term)</code> Removes a term from the specified subfilter of the answer whitelist.
  
 <h2>Tag Commands:</h2>
 
