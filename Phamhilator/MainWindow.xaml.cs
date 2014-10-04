@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.Linq;
+using System.Windows;
+using Microsoft.Win32;
+using System.Threading;
+using System.Reflection;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
+using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Win32;
+using System.Collections.Generic;
 
 
 
@@ -475,98 +474,45 @@ namespace Phamhilator
 
 		private void CheckPosts(IEnumerable<Question> posts)
 		{
-			PostAnalysis info;
-			string message;
-
 			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.URL != p.URL)))
 			{
-				info = PostAnalyser.CheckPost(post);
-				message = GetReportMessage(info, post);
+				var info = PostAnalyser.CheckPost(post);
 
-				if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { continue; }
+				PostReport(post, MessageGenerator.GetQReport(info.QResults, post), info.QResults);
 
-				if (SpamAbuseDetected(post))
+				foreach (var a in info.AResults)
 				{
-					MessageHandler.PostMessage("[Spammer abuse](" + post.URL + ").");
-					PostPersistence.AddPost(post);
-
-					return;
-				}
-
-				switch (info.Type)
-				{
-					case PostType.Offensive:
-					{
-						MessageHandler.PostMessage("**Offensive**" + message, post, info);
-						PostPersistence.AddPost(post);
-
-						break;
-					}
-
-					case PostType.BadUsername:
-					{
-						MessageHandler.PostMessage("**Bad Username**" + message, post, info);
-						PostPersistence.AddPost(post);
-
-						break;
-					}
-
-					case PostType.BadTagUsed:
-					{
-						MessageHandler.PostMessage("**Bad Tag Used**" + message);
-						PostPersistence.AddPost(post);
-
-						break;
-					}
-
-					case PostType.LowQuality:
-					{
-						MessageHandler.PostMessage("**Low Quality**" + message, post, info);
-						PostPersistence.AddPost(post);
-
-						break;
-					}
-
-					case PostType.Spam:
-					{
-						MessageHandler.PostMessage("**Spam**" + message, post, info);
-						PostPersistence.AddPost(post);
-
-						break;
-					}
+					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value);
 				}
 			}
 		}
 
-		private void CheckQuestion(QuestionAnalysis info)
+		private void PostReport(Post p, string message, PostAnalysis info)
 		{
-			
-		}
+			if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { return; }
 
-		private void PostReport(Question q, string message, QuestionAnalysis info)
-		{
-			if (SpamAbuseDetected(q))
+			if (SpamAbuseDetected(p))
 			{
-				MessageHandler.PostMessage("[Spammer abuse](" + q.URL + ").");
-				PostPersistence.AddPost(q);
+				MessageHandler.PostMessage("[Spammer abuse](" + p.URL + ").");
+				PostPersistence.AddPost(p);
 
 				return;
 			}
 
-			switch (q.Type)
+			switch (info.Type)
 			{
 				case PostType.Offensive:
 				{
-					MessageHandler.PostMessage("**Offensive**" + message, q, info);
-					PostPersistence.AddPost(q);
+					MessageHandler.PostMessage("**Offensive**" + message, p, info);
+					PostPersistence.AddPost(p);
 
 					break;
 				}
 
 				case PostType.BadUsername:
 				{
-					MessageHandler.PostMessage("**Bad Username**" + message, q, info);
-					PostPersistence.AddPost(q);
+					MessageHandler.PostMessage("**Bad Username**" + message, p, info);
+					PostPersistence.AddPost(p);
 
 					break;
 				}
@@ -574,72 +520,30 @@ namespace Phamhilator
 				case PostType.BadTagUsed:
 				{
 					MessageHandler.PostMessage("**Bad Tag Used**" + message);
-					PostPersistence.AddPost(q);
+					PostPersistence.AddPost(p);
 
 					break;
 				}
 
 				case PostType.LowQuality:
 				{
-					MessageHandler.PostMessage("**Low Quality**" + message, q, info);
-					PostPersistence.AddPost(q);
+					MessageHandler.PostMessage("**Low Quality**" + message, p, info);
+					PostPersistence.AddPost(p);
 
 					break;
 				}
 
 				case PostType.Spam:
 				{
-					MessageHandler.PostMessage("**Spam**" + message, q, info);
-					PostPersistence.AddPost(q);
+					MessageHandler.PostMessage("**Spam**" + message, p, info);
+					PostPersistence.AddPost(p);
 
 					break;
 				}
 			}
 		}
 
-		private string GetQReportMessage(QuestionAnalysis info, Question post)
-		{
-			switch (info.QuestionType)
-			{
-				case PostType.BadTagUsed:
-				{
-					return ": " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
-				}
-
-				default:
-				{
-					return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
-				}
-			}
-		}
-
-		private string GetAReportMessage(AnswerAnalysis info, Answer post)
-		{
-			var excerpt = post.Body.Length > 30 ? post.Body.Substring(0, 27) + "..." : post.Body;
-
-			return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + excerpt + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
-		}
-
-		private string FormatTags(Dictionary<string, string> tags)
-		{
-			var result = new StringBuilder();
-
-			foreach (var tag in tags)
-			{
-				if (tag.Value == "")
-				{
-					result.Append("`[" + tag.Key + "]` ");
-				}
-				else
-				{
-					result.Append("[`[" + tag.Key + "]`](" + tag.Value + ") ");
-				}
-			}
-
-			return result.ToString();
-		}
-
-		private bool SpamAbuseDetected(Question post)
+		private bool SpamAbuseDetected(Post post)
 		{
 			if (PostPersistence.Messages[0].AuthorName != null && IsDefaultUsername(post.AuthorName) && IsDefaultUsername(PostPersistence.Messages[0].AuthorName))
 			{

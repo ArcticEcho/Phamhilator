@@ -46,7 +46,7 @@ namespace Phamhilator
 					info.Accuracy /= filtersUsed;
 					info.Accuracy /= GlobalInfo.QBlackSpam.HighestScore;
 					info.Accuracy *= 100;
-					info.QuestionType = PostType.Spam;
+					info.Type = PostType.Spam;
 
 					return true;
 				}
@@ -93,7 +93,7 @@ namespace Phamhilator
 					info.Accuracy /= filtersUsed;
 					info.Accuracy /= GlobalInfo.QBlackLQ.HighestScore;
 					info.Accuracy *= 100;
-					info.QuestionType = PostType.LowQuality;
+					info.Type = PostType.LowQuality;
 
 					return true;
 				}
@@ -140,7 +140,7 @@ namespace Phamhilator
 					info.Accuracy /= filtersUsed;
 					info.Accuracy /= GlobalInfo.QBlackOff.HighestScore;
 					info.Accuracy *= 100;
-					info.QuestionType = PostType.Offensive;
+					info.Type = PostType.Offensive;
 
 					return true;
 				}
@@ -187,7 +187,7 @@ namespace Phamhilator
 					info.Accuracy /= filtersUsed;
 					info.Accuracy /= GlobalInfo.QBlackName.HighestScore;
 					info.Accuracy *= 100;
-					info.QuestionType = PostType.BadUsername;
+					info.Type = PostType.BadUsername;
 
 					return true;
 				}
@@ -214,7 +214,7 @@ namespace Phamhilator
 				if (tags.Count != 0)
 				{
 					info.Accuracy = 100;
-					info.QuestionType = PostType.BadTagUsed;
+					info.Type = PostType.BadTagUsed;
 				}
 
 				return tags;

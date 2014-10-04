@@ -1,15 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-
-
-
-namespace Phamhilator
+﻿namespace Phamhilator
 {
-	public class AnswerAnalysis
+	public class AnswerAnalysis : PostAnalysis
 	{
-		public PostType AnswerType;
-		public float Accuracy;
-		public readonly Dictionary<Regex, float> WhiteTermsFound = new Dictionary<Regex, float>();
-		public readonly Dictionary<Regex, float> BlackTermsFound = new Dictionary<Regex, float>();
+
 	}
 }

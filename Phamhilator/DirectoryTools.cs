@@ -341,13 +341,14 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetEnglishThresholdsFile()
+
+		public static string GetEnableFullScanFile()
 		{
-			var path = Path.Combine(root, "English Thresholds.txt");
+			var path = Path.Combine(root, "Enable Full Scan.txt");
 
 			if (!File.Exists(path))
 			{
-				File.Create(path).Dispose();
+				File.WriteAllText(path, "false"); // Disabled by default.
 			}
 
 			return path;

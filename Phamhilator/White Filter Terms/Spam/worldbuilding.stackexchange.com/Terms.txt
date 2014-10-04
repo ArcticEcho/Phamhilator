@@ -1,2 +1,2 @@
 
-5](?i)\bcare(ing)?\b
+5.5](?i)\bcare(ing)?\b

@@ -41,6 +41,19 @@ namespace Phamhilator
 		public static DateTime UpTime;
 		public static bool BotRunning;
 
+		public static bool EnableFullScan
+		{
+			get
+			{
+				return Boolean.Parse(File.ReadAllText(DirectoryTools.GetEnableFullScanFile()));
+			}
+
+			set
+			{
+				File.WriteAllText(DirectoryTools.GetEnableFullScanFile(), value.ToString(CultureInfo.InvariantCulture));
+			}
+		}
+
 		public static float AccuracyThreshold
 		{
 			get

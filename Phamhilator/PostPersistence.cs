@@ -8,10 +8,10 @@ namespace Phamhilator
 {
 	public static class PostPersistence
 	{
-		private static List<Question> messages;
+		private static List<Post> messages;
 		private static readonly DateTime twentyTen = new DateTime(2010, 01, 01);
 
-		public static List<Question> Messages
+		public static List<Post> Messages
 		{
 			get
 			{
@@ -26,7 +26,7 @@ namespace Phamhilator
 
 
 
-		public static void AddPost(Question post)
+		public static void AddPost(Post post)
 		{
 			if (Messages.Count == 0)
 			{
@@ -50,7 +50,7 @@ namespace Phamhilator
 			var urls = new List<string>(File.ReadAllLines(DirectoryTools.GetPostPersitenceFile()));
 			double date;
 
-			messages = new List<Question>();
+			messages = new List<Post>();
 
 			for (var i = 0; i < urls.Count; i++)
 			{
@@ -70,7 +70,7 @@ namespace Phamhilator
 					continue;
 				}
 
-				messages.Add(new Question { URL = urls[i].Split(']')[1].Trim() });
+				messages.Add(new Answer { URL = urls[i].Split(']')[1].Trim() });
 				GlobalInfo.PostsCaught++;
 			}
 

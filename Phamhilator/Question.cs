@@ -5,28 +5,23 @@ using System.Collections.Generic;
 
 namespace Phamhilator
 {
-	public class Question
+	public class Question : Post
 	{
-		private List<Answer> answers;
-		private bool answersPopulated;
-		private bool scoreBodyPopulated;
-		private int score = int.MinValue;
+		private bool extraDataPopulated;
 		private string body = "";
+		private int score = int.MinValue;
+		private int authorRep = int.MaxValue;
+		private readonly List<Answer> answers = new List<Answer>();
 
-		public string Title;
-		public string AuthorName;
-		public string AuthorLink;
-		public string URL;
-		public string Site;
 		public List<string> Tags;
 
 		public int Score
 		{
 			get
 			{
-				if (!scoreBodyPopulated)
+				if (!extraDataPopulated && GlobalInfo.EnableFullScan)
 				{
-					PopulateScoreAndBody();
+					PopulateExtraData();
 				}
 
 				return score;
@@ -37,9 +32,9 @@ namespace Phamhilator
 		{
 			get
 			{
-				if (!scoreBodyPopulated)
+				if (!extraDataPopulated && GlobalInfo.EnableFullScan)
 				{
-					PopulateScoreAndBody();
+					PopulateExtraData();
 				}
 
 				return body;
@@ -50,18 +45,30 @@ namespace Phamhilator
 		{
 			get
 			{
-				if (!answersPopulated)
+				if (!extraDataPopulated && GlobalInfo.EnableFullScan)
 				{
-					PopulateAnswers();
+					PopulateExtraData();
 				}
 
 				return answers;
 			}
 		}
 
+		public int AuthorRep
+		{
+			get
+			{
+				if (!extraDataPopulated && GlobalInfo.EnableFullScan)
+				{
+					PopulateExtraData();
+				}
 
+				return authorRep;
+			}
+		
+		}
 
-		private void PopulateScoreAndBody()
+		private void PopulateExtraData()
 		{
 			try
 			{
@@ -73,18 +80,13 @@ namespace Phamhilator
 
 				wb.Dispose();
 
-				scoreBodyPopulated = true;
+				extraDataPopulated = true;
 			}
 			catch (Exception)
 			{
 				score = int.MaxValue;
 				body = "";
 			}
-		}
-
-		private void PopulateAnswers()
-		{
-			
 		}
 	}
 }

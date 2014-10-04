@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-
-namespace Phamhilator
+﻿namespace Phamhilator
 {
 	public abstract class Post
 	{
-
+		public string Title;
+		public string AuthorName;
+		public string AuthorLink;
+		public string URL;
+		public string Site;
 	}
 }

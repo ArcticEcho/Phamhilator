@@ -90,9 +90,10 @@ namespace Phamhilator
 		private static bool IsOwnerCommand()
 		{
 			return commandLower.StartsWith("add user") ||
-				   commandLower.StartsWith("start") ||
-				   commandLower.StartsWith("pause") ||
-				   commandLower.StartsWith("threshold");
+				   commandLower.StartsWith("threshold") ||
+				   commandLower == "start" ||
+				   commandLower == "pause" ||
+				   commandLower == "full scan";
 		}
 
 		private static string OwnerCommand(string command)
@@ -110,6 +111,11 @@ namespace Phamhilator
 			if (commandLower == "pause")
 			{
 				return PauseBot();
+			}
+
+			if (commandLower == "ful scan")
+			{
+				return FullScan();
 			}
 
 			if (commandLower.StartsWith("threshold"))
@@ -194,7 +200,7 @@ namespace Phamhilator
 		{
 			if (commandLower == "stats" || commandLower == "info")
 			{
-				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + "%. Posts caught over last 7 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + "%. Full scan enabled: " + GlobalInfo.EnableFullScan + ". Posts caught over last 7 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
 			}
 
 			if (commandLower == "help" || commandLower == "commands")
@@ -762,6 +768,21 @@ namespace Phamhilator
 			GlobalInfo.AccuracyThreshold = Single.Parse(newLimit);
 
 			return "`Accuracy threshold updated.`";
+		}
+
+
+		private static string FullScan()
+		{
+			if (GlobalInfo.EnableFullScan)
+			{
+				GlobalInfo.EnableFullScan = false;
+
+				return "`Full scan disabled.`";
+			}
+
+			GlobalInfo.EnableFullScan = true;
+
+			return "`Full scan enabled.`";
 		}
 
 
