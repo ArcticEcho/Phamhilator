@@ -1,3 +1,0 @@
-
-5](?i)tried
-10.5](?i)\berror(s)?\b

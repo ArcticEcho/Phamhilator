@@ -14,21 +14,19 @@ namespace Phamhilator
 			{
 				case PostType.BadTagUsed:
 				{
-					return ": " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+					return " **Q**: " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
 
 				default:
 				{
-					return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+					return " **Q** (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
 			}
 		}
 
 		public static string GetAReport(AnswerAnalysis info, Answer post)
 		{
-			var excerpt = post.Body.Length > 30 ? post.Body.Substring(0, 27) + "..." : post.Body;
-
-			return " (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + excerpt + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+			return " **A** (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 		}
 
 
@@ -51,6 +49,5 @@ namespace Phamhilator
 
 			return result.ToString();
 		}
-
 	}
 }

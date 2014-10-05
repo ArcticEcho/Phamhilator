@@ -113,7 +113,7 @@ namespace Phamhilator
 				return PauseBot();
 			}
 
-			if (commandLower == "ful scan")
+			if (commandLower == "full scan")
 			{
 				return FullScan();
 			}
@@ -132,10 +132,14 @@ namespace Phamhilator
 			return commandLower == "fp" || commandLower == "false" || commandLower == "false pos" || commandLower == "false positive" ||
 				   commandLower == "tp" || commandLower == "true" || commandLower == "true pos" || commandLower == "true positive" ||
 				   commandLower == "clean" || commandLower == "sanitise" || commandLower == "sanitize" ||
-				   commandLower.StartsWith("bremove term") ||
-				   commandLower.StartsWith("badd term") ||
-				   commandLower.StartsWith("wremove term") ||
-				   commandLower.StartsWith("wadd term") ||
+				   commandLower.StartsWith("bqremove term") ||
+				   commandLower.StartsWith("bqadd term") ||
+				   commandLower.StartsWith("wqremove term") ||
+				   commandLower.StartsWith("wqadd term") ||
+				   commandLower.StartsWith("baremove term") ||
+				   commandLower.StartsWith("baadd term") ||
+				   commandLower.StartsWith("waremove term") ||
+				   commandLower.StartsWith("waadd term") ||
 				   commandLower.StartsWith("add tag") ||
 				   commandLower.StartsWith("remove tag");
 		}
@@ -157,24 +161,44 @@ namespace Phamhilator
 				return CleanPost();
 			}
 
-			if (commandLower.StartsWith("bremove term"))
+			if (commandLower.StartsWith("bqremove term"))
 			{
-				return RemoveBlackTerm(command);
+				return RemoveQBlackTerm(command);
 			}
 
-			if (commandLower.StartsWith("badd term"))
+			if (commandLower.StartsWith("bqadd term"))
 			{
-				return AddBlackTerm(command);
+				return AddQBlackTerm(command);
 			}
 
-			if (commandLower.StartsWith("wremove term"))
+			if (commandLower.StartsWith("wqremove term"))
 			{
-				return RemoveWhiteTerm(command);
+				return RemoveQWhiteTerm(command);
 			}
 
-			if (commandLower.StartsWith("wadd term"))
+			if (commandLower.StartsWith("wqadd term"))
 			{
-				return AddWhiteTerm(command);
+				return AddAWhiteTerm(command);
+			}
+
+			if (commandLower.StartsWith("baremove term"))
+			{
+				return RemoveABlackTerm(command);
+			}
+
+			if (commandLower.StartsWith("baadd term"))
+			{
+				return AddABlackTerm(command);
+			}
+
+			if (commandLower.StartsWith("waremove term"))
+			{
+				return RemoveAWhiteTerm(command);
+			}
+
+			if (commandLower.StartsWith("waadd term"))
+			{
+				return AddQWhiteTerm(command);
 			}
 
 			if (commandLower.StartsWith("add tag"))
@@ -212,10 +236,12 @@ namespace Phamhilator
 		}
 
 
+
 		// Privileged user commands.
 
 
-		private static string AddBlackTerm(string command)
+
+		private static string AddQBlackTerm(string command)
 		{
 			var addCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
 
@@ -265,7 +291,7 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
-		private static string RemoveBlackTerm(string command)
+		private static string RemoveQBlackTerm(string command)
 		{
 			var removeCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
 
@@ -297,7 +323,7 @@ namespace Phamhilator
 
 					if (!GlobalInfo.QBlackLQ.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
 
-					GlobalInfo.QBlackLQ.RemoveTerm( term);
+					GlobalInfo.QBlackLQ.RemoveTerm(term);
 				}
 
 				if (removeCommand.StartsWith("name"))
@@ -316,7 +342,7 @@ namespace Phamhilator
 		}
 
 
-		private static string AddWhiteTerm(string command)
+		private static string AddQWhiteTerm(string command)
 		{
 			var addCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
 
@@ -387,7 +413,7 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
-		private static string RemoveWhiteTerm(string command)
+		private static string RemoveQWhiteTerm(string command)
 		{
 			var removeCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
 
@@ -450,6 +476,250 @@ namespace Phamhilator
 					if (!GlobalInfo.QWhiteName.Terms.ContainsKey(site) && !GlobalInfo.QWhiteName.Terms[site].ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
 
 					GlobalInfo.QWhiteName.RemoveTerm(term, site);
+				}
+
+				return "`Ignore Term removed.`";
+			}
+
+			return "`Command not recognised.`";
+		}
+
+
+		private static string AddABlackTerm(string command)
+		{
+			var addCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
+
+			if (addCommand.StartsWith("off") || addCommand.StartsWith("spam") || addCommand.StartsWith("lq") || addCommand.StartsWith("name"))
+			{
+				Regex term;
+
+				if (addCommand.StartsWith("off"))
+				{
+					term = new Regex(addCommand.Remove(0, 4));
+
+					if (GlobalInfo.ABlackOff.Terms.ContainsTerm(term)) { return "`Term already exists.`"; }
+
+					GlobalInfo.ABlackOff.AddTerm(term);
+				}
+
+				if (addCommand.StartsWith("spam"))
+				{
+					term = new Regex(addCommand.Remove(0, 5));
+
+					if (GlobalInfo.ABlackSpam.Terms.ContainsTerm(term)) { return "`Term already exists.`"; }
+
+					GlobalInfo.ABlackSpam.AddTerm(term);
+				}
+
+				if (addCommand.StartsWith("lq"))
+				{
+					term = new Regex(addCommand.Remove(0, 3));
+
+					if (GlobalInfo.ABlackLQ.Terms.ContainsTerm(term)) { return "`Term already exists.`"; }
+
+					GlobalInfo.ABlackLQ.AddTerm(term);
+				}
+
+				if (addCommand.StartsWith("name"))
+				{
+					term = new Regex(addCommand.Remove(0, 5));
+
+					if (GlobalInfo.ABlackName.Terms.ContainsTerm(term)) { return "`Term already exists.`"; }
+
+					GlobalInfo.ABlackName.AddTerm(term);
+				}
+
+				return "`Term added.`";
+			}
+
+			return "`Command not recognised.`";
+		}
+
+		private static string RemoveABlackTerm(string command)
+		{
+			var removeCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
+
+			if (removeCommand.StartsWith("off") || removeCommand.StartsWith("spam") || removeCommand.StartsWith("lq") || removeCommand.StartsWith("name"))
+			{
+				Regex term;
+
+				if (removeCommand.StartsWith("off"))
+				{
+					term = new Regex(removeCommand.Remove(0, 4));
+
+					if (!GlobalInfo.ABlackOff.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
+
+					GlobalInfo.ABlackOff.RemoveTerm(term);
+				}
+
+				if (removeCommand.StartsWith("spam"))
+				{
+					term = new Regex(removeCommand.Remove(0, 5));
+
+					if (!GlobalInfo.ABlackSpam.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
+
+					GlobalInfo.ABlackSpam.RemoveTerm(term);
+				}
+
+				if (removeCommand.StartsWith("lq"))
+				{
+					term = new Regex(removeCommand.Remove(0, 3));
+
+					if (!GlobalInfo.ABlackLQ.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
+
+					GlobalInfo.ABlackLQ.RemoveTerm(term);
+				}
+
+				if (removeCommand.StartsWith("name"))
+				{
+					term = new Regex(removeCommand.Remove(0, 5));
+
+					if (!GlobalInfo.ABlackName.Terms.ContainsTerm(term)) { return "`Term does not exist.`"; }
+
+					GlobalInfo.ABlackName.RemoveTerm(term);
+				}
+
+				return "`Term removed.`";
+			}
+
+			return "`Command not recognised.`";
+		}
+
+
+		private static string AddAWhiteTerm(string command)
+		{
+			var addCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
+
+			if (addCommand.StartsWith("off") || addCommand.StartsWith("spam") || addCommand.StartsWith("lq") || addCommand.StartsWith("name"))
+			{
+				Regex term;
+				string site;
+
+				if (addCommand.StartsWith("off"))
+				{
+					addCommand = addCommand.Remove(0, 4);
+
+					if (addCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
+
+					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
+
+					if (GlobalInfo.AWhiteOff.Terms.ContainsKey(site) && GlobalInfo.AWhiteOff.Terms[site].ContainsTerm(term)) { return "`Ignore term already exists.`"; }
+
+					GlobalInfo.AWhiteOff.AddTerm(term, site);
+				}
+
+				if (addCommand.StartsWith("spam"))
+				{
+					addCommand = addCommand.Remove(0, 5);
+
+					if (addCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
+
+					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
+
+					if (GlobalInfo.AWhiteSpam.Terms.ContainsKey(site) && GlobalInfo.AWhiteSpam.Terms[site].ContainsTerm(term)) { return "`Ignore term already exists.`"; }
+
+					GlobalInfo.AWhiteSpam.AddTerm(term, site);
+				}
+
+				if (addCommand.StartsWith("lq"))
+				{
+					addCommand = addCommand.Remove(0, 3);
+
+					if (addCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
+
+					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
+
+					if (GlobalInfo.QWhiteLQ.Terms.ContainsKey(site) && GlobalInfo.QWhiteLQ.Terms[site].ContainsTerm(term)) { return "`Ignore term already exists.`"; }
+
+					GlobalInfo.QWhiteSpam.AddTerm(term, site);
+				}
+
+				if (addCommand.StartsWith("name"))
+				{
+					addCommand = addCommand.Remove(0, 5);
+
+					if (addCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
+
+					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
+
+					if (GlobalInfo.QWhiteName.Terms.ContainsKey(site) && GlobalInfo.QWhiteName.Terms[site].ContainsTerm(term)) { return "`Ignore term already exists.`"; }
+
+					GlobalInfo.QWhiteName.AddTerm(term, site);
+				}
+
+				return "`Ignore term added.`";
+			}
+
+			return "`Command not recognised.`";
+		}
+
+		private static string RemoveAWhiteTerm(string command)
+		{
+			var removeCommand = command.Substring(command.IndexOf(" ", command.IndexOf(" ", StringComparison.Ordinal) + 1, StringComparison.Ordinal) + 1);
+
+			if (removeCommand.StartsWith("off") || removeCommand.StartsWith("spam") || removeCommand.StartsWith("lq") || removeCommand.StartsWith("name"))
+			{
+				Regex term;
+				string site;
+
+				if (removeCommand.StartsWith("off"))
+				{
+					removeCommand = removeCommand.Remove(0, 4);
+
+					if (removeCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
+
+					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
+
+					if (!GlobalInfo.AWhiteOff.Terms.ContainsKey(site) && !GlobalInfo.AWhiteOff.Terms[site].ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
+
+					GlobalInfo.AWhiteOff.RemoveTerm(term, site);
+				}
+
+				if (removeCommand.StartsWith("spam"))
+				{
+					removeCommand = removeCommand.Remove(0, 5);
+
+					if (removeCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
+
+					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
+
+					if (!GlobalInfo.AWhiteSpam.Terms.ContainsKey(site) && !GlobalInfo.AWhiteSpam.Terms[site].ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
+
+					GlobalInfo.AWhiteSpam.RemoveTerm(term, site);
+				}
+
+				if (removeCommand.StartsWith("lq"))
+				{
+					removeCommand = removeCommand.Remove(0, 3);
+
+					if (removeCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
+
+					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
+
+					if (!GlobalInfo.AWhiteLQ.Terms.ContainsKey(site) && !GlobalInfo.AWhiteLQ.Terms[site].ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
+
+					GlobalInfo.AWhiteLQ.RemoveTerm(term, site);
+				}
+
+				if (removeCommand.StartsWith("name"))
+				{
+					removeCommand = removeCommand.Remove(0, 5);
+
+					if (removeCommand.IndexOf(" ", StringComparison.Ordinal) == -1) { return "`Command not recognised.`"; }
+
+					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
+					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
+
+					if (!GlobalInfo.AWhiteName.Terms.ContainsKey(site) && !GlobalInfo.AWhiteName.Terms[site].ContainsTerm(term)) { return "`Ignore term does not exist.`"; }
+
+					GlobalInfo.AWhiteName.RemoveTerm(term, site);
 				}
 
 				return "`Ignore Term removed.`";
@@ -547,6 +817,11 @@ namespace Phamhilator
 
 		private static string FalsePositive()
 		{
+			return message.IsQuestionReport ? FalsePositiveQuestion() : FalsePositiveAnswer();
+		}
+
+		private static string FalsePositiveQuestion()
+		{
 			switch (message.Report.Type)
 			{
 				case PostType.LowQuality:
@@ -633,7 +908,101 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
+		private static string FalsePositiveAnswer()
+		{
+			switch (message.Report.Type)
+			{
+				case PostType.LowQuality:
+				{
+					foreach (var term in message.Report.BlackTermsFound)
+					{
+						if (!GlobalInfo.AWhiteLQ.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.AWhiteLQ.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.AWhiteLQ.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
+						}
+					}
+
+					foreach (var term in message.Report.WhiteTermsFound)
+					{
+						GlobalInfo.AWhiteLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
+					}
+
+					MessageHandler.DeleteMessage(message.RepliesToMessageID);
+
+					return "";
+				}
+
+				case PostType.Offensive:
+				{
+					foreach (var term in message.Report.BlackTermsFound)
+					{
+						if (!GlobalInfo.AWhiteOff.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.AWhiteOff.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.AWhiteOff.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
+						}
+					}
+
+					foreach (var term in message.Report.WhiteTermsFound)
+					{
+						GlobalInfo.AWhiteOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
+					}
+
+					MessageHandler.DeleteMessage(message.RepliesToMessageID);
+
+					return "";
+				}
+
+				case PostType.Spam:
+				{
+					foreach (var term in message.Report.BlackTermsFound)
+					{
+						if (!GlobalInfo.AWhiteSpam.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.AWhiteSpam.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.AWhiteSpam.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
+						}
+					}
+
+					foreach (var term in message.Report.WhiteTermsFound)
+					{
+						GlobalInfo.AWhiteSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
+					}
+
+					MessageHandler.DeleteMessage(message.RepliesToMessageID);
+
+					return "";
+				}
+
+				case PostType.BadUsername:
+				{
+					foreach (var term in message.Report.BlackTermsFound)
+					{
+						if (!GlobalInfo.AWhiteName.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.AWhiteName.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.AWhiteName.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
+						}
+					}
+
+					foreach (var term in message.Report.WhiteTermsFound)
+					{
+						GlobalInfo.AWhiteName.SetScore(term.Key, message.Post.Site, term.Value + 1);
+					}
+
+					MessageHandler.DeleteMessage(message.RepliesToMessageID);
+
+					return "";
+				}
+			}
+
+			return "`Command not recognised.`";
+		}
+
+
 		private static string TruePositive()
+		{
+			return message.IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
+		}
+
+		private static string TruePositiveQuestion()
 		{
 			switch (message.Report.Type)
 			{
@@ -745,8 +1114,122 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
+		private static string TruePositiveAnswer()
+		{
+			switch (message.Report.Type)
+			{
+				case PostType.LowQuality:
+				{
+					foreach (var blackTerm in message.Report.BlackTermsFound)
+					{
+						GlobalInfo.ABlackLQ.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+						foreach (var site in GlobalInfo.AWhiteLQ.Terms)
+						{
+							for (var i = 0; i < site.Value.Count; i++)
+							{
+								var whiteTerm = site.Value.ElementAt(i);
+
+								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								{
+									var oldWhiteScore = GlobalInfo.AWhiteLQ.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.AWhiteLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+								}
+							}
+						}
+					}
+
+					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+				}
+
+				case PostType.Offensive:
+				{
+					foreach (var blackTerm in message.Report.BlackTermsFound)
+					{
+						GlobalInfo.ABlackOff.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+						foreach (var site in GlobalInfo.AWhiteOff.Terms)
+						{
+							for (var i = 0; i < site.Value.Count; i++)
+							{
+								var whiteTerm = site.Value.ElementAt(i);
+
+								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								{
+									var oldWhiteScore = GlobalInfo.AWhiteOff.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.AWhiteOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+								}
+							}
+						}
+					}
+
+					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+				}
+
+				case PostType.Spam:
+				{
+					foreach (var blackTerm in message.Report.BlackTermsFound)
+					{
+						GlobalInfo.ABlackSpam.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+						foreach (var site in GlobalInfo.AWhiteSpam.Terms)
+						{
+							for (var i = 0; i < site.Value.Count; i++)
+							{
+								var whiteTerm = site.Value.ElementAt(i);
+
+								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								{
+									var oldWhiteScore = GlobalInfo.AWhiteSpam.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.AWhiteSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+								}
+							}
+						}
+					}
+
+					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+				}
+
+				case PostType.BadUsername:
+				{
+					foreach (var blackTerm in message.Report.BlackTermsFound)
+					{
+						GlobalInfo.ABlackName.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+						foreach (var site in GlobalInfo.AWhiteName.Terms)
+						{
+							for (var i = 0; i < site.Value.Count; i++)
+							{
+								var whiteTerm = site.Value.ElementAt(i);
+
+								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								{
+									var oldWhiteScore = GlobalInfo.AWhiteName.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.AWhiteName.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+								}
+							}
+						}
+					}
+
+					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+				}
+			}
+
+			return "`Command not recognised.`";
+		}
+
+
 
 		// Owner commands.
+
 
 
 		private static string AddUser(string command)

@@ -9,7 +9,7 @@ namespace Phamhilator
 {
 	public static class HTMLScraper
 	{
-		private static readonly Regex escapeChars = new Regex(@"\]");
+		private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]");
 
 
 
@@ -137,10 +137,10 @@ namespace Phamhilator
 
 		public static string GetQuestionBody(string html)
 		{
-			var startIndex = html.IndexOf("<p>", StringComparison.Ordinal) + 3;
-			var endIndex = html.IndexOf("</div>", startIndex, StringComparison.Ordinal) - 11;
+			var startIndex = html.IndexOf("itemprop=\"text\">", StringComparison.Ordinal) + 18;
+			var endIndex = html.IndexOf("</div>", startIndex, StringComparison.Ordinal) - 7;
 
-			return html.Substring(startIndex, endIndex - startIndex);
+			return WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex)).Trim();
 		}
 
 		public static int GetQuestionScore(string html)
@@ -153,7 +153,157 @@ namespace Phamhilator
 			return int.Parse(score);
 		}
 
+		public static int GetQuestionAuthorRep(string html)
+		{
+			var startIndex = html.IndexOf("asked <", StringComparison.Ordinal);
 
+			if (startIndex == -1) // Check if post is CW.
+			{
+				return 1;
+			}
+
+			var newStartIndex = html.IndexOf("dir=\"ltr\">", startIndex, StringComparison.Ordinal) + 10;
+
+			if (newStartIndex - startIndex > 800 || newStartIndex == -1) // Check if user is anonymous.
+			{
+				return 1;
+			}
+
+			var endIndex = html.IndexOf("<", newStartIndex, StringComparison.Ordinal);
+
+			return ParseRep(html.Substring(newStartIndex, endIndex - newStartIndex));
+		}
+
+
+		public static int GetAnswerCount(string html)
+		{
+			var count = 0;
+
+			for (var i = 0; i < html.Length - 16; i++)
+			{
+				if (html.Substring(i, 16) == "<div id=\"answer-")
+				{
+					count++;
+				}
+			}
+
+			return count;
+		}
+
+		public static int GetAnswerScore(string html)
+		{
+			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
+			startIndex = html.IndexOf("vote-count-post", startIndex, StringComparison.Ordinal) + 18;
+
+			var endIndex = html.IndexOf("<", startIndex, StringComparison.Ordinal);
+
+			return int.Parse(html.Substring(startIndex, endIndex - startIndex));
+		}
+
+		public static string GetAnswerBody(string html)
+		{
+			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
+			startIndex = html.IndexOf("itemprop=\"text\">", startIndex, StringComparison.Ordinal) + 18;
+
+			var endIndex = html.IndexOf("</div>", startIndex, StringComparison.Ordinal);
+
+			return WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex)).Trim();
+		}
+
+		public static string GetAnswerAuthorLink(string html, string questionURL)
+		{
+			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
+			startIndex = html.IndexOf("answered <", startIndex, StringComparison.Ordinal);
+
+			if (startIndex == -1) // Check if post is CW.
+			{
+				return "";
+			}
+
+			startIndex = html.IndexOf("user-details", startIndex, StringComparison.Ordinal) + 33;
+
+			var endIndex = html.IndexOf("\"", startIndex, StringComparison.Ordinal);
+
+			return questionURL.Substring(0, questionURL.IndexOf("/", 7, StringComparison.Ordinal)) + html.Substring(startIndex, endIndex - startIndex);
+		}
+
+		public static string GetAnswerAuthorName(string html)
+		{
+			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
+			startIndex = html.IndexOf("answered <", startIndex, StringComparison.Ordinal);
+
+			if (startIndex == -1) // Check if post is CW.
+			{
+				return "";
+			}
+
+			startIndex = html.IndexOf("user-details", startIndex, StringComparison.Ordinal) + 33;
+			startIndex = html.IndexOf(">", startIndex, StringComparison.Ordinal) + 1;
+
+			var endIndex = html.IndexOf("<", startIndex, StringComparison.Ordinal);
+
+			return html.Substring(startIndex, endIndex - startIndex);
+		}
+
+		public static string GetAnswerLink(string html, string questionURL)
+		{
+			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
+			startIndex = html.IndexOf("post-menu", startIndex, StringComparison.Ordinal) + 20;
+
+			var endIndex = html.IndexOf("\"", startIndex, StringComparison.Ordinal);
+
+			return questionURL.Substring(0, questionURL.IndexOf("/", 7, StringComparison.Ordinal)) + html.Substring(startIndex, endIndex - startIndex);
+		}
+
+		public static int GetAnswerAuthorRep(string html)
+		{
+			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
+			startIndex = html.IndexOf("answered <", startIndex, StringComparison.Ordinal);
+
+			if (startIndex == -1) // Check if post is CW.
+			{
+				return 1;
+			}
+
+			var newStartIndex = html.IndexOf("reputation score", startIndex, StringComparison.Ordinal);
+
+			if (newStartIndex - startIndex > 800 || newStartIndex == -1) // Check if user is anonymous.
+			{
+				return 1;
+			}
+
+			newStartIndex = html.IndexOf(">", newStartIndex, StringComparison.Ordinal) + 1;
+
+			var endIndex = html.IndexOf("<", newStartIndex, StringComparison.Ordinal);
+
+			return ParseRep(html.Substring(newStartIndex, endIndex - newStartIndex));
+		}
+
+
+
+		private static int ParseRep(string rep)
+		{
+			if (String.IsNullOrEmpty(rep))
+			{
+				return 1;
+			}
+
+			if (rep.ToLowerInvariant().Contains("k"))
+			{
+				if (rep.Contains("."))
+				{
+					var charsAfterPeriod = rep.Substring(0, rep.IndexOf(".", StringComparison.Ordinal) + 1).Length;
+					var e = float.Parse(rep.Replace("k", ""));
+					var p = Math.Pow(10, charsAfterPeriod);
+
+					return (int)Math.Round(e * p);
+				}
+
+				return (int)float.Parse(rep.ToLowerInvariant().Replace("k", "000"));
+			}
+
+			return (int)float.Parse(rep);
+		}
 
 		private static int GetLastestMessageID(string html)
 		{

@@ -1,3 +1,0 @@
-
-5](?i)\bbrand\b
-5](?i)\bfree (trial|film|moive|movie|help|assistance)\b

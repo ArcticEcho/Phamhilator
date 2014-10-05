@@ -8,7 +8,7 @@ namespace Phamhilator
 {
 	public static class MessageHandler
 	{
-		public static void PostMessage(string message, Post post = null, PostAnalysis report = null/* int consecutiveMessageCount = 0*/)
+		public static void PostMessage(string message, Post post = null, PostAnalysis report = null, bool isQuestionReport = true/* int consecutiveMessageCount = 0*/)
 		{
 			if (GlobalInfo.RoomID == 0) { return; }
 
@@ -61,7 +61,7 @@ namespace Phamhilator
 
 			if (!GlobalInfo.PostedReports.ContainsKey(id))
 			{
-				GlobalInfo.PostedReports.Add(id, new MessageInfo { Post = post, Report = report, Body = message });
+				GlobalInfo.PostedReports.Add(id, new MessageInfo { Post = post, Report = report, Body = message, IsQuestionReport = isQuestionReport });
 			}
 
 			//consecutiveMessageCount++;

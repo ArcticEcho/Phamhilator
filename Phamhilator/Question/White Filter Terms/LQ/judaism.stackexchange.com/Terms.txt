@@ -1,4 +1,4 @@
 
 5](?i)\bgreeting(s)?\b
-11]^(?i).{0,18}$
-16](?i)\b(help|halp)\b
+11.5]^(?i).{0,18}$
+16.5](?i)\b(help|halp)\b

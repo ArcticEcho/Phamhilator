@@ -1,5 +1,5 @@
 
-17.03226](?i)\b(help|halp)\b
-13.9375](?i:need help|help me)
+17.56452](?i)\b(help|halp)\b
+14.71181](?i:need help|help me)
 
 15.5](?i)(need|some)( halp| help| answer)

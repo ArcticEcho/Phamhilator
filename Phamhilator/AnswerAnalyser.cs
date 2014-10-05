@@ -104,7 +104,7 @@
 
 				// Loop over whitelist.
 
-				if (GlobalInfo.QWhiteOff.Terms.ContainsKey(post.Site))
+				if (GlobalInfo.AWhiteOff.Terms.ContainsKey(post.Site))
 				{
 					foreach (var whiteTerm in GlobalInfo.AWhiteOff.Terms[post.Site])
 					{
@@ -151,7 +151,7 @@
 
 				// Loop over whitelist.
 
-				if (GlobalInfo.QWhiteName.Terms.ContainsKey(post.Site))
+				if (GlobalInfo.AWhiteName.Terms.ContainsKey(post.Site))
 				{
 					foreach (var whiteTerm in GlobalInfo.AWhiteName.Terms[post.Site])
 					{

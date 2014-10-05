@@ -1,4 +1,0 @@
-
-5](?i)\byou know\b
-7.26](?i)\bsupplement(s)?\b
-6.6](?i)health

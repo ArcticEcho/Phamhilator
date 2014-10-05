@@ -1,9 +1,0 @@
-
-6.17284](?i)question
-
-11]^(?i).{0,18}$
-
-16](?i)\b(help|halp)\b
-15.5](?i:need help|help me)
-
-10.5](?i)\berror(s)?\b

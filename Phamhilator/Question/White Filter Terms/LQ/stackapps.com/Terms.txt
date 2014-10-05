@@ -1,9 +1,9 @@
 
 6.17284](?i)question
 
-11]^(?i).{0,18}$
+11.5]^(?i).{0,18}$
 
-16](?i)\b(help|halp)\b
-15.5](?i:need help|help me)
+16.5](?i)\b(help|halp)\b
+16.36111](?i:need help|help me)
 
 10.5](?i)\berror(s)?\b

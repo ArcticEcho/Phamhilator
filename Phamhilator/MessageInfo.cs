@@ -8,5 +8,6 @@
 		public int MessageID;
 		public int AuthorID;
 		public int RepliesToMessageID;
+		public bool IsQuestionReport;
 	}
 }

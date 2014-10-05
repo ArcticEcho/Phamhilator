@@ -20,6 +20,11 @@
 		{
 			var info = new QuestionAnalysis();
 
+			if (q.Score >= 2 || q.AuthorRep >= 1000)
+			{
+				return info;
+			}
+
 			if ((info.BadTags = Analyser.QuestionAnalyser.IsBadTagUsed(q, ref info)).Count != 0)
 			{
 				return info;
@@ -51,6 +56,11 @@
 		private static AnswerAnalysis AnalyseAnswer(Answer a)
 		{
 			var info = new AnswerAnalysis();
+
+			if (a.Score >= 2 || a.AuthorRep >= 1000)
+			{
+				return info;
+			}
 
 			if (Analyser.AnswerAnalyser.IsSpam(a, ref info))
 			{

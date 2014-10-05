@@ -71,8 +71,10 @@ namespace Phamhilator
 		{
 			get
 			{
-				return QBlackOff.Terms.Count + QBlackSpam.Terms.Count + QBlackLQ.Terms.Count + QBlackName.Terms.Count +
-					   QWhiteName.Terms.Values.Sum(x => x.Count) + QWhiteOff.Terms.Values.Sum(x => x.Count) + QWhiteSpam.Terms.Values.Sum(x => x.Count) + QWhiteLQ.Terms.Values.Sum(x => x.Count) + 
+				return QBlackOff.Terms.Count + QBlackSpam.Terms.Count + QBlackLQ.Terms.Count + QBlackName.Terms.Count + 
+					   ABlackOff.Terms.Count + ABlackSpam.Terms.Count + ABlackLQ.Terms.Count + ABlackName.Terms.Count +
+					   QWhiteName.Terms.Values.Sum(x => x.Count) + QWhiteOff.Terms.Values.Sum(x => x.Count) + QWhiteSpam.Terms.Values.Sum(x => x.Count) + QWhiteLQ.Terms.Values.Sum(x => x.Count) +
+					   AWhiteName.Terms.Values.Sum(x => x.Count) + AWhiteOff.Terms.Values.Sum(x => x.Count) + AWhiteSpam.Terms.Values.Sum(x => x.Count) + AWhiteLQ.Terms.Values.Sum(x => x.Count) + 
 					   BadTagDefinitions.BadTags.Count;
 			}
 		}

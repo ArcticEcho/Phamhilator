@@ -20,6 +20,11 @@ namespace Phamhilator
 				{
 					get
 					{
+						if (Terms.Count == 0)
+						{
+							return 0;
+						}
+
 						return Terms.Values.Average();
 					}
 				}
@@ -28,6 +33,11 @@ namespace Phamhilator
 				{
 					get
 					{
+						if (Terms.Count == 0)
+						{
+							return 0;
+						}
+
 						return Terms.Values.Max();
 					}
 				}
@@ -101,7 +111,7 @@ namespace Phamhilator
 							{
 								var line = data[ii];
 
-								if (!String.IsNullOrEmpty(line) && line.IndexOf("]", StringComparison.Ordinal) != 1)
+								if (!String.IsNullOrEmpty(line) && line.IndexOf("]", StringComparison.Ordinal) != -1)
 								{
 									var t = line.Remove(0, line.IndexOf("]", StringComparison.Ordinal) + 1);
 
@@ -111,6 +121,10 @@ namespace Phamhilator
 									}
 								}
 							}
+
+							File.WriteAllLines(DirectoryTools.GetQBlackLQTermsFile(), data);
+
+							return;
 						}
 					}
 				}

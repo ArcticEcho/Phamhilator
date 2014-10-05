@@ -1,9 +1,11 @@
 
 10.5](?i)\berror(s)?\b
-6](?i)i want to
+6.5](?i)i want to
 
 15.08](?i)pl(z|s|ease)
-16](?i)\b(help|halp)\b
+16.5](?i)\b(help|halp)\b
 4.5](?i)question
 
 10.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+
+11.5]^(?i).{0,18}$

@@ -23,14 +23,14 @@
 26](?i)pl(z|s|ease)
 12](?i)(need|some)( halp| help| answer)
 21](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-32](?i)\b(help|halp)\b
+33](?i)\b(help|halp)\b
 21]^[^a-z]*$
 10](?i)\bgives error\b
-22]^(?i).{0,18}$
+23]^(?i).{0,18}$
 10]how do i
-18](?i:need help|help me)
+19](?i:need help|help me)
 11](?i)i( just)? wan(t|na) to know
-12](?i)i want to
+13](?i)i want to
 12](?i)plz help me!
 12][A-Z]{4,}.*[\!\?]{2,}
 

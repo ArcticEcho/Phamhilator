@@ -3,12 +3,12 @@
 
 19.95652](?i)problem(s)?
 
-11.64706]^(?i).{0,18}$
+12.17647]^(?i).{0,18}$
 
-11.36766](?i)\b(help|halp)\b
+11.7229](?i)\b(help|halp)\b
 
 11.5](?i)(need|some)( halp| help| answer)
-12.21875](?i:need help|help me)
+12.89757](?i:need help|help me)
 
 13](?i)pl(z|s|ease)
 

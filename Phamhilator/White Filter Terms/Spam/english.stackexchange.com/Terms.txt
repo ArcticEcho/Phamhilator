@@ -1,6 +1,0 @@
-
-5](?i)\byou know\b
-6.6](?i)health
-
-5.5](?i)\bcare(ing)?\b
-5](?i)\bbeautiful(est)?\b

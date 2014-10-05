@@ -1,3 +1,0 @@
-
-6.6](?i)health
-7.2](?i)\bcare(ing)?\b

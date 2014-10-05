@@ -482,12 +482,16 @@ namespace Phamhilator
 
 				foreach (var a in info.AResults)
 				{
-					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value);
+					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value, false);
+
+					Thread.Sleep(2000);
 				}
+
+				Thread.Sleep(2000);
 			}
 		}
 
-		private void PostReport(Post p, string message, PostAnalysis info)
+		private void PostReport(Post p, string message, PostAnalysis info, bool isQuestionReport = true)
 		{
 			if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { return; }
 
@@ -503,7 +507,7 @@ namespace Phamhilator
 			{
 				case PostType.Offensive:
 				{
-					MessageHandler.PostMessage("**Offensive**" + message, p, info);
+					MessageHandler.PostMessage("**Offensive**" + message, p, info, isQuestionReport);
 					PostPersistence.AddPost(p);
 
 					break;
@@ -511,7 +515,7 @@ namespace Phamhilator
 
 				case PostType.BadUsername:
 				{
-					MessageHandler.PostMessage("**Bad Username**" + message, p, info);
+					MessageHandler.PostMessage("**Bad Username**" + message, p, info, isQuestionReport);
 					PostPersistence.AddPost(p);
 
 					break;
@@ -527,7 +531,7 @@ namespace Phamhilator
 
 				case PostType.LowQuality:
 				{
-					MessageHandler.PostMessage("**Low Quality**" + message, p, info);
+					MessageHandler.PostMessage("**Low Quality**" + message, p, info, isQuestionReport);
 					PostPersistence.AddPost(p);
 
 					break;
@@ -535,7 +539,7 @@ namespace Phamhilator
 
 				case PostType.Spam:
 				{
-					MessageHandler.PostMessage("**Spam**" + message, p, info);
+					MessageHandler.PostMessage("**Spam**" + message, p, info, isQuestionReport);
 					PostPersistence.AddPost(p);
 
 					break;

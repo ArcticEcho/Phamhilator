@@ -1,7 +1,0 @@
-
-8.217392](?i)problem(s)?
-
-6.17284](?i)question
-
-16](?i)\b(help|halp)\b
-13.23529](?i:need help|help me)

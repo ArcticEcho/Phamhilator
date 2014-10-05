@@ -1,4 +1,0 @@
-
-16](?i)\b(help|halp)\b
-
-5](?i)question

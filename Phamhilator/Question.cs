@@ -9,7 +9,7 @@ namespace Phamhilator
 	{
 		private bool extraDataPopulated;
 		private string body = "";
-		private int score = int.MinValue;
+		private int score = int.MaxValue;
 		private int authorRep = int.MaxValue;
 		private readonly List<Answer> answers = new List<Answer>();
 
@@ -68,25 +68,89 @@ namespace Phamhilator
 		
 		}
 
+
+
 		private void PopulateExtraData()
 		{
 			try
 			{
-				var wb = new WebDownload();
-				var html = wb.DownloadString(URL);
+				using (var wb = new WebDownload())
+				{
+					var html = wb.DownloadString(URL);
 
-				body = HTMLScraper.GetQuestionBody(html);
-				score = HTMLScraper.GetQuestionScore(html);
+					body = HTMLScraper.GetQuestionBody(html);
+					score = HTMLScraper.GetQuestionScore(html);
+					authorRep = HTMLScraper.GetQuestionAuthorRep(html);
 
-				wb.Dispose();
+					var answerCount = HTMLScraper.GetAnswerCount(html);
+					var currentHTML = html;
 
-				extraDataPopulated = true;
+					for (var i = 0; i < answerCount; i++)
+					{
+						currentHTML = currentHTML.Remove(0, currentHTML.IndexOf("<div id=\"answer-", 50, StringComparison.Ordinal));
+
+						answers.Add(GetAnswer(currentHTML));
+					}				
+				}		
 			}
 			catch (Exception)
 			{
-				score = int.MaxValue;
-				body = "";
+
 			}
+			
+			extraDataPopulated = true;
 		}
+
+		private Answer GetAnswer(string html)
+		{
+			var aBody = HTMLScraper.GetAnswerBody(html);
+
+			return new Answer
+			{
+				AuthorLink = HTMLScraper.GetAnswerAuthorLink(html, URL), 
+				AuthorName = HTMLScraper.GetAnswerAuthorName(html), 
+				AuthorRep = HTMLScraper.GetAnswerAuthorRep(html), 
+				URL = HTMLScraper.GetAnswerLink(html, URL), 
+				Score = HTMLScraper.GetAnswerScore(html), 
+				Body = aBody, 
+				Site = Site, 
+				Title = StripTags(aBody.Length > 50 ? aBody.Substring(0, 47) + "..." : aBody)
+			};
+		}
+
+		private static string StripTags(string source)
+		{
+			var array = new char[source.Length];
+			var arrayIndex = 0;
+			var inside = false;
+
+			for (int i = 0; i < source.Length; i++)
+			{
+				var let = source[i];
+
+				if (let == '<')
+				{
+					inside = true;
+
+					continue;
+				}
+
+				if (let == '>')
+				{
+					inside = false;
+
+					continue;
+				}
+
+				if (!inside)
+				{
+					array[arrayIndex] = let;
+					arrayIndex++;
+				}
+			}
+
+			return new string(array, 0, arrayIndex);
+		}
+
 	}
 }
