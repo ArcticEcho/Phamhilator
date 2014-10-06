@@ -50,7 +50,7 @@
  
  - <code>>>kill-it-with-no-regrets-for-sure</code> Tells the bot to shutdown.
 
- - <code>>full scan</code> Enables/disables full scan functionality (answers detection, author rep/post score checks and question body checks). 
+ - <code>>>full scan</code> Enables/disables full scan functionality (answers detection, author rep/post score checks and question body checks). 
  
 <br>
 
