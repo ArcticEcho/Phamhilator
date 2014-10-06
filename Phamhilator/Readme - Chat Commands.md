@@ -49,6 +49,8 @@
  - <code>>>threshold (percentage, e.g., 12.75)</code> Sets the lower limit of the report accuracy percentage filter (do <i>not</i> include the percentage sign).
  
  - <code>>>kill-it-with-no-regrets-for-sure</code> Tells the bot to shutdown.
+
+ - <code>>full scan</code> Enables/disables full scan functionality (answers detection, author rep/post score checks and question body checks). 
  
 <br>
 
