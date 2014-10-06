@@ -1,4 +1,2 @@
 
-7](?i)i want to
-
 10.5](?i)\berror(s)?\b

@@ -244,7 +244,7 @@ namespace Phamhilator
 							if (commandMessage != "")
 							{
 								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = commandMessage });
-					}
+							}
 
 							lastChatMessage = new MessageInfo { MessageID = message.MessageID };
 							
@@ -466,19 +466,22 @@ namespace Phamhilator
 			return posts.ToArray();
 		}
 
-		private void CheckPosts(IEnumerable<Question> posts)
+		private void CheckPosts(IEnumerable<Question> questions)
 		{
-			foreach (var post in posts.Where(p => PostPersistence.Messages.All(pp => pp.URL != p.URL)))
+			foreach (var q in questions)
 			{
-				var info = PostAnalyser.CheckPost(post);
+				var info = PostAnalyser.CheckPost(q);
 
-				PostReport(post, MessageGenerator.GetQReport(info.QResults, post), info.QResults);
-
-				foreach (var a in info.AResults)
+				if (PostPersistence.Messages.All(pp => pp.URL != q.URL))
+				{
+					PostReport(q, MessageGenerator.GetQReport(info.QResults, q), info.QResults);
+				}
+				
+				foreach (var a in info.AResults.Where(p => PostPersistence.Messages.All(pp => pp.URL != p.Key.URL)))
 				{
 					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value, false);
 				}
-			}
+			}	
 		}
 
 		private void PostReport(Post p, string message, PostAnalysis info, bool isQuestionReport = true)

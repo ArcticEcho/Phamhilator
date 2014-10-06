@@ -122,7 +122,7 @@ namespace Phamhilator
 								}
 							}
 
-							File.WriteAllLines(DirectoryTools.GetQBlackLQTermsFile(), data);
+							File.WriteAllLines(DirectoryTools.GetABlackOffensiveTermsFile(), data);
 
 							return;
 						}

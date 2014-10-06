@@ -38,8 +38,11 @@ namespace Phamhilator
 			});
 		}
 
-		public static void DeleteMessage(int messageID)
+		public static bool DeleteMessage(int messageID, string reportTitle)
 		{
+			dynamic doc = null;
+			var html = "";
+
 			Application.Current.Dispatcher.Invoke(() =>
 			{
 				try
@@ -54,6 +57,21 @@ namespace Phamhilator
 
 				}
 			});
+
+			Thread.Sleep(3000); // Wait for message to be deleted.
+
+			try
+			{
+				Application.Current.Dispatcher.Invoke(() => doc = GlobalInfo.ChatWb.Document);
+
+				html = doc.documentElement.InnerHtml;
+			}
+			catch (Exception)
+			{
+
+			}
+			
+			return html.IndexOf(reportTitle, StringComparison.Ordinal) == -1;
 		}		
 		
 		
@@ -75,6 +93,7 @@ namespace Phamhilator
 				if (GlobalInfo.RoomID == 0 || MessageQueue.Count == 0) { continue; }
 
 				message = MessageQueue[0];
+				error = false;
 				
 				// Post message.
 

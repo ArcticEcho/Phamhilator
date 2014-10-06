@@ -1,1 +1,37 @@
-6]^(?i).{0,60}$
+12](?i)homework
+10](?i)builtwith.com
+10](?i)very difficult
+10](?i)newbie
+9](?i)question
+10](?i)tried
+10](?i)\bif (yes|no)\b
+10](?i)my best
+10](?i)our feelings
+10](?i)says wrong
+10](?i)confusing
+13](?i)\bh(i|ello)\b
+10](?i)\bgreeting(s)?\b
+21](?i)\berror(s)?\b
+27](?i)problem(s)?
+10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
+10](?i)correct this
+10](?i)school project
+12](?i)beginner
+10](?i)asap
+11](?i)urgent
+11](?i)thanks
+26](?i)pl(z|s|ease)
+12](?i)(need|some)( halp| help| answer)
+21](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
+33](?i)\b(help|halp)\b
+21]^[^a-z]*$
+10](?i)\bgives error\b
+23]^(?i).{0,18}$
+10]how do i
+19](?i:need help|help me)
+11](?i)i( just)? wan(t|na) to know
+13](?i)i want to
+12](?i)plz help me!
+12][A-Z]{4,}.*[\!\?]{2,}
+
+12.8](?i)help please
