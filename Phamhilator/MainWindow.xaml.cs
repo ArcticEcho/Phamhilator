@@ -107,7 +107,7 @@ namespace Phamhilator
 
 							if (postSuccessMessage)
 							{
-								MessageHandler.PostMessage("`Restart successful!`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Restart successful!`" });
 
 								postSuccessMessage = false;
 							}
@@ -121,13 +121,13 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								MessageHandler.PostMessage("`Warning: 3 attempts to restart post catcher thread have failed. Now shutting down...`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 3 attempts to restart post catcher thread have failed. Now shutting down...`" });
 
 								exit = true;
 							}
 							else
 							{
-								MessageHandler.PostMessage("`Warning: post catcher thread has died. Attempting to restart...`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: post catcher thread has died. Attempting to restart...`" });
 							}
 						}
 					}
@@ -173,7 +173,7 @@ namespace Phamhilator
 
 							if (postSuccessMessage)
 							{
-								MessageHandler.PostMessage("`Restart successful!`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Restart successful!`" });
 
 								postSuccessMessage = false;
 							}
@@ -187,13 +187,13 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								MessageHandler.PostMessage("`Warning: 3 attempts to restart post refresher thread have failed. Now shutting down...`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 3 attempts to restart post refresher thread have failed. Now shutting down...`" });
 
 								exit = true;
 							}
 							else
 							{
-								MessageHandler.PostMessage("`Warning: post refresher thread has died. Attempting to restart...`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: post refresher thread has died. Attempting to restart...`" });
 							}
 						}
 					}
@@ -243,14 +243,14 @@ namespace Phamhilator
 
 							if (commandMessage != "")
 							{
-								MessageHandler.PostMessage(commandMessage);
-							}
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = commandMessage });
+					}
 
 							lastChatMessage = new MessageInfo { MessageID = message.MessageID };
 							
 							if (postSuccessMessage)
 							{
-								MessageHandler.PostMessage("`Restart successful!`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Restart successful!`" });
 
 								postSuccessMessage = false;
 							}
@@ -264,13 +264,13 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								MessageHandler.PostMessage("`Warning: 3 attempts to restart command listener thread have failed. Now shutting down...`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 3 attempts to restart command listener thread have failed. Now shutting down...`" });
 
 								exit = true;
 							}
 							else
 							{
-								MessageHandler.PostMessage("`Warning: command listener thread has died. Attempting to restart...`");
+								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: command listener thread has died. Attempting to restart...`" });
 							}
 						}
 					}
@@ -308,7 +308,7 @@ namespace Phamhilator
 
 					if (UserAccess.Owners.Contains(message.AuthorID))
 					{
-						MessageHandler.PostMessage("`Killing...`");
+						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Killing...`" });
 
 						exit = true;
 						die = true;
@@ -318,7 +318,7 @@ namespace Phamhilator
 					{
 						lastChatMessage = new MessageInfo { MessageID = message.MessageID };
 
-						MessageHandler.PostMessage("`Access denied.`");
+						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Access denied.`" });
 					}
 				}
 			}) { Priority = ThreadPriority.Lowest }.Start();		
@@ -350,59 +350,53 @@ namespace Phamhilator
 					{			
 						if (!postCatcherThread.IsAlive)
 						{
-							MessageHandler.PostMessage("`Post catcher thread has died...`");
+							GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Post catcher thread has died...`" });
 
 							postCatcherMessagePosted = true;
 						}
 						else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000)
 						{
-							MessageHandler.PostMessage("`Warning: 5 seconds have pasted since kill command was issued and post catcher thread is still alive. Now forcing thread death...`");
+							GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 5 seconds have pasted since kill command was issued and post catcher thread is still alive. Now forcing thread death...`" });
 
 							postCatcherThread.Abort();
 						}
 					}
 
-					Thread.Sleep(1000);
-
 					if (!postRefresherMessagePosted)
 					{
 						if (!postRefresherThread.IsAlive)
 						{
-							MessageHandler.PostMessage("`Post refresher thread has died...`");
+							GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Post refresher thread has died...`" });
 
 							postRefresherMessagePosted = true;
 						}
 						else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000)
 						{
-							MessageHandler.PostMessage("`Warning: 5 seconds have pasted since kill command was issued and post refresher thread is still alive. Now forcing thread death...`");
+							GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 5 seconds have pasted since kill command was issued and post refresher thread is still alive. Now forcing thread death...`" });
 
 							postRefresherThread.Abort();
 						}
 					}
 
-					Thread.Sleep(1000);
-
 					if (!commandListenerMessagePosted)
 					{
 						if (!commandListenerThread.IsAlive)
 						{
-							MessageHandler.PostMessage("`Command listener thread has died...`");
+							GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Command listener thread has died...`" });
 
 							commandListenerMessagePosted = true;
 						}
 						else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000)
 						{
-							MessageHandler.PostMessage("`Warning: 5 seconds have pasted since kill command was issued and command listener thread is still alive. Now forcing thread death...`");
+							GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 5 seconds have pasted since kill command was issued and command listener thread is still alive. Now forcing thread death...`" });
 
 							commandListenerThread.Abort();
 						}
 					}
 
-					Thread.Sleep(1000);
-
 					if (!commandListenerThread.IsAlive && !postRefresherThread.IsAlive && !postCatcherThread.IsAlive && die)
 					{
-						MessageHandler.PostMessage("`All threads have died. Kill successful!`");
+						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`All threads have died. Kill successful!`" });
 
 						Dispatcher.Invoke(() => Application.Current.Shutdown());
 
@@ -483,11 +477,7 @@ namespace Phamhilator
 				foreach (var a in info.AResults)
 				{
 					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value, false);
-
-					Thread.Sleep(2000);
 				}
-
-				Thread.Sleep(2000);
 			}
 		}
 
@@ -497,7 +487,7 @@ namespace Phamhilator
 
 			if (SpamAbuseDetected(p))
 			{
-				MessageHandler.PostMessage("[Spammer abuse](" + p.URL + ").");
+				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "[Spammer abuse](" + p.URL + ")." });
 				PostPersistence.AddPost(p);
 
 				return;
@@ -507,7 +497,7 @@ namespace Phamhilator
 			{
 				case PostType.Offensive:
 				{
-					MessageHandler.PostMessage("**Offensive**" + message, p, info, isQuestionReport);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Offensive**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport });
 					PostPersistence.AddPost(p);
 
 					break;
@@ -515,7 +505,7 @@ namespace Phamhilator
 
 				case PostType.BadUsername:
 				{
-					MessageHandler.PostMessage("**Bad Username**" + message, p, info, isQuestionReport);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Bad Username**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport });
 					PostPersistence.AddPost(p);
 
 					break;
@@ -523,7 +513,7 @@ namespace Phamhilator
 
 				case PostType.BadTagUsed:
 				{
-					MessageHandler.PostMessage("**Bad Tag Used**" + message);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Bad Tag Used**" + message });
 					PostPersistence.AddPost(p);
 
 					break;
@@ -531,7 +521,7 @@ namespace Phamhilator
 
 				case PostType.LowQuality:
 				{
-					MessageHandler.PostMessage("**Low Quality**" + message, p, info, isQuestionReport);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Low Quality**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport });
 					PostPersistence.AddPost(p);
 
 					break;
@@ -539,7 +529,7 @@ namespace Phamhilator
 
 				case PostType.Spam:
 				{
-					MessageHandler.PostMessage("**Spam**" + message, p, info, isQuestionReport);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Spam**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport });
 					PostPersistence.AddPost(p);
 
 					break;
@@ -622,23 +612,22 @@ namespace Phamhilator
 		{
 			var b = ((Button)sender);
 
-			if (b.IsEnabled)
-			{
-				GlobalInfo.BotRunning = true;
+			if (!b.IsEnabled) { return; }
 
-				b.IsEnabled = false;
+			GlobalInfo.BotRunning = true;
+
+			b.IsEnabled = false;
 				
-				if (Debugger.IsAttached)
-				{
-					MessageHandler.PostMessage("`Phamhilator™ started (debug mode).`");
-				}
-				else
-				{
-					MessageHandler.PostMessage("`Phamhilator™ started.`");
-				}
-
-				GlobalInfo.UpTime = DateTime.UtcNow;
+			if (Debugger.IsAttached)
+			{
+				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Phamhilator™ started (debug mode).`" });
 			}
+			else
+			{
+				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Phamhilator™ started.`" });
+			}
+
+			GlobalInfo.UpTime = DateTime.UtcNow;
 		}
 
 		private void MetroWindow_Closing(object sender, CancelEventArgs e)
@@ -647,7 +636,7 @@ namespace Phamhilator
 
 			e.Cancel = true;
 
-			MessageHandler.PostMessage("`Phamhilator™ stopped.`");
+			GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Phamhilator™ stopped.`" });
 
 			exit = true;
 

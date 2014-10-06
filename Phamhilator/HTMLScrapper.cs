@@ -207,7 +207,7 @@ namespace Phamhilator
 
 			var endIndex = html.IndexOf("</div>", startIndex, StringComparison.Ordinal);
 
-			return WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex)).Trim();
+			return Regex.Replace(escapeChars.Replace(WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex)), ""), @"\s+", " ").Trim();; 
 		}
 
 		public static string GetAnswerAuthorLink(string html, string questionURL)
