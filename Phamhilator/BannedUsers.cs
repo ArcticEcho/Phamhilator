@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
+
+
+
+// TODO: WARNING! Untested code ahead!
 
 
 
@@ -23,12 +25,12 @@ namespace Phamhilator
 
 			for (var i = 0; i < ii; i++) { r.Next(); }
 
-			var hashSalt = HashID(ID);
+			var hash = HashID(ID);
 			var data = File.ReadAllBytes(DirectoryTools.GetBannedUsersFile()).ToList();
 
 			data.AddRange(GetRandomBytes());
 
-			data.AddRange(hashSalt);
+			data.AddRange(hash);
 
 			data.AddRange(GetRandomBytes());
 
@@ -37,29 +39,37 @@ namespace Phamhilator
 
 		public static bool IsUserBanned(string ID)
 		{
+			var hash = HashID(ID);
 			var data = File.ReadAllBytes(DirectoryTools.GetBannedUsersFile()).ToList();
 
+			for (var i = 0; i < data.Count - 512; i++)
+			{
+				var currentHash = new byte[512];
 
+				data.CopyTo(i, currentHash, 0, 512);
 
+				if (HashIsMatch(currentHash, hash))
+				{
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 
 
-		private static IEnumerable<byte> HashID(string ID)
+		private static byte[] HashID(string ID)
 		{
-			var assembly = AppDomain.CurrentDomain.DomainManager.EntryAssembly;
-			var attribute = (GuidAttribute)assembly.GetCustomAttributes(typeof(GuidAttribute), true)[0];
-			var pepper = attribute.Value;
-
 			using (var sha = new SHA512Managed())
 			{
-				var bytes = Encoding.UTF8.GetBytes(ID + pepper);
+				var bytes = Encoding.UTF8.GetBytes(ID + GetPepper());
 
 				return sha.ComputeHash(bytes);
 			}
 		}
 
-		private static IEnumerable<byte> GetRandomBytes()
+		private static byte[] GetRandomBytes()
 		{
 			var bytes = new byte[r.Next(1025)];
 
