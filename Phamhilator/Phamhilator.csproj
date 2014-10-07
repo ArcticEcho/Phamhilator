@@ -77,6 +77,7 @@
     <Compile Include="AnswerFilters.WhiteFilters.Offensive.cs" />
     <Compile Include="AnswerFilters.WhiteFilters.Spam.cs" />
     <Compile Include="BadTagDefinitions.cs" />
+    <Compile Include="BannedUsers.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="ExtensionMethods.cs" />

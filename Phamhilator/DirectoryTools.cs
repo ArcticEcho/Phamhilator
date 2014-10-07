@@ -353,5 +353,18 @@ namespace Phamhilator
 
 			return path;
 		}
+
+
+		public static string GetBannedUsersFile()
+		{
+			var path = Path.Combine(root, "Banned Users.txt");
+
+			if (!File.Exists(path))
+			{
+				File.WriteAllText(path, "");
+			}
+
+			return path;
+		}
 	}
 }

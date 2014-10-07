@@ -114,7 +114,7 @@ namespace Phamhilator
 				Score = HTMLScraper.GetAnswerScore(html), 
 				Body = aBody, 
 				Site = Site, 
-				Title = StripTags(aBody.Length > 50 ? aBody.Substring(0, 47) + "..." : aBody)
+				Title = StripTags(aBody.Length > 50 ? aBody.Substring(0, 47) + "..." : aBody).Trim()
 			};
 		}
 
@@ -151,6 +151,5 @@ namespace Phamhilator
 
 			return new string(array, 0, arrayIndex);
 		}
-
 	}
 }

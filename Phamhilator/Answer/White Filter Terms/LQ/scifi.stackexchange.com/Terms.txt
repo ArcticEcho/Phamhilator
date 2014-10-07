@@ -1,0 +1,4 @@
+
+16.5](?i)(need|some)( halp| help| answer)
+17.5](?i)\b(help|halp)\b
+16.5](?i:need help|help me)

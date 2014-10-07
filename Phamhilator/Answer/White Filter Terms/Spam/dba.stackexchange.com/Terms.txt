@@ -1,3 +1,3 @@
 
 5](?i)(feel|look|taste|get)(s|ing)? (good|nice|amazing|fabulous)
-5](?i)how to (feel|look|reduce|buy|increase)
+5.5](?i)how to (feel|look|reduce|buy|increase)

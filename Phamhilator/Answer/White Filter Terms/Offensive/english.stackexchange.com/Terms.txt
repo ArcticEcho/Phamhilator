@@ -1,2 +1,3 @@
 
-5](?i)\bfuck\b
+5.5](?i)\bfuck\b
+6](?i)\bidiot\b
