@@ -38,9 +38,11 @@ namespace Phamhilator
 		public static readonly MessageHandler MessagePoster = new MessageHandler();
 		public const string Owners = "Sam, Unihedron & ProgramFOX";
 		public static WebBrowser ChatWb;
+		public static WebBrowser AnnounceWb;
 		public static int PostsCaught;
 		public static DateTime UpTime;
 		public static bool BotRunning;
+		public static bool Exit;
 
 		public static bool EnableFullScan
 		{
@@ -94,6 +96,35 @@ namespace Phamhilator
 						var endIndex = ChatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
 						var IDString = ChatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
+
+						if (!IDString.All(Char.IsDigit)) { return; }
+
+						ID = int.Parse(IDString);
+					}
+					catch (Exception)
+					{
+
+					}
+				});
+
+				return ID;
+			}
+		}
+
+		public static int AnnouncerRoomID
+		{
+			get
+			{
+				var ID = 0;
+
+				App.Current.Dispatcher.Invoke(() =>
+				{
+					try
+					{
+						var startIndex = AnnounceWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
+						var endIndex = AnnounceWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
+
+						var IDString = AnnounceWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
 						if (!IDString.All(Char.IsDigit)) { return; }
 

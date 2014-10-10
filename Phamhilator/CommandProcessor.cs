@@ -129,8 +129,8 @@ namespace Phamhilator
 
 		private static bool IsPrivilegedUserCommand()
 		{
-			return commandLower == "fp" || commandLower == "false" || commandLower == "false pos" || commandLower == "false positive" ||
-				   commandLower == "tp" || commandLower == "true" || commandLower == "true pos" || commandLower == "true positive" ||
+			return commandLower == "fp" || commandLower == "fpa" ||
+				   commandLower == "tp" || commandLower == "tpa" ||
 				   commandLower == "clean" || commandLower == "sanitise" || commandLower == "sanitize" ||
 				   commandLower.StartsWith("bqremove term") ||
 				   commandLower.StartsWith("bqadd term") ||
@@ -146,12 +146,12 @@ namespace Phamhilator
 
 		private static string PrivilegedUserCommands(string command)
 		{
-			if (commandLower == "fp" || commandLower == "false" || commandLower == "false pos" || commandLower == "false positive")
+			if (commandLower == "fp" || commandLower == "fpa")
 			{
 				return FalsePositive();
 			}
 
-			if (commandLower == "tp" || commandLower == "true" || commandLower == "true pos" || commandLower == "true positive")
+			if (commandLower == "tp" || commandLower == "tpa")
 			{
 				return TruePositive();
 			}
@@ -229,7 +229,7 @@ namespace Phamhilator
 
 			if (commandLower == "help" || commandLower == "commands")
 			{
-				return "`See` [`here`](https://github.com/ArcticWinter/Phamhilator/blob/master/Phamhilator/Readme%20-%20Chat%20Commands.md) `for a full list of commands.`";
+				return "`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands) `for a full list of commands.`";
 			}
 
 			return "`Command not recognised.`";
@@ -983,7 +983,14 @@ namespace Phamhilator
 
 		private static string TruePositive()
 		{
-			return message.IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
+			var returnMessage = message.IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
+
+			if (commandLower.IndexOf("a", StringComparison.Ordinal) != -1)
+			{
+				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = GlobalInfo.PostedReports[message.RepliesToMessageID].Body }, GlobalInfo.AnnouncerRoomID);
+			}
+			
+			return returnMessage;
 		}
 
 		private static string TruePositiveQuestion()
@@ -1257,14 +1264,14 @@ namespace Phamhilator
 		{
 			GlobalInfo.BotRunning = true;
 
-			return "Phamhilator™ started.";
+			return "`Phamhilator™ started.`";
 		}
 
 		private static string PauseBot()
 		{
 			GlobalInfo.BotRunning = false;
 
-			return "Phamhilator™ paused.";
+			return "`Phamhilator™ paused.`";
 		}
 	}
 }
