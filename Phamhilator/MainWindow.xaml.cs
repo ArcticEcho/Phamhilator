@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Windows;
 using Microsoft.Win32;
 using System.Threading;
@@ -223,10 +224,10 @@ namespace Phamhilator
 						{
 							postSuccessMessage = true;
 						}
-						else
-						{
-							InjectMessageListenerJS();
-						}
+						//else
+						//{
+						//	InjectMessageListenerJS();
+						//}
 
 						while (!GlobalInfo.Exit)
 						{
@@ -462,22 +463,31 @@ namespace Phamhilator
 
 		private MessageInfo GetLatestMessage()
 		{
-			var data = "";
+			//var data = "";
 
-			chatWb.Invoke(new Action(() => data = chatWb.DocumentTitle));
+			//Dispatcher.Invoke(() =>
+			//{
+			//	dynamic doc = chatWb.Document;
+			//	data = doc.Title;
+			//});
 
-			var messageId = data.Split(' ')[0];
-			var repliesToId = data.Split(' ')[1];
-			var authorId = data.Split(' ')[2];
-			var message = data.Remove(0, data.IndexOf(authorId) + authorId.Length + 1);
+			//var messageId = data.Split(' ')[0];
+			//var repliesToId = data.Split(' ')[1];
+			//var authorId = data.Split(' ')[2];
+			//var message = WebUtility.HtmlDecode(data.Remove(0, data.IndexOf(authorId) + authorId.Length + 1));
 
-			return new MessageInfo
-			{
-				AuthorID = int.Parse(authorId),
-				Body = message,
-				RepliesToMessageID = int.Parse(repliesToId),
-				MessageID = int.Parse(messageId)
-			};
+			//if (messageId.Any(c => !Char.IsDigit(c)) || repliesToId.Any(c => !Char.IsDigit(c)) || authorId.Any(c => !Char.IsDigit(c)))
+			//{
+			//	return new MessageInfo();
+			//}
+
+			//return new MessageInfo
+			//{
+			//	AuthorID = int.Parse(authorId),
+			//	Body = message,
+			//	RepliesToMessageID = int.Parse(repliesToId),
+			//	MessageID = int.Parse(messageId)
+			//};
 
 
 

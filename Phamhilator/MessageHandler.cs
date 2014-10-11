@@ -134,6 +134,16 @@ namespace Phamhilator
 
 				Thread.Sleep(3000);
 
+				//var data = "";
+
+				//Application.Current.Dispatcher.Invoke(() =>
+				//{
+				//	dynamic doc = GlobalInfo.ChatWb.Document;
+				//	data = doc.Title;
+				//});
+
+				//var id = int.Parse(data.Split(' ')[0]);
+
 				dynamic doc = null;
 				var i = 0;
 				var html = "";
