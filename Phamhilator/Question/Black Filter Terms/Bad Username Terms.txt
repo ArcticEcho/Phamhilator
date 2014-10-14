@@ -8,8 +8,8 @@
 10](?i)bumhole
 10](?i)bastard
 10](?i)bitch
-10](?i)crap
 10](?i)fuck
-10](?i)shit
 10](?i)whore
 10]MTS789
+
+10](?i)\bshit\b

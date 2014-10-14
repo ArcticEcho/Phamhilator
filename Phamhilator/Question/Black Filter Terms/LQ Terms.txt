@@ -35,3 +35,8 @@
 12][A-Z]{4,}.*[\!\?]{2,}
 
 12.8](?i)help please
+13.66111](?i)(more|most|less|least).*popular
+13.66111](?i)wh(at|ich).*best
+13.66111](?i)credit.card
+13.66111](?i)^(?=.*?which)(?=.*?(?:choose|best|quality))
+13.66111](?i)i need.*help

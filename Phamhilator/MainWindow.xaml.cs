@@ -224,10 +224,6 @@ namespace Phamhilator
 						{
 							postSuccessMessage = true;
 						}
-						//else
-						//{
-						//	InjectMessageListenerJS();
-						//}
 
 						while (!GlobalInfo.Exit)
 						{
@@ -409,89 +405,8 @@ namespace Phamhilator
 			}) { Priority = ThreadPriority.Lowest }.Start();	
 		}
 
-		private void InjectMessageListenerJS()
-		{
-			GlobalInfo.ChatWb.InvokeScript("eval", new object[]
-			{
-				"$.post('/chats/" + GlobalInfo.RoomID + @"/events', 
-				{
-					since: 0,
-					mode: 'Messages',
-					msgCount: 1,
-					fkey: fkey().fkey
-				}).success(function (eve) 
-				{
-					console.log(eve.time);
-    
-					$.post('/ws-auth', 
-					{ 
-						roomid: " + GlobalInfo.RoomID + @", 
-						fkey: fkey().fkey 
-					}).success(function (au) 
-					{
-						console.log(au);
-        
-						var ws = new WebSocket(au.url + '?l=' + eve.time.toString());
-        
-						ws.onmessage = function (e) 
-						{
-							var fld = 'r' + " + GlobalInfo.RoomID + @", roomevent = JSON.parse(e.data)[fld], ce;
-            
-							if (roomevent && roomevent.e) 
-							{
-								ce = roomevent.e;
-								console.log(ce);
-                
-								var message = ce[ce.length - 1];
-                
-								if (message.parent_id)
-								{
-									document.title = message.message_id + ' ' + message.parent_id + ' ' + message.user_id + ' ' + message.content;
-								}
-								else
-								{
-									document.title = message.message_id + ' 0 ' + message.user_id + ' ' + message.content;
-								}
-							}
-						};
-        
-						ws.onerror = function (e) { console.log(e); };
-					});
-				});"
-			});
-		}
-
 		private MessageInfo GetLatestMessage()
 		{
-			//var data = "";
-
-			//Dispatcher.Invoke(() =>
-			//{
-			//	dynamic doc = chatWb.Document;
-			//	data = doc.Title;
-			//});
-
-			//var messageId = data.Split(' ')[0];
-			//var repliesToId = data.Split(' ')[1];
-			//var authorId = data.Split(' ')[2];
-			//var message = WebUtility.HtmlDecode(data.Remove(0, data.IndexOf(authorId) + authorId.Length + 1));
-
-			//if (messageId.Any(c => !Char.IsDigit(c)) || repliesToId.Any(c => !Char.IsDigit(c)) || authorId.Any(c => !Char.IsDigit(c)))
-			//{
-			//	return new MessageInfo();
-			//}
-
-			//return new MessageInfo
-			//{
-			//	AuthorID = int.Parse(authorId),
-			//	Body = message,
-			//	RepliesToMessageID = int.Parse(repliesToId),
-			//	MessageID = int.Parse(messageId)
-			//};
-
-
-
-
 			dynamic doc = null;
 			string html;
 

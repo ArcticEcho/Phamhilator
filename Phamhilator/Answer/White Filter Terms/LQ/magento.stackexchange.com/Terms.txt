@@ -1,2 +1,5 @@
 
 14.5](?i)problem(s)?
+
+14.53846](?i)pl(z|s|ease)
+17](?i)\b(help|halp)\b

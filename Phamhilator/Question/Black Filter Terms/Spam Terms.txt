@@ -79,3 +79,10 @@
 10](?i)customers? review
 10](?i)^how to buy
 10](?i)Cridssing sing
+10](?i)^how can we
+10](?i)i don'?t use
+10](?i)buy(ing)? cheap(er|est)?
+10](?i)^can you recommend
+10](?i)improve your
+10](?i)slim
+10](?i)wh(at|o|ere) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand)

@@ -10,7 +10,7 @@
 10](?i)\bfag\b
 11](?i)\bfuck\b
 10](?i)\bidiot\b
-10](?i)\bshit\b
+11](?i)\bshit\b
 10](?i)\bwhore\b
 
 10.07143](?i)fack you

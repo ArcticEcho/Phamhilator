@@ -1,2 +1,5 @@
 
 6](?i)\bbrand\b
+
+5](?i)\bripped\b
+5](?i)get free

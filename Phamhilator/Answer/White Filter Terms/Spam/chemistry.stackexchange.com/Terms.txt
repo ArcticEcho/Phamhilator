@@ -1,0 +1,3 @@
+
+5](?i)\bbeautiful(est)?\b
+5](?i)natural
