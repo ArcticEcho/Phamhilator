@@ -23,7 +23,7 @@ namespace Phamhilator
 			}
 			else if (input.Body.ToLowerInvariant().StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant()) && GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID))
 			{
-				command = input.Body.Remove(0, 5).TrimStart();
+				command = input.Body.Remove(0, GlobalInfo.BotUsername.Length + 1).TrimStart();
 			}
 			else
 			{
@@ -34,7 +34,7 @@ namespace Phamhilator
 
 			var user = input.AuthorID;
 
-			if (IsNormalUserCommand())
+			if (IsNormalUserCommand(commandLower))
 			{
 				try
 				{
@@ -46,7 +46,7 @@ namespace Phamhilator
 				}
 			}
 
-			if (IsPrivilegedUserCommand())
+			if (IsPrivilegedUserCommand(commandLower))
 			{
 				message = input;
 
@@ -65,7 +65,7 @@ namespace Phamhilator
 				}		
 			}
 			
-			if (IsOwnerCommand())
+			if (IsOwnerCommand(commandLower))
 			{
 				if (!UserAccess.Owners.Contains(user))
 				{
@@ -85,15 +85,34 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
-
-
-		private static bool IsOwnerCommand()
+		public static bool IsValidCommand(string command)
 		{
-			return commandLower.StartsWith("add user") ||
-				   commandLower.StartsWith("threshold") ||
-				   commandLower == "start" ||
-				   commandLower == "pause" ||
-				   commandLower == "full scan";
+			var commandLower = command.ToLowerInvariant();
+
+			if (commandLower.StartsWith(">>"))
+			{
+				commandLower = commandLower.Remove(0, 2).TrimStart();
+			}
+			else if (commandLower.StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant()))
+			{
+				commandLower = commandLower.Remove(0, GlobalInfo.BotUsername.Length + 1).TrimStart();
+			}
+			else
+			{
+				return false;
+			}
+
+			return IsNormalUserCommand(commandLower) || IsPrivilegedUserCommand(commandLower) || IsOwnerCommand(commandLower);
+		}
+
+
+		private static bool IsOwnerCommand(string command)
+		{
+			return command.StartsWith("add user") ||
+				   command.StartsWith("threshold") ||
+				   command == "start" ||
+				   command == "pause" ||
+				   command == "full scan";
 		}
 
 		private static string OwnerCommand(string command)
@@ -127,21 +146,22 @@ namespace Phamhilator
 		}
 
 
-		private static bool IsPrivilegedUserCommand()
+		private static bool IsPrivilegedUserCommand(string command)
 		{
-			return commandLower == "fp" || commandLower == "fpa" ||
-				   commandLower == "tp" || commandLower == "tpa" ||
-				   commandLower == "clean" || commandLower == "sanitise" || commandLower == "sanitize" ||
-				   commandLower.StartsWith("bqremove term") ||
-				   commandLower.StartsWith("bqadd term") ||
-				   commandLower.StartsWith("wqremove term") ||
-				   commandLower.StartsWith("wqadd term") ||
-				   commandLower.StartsWith("baremove term") ||
-				   commandLower.StartsWith("baadd term") ||
-				   commandLower.StartsWith("waremove term") ||
-				   commandLower.StartsWith("waadd term") ||
-				   commandLower.StartsWith("add tag") ||
-				   commandLower.StartsWith("remove tag");
+			return command == "fp" || command == "fpa" ||
+				   command == "tp" || command == "tpa" ||
+				   command == "clean" || command == "sanitise" || command == "sanitize" ||
+				   command == "del" || command == "delete" || command == "remove" ||
+				   command.StartsWith("bqremove term") ||
+				   command.StartsWith("bqadd term") ||
+				   command.StartsWith("wqremove term") ||
+				   command.StartsWith("wqadd term") ||
+				   command.StartsWith("baremove term") ||
+				   command.StartsWith("baadd term") ||
+				   command.StartsWith("waremove term") ||
+				   command.StartsWith("waadd term") ||
+				   command.StartsWith("add tag") ||
+				   command.StartsWith("remove tag");
 		}
 
 		private static string PrivilegedUserCommands(string command)
@@ -159,6 +179,11 @@ namespace Phamhilator
 			if (commandLower == "clean" || commandLower == "sanitise" || commandLower == "sanitize")
 			{
 				return CleanPost();
+			}
+
+			if (commandLower == "del" || commandLower == "delete" || commandLower == "remove")
+			{
+				return DeletePost();
 			}
 
 			if (commandLower.StartsWith("bqremove term"))
@@ -215,9 +240,9 @@ namespace Phamhilator
 		}
 
 
-		private static bool IsNormalUserCommand()
+		private static bool IsNormalUserCommand(string command)
 		{
-			return commandLower == "stats" || commandLower == "info" || commandLower == "help" || commandLower == "commands";
+			return command == "stats" || command == "info" || command == "help" || command == "commands";
 		}
 
 		private static string NormalUserCommands()
@@ -814,6 +839,20 @@ namespace Phamhilator
 			return "";
 		}
 
+		private static string DeletePost()
+		{
+			var reportID = message.RepliesToMessageID;
+
+			if (GlobalInfo.PostedReports.ContainsKey(reportID))
+			{
+				var title = GlobalInfo.PostedReports[reportID].Post.Title;
+
+				MessageHandler.DeleteMessage(title, reportID, false);
+			}
+
+			return "";
+		}
+
 
 		private static string FalsePositive()
 		{
@@ -839,7 +878,7 @@ namespace Phamhilator
 						GlobalInfo.QWhiteLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.RepliesToMessageID, message.Post.Title) ? "" : "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -857,7 +896,7 @@ namespace Phamhilator
 						GlobalInfo.QWhiteOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.RepliesToMessageID, message.Post.Title) ? "" : "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -875,7 +914,7 @@ namespace Phamhilator
 						GlobalInfo.QWhiteSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.RepliesToMessageID, message.Post.Title) ? "" : "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -893,7 +932,7 @@ namespace Phamhilator
 						GlobalInfo.QWhiteName.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.RepliesToMessageID, message.Post.Title) ? "" : "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
 				}
 			} 
 			
@@ -919,7 +958,7 @@ namespace Phamhilator
 						GlobalInfo.AWhiteLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.RepliesToMessageID, message.Post.Title) ? "" : "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -937,7 +976,7 @@ namespace Phamhilator
 						GlobalInfo.AWhiteOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.RepliesToMessageID, message.Post.Title) ? "" : "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -955,7 +994,7 @@ namespace Phamhilator
 						GlobalInfo.AWhiteSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.RepliesToMessageID, message.Post.Title) ? "" : "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -973,7 +1012,7 @@ namespace Phamhilator
 						GlobalInfo.AWhiteName.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.RepliesToMessageID, message.Post.Title) ? "" : "`FP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
 				}
 			}
 
@@ -985,9 +1024,11 @@ namespace Phamhilator
 		{
 			var returnMessage = message.IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
 
-			if (commandLower.IndexOf("a", StringComparison.Ordinal) != -1)
+			if (commandLower == "tpa")
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = GlobalInfo.PostedReports[message.RepliesToMessageID].Body }, GlobalInfo.AnnouncerRoomID);
+				var reportMessage = GlobalInfo.PostedReports[message.RepliesToMessageID];
+
+				GlobalInfo.MessagePoster.MessageQueue.Add(reportMessage, GlobalInfo.AnnouncerRoomID);
 			}
 			
 			return returnMessage;
@@ -1020,7 +1061,7 @@ namespace Phamhilator
 						}
 					}		
 
-					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return message.MessageID + ": `TP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -1046,7 +1087,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return message.MessageID + ": `TP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -1072,7 +1113,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return message.MessageID + ": `TP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -1098,7 +1139,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return message.MessageID + ": `TP acknowledged.`";
 				}
 			}
 
@@ -1132,7 +1173,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return message.MessageID + ": `TP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -1158,7 +1199,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return message.MessageID + ": `TP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -1184,7 +1225,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return message.MessageID + ": `TP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -1210,7 +1251,7 @@ namespace Phamhilator
 						}
 					}
 
-					return "`TP for message " + message.RepliesToMessageID + " acknowledged.`";
+					return message.MessageID + ": `TP acknowledged.`";
 				}
 			}
 

@@ -9,5 +9,6 @@
 		public int AuthorID;
 		public int RepliesToMessageID;
 		public bool IsQuestionReport;
+		public int RoomID;
 	}
 }

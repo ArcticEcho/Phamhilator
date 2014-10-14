@@ -82,7 +82,7 @@ namespace Phamhilator
 			}
 		}
 
-		public static int RoomID
+		public static int ChatRoomID
 		{
 			get
 			{

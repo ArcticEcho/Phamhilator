@@ -73,3 +73,5 @@ website http://meta.stackoverflow.com/q/258700
 weight http://meta.stackoverflow.com/q/269165
 width http://meta.stackoverflow.com/q/268173
 xmlns http://meta.stackoverflow.com/q/271356
+
+microsoft http://chat.meta.stackexchange.com/transcript/message/2521005#2521005

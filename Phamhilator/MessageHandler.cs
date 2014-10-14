@@ -39,7 +39,7 @@ namespace Phamhilator
 			});
 		}
 
-		public static bool DeleteMessage(int messageID, string reportTitle)
+		public static bool DeleteMessage(string reportTitle, int messageID, bool checkSuccess = true)
 		{
 			dynamic doc = null;
 			var html = "";
@@ -58,6 +58,8 @@ namespace Phamhilator
 
 				}
 			});
+
+			if (!checkSuccess) { return true; }
 
 			Thread.Sleep(3000); // Wait for message to be deleted.
 
@@ -92,7 +94,7 @@ namespace Phamhilator
 			{
 				Thread.Sleep(1000);
 
-				if (GlobalInfo.RoomID == 0 || MessageQueue.Count == 0) { continue; }
+				if (GlobalInfo.ChatRoomID == 0 || GlobalInfo.AnnouncerRoomID == 0 || MessageQueue.Count == 0) { continue; }
 
 				message = MessageQueue.Keys.First();
 				roomID = MessageQueue[message];
@@ -104,7 +106,7 @@ namespace Phamhilator
 				{
 					try
 					{
-						if (roomID == GlobalInfo.RoomID)
+						if (roomID == GlobalInfo.ChatRoomID)
 						{
 							GlobalInfo.ChatWb.InvokeScript("eval", new object[]
 							{
@@ -134,25 +136,15 @@ namespace Phamhilator
 
 				Thread.Sleep(3000);
 
-				//var data = "";
-
-				//Application.Current.Dispatcher.Invoke(() =>
-				//{
-				//	dynamic doc = GlobalInfo.ChatWb.Document;
-				//	data = doc.Title;
-				//});
-
-				//var id = int.Parse(data.Split(' ')[0]);
-
 				dynamic doc = null;
 				var i = 0;
 				var html = "";
 
 				while (html.IndexOf(message.Post.Title, StringComparison.Ordinal) == -1)
 				{
-					if (i > 5) { break; }
+					if (i > 4) { return; }
 
-					Application.Current.Dispatcher.Invoke(() => doc = roomID == GlobalInfo.RoomID ? GlobalInfo.ChatWb.Document : GlobalInfo.AnnounceWb.Document);
+					Application.Current.Dispatcher.Invoke(() => doc = roomID == GlobalInfo.ChatRoomID ? GlobalInfo.ChatWb.Document : GlobalInfo.AnnounceWb.Document);
 
 					try
 					{
@@ -165,18 +157,15 @@ namespace Phamhilator
 
 					i++;
 
-					Thread.Sleep(3000);
+					Thread.Sleep(2500);
 				}
 
-				if (i < 5)
-				{
-					var id = HTMLScraper.GetMessageIDByReportTitle(html, message.Post.Title);
+				var id = HTMLScraper.GetMessageIDByReportTitle(html, message.Post.Title);
 
-					if (!GlobalInfo.PostedReports.ContainsKey(id))
-					{
-						GlobalInfo.PostedReports.Add(id, message);
-					}
-				}		
+				if (!GlobalInfo.PostedReports.ContainsKey(id))
+				{
+					GlobalInfo.PostedReports.Add(id, message);
+				}				
 			}
 				
 
