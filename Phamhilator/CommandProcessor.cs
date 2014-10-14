@@ -878,7 +878,7 @@ namespace Phamhilator
 						GlobalInfo.QWhiteLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -896,7 +896,7 @@ namespace Phamhilator
 						GlobalInfo.QWhiteOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -914,7 +914,7 @@ namespace Phamhilator
 						GlobalInfo.QWhiteSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -932,7 +932,7 @@ namespace Phamhilator
 						GlobalInfo.QWhiteName.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
 				}
 			} 
 			
@@ -958,7 +958,7 @@ namespace Phamhilator
 						GlobalInfo.AWhiteLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -976,7 +976,7 @@ namespace Phamhilator
 						GlobalInfo.AWhiteOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -994,7 +994,7 @@ namespace Phamhilator
 						GlobalInfo.AWhiteSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -1012,7 +1012,7 @@ namespace Phamhilator
 						GlobalInfo.AWhiteName.SetScore(term.Key, message.Post.Site, term.Value + 1);
 					}
 
-					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : message.MessageID + ": `FP acknowledged.`";
+					return MessageHandler.DeleteMessage(message.Post.Title, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
 				}
 			}
 
@@ -1061,7 +1061,7 @@ namespace Phamhilator
 						}
 					}		
 
-					return message.MessageID + ": `TP acknowledged.`";
+					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -1087,7 +1087,7 @@ namespace Phamhilator
 						}
 					}
 
-					return message.MessageID + ": `TP acknowledged.`";
+					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -1113,7 +1113,7 @@ namespace Phamhilator
 						}
 					}
 
-					return message.MessageID + ": `TP acknowledged.`";
+					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -1139,7 +1139,7 @@ namespace Phamhilator
 						}
 					}
 
-					return message.MessageID + ": `TP acknowledged.`";
+					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
 			}
 
@@ -1173,7 +1173,7 @@ namespace Phamhilator
 						}
 					}
 
-					return message.MessageID + ": `TP acknowledged.`";
+					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
 
 				case PostType.Offensive:
@@ -1199,7 +1199,7 @@ namespace Phamhilator
 						}
 					}
 
-					return message.MessageID + ": `TP acknowledged.`";
+					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
 
 				case PostType.Spam:
@@ -1225,7 +1225,7 @@ namespace Phamhilator
 						}
 					}
 
-					return message.MessageID + ": `TP acknowledged.`";
+					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
 
 				case PostType.BadUsername:
@@ -1251,7 +1251,7 @@ namespace Phamhilator
 						}
 					}
 
-					return message.MessageID + ": `TP acknowledged.`";
+					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
 			}
 

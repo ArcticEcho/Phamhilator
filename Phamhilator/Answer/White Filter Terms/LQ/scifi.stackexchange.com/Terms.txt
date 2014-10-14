@@ -2,3 +2,5 @@
 16.5](?i)(need|some)( halp| help| answer)
 20.93282](?i)\b(help|halp)\b
 18.28255](?i:need help|help me)
+
+13](?i)pl(z|s|ease)

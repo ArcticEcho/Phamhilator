@@ -3,3 +3,4 @@
 
 5](?i)\bripped\b
 5](?i)get free
+5](?i)\bbeautiful(est)?\b

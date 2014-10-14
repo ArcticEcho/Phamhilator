@@ -16,7 +16,36 @@ namespace Phamhilator
 
 		public MessageHandler()
 		{
-			new Thread(PostMessages) { Priority = ThreadPriority.Lowest }.Start();
+			new Thread(() =>
+			{
+				for (var i = 1; i < 5; i++)
+				{
+					try
+					{
+						PostMessages();			
+					}
+					catch (Exception)
+					{
+						if (!GlobalInfo.Exit)
+						{
+							Thread.Sleep(1000);
+
+							if (i == 4)
+							{
+								PostChatMessage("`Warning: 3 attempts to restart message poster thread have failed. Now shutting down...`");
+
+								GlobalInfo.Exit = true;
+							}
+							else
+							{
+								PostChatMessage("`Warning: message poster thread has died. Attempting to restart...`");
+							}
+						}
+					}
+
+					if (GlobalInfo.Exit) { break; }
+				}		
+			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
 
@@ -180,5 +209,19 @@ namespace Phamhilator
 			//PostMessage(message, consecutiveMessageCount);
 		}
 
+		private void PostChatMessage(string message)
+		{
+			try
+			{
+				GlobalInfo.ChatWb.InvokeScript("eval", new object[]
+				{
+					"$.post('/chats/" + GlobalInfo.ChatRoomID + "/messages/new', { text: '" + message+ "', fkey: fkey().fkey });"
+				});
+			}
+			catch (Exception)
+			{
+
+			}
+		}
 	}
 }

@@ -1,4 +1,6 @@
 
 13.06616]^(?i).{0,18}$
 13.5](?i)problem(s)?
-6](?i)beginner
+6.5](?i)beginner
+
+10.5](?i)\berror(s)?\b
