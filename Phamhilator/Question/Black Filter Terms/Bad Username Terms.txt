@@ -13,3 +13,6 @@
 10]MTS789
 
 10](?i)\bshit\b
+
+10]kimismith
+10]RodeoSkillful

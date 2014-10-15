@@ -86,3 +86,9 @@
 10](?i)improve your
 10](?i)slim
 10](?i)wh(at|o|ere) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand)
+
+10](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))
+10](?i)^no hassle
+10]\bWoW\b
+
+10](?i)wh(ere|at) ((is|are) the|(can you|to) (get|find|buy|pay)) cheap

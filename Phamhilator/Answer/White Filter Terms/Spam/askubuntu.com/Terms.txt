@@ -1,4 +1,6 @@
 
 6](?i)\byoga|relax(ing)?\b
 
-5](?i)health
+5.5](?i)health
+
+3][-\w]{3}@\w+\.
