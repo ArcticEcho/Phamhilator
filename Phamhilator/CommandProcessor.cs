@@ -110,6 +110,7 @@ namespace Phamhilator
 		{
 			return command.StartsWith("add user") ||
 				   command.StartsWith("threshold") ||
+				   command.StartsWith("set status") ||
 				   command == "start" ||
 				   command == "pause" ||
 				   command == "full scan";
@@ -142,13 +143,18 @@ namespace Phamhilator
 				return SetAccuracyThreshold(command);
 			}
 
+			if (commandLower.StartsWith("set status"))
+			{
+				return SetStatus(command);
+			}
+
 			return "`Command not recognised.`";
 		}
 
 
 		private static bool IsPrivilegedUserCommand(string command)
 		{
-			return command == "fp" || command == "fpa" ||
+			return command == "fp" ||
 				   command == "tp" || command == "tpa" ||
 				   command == "clean" || command == "sanitise" || command == "sanitize" ||
 				   command == "del" || command == "delete" || command == "remove" ||
@@ -166,7 +172,7 @@ namespace Phamhilator
 
 		private static string PrivilegedUserCommands(string command)
 		{
-			if (commandLower == "fp" || commandLower == "fpa")
+			if (commandLower == "fp")
 			{
 				return FalsePositive();
 			}
@@ -242,7 +248,7 @@ namespace Phamhilator
 
 		private static bool IsNormalUserCommand(string command)
 		{
-			return command == "stats" || command == "info" || command == "help" || command == "commands";
+			return command == "stats" || command == "info" || command == "help" || command == "commands" || command == "status";
 		}
 
 		private static string NormalUserCommands()
@@ -255,6 +261,11 @@ namespace Phamhilator
 			if (commandLower == "help" || commandLower == "commands")
 			{
 				return "`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands) `for a full list of commands.`";
+			}
+
+			if (commandLower == "status")
+			{
+				return "`Current status: " + GlobalInfo.Status + "`.";
 			}
 
 			return "`Command not recognised.`";
@@ -1262,6 +1273,16 @@ namespace Phamhilator
 
 		// Owner commands.
 
+
+
+		private static string SetStatus(string command)
+		{
+			var newStatus = command.Remove(0, 10).Trim();
+
+			GlobalInfo.Status = newStatus;
+
+			return "`Status updated.`";
+		}
 
 
 		private static string AddUser(string command)

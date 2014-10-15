@@ -13,6 +13,23 @@ namespace Phamhilator
 			{
 				var filtersUsed = 0;
 
+				// Loop over blacklist.
+
+				foreach (var blackTerm in GlobalInfo.QBlackSpam.Terms)
+				{
+					if (blackTerm.Key.IsMatch(post.Title))
+					{
+						info.Accuracy += blackTerm.Value;
+						info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
+
+						filtersUsed++;
+					}
+				}
+
+				// Otherwise, if no blacklist terms were found, assume the post is clean.
+
+				if (filtersUsed == 0) { return false; }
+
 				// Loop over whitelist.
 
 				if (GlobalInfo.QWhiteSpam.Terms.ContainsKey(post.Site))
@@ -27,10 +44,22 @@ namespace Phamhilator
 						}
 					}
 				}
+			
+				info.Accuracy /= filtersUsed;
+				info.Accuracy /= GlobalInfo.QBlackSpam.HighestScore;
+				info.Accuracy *= 100;
+				info.Type = PostType.Spam;
+
+				return true;
+			}
+
+			public static bool IsLowQuality(Question post, ref QuestionAnalysis info)
+			{
+				var filtersUsed = 0;
 
 				// Loop over blacklist.
 
-				foreach (var blackTerm in GlobalInfo.QBlackSpam.Terms)
+				foreach (var blackTerm in GlobalInfo.QBlackLQ.Terms)
 				{
 					if (blackTerm.Key.IsMatch(post.Title))
 					{
@@ -41,24 +70,9 @@ namespace Phamhilator
 					}
 				}
 
-				if (filtersUsed != 0)
-				{
-					info.Accuracy /= filtersUsed;
-					info.Accuracy /= GlobalInfo.QBlackSpam.HighestScore;
-					info.Accuracy *= 100;
-					info.Type = PostType.Spam;
+				// Otherwise, if no blacklist terms were found, assume the post is clean.
 
-					return true;
-				}
-
-				// Otherwise, if no terms were found, assume the post is clean.
-
-				return false;
-			}
-
-			public static bool IsLowQuality(Question post, ref QuestionAnalysis info)
-			{
-				var filtersUsed = 0;
+				if (filtersUsed == 0) { return false; }
 
 				// Loop over whitelist.
 
@@ -75,9 +89,21 @@ namespace Phamhilator
 					}
 				}
 
+				info.Accuracy /= filtersUsed;
+				info.Accuracy /= GlobalInfo.QBlackLQ.HighestScore;
+				info.Accuracy *= 100;
+				info.Type = PostType.LowQuality;
+
+				return true;
+			}
+
+			public static bool IsOffensive(Question post, ref QuestionAnalysis info)
+			{
+				var filtersUsed = 0;
+
 				// Loop over blacklist.
 
-				foreach (var blackTerm in GlobalInfo.QBlackLQ.Terms)
+				foreach (var blackTerm in GlobalInfo.QBlackOff.Terms)
 				{
 					if (blackTerm.Key.IsMatch(post.Title))
 					{
@@ -88,24 +114,9 @@ namespace Phamhilator
 					}
 				}
 
-				if (filtersUsed != 0)
-				{
-					info.Accuracy /= filtersUsed;
-					info.Accuracy /= GlobalInfo.QBlackLQ.HighestScore;
-					info.Accuracy *= 100;
-					info.Type = PostType.LowQuality;
+				// Otherwise, if no blacklist terms were found, assume the post is clean.
 
-					return true;
-				}
-
-				// Otherwise, if no terms were found, assume the post is clean.
-
-				return false;
-			}
-
-			public static bool IsOffensive(Question post, ref QuestionAnalysis info)
-			{
-				var filtersUsed = 0;
+				if (filtersUsed == 0) { return false; }
 
 				// Loop over whitelist.
 
@@ -122,11 +133,23 @@ namespace Phamhilator
 					}
 				}
 
+				info.Accuracy /= filtersUsed;
+				info.Accuracy /= GlobalInfo.QBlackOff.HighestScore;
+				info.Accuracy *= 100;
+				info.Type = PostType.Offensive;
+
+				return true;
+			}
+
+			public static bool IsBadUsername(Question post, ref QuestionAnalysis info)
+			{
+				var filtersUsed = 0;
+
 				// Loop over blacklist.
 
-				foreach (var blackTerm in GlobalInfo.QBlackOff.Terms)
+				foreach (var blackTerm in GlobalInfo.QBlackName.Terms)
 				{
-					if (blackTerm.Key.IsMatch(post.Title))
+					if (blackTerm.Key.IsMatch(post.AuthorName))
 					{
 						info.Accuracy += blackTerm.Value;
 						info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
@@ -135,24 +158,9 @@ namespace Phamhilator
 					}
 				}
 
-				if (filtersUsed != 0)
-				{
-					info.Accuracy /= filtersUsed;
-					info.Accuracy /= GlobalInfo.QBlackOff.HighestScore;
-					info.Accuracy *= 100;
-					info.Type = PostType.Offensive;
+				// Otherwise, if no blacklist terms were found, assume the post is clean.
 
-					return true;
-				}
-
-				// Otherwise, if no terms were found, assume the post is clean.
-
-				return false;
-			}
-
-			public static bool IsBadUsername(Question post, ref QuestionAnalysis info)
-			{
-				var filtersUsed = 0;
+				if (filtersUsed == 0) { return false; }
 
 				// Loop over whitelist.
 
@@ -169,32 +177,12 @@ namespace Phamhilator
 					}
 				}
 
-				// Loop over blacklist.
+				info.Accuracy /= filtersUsed;
+				info.Accuracy /= GlobalInfo.QBlackName.HighestScore;
+				info.Accuracy *= 100;
+				info.Type = PostType.BadUsername;
 
-				foreach (var blackTerm in GlobalInfo.QBlackName.Terms)
-				{
-					if (blackTerm.Key.IsMatch(post.AuthorName))
-					{
-						info.Accuracy += blackTerm.Value;
-						info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
-
-						filtersUsed++;
-					}
-				}
-
-				if (filtersUsed != 0)
-				{
-					info.Accuracy /= filtersUsed;
-					info.Accuracy /= GlobalInfo.QBlackName.HighestScore;
-					info.Accuracy *= 100;
-					info.Type = PostType.BadUsername;
-
-					return true;
-				}
-
-				// Otherwise, if no terms were found, assume the post is clean.
-
-				return false;
+				return true;
 			}
 
 			public static Dictionary<string, string> IsBadTagUsed(Question post, ref QuestionAnalysis info)

@@ -1,3 +1,4 @@
 
 5](?i)baba
 5](?i)^how can we
+5](?i)\bbeautiful(est)?\b

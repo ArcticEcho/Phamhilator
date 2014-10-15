@@ -2,6 +2,6 @@
 14.5](?i)problem(s)?
 
 15.09763](?i)pl(z|s|ease)
-19.15618](?i)\b(help|halp)\b
+19.73667](?i)\b(help|halp)\b
 
 6.830555](?i)credit.card

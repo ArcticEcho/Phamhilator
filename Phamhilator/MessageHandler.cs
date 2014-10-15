@@ -163,15 +163,13 @@ namespace Phamhilator
 
 				// Get message ID.
 
-				Thread.Sleep(3000);
-
 				dynamic doc = null;
 				var i = 0;
 				var html = "";
 
 				while (html.IndexOf(message.Post.Title, StringComparison.Ordinal) == -1)
 				{
-					if (i > 4) { return; }
+					if (i > 7) { return; }
 
 					Application.Current.Dispatcher.Invoke(() => doc = roomID == GlobalInfo.ChatRoomID ? GlobalInfo.ChatWb.Document : GlobalInfo.AnnounceWb.Document);
 
@@ -186,7 +184,7 @@ namespace Phamhilator
 
 					i++;
 
-					Thread.Sleep(2500);
+					Thread.Sleep(2000);
 				}
 
 				var id = HTMLScraper.GetMessageIDByReportTitle(html, message.Post.Title);

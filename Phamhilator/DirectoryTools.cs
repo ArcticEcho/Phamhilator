@@ -366,5 +366,18 @@ namespace Phamhilator
 
 			return path;
 		}
+
+
+		public static string GetStatusFile()
+		{
+			var path = Path.Combine(root, "Status.txt");
+
+			if (!File.Exists(path))
+			{
+				File.WriteAllText(path, "Beta");
+			}
+
+			return path;
+		}
 	}
 }

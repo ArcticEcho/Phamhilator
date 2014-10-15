@@ -139,5 +139,18 @@ namespace Phamhilator
 				return ID;
 			}
 		}
+
+		public static string Status
+		{
+			get
+			{
+				return File.ReadAllText(DirectoryTools.GetStatusFile());
+			}
+
+			set
+			{
+				File.WriteAllText(DirectoryTools.GetStatusFile(), value);
+			}
+		}
 	}
 }

@@ -3,7 +3,7 @@
 10](?i)\bpiss\b
 11](?i)\bpenis\b
 10](?i)\bbumhole\b
-10](?i)\bretard\b
+11](?i)\bretard\b
 10](?i)\bbastard\b
 10](?i)\bbitch\b
 10](?i)\bcrap\b

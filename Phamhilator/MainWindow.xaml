@@ -9,6 +9,7 @@
             <WebBrowser Name="realtimeWb" Height="630" Width="400" Source="http://stackexchange.com/questions?tab=realtime"/>
             <WebBrowser Name="chatWb" Height="630" Canvas.Left="400" Width="400" Source="http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts"/>
             <WebBrowser Name="announceWb" Height="630" Canvas.Left="800" Width="392" Source="http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta"/>
+            <!-- http://chat.meta.stackexchange.com/rooms/651/sandbox -->
             <Button Content="Start Monitoring" Canvas.Left="10" Canvas.Top="638" Width="109" Click="Button_Click_2"/>
             <Slider Name="refreshRateS" Canvas.Left="203" Canvas.Top="641" Width="250" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged"/>
             <Label Content="Refresh Rate:" Canvas.Left="124" Canvas.Top="637"/>
