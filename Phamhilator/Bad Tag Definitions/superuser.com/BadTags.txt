@@ -1,12 +1,11 @@
 alert
 clicking-sound
-devices
-external
-movies
-static
-warning
-
-replacement
-tables
-split
 copy
+devices
+external http://meta.superuser.com/q/6261
+movies
+replacement
+split
+static
+tables
+warning
