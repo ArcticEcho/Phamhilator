@@ -55,19 +55,6 @@ namespace Phamhilator
 			return escapeChars.Replace(html.Substring(startIndex, endIndex - startIndex).Trim(), "");
 		}
 
-		public static int GetMessageIDByReportTitle(string html, string reportTitle)
-		{
-			var decoded = WebUtility.HtmlDecode(html);
-
-			var startIndex = decoded.IndexOf(reportTitle, StringComparison.Ordinal) - 350;
-
-			startIndex = decoded.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
-
-			var id = decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex);
-
-			return int.Parse(id);
-		}
-
 		public static string GetSite(string postURL)
 		{
 			var siteEndIndex = postURL.IndexOf("/", 7, StringComparison.Ordinal) - 7;
@@ -102,37 +89,6 @@ namespace Phamhilator
 			}
 
 			return tags;
-		}
-
-		public static MessageInfo GetLastChatMessage(string html)
-		{
-			var startIndex = html.LastIndexOf("signature user-", StringComparison.Ordinal) + 15;
-				
-			// Get user ID.
-
-			var authorID = html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.Ordinal) - 8) - startIndex);
-
-			// Get message.
-
-			startIndex = html.LastIndexOf("<DIV class=content>", StringComparison.Ordinal) + 19;
-
-			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
-
-			var info = new MessageInfo 
-			{ 
-				Body = message.Replace(@"<SPAN class=mention>", "").Replace("</SPAN>", ""), 
-				RepliesToMessageID = GetMessageReplyID(html, message), 
-				AuthorID = int.Parse(authorID),
-				MessageID = GetLastestMessageID(html)
-			};
-
-			if (info.RepliesToMessageID != -1 && GlobalInfo.PostedReports.ContainsKey(info.RepliesToMessageID))
-			{
-				info.Report = GlobalInfo.PostedReports[info.RepliesToMessageID].Report;
-				info.Post = GlobalInfo.PostedReports[info.RepliesToMessageID].Post;
-			}
-
-			return info;
 		}
 
 		public static string GetQuestionBody(string html)
@@ -277,6 +233,51 @@ namespace Phamhilator
 			var endIndex = html.IndexOf("<", newStartIndex, StringComparison.Ordinal);
 
 			return ParseRep(html.Substring(newStartIndex, endIndex - newStartIndex));
+		}
+
+
+		public static MessageInfo GetLastChatMessage(string html)
+		{
+			var startIndex = html.LastIndexOf("signature user-", StringComparison.Ordinal) + 15;
+
+			// Get user ID.
+
+			var authorID = html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.Ordinal) - 8) - startIndex);
+
+			// Get message.
+
+			startIndex = html.LastIndexOf("<DIV class=content>", StringComparison.Ordinal) + 19;
+
+			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
+
+			var info = new MessageInfo
+			{
+				Body = message.Replace(@"<SPAN class=mention>", "").Replace("</SPAN>", ""),
+				RepliesToMessageID = GetMessageReplyID(html, message),
+				AuthorID = int.Parse(authorID),
+				MessageID = GetLastestMessageID(html)
+			};
+
+			if (info.RepliesToMessageID != -1 && GlobalInfo.PostedReports.ContainsKey(info.RepliesToMessageID))
+			{
+				info.Report = GlobalInfo.PostedReports[info.RepliesToMessageID].Report;
+				info.Post = GlobalInfo.PostedReports[info.RepliesToMessageID].Post;
+			}
+
+			return info;
+		}
+
+		public static int GetMessageIDByPostURL(string html, string postURL)
+		{
+			var decoded = WebUtility.HtmlDecode(html);
+
+			var startIndex = decoded.IndexOf(postURL, StringComparison.Ordinal) - 350;
+
+			startIndex = decoded.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
+
+			var id = decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex);
+
+			return int.Parse(id);
 		}
 
 

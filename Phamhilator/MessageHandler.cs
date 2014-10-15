@@ -68,7 +68,7 @@ namespace Phamhilator
 			});
 		}
 
-		public static bool DeleteMessage(string reportTitle, int messageID, bool checkSuccess = true)
+		public static bool DeleteMessage(string postURL, int messageID, bool checkSuccess = true)
 		{
 			dynamic doc = null;
 			var html = "";
@@ -90,7 +90,7 @@ namespace Phamhilator
 
 			if (!checkSuccess) { return true; }
 
-			Thread.Sleep(3000); // Wait for message to be deleted.
+			Thread.Sleep(5000); // Wait for message to be deleted.
 
 			try
 			{
@@ -103,7 +103,7 @@ namespace Phamhilator
 
 			}
 			
-			return html.IndexOf(reportTitle, StringComparison.Ordinal) == -1;
+			return html.IndexOf(postURL, StringComparison.Ordinal) == -1;
 		}		
 		
 		
@@ -121,7 +121,7 @@ namespace Phamhilator
 
 			while (!GlobalInfo.Exit)
 			{
-				Thread.Sleep(1000);
+				Thread.Sleep(2000);
 
 				if (GlobalInfo.ChatRoomID == 0 || GlobalInfo.AnnouncerRoomID == 0 || MessageQueue.Count == 0) { continue; }
 
@@ -169,7 +169,7 @@ namespace Phamhilator
 
 				while (html.IndexOf(message.Post.Title, StringComparison.Ordinal) == -1)
 				{
-					if (i > 7) { return; }
+					if (i > 15) { return; }
 
 					Application.Current.Dispatcher.Invoke(() => doc = roomID == GlobalInfo.ChatRoomID ? GlobalInfo.ChatWb.Document : GlobalInfo.AnnounceWb.Document);
 
@@ -184,10 +184,10 @@ namespace Phamhilator
 
 					i++;
 
-					Thread.Sleep(2000);
+					Thread.Sleep(1000);
 				}
 
-				var id = HTMLScraper.GetMessageIDByReportTitle(html, message.Post.Title);
+				var id = HTMLScraper.GetMessageIDByPostURL(html, message.Post.URL);
 
 				if (!GlobalInfo.PostedReports.ContainsKey(id))
 				{

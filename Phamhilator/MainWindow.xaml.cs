@@ -554,7 +554,7 @@ namespace Phamhilator
 
 				case PostType.BadTagUsed:
 				{
-					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Bad Tag Used**" + message }, GlobalInfo.ChatRoomID);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Bad Tag Used**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, GlobalInfo.ChatRoomID);
 					PostPersistence.AddPost(p);
 
 					break;

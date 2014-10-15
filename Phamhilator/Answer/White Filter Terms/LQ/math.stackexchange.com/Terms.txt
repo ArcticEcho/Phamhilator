@@ -1,4 +1,8 @@
 
-14.3366](?i)\b(help|halp)\b
+12.7229](?i)\b(help|halp)\b
 
-14.40814]^(?i).{0,60}$
+16.78881]^(?i).{0,60}$
+
+20.95652](?i)problem(s)?
+12.5](?i)(need|some)( halp| help| answer)
+16.5](?i)i need.*help

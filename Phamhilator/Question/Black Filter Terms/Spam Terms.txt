@@ -92,3 +92,4 @@
 10]\bWoW\b
 
 10](?i)wh(ere|at) ((is|are) the|(can you|to) (get|find|buy|pay)) cheap
+10](?i)^cheap

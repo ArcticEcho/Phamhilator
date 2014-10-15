@@ -1,2 +1,4 @@
 
 5](?i)\bwork out\b
+5](?i)\byou know\b
+5](?i)\bheal(ing|thly)?\b
