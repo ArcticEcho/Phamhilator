@@ -1,2 +1,6 @@
+background http://meta.askubuntu.com/q/2496
+features http://meta.askubuntu.com/q/3217
+help http://meta.askubuntu.com/q/3217
 installation
+move http://meta.askubuntu.com/q/2578
 text
