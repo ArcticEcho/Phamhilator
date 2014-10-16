@@ -285,16 +285,16 @@ namespace Phamhilator
 				{
 					Thread.Sleep(333);
 
-					var message = GetLatestChatMessage();
+					var chatMessage = GetLatestChatMessage();
 
-					if (message.MessageID == lastChatMessage.MessageID || message.Body != ">>kill-it-with-no-regrets-for-sure")
+					if (chatMessage.MessageID == lastChatMessage.MessageID || chatMessage.Body != ">>kill-it-with-no-regrets-for-sure")
 					{
-						lastChatMessage = message;
+						lastChatMessage = chatMessage;
 
 						continue;
 					}
 
-					if (UserAccess.Owners.Contains(message.AuthorID))
+					if (UserAccess.Owners.Contains(chatMessage.AuthorID))
 					{
 						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Killing...`" }, GlobalInfo.ChatRoomID);
 
@@ -304,7 +304,7 @@ namespace Phamhilator
 					}
 					else
 					{
-						lastChatMessage = new MessageInfo { MessageID = message.MessageID };
+						lastChatMessage = new MessageInfo { MessageID = chatMessage.MessageID };
 
 						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Access denied.`" }, GlobalInfo.ChatRoomID);
 					}
@@ -324,15 +324,9 @@ namespace Phamhilator
 				{
 					Thread.Sleep(1000);
 
-					if (!die)
-					{
-						continue;
-					}
+					if (!die) { continue; }
 
-					if (!commandListenerThread.IsAlive && !postRefresherThread.IsAlive && !postCatcherThread.IsAlive && !die)
-					{
-						return;
-					}
+					if (!commandListenerThread.IsAlive && !postRefresherThread.IsAlive && !postCatcherThread.IsAlive && !die) { return; }
 
 					if (!postCatcherMessagePosted)
 					{			
@@ -384,6 +378,8 @@ namespace Phamhilator
 
 					if (!commandListenerThread.IsAlive && !postRefresherThread.IsAlive && !postCatcherThread.IsAlive && die)
 					{
+						while (GlobalInfo.MessagePoster.MessageQueue.Count != 0) { Thread.Sleep(500); }
+
 						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`All threads have died. Kill successful!`" }, GlobalInfo.ChatRoomID);
 
 						Dispatcher.Invoke(() => Application.Current.Shutdown());

@@ -10,19 +10,19 @@ namespace Phamhilator
 {
 	namespace AnswerFilters
 	{
-		namespace WhiteFilters
+		namespace White
 		{
-			public class Spam
+			public class BadUsername
 			{
 				public Dictionary<string, Dictionary<Regex, float>> Terms { get; private set; }
 
 
 
-				public Spam()
+				public BadUsername()
 				{
 					Terms = new Dictionary<string, Dictionary<Regex, float>>();
 
-					var sites = Directory.EnumerateDirectories(DirectoryTools.GetAWhiteSpamTermsDir()).ToArray();
+					var sites = Directory.EnumerateDirectories(DirectoryTools.GetAWhiteBadUsernameTermsDir()).ToArray();
 
 					for (var i = 0; i < sites.Length; i++)
 					{
@@ -31,7 +31,7 @@ namespace Phamhilator
 
 					foreach (var site in sites)
 					{
-						var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site, "Terms.txt"));
+						var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetAWhiteBadUsernameTermsDir(), site, "Terms.txt"));
 
 						Terms.Add(site, new Dictionary<Regex, float>());
 
@@ -60,13 +60,13 @@ namespace Phamhilator
 
 				public void AddTerm(Regex term, string site, float score = -1)
 				{
-					var file = Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWhiteBadUsernameTermsDir(), site, "Terms.txt");
 
 					if (!Terms.ContainsKey(site))
 					{
 						Terms.Add(site, new Dictionary<Regex, float>());
 
-						Directory.CreateDirectory(Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site));
+						Directory.CreateDirectory(Path.Combine(DirectoryTools.GetAWhiteBadUsernameTermsDir(), site));
 					}
 
 					if (score == -1)
@@ -95,7 +95,7 @@ namespace Phamhilator
 
 					Terms[site].Remove(term);
 
-					var file = Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWhiteBadUsernameTermsDir(), site, "Terms.txt");
 					var data = File.ReadAllLines(file).ToList();
 
 					for (var i = 0; i < data.Count; i++)
@@ -118,7 +118,7 @@ namespace Phamhilator
 						return;
 					}
 
-					var file = Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWhiteBadUsernameTermsDir(), site, "Terms.txt");
 
 					for (var i = 0; i < Terms[site].Count; i++)
 					{

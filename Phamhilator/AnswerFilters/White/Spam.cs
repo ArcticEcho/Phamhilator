@@ -8,21 +8,21 @@ using System.Text.RegularExpressions;
 
 namespace Phamhilator
 {
-	namespace QuestionFilters
+	namespace AnswerFilters
 	{
-		namespace WhiteFilters
+		namespace White
 		{
-			public class LQ
+			public class Spam
 			{
 				public Dictionary<string, Dictionary<Regex, float>> Terms { get; private set; }
 
 
 
-				public LQ()
+				public Spam()
 				{
 					Terms = new Dictionary<string, Dictionary<Regex, float>>();
 
-					var sites = Directory.EnumerateDirectories(DirectoryTools.GetQWhiteLQTermsDir()).ToArray();
+					var sites = Directory.EnumerateDirectories(DirectoryTools.GetAWhiteSpamTermsDir()).ToArray();
 
 					for (var i = 0; i < sites.Length; i++)
 					{
@@ -31,7 +31,7 @@ namespace Phamhilator
 
 					foreach (var site in sites)
 					{
-						var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetQWhiteLQTermsDir(), site, "Terms.txt"));
+						var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site, "Terms.txt"));
 
 						Terms.Add(site, new Dictionary<Regex, float>());
 
@@ -60,13 +60,13 @@ namespace Phamhilator
 
 				public void AddTerm(Regex term, string site, float score = -1)
 				{
-					var file = Path.Combine(DirectoryTools.GetQWhiteLQTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site, "Terms.txt");
 
 					if (!Terms.ContainsKey(site))
 					{
 						Terms.Add(site, new Dictionary<Regex, float>());
 
-						Directory.CreateDirectory(Path.Combine(DirectoryTools.GetQWhiteLQTermsDir(), site));
+						Directory.CreateDirectory(Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site));
 					}
 
 					if (score == -1)
@@ -77,7 +77,7 @@ namespace Phamhilator
 						}
 						else
 						{
-							score = Terms[site].Values.Average();
+							score = (int)Math.Round(Terms[site].Values.Average(), 0);
 						}
 					}
 
@@ -95,7 +95,7 @@ namespace Phamhilator
 
 					Terms[site].Remove(term);
 
-					var file = Path.Combine(DirectoryTools.GetQWhiteLQTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site, "Terms.txt");
 					var data = File.ReadAllLines(file).ToList();
 
 					for (var i = 0; i < data.Count; i++)
@@ -118,7 +118,7 @@ namespace Phamhilator
 						return;
 					}
 
-					var file = Path.Combine(DirectoryTools.GetQWhiteLQTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWhiteSpamTermsDir(), site, "Terms.txt");
 
 					for (var i = 0; i < Terms[site].Count; i++)
 					{

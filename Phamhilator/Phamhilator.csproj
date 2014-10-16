@@ -65,17 +65,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Analysers\QuestionBody.cs" />
     <Compile Include="Answer.cs" />
-    <Compile Include="AnswerAnalyser.cs" />
+    <Compile Include="Analysers\Answer.cs" />
     <Compile Include="AnswerAnalysis.cs" />
-    <Compile Include="AnswerFilters.BlackFilters.BadUsername.cs" />
-    <Compile Include="AnswerFilters.BlackFilters.LQ.cs" />
-    <Compile Include="AnswerFilters.BlackFilters.Offensive.cs" />
-    <Compile Include="AnswerFilters.BlackFilters.Spam.cs" />
-    <Compile Include="AnswerFilters.WhiteFilters.BadUsername.cs" />
-    <Compile Include="AnswerFilters.WhiteFilters.LQ.cs" />
-    <Compile Include="AnswerFilters.WhiteFilters.Offensive.cs" />
-    <Compile Include="AnswerFilters.WhiteFilters.Spam.cs" />
+    <Compile Include="AnswerFilters\Black\BadUsername.cs" />
+    <Compile Include="AnswerFilters\Black\LQ.cs" />
+    <Compile Include="AnswerFilters\Black\Offensive.cs" />
+    <Compile Include="AnswerFilters\Black\Spam.cs" />
+    <Compile Include="AnswerFilters\White\BadUsername.cs" />
+    <Compile Include="AnswerFilters\White\LQ.cs" />
+    <Compile Include="AnswerFilters\White\Offensive.cs" />
+    <Compile Include="AnswerFilters\White\Spam.cs" />
     <Compile Include="BadTagDefinitions.cs" />
     <Compile Include="BannedUsers.cs" />
     <Compile Include="CommandProcessor.cs" />
@@ -84,18 +85,24 @@
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="QAAnalysis.cs" />
-    <Compile Include="QuestionFilters.BlackFilters.BadUsername.cs" />
-    <Compile Include="QuestionFilters.BlackFilters.LQ.cs" />
-    <Compile Include="QuestionFilters.BlackFilters.Spam.cs" />
+    <Compile Include="QuestionFilters\Body\Black\LQ.cs" />
+    <Compile Include="QuestionFilters\Body\Black\Offensive.cs" />
+    <Compile Include="QuestionFilters\Body\Black\Spam.cs" />
+    <Compile Include="QuestionFilters\Body\White\LQ.cs" />
+    <Compile Include="QuestionFilters\Body\White\Offensive.cs" />
+    <Compile Include="QuestionFilters\Body\White\Spam.cs" />
+    <Compile Include="QuestionFilters\Title\Black\BadUsername.cs" />
+    <Compile Include="QuestionFilters\Title\Black\LQ.cs" />
+    <Compile Include="QuestionFilters\Title\Black\Spam.cs" />
     <Compile Include="HTMLScrapper.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="QuestionAnalysis.cs" />
-    <Compile Include="QuestionAnalyser.cs" />
-    <Compile Include="QuestionFilters.WhiteFilters.BadUsername.cs" />
-    <Compile Include="QuestionFilters.WhiteFilters.LQ.cs" />
-    <Compile Include="QuestionFilters.WhiteFilters.Offensive.cs" />
-    <Compile Include="QuestionFilters.WhiteFilters.Spam.cs" />
-    <Compile Include="QuestionFilters.BlackFilters.Offensive.cs" />
+    <Compile Include="Analysers\QuestionTitle.cs" />
+    <Compile Include="QuestionFilters\Title\White\BadUsername.cs" />
+    <Compile Include="QuestionFilters\Title\White\LQ.cs" />
+    <Compile Include="QuestionFilters\Title\White\Offensive.cs" />
+    <Compile Include="QuestionFilters\Title\White\Spam.cs" />
+    <Compile Include="QuestionFilters\Title\Black\Offensive.cs" />
     <Compile Include="MessageInfo.cs" />
     <Compile Include="PostAnalyser.cs" />
     <Compile Include="PostPersistence.cs" />
@@ -177,6 +184,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

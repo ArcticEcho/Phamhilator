@@ -93,3 +93,6 @@
 
 10](?i)wh(ere|at) ((is|are) the|(can you|to) (get|find|buy|pay)) cheap
 10](?i)^cheap
+10]WWW\.[^a-z]*\.[^a-z]{2,3}(\.[^a-z]{2,3})?
+10](?i)^what is( a)? (fast|cheap|reliable)
+10](?i)^very (good|cheap|fast)

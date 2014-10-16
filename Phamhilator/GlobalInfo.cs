@@ -11,26 +11,35 @@ namespace Phamhilator
 {
 	public static class GlobalInfo
 	{
-		public static readonly QuestionFilters.WhiteFilters.BadUsername QWhiteName = new QuestionFilters.WhiteFilters.BadUsername();
-		public static readonly QuestionFilters.WhiteFilters.Offensive QWhiteOff = new QuestionFilters.WhiteFilters.Offensive();
-		public static readonly QuestionFilters.WhiteFilters.Spam QWhiteSpam = new QuestionFilters.WhiteFilters.Spam();
-		public static readonly QuestionFilters.WhiteFilters.LQ QWhiteLQ = new QuestionFilters.WhiteFilters.LQ();
+		public static readonly QuestionFilters.Title.White.BadUsername QTWName = new QuestionFilters.Title.White.BadUsername();
+		public static readonly QuestionFilters.Title.White.Offensive QTWhOff = new QuestionFilters.Title.White.Offensive();
+		public static readonly QuestionFilters.Title.White.Spam QTWSpam = new QuestionFilters.Title.White.Spam();
+		public static readonly QuestionFilters.Title.White.LQ QTWLQ = new QuestionFilters.Title.White.LQ();
 
-		public static readonly QuestionFilters.BlackFilters.BadUsername QBlackName = new QuestionFilters.BlackFilters.BadUsername();
-		public static readonly QuestionFilters.BlackFilters.Offensive QBlackOff = new QuestionFilters.BlackFilters.Offensive();
-		public static readonly QuestionFilters.BlackFilters.Spam QBlackSpam = new QuestionFilters.BlackFilters.Spam();
-		public static readonly QuestionFilters.BlackFilters.LQ QBlackLQ = new QuestionFilters.BlackFilters.LQ();
+		public static readonly QuestionFilters.Title.Black.BadUsername QTBName = new QuestionFilters.Title.Black.BadUsername();
+		public static readonly QuestionFilters.Title.Black.Offensive QTBOff = new QuestionFilters.Title.Black.Offensive();
+		public static readonly QuestionFilters.Title.Black.Spam QTBSpam = new QuestionFilters.Title.Black.Spam();
+		public static readonly QuestionFilters.Title.Black.LQ QTBLQ = new QuestionFilters.Title.Black.LQ();
 
 
-		public static readonly AnswerFilters.BlackFilters.BadUsername ABlackName = new AnswerFilters.BlackFilters.BadUsername();
-		public static readonly AnswerFilters.BlackFilters.Offensive ABlackOff = new AnswerFilters.BlackFilters.Offensive();
-		public static readonly AnswerFilters.BlackFilters.Spam ABlackSpam = new AnswerFilters.BlackFilters.Spam();
-		public static readonly AnswerFilters.BlackFilters.LQ ABlackLQ = new AnswerFilters.BlackFilters.LQ();
+		public static readonly QuestionFilters.Body.White.Offensive QBWhOff = new QuestionFilters.Body.White.Offensive();
+		public static readonly QuestionFilters.Body.White.Spam QBWSpam = new QuestionFilters.Body.White.Spam();
+		public static readonly QuestionFilters.Body.White.LQ QBWLQ = new QuestionFilters.Body.White.LQ();
 
-		public static readonly AnswerFilters.WhiteFilters.BadUsername AWhiteName = new AnswerFilters.WhiteFilters.BadUsername();
-		public static readonly AnswerFilters.WhiteFilters.Offensive AWhiteOff = new AnswerFilters.WhiteFilters.Offensive();
-		public static readonly AnswerFilters.WhiteFilters.Spam AWhiteSpam = new AnswerFilters.WhiteFilters.Spam();
-		public static readonly AnswerFilters.WhiteFilters.LQ AWhiteLQ = new AnswerFilters.WhiteFilters.LQ();
+		public static readonly QuestionFilters.Body.Black.Offensive QBBOff = new QuestionFilters.Body.Black.Offensive();
+		public static readonly QuestionFilters.Body.Black.Spam QBBSpam = new QuestionFilters.Body.Black.Spam();
+		public static readonly QuestionFilters.Body.Black.LQ QBBLQ = new QuestionFilters.Body.Black.LQ();
+
+
+		public static readonly AnswerFilters.Black.BadUsername ABName = new AnswerFilters.Black.BadUsername();
+		public static readonly AnswerFilters.Black.Offensive ABOff = new AnswerFilters.Black.Offensive();
+		public static readonly AnswerFilters.Black.Spam ABSpam = new AnswerFilters.Black.Spam();
+		public static readonly AnswerFilters.Black.LQ ABLQ = new AnswerFilters.Black.LQ();
+
+		public static readonly AnswerFilters.White.BadUsername AWName = new AnswerFilters.White.BadUsername();
+		public static readonly AnswerFilters.White.Offensive AWOff = new AnswerFilters.White.Offensive();
+		public static readonly AnswerFilters.White.Spam AWSpam = new AnswerFilters.White.Spam();
+		public static readonly AnswerFilters.White.LQ AWLQ = new AnswerFilters.White.LQ();
 
 
 		public const string BotUsername = "pham"; // TODO: change this to the username of your account which the bot will be using.
@@ -74,10 +83,10 @@ namespace Phamhilator
 		{
 			get
 			{
-				return QBlackOff.Terms.Count + QBlackSpam.Terms.Count + QBlackLQ.Terms.Count + QBlackName.Terms.Count + 
-					   ABlackOff.Terms.Count + ABlackSpam.Terms.Count + ABlackLQ.Terms.Count + ABlackName.Terms.Count +
-					   QWhiteName.Terms.Values.Sum(x => x.Count) + QWhiteOff.Terms.Values.Sum(x => x.Count) + QWhiteSpam.Terms.Values.Sum(x => x.Count) + QWhiteLQ.Terms.Values.Sum(x => x.Count) +
-					   AWhiteName.Terms.Values.Sum(x => x.Count) + AWhiteOff.Terms.Values.Sum(x => x.Count) + AWhiteSpam.Terms.Values.Sum(x => x.Count) + AWhiteLQ.Terms.Values.Sum(x => x.Count) + 
+				return QTBOff.Terms.Count + QTBSpam.Terms.Count + QTBLQ.Terms.Count + QTBName.Terms.Count + 
+					   ABOff.Terms.Count + ABSpam.Terms.Count + ABLQ.Terms.Count + ABName.Terms.Count +
+					   QTWName.Terms.Values.Sum(x => x.Count) + QTWhOff.Terms.Values.Sum(x => x.Count) + QTWSpam.Terms.Values.Sum(x => x.Count) + QTWLQ.Terms.Values.Sum(x => x.Count) +
+					   AWName.Terms.Values.Sum(x => x.Count) + AWOff.Terms.Values.Sum(x => x.Count) + AWSpam.Terms.Values.Sum(x => x.Count) + AWLQ.Terms.Values.Sum(x => x.Count) + 
 					   BadTagDefinitions.BadTags.Count;
 			}
 		}

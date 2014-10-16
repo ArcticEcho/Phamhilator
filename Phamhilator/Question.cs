@@ -9,8 +9,8 @@ namespace Phamhilator
 	{
 		private bool extraDataPopulated;
 		private string body = "";
-		private int score = int.MaxValue;
-		private int authorRep = int.MaxValue;
+		private int score;
+		private int authorRep;
 		private readonly List<Answer> answers = new List<Answer>();
 
 		public List<string> Tags;

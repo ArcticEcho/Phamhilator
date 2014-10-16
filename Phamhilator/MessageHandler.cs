@@ -169,7 +169,12 @@ namespace Phamhilator
 
 				while (html.IndexOf(message.Post.Title, StringComparison.Ordinal) == -1)
 				{
-					if (i > 15) { return; }
+					if (i > 15)
+					{
+						PostChatMessage("`Failed to get message ID for report: " + message.Post.Title + ".`");
+
+						break;
+					}
 
 					Application.Current.Dispatcher.Invoke(() => doc = roomID == GlobalInfo.ChatRoomID ? GlobalInfo.ChatWb.Document : GlobalInfo.AnnounceWb.Document);
 
@@ -179,20 +184,23 @@ namespace Phamhilator
 					}
 					catch (Exception)
 					{
-						break;
+						
 					}
 
 					i++;
 
-					Thread.Sleep(1000);
+					Thread.Sleep(500);
 				}
 
-				var id = HTMLScraper.GetMessageIDByPostURL(html, message.Post.URL);
-
-				if (!GlobalInfo.PostedReports.ContainsKey(id))
+				if (i < 15)
 				{
-					GlobalInfo.PostedReports.Add(id, message);
-				}				
+					var id = HTMLScraper.GetMessageIDByPostURL(html, message.Post.URL);
+
+					if (!GlobalInfo.PostedReports.ContainsKey(id))
+					{
+						GlobalInfo.PostedReports.Add(id, message);
+					}	
+				}							
 			}
 				
 
@@ -213,7 +221,7 @@ namespace Phamhilator
 			{
 				GlobalInfo.ChatWb.InvokeScript("eval", new object[]
 				{
-					"$.post('/chats/" + GlobalInfo.ChatRoomID + "/messages/new', { text: '" + message+ "', fkey: fkey().fkey });"
+					"$.post('/chats/" + GlobalInfo.ChatRoomID + "/messages/new', { text: '" + message + "', fkey: fkey().fkey });"
 				});
 			}
 			catch (Exception)

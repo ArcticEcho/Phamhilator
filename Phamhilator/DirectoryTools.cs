@@ -8,20 +8,22 @@ namespace Phamhilator
 	public static class DirectoryTools
 	{
 		private static readonly string root = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName;
-		private static readonly string QBlackFilterTermsPath = Path.Combine(root, "Question", "Black Filter Terms");
-		private static readonly string QWhiteFilterTermsPath = Path.Combine(root, "Question", "White Filter Terms");
-		private static readonly string ABlackFilterTermsPath = Path.Combine(root, "Answer", "Black Filter Terms");
-		private static readonly string AWhiteFilterTermsPath = Path.Combine(root, "Answer", "White Filter Terms");
+		private static readonly string QTBFilterTermsPath = Path.Combine(root, "Question", "Title", "Black Filter Terms");
+		private static readonly string QTWFilterTermsPath = Path.Combine(root, "Question", "Title", "White Filter Terms");
+		private static readonly string QBBFilterTermsPath = Path.Combine(root, "Question", "Body", "Black Filter Terms");
+		private static readonly string QBWFilterTermsPath = Path.Combine(root, "Question", "Body", "White Filter Terms");
+		private static readonly string ABFilterTermsPath = Path.Combine(root, "Answer", "Black Filter Terms");
+		private static readonly string AWFilterTermsPath = Path.Combine(root, "Answer", "White Filter Terms");
 
 
 
-		public static string GetQBlackOffensiveTermsFile()
+		public static string GetQTBOffTermsFile()
 		{
-			var path = Path.Combine(QBlackFilterTermsPath, "Offensive Terms.txt");
+			var path = Path.Combine(QTBFilterTermsPath, "Offensive Terms.txt");
 
-			if (!Directory.Exists(QBlackFilterTermsPath))
+			if (!Directory.Exists(QTBFilterTermsPath))
 			{
-				Directory.CreateDirectory(QBlackFilterTermsPath);
+				Directory.CreateDirectory(QTBFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -32,13 +34,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetQBlackBadUsernameTermsFile()
+		public static string GetQTBNameTermsFile()
 		{
-			var path = Path.Combine(QBlackFilterTermsPath, "Bad Username Terms.txt");
+			var path = Path.Combine(QTBFilterTermsPath, "Bad Username Terms.txt");
 
-			if (!Directory.Exists(QBlackFilterTermsPath))
+			if (!Directory.Exists(QTBFilterTermsPath))
 			{
-				Directory.CreateDirectory(QBlackFilterTermsPath);
+				Directory.CreateDirectory(QTBFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -49,13 +51,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetQBlackLQTermsFile()
+		public static string GetQTBLQTermsFile()
 		{
-			var path = Path.Combine(QBlackFilterTermsPath, "LQ Terms.txt");
+			var path = Path.Combine(QTBFilterTermsPath, "LQ Terms.txt");
 
-			if (!Directory.Exists(QBlackFilterTermsPath))
+			if (!Directory.Exists(QTBFilterTermsPath))
 			{
-				Directory.CreateDirectory(QBlackFilterTermsPath);
+				Directory.CreateDirectory(QTBFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -66,13 +68,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetQBlackSpamTermsFile()
+		public static string GetQTBSpamTermsFile()
 		{
-			var path = Path.Combine(QBlackFilterTermsPath, "Spam Terms.txt");
+			var path = Path.Combine(QTBFilterTermsPath, "Spam Terms.txt");
 
-			if (!Directory.Exists(QBlackFilterTermsPath))
+			if (!Directory.Exists(QTBFilterTermsPath))
 			{
-				Directory.CreateDirectory(QBlackFilterTermsPath);
+				Directory.CreateDirectory(QTBFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -84,13 +86,13 @@ namespace Phamhilator
 		}
 
 
-		public static string GetQWhiteOffensiveTermsDir()
+		public static string GetQTWOffTermsDir()
 		{
-			var path = Path.Combine(QWhiteFilterTermsPath, "Offensive");
+			var path = Path.Combine(QTWFilterTermsPath, "Offensive");
 
-			if (!Directory.Exists(QWhiteFilterTermsPath))
+			if (!Directory.Exists(QTWFilterTermsPath))
 			{
-				Directory.CreateDirectory(QWhiteFilterTermsPath);
+				Directory.CreateDirectory(QTWFilterTermsPath);
 			}
 
 			if (!Directory.Exists(path))
@@ -101,13 +103,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetQWhiteBadUsernameTermsDir()
+		public static string GetQTWNameTermsDir()
 		{
-			var path = Path.Combine(QWhiteFilterTermsPath, "Bad Username");
+			var path = Path.Combine(QTWFilterTermsPath, "Bad Username");
 
-			if (!Directory.Exists(QWhiteFilterTermsPath))
+			if (!Directory.Exists(QTWFilterTermsPath))
 			{
-				Directory.CreateDirectory(QWhiteFilterTermsPath);
+				Directory.CreateDirectory(QTWFilterTermsPath);
 			}
 
 			if (!Directory.Exists(path))
@@ -118,13 +120,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetQWhiteLQTermsDir()
+		public static string GetQTWLQTermsDir()
 		{
-			var path = Path.Combine(QWhiteFilterTermsPath, "LQ");
+			var path = Path.Combine(QTWFilterTermsPath, "LQ");
 
-			if (!Directory.Exists(QWhiteFilterTermsPath))
+			if (!Directory.Exists(QTWFilterTermsPath))
 			{
-				Directory.CreateDirectory(QWhiteFilterTermsPath);
+				Directory.CreateDirectory(QTWFilterTermsPath);
 			}
 
 			if (!Directory.Exists(path))
@@ -135,13 +137,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetQWhiteSpamTermsDir()
+		public static string GetQTWSpamTermsDir()
 		{
-			var path = Path.Combine(QWhiteFilterTermsPath, "Spam");
+			var path = Path.Combine(QTWFilterTermsPath, "Spam");
 
-			if (!Directory.Exists(QWhiteFilterTermsPath))
+			if (!Directory.Exists(QTWFilterTermsPath))
 			{
-				Directory.CreateDirectory(QWhiteFilterTermsPath);
+				Directory.CreateDirectory(QTWFilterTermsPath);
 			}
 
 			if (!Directory.Exists(path))
@@ -153,13 +155,13 @@ namespace Phamhilator
 		}
 
 
-		public static string GetABlackOffensiveTermsFile()
+		public static string GetQBBOffTermsFile()
 		{
-			var path = Path.Combine(ABlackFilterTermsPath, "Offensive Terms.txt");
+			var path = Path.Combine(QBBFilterTermsPath, "Offensive Terms.txt");
 
-			if (!Directory.Exists(ABlackFilterTermsPath))
+			if (!Directory.Exists(QBBFilterTermsPath))
 			{
-				Directory.CreateDirectory(ABlackFilterTermsPath);
+				Directory.CreateDirectory(QBBFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -170,13 +172,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetABlackBadUsernameTermsFile()
+		public static string GetQBBNameTermsFile()
 		{
-			var path = Path.Combine(ABlackFilterTermsPath, "Bad Username Terms.txt");
+			var path = Path.Combine(QBBFilterTermsPath, "Bad Username Terms.txt");
 
-			if (!Directory.Exists(ABlackFilterTermsPath))
+			if (!Directory.Exists(QBBFilterTermsPath))
 			{
-				Directory.CreateDirectory(ABlackFilterTermsPath);
+				Directory.CreateDirectory(QBBFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -187,13 +189,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetABlackLQTermsFile()
+		public static string GetQBBLQTermsFile()
 		{
-			var path = Path.Combine(ABlackFilterTermsPath, "LQ Terms.txt");
+			var path = Path.Combine(QBBFilterTermsPath, "LQ Terms.txt");
 
-			if (!Directory.Exists(ABlackFilterTermsPath))
+			if (!Directory.Exists(QBBFilterTermsPath))
 			{
-				Directory.CreateDirectory(ABlackFilterTermsPath);
+				Directory.CreateDirectory(QBBFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -204,13 +206,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetABlackSpamTermsFile()
+		public static string GetQBBSpamTermsFile()
 		{
-			var path = Path.Combine(ABlackFilterTermsPath, "Spam Terms.txt");
+			var path = Path.Combine(QBBFilterTermsPath, "Spam Terms.txt");
 
-			if (!Directory.Exists(ABlackFilterTermsPath))
+			if (!Directory.Exists(QBBFilterTermsPath))
 			{
-				Directory.CreateDirectory(ABlackFilterTermsPath);
+				Directory.CreateDirectory(QBBFilterTermsPath);
 			}
 
 			if (!File.Exists(path))
@@ -222,13 +224,13 @@ namespace Phamhilator
 		}
 
 
-		public static string GetAWhiteOffensiveTermsDir()
+		public static string GetQBWOffTermsDir()
 		{
-			var path = Path.Combine(AWhiteFilterTermsPath, "Offensive");
+			var path = Path.Combine(QBWFilterTermsPath, "Offensive");
 
-			if (!Directory.Exists(AWhiteFilterTermsPath))
+			if (!Directory.Exists(QBWFilterTermsPath))
 			{
-				Directory.CreateDirectory(AWhiteFilterTermsPath);
+				Directory.CreateDirectory(QBWFilterTermsPath);
 			}
 
 			if (!Directory.Exists(path))
@@ -239,13 +241,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetAWhiteBadUsernameTermsDir()
+		public static string GetQBWNameTermsDir()
 		{
-			var path = Path.Combine(AWhiteFilterTermsPath, "Bad Username");
+			var path = Path.Combine(QBWFilterTermsPath, "Bad Username");
 
-			if (!Directory.Exists(AWhiteFilterTermsPath))
+			if (!Directory.Exists(QBWFilterTermsPath))
 			{
-				Directory.CreateDirectory(AWhiteFilterTermsPath);
+				Directory.CreateDirectory(QBWFilterTermsPath);
 			}
 
 			if (!Directory.Exists(path))
@@ -256,13 +258,13 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetAWhiteLQTermsDir()
+		public static string GetQBWLQTermsDir()
 		{
-			var path = Path.Combine(AWhiteFilterTermsPath, "LQ");
+			var path = Path.Combine(QBWFilterTermsPath, "LQ");
 
-			if (!Directory.Exists(AWhiteFilterTermsPath))
+			if (!Directory.Exists(QBWFilterTermsPath))
 			{
-				Directory.CreateDirectory(AWhiteFilterTermsPath);
+				Directory.CreateDirectory(QBWFilterTermsPath);
 			}
 
 			if (!Directory.Exists(path))
@@ -273,13 +275,151 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetAWhiteSpamTermsDir()
+		public static string GetQBWSpamTermsDir()
 		{
-			var path = Path.Combine(AWhiteFilterTermsPath, "Spam");
+			var path = Path.Combine(QBWFilterTermsPath, "Spam");
 
-			if (!Directory.Exists(AWhiteFilterTermsPath))
+			if (!Directory.Exists(QBWFilterTermsPath))
 			{
-				Directory.CreateDirectory(AWhiteFilterTermsPath);
+				Directory.CreateDirectory(QBWFilterTermsPath);
+			}
+
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+
+			return path;
+		}
+
+
+		public static string GetABOffTermsFile()
+		{
+			var path = Path.Combine(ABFilterTermsPath, "Offensive Terms.txt");
+
+			if (!Directory.Exists(ABFilterTermsPath))
+			{
+				Directory.CreateDirectory(ABFilterTermsPath);
+			}
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
+		}
+
+		public static string GetABNameTermsFile()
+		{
+			var path = Path.Combine(ABFilterTermsPath, "Bad Username Terms.txt");
+
+			if (!Directory.Exists(ABFilterTermsPath))
+			{
+				Directory.CreateDirectory(ABFilterTermsPath);
+			}
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
+		}
+
+		public static string GetABLQTermsFile()
+		{
+			var path = Path.Combine(ABFilterTermsPath, "LQ Terms.txt");
+
+			if (!Directory.Exists(ABFilterTermsPath))
+			{
+				Directory.CreateDirectory(ABFilterTermsPath);
+			}
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
+		}
+
+		public static string GetABSpamTermsFile()
+		{
+			var path = Path.Combine(ABFilterTermsPath, "Spam Terms.txt");
+
+			if (!Directory.Exists(ABFilterTermsPath))
+			{
+				Directory.CreateDirectory(ABFilterTermsPath);
+			}
+
+			if (!File.Exists(path))
+			{
+				File.Create(path).Dispose();
+			}
+
+			return path;
+		}
+
+
+		public static string GetAWOffTermsDir()
+		{
+			var path = Path.Combine(AWFilterTermsPath, "Offensive");
+
+			if (!Directory.Exists(AWFilterTermsPath))
+			{
+				Directory.CreateDirectory(AWFilterTermsPath);
+			}
+
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+
+			return path;
+		}
+
+		public static string GetANameTermsDir()
+		{
+			var path = Path.Combine(AWFilterTermsPath, "Bad Username");
+
+			if (!Directory.Exists(AWFilterTermsPath))
+			{
+				Directory.CreateDirectory(AWFilterTermsPath);
+			}
+
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+
+			return path;
+		}
+
+		public static string GetAWLQTermsDir()
+		{
+			var path = Path.Combine(AWFilterTermsPath, "LQ");
+
+			if (!Directory.Exists(AWFilterTermsPath))
+			{
+				Directory.CreateDirectory(AWFilterTermsPath);
+			}
+
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+
+			return path;
+		}
+
+		public static string GetAWSpamTermsDir()
+		{
+			var path = Path.Combine(AWFilterTermsPath, "Spam");
+
+			if (!Directory.Exists(AWFilterTermsPath))
+			{
+				Directory.CreateDirectory(AWFilterTermsPath);
 			}
 
 			if (!Directory.Exists(path))

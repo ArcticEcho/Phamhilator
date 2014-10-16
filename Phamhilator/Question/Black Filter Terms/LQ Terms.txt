@@ -41,3 +41,5 @@
 13.66111](?i)^(?=.*?which)(?=.*?(?:choose|best|quality))
 13.66111](?i)i need.*help
 13.66111]^\S*$
+
+13.66111](?i)(advice|opinion|thought)s on

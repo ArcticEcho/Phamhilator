@@ -1,5 +1,8 @@
 
 5]^((?!\\n\\n|\<code\>).)*https?://\w*$
 
-9][-\w]{3}@\w+\.
+10][-\w]{3}@\w+\.
 5]^https?://\w*((?!\\n\\n|\<code\>).)*$
+
+6.333333](?i)join (today|now|fast|free|exclusive|us)(\s|.)*https?://
+6.333333]WWW\.[^a-z]*\.[^a-z]{2,3}(\.[^a-z]{2,3})?

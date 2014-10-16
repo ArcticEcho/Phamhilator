@@ -5,14 +5,13 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 
-
 namespace Phamhilator
 {
-	namespace QuestionFilters
+	namespace AnswerFilters
 	{
-		namespace BlackFilters
+		namespace Black
 		{
-			public class Offensive
+			public class BadUsername
 			{
 				public Dictionary<Regex, float> Terms { get; private set; }
 
@@ -20,6 +19,11 @@ namespace Phamhilator
 				{
 					get
 					{
+						if (Terms.Count == 0)
+						{
+							return 0;
+						}
+
 						return Terms.Values.Average();
 					}
 				}
@@ -28,32 +32,31 @@ namespace Phamhilator
 				{
 					get
 					{
+						if (Terms.Count == 0)
+						{
+							return 0;
+						}
+
 						return Terms.Values.Max();
 					}
 				}
 
 
 
-				public Offensive()
+				public BadUsername()
 				{
-					var data = File.ReadAllLines(DirectoryTools.GetQBlackOffensiveTermsFile());
+					var data = File.ReadAllLines(DirectoryTools.GetABlackBadUsernameTermsFile());
 					Terms = new Dictionary<Regex, float>();
 
 					foreach (var termAndScore in data)
 					{
-						if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1)
-						{
-							continue;
-						}
+						if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
 						var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
 						var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 						var term = new Regex(termString);
 
-						if (Terms.ContainsTerm(term))
-						{
-							continue;
-						}
+						if (Terms.ContainsTerm(term)) { continue; }
 
 						Terms.Add(term, float.Parse(termScore));
 					}
@@ -63,26 +66,20 @@ namespace Phamhilator
 
 				public void AddTerm(Regex term)
 				{
-					if (Terms.ContainsTerm(term))
-					{
-						return;
-					}
+					if (Terms.ContainsTerm(term)) { return; }
 
 					Terms.Add(term, AverageScore);
 
-					File.AppendAllText(DirectoryTools.GetQBlackOffensiveTermsFile(), "\n" + AverageScore + "]" + term);
+					File.AppendAllText(DirectoryTools.GetABlackBadUsernameTermsFile(), "\n" + AverageScore + "]" + term);
 				}
 
 				public void RemoveTerm(Regex term)
 				{
-					if (!Terms.ContainsTerm(term))
-					{
-						return;
-					}
+					if (!Terms.ContainsTerm(term)) { return; }
 
 					Terms.Remove(term);
 
-					var data = File.ReadAllLines(DirectoryTools.GetQBlackOffensiveTermsFile()).ToList();
+					var data = File.ReadAllLines(DirectoryTools.GetABlackBadUsernameTermsFile()).ToList();
 
 					for (var i = 0; i < data.Count; i++)
 					{
@@ -94,7 +91,7 @@ namespace Phamhilator
 						}
 					}
 
-					File.WriteAllLines(DirectoryTools.GetQBlackOffensiveTermsFile(), data);
+					File.WriteAllLines(DirectoryTools.GetABlackBadUsernameTermsFile(), data);
 				}
 
 				public void SetScore(Regex term, float newScore)
@@ -107,7 +104,7 @@ namespace Phamhilator
 						{
 							Terms[key] = newScore;
 
-							var data = File.ReadAllLines(DirectoryTools.GetQBlackOffensiveTermsFile());
+							var data = File.ReadAllLines(DirectoryTools.GetABlackBadUsernameTermsFile());
 
 							for (var ii = 0; ii < data.Length; ii++)
 							{
@@ -123,6 +120,10 @@ namespace Phamhilator
 									}
 								}
 							}
+
+							File.WriteAllLines(DirectoryTools.GetABlackBadUsernameTermsFile(), data);
+
+							return;
 						}
 					}
 				}
@@ -144,4 +145,5 @@ namespace Phamhilator
 			}
 		}
 	}
+
 }

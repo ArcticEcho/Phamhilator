@@ -1,4 +1,4 @@
 
-6.537127](?i)\b(help|halp)\b
+6.93932](?i)\b(help|halp)\b
 
 5](?i)question

@@ -10,7 +10,7 @@ namespace Phamhilator
 {
 	namespace AnswerFilters
 	{
-		namespace BlackFilters
+		namespace Black
 		{
 			public class Spam
 			{
