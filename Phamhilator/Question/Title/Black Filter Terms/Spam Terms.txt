@@ -85,7 +85,6 @@
 10](?i)^can you recommend
 10](?i)improve your
 10](?i)slim
-10](?i)wh(at|o|ere) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand)
 
 10](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))
 10](?i)^no hassle
@@ -96,3 +95,5 @@
 10]WWW\.[^a-z]*\.[^a-z]{2,3}(\.[^a-z]{2,3})?
 10](?i)^what is( a)? (fast|cheap|reliable)
 10](?i)^very (good|cheap|fast)
+
+10](?i)wh(at|o|ere|ich) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand|manufacturer)

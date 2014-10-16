@@ -6,3 +6,5 @@
 
 6.333333](?i)join (today|now|fast|free|exclusive|us)(\s|.)*https?://
 6.333333]WWW\.[^a-z]*\.[^a-z]{2,3}(\.[^a-z]{2,3})?
+
+6.733333]filerepairforum.com

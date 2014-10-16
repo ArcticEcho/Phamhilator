@@ -416,9 +416,9 @@ namespace Phamhilator
 					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-					if (GlobalInfo.QTWhOff.Terms.ContainsKey(site) && GlobalInfo.QTWhOff.Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+					if (GlobalInfo.QTWOff.Terms.ContainsKey(site) && GlobalInfo.QTWOff.Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
 
-					GlobalInfo.QTWhOff.AddTerm(term, site);
+					GlobalInfo.QTWOff.AddTerm(term, site);
 				}
 
 				if (addCommand.StartsWith("spam"))
@@ -487,9 +487,9 @@ namespace Phamhilator
 					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-					if (!GlobalInfo.QTWhOff.Terms.ContainsKey(site) && !GlobalInfo.QTWhOff.Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+					if (!GlobalInfo.QTWOff.Terms.ContainsKey(site) && !GlobalInfo.QTWOff.Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
 
-					GlobalInfo.QTWhOff.RemoveTerm(term, site);
+					GlobalInfo.QTWOff.RemoveTerm(term, site);
 				}
 
 				if (removeCommand.StartsWith("spam"))
@@ -642,9 +642,9 @@ namespace Phamhilator
 					term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 					site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-					if (GlobalInfo.QBWhOff.Terms.ContainsKey(site) && GlobalInfo.QBWhOff.Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+					if (GlobalInfo.QBWOff.Terms.ContainsKey(site) && GlobalInfo.QBWOff.Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
 
-					GlobalInfo.QBWhOff.AddTerm(term, site);
+					GlobalInfo.QBWOff.AddTerm(term, site);
 				}
 
 				if (addCommand.StartsWith("spam"))
@@ -699,9 +699,9 @@ namespace Phamhilator
 					term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 					site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-					if (!GlobalInfo.QBWhOff.Terms.ContainsKey(site) && !GlobalInfo.QBWhOff.Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+					if (!GlobalInfo.QBWOff.Terms.ContainsKey(site) && !GlobalInfo.QBWOff.Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
 
-					GlobalInfo.QBWhOff.RemoveTerm(term, site);
+					GlobalInfo.QBWOff.RemoveTerm(term, site);
 				}
 
 				if (removeCommand.StartsWith("spam"))
@@ -1105,11 +1105,24 @@ namespace Phamhilator
 						{
 							GlobalInfo.QTWLQ.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
 						}
+
+						if (!GlobalInfo.QBWLQ.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.QBWLQ.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QBWLQ.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
+						}
 					}
 
 					foreach (var term in message.Report.WhiteTermsFound)
 					{
-						GlobalInfo.QTWLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						if (GlobalInfo.QTWLQ.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QTWLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						}
+
+						if (GlobalInfo.QBWLQ.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QBWLQ.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						}
 					}
 
 					return MessageHandler.DeleteMessage(message.Post.URL, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
@@ -1119,15 +1132,28 @@ namespace Phamhilator
 				{
 					foreach (var term in message.Report.BlackTermsFound)
 					{
-						if (!GlobalInfo.QTWhOff.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.QTWhOff.Terms[message.Post.Site].ContainsTerm(term.Key))
+						if (!GlobalInfo.QTWOff.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.QTWOff.Terms[message.Post.Site].ContainsTerm(term.Key))
 						{
-							GlobalInfo.QTWhOff.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
+							GlobalInfo.QTWOff.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
+						}
+
+						if (!GlobalInfo.QBWOff.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.QBWOff.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QBWOff.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
 						}
 					}
 
 					foreach (var term in message.Report.WhiteTermsFound)
 					{
-						GlobalInfo.QTWhOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						if (GlobalInfo.QTWOff.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QTWOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						}
+
+						if (GlobalInfo.QBWOff.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QBWOff.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						}
 					}
 
 					return MessageHandler.DeleteMessage(message.Post.URL, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
@@ -1141,11 +1167,24 @@ namespace Phamhilator
 						{
 							GlobalInfo.QTWSpam.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
 						}
+
+						if (!GlobalInfo.QBWSpam.Terms.ContainsKey(message.Post.Site) || !GlobalInfo.QBWSpam.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QBWSpam.AddTerm(term.Key, message.Post.Site, message.Report.BlackTermsFound.Values.Max() / 2);
+						}
 					}
 
 					foreach (var term in message.Report.WhiteTermsFound)
 					{
-						GlobalInfo.QTWSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						if (GlobalInfo.QTWSpam.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QTWSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						}
+
+						if (GlobalInfo.QBWSpam.Terms[message.Post.Site].ContainsTerm(term.Key))
+						{
+							GlobalInfo.QBWSpam.SetScore(term.Key, message.Post.Site, term.Value + 1);
+						}
 					}
 
 					return MessageHandler.DeleteMessage(message.Post.URL, message.RepliesToMessageID) ? "" : ":" + message.MessageID + " `FP acknowledged.`";
@@ -1268,7 +1307,9 @@ namespace Phamhilator
 				return "";
 			}
 			
-			return message.IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
+			var returnMessage = message.IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
+
+			return commandLower == "tpa" ? "" : returnMessage;
 		}
 
 		private static string TruePositiveQuestion()
@@ -1279,24 +1320,47 @@ namespace Phamhilator
 				{
 					foreach (var blackTerm in message.Report.BlackTermsFound)
 					{
-						GlobalInfo.QTBLQ.SetScore(blackTerm.Key, blackTerm.Value + 1);
-
-						foreach (var site in GlobalInfo.QTWLQ.Terms)
+						if (GlobalInfo.QTBLQ.Terms.ContainsTerm(blackTerm.Key))
 						{
-							for (var i = 0; i < site.Value.Count; i++)
+							GlobalInfo.QTBLQ.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+							foreach (var site in GlobalInfo.QTWLQ.Terms)
 							{
-								var whiteTerm = site.Value.ElementAt(i);
-
-								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								for (var i = 0; i < site.Value.Count; i++)
 								{
-									var oldWhiteScore = GlobalInfo.QTWLQ.GetScore(whiteTerm.Key, site.Key);
-									var x = oldWhiteScore / blackTerm.Value;
+									var whiteTerm = site.Value.ElementAt(i);
 
-									GlobalInfo.QTWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+									{
+										var oldWhiteScore = GlobalInfo.QTWLQ.GetScore(whiteTerm.Key, site.Key);
+										var x = oldWhiteScore / blackTerm.Value;
+
+										GlobalInfo.QTWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									}
 								}
 							}
 						}
-					}		
+						else
+						{
+							GlobalInfo.QBBLQ.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+							foreach (var site in GlobalInfo.QBWLQ.Terms)
+							{
+								for (var i = 0; i < site.Value.Count; i++)
+								{
+									var whiteTerm = site.Value.ElementAt(i);
+
+									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+									{
+										var oldWhiteScore = GlobalInfo.QBWLQ.GetScore(whiteTerm.Key, site.Key);
+										var x = oldWhiteScore / blackTerm.Value;
+
+										GlobalInfo.QBWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									}
+								}
+							}
+						}
+					}
 
 					return ":" + message.MessageID + " `TP acknowledged.`";
 				}
@@ -1305,20 +1369,43 @@ namespace Phamhilator
 				{
 					foreach (var blackTerm in message.Report.BlackTermsFound)
 					{
-						GlobalInfo.QTBOff.SetScore(blackTerm.Key, blackTerm.Value + 1);
-
-						foreach (var site in GlobalInfo.QTWhOff.Terms)
+						if (GlobalInfo.QTBOff.Terms.ContainsTerm(blackTerm.Key))
 						{
-							for (var i = 0; i < site.Value.Count; i++)
+							GlobalInfo.QTBOff.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+							foreach (var site in GlobalInfo.QTWOff.Terms)
 							{
-								var whiteTerm = site.Value.ElementAt(i);
-
-								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								for (var i = 0; i < site.Value.Count; i++)
 								{
-									var oldWhiteScore = GlobalInfo.QTWhOff.GetScore(whiteTerm.Key, site.Key);
-									var x = oldWhiteScore / blackTerm.Value;
+									var whiteTerm = site.Value.ElementAt(i);
 
-									GlobalInfo.QTWhOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+									{
+										var oldWhiteScore = GlobalInfo.QTWOff.GetScore(whiteTerm.Key, site.Key);
+										var x = oldWhiteScore / blackTerm.Value;
+
+										GlobalInfo.QTWOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									}
+								}
+							}
+						}
+						else
+						{
+							GlobalInfo.QBBOff.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+							foreach (var site in GlobalInfo.QBWOff.Terms)
+							{
+								for (var i = 0; i < site.Value.Count; i++)
+								{
+									var whiteTerm = site.Value.ElementAt(i);
+
+									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+									{
+										var oldWhiteScore = GlobalInfo.QBWOff.GetScore(whiteTerm.Key, site.Key);
+										var x = oldWhiteScore / blackTerm.Value;
+
+										GlobalInfo.QBWOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									}
 								}
 							}
 						}
@@ -1331,20 +1418,43 @@ namespace Phamhilator
 				{
 					foreach (var blackTerm in message.Report.BlackTermsFound)
 					{
-						GlobalInfo.QTBSpam.SetScore(blackTerm.Key, blackTerm.Value + 1);
-
-						foreach (var site in GlobalInfo.QTWSpam.Terms)
+						if (GlobalInfo.QTBSpam.Terms.ContainsTerm(blackTerm.Key))
 						{
-							for (var i = 0; i < site.Value.Count; i++)
+							GlobalInfo.QTBSpam.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+							foreach (var site in GlobalInfo.QTWSpam.Terms)
 							{
-								var whiteTerm = site.Value.ElementAt(i);
-
-								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+								for (var i = 0; i < site.Value.Count; i++)
 								{
-									var oldWhiteScore = GlobalInfo.QTWSpam.GetScore(whiteTerm.Key, site.Key);
-									var x = oldWhiteScore / blackTerm.Value;
+									var whiteTerm = site.Value.ElementAt(i);
 
-									GlobalInfo.QTWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+									{
+										var oldWhiteScore = GlobalInfo.QTWSpam.GetScore(whiteTerm.Key, site.Key);
+										var x = oldWhiteScore / blackTerm.Value;
+
+										GlobalInfo.QTWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									}
+								}
+							}
+						}
+						else
+						{
+							GlobalInfo.QBBSpam.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+							foreach (var site in GlobalInfo.QBWSpam.Terms)
+							{
+								for (var i = 0; i < site.Value.Count; i++)
+								{
+									var whiteTerm = site.Value.ElementAt(i);
+
+									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
+									{
+										var oldWhiteScore = GlobalInfo.QBWSpam.GetScore(whiteTerm.Key, site.Key);
+										var x = oldWhiteScore / blackTerm.Value;
+
+										GlobalInfo.QBWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
+									}
 								}
 							}
 						}

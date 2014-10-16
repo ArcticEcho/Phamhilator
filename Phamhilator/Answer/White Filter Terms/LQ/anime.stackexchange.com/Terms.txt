@@ -1,4 +1,4 @@
 
 16.5](?i)(need|some)( halp| help| answer)
-22.2207](?i)\b(help|halp)\b
+22.89405](?i)\b(help|halp)\b
 19.24479](?i:need help|help me)

@@ -12,7 +12,7 @@ namespace Phamhilator
 	public static class GlobalInfo
 	{
 		public static readonly QuestionFilters.Title.White.BadUsername QTWName = new QuestionFilters.Title.White.BadUsername();
-		public static readonly QuestionFilters.Title.White.Offensive QTWhOff = new QuestionFilters.Title.White.Offensive();
+		public static readonly QuestionFilters.Title.White.Offensive QTWOff = new QuestionFilters.Title.White.Offensive();
 		public static readonly QuestionFilters.Title.White.Spam QTWSpam = new QuestionFilters.Title.White.Spam();
 		public static readonly QuestionFilters.Title.White.LQ QTWLQ = new QuestionFilters.Title.White.LQ();
 
@@ -22,7 +22,7 @@ namespace Phamhilator
 		public static readonly QuestionFilters.Title.Black.LQ QTBLQ = new QuestionFilters.Title.Black.LQ();
 
 
-		public static readonly QuestionFilters.Body.White.Offensive QBWhOff = new QuestionFilters.Body.White.Offensive();
+		public static readonly QuestionFilters.Body.White.Offensive QBWOff = new QuestionFilters.Body.White.Offensive();
 		public static readonly QuestionFilters.Body.White.Spam QBWSpam = new QuestionFilters.Body.White.Spam();
 		public static readonly QuestionFilters.Body.White.LQ QBWLQ = new QuestionFilters.Body.White.LQ();
 
@@ -86,8 +86,8 @@ namespace Phamhilator
 				return QTBOff.Terms.Count + QTBSpam.Terms.Count + QTBLQ.Terms.Count + QTBName.Terms.Count +
 					   QBBOff.Terms.Count + QBBSpam.Terms.Count + QBBLQ.Terms.Count +
 					   ABOff.Terms.Count + ABSpam.Terms.Count + ABLQ.Terms.Count + ABName.Terms.Count +
-					   QTWName.Terms.Values.Sum(x => x.Count) + QTWhOff.Terms.Values.Sum(x => x.Count) + QTWSpam.Terms.Values.Sum(x => x.Count) + QTWLQ.Terms.Values.Sum(x => x.Count) +
-					   QBWhOff.Terms.Values.Sum(x => x.Count) + QBWSpam.Terms.Values.Sum(x => x.Count) + QBWLQ.Terms.Values.Sum(x => x.Count) +
+					   QTWName.Terms.Values.Sum(x => x.Count) + QTWOff.Terms.Values.Sum(x => x.Count) + QTWSpam.Terms.Values.Sum(x => x.Count) + QTWLQ.Terms.Values.Sum(x => x.Count) +
+					   QBWOff.Terms.Values.Sum(x => x.Count) + QBWSpam.Terms.Values.Sum(x => x.Count) + QBWLQ.Terms.Values.Sum(x => x.Count) +
 					   AWName.Terms.Values.Sum(x => x.Count) + AWOff.Terms.Values.Sum(x => x.Count) + AWSpam.Terms.Values.Sum(x => x.Count) + AWLQ.Terms.Values.Sum(x => x.Count) + 
 					   BadTagDefinitions.BadTags.Count;
 			}

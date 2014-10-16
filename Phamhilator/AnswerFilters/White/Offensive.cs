@@ -33,19 +33,13 @@ namespace Phamhilator.AnswerFilters.White
 
 				foreach (var termAndScore in data)
 				{
-					if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1)
-					{
-						continue;
-					}
+					if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
 					var termScore = float.Parse(termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal)));
 					var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 					var term = new Regex(termString);
 
-					if (Terms[site].ContainsTerm(term))
-					{
-						continue;
-					}
+					if (Terms[site].ContainsTerm(term)) { continue; }
 
 					Terms[site].Add(term, termScore);
 				}
@@ -67,14 +61,7 @@ namespace Phamhilator.AnswerFilters.White
 
 			if (score == -1)
 			{
-				if (Terms[site].Count == 0)
-				{
-					score = 10;
-				}
-				else
-				{
-					score = (int)Math.Round(Terms[site].Values.Average(), 0);
-				}
+				score = Terms[site].Count == 0 ? 10 : Terms[site].Values.Average();
 			}
 
 			Terms[site].Add(term, score);
@@ -84,10 +71,7 @@ namespace Phamhilator.AnswerFilters.White
 
 		public void RemoveTerm(Regex term, string site)
 		{
-			if (!Terms.ContainsKey(site) || !Terms[site].ContainsTerm(term))
-			{
-				return;
-			}
+			if (!Terms.ContainsKey(site) || !Terms[site].ContainsTerm(term)) { return; }
 
 			Terms[site].Remove(term);
 
@@ -109,10 +93,7 @@ namespace Phamhilator.AnswerFilters.White
 
 		public void SetScore(Regex term, string site, float newScore)
 		{
-			if (!Terms.ContainsKey(site))
-			{
-				return;
-			}
+			if (!Terms.ContainsKey(site)) { return; }
 
 			var file = Path.Combine(DirectoryTools.GetAWOffTermsDir(), site, "Terms.txt");
 
@@ -152,10 +133,7 @@ namespace Phamhilator.AnswerFilters.White
 
 		public float GetScore(Regex term, string site)
 		{
-			if (!Terms.ContainsKey(site))
-			{
-				return -1;
-			}
+			if (!Terms.ContainsKey(site)) { return -1; }
 
 			for (var i = 0; i < Terms[site].Count; i++)
 			{

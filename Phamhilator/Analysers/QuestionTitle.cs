@@ -118,9 +118,9 @@ namespace Phamhilator.Analysers
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.QTWhOff.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.QTWOff.Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.QTWhOff.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.QTWOff.Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.Title))
 					{

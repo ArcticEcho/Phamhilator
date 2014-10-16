@@ -1,2 +1,2 @@
 
-24.28669](?i)\b(help|halp)\b
+25.02265](?i)\b(help|halp)\b

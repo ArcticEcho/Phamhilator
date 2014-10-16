@@ -113,9 +113,9 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.QBWhOff.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.QBWOff.Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.QBWhOff.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.QBWOff.Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.Body))
 					{
