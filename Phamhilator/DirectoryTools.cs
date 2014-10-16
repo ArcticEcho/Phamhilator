@@ -379,7 +379,7 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetANameTermsDir()
+		public static string GetAWNameTermsDir()
 		{
 			var path = Path.Combine(AWFilterTermsPath, "Bad Username");
 

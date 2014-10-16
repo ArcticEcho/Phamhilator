@@ -22,7 +22,7 @@ namespace Phamhilator
 				{
 					Terms = new Dictionary<string, Dictionary<Regex, float>>();
 
-					var sites = Directory.EnumerateDirectories(DirectoryTools.GetAWhiteLQTermsDir()).ToArray();
+					var sites = Directory.EnumerateDirectories(DirectoryTools.GetAWLQTermsDir()).ToArray();
 
 					for (var i = 0; i < sites.Length; i++)
 					{
@@ -31,23 +31,19 @@ namespace Phamhilator
 
 					foreach (var site in sites)
 					{
-						var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetAWhiteLQTermsDir(), site, "Terms.txt"));
+						var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetAWLQTermsDir(), site, "Terms.txt"));
 
 						Terms.Add(site, new Dictionary<Regex, float>());
 
 						foreach (var termAndScore in data)
 						{
-							if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1)
-							{
-								continue;
-							}
+							if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
 							var termScore = float.Parse(termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal)));
 							var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 							var term = new Regex(termString);
 
-							if (Terms[site].ContainsTerm(term))
-							{
+							if (Terms[site].ContainsTerm(term)) {
 								continue;
 							}
 
@@ -60,13 +56,13 @@ namespace Phamhilator
 
 				public void AddTerm(Regex term, string site, float score = -1)
 				{
-					var file = Path.Combine(DirectoryTools.GetAWhiteLQTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWLQTermsDir(), site, "Terms.txt");
 
 					if (!Terms.ContainsKey(site))
 					{
 						Terms.Add(site, new Dictionary<Regex, float>());
 
-						Directory.CreateDirectory(Path.Combine(DirectoryTools.GetAWhiteLQTermsDir(), site));
+						Directory.CreateDirectory(Path.Combine(DirectoryTools.GetAWLQTermsDir(), site));
 					}
 
 					if (score == -1)
@@ -88,14 +84,11 @@ namespace Phamhilator
 
 				public void RemoveTerm(Regex term, string site)
 				{
-					if (!Terms.ContainsKey(site) || !Terms[site].ContainsTerm(term))
-					{
-						return;
-					}
+					if (!Terms.ContainsKey(site) || !Terms[site].ContainsTerm(term)) { return; }
 
 					Terms[site].Remove(term);
 
-					var file = Path.Combine(DirectoryTools.GetAWhiteLQTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWLQTermsDir(), site, "Terms.txt");
 					var data = File.ReadAllLines(file).ToList();
 
 					for (var i = 0; i < data.Count; i++)
@@ -113,12 +106,9 @@ namespace Phamhilator
 
 				public void SetScore(Regex term, string site, float newScore)
 				{
-					if (!Terms.ContainsKey(site))
-					{
-						return;
-					}
+					if (!Terms.ContainsKey(site)) { return; }
 
-					var file = Path.Combine(DirectoryTools.GetAWhiteLQTermsDir(), site, "Terms.txt");
+					var file = Path.Combine(DirectoryTools.GetAWLQTermsDir(), site, "Terms.txt");
 
 					for (var i = 0; i < Terms[site].Count; i++)
 					{

@@ -20,12 +20,7 @@ namespace Phamhilator
 				{
 					get
 					{
-						if (Terms.Count == 0)
-						{
-							return 0;
-						}
-
-						return Terms.Values.Average();
+						return Terms.Count == 0 ? 5 : Terms.Values.Average();
 					}
 				}
 
@@ -33,12 +28,7 @@ namespace Phamhilator
 				{
 					get
 					{
-						if (Terms.Count == 0)
-						{
-							return 0;
-						}
-
-						return Terms.Values.Max();
+						return Terms.Count == 0 ? 10 : Terms.Values.Max();
 					}
 				}
 
@@ -46,7 +36,7 @@ namespace Phamhilator
 
 				public Spam()
 				{
-					var data = File.ReadAllLines(DirectoryTools.GetABlackSpamTermsFile());
+					var data = File.ReadAllLines(DirectoryTools.GetABSpamTermsFile());
 					Terms = new Dictionary<Regex, float>();
 
 					foreach (var termAndScore in data)
@@ -71,7 +61,7 @@ namespace Phamhilator
 
 					Terms.Add(term, AverageScore);
 
-					File.AppendAllText(DirectoryTools.GetABlackSpamTermsFile(), "\n" + AverageScore + "]" + term);
+					File.AppendAllText(DirectoryTools.GetABSpamTermsFile(), "\n" + AverageScore + "]" + term);
 				}
 
 				public void RemoveTerm(Regex term)
@@ -80,7 +70,7 @@ namespace Phamhilator
 
 					Terms.Remove(term);
 
-					var data = File.ReadAllLines(DirectoryTools.GetABlackSpamTermsFile()).ToList();
+					var data = File.ReadAllLines(DirectoryTools.GetABSpamTermsFile()).ToList();
 
 					for (var i = 0; i < data.Count; i++)
 					{
@@ -92,7 +82,7 @@ namespace Phamhilator
 						}
 					}
 
-					File.WriteAllLines(DirectoryTools.GetABlackSpamTermsFile(), data);
+					File.WriteAllLines(DirectoryTools.GetABSpamTermsFile(), data);
 				}
 
 				public void SetScore(Regex term, float newScore)
@@ -105,7 +95,7 @@ namespace Phamhilator
 						{
 							Terms[key] = newScore;
 
-							var data = File.ReadAllLines(DirectoryTools.GetABlackSpamTermsFile());
+							var data = File.ReadAllLines(DirectoryTools.GetABSpamTermsFile());
 
 							for (var ii = 0; ii < data.Length; ii++)
 							{
@@ -122,7 +112,7 @@ namespace Phamhilator
 								}
 							}
 
-							File.WriteAllLines(DirectoryTools.GetABlackSpamTermsFile(), data);
+							File.WriteAllLines(DirectoryTools.GetABSpamTermsFile(), data);
 
 							return;
 						}

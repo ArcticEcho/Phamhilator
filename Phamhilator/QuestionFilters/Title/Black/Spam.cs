@@ -14,12 +14,18 @@ namespace Phamhilator.QuestionFilters.Title.Black
 
 		public float AverageScore
 		{
-			get { return (int)Math.Round(Terms.Values.Average(), 0); }
+			get
+			{
+				return Terms.Count == 0 ? 5 : Terms.Values.Average();
+			}
 		}
 
 		public float HighestScore
 		{
-			get { return Terms.Values.Max(); }
+			get
+			{
+				return Terms.Count == 0 ? 10 : Terms.Values.Max();
+			}
 		}
 
 

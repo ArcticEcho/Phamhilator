@@ -1,7 +1,7 @@
 
 5]^((?!\\n\\n|\<code\>).)*https?://\w*$
 
-10][-\w]{3}@\w+\.
+11][-\w]{3}@\w+\.
 5]^https?://\w*((?!\\n\\n|\<code\>).)*$
 
 6.333333](?i)join (today|now|fast|free|exclusive|us)(\s|.)*https?://

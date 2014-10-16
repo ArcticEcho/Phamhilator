@@ -1,0 +1,8 @@
+
+5]^((?!\<code\>).)*</a></strong></p>$
+5]rankedia
+
+
+5]^((?!\\n\\n|\<code\>).)*(>>|vist|like).{0,10}<a href=".*">https?://\S*$
+
+5]^((?!\\n\\n|\<code\>).)*<a href=".*">https?://\S*$
