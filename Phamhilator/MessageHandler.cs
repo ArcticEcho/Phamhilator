@@ -121,7 +121,7 @@ namespace Phamhilator
 
 			while (!GlobalInfo.Exit)
 			{
-				Thread.Sleep(2000);
+				Thread.Sleep(1000);
 
 				if (GlobalInfo.ChatRoomID == 0 || GlobalInfo.AnnouncerRoomID == 0 || MessageQueue.Count == 0) { continue; }
 
@@ -169,7 +169,7 @@ namespace Phamhilator
 
 				while (html.IndexOf(message.Post.Title, StringComparison.Ordinal) == -1)
 				{
-					if (i > 15)
+					if (i > 32) // 8 secs (250 ms * 32).
 					{
 						PostChatMessage("`Failed to get message ID for report: " + message.Post.Title + ".`");
 
@@ -189,10 +189,10 @@ namespace Phamhilator
 
 					i++;
 
-					Thread.Sleep(500);
+					Thread.Sleep(250);
 				}
 
-				if (i < 15)
+				if (i < 32)
 				{
 					var id = HTMLScraper.GetMessageIDByPostURL(html, message.Post.URL);
 

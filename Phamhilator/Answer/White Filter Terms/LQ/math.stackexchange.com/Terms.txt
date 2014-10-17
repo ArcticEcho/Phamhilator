@@ -3,11 +3,16 @@
 
 21.58561]^(?i).{0,60}$
 
-20.95652](?i)problem(s)?
+21.73269](?i)problem(s)?
 12.5](?i)(need|some)( halp| help| answer)
 16.5](?i)i need.*help
 
 13.89757](?i:need help|help me)
 
-14](?i)pl(z|s|ease)
+14.53846](?i)pl(z|s|ease)
 16.5](?i)help please
+
+5.184]^(?i).{0,200}$
+2.5]^(?i).{0,150}$
+
+2.5]^.{0,150}$

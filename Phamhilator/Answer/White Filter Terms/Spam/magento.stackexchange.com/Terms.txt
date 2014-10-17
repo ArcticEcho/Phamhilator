@@ -3,3 +3,5 @@
 5.5][-\w]{3}@\w+\.
 
 5](?i)it is possible
+
+5](?i)\bskin\b

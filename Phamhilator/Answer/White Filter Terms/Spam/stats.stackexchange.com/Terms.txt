@@ -1,3 +1,5 @@
 
 5](?i)\btreatment\b
 6.05](?i)\bcare(ing)?\b
+
+5](?i)how to (feel|look|reduce|buy|increase)

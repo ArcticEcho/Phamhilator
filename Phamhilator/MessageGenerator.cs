@@ -14,7 +14,7 @@ namespace Phamhilator
 			{
 				case PostType.BadTagUsed:
 				{
-					return " **Q**: " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
+					return ": " + FormatTags(info.BadTags) + "| [" + post.Title + "](" + post.URL + "), by [" + post.AuthorName + "](" + post.AuthorLink + "), on `" + post.Site + "`.";
 				}
 
 				default:

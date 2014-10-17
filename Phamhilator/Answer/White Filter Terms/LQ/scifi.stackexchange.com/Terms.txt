@@ -3,4 +3,4 @@
 23.58781](?i)\b(help|halp)\b
 19.24479](?i:need help|help me)
 
-13.5](?i)pl(z|s|ease)
+14.01923](?i)pl(z|s|ease)

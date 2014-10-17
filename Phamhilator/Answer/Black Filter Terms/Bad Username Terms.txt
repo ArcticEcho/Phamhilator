@@ -14,3 +14,5 @@
 10]MTS789
 
 10](?i)\bshit\b
+10](?i)officialimeiunlock
+10]\.com

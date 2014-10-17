@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 
@@ -34,6 +35,7 @@ namespace Phamhilator
 			commandLower = command.ToLowerInvariant();
 
 			var user = input.AuthorID;
+			message = input;
 
 			if (IsNormalUserCommand(commandLower))
 			{
@@ -49,8 +51,6 @@ namespace Phamhilator
 
 			if (IsPrivilegedUserCommand(commandLower))
 			{
-				message = input;
-
 				if (!UserAccess.CommandAccessUsers.Contains(user) && !UserAccess.Owners.Contains(user))
 				{
 					return "`Access denied.`";
@@ -268,27 +268,86 @@ namespace Phamhilator
 
 		private static bool IsNormalUserCommand(string command)
 		{
-			return command == "stats" || command == "info" || command == "help" || command == "commands" || command == "status";
+			return command == "stats" || command == "info" || command == "help" || 
+				   command == "commands" || command == "status" || 
+				   command == "terms" || command == "why";
 		}
 
 		private static string NormalUserCommands()
 		{
 			if (commandLower == "stats" || commandLower == "info")
 			{
-				return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + "%. Full scan enabled: " + GlobalInfo.EnableFullScan + ". Posts caught over last 7 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+				return GetStats();
 			}
 
 			if (commandLower == "help" || commandLower == "commands")
 			{
-				return "`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands) `for a full list of commands.`";
+				return GetHelp();
 			}
 
 			if (commandLower == "status")
 			{
-				return "`Current status: " + GlobalInfo.Status + "`.";
+				return GetStatus();
+			}
+
+			if (commandLower == "terms" || commandLower == "why")
+			{
+				return GetTerms();
 			}
 
 			return "`Command not recognised.`";
+		}
+
+
+
+		// Normal user commands.
+
+
+
+		private static string GetStatus()
+		{
+			return "`Current status: " + GlobalInfo.Status + "`.";
+		}
+
+		private static string GetHelp()
+		{
+			return "`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands) `for a full list of commands.`";
+		}
+
+		private static string GetStats()
+		{
+			return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + "%. Full scan enabled: " + GlobalInfo.EnableFullScan + ". Posts caught over last 7 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+		}
+
+		private static string GetTerms()
+		{
+			var builder = new StringBuilder("`Blacklisted terms found: ");
+
+			if (!GlobalInfo.PostedReports.ContainsKey(message.RepliesToMessageID))
+			{
+				return "`Could not find report's message ID.`";
+			}
+
+			var report = GlobalInfo.PostedReports[message.RepliesToMessageID];
+
+			foreach (var term in report.Report.BlackTermsFound)
+			{
+				builder.Append(Math.Round(term.Value, 1) + "]" + term.Key + "   ");
+			}
+
+			if (report.Report.WhiteTermsFound.Count != 0)
+			{
+				builder.Append("Whitlisted terms found: ");
+
+				foreach (var term in report.Report.WhiteTermsFound)
+				{
+					builder.Append(Math.Round(term.Value, 1) + "]" + term.Key + "   ");
+				}
+			}
+
+			builder.Append("`");
+
+			return ":" + message.MessageID + " " + builder;
 		}
 
 
@@ -1060,7 +1119,22 @@ namespace Phamhilator
 					}
 				}
 
-				var newMessage = GlobalInfo.PostedReports[reportID].Body.Replace(oldTitle, newTitle);
+				var oldName = GlobalInfo.PostedReports[reportID].Post.AuthorName;
+				var newName = "";
+
+				foreach (var c in oldName)
+				{
+					if (c == ' ')
+					{
+						newName += ' ';
+					}
+					else
+					{
+						newName += '*';
+					}
+				}
+
+				var newMessage = GlobalInfo.PostedReports[reportID].Body.Replace(oldTitle, newTitle).Replace(oldName, newName);
 
 				MessageHandler.EditMessage(newMessage, reportID);
 			}
@@ -1085,10 +1159,7 @@ namespace Phamhilator
 
 		private static string FalsePositive()
 		{
-			if (message.Report.Type == PostType.BadTagUsed)
-			{
-				return "";
-			}
+			if (message.Report.Type == PostType.BadTagUsed) { return ""; }
 
 			return message.IsQuestionReport ? FalsePositiveQuestion() : FalsePositiveAnswer();
 		}
@@ -1302,10 +1373,7 @@ namespace Phamhilator
 				GlobalInfo.MessagePoster.MessageQueue.Add(reportMessage, GlobalInfo.AnnouncerRoomID);
 			}
 
-			if (message.Report.Type == PostType.BadTagUsed)
-			{
-				return "";
-			}
+			if (message.Report.Type == PostType.BadTagUsed) { return ""; }
 			
 			var returnMessage = message.IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
 
