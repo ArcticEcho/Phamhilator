@@ -43,7 +43,9 @@ namespace Phamhilator
 
 			var link = html.Substring(startIndex, endIndex - startIndex).Trim();
 
-			return link.Remove(link.IndexOf(@"/", link.IndexOf("users", StringComparison.Ordinal) + 7, StringComparison.Ordinal));
+			link = link.Remove(link.IndexOf(@"/", link.IndexOf("users", StringComparison.Ordinal) + 7, StringComparison.Ordinal));
+
+			return link == "http:/" ? "" : link;
 		}
 
 		public static string GetAuthorName(string html)

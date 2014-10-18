@@ -12,6 +12,7 @@ namespace Phamhilator
             var w = base.GetWebRequest(uri);
 
             w.Timeout = 10000; // 10 secs
+			Encoding = System.Text.Encoding.UTF8;
 
             return w;
         }
