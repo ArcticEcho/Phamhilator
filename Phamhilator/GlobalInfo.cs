@@ -11,6 +11,8 @@ namespace Phamhilator
 {
 	public static class GlobalInfo
 	{
+		#region Filters
+
 		public static readonly QuestionFilters.Title.White.BadUsername QTWName = new QuestionFilters.Title.White.BadUsername();
 		public static readonly QuestionFilters.Title.White.Offensive QTWOff = new QuestionFilters.Title.White.Offensive();
 		public static readonly QuestionFilters.Title.White.Spam QTWSpam = new QuestionFilters.Title.White.Spam();
@@ -41,6 +43,7 @@ namespace Phamhilator
 		public static readonly AnswerFilters.White.Spam AWSpam = new AnswerFilters.White.Spam();
 		public static readonly AnswerFilters.White.LQ AWLQ = new AnswerFilters.White.LQ();
 
+		#endregion
 
 		public const string BotUsername = "pham"; // TODO: change this to the username of your account which the bot will be using.
 		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.

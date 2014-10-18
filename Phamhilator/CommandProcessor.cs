@@ -298,11 +298,7 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
-
-
-		// Normal user commands.
-
-
+		# region Normal user commands.
 
 		private static string GetStatus()
 		{
@@ -350,11 +346,9 @@ namespace Phamhilator
 			return ":" + message.MessageID + " " + builder;
 		}
 
+		#endregion
 
-
-		// Privileged user commands.
-
-
+		# region Privileged user commands.
 
 		private static string AddBQTTerm(string command)
 		{
@@ -1104,37 +1098,7 @@ namespace Phamhilator
 
 			if (GlobalInfo.PostedReports.ContainsKey(reportID))
 			{
-				var oldTitle = GlobalInfo.PostedReports[reportID].Post.Title;
-				var newTitle = "";
-
-				foreach (var c in oldTitle)
-				{
-					if (c == ' ')
-					{
-						newTitle += ' ';
-					}
-					else
-					{
-						newTitle += '*';
-					}
-				}
-
-				var oldName = GlobalInfo.PostedReports[reportID].Post.AuthorName;
-				var newName = "";
-
-				foreach (var c in oldName)
-				{
-					if (c == ' ')
-					{
-						newName += ' ';
-					}
-					else
-					{
-						newName += '*';
-					}
-				}
-
-				var newMessage = GlobalInfo.PostedReports[reportID].Body.Replace(oldTitle, newTitle).Replace(oldName, newName);
+				var newMessage = MessageCleaner.GetCleanMessage(reportID);
 
 				MessageHandler.EditMessage(newMessage, reportID);
 			}
@@ -1370,7 +1334,12 @@ namespace Phamhilator
 			{
 				var reportMessage = GlobalInfo.PostedReports[message.RepliesToMessageID];
 
-				GlobalInfo.MessagePoster.MessageQueue.Add(reportMessage, GlobalInfo.AnnouncerRoomID);
+				if (reportMessage.Report.Type == PostType.Offensive)
+				{
+					reportMessage.Body = MessageCleaner.GetCleanMessage(message.RepliesToMessageID);
+				}
+
+				GlobalInfo.MessagePoster.MessageQueue.Add(reportMessage, GlobalInfo.AnnouncerRoomID);			
 			}
 
 			if (message.Report.Type == PostType.BadTagUsed) { return ""; }
@@ -1673,11 +1642,9 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
+		# endregion
 
-
-		// Owner commands.
-
-
+		# region Owner commands.
 
 		private static string SetStatus(string command)
 		{
@@ -1739,5 +1706,7 @@ namespace Phamhilator
 
 			return "`Phamhilator™ paused.`";
 		}
+
+		# endregion
 	}
 }

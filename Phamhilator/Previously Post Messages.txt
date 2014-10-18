@@ -418,3 +418,16 @@
 2522105.4242424]http://stackoverflow.com/questions/26386385
 2522105.93325485]http://scifi.stackexchange.com/a/70868
 2522107.76239281]http://stackoverflow.com/questions/26438565
+2522109.26231193]http://music.stackexchange.com/questions/24381
+2522109.86046281]http://magento.stackexchange.com/questions/40566
+2522110.69247706]http://physics.stackexchange.com/questions/141944
+2522112.27973452]http://english.stackexchange.com/questions/203170
+2522121.07345415]http://stackoverflow.com/questions/26435910
+2522126.76126281]http://chemistry.stackexchange.com/questions/18558
+2522128.18172739]http://askubuntu.com/questions/538527
+2522131.60182301]http://drupal.stackexchange.com/questions/134154
+2522131.61690721]http://stackoverflow.com/a/26438777
+2522133.73959528]http://stats.stackexchange.com/questions/120548
+2522137.16307443]http://aviation.stackexchange.com/a/9216
+2522142.47282813]http://stackoverflow.com/questions/26438870
+2522144.95788693]http://apple.stackexchange.com/questions/151246

@@ -84,6 +84,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="Post.cs" />
+    <Compile Include="MessageCleaner.cs" />
     <Compile Include="QAAnalysis.cs" />
     <Compile Include="QuestionFilters\Body\Black\LQ.cs" />
     <Compile Include="QuestionFilters\Body\Black\Offensive.cs" />

@@ -8,3 +8,5 @@
 7.333333]WWW\.[^a-z]*\.[^a-z]{2,3}(\.[^a-z]{2,3})?
 
 6.733333]filerepairforum.com
+
+6.9](?i)recoverydeletedfiles
