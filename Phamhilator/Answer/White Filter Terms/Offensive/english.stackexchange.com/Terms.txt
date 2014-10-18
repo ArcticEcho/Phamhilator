@@ -1,3 +1,5 @@
 
 6.5](?i)\bfuck\b
 6](?i)\bidiot\b
+
+5](?i)\bcrap\b

@@ -1,2 +1,3 @@
 
 5](?i)\bcrap\b
+5](?i)\bidiot\b

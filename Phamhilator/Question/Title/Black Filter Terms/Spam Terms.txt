@@ -99,3 +99,4 @@
 10](?i)wh(at|o|ere|ich) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand|manufacturer)
 10](?i)wow gold
 10](?i)^where to buy
+10](?i)\bbaba\b

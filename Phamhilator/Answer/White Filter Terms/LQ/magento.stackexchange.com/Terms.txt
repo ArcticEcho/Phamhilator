@@ -1,7 +1,7 @@
 
 15.59397](?i)problem(s)?
 
-16.28132](?i)pl(z|s|ease)
-21.58583](?i)\b(help|halp)\b
+16.90752](?i)pl(z|s|ease)
+24.32365](?i)\b(help|halp)\b
 
 6.830555](?i)credit.card

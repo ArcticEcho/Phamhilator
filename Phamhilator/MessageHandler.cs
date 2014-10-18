@@ -10,8 +10,10 @@ namespace Phamhilator
 {
 	public class MessageHandler
 	{
-		public readonly Dictionary<MessageInfo, int> MessageQueue = new Dictionary<MessageInfo, int>();
+		private bool exit;
 
+		public readonly Dictionary<MessageInfo, int> MessageQueue = new Dictionary<MessageInfo, int>();
+		
 
 
 		public MessageHandler()
@@ -46,6 +48,11 @@ namespace Phamhilator
 					if (GlobalInfo.Exit) { break; }
 				}		
 			}) { Priority = ThreadPriority.Lowest }.Start();
+		}
+
+		public void Shutdown()
+		{
+			exit = true;
 		}
 
 
@@ -119,7 +126,7 @@ namespace Phamhilator
 				Thread.Sleep(1000);
 			} while (!GlobalInfo.BotRunning);
 
-			while (!GlobalInfo.Exit)
+			while (!exit || MessageQueue.Count != 0)
 			{
 				Thread.Sleep(1000);
 
@@ -148,8 +155,7 @@ namespace Phamhilator
 							{
 								"$.post('/chats/" + roomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
 							});
-						}
-						
+						}			
 					}
 					catch (Exception)
 					{

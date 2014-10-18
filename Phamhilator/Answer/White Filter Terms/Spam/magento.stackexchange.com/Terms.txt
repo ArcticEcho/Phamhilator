@@ -4,4 +4,4 @@
 
 5](?i)it is possible
 
-5](?i)\bskin\b
+5.5](?i)\bskin\b
