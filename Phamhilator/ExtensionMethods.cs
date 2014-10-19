@@ -7,7 +7,7 @@ namespace Phamhilator
 {
 	public static class ExtensionMethods
 	{
-		public static bool ContainsTerm(this Dictionary<Regex, string> input, Regex term)
+		public static bool ContainsTerm(this IDictionary<Regex, string> input, Regex term)
 		{
 			if (input.Count == 0) { return false; }
 
@@ -22,7 +22,7 @@ namespace Phamhilator
 			return false;
 		}
 
-		public static bool ContainsTerm(this Dictionary<Regex, float> input, Regex term)
+		public static bool ContainsTerm(this IDictionary<Regex, float> input, Regex term)
 		{
 			if (input.Count == 0) { return false; }
 

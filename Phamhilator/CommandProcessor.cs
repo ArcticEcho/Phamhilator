@@ -15,7 +15,7 @@ namespace Phamhilator
 
 
 
-		public static string ExacuteCommand(MessageInfo input)
+		public static string[] ExacuteCommand(MessageInfo input)
 		{
 			string command;
 
@@ -29,7 +29,7 @@ namespace Phamhilator
 			}
 			else
 			{
-				return "";
+				return new[] { "" };
 			}
 
 			commandLower = command.ToLowerInvariant();
@@ -45,7 +45,7 @@ namespace Phamhilator
 				}
 				catch (Exception)
 				{
-					return "`Error executing command.`";
+					return new[] { "`Error executing command.`" };
 				}
 			}
 
@@ -53,7 +53,7 @@ namespace Phamhilator
 			{
 				if (!UserAccess.CommandAccessUsers.Contains(user) && !UserAccess.Owners.Contains(user))
 				{
-					return "`Access denied.`";
+					return new[] { "`Access denied.`" };
 				}
 
 				try
@@ -62,7 +62,7 @@ namespace Phamhilator
 				}
 				catch (Exception)
 				{
-					return "`Error executing command.`";
+					return new[] { "`Error executing command.`" };
 				}		
 			}
 			
@@ -70,7 +70,7 @@ namespace Phamhilator
 			{
 				if (!UserAccess.Owners.Contains(user))
 				{
-					return "`Access denied.`";
+					return new[] { "`Access denied.`" };
 				}
 				
 				try
@@ -79,11 +79,11 @@ namespace Phamhilator
 				}
 				catch (Exception)
 				{
-					return "`Error executing command.`";
+					return new[] { "`Error executing command.`" };
 				}
 			}
 
-			return "`Command not recognised.`";
+			return new[] { "`Command not recognised.`" };
 		}
 
 		public static bool IsValidCommand(string command)
@@ -117,152 +117,162 @@ namespace Phamhilator
 				   command == "full scan";
 		}
 
-		private static string OwnerCommand(string command)
+		private static string[] OwnerCommand(string command)
 		{
 			if (commandLower.StartsWith("add user"))
 			{
-				return AddUser(command);
+				return new[] { AddUser(command) };
 			}
 
 			if (commandLower == "start")
 			{
-				return StartBot();
+				return new[] { StartBot() };
 			}
 
 			if (commandLower == "pause")
 			{
-				return PauseBot();
+				return new[] { PauseBot() };
 			}
 
 			if (commandLower == "full scan")
 			{
-				return FullScan();
+				return new[] { FullScan() };
 			}
 
 			if (commandLower.StartsWith("threshold"))
 			{
-				return SetAccuracyThreshold(command);
+				return new[] { SetAccuracyThreshold(command) };
 			}
 
 			if (commandLower.StartsWith("set status"))
 			{
-				return SetStatus(command);
+				return new[] { SetStatus(command) };
 			}
 
-			return "`Command not recognised.`";
+			return new[] { "`Command not recognised.`" };
 		}
 
 
 		private static bool IsPrivilegedUserCommand(string command)
 		{
-			return command == "fp" ||
-				   command == "tp" || command == "tpa" ||
+			return command == "fp" || command == "fp why" ||
+				   command == "tp" || command == "tpa" || command == "tp why" || command == "tpa why" ||
 				   command == "clean" || command == "sanitise" || command == "sanitize" ||
 				   command == "del" || command == "delete" || command == "remove" ||
 				   termCommands.IsMatch(command);
 		}
 
-		private static string PrivilegedUserCommands(string command)
+		private static string[] PrivilegedUserCommands(string command)
 		{
 			if (commandLower == "fp")
 			{
-				return FalsePositive();
+				return new[] { FalsePositive() };
+			}
+
+			if (commandLower == "fp why")
+			{
+				return new[] { GetTerms(), FalsePositive() };
 			}
 
 			if (commandLower == "tp" || commandLower == "tpa")
 			{
-				return TruePositive();
+				return new[] { TruePositive() };
+			}
+
+			if (commandLower == "tp" || commandLower == "tpa")
+			{
+				return new[] { GetTerms(), TruePositive() };
 			}
 
 			if (commandLower == "clean" || commandLower == "sanitise" || commandLower == "sanitize")
 			{
-				return CleanPost();
+				return new[] { CleanPost() };
 			}
 
 			if (commandLower == "del" || commandLower == "delete" || commandLower == "remove")
 			{
-				return DeletePost();
+				return new[] { DeletePost() };
 			}
 
 			// QT term commands.
 
 			if (commandLower.StartsWith("del-b-qt"))
 			{
-				return RemoveBQTTerm(command);
+				return new[] { RemoveBQTTerm(command) };
 			}
 
 			if (commandLower.StartsWith("add-b-qt"))
 			{
-				return AddBQTTerm(command);
+				return new[] { AddBQTTerm(command) };
 			}
 
 			if (commandLower.StartsWith("del-w-qt"))
 			{
-				return RemoveWQTTerm(command);
+				return new[] { RemoveWQTTerm(command) };
 			}
 
 			if (commandLower.StartsWith("add-w-qt"))
 			{
-				return AddWQTTerm(command);
+				return new[] { AddWQTTerm(command) };
 			}
 
 			// QB term commands.
 
 			if (commandLower.StartsWith("del-b-qb"))
 			{
-				return RemoveBQBTerm(command);
+				return new[] { RemoveBQBTerm(command) };
 			}
 
 			if (commandLower.StartsWith("add-b-qb"))
 			{
-				return AddBQBTerm(command);
+				return new[] { AddBQBTerm(command) };
 			}
 
 			if (commandLower.StartsWith("del-w-qb"))
 			{
-				return RemoveWQBTerm(command);
+				return new[] { RemoveWQBTerm(command) };
 			}
 
 			if (commandLower.StartsWith("add-w-qb"))
 			{
-				return AddWQBTerm(command);
+				return new[] { AddWQBTerm(command) };
 			}
 
 			// A term commands.
 
 			if (commandLower.StartsWith("del-b-a"))
 			{
-				return RemoveBATerm(command);
+				return new[] { RemoveBATerm(command) };
 			}
 
 			if (commandLower.StartsWith("add-b-a"))
 			{
-				return AddBATerm(command);
+				return new[] { AddBATerm(command) };
 			}
 
 			if (commandLower.StartsWith("del-w-a"))
 			{
-				return RemoveWATerm(command);
+				return new[] { RemoveWATerm(command) };
 			}
 
 			if (commandLower.StartsWith("add-w-a"))
 			{
-				return AddWATerm(command);
+				return new[] { AddWATerm(command) };
 			}
 
 			// Tag commands.
 
 			if (commandLower.StartsWith("add tag"))
 			{
-				return AddTag(command);
+				return new[] { AddTag(command) };
 			}
 
 			if (commandLower.StartsWith("remove tag"))
 			{
-				return RemoveTag(command);
+				return new[] { RemoveTag(command) };
 			}
 
-			return "`Command not recognised.`";
+			return new[] { "`Command not recognised.`" };
 		}
 
 
@@ -273,30 +283,32 @@ namespace Phamhilator
 				   command == "terms" || command == "why";
 		}
 
-		private static string NormalUserCommands()
+		private static string[] NormalUserCommands()
 		{
 			if (commandLower == "stats" || commandLower == "info")
 			{
-				return GetStats();
+				return new[] { GetStats() };
 			}
 
 			if (commandLower == "help" || commandLower == "commands")
 			{
-				return GetHelp();
+				return new[] { GetHelp() };
 			}
 
 			if (commandLower == "status")
 			{
-				return GetStatus();
+				return new[] { GetStatus() };
 			}
 
 			if (commandLower == "terms" || commandLower == "why")
 			{
-				return GetTerms();
+				return new[] { GetTerms() };
 			}
 
-			return "`Command not recognised.`";
+			return new[] { "`Command not recognised.`" };
 		}
+
+
 
 		# region Normal user commands.
 
@@ -317,7 +329,7 @@ namespace Phamhilator
 
 		private static string GetTerms()
 		{
-			var builder = new StringBuilder("`Blacklisted terms found: ");
+			var builder = new StringBuilder("`Blacklisted term(s) found: ");
 
 			if (!GlobalInfo.PostedReports.ContainsKey(message.RepliesToMessageID))
 			{
@@ -333,7 +345,7 @@ namespace Phamhilator
 
 			if (report.Report.WhiteTermsFound.Count != 0)
 			{
-				builder.Append("Whitlisted terms found: ");
+				builder.Append("Whitelisted term(s) found: ");
 
 				foreach (var term in report.Report.WhiteTermsFound)
 				{
@@ -349,6 +361,8 @@ namespace Phamhilator
 		#endregion
 
 		# region Privileged user commands.
+
+		# region Term commands.
 
 		private static string AddBQTTerm(string command)
 		{
@@ -1035,6 +1049,7 @@ namespace Phamhilator
 			return "`Command not recognised.`";
 		}
 
+		# endregion
 
 		private static string AddTag(string command)
 		{
@@ -1120,6 +1135,7 @@ namespace Phamhilator
 			return "";
 		}
 
+		# region FP/TP(A) commands
 
 		private static string FalsePositive()
 		{
@@ -1630,6 +1646,8 @@ namespace Phamhilator
 
 			return "`Command not recognised.`";
 		}
+
+		# endregion
 
 		# endregion
 

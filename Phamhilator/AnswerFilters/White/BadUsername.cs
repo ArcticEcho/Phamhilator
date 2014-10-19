@@ -73,7 +73,16 @@ namespace Phamhilator.AnswerFilters.White
 		{
 			if (!Terms.ContainsKey(site) || !Terms[site].ContainsTerm(term)) { return; }
 
-			Terms[site].Remove(term);
+			for (var i = 0; i < Terms[site].Count; i++)
+			{
+				var t = Terms[site].Keys.ElementAt(i);
+
+				if (term.ToString() != t.ToString()) { continue; }
+
+				Terms[site].Remove(t);
+
+				break;
+			}
 
 			var file = Path.Combine(DirectoryTools.GetAWNameTermsDir(), site, "Terms.txt");
 			var data = File.ReadAllLines(file).ToList();

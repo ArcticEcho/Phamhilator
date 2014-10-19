@@ -355,9 +355,9 @@ namespace Phamhilator
 
 				postCatcherMessagePosted = true;
 			}
-			else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000 && !postCatcherWarningMessagePosted)
+			else if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !postCatcherWarningMessagePosted)
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 5 seconds have pasted since kill command was issued and post catcher thread is still alive. Now forcing thread death...`" }, GlobalInfo.ChatRoomID);
+				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 10 seconds have pasted since kill command was issued and post catcher thread is still alive. Now forcing thread death...`" }, GlobalInfo.ChatRoomID);
 
 				postCatcherThread.Abort();
 			}
@@ -373,9 +373,9 @@ namespace Phamhilator
 
 				postRefresherMessagePosted = true;
 			}
-			else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000 && !postRefresherWarningMessagePosted)
+			else if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !postRefresherWarningMessagePosted)
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 5 seconds have pasted since kill command was issued and post refresher thread is still alive. Now forcing thread death...`" }, GlobalInfo.ChatRoomID);
+				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 10 seconds have pasted since kill command was issued and post refresher thread is still alive. Now forcing thread death...`" }, GlobalInfo.ChatRoomID);
 
 				postRefresherThread.Abort();
 			}
@@ -391,9 +391,9 @@ namespace Phamhilator
 
 				commandListenerMessagePosted = true;
 			}
-			else if ((DateTime.UtcNow - requestedDieTime).TotalMilliseconds > 5000 && !commandListenerWarningMessagePosted)
+			else if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !commandListenerWarningMessagePosted)
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 5 seconds have pasted since kill command was issued and command listener thread is still alive. Now forcing thread death...`" }, GlobalInfo.ChatRoomID);
+				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 10 seconds have pasted since kill command was issued and command listener thread is still alive. Now forcing thread death...`" }, GlobalInfo.ChatRoomID);
 
 				commandListenerThread.Abort();
 			}
@@ -460,9 +460,9 @@ namespace Phamhilator
 				return;
 			}
 
-			var commandMessage = CommandProcessor.ExacuteCommand(message);
+			var commandMessages = CommandProcessor.ExacuteCommand(message);
 
-			if (commandMessage != "")
+			foreach (var commandMessage in commandMessages.Where(m => !String.IsNullOrEmpty(m)))
 			{
 				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = commandMessage }, message.RoomID);
 			}
@@ -643,11 +643,7 @@ namespace Phamhilator
 			}
 		}
 
-
-
-		// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ UI Events ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
-
-
+		# region UI Events
 
 		private void Button_Click_2(object sender, RoutedEventArgs e)
 		{
@@ -703,5 +699,7 @@ namespace Phamhilator
 				refreshRateL.Content = rate + " milliseconds";
 			}
 		}
+
+		# endregion
 	}
 }

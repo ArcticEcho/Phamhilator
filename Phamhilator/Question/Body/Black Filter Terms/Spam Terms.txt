@@ -12,3 +12,4 @@
 
 5](?i)neuro\s?3x
 5](?i)^<p>Be sure you
+5](?i)xtreme antler

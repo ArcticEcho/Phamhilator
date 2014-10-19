@@ -64,7 +64,15 @@ namespace Phamhilator.AnswerFilters.Black
 		{
 			if (!Terms.ContainsTerm(term)) { return; }
 
-			Terms.Remove(term);
+			for (var i = 0; i < Terms.Count; i++)
+			{
+				var t = Terms.Keys.ElementAt(i);
+
+				if (term.ToString() == t.ToString())
+				{
+					Terms.Remove(t);
+				}
+			}
 
 			var data = File.ReadAllLines(DirectoryTools.GetABOffTermsFile()).ToList();
 

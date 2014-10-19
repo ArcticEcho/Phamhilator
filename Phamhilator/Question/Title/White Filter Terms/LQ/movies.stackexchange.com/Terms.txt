@@ -3,3 +3,5 @@
 14.71181](?i:need help|help me)
 
 15.5](?i)(need|some)( halp| help| answer)
+
+11.5]^(?i).{0,18}$
