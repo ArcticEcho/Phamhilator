@@ -1,6 +1,6 @@
 
 17.875](?i)(need|some)( halp| help| answer)
-26.57954](?i)\b(help|halp)\b
+27.38498](?i)\b(help|halp)\b
 20.25767](?i:need help|help me)
 
 14.55843](?i)pl(z|s|ease)

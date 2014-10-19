@@ -80,12 +80,11 @@ namespace Phamhilator.QuestionFilters.Title.White
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) == term.ToString())
-				{
-					data.RemoveAt(i);
+				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) != term.ToString()) { continue; }
 
-					break;
-				}
+				data.RemoveAt(i);
+
+				break;
 			}
 
 			File.WriteAllLines(file, data);
@@ -101,33 +100,30 @@ namespace Phamhilator.QuestionFilters.Title.White
 			{
 				var key = Terms[site].Keys.ToArray()[i];
 
-				if (key.ToString() == term.ToString())
+				if (key.ToString() != term.ToString()) { continue; }
+
+				Terms[site][key] = newScore;
+
+				var data = File.ReadAllLines(file);
+
+				for (var ii = 0; ii < data.Length; ii++)
 				{
-					Terms[site][key] = newScore;
+					var line = data[ii];
 
-					var data = File.ReadAllLines(file);
+					if (line.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
-					for (var ii = 0; ii < data.Length; ii++)
-					{
-						var line = data[ii];
+					var t = line.Remove(0, line.IndexOf("]", StringComparison.Ordinal) + 1);
 
-						if (line.IndexOf("]", StringComparison.Ordinal) != -1)
-						{
-							var t = line.Remove(0, line.IndexOf("]", StringComparison.Ordinal) + 1);
+					if (t != key.ToString()) { continue; }
 
-							if (t == key.ToString())
-							{
-								data[ii] = newScore + "]" + t;
+					data[ii] = newScore + "]" + t;
 
-								break;
-							}
-						}
-					}
-
-					File.WriteAllLines(file, data);
-
-					return;
+					break;
 				}
+
+				File.WriteAllLines(file, data);
+
+				return;
 			}
 		}
 

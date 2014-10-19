@@ -1125,7 +1125,7 @@ namespace Phamhilator
 		{
 			if (message.Report.Type == PostType.BadTagUsed) { return ""; }
 
-			return message.IsQuestionReport ? FalsePositiveQuestion() : FalsePositiveAnswer();
+			return GlobalInfo.PostedReports[message.RepliesToMessageID].IsQuestionReport ? FalsePositiveQuestion() : FalsePositiveAnswer();
 		}
 
 		private static string FalsePositiveQuestion()
@@ -1343,8 +1343,8 @@ namespace Phamhilator
 			}
 
 			if (message.Report.Type == PostType.BadTagUsed) { return ""; }
-			
-			var returnMessage = message.IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
+
+			var returnMessage = GlobalInfo.PostedReports[message.RepliesToMessageID].IsQuestionReport ? TruePositiveQuestion() : TruePositiveAnswer();
 
 			return commandLower == "tpa" ? "" : returnMessage;
 		}
@@ -1367,34 +1367,32 @@ namespace Phamhilator
 								{
 									var whiteTerm = site.Value.ElementAt(i);
 
-									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-									{
-										var oldWhiteScore = GlobalInfo.QTWLQ.GetScore(whiteTerm.Key, site.Key);
-										var x = oldWhiteScore / blackTerm.Value;
+									if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-										GlobalInfo.QTWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-									}
+									var oldWhiteScore = GlobalInfo.QTWLQ.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.QTWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 								}
 							}
 						}
-						else
+
+						if (!GlobalInfo.QBBLQ.Terms.ContainsTerm(blackTerm.Key)) { continue; }
+
+						GlobalInfo.QBBLQ.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+						foreach (var site in GlobalInfo.QBWLQ.Terms)
 						{
-							GlobalInfo.QBBLQ.SetScore(blackTerm.Key, blackTerm.Value + 1);
-
-							foreach (var site in GlobalInfo.QBWLQ.Terms)
+							for (var i = 0; i < site.Value.Count; i++)
 							{
-								for (var i = 0; i < site.Value.Count; i++)
-								{
-									var whiteTerm = site.Value.ElementAt(i);
+								var whiteTerm = site.Value.ElementAt(i);
 
-									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-									{
-										var oldWhiteScore = GlobalInfo.QBWLQ.GetScore(whiteTerm.Key, site.Key);
-										var x = oldWhiteScore / blackTerm.Value;
+								if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-										GlobalInfo.QBWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-									}
-								}
+								var oldWhiteScore = GlobalInfo.QBWLQ.GetScore(whiteTerm.Key, site.Key);
+								var x = oldWhiteScore / blackTerm.Value;
+
+								GlobalInfo.QBWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 							}
 						}
 					}
@@ -1416,34 +1414,32 @@ namespace Phamhilator
 								{
 									var whiteTerm = site.Value.ElementAt(i);
 
-									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-									{
-										var oldWhiteScore = GlobalInfo.QTWOff.GetScore(whiteTerm.Key, site.Key);
-										var x = oldWhiteScore / blackTerm.Value;
+									if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-										GlobalInfo.QTWOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-									}
+									var oldWhiteScore = GlobalInfo.QTWOff.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.QTWOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 								}
 							}
 						}
-						else
+
+						if (!GlobalInfo.QBBOff.Terms.ContainsTerm(blackTerm.Key)) { continue; }
+
+						GlobalInfo.QBBOff.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+						foreach (var site in GlobalInfo.QBWOff.Terms)
 						{
-							GlobalInfo.QBBOff.SetScore(blackTerm.Key, blackTerm.Value + 1);
-
-							foreach (var site in GlobalInfo.QBWOff.Terms)
+							for (var i = 0; i < site.Value.Count; i++)
 							{
-								for (var i = 0; i < site.Value.Count; i++)
-								{
-									var whiteTerm = site.Value.ElementAt(i);
+								var whiteTerm = site.Value.ElementAt(i);
 
-									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-									{
-										var oldWhiteScore = GlobalInfo.QBWOff.GetScore(whiteTerm.Key, site.Key);
-										var x = oldWhiteScore / blackTerm.Value;
+								if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-										GlobalInfo.QBWOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-									}
-								}
+								var oldWhiteScore = GlobalInfo.QBWOff.GetScore(whiteTerm.Key, site.Key);
+								var x = oldWhiteScore / blackTerm.Value;
+
+								GlobalInfo.QBWOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 							}
 						}
 					}
@@ -1465,34 +1461,32 @@ namespace Phamhilator
 								{
 									var whiteTerm = site.Value.ElementAt(i);
 
-									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-									{
-										var oldWhiteScore = GlobalInfo.QTWSpam.GetScore(whiteTerm.Key, site.Key);
-										var x = oldWhiteScore / blackTerm.Value;
+									if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-										GlobalInfo.QTWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-									}
+									var oldWhiteScore = GlobalInfo.QTWSpam.GetScore(whiteTerm.Key, site.Key);
+									var x = oldWhiteScore / blackTerm.Value;
+
+									GlobalInfo.QTWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 								}
 							}
 						}
-						else
+
+						if (!GlobalInfo.QBBSpam.Terms.ContainsTerm(blackTerm.Key)) { continue; }
+
+						GlobalInfo.QBBSpam.SetScore(blackTerm.Key, blackTerm.Value + 1);
+
+						foreach (var site in GlobalInfo.QBWSpam.Terms)
 						{
-							GlobalInfo.QBBSpam.SetScore(blackTerm.Key, blackTerm.Value + 1);
-
-							foreach (var site in GlobalInfo.QBWSpam.Terms)
+							for (var i = 0; i < site.Value.Count; i++)
 							{
-								for (var i = 0; i < site.Value.Count; i++)
-								{
-									var whiteTerm = site.Value.ElementAt(i);
+								var whiteTerm = site.Value.ElementAt(i);
 
-									if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-									{
-										var oldWhiteScore = GlobalInfo.QBWSpam.GetScore(whiteTerm.Key, site.Key);
-										var x = oldWhiteScore / blackTerm.Value;
+								if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-										GlobalInfo.QBWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-									}
-								}
+								var oldWhiteScore = GlobalInfo.QBWSpam.GetScore(whiteTerm.Key, site.Key);
+								var x = oldWhiteScore / blackTerm.Value;
+
+								GlobalInfo.QBWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 							}
 						}
 					}
@@ -1512,13 +1506,12 @@ namespace Phamhilator
 							{
 								var whiteTerm = site.Value.ElementAt(i);
 
-								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-								{
-									var oldWhiteScore = GlobalInfo.QTWName.GetScore(whiteTerm.Key, site.Key);
-									var x = oldWhiteScore / blackTerm.Value;
+								if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-									GlobalInfo.QTWName.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-								}
+								var oldWhiteScore = GlobalInfo.QTWName.GetScore(whiteTerm.Key, site.Key);
+								var x = oldWhiteScore / blackTerm.Value;
+
+								GlobalInfo.QTWName.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 							}
 						}
 					}
@@ -1546,13 +1539,12 @@ namespace Phamhilator
 							{
 								var whiteTerm = site.Value.ElementAt(i);
 
-								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-								{
-									var oldWhiteScore = GlobalInfo.AWLQ.GetScore(whiteTerm.Key, site.Key);
-									var x = oldWhiteScore / blackTerm.Value;
+								if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-									GlobalInfo.AWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-								}
+								var oldWhiteScore = GlobalInfo.AWLQ.GetScore(whiteTerm.Key, site.Key);
+								var x = oldWhiteScore / blackTerm.Value;
+
+								GlobalInfo.AWLQ.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 							}
 						}
 					}
@@ -1572,13 +1564,12 @@ namespace Phamhilator
 							{
 								var whiteTerm = site.Value.ElementAt(i);
 
-								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-								{
-									var oldWhiteScore = GlobalInfo.AWOff.GetScore(whiteTerm.Key, site.Key);
-									var x = oldWhiteScore / blackTerm.Value;
+								if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-									GlobalInfo.AWOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-								}
+								var oldWhiteScore = GlobalInfo.AWOff.GetScore(whiteTerm.Key, site.Key);
+								var x = oldWhiteScore / blackTerm.Value;
+
+								GlobalInfo.AWOff.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 							}
 						}
 					}
@@ -1598,13 +1589,12 @@ namespace Phamhilator
 							{
 								var whiteTerm = site.Value.ElementAt(i);
 
-								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-								{
-									var oldWhiteScore = GlobalInfo.AWSpam.GetScore(whiteTerm.Key, site.Key);
-									var x = oldWhiteScore / blackTerm.Value;
+								if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-									GlobalInfo.AWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-								}
+								var oldWhiteScore = GlobalInfo.AWSpam.GetScore(whiteTerm.Key, site.Key);
+								var x = oldWhiteScore / blackTerm.Value;
+
+								GlobalInfo.AWSpam.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 							}
 						}
 					}
@@ -1624,13 +1614,12 @@ namespace Phamhilator
 							{
 								var whiteTerm = site.Value.ElementAt(i);
 
-								if (whiteTerm.Key.ToString() == blackTerm.Key.ToString() && site.Key != message.Post.Site)
-								{
-									var oldWhiteScore = GlobalInfo.AWName.GetScore(whiteTerm.Key, site.Key);
-									var x = oldWhiteScore / blackTerm.Value;
+								if (whiteTerm.Key.ToString() != blackTerm.Key.ToString() || site.Key == message.Post.Site) { continue; }
 
-									GlobalInfo.AWName.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
-								}
+								var oldWhiteScore = GlobalInfo.AWName.GetScore(whiteTerm.Key, site.Key);
+								var x = oldWhiteScore / blackTerm.Value;
+
+								GlobalInfo.AWName.SetScore(whiteTerm.Key, site.Key, x * (blackTerm.Value + 1));
 							}
 						}
 					}

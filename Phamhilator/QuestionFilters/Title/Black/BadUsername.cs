@@ -16,7 +16,7 @@ namespace Phamhilator.QuestionFilters.Title.Black
 		{
 			get
 			{
-				return Terms.Count == 0 ? 5 : Terms.Values.Average();
+				return Terms.Count == 0 ? 10 : Terms.Values.Average();
 			}
 		}
 
@@ -37,19 +37,13 @@ namespace Phamhilator.QuestionFilters.Title.Black
 
 			foreach (var termAndScore in data)
 			{
-				if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1)
-				{
-					continue;
-				}
+				if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
 				var termScore = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
 				var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
 				var term = new Regex(termString);
 
-				if (Terms.ContainsTerm(term))
-				{
-					continue;
-				}
+				if (Terms.ContainsTerm(term)) { continue; }
 
 				Terms.Add(term, float.Parse(termScore));
 			}
@@ -59,10 +53,7 @@ namespace Phamhilator.QuestionFilters.Title.Black
 
 		public void AddTerm(Regex term)
 		{
-			if (Terms.ContainsTerm(term))
-			{
-				return;
-			}
+			if (Terms.ContainsTerm(term)) { return; }
 
 			Terms.Add(term, AverageScore);
 
@@ -71,10 +62,7 @@ namespace Phamhilator.QuestionFilters.Title.Black
 
 		public void RemoveTerm(Regex term)
 		{
-			if (!Terms.ContainsTerm(term))
-			{
-				return;
-			}
+			if (!Terms.ContainsTerm(term)) { return; }
 
 			Terms.Remove(term);
 
@@ -82,12 +70,11 @@ namespace Phamhilator.QuestionFilters.Title.Black
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) == term.ToString())
-				{
-					data.RemoveAt(i);
+				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) != term.ToString()) { continue; }
 
-					break;
-				}
+				data.RemoveAt(i);
+
+				break;
 			}
 
 			File.WriteAllLines(DirectoryTools.GetQTBNameTermsFile(), data);
@@ -99,27 +86,30 @@ namespace Phamhilator.QuestionFilters.Title.Black
 			{
 				var key = Terms.Keys.ToArray()[i];
 
-				if (key.ToString() == term.ToString())
+				if (key.ToString() != term.ToString()) { continue; }
+
+				Terms[key] = newScore;
+
+				var data = File.ReadAllLines(DirectoryTools.GetQTBNameTermsFile());
+
+				for (var ii = 0; ii < data.Length; ii++)
 				{
-					Terms[key] = newScore;
+					var line = data[ii];
 
-					var data = File.ReadAllLines(DirectoryTools.GetQTBNameTermsFile());
+					if (String.IsNullOrEmpty(line) || line.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
-					for (var ii = 0; ii < data.Length; ii++)
-					{
-						var line = data[ii];
+					var t = line.Remove(0, line.IndexOf("]", StringComparison.Ordinal) + 1);
 
-						if (!String.IsNullOrEmpty(line) && line.IndexOf("]", StringComparison.Ordinal) != -1)
-						{
-							var t = line.Remove(0, line.IndexOf("]", StringComparison.Ordinal) + 1);
+					if (t != key.ToString()) { continue; }
 
-							if (t == key.ToString())
-							{
-								data[ii] = newScore + "]" + t;
-							}
-						}
-					}
+					data[ii] = newScore + "]" + t;
+
+					break;
 				}
+
+				File.WriteAllLines(DirectoryTools.GetQTBNameTermsFile(), data);
+
+				return;
 			}
 		}
 

@@ -15,7 +15,7 @@ namespace Phamhilator.AnswerFilters.Black
 		{
 			get
 			{
-				return Terms.Count == 0 ? 5 : Terms.Values.Average();
+				return Terms.Count == 0 ? 10 : Terms.Values.Average();
 			}
 		}
 
@@ -69,12 +69,11 @@ namespace Phamhilator.AnswerFilters.Black
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) == term.ToString())
-				{
-					data.RemoveAt(i);
+				if (data[i].Remove(0, data[i].IndexOf("]", StringComparison.Ordinal) + 1) != term.ToString()) { continue; }
 
-					break;
-				}
+				data.RemoveAt(i);
+
+				break;
 			}
 
 			File.WriteAllLines(DirectoryTools.GetABNameTermsFile(), data);
@@ -86,31 +85,31 @@ namespace Phamhilator.AnswerFilters.Black
 			{
 				var key = Terms.Keys.ToArray()[i];
 
-				if (key.ToString() == term.ToString())
+				if (key.ToString() != term.ToString()) { continue; }
+
+				Terms[key] = newScore;
+
+				var data = File.ReadAllLines(DirectoryTools.GetABNameTermsFile());
+
+				for (var ii = 0; ii < data.Length; ii++)
 				{
-					Terms[key] = newScore;
+					var line = data[ii];
 
-					var data = File.ReadAllLines(DirectoryTools.GetABNameTermsFile());
+					if (String.IsNullOrEmpty(line) || line.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
-					for (var ii = 0; ii < data.Length; ii++)
+					var t = line.Remove(0, line.IndexOf("]", StringComparison.Ordinal) + 1);
+
+					if (t == key.ToString())
 					{
-						var line = data[ii];
-
-						if (!String.IsNullOrEmpty(line) && line.IndexOf("]", StringComparison.Ordinal) != -1)
-						{
-							var t = line.Remove(0, line.IndexOf("]", StringComparison.Ordinal) + 1);
-
-							if (t == key.ToString())
-							{
-								data[ii] = newScore + "]" + t;
-							}
-						}
+						data[ii] = newScore + "]" + t;
 					}
 
-					File.WriteAllLines(DirectoryTools.GetABNameTermsFile(), data);
-
-					return;
+					break;
 				}
+
+				File.WriteAllLines(DirectoryTools.GetABNameTermsFile(), data);
+
+				return;
 			}
 		}
 

@@ -1,9 +1,9 @@
 
-13.91493](?i)\b(help|halp)\b
+14.3366](?i)\b(help|halp)\b
 
 21.58561]^(?i).{0,60}$
 
-21.73269](?i)problem(s)?
+22.53761](?i)problem(s)?
 13.54167](?i)(need|some)( halp| help| answer)
 16.5](?i)i need.*help
 
