@@ -7,7 +7,7 @@ namespace Phamhilator
 {
 	public static class DirectoryTools
 	{
-		private static readonly string root = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).FullName).FullName;
+		private static readonly string root = /*Directory.GetParent(Directory.GetParent(*/Environment.CurrentDirectory/*).FullName).FullName*/;
 		private static readonly string QTBFilterTermsPath = Path.Combine(root, "Question", "Title", "Black Filter Terms");
 		private static readonly string QTWFilterTermsPath = Path.Combine(root, "Question", "Title", "White Filter Terms");
 		private static readonly string QBBFilterTermsPath = Path.Combine(root, "Question", "Body", "Black Filter Terms");
