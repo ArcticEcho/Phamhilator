@@ -13,6 +13,8 @@ namespace Phamhilator
 		private int authorRep;
 		private readonly List<Answer> answers = new List<Answer>();
 
+		public bool PopulateExtraDataFailed;
+
 		public List<string> Tags;
 
 		public int Score
@@ -73,29 +75,26 @@ namespace Phamhilator
 		private void PopulateExtraData()
 		{
 			try
-			{
-				using (var wb = new WebDownload())
+			{		
+				var html = StringDownloader.DownloadString(URL, 15000);
+
+				body = HTMLScraper.GetQuestionBody(html);
+				score = HTMLScraper.GetQuestionScore(html);
+				authorRep = HTMLScraper.GetQuestionAuthorRep(html);
+
+				var answerCount = HTMLScraper.GetAnswerCount(html);
+				var currentHTML = html;
+
+				for (var i = 0; i < answerCount; i++)
 				{
-					var html = wb.DownloadString(URL);
+					currentHTML = currentHTML.Remove(0, currentHTML.IndexOf("<div id=\"answer-", 50, StringComparison.Ordinal));
 
-					body = HTMLScraper.GetQuestionBody(html);
-					score = HTMLScraper.GetQuestionScore(html);
-					authorRep = HTMLScraper.GetQuestionAuthorRep(html);
-
-					var answerCount = HTMLScraper.GetAnswerCount(html);
-					var currentHTML = html;
-
-					for (var i = 0; i < answerCount; i++)
-					{
-						currentHTML = currentHTML.Remove(0, currentHTML.IndexOf("<div id=\"answer-", 50, StringComparison.Ordinal));
-
-						answers.Add(GetAnswer(currentHTML));
-					}				
-				}		
+					answers.Add(GetAnswer(currentHTML));
+				}								
 			}
 			catch (Exception)
 			{
-
+				PopulateExtraDataFailed = true;
 			}
 			
 			extraDataPopulated = true;

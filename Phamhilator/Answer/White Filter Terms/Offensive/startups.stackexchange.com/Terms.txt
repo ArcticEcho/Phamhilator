@@ -1,2 +1,2 @@
 
-6.5](?i)\bfuck\b
+7](?i)\bfuck\b

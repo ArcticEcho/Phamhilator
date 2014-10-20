@@ -1,4 +1,8 @@
-﻿namespace Phamhilator
+﻿using System.Threading.Tasks;
+
+
+
+namespace Phamhilator
 {
 	public static class PostAnalyser
 	{
@@ -6,10 +10,7 @@
 		{
 			var analysis = new QAAnalysis { QResults = AnalyseQuestion(q) };
 
-			foreach (var a in q.Answers)
-			{
-				analysis.AResults.Add(a, AnalyseAnswer(a));
-			}
+			Parallel.ForEach(q.Answers, a => analysis.AResults.Add(a, AnalyseAnswer(a)));
 
 			return analysis;
 		}

@@ -13,7 +13,7 @@ namespace Phamhilator
 
 
 
-		public static string GetURL(string html)
+		public static string GetQuestionURL(string html)
 		{
 			var startIndex = html.IndexOf("href=", StringComparison.Ordinal) + 6;
 			var endIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal);
@@ -23,22 +23,17 @@ namespace Phamhilator
 			return url.Substring(0, url.LastIndexOf("/", StringComparison.Ordinal));
 		}
 
-		public static string GetTitle(string html)
+		public static string GetQuestionTitle(string html)
 		{
-			var startIndex = html.IndexOf("href=", StringComparison.Ordinal) + 6;
-			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal);
-			startIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal) + 2;
-
-			var endIndex = html.IndexOf("</A></H2>", startIndex, StringComparison.Ordinal);
+			var startIndex = html.IndexOf("realtime-title\">\r\n                ", StringComparison.Ordinal) + 34;
+			var endIndex = html.IndexOf("\r\n            </a>\r\n        </h2>", startIndex, StringComparison.Ordinal);
 
 			return escapeChars.Replace(WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex).Trim()), "");
 		}
 
-		public static string GetAuthorLink(string html)
+		public static string GetQuestionAuthorLink(string html)
 		{
-			var startIndex = html.IndexOf("owner realtime-owner", StringComparison.Ordinal) + 21;
-			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal) + 6;
-
+			var startIndex = html.IndexOf("by\r\n                        <a href", StringComparison.Ordinal) + 37;
 			var endIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal);
 
 			var link = html.Substring(startIndex, endIndex - startIndex).Trim();
@@ -48,13 +43,12 @@ namespace Phamhilator
 			return link == "http:/" ? "" : link;
 		}
 
-		public static string GetAuthorName(string html)
+		public static string GetQuestionAuthorName(string html)
 		{
-			var startIndex = html.IndexOf("owner realtime-owner", StringComparison.Ordinal) + 21;
-			startIndex = html.IndexOf("href=", startIndex, StringComparison.Ordinal) + 6;
+			var startIndex = html.IndexOf("by\r\n                        <a href", StringComparison.Ordinal) + 37;
 			startIndex = html.IndexOf("\">", startIndex, StringComparison.Ordinal) + 2;
 
-			var endIndex = html.IndexOf("</A>", startIndex, StringComparison.Ordinal);
+			var endIndex = html.IndexOf("</a>", startIndex, StringComparison.Ordinal);
 
 			return escapeChars.Replace(html.Substring(startIndex, endIndex - startIndex).Trim(), "");
 		}
@@ -70,8 +64,8 @@ namespace Phamhilator
 		{
 			var tags = new List<string>();
 
-			var startIndex = html.IndexOf("realtime-tags", StringComparison.Ordinal);
-			var endIndex = html.IndexOf("</SPAN>", startIndex, StringComparison.Ordinal);
+			var startIndex = html.IndexOf("<span class=\"realtime-tags", StringComparison.Ordinal);
+			var endIndex = html.IndexOf("</span>", startIndex, StringComparison.Ordinal);
 
 			while (true)
 			{
@@ -80,7 +74,7 @@ namespace Phamhilator
 				if (startIndex != -1 && startIndex < endIndex)
 				{
 					var start = html.IndexOf("\">", startIndex, StringComparison.Ordinal) + 2;
-					var end = html.IndexOf("</A>", start, StringComparison.Ordinal);
+					var end = html.IndexOf("</a>", start, StringComparison.Ordinal);
 
 					var result = html.Substring(start, end - start).Trim().ToLowerInvariant();
 
@@ -184,7 +178,11 @@ namespace Phamhilator
 
 			var endIndex = html.IndexOf("\"", startIndex, StringComparison.Ordinal);
 
-			return questionURL.Substring(0, questionURL.IndexOf("/", 7, StringComparison.Ordinal)) + html.Substring(startIndex, endIndex - startIndex);
+			var link = questionURL.Substring(0, questionURL.IndexOf("/", 7, StringComparison.Ordinal)) + html.Substring(startIndex, endIndex - startIndex);
+
+			link = link.Remove(link.IndexOf(@"/", link.IndexOf("users", StringComparison.Ordinal) + 7, StringComparison.Ordinal));
+
+			return link == "http:/" ? "" : link;
 		}
 
 		public static string GetAnswerAuthorName(string html)

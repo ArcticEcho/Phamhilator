@@ -99,6 +99,24 @@ namespace Phamhilator.QuestionFilters.Title.White
 			File.WriteAllLines(file, data);
 		}
 
+		public void EditTerm(string site, Regex oldTerm, Regex newTerm)
+		{
+			for (var i = 0; i < Terms[site].Count; i++)
+			{
+				var t = Terms[site].Keys.ElementAt(i);
+
+				if (oldTerm.ToString() != t.ToString()) { continue; }
+
+				var score = Terms[site][t];
+
+				Terms[site].Remove(t);
+
+				Terms[site].Add(newTerm, score);
+
+				break;
+			}
+		}
+
 		public void SetScore(Regex term, string site, float newScore)
 		{
 			if (!Terms.ContainsKey(site)) { return; }

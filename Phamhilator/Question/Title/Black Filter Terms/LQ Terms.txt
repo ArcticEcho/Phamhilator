@@ -16,11 +16,10 @@
 10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 10](?i)correct this
 10](?i)school project
-12](?i)beginner
+13](?i)beginner
 10](?i)asap
 11](?i)urgent
 11](?i)thanks
-26](?i)pl(z|s|ease)
 12](?i)(need|some)( halp| help| answer)
 21](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
 33](?i)\b(help|halp)\b
@@ -43,4 +42,6 @@
 13.66111]^\S*$
 
 13.66111](?i)(advice|opinion|thought)s on
-13.66111](?i:noob|beginner)
+14.66111](?i:noob|beginner)
+
+13.42067]\bpl[sz]+\b

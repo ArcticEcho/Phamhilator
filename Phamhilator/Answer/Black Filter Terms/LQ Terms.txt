@@ -7,7 +7,9 @@
 
 28]^(?=.{0,75}$)\?$
 
-54.5]^(?i).{0,80}$
+55.5]^(?i).{0,80}$
 31.5](?i)(did|have) you f(in|oun)d
 
 31.8]^\<p\>[^a-z]*\<\/p\>$
+
+32.63333](?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)

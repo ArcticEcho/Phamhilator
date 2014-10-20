@@ -81,7 +81,9 @@
     <Compile Include="BannedUsers.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
+    <Compile Include="DownloadString.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Filters.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="MessageCleaner.cs" />
@@ -95,7 +97,7 @@
     <Compile Include="QuestionFilters\Title\Black\BadUsername.cs" />
     <Compile Include="QuestionFilters\Title\Black\LQ.cs" />
     <Compile Include="QuestionFilters\Title\Black\Spam.cs" />
-    <Compile Include="HTMLScrapper.cs" />
+    <Compile Include="HTMLScraper.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="QuestionAnalysis.cs" />
     <Compile Include="Analysers\QuestionTitle.cs" />

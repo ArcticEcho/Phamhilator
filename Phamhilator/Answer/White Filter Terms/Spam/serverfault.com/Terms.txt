@@ -2,6 +2,6 @@
 5](?i)\bwork out\b
 5](?i)\byou know\b
 5](?i)\bheal(ing|thly)?\b
-6][-\w]{3}@\w+\.
+7][-\w]{3}@\w+\.
 
 5](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))

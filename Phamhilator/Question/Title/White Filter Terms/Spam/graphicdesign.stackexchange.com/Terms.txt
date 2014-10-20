@@ -1,3 +1,4 @@
 
 5](?i)the perfect
 5](?i)\byou know\b
+5](?i)how to (feel|look|reduce|buy|increase)

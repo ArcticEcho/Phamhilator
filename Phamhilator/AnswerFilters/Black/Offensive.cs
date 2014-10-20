@@ -68,10 +68,11 @@ namespace Phamhilator.AnswerFilters.Black
 			{
 				var t = Terms.Keys.ElementAt(i);
 
-				if (term.ToString() == t.ToString())
-				{
-					Terms.Remove(t);
-				}
+				if (term.ToString() != t.ToString()) { continue; }
+
+				Terms.Remove(t);
+
+				break;
 			}
 
 			var data = File.ReadAllLines(DirectoryTools.GetABOffTermsFile()).ToList();
@@ -86,6 +87,24 @@ namespace Phamhilator.AnswerFilters.Black
 			}
 
 			File.WriteAllLines(DirectoryTools.GetABOffTermsFile(), data);
+		}
+
+		public void EditTerm(Regex oldTerm, Regex newTerm)
+		{
+			for (var i = 0; i < Terms.Count; i++)
+			{
+				var t = Terms.Keys.ElementAt(i);
+
+				if (oldTerm.ToString() != t.ToString()) { continue; }
+
+				var score = Terms[t];
+
+				Terms.Remove(t);
+
+				Terms.Add(newTerm, score);
+
+				break;
+			}
 		}
 
 		public void SetScore(Regex term, float newScore)

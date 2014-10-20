@@ -128,7 +128,7 @@ namespace Phamhilator
 
 			while (!exit || MessageQueue.Count != 0)
 			{
-				Thread.Sleep(1000);
+				Thread.Sleep(2000);
 
 				if (GlobalInfo.ChatRoomID == 0 || GlobalInfo.AnnouncerRoomID == 0 || MessageQueue.Count == 0) { continue; }
 

@@ -11,6 +11,9 @@ namespace Phamhilator
 {
 	public static class GlobalInfo
 	{
+		private static int chatID;
+		private static int announceID;
+
 		#region Filters
 
 		public static readonly QuestionFilters.Title.White.BadUsername QTWName = new QuestionFilters.Title.White.BadUsername();
@@ -48,7 +51,7 @@ namespace Phamhilator
 		public const string BotUsername = "pham"; // TODO: change this to the username of your account which the bot will be using.
 		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
 		public static readonly MessageHandler MessagePoster = new MessageHandler();
-		public const string Owners = "Sam, Unihedron & ProgramFOX";
+		public const string Owners = "Sam, Unihedron, Jan Dvorak & ProgramFOX";
 		public static WebBrowser ChatWb;
 		public static WebBrowser AnnounceWb;
 		public static int PostsCaught;
@@ -100,28 +103,29 @@ namespace Phamhilator
 		{
 			get
 			{
-				var ID = 0;
-
-				App.Current.Dispatcher.Invoke(() =>
+				if (chatID == 0)
 				{
-					try
+					App.Current.Dispatcher.Invoke(() =>
 					{
-						var startIndex = ChatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
-						var endIndex = ChatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
+						try
+						{
+							var startIndex = ChatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
+							var endIndex = ChatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
-						var IDString = ChatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
+							var IDString = ChatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
-						if (!IDString.All(Char.IsDigit)) { return; }
+							if (!IDString.All(Char.IsDigit)) { return; }
 
-						ID = int.Parse(IDString);
-					}
-					catch (Exception)
-					{
+							chatID = int.Parse(IDString);
+						}
+						catch (Exception)
+						{
 
-					}
-				});
+						}
+					});
+				}
 
-				return ID;
+				return chatID;
 			}
 		}
 
@@ -129,28 +133,29 @@ namespace Phamhilator
 		{
 			get
 			{
-				var ID = 0;
-
-				App.Current.Dispatcher.Invoke(() =>
+				if (announceID == 0)
 				{
-					try
+					App.Current.Dispatcher.Invoke(() =>
 					{
-						var startIndex = AnnounceWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
-						var endIndex = AnnounceWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
+						try
+						{
+							var startIndex = AnnounceWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
+							var endIndex = AnnounceWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
-						var IDString = AnnounceWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
+							var IDString = AnnounceWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
-						if (!IDString.All(Char.IsDigit)) { return; }
+							if (!IDString.All(Char.IsDigit)) { return; }
 
-						ID = int.Parse(IDString);
-					}
-					catch (Exception)
-					{
+							announceID = int.Parse(IDString);
+						}
+						catch (Exception)
+						{
 
-					}
-				});
+						}
+					});
+				}
 
-				return ID;
+				return announceID;
 			}
 		}
 

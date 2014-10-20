@@ -8,7 +8,7 @@
 10](?i)\bbitch\b
 10](?i)\bcrap\b
 10](?i)\bfag\b
-13](?i)\bfuck\b
+14](?i)\bfuck\b
 10](?i)\bidiot\b
 12](?i)\bshit\b
 10](?i)\bwhore\b

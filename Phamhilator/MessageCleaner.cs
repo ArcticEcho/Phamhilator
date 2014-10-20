@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 
 
@@ -29,14 +25,7 @@ namespace Phamhilator
 
 			foreach (var c in input)
 			{
-				if (c == ' ')
-				{
-					censored.Append(' ');
-				}
-				else
-				{
-					censored.Append('*');
-				}
+				censored.Append(c == ' ' ? ' ' : '*');
 			}
 
 			return censored.ToString();

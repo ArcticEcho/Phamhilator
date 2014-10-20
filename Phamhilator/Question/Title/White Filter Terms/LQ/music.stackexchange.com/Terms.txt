@@ -3,4 +3,4 @@
 
 5](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 
-6](?i)beginner
+6.5](?i)beginner

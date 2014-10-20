@@ -17,6 +17,147 @@ namespace Phamhilator
 
 
 
+		//public static string GetFilterFile(Filters filter)
+		//{
+		//	var path = "";
+
+		//	switch (filter)
+		//	{
+		//		case Filters.AnswerBodyBlackLQ:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.AnswerBodyBlackName:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.AnswerBodyBlackOff:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.AnswerBodyBlackSpam:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.AnswerBodyWhiteLQ:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.AnswerBodyWhiteName:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.AnswerBodyWhiteOff:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.AnswerBodyWhiteSpam:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionBodyBlackLQ:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionBodyBlackOff:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionBodyBlackSpam:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionBodyWhiteLQ:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionBodyWhiteOff:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionBodyWhiteSpam:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionTitleBlackLQ:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionTitleBlackName:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionTitleBlackOff:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionTitleBlackSpam:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionTitleWhiteLQ:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionTitleWhiteName:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionTitleWhiteOff:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//		case Filters.QuestionTitleWhiteSpam:
+		//		{
+		//			path = "";
+
+		//			break;
+		//		}
+		//	}
+		//}
+
 		public static string GetQTBOffTermsFile()
 		{
 			var path = Path.Combine(QTBFilterTermsPath, "Offensive Terms.txt");

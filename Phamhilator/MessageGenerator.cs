@@ -12,6 +12,7 @@ namespace Phamhilator
 		{
 			var title = String.IsNullOrEmpty(post.Title) ? "Unable to get post excerpt." : post.Title;
 			var author = String.IsNullOrEmpty(post.AuthorLink) ? post.AuthorName : "[" + post.AuthorName + "](" + post.AuthorLink + ")";
+			var fullScanFailed = post.PopulateExtraDataFailed ? " FSF" : "";
 
 			switch (info.Type)
 			{
@@ -22,7 +23,7 @@ namespace Phamhilator
 
 				default:
 				{
-					return " **Q** (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + title + "](" + post.URL + "), by " + author + ", on `" + post.Site + "`.";
+					return " **Q** (" + Math.Round(info.Accuracy, 1) + "%" + fullScanFailed + ")" + ": [" + title + "](" + post.URL + "), by " + author + ", on `" + post.Site + "`.";
 				}
 			}
 		}
