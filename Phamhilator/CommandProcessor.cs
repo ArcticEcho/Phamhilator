@@ -1936,7 +1936,7 @@ namespace Phamhilator
 
 			var newLimit = command.Remove(0, 10);
 
-			GlobalInfo.AccuracyThreshold = Single.Parse(newLimit, CultureInfo.InvariantCulture);
+			GlobalInfo.AccuracyThreshold = float.Parse(newLimit, CultureInfo.InvariantCulture);
 
 			return "`Accuracy threshold updated.`";
 		}
