@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using System.Security;
 
 
 
@@ -540,12 +541,19 @@ namespace Phamhilator
 			var version = osInfo.Version.Major.ToString(CultureInfo.InvariantCulture) + '.' + osInfo.Version.Minor;
 			var editFlag = (uint)((version == "6.2") ? 0x2710 : 0x2328); // 6.2 = Windows 8 and therefore IE10
 
-			var existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, false); // readonly key
-
-			if (existingSubKey.GetValue(entryLabel) == null)
+			try
 			{
-				existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, true); // writable key
-				existingSubKey.SetValue(entryLabel, unchecked((int)editFlag), RegistryValueKind.DWord);
+				var existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, false); // readonly key
+
+				if (existingSubKey.GetValue(entryLabel) == null)
+				{
+					existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, true); // writable key
+					existingSubKey.SetValue(entryLabel, unchecked((int)editFlag), RegistryValueKind.DWord);
+				}
+			}
+			catch (SecurityException ex)
+			{
+				MessageBox.Show(string.Format("Can't write to the registry. Try to run using administrative privileges.\n\nException: {0}", ex.Message), "Phamilator");
 			}
 		}
 
