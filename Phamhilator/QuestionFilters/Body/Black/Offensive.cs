@@ -57,7 +57,7 @@ namespace Phamhilator.QuestionFilters.Body.Black
 
 			Terms.Add(term, AverageScore);
 
-			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.QuestionBodyBlackOff), "\n" + AverageScore + "]" + term);
+			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.QuestionBodyBlackOff), Environment.NewLine + AverageScore + "]" + term);
 		}
 
 		public void RemoveTerm(Regex term)
@@ -99,9 +99,9 @@ namespace Phamhilator.QuestionFilters.Body.Black
 
 				var score = Terms[t];
 
-				Terms.Remove(t);
-
-				Terms.Add(newTerm, score);
+				RemoveTerm(oldTerm);
+				AddTerm(newTerm);
+				SetScore(newTerm, score);
 
 				break;
 			}
