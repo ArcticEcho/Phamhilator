@@ -244,13 +244,13 @@ namespace Phamhilator
 
 			// Get user ID.
 
-			var authorID = html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.Ordinal) - 8) - startIndex);
+			var authorID = html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.OrdinalIgnoreCase) - 8) - startIndex);
 
 			// Get message.
 
-			startIndex = html.LastIndexOf("<DIV class=content>", StringComparison.Ordinal) + 19;
+			startIndex = html.LastIndexOf("<DIV class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21;
 
-			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.Ordinal) - startIndex));
+            var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.OrdinalIgnoreCase) - startIndex));
 
 			var info = new MessageInfo
 			{
@@ -312,7 +312,9 @@ namespace Phamhilator
 		{
 			var startIndex = html.LastIndexOf("click for message actions", StringComparison.Ordinal) + 53;
 
-			return int.Parse(html.Substring(startIndex, html.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
+            int indexOfHash = html.IndexOf("#", startIndex, StringComparison.Ordinal);
+            int indexOfCloseQuote = html.IndexOf("\"", indexOfHash, StringComparison.Ordinal);
+            return int.Parse(html.Substring(indexOfHash + 1, indexOfCloseQuote - indexOfHash - 1));
 		}
 
 		private static int GetMessageReplyID(string html, string messageContent)
