@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
 
-        Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing">
+        Title="Phamhilator" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing">
     <Border BorderBrush="#FF41B1FF" BorderThickness="1">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -16,11 +16,11 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <WebBrowser Name="chatWb" Grid.Column="0" Grid.Row="0" Source="http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts"/>
-            <WebBrowser Name="announceWb" Grid.Column="1" Grid.Row="0" Source="http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta"/>
+            <WebBrowser Name="chatWb" Grid.Column="0" Grid.Row="0" Source="http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <WebBrowser Name="announceWb" Grid.Column="1" Grid.Row="0" Source="http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
             <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
                 <Button Margin="5" Content="Start Monitoring" Width="109" Click="Button_Click_2"/>
-                <Slider Margin="5" Name="refreshRateS" Width="250" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged"/>
+                <Slider Margin="5,8,5,5" Name="refreshRateS" Width="250" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged"/>
                 <Label Margin="5" Content="Refresh Rate:" />
                 <Label Margin="5" Name="refreshRateL" Content="10000 milliseconds" />
             </StackPanel>

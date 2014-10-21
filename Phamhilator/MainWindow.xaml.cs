@@ -585,6 +585,8 @@ namespace Phamhilator
 		{
 			e.Cancel = true;
 
+			if (!GlobalInfo.BotRunning) { Environment.Exit(0); }
+
 			GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Phamhilator™ stopped.`" }, GlobalInfo.ChatRoomID);
 
 			GlobalInfo.Exit = true;

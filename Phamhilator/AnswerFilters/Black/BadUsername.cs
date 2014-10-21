@@ -57,6 +57,8 @@ namespace Phamhilator.AnswerFilters.Black
 			Terms.Add(term, AverageScore);
 
 			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.AnswerBlackName), "\n" + AverageScore + "]" + term);
+
+			//Terms.WriteTerm(Filters.AnswerBlackName, "", term.ToString());
 		}
 
 		public void RemoveTerm(Regex term)
