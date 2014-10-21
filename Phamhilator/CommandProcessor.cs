@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -1935,7 +1936,7 @@ namespace Phamhilator
 
 			var newLimit = command.Remove(0, 10);
 
-			GlobalInfo.AccuracyThreshold = Single.Parse(newLimit);
+			GlobalInfo.AccuracyThreshold = Single.Parse(newLimit, CultureInfo.InvariantCulture);
 
 			return "`Accuracy threshold updated.`";
 		}
