@@ -3,16 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
 
-        Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing" ResizeMode="NoResize">
+        Title="Phamhilator" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing">
     <Border BorderBrush="#FF41B1FF" BorderThickness="1">
-        <Canvas>
-            <WebBrowser Name="chatWb" Height="630" Width="596" Source="http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts"/>
-            <WebBrowser Name="announceWb" Height="630" Canvas.Left="596" Width="596" Source="http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta"/>
-            <!-- http://chat.meta.stackexchange.com/rooms/651/sandbox -->
-            <Button Content="Start Monitoring" Canvas.Left="10" Canvas.Top="638" Width="109" Click="Button_Click_2"/>
-            <Slider Name="refreshRateS" Canvas.Left="203" Canvas.Top="641" Width="250" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged"/>
-            <Label Content="Refresh Rate:" Canvas.Left="124" Canvas.Top="637"/>
-            <Label Name="refreshRateL" Content="10000 milliseconds" Canvas.Left="458" Canvas.Top="637"/>
-        </Canvas>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <WebBrowser Name="chatWb" Grid.Column="0" Grid.Row="0" Source="http://chat.meta.stackexchange.com/rooms/773/room-for-low-quality-posts"/>
+            <WebBrowser Name="announceWb" Grid.Column="1" Grid.Row="0" Source="http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta"/>
+            <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <Button Margin="5" Content="Start Monitoring" Width="109" Click="Button_Click_2"/>
+                <Slider Margin="5" Name="refreshRateS" Width="250" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged"/>
+                <Label Margin="5" Content="Refresh Rate:" />
+                <Label Margin="5" Name="refreshRateL" Content="10000 milliseconds" />
+            </StackPanel>
+        </Grid>
     </Border>
 </controls:MetroWindow>
