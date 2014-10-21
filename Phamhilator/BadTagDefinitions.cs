@@ -32,7 +32,7 @@ namespace Phamhilator
 			{
 				badTags[site].Add(tag, metaPost);
 
-				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), "\n" + tag + (metaPost == "" ? "" : " " + metaPost));
+				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), Environment.NewLine + tag + (metaPost == "" ? "" : " " + metaPost));
 			}
 			else
 			{
@@ -42,7 +42,7 @@ namespace Phamhilator
 
 				badTags.Add(site, new Dictionary<string, string> { { tag, metaPost } });
 
-				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), "\n" + tag + (metaPost == "" ? "" : " " + metaPost));
+				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), Environment.NewLine + tag + (metaPost == "" ? "" : " " + metaPost));
 			}
 		}
 

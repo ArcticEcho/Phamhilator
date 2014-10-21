@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 
 namespace Phamhilator.QuestionFilters.Title.Black
-{	
+{
 	public class LQ
 	{
 		public Dictionary<Regex, float> Terms { get; private set; }
@@ -57,7 +57,7 @@ namespace Phamhilator.QuestionFilters.Title.Black
 
 			Terms.Add(term, AverageScore);
 
-			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.QuestionTitleBlackLQ), "\n" + AverageScore + "]" + term);
+			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.QuestionTitleBlackLQ), Environment.NewLine + AverageScore + "]" + term);
 		}
 
 		public void RemoveTerm(Regex term)
@@ -99,9 +99,9 @@ namespace Phamhilator.QuestionFilters.Title.Black
 
 				var score = Terms[t];
 
-				Terms.Remove(t);
-
-				Terms.Add(newTerm, score);
+				RemoveTerm(oldTerm);
+				AddTerm(newTerm);
+				SetScore(newTerm, score);
 
 				break;
 			}

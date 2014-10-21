@@ -56,7 +56,7 @@ namespace Phamhilator.AnswerFilters.Black
 
 			Terms.Add(term, AverageScore);
 
-			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.AnswerBlackName), "\n" + AverageScore + "]" + term);
+			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.AnswerBlackName), Environment.NewLine + AverageScore + "]" + term);
 
 			//Terms.WriteTerm(Filters.AnswerBlackName, "", term.ToString());
 		}
@@ -100,9 +100,9 @@ namespace Phamhilator.AnswerFilters.Black
 
 				var score = Terms[t];
 
-				Terms.Remove(t);
-
-				Terms.Add(newTerm, score);
+				RemoveTerm(oldTerm);
+				AddTerm(newTerm);
+				SetScore(newTerm, score);
 
 				break;
 			}

@@ -66,7 +66,7 @@ namespace Phamhilator.QuestionFilters.Body.White
 
 			Terms[site].Add(term, score);
 
-			File.AppendAllText(file, "\n" + score + "]" + term);
+			File.AppendAllText(file, Environment.NewLine + score + "]" + term);
 		}
 
 		public void RemoveTerm(Regex term, string site)
@@ -109,9 +109,9 @@ namespace Phamhilator.QuestionFilters.Body.White
 
 				var score = Terms[site][t];
 
-				Terms[site].Remove(t);
-
-				Terms[site].Add(newTerm, score);
+				RemoveTerm(oldTerm, site);
+				AddTerm(newTerm, site);
+				SetScore(newTerm, site, score);
 
 				break;
 			}
