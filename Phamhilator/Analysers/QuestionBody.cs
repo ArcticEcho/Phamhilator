@@ -4,6 +4,8 @@
 	{
 		public static bool IsSpam(Question post, ref QuestionAnalysis info)
 		{
+			if (post.PopulateExtraDataFailed) { return false; }
+
 			var filtersUsed = 0;
 
 			// Loop over blacklist.
@@ -48,6 +50,8 @@
 
 		public static bool IsLowQuality(Question post, ref QuestionAnalysis info)
 		{
+			if (post.PopulateExtraDataFailed) { return false; }
+
 			var filtersUsed = 0;
 
 			// Loop over blacklist.
@@ -92,6 +96,8 @@
 
 		public static bool IsOffensive(Question post, ref QuestionAnalysis info)
 		{
+			if (post.PopulateExtraDataFailed) { return false; }
+
 			var filtersUsed = 0;
 
 			// Loop over blacklist.

@@ -1,3 +1,5 @@
 
 7.92](?i)health
 6](?i)\bbrand\b
+
+5](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))

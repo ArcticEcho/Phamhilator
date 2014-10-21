@@ -32,7 +32,7 @@ namespace Phamhilator.AnswerFilters.Black
 
 		public Offensive()
 		{
-			var data = File.ReadAllLines(DirectoryTools.GetABOffTermsFile());
+			var data = File.ReadAllLines(DirectoryTools.GetFilterFile(Filters.AnswerBlackOff));
 			Terms = new Dictionary<Regex, float>();
 
 			foreach (var termAndScore in data)
@@ -57,7 +57,7 @@ namespace Phamhilator.AnswerFilters.Black
 
 			Terms.Add(term, AverageScore);
 
-			File.AppendAllText(DirectoryTools.GetABOffTermsFile(), "\n" + AverageScore + "]" + term);
+			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.AnswerBlackOff), "\n" + AverageScore + "]" + term);
 		}
 
 		public void RemoveTerm(Regex term)
@@ -75,7 +75,7 @@ namespace Phamhilator.AnswerFilters.Black
 				break;
 			}
 
-			var data = File.ReadAllLines(DirectoryTools.GetABOffTermsFile()).ToList();
+			var data = File.ReadAllLines(DirectoryTools.GetFilterFile(Filters.AnswerBlackOff)).ToList();
 
 			for (var i = 0; i < data.Count; i++)
 			{
@@ -86,7 +86,7 @@ namespace Phamhilator.AnswerFilters.Black
 				break;
 			}
 
-			File.WriteAllLines(DirectoryTools.GetABOffTermsFile(), data);
+			File.WriteAllLines(DirectoryTools.GetFilterFile(Filters.AnswerBlackOff), data);
 		}
 
 		public void EditTerm(Regex oldTerm, Regex newTerm)
@@ -117,7 +117,7 @@ namespace Phamhilator.AnswerFilters.Black
 
 				Terms[key] = newScore;
 
-				var data = File.ReadAllLines(DirectoryTools.GetABOffTermsFile());
+				var data = File.ReadAllLines(DirectoryTools.GetFilterFile(Filters.AnswerBlackOff));
 
 				for (var ii = 0; ii < data.Length; ii++)
 				{
@@ -134,7 +134,7 @@ namespace Phamhilator.AnswerFilters.Black
 					break;
 				}
 
-				File.WriteAllLines(DirectoryTools.GetABOffTermsFile(), data);
+				File.WriteAllLines(DirectoryTools.GetFilterFile(Filters.AnswerBlackOff), data);
 
 				return;
 			}

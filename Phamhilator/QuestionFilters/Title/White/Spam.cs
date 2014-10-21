@@ -18,7 +18,7 @@ namespace Phamhilator.QuestionFilters.Title.White
 		{
 			Terms = new Dictionary<string, Dictionary<Regex, float>>();
 
-			var sites = Directory.EnumerateDirectories(DirectoryTools.GetQTWSpamTermsDir()).ToArray();
+			var sites = Directory.EnumerateDirectories(DirectoryTools.GetFilterFile(Filters.QuestionTitleWhiteSpam)).ToArray();
 
 			for (var i = 0; i < sites.Length; i++)
 			{
@@ -27,7 +27,7 @@ namespace Phamhilator.QuestionFilters.Title.White
 
 			foreach (var site in sites)
 			{
-				var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetQTWSpamTermsDir(), site, "Terms.txt"));
+				var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetFilterFile(Filters.QuestionTitleWhiteSpam), site, "Terms.txt"));
 
 				Terms.Add(site, new Dictionary<Regex, float>());
 
@@ -50,13 +50,13 @@ namespace Phamhilator.QuestionFilters.Title.White
 
 		public void AddTerm(Regex term, string site, float score = -1)
 		{
-			var file = Path.Combine(DirectoryTools.GetQTWSpamTermsDir(), site, "Terms.txt");
+			var file = Path.Combine(DirectoryTools.GetFilterFile(Filters.QuestionTitleWhiteSpam), site, "Terms.txt");
 
 			if (!Terms.ContainsKey(site))
 			{
 				Terms.Add(site, new Dictionary<Regex, float>());
 
-				Directory.CreateDirectory(Path.Combine(DirectoryTools.GetQTWSpamTermsDir(), site));
+				Directory.CreateDirectory(Path.Combine(DirectoryTools.GetFilterFile(Filters.QuestionTitleWhiteSpam), site));
 			}
 
 			if (score == -1)
@@ -84,7 +84,7 @@ namespace Phamhilator.QuestionFilters.Title.White
 				break;
 			}
 
-			var file = Path.Combine(DirectoryTools.GetQTWSpamTermsDir(), site, "Terms.txt");
+			var file = Path.Combine(DirectoryTools.GetFilterFile(Filters.QuestionTitleWhiteSpam), site, "Terms.txt");
 			var data = File.ReadAllLines(file).ToList();
 
 			for (var i = 0; i < data.Count; i++)
@@ -121,7 +121,7 @@ namespace Phamhilator.QuestionFilters.Title.White
 		{
 			if (!Terms.ContainsKey(site)) { return; }
 
-			var file = Path.Combine(DirectoryTools.GetQTWSpamTermsDir(), site, "Terms.txt");
+			var file = Path.Combine(DirectoryTools.GetFilterFile(Filters.QuestionTitleWhiteSpam), site, "Terms.txt");
 
 			for (var i = 0; i < Terms[site].Count; i++)
 			{

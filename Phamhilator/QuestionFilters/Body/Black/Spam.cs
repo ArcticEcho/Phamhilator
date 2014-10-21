@@ -32,7 +32,7 @@ namespace Phamhilator.QuestionFilters.Body.Black
 
 		public Spam()
 		{
-			var data = File.ReadAllLines(DirectoryTools.GetQBBSpamTermsFile());
+			var data = File.ReadAllLines(DirectoryTools.GetFilterFile(Filters.QuestionBodyBlackSpam));
 			Terms = new Dictionary<Regex, float>();
 
 			foreach (var termAndScore in data)
@@ -57,7 +57,7 @@ namespace Phamhilator.QuestionFilters.Body.Black
 
 			Terms.Add(term, AverageScore);
 
-			File.AppendAllText(DirectoryTools.GetQBBSpamTermsFile(), "\n" + AverageScore + "]" + term);
+			File.AppendAllText(DirectoryTools.GetFilterFile(Filters.QuestionBodyBlackSpam), "\n" + AverageScore + "]" + term);
 		}
 
 		public void RemoveTerm(Regex term)
@@ -75,7 +75,7 @@ namespace Phamhilator.QuestionFilters.Body.Black
 				break;
 			}
 
-			var data = File.ReadAllLines(DirectoryTools.GetQBBSpamTermsFile()).ToList();
+			var data = File.ReadAllLines(DirectoryTools.GetFilterFile(Filters.QuestionBodyBlackSpam)).ToList();
 
 			for (var i = 0; i < data.Count; i++)
 			{
@@ -86,7 +86,7 @@ namespace Phamhilator.QuestionFilters.Body.Black
 				break;
 			}
 
-			File.WriteAllLines(DirectoryTools.GetQBBSpamTermsFile(), data);
+			File.WriteAllLines(DirectoryTools.GetFilterFile(Filters.QuestionBodyBlackSpam), data);
 		}
 
 		public void EditTerm(Regex oldTerm, Regex newTerm)
@@ -117,7 +117,7 @@ namespace Phamhilator.QuestionFilters.Body.Black
 
 				Terms[key] = newScore;
 
-				var data = File.ReadAllLines(DirectoryTools.GetQBBSpamTermsFile());
+				var data = File.ReadAllLines(DirectoryTools.GetFilterFile(Filters.QuestionBodyBlackSpam));
 
 				for (var ii = 0; ii < data.Length; ii++)
 				{
@@ -134,7 +134,7 @@ namespace Phamhilator.QuestionFilters.Body.Black
 					break;
 				}
 
-				File.WriteAllLines(DirectoryTools.GetQBBSpamTermsFile(), data);
+				File.WriteAllLines(DirectoryTools.GetFilterFile(Filters.QuestionBodyBlackSpam), data);
 
 				return;
 			}

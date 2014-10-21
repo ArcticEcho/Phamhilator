@@ -44,7 +44,7 @@ namespace Phamhilator
 		//{
 		//	if (!terms.ContainsKey(site)) { return; }
 
-		//	var file = Path.Combine(DirectoryTools.GetQTWLQTermsDir(), site, "Terms.txt");
+		//	var file = Path.Combine(DirectoryTools.GetFilterFile(Filters.QuestionTitleWhiteLQ), site, "Terms.txt");
 		//	var data = File.ReadAllLines(file);
 
 		//	if (String.IsNullOrEmpty(oldTerm))

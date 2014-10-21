@@ -1,33 +1,33 @@
-﻿//namespace Phamhilator
-//{
-//	public enum Filters
-//	{
-//		QuestionTitleBlackSpam,
-//		QuestionTitleBlackLQ,
-//		QuestionTitleBlackOff,
-//		QuestionTitleBlackName,
+﻿namespace Phamhilator
+{
+	public enum Filters
+	{
+		QuestionTitleBlackSpam,
+		QuestionTitleBlackLQ,
+		QuestionTitleBlackOff,
+		QuestionTitleBlackName,
 
-//		QuestionBodyBlackSpam,
-//		QuestionBodyBlackLQ,
-//		QuestionBodyBlackOff,
+		QuestionBodyBlackSpam,
+		QuestionBodyBlackLQ,
+		QuestionBodyBlackOff,
 
-//		AnswerBlackSpam,
-//		AnswerBlackLQ,
-//		AnswerBlackOff,
-//		AnswerBlackName,
+		AnswerBlackSpam,
+		AnswerBlackLQ,
+		AnswerBlackOff,
+		AnswerBlackName,
 
-//		QuestionTitleWhiteSpam = 100,
-//		QuestionTitleWhiteLQ,
-//		QuestionTitleWhiteOff,
-//		QuestionTitleWhiteName,
+		QuestionTitleWhiteSpam = 100,
+		QuestionTitleWhiteLQ,
+		QuestionTitleWhiteOff,
+		QuestionTitleWhiteName,
 
-//		QuestionBodyWhiteSpam,
-//		QuestionBodyWhiteLQ,
-//		QuestionBodyWhiteOff,
+		QuestionBodyWhiteSpam,
+		QuestionBodyWhiteLQ,
+		QuestionBodyWhiteOff,
 
-//		AnswerWhiteSpam,
-//		AnswerWhiteLQ,
-//		AnswerWhiteOff,
-//		AnswerBodyWhiteName
-//	}
-//}
+		AnswerWhiteSpam,
+		AnswerWhiteLQ,
+		AnswerWhiteOff,
+		AnswerWhiteName
+	}
+}
