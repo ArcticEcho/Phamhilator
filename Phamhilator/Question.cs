@@ -21,7 +21,7 @@ namespace Phamhilator
 		{
 			get
 			{
-				if (!extraDataPopulated && GlobalInfo.EnableFullScan)
+				if (!extraDataPopulated && GlobalInfo.FullScanEnabled)
 				{
 					PopulateExtraData();
 				}
@@ -34,7 +34,7 @@ namespace Phamhilator
 		{
 			get
 			{
-				if (!extraDataPopulated && GlobalInfo.EnableFullScan)
+				if (!extraDataPopulated && GlobalInfo.FullScanEnabled)
 				{
 					PopulateExtraData();
 				}
@@ -47,7 +47,7 @@ namespace Phamhilator
 		{
 			get
 			{
-				if (!extraDataPopulated && GlobalInfo.EnableFullScan)
+				if (!extraDataPopulated && GlobalInfo.FullScanEnabled)
 				{
 					PopulateExtraData();
 				}
@@ -60,7 +60,7 @@ namespace Phamhilator
 		{
 			get
 			{
-				if (!extraDataPopulated && GlobalInfo.EnableFullScan)
+				if (!extraDataPopulated && GlobalInfo.FullScanEnabled)
 				{
 					PopulateExtraData();
 				}
@@ -72,8 +72,10 @@ namespace Phamhilator
 
 
 
-		private void PopulateExtraData()
+		public void PopulateExtraData()
 		{
+			if (extraDataPopulated) { return; }
+
 			try
 			{		
 				var html = StringDownloader.DownloadString(URL, 15000);
@@ -99,6 +101,8 @@ namespace Phamhilator
 			
 			extraDataPopulated = true;
 		}
+
+
 
 		private Answer GetAnswer(string html)
 		{

@@ -63,7 +63,7 @@ namespace Phamhilator
 		public static bool BotRunning;
 		public static bool Exit;
 
-		public static bool EnableFullScan
+		public static bool FullScanEnabled
 		{
 			get
 			{

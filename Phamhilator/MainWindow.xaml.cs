@@ -413,6 +413,11 @@ namespace Phamhilator
 				html = html.Substring(startIndex);
 			}
 
+			if (GlobalInfo.FullScanEnabled)
+			{
+				Parallel.ForEach(posts, post => post.PopulateExtraData());
+			}
+
 			return posts.ToArray();
 		}
 

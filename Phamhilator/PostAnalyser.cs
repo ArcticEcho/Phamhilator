@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
 
 
 
@@ -10,7 +10,10 @@ namespace Phamhilator
 		{
 			var analysis = new QAAnalysis { QResults = AnalyseQuestion(q) };
 
-			Parallel.ForEach(q.Answers, a => analysis.AResults.Add(a, AnalyseAnswer(a)));
+			foreach (var a in q.Answers.Where(answer => answer != null))
+			{
+				analysis.AResults.Add(a, AnalyseAnswer(a));
+			}
 
 			return analysis;
 		}

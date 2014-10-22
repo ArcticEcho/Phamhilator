@@ -366,7 +366,7 @@ namespace Phamhilator
 
 		private static string GetStats()
 		{
-			return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + "%. Full scan enabled: " + GlobalInfo.EnableFullScan + ". Posts caught over last 7 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+			return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + "%. Full scan enabled: " + GlobalInfo.FullScanEnabled + ". Posts caught over last 7 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
 		}
 
 		private static string GetTerms()
@@ -1519,14 +1519,14 @@ namespace Phamhilator
 
 		private static string FullScan()
 		{
-			if (GlobalInfo.EnableFullScan)
+			if (GlobalInfo.FullScanEnabled)
 			{
-				GlobalInfo.EnableFullScan = false;
+				GlobalInfo.FullScanEnabled = false;
 
 				return "`Full scan disabled.`";
 			}
 
-			GlobalInfo.EnableFullScan = true;
+			GlobalInfo.FullScanEnabled = true;
 
 			return "`Full scan enabled.`";
 		}
