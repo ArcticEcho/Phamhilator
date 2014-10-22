@@ -17,139 +17,139 @@ namespace Phamhilator
 
 
 
-		public static string GetFilterFile(Filters filter)
+		public static string GetFilterFile(FilterType filter)
 		{
 			var path = "";
 
 			switch (filter)
 			{
-				case Filters.AnswerBlackLQ:
+				case FilterType.AnswerBlackLQ:
 				{
 					path = Path.Combine(ABFilterTermsPath, "LQ Terms.txt");
 
 					break;
 				}
-				case Filters.AnswerBlackName:
+				case FilterType.AnswerBlackName:
 				{
 					path = Path.Combine(ABFilterTermsPath, "Bad Username Terms.txt");
 
 					break;
 				}
-				case Filters.AnswerBlackOff:
+				case FilterType.AnswerBlackOff:
 				{
 					path = Path.Combine(ABFilterTermsPath, "Offensive Terms.txt");
 
 					break;
 				}
-				case Filters.AnswerBlackSpam:
+				case FilterType.AnswerBlackSpam:
 				{
 					path = Path.Combine(ABFilterTermsPath, "Spam Terms.txt");
 
 					break;
 				}
-				case Filters.AnswerWhiteLQ:
+				case FilterType.AnswerWhiteLQ:
 				{
 					path = Path.Combine(AWFilterTermsPath, "LQ");
 
 					break;
 				}
-				case Filters.AnswerWhiteName:
+				case FilterType.AnswerWhiteName:
 				{
 					path = Path.Combine(AWFilterTermsPath, "Bad Username");
 
 					break;
 				}
-				case Filters.AnswerWhiteOff:
+				case FilterType.AnswerWhiteOff:
 				{
 					path = Path.Combine(AWFilterTermsPath, "Offensive");
 
 					break;
 				}
-				case Filters.AnswerWhiteSpam:
+				case FilterType.AnswerWhiteSpam:
 				{
 					path = Path.Combine(AWFilterTermsPath, "Spam");
 
 					break;
 				}
-				case Filters.QuestionBodyBlackLQ:
+				case FilterType.QuestionBodyBlackLQ:
 				{
 					path = Path.Combine(QBBFilterTermsPath, "LQ Terms.txt");
 
 					break;
 				}
-				case Filters.QuestionBodyBlackOff:
+				case FilterType.QuestionBodyBlackOff:
 				{
 					path = Path.Combine(QBBFilterTermsPath, "Offensive Terms.txt");
 
 					break;
 				}
-				case Filters.QuestionBodyBlackSpam:
+				case FilterType.QuestionBodyBlackSpam:
 				{
 					path = Path.Combine(QBBFilterTermsPath, "Spam Terms.txt");
 
 					break;
 				}
-				case Filters.QuestionBodyWhiteLQ:
+				case FilterType.QuestionBodyWhiteLQ:
 				{
 					path = Path.Combine(QBWFilterTermsPath, "LQ");
 
 					break;
 				}
-				case Filters.QuestionBodyWhiteOff:
+				case FilterType.QuestionBodyWhiteOff:
 				{
 					path = Path.Combine(QBWFilterTermsPath, "Offensive");
 
 					break;
 				}
-				case Filters.QuestionBodyWhiteSpam:
+				case FilterType.QuestionBodyWhiteSpam:
 				{
 					path = Path.Combine(QBWFilterTermsPath, "Spam");
 
 					break;
 				}
-				case Filters.QuestionTitleBlackLQ:
+				case FilterType.QuestionTitleBlackLQ:
 				{
 					path = Path.Combine(QTBFilterTermsPath, "LQ Terms.txt");
 
 					break;
 				}
-				case Filters.QuestionTitleBlackName:
+				case FilterType.QuestionTitleBlackName:
 				{
 					path = Path.Combine(QTBFilterTermsPath, "Bad Username Terms.txt");
 
 					break;
 				}
-				case Filters.QuestionTitleBlackOff:
+				case FilterType.QuestionTitleBlackOff:
 				{
 					path = Path.Combine(QTBFilterTermsPath, "Offensive Terms.txt");
 
 					break;
 				}
-				case Filters.QuestionTitleBlackSpam:
+				case FilterType.QuestionTitleBlackSpam:
 				{
 					path = Path.Combine(QTBFilterTermsPath, "Spam Terms.txt");
 
 					break;
 				}
-				case Filters.QuestionTitleWhiteLQ:
+				case FilterType.QuestionTitleWhiteLQ:
 				{
 					path = Path.Combine(QTWFilterTermsPath, "LQ");
 
 					break;
 				}
-				case Filters.QuestionTitleWhiteName:
+				case FilterType.QuestionTitleWhiteName:
 				{
 					path = Path.Combine(QTWFilterTermsPath, "Bad Username");
 
 					break;
 				}
-				case Filters.QuestionTitleWhiteOff:
+				case FilterType.QuestionTitleWhiteOff:
 				{
 					path = Path.Combine(QTWFilterTermsPath, "Offensive");
 
 					break;
 				}
-				case Filters.QuestionTitleWhiteSpam:
+				case FilterType.QuestionTitleWhiteSpam:
 				{
 					path = Path.Combine(QTWFilterTermsPath, "Spam");
 

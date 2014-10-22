@@ -1,9 +1,6 @@
 
-2515305.71044458]http://chemistry.stackexchange.com/questions/18410
 2515340.17241569]http://homebrew.stackexchange.com/questions/13054
-2515365.42147652]http://stackoverflow.com/questions/26345825
 2515412.49558567]http://graphicdesign.stackexchange.com/a/38588
-2515459.8386102]http://gis.stackexchange.com/questions/118091
 2521347.4181663]http://stackoverflow.com/questions/26433665
 2521347.79417114]http://sharepoint.stackexchange.com/questions/118478
 2521351.82890192]http://stackoverflow.com/questions/26431025
@@ -266,3 +263,6 @@
 2526323.86246975]http://stackoverflow.com/questions/26481975
 2526337.08815955]http://apple.stackexchange.com/questions/151949
 2526344.48923287]http://apple.stackexchange.com/questions/151948
+2527876.92911234]http://apple.stackexchange.com/a/152251
+2527893.66728638]http://android.stackexchange.com/questions/85411
+2527905.5798344]http://gis.stackexchange.com/questions/119269

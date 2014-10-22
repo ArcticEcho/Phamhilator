@@ -8,7 +8,7 @@
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.ABSpam.Terms)
+			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms)
 			{
 				if (blackTerm.Key.IsMatch(post.Body))
 				{
@@ -25,9 +25,9 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.AWSpam.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.AWSpam.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.Body))
 					{
@@ -39,7 +39,7 @@
 			}
 
 			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.ABSpam.HighestScore;
+			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].HighestScore;
 			info.Accuracy *= 100;
 			info.Type = PostType.Spam;
 
@@ -52,7 +52,7 @@
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.ABLQ.Terms)
+			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms)
 			{
 				if (blackTerm.Key.IsMatch(post.Body))
 				{
@@ -69,9 +69,9 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.AWLQ.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.AWLQ.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.Body))
 					{
@@ -83,7 +83,7 @@
 			}
 
 			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.ABLQ.HighestScore;
+			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].HighestScore;
 			info.Accuracy *= 100;
 			info.Type = PostType.LowQuality;
 
@@ -96,7 +96,7 @@
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.ABOff.Terms)
+			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms)
 			{
 				if (blackTerm.Key.IsMatch(post.Body))
 				{
@@ -113,9 +113,9 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.AWOff.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.AWOff.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.Body))
 					{
@@ -127,7 +127,7 @@
 			}
 				
 			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.ABOff.HighestScore;
+			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].HighestScore;
 			info.Accuracy *= 100;
 			info.Type = PostType.Offensive;
 
@@ -140,7 +140,7 @@
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.ABName.Terms)
+			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms)
 			{
 				if (blackTerm.Key.IsMatch(post.AuthorName))
 				{
@@ -157,9 +157,9 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.AWName.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.AWName.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.AuthorName))
 					{
@@ -171,7 +171,7 @@
 			}
 	
 			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.ABName.HighestScore;
+			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackName].HighestScore;
 			info.Accuracy *= 100;
 			info.Type = PostType.BadUsername;
 

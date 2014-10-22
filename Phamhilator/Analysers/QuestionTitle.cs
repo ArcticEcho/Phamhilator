@@ -13,7 +13,7 @@ namespace Phamhilator.Analysers
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.QTBSpam.Terms)
+			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].Terms)
 			{
 				if (blackTerm.Key.IsMatch(post.Title))
 				{
@@ -30,9 +30,9 @@ namespace Phamhilator.Analysers
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.QTWSpam.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.QTWSpam.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.Title))
 					{
@@ -44,7 +44,7 @@ namespace Phamhilator.Analysers
 			}
 			
 			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.QTBSpam.HighestScore;
+			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].HighestScore;
 			info.Accuracy *= 100;
 			info.Type = PostType.Spam;
 
@@ -57,7 +57,7 @@ namespace Phamhilator.Analysers
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.QTBLQ.Terms)
+			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].Terms)
 			{
 				if (blackTerm.Key.IsMatch(post.Title))
 				{
@@ -74,9 +74,9 @@ namespace Phamhilator.Analysers
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.QTWLQ.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.QTWLQ.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.Title))
 					{
@@ -88,7 +88,7 @@ namespace Phamhilator.Analysers
 			}
 
 			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.QTBLQ.HighestScore;
+			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].HighestScore;
 			info.Accuracy *= 100;
 			info.Type = PostType.LowQuality;
 
@@ -101,7 +101,7 @@ namespace Phamhilator.Analysers
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.QTBOff.Terms)
+			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].Terms)
 			{
 				if (blackTerm.Key.IsMatch(post.Title))
 				{
@@ -118,9 +118,9 @@ namespace Phamhilator.Analysers
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.QTWOff.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.QTWOff.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.Title))
 					{
@@ -132,7 +132,7 @@ namespace Phamhilator.Analysers
 			}
 
 			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.QTBOff.HighestScore;
+			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].HighestScore;
 			info.Accuracy *= 100;
 			info.Type = PostType.Offensive;
 
@@ -145,7 +145,7 @@ namespace Phamhilator.Analysers
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.QTBName.Terms)
+			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].Terms)
 			{
 				if (blackTerm.Key.IsMatch(post.AuthorName))
 				{
@@ -162,9 +162,9 @@ namespace Phamhilator.Analysers
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.QTWName.Terms.ContainsKey(post.Site))
+			if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.ContainsKey(post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.QTWName.Terms[post.Site])
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms[post.Site])
 				{
 					if (whiteTerm.Key.IsMatch(post.AuthorName))
 					{
@@ -176,7 +176,7 @@ namespace Phamhilator.Analysers
 			}
 
 			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.QTBName.HighestScore;
+			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].HighestScore;
 			info.Accuracy *= 100;
 			info.Type = PostType.BadUsername;
 

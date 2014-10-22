@@ -71,43 +71,22 @@
     <Compile Include="Answer.cs" />
     <Compile Include="Analysers\Answer.cs" />
     <Compile Include="AnswerAnalysis.cs" />
-    <Compile Include="AnswerFilters\Black\BadUsername.cs" />
-    <Compile Include="AnswerFilters\Black\LQ.cs" />
-    <Compile Include="AnswerFilters\Black\Offensive.cs" />
-    <Compile Include="AnswerFilters\Black\Spam.cs" />
-    <Compile Include="AnswerFilters\White\BadUsername.cs" />
-    <Compile Include="AnswerFilters\White\LQ.cs" />
-    <Compile Include="AnswerFilters\White\Offensive.cs" />
-    <Compile Include="AnswerFilters\White\Spam.cs" />
     <Compile Include="BadTagDefinitions.cs" />
     <Compile Include="BannedUsers.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="DownloadString.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Filters.cs" />
+    <Compile Include="BlackFilter.cs" />
+    <Compile Include="FilterType.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="MessageCleaner.cs" />
     <Compile Include="QAAnalysis.cs" />
-    <Compile Include="QuestionFilters\Body\Black\LQ.cs" />
-    <Compile Include="QuestionFilters\Body\Black\Offensive.cs" />
-    <Compile Include="QuestionFilters\Body\Black\Spam.cs" />
-    <Compile Include="QuestionFilters\Body\White\LQ.cs" />
-    <Compile Include="QuestionFilters\Body\White\Offensive.cs" />
-    <Compile Include="QuestionFilters\Body\White\Spam.cs" />
-    <Compile Include="QuestionFilters\Title\Black\BadUsername.cs" />
-    <Compile Include="QuestionFilters\Title\Black\LQ.cs" />
-    <Compile Include="QuestionFilters\Title\Black\Spam.cs" />
     <Compile Include="HTMLScraper.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="QuestionAnalysis.cs" />
     <Compile Include="Analysers\QuestionTitle.cs" />
-    <Compile Include="QuestionFilters\Title\White\BadUsername.cs" />
-    <Compile Include="QuestionFilters\Title\White\LQ.cs" />
-    <Compile Include="QuestionFilters\Title\White\Offensive.cs" />
-    <Compile Include="QuestionFilters\Title\White\Spam.cs" />
-    <Compile Include="QuestionFilters\Title\Black\Offensive.cs" />
     <Compile Include="MessageInfo.cs" />
     <Compile Include="PostAnalyser.cs" />
     <Compile Include="PostPersistence.cs" />
@@ -116,6 +95,7 @@
     <Compile Include="WebDownload.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WhiteFilter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

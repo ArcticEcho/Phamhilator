@@ -1,6 +1,6 @@
 ﻿namespace Phamhilator
 {
-	public enum Filters
+	public enum FilterType
 	{
 		QuestionTitleBlackSpam,
 		QuestionTitleBlackLQ,
