@@ -248,13 +248,13 @@ namespace Phamhilator
 
 			// Get message.
 
-			startIndex = Math.Max(html.LastIndexOf("<DIV class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21, html.LastIndexOf("<DIV class=content>", StringComparison.OrdinalIgnoreCase) + 19);
+			startIndex = Math.Max(html.LastIndexOf("<DIV class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21, html.LastIndexOf("<DIV class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21);
 
             var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.OrdinalIgnoreCase) - startIndex));
 
 			var info = new MessageInfo
 			{
-				Body = message.Replace(@"<SPAN class=mention>", "").Replace("</SPAN>", ""),
+				Body = message.Replace("<span class=\"mention\">", "").Replace("</span>", ""),
 				RepliesToMessageID = GetMessageReplyID(html, message),
 				AuthorID = int.Parse(authorID),
 				MessageID = GetLastestMessageID(html)
@@ -326,7 +326,7 @@ namespace Phamhilator
 				return -1;
 			}
 
-			var infoIndex = html.IndexOf("class=reply-info", messageIndex - 190, StringComparison.Ordinal);
+			var infoIndex = html.IndexOf("class=\"reply-info\"", messageIndex - 190, StringComparison.Ordinal);
 
 			if (messageIndex - infoIndex > 190 || infoIndex == -1) // Message isn't a replay
 			{
