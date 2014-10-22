@@ -28,6 +28,10 @@ namespace Phamhilator
 			{
 				command = input.Body.Remove(0, GlobalInfo.BotUsername.Length + 1).TrimStart();
 			}
+			else if (BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture)))
+			{
+				return new[] { "" };
+			}
 			else
 			{
 				return new[] { "" };
@@ -110,7 +114,8 @@ namespace Phamhilator
 
 		private static bool IsOwnerCommand(string command)
 		{
-			return command.StartsWith("add user") ||
+			return command.StartsWith("ban user") ||
+				   command.StartsWith("add user") ||
 				   command.StartsWith("threshold") ||
 				   command.StartsWith("set status") ||
 				   command == "start" ||
@@ -123,6 +128,11 @@ namespace Phamhilator
 			if (commandLower.StartsWith("add user"))
 			{
 				return new[] { AddUser(command) };
+			}
+
+			if (command.StartsWith("ban user"))
+			{
+				return new[] { BanUser(command) };
 			}
 
 			if (commandLower == "start")
@@ -1502,6 +1512,13 @@ namespace Phamhilator
 			UserAccess.AddUser(int.Parse(id));
 
 			return "`User added.`";
+		}
+
+		private static string BanUser(string command)
+		{
+			var id = command.Replace("ban user", "").Trim();
+
+			return BannedUsers.AddUser(id) ? "`User banned.`" : "`Warning: banned users dir is missing. Unable to add user.`";
 		}
 
 
