@@ -322,7 +322,7 @@ namespace Phamhilator
 				return new MessageInfo();
 			}
 
-			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1) { return new MessageInfo(); }
+			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1 && html.Replace("\"", "").IndexOf("class=\"username\"", StringComparison.Ordinal) == -1) { return new MessageInfo(); }
 
 			var data = HTMLScraper.GetLastChatMessage(html);
 
@@ -347,7 +347,7 @@ namespace Phamhilator
 				return new MessageInfo();
 			}
 
-			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1) { return new MessageInfo(); }
+			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1 && html.Replace("\"", "").IndexOf("class=\"username\"", StringComparison.Ordinal) == -1) { return new MessageInfo(); }
 
 			var data = HTMLScraper.GetLastChatMessage(html);
 

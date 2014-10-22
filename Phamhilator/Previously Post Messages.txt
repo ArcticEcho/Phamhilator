@@ -1,6 +1,4 @@
 
-2515340.17241569]http://homebrew.stackexchange.com/questions/13054
-2515412.49558567]http://graphicdesign.stackexchange.com/a/38588
 2521347.4181663]http://stackoverflow.com/questions/26433665
 2521347.79417114]http://sharepoint.stackexchange.com/questions/118478
 2521351.82890192]http://stackoverflow.com/questions/26431025
@@ -266,3 +264,24 @@
 2527876.92911234]http://apple.stackexchange.com/a/152251
 2527893.66728638]http://android.stackexchange.com/questions/85411
 2527905.5798344]http://gis.stackexchange.com/questions/119269
+2528206.25128182]http://gis.stackexchange.com/questions/118780
+2528225.13704536]http://dba.stackexchange.com/questions/80856
+2528225.13832877]http://unix.stackexchange.com/a/163621
+2528237.60150829]http://stats.stackexchange.com/questions/121036
+2528251.13609909]http://bitcoin.stackexchange.com/questions/4178
+2528251.13631577]http://superuser.com/questions/830143
+2528260.97912874]http://pm.stackexchange.com/questions/12509
+2528260.9795621]http://android.stackexchange.com/questions/85533
+2528270.23565819]http://mathematica.stackexchange.com/questions/63804
+2528281.51115311]http://english.stackexchange.com/questions/203970
+2528330.39163225]http://mathoverflow.net/questions/185103
+2528346.2547729]http://salesforce.stackexchange.com/questions/53954
+2528378.81070166]http://apple.stackexchange.com/a/152353
+2528394.91810628]http://stackoverflow.com/questions/26500170
+2528394.91852297]http://electronics.stackexchange.com/questions/135373
+2528394.91865632]http://pets.stackexchange.com/questions/2532
+2528406.1520655]http://gis.stackexchange.com/questions/25099
+2528415.81535154]http://linguistics.stackexchange.com/questions/9281
+2528415.81568489]http://workplace.stackexchange.com/questions/35276
+2528415.81595157]http://russian.stackexchange.com/a/7476
+2528415.81615158]http://stats.stackexchange.com/questions/121092

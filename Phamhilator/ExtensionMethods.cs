@@ -56,7 +56,7 @@ namespace Phamhilator
 			if ((int)filter > 99) { throw new ArgumentException("Must be a black filter.", "filter"); }
 			if (String.IsNullOrEmpty(oldTerm.ToString()) && String.IsNullOrEmpty(newTerm.ToString())) { throw new Exception("oldTerm and newTerm can not both be empty."); }
 
-			var file = Path.Combine(DirectoryTools.GetFilterFile(filter), "Terms.txt");
+			var file = DirectoryTools.GetFilterFile(filter);
 			var data = File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
 
 			if (String.IsNullOrEmpty(oldTerm.ToString())) // Add new term.
@@ -151,7 +151,7 @@ namespace Phamhilator
 			if ((int)filter > 99) { throw new ArgumentException("Must be a black filter.", "filter"); }
 			if (String.IsNullOrEmpty(term.ToString())) { throw new ArgumentException("Can not both be empty.", "filter"); }
 
-			var file = Path.Combine(DirectoryTools.GetFilterFile(filter), "Terms.txt");
+			var file = DirectoryTools.GetFilterFile(filter);
 			var data = File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
 			var realTerm = terms.GetRealTerm(term);
 

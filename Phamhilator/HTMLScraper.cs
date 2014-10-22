@@ -111,17 +111,11 @@ namespace Phamhilator
 		{
 			var startIndex = html.IndexOf("asked <", StringComparison.Ordinal);
 
-			if (startIndex == -1) // Check if post is CW.
-			{
-				return 1;
-			}
+			if (startIndex == -1) { return 1; } // Check if post is CW.
 
 			var newStartIndex = html.IndexOf("dir=\"ltr\">", startIndex, StringComparison.Ordinal) + 10;
 
-			if (newStartIndex - startIndex > 800 || newStartIndex == -1) // Check if user is anonymous.
-			{
-				return 1;
-			}
+			if (newStartIndex - startIndex > 800 || newStartIndex == -1) { return 1; } // Check if user is anonymous.
 
 			var endIndex = html.IndexOf("<", newStartIndex, StringComparison.Ordinal);
 
@@ -169,10 +163,7 @@ namespace Phamhilator
 			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
 			startIndex = html.IndexOf("answered <", startIndex, StringComparison.Ordinal);
 
-			if (startIndex == -1) // Check if post is CW.
-			{
-				return "";
-			}
+			if (startIndex == -1) { return ""; } // Check if post is CW.
 
 			startIndex = html.IndexOf("user-details", startIndex, StringComparison.Ordinal) + 33;
 
@@ -190,10 +181,7 @@ namespace Phamhilator
 			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
 			startIndex = html.IndexOf("answered <", startIndex, StringComparison.Ordinal);
 
-			if (startIndex == -1) // Check if post is CW.
-			{
-				return "";
-			}
+			if (startIndex == -1)  { return ""; } // Check if post is CW.
 
 			startIndex = html.IndexOf("user-details", startIndex, StringComparison.Ordinal) + 33;
 			startIndex = html.IndexOf(">", startIndex, StringComparison.Ordinal) + 1;
@@ -244,17 +232,17 @@ namespace Phamhilator
 
 			// Get user ID.
 
-			var authorID = html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.OrdinalIgnoreCase) - 8) - startIndex);
+			var authorID = html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.Ordinal) - 8) - startIndex);
 
 			// Get message.
 
-			startIndex = Math.Max(html.LastIndexOf("<DIV class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21, html.LastIndexOf("<DIV class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21);
+			startIndex = Math.Max(html.LastIndexOf("<DIV class=content>", StringComparison.OrdinalIgnoreCase) + 19, html.LastIndexOf("<div class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21);
 
-            var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.OrdinalIgnoreCase) - startIndex));
+			var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</div>", startIndex, StringComparison.OrdinalIgnoreCase) - startIndex));
 
 			var info = new MessageInfo
 			{
-				Body = message.Replace("<span class=\"mention\">", "").Replace("</span>", ""),
+				Body = new Regex("(?i)<span class=(\\\")?mention(\\\")?>|</span>").Replace(message, ""),
 				RepliesToMessageID = GetMessageReplyID(html, message),
 				AuthorID = int.Parse(authorID),
 				MessageID = GetLastestMessageID(html)
@@ -275,11 +263,9 @@ namespace Phamhilator
 
 			var startIndex = decoded.IndexOf(postURL, StringComparison.Ordinal) - 350;
 
-			startIndex = decoded.IndexOf("click for message actions", startIndex, StringComparison.Ordinal) + 53;
+			startIndex = decoded.IndexOf("/transcript/message/", startIndex, StringComparison.Ordinal) + 21;
 
-			var id = decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex);
-
-			return int.Parse(id);
+			return int.Parse(decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
 		}
 
 
@@ -310,11 +296,12 @@ namespace Phamhilator
 
 		private static int GetLastestMessageID(string html)
 		{
-			var startIndex = html.LastIndexOf("click for message actions", StringComparison.Ordinal) + 53;
+			var messageOnlyHtml = html.Remove(html.IndexOf("</textarea>", StringComparison.OrdinalIgnoreCase));
 
-            int indexOfHash = html.IndexOf("#", startIndex, StringComparison.Ordinal);
-            int indexOfCloseQuote = html.IndexOf("\"", indexOfHash, StringComparison.Ordinal);
-            return int.Parse(html.Substring(indexOfHash + 1, indexOfCloseQuote - indexOfHash - 1));
+			var startIndex = messageOnlyHtml.LastIndexOf("click for message actions", StringComparison.Ordinal);
+			startIndex = messageOnlyHtml.IndexOf("/transcript/message/", startIndex, StringComparison.OrdinalIgnoreCase) + 20;
+
+			return int.Parse(messageOnlyHtml.Substring(startIndex, messageOnlyHtml.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
 		}
 
 		private static int GetMessageReplyID(string html, string messageContent)
@@ -326,7 +313,7 @@ namespace Phamhilator
 				return -1;
 			}
 
-			var infoIndex = html.IndexOf("class=\"reply-info\"", messageIndex - 190, StringComparison.Ordinal);
+			var infoIndex = Math.Max(html.IndexOf("class=reply-info", messageIndex - 190, StringComparison.OrdinalIgnoreCase), html.IndexOf("class=\"reply-info\"", messageIndex - 190, StringComparison.OrdinalIgnoreCase));
 
 			if (messageIndex - infoIndex > 190 || infoIndex == -1) // Message isn't a replay
 			{

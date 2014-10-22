@@ -85,20 +85,19 @@
 10](?i)^can you recommend
 10](?i)improve your
 10](?i)slim
-
 10](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))
 10](?i)^no hassle
 10]\bWoW\b
-
 10](?i)wh(ere|at) ((is|are) the|(can you|to) (get|find|buy|pay)) cheap
 10](?i)^cheap
 10]WWW\.[^a-z]*\.[^a-z]{2,3}(\.[^a-z]{2,3})?
 10](?i)^what is( a)? (fast|cheap|reliable)
 10](?i)^very (good|cheap|fast)
-
 10](?i)wh(at|o|ere|ich) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand|manufacturer)
 10](?i)wow gold
 10](?i)^where to buy
 10](?i)\bbaba\b
 10](?i)brain enhancement
 10](?i)neuro3x
+10](?i)vs.*live stream
+10]^FREE
