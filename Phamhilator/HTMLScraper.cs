@@ -248,7 +248,7 @@ namespace Phamhilator
 
 			// Get message.
 
-			startIndex = html.LastIndexOf("<DIV class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21;
+			startIndex = Math.Max(html.LastIndexOf("<DIV class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21, html.LastIndexOf("<DIV class=content>", StringComparison.OrdinalIgnoreCase) + 19);
 
             var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</DIV>", startIndex, StringComparison.OrdinalIgnoreCase) - startIndex));
 
