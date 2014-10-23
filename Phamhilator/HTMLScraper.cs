@@ -263,7 +263,7 @@ namespace Phamhilator
 
 			var startIndex = decoded.IndexOf(postURL, StringComparison.Ordinal) - 350;
 
-			startIndex = decoded.IndexOf("/transcript/message/", startIndex, StringComparison.Ordinal) + 21;
+			startIndex = decoded.IndexOf("/transcript/message/", startIndex, StringComparison.Ordinal) + 20;
 
 			return int.Parse(decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
 		}

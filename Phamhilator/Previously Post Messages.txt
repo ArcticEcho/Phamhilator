@@ -289,3 +289,5 @@
 2529159.19521619]http://graphicdesign.stackexchange.com/questions/38468
 2529170.09250615]http://magento.stackexchange.com/questions/41108
 2529201.20080211]http://tor.stackexchange.com/questions/3626
+2529210.37627691]http://mathematica.stackexchange.com/questions/63876
+2529210.37646026]http://unix.stackexchange.com/questions/163736
