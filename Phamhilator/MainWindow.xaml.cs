@@ -29,6 +29,9 @@ namespace Phamhilator
 
 		public MainWindow()
 		{
+			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+			CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
 			InitializeComponent();
 
 			GlobalInfo.ChatWb = chatWb;

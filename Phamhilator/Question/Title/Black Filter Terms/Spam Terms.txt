@@ -101,3 +101,4 @@
 10](?i)neuro3x
 10](?i)vs.*live stream
 10]^FREE
+10](?i)For Meta

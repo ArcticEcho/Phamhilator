@@ -76,11 +76,11 @@ namespace Phamhilator
 			}
 		}
 
-        public static float AccuracyThreshold
+		public static float AccuracyThreshold
 		{
 			get
 			{
-                return float.Parse(File.ReadAllText(DirectoryTools.GetAccuracyThresholdFile()), CultureInfo.InvariantCulture);
+				return float.Parse(File.ReadAllText(DirectoryTools.GetAccuracyThresholdFile()), CultureInfo.InvariantCulture);
 			}
 
 			set
