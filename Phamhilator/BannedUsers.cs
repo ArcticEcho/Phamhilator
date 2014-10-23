@@ -17,14 +17,14 @@ namespace Phamhilator
 
 		public static bool AddUser(string ID)
 		{
-			if (!Directory.Exists(DirectoryTools.GetBannedUsersDir())) { return false; }
+			if (!File.Exists(DirectoryTools.GetBannedUsersFile()) || !ID.All(Char.IsDigit) || UserAccess.Owners.Contains(int.Parse(ID))) { return false; }
 
 			var ii = r.Next(1001);
 
 			for (var i = 0; i < ii; i++) { r.Next(); }
 
 			var hash = HashID(ID);
-			var data = new List<byte>();
+			var data = new List<byte>(File.ReadAllBytes(DirectoryTools.GetBannedUsersFile()));
 
 			data.AddRange(GetRandomBytes());
 
@@ -32,39 +32,31 @@ namespace Phamhilator
 
 			data.AddRange(GetRandomBytes());
 
-			var path = Path.Combine(DirectoryTools.GetBannedUsersDir(), Path.GetRandomFileName() + ".txt");
+			File.WriteAllBytes(DirectoryTools.GetBannedUsersFile(), data.ToArray());
 
-			File.WriteAllBytes(path, data.ToArray());
-			File.SetAttributes(path, FileAttributes.Offline | FileAttributes.Encrypted | FileAttributes.Hidden);
-			File.SetCreationTime(path, new DateTime(1970, 1, 1, 1, 1, 1, 1));
-			File.SetLastAccessTime(path, new DateTime(1970, 1, 1, 1, 1, 1, 1));
-			File.SetLastWriteTime(path, new DateTime(1970, 1, 1, 1, 1, 1, 1));
+			File.SetCreationTime(DirectoryTools.GetBannedUsersFile(), new DateTime(1970, 1, 1, 1, 1, 1, 1));
+			File.SetLastAccessTime(DirectoryTools.GetBannedUsersFile(), new DateTime(1970, 1, 1, 1, 1, 1, 1));
+			File.SetLastWriteTime(DirectoryTools.GetBannedUsersFile(), new DateTime(1970, 1, 1, 1, 1, 1, 1));
 
 			return true;
 		}
 
 		public static bool IsUserBanned(string ID)
 		{
-			if (!Directory.Exists(DirectoryTools.GetBannedUsersDir())) { return true; }
+			if (!File.Exists(DirectoryTools.GetBannedUsersFile()) || !ID.All(Char.IsDigit)) { return true; }
 
 			var hash = HashID(ID);
-			var files = Directory.EnumerateFiles(DirectoryTools.GetBannedUsersDir());
-			var data = files.Select(file => File.ReadAllBytes(file).ToList()).ToList();
+			var data = File.ReadAllBytes(DirectoryTools.GetBannedUsersFile()).ToList();
 
-			for (var i = 0; i < data.Count; i++)
+			for (var i = 0; i < data.Count - 64; i++)
 			{
-				var currentData = data[i];
+				var currentHash = new byte[64];
 
-				for (var ii = 0; ii < currentData.Count - 64; ii++)
+				data.CopyTo(i, currentHash, 0, 64);
+
+				if (HashIsMatch(currentHash, hash))
 				{
-					var currentHash = new byte[64];
-
-					currentData.CopyTo(ii, currentHash, 0, 64);
-
-					if (HashIsMatch(currentHash, hash))
-					{
-						return true;
-					}
+					return true;
 				}
 			}
 

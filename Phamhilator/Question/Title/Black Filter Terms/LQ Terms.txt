@@ -32,7 +32,6 @@
 13](?i)i want to
 12](?i)plz help me!
 12][A-Z]{4,}.*[\!\?]{2,}
-
 12.8](?i)help please
 13.66111](?i)(more|most|less|least).*popular
 13.66111](?i)wh(at|ich).*best
@@ -40,8 +39,6 @@
 13.66111](?i)^(?=.*?which)(?=.*?(?:choose|best|quality))
 13.66111](?i)i need.*help
 13.66111]^\S*$
-
 13.66111](?i)(advice|opinion|thought)s on
 14.66111](?i:noob|beginner)
-
 13.42067]\bpl[sz]+\b

@@ -247,9 +247,9 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetBannedUsersDir()
+		public static string GetBannedUsersFile()
 		{
-			return Path.Combine(root, "Banned Users");
+			return Path.Combine(root, "Banned Users.txt");
 		}
 
 		public static string GetStatusFile()

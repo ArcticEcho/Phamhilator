@@ -286,3 +286,6 @@
 2528415.81595157]http://russian.stackexchange.com/a/7476
 2528415.81615158]http://stats.stackexchange.com/questions/121092
 2528531.59610715]http://english.stackexchange.com/a/204014
+2529159.19521619]http://graphicdesign.stackexchange.com/questions/38468
+2529170.09250615]http://magento.stackexchange.com/questions/41108
+2529201.20080211]http://tor.stackexchange.com/questions/3626

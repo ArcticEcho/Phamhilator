@@ -18,6 +18,8 @@ namespace Phamhilator
 
 		public static string[] ExacuteCommand(MessageInfo input)
 		{
+			if (BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture))) { return new[] { "" }; }
+
 			string command;
 
 			if (input.Body.StartsWith(">>"))
@@ -27,10 +29,6 @@ namespace Phamhilator
 			else if (input.Body.ToLowerInvariant().StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant()) && GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID))
 			{
 				command = input.Body.Remove(0, GlobalInfo.BotUsername.Length + 1).TrimStart();
-			}
-			else if (BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture)))
-			{
-				return new[] { "" };
 			}
 			else
 			{
