@@ -84,7 +84,7 @@
 10](?i)buy(ing)? cheap(er|est)?
 10](?i)^can you recommend
 10](?i)improve your
-10](?i)slim
+10](?i)\bslim\b
 10](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))
 10](?i)^no hassle
 10]\bWoW\b

@@ -38,9 +38,19 @@ namespace Phamhilator
 
 			var link = html.Substring(startIndex, endIndex - startIndex).Trim();
 
-			link = link.Remove(link.IndexOf(@"/", link.IndexOf("users", StringComparison.Ordinal) + 7, StringComparison.Ordinal));
+            if (!link.Contains(@"/"))
+            {
+                //
+                // The question poster is deleted. No link to give.
+                //
+                return null;
+            }
+            else
+            {
+                link = link.Remove(link.IndexOf(@"/", link.IndexOf("users", StringComparison.Ordinal) + 7, StringComparison.Ordinal));
 
-			return link == "http:/" ? "" : link;
+                return link == "http:/" ? "" : link;
+            }
 		}
 
 		public static string GetQuestionAuthorName(string html)
