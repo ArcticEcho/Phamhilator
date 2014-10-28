@@ -1,9 +1,9 @@
 22]^[^a-z]*$
 28]^(?is)(?=.{0,75}$)(?:can you|what|how)
 28]^(?=.{0,75}$)\?$
-55.5]^(?i).{0,80}$
 31.5](?i)(did|have) you f(in|oun)d
 31.8]^\<p\>[^a-z]*\<\/p\>$
 32.63333](?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)
 32.77619](?i)did you find
 32.77619](?i)^same here
+56.5]^(?i).{0,80}$

@@ -21,77 +21,27 @@ namespace Phamhilator
 			return (FilterType)Enum.Parse(typeof(FilterType), input.ToString().Replace("White", "Black"));
 		}
 
-		//public static bool ContainsTerm(this IDictionary<Term, string> input, Regex term)
-		//{
-		//	if (input.Count == 0) { return false; }
-
-		//	foreach (var t in input.Keys)
-		//	{
-		//		if (t.Regex.ToString() == term.ToString())
-		//		{
-		//			return true;
-		//		}
-		//	}
-
-		//	return false;
-		//}
-
 		public static bool Contains(this HashSet<Term> input, Regex term, string site = "")
 		{
 			return input.Count != 0 && input.Contains(new Term(term, 0, site));
 		}
-
-		//public static void WriteTerm(this HashSet<Term> terms, FilterType filter, Regex oldTerm, Regex newTerm, float newScore)
-		//{
-		//	if ((int)filter > 99) { throw new ArgumentException("Must be a black filter.", "filter"); }
-		//	if (String.IsNullOrEmpty(oldTerm.ToString()) && String.IsNullOrEmpty(newTerm.ToString())) { throw new Exception("oldTerm and newTerm can not both be empty."); }
-
-		//	var file = DirectoryTools.GetFilterFile(filter);
-		//	var data = File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
-
-		//	if (String.IsNullOrEmpty(oldTerm.ToString())) // Add new term.
-		//	{
-		//		terms.Add(new Term(newTerm, newScore));
-
-		//		data.Add(newScore + "]" + newTerm);
-		//	}
-		//	else if (String.IsNullOrEmpty(newTerm.ToString())) // Remove old term.
-		//	{
-		//		terms.Remove(terms.GetRealTerm(oldTerm));
-
-		//		for (var i = 0; i < data.Count; i++)
-		//		{
-		//			if (!data[i].EndsWith("]" + oldTerm)) { continue; }
-
-		//			data.RemoveAt(i);
-
-		//			break;
-		//		}
-		//	}
-		//	else // Edit existing term.
-		//	{
-		//		for (var i = 0; i < data.Count; i++)
-		//		{
-		//			if (data[i].EndsWith("]" + oldTerm))
-		//			{
-		//				data[i] = data[i].Replace("]" + oldTerm, "]" + newTerm);
-		//			}
-		//		}
-
-		//		var realTerm = terms.GetRealTerm(oldTerm);
-
-		//		terms.Remove(realTerm);
-		//		terms.Add(new Term(newTerm, realTerm.Score, "", realTerm.IsAuto));
-		//	}
-
-		//	File.WriteAllLines(file, data);
-		//}
 
 		public static void WriteTerm(this HashSet<Term> terms, FilterType filter, Regex oldTerm, Regex newTerm, string site = "", float newScore = 0)
 		{
 			if (String.IsNullOrEmpty(oldTerm.ToString()) && String.IsNullOrEmpty(newTerm.ToString())) { throw new Exception("oldTerm and newTerm can not both be empty."); }
 
 			var file = String.IsNullOrEmpty(site) ? DirectoryTools.GetFilterFile(filter) : Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt");
+
+			if (!File.Exists(file))
+			{
+				if (!Directory.Exists(Directory.GetParent(file).FullName))
+				{
+					Directory.CreateDirectory(Directory.GetParent(file).FullName);
+				}
+
+				File.Create(file).Dispose();
+			}			
+			
 			var data = File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
 
 			if (String.IsNullOrEmpty(oldTerm.ToString())) // Add new term.
@@ -132,45 +82,25 @@ namespace Phamhilator
 			File.WriteAllLines(file, data);
 		}
 
-		//public static void WriteScore(this HashSet<Term> terms, FilterType filter, Regex term, float newScore)
-		//{
-		//	if ((int)filter > 99) { throw new ArgumentException("Must be a black filter.", "filter"); }
-		//	if (String.IsNullOrEmpty(term.ToString())) { throw new ArgumentException("Can not both be empty.", "filter"); }
-
-		//	var file = DirectoryTools.GetFilterFile(filter);
-		//	var data = File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
-		//	var realTerm = terms.GetRealTerm(term);
-
-		//	for (var i = 0; i < data.Count; i++)
-		//	{
-		//		if (!data[i].EndsWith("]" + term)) { continue; }
-
-		//		data.RemoveAt(i);
-
-		//		data.Add(newScore + "]" + term);
-
-		//		break;
-		//	}
-
-		//	terms.Remove(realTerm);
-		//	terms.Add(new Term(realTerm.Regex, newScore, realTerm.Site, realTerm.IsAuto));
-
-		//	File.WriteAllLines(file, data);
-		//}
-
 		public static void WriteScore(this HashSet<Term> terms, FilterType filter, Regex term, float newScore, string site = "")
 		{
 			if (String.IsNullOrEmpty(term.ToString())) { throw new ArgumentException("Can not be empty.", "term"); }
 
 			var file = String.IsNullOrEmpty(site) ? DirectoryTools.GetFilterFile(filter) : Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt");
-			var data =  File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
 			var realTerm = terms.GetRealTerm(term, site);
 
-			if (!Directory.Exists(Directory.GetParent(file).FullName))
+			if (!File.Exists(file))
 			{
-				Directory.CreateDirectory(Directory.GetParent(file).FullName);
+				if (!Directory.Exists(Directory.GetParent(file).FullName))
+				{
+					Directory.CreateDirectory(Directory.GetParent(file).FullName);
+				}
+
+				File.Create(file).Dispose();
 			}
 
+			var data =  File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
+			
 			for (var i = 0; i < data.Count; i++)
 			{
 				if (!data[i].EndsWith("]" + term)) { continue; }
