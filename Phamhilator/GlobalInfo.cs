@@ -102,7 +102,7 @@ namespace Phamhilator
 
 				foreach (var filter in WhiteFilters.Values)
 				{
-					termCount += filter.Terms.Values.Sum(x => x.Count);
+					termCount += filter.Terms.Count;
 				}
 
 				return termCount + BadTagDefinitions.BadTags.Count;

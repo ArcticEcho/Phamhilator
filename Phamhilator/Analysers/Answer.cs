@@ -1,4 +1,8 @@
-﻿namespace Phamhilator.Analysers
+﻿using System.Linq;
+
+
+
+namespace Phamhilator.Analysers
 {
 	public static class Answer
 	{
@@ -10,10 +14,10 @@
 
 			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms)
 			{
-				if (blackTerm.Key.IsMatch(post.Body))
+				if (blackTerm.Regex.IsMatch(post.Body))
 				{
-					info.Accuracy += blackTerm.Value;
-					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
+					info.Accuracy += blackTerm.Score;
+					info.BlackTermsFound.Add(blackTerm);
 
 					filtersUsed++;
 				}
@@ -25,19 +29,18 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.ContainsKey(post.Site))
+			foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.Where(t => t.Site == post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms[post.Site])
+				if (whiteTerm.Regex.IsMatch(post.Body))
 				{
-					if (whiteTerm.Key.IsMatch(post.Body))
-					{
-						info.Accuracy -= whiteTerm.Value;
-						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
-						filtersUsed++;
-					}
+					info.Accuracy -= whiteTerm.Score;
+					info.WhiteTermsFound.Add(whiteTerm);
+					info.FiltersUsed.Add(FilterType.AnswerWhiteSpam);
+					filtersUsed++;
 				}
 			}
 
+			info.FiltersUsed.Add(FilterType.AnswerBlackSpam);
 			info.Accuracy /= filtersUsed;
 			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].HighestScore;
 			info.Accuracy *= 100;
@@ -54,10 +57,10 @@
 
 			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms)
 			{
-				if (blackTerm.Key.IsMatch(post.Body))
+				if (blackTerm.Regex.IsMatch(post.Body))
 				{
-					info.Accuracy += blackTerm.Value;
-					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
+					info.Accuracy += blackTerm.Score;
+					info.BlackTermsFound.Add(blackTerm);
 
 					filtersUsed++;
 				}
@@ -69,19 +72,18 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.ContainsKey(post.Site))
+			foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.Where(t => t.Site == post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms[post.Site])
+				if (whiteTerm.Regex.IsMatch(post.Body))
 				{
-					if (whiteTerm.Key.IsMatch(post.Body))
-					{
-						info.Accuracy -= whiteTerm.Value;
-						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
-						filtersUsed++;
-					}
+					info.Accuracy -= whiteTerm.Score;
+					info.WhiteTermsFound.Add(whiteTerm);
+					info.FiltersUsed.Add(FilterType.AnswerWhiteLQ);
+					filtersUsed++;
 				}
 			}
 
+			info.FiltersUsed.Add(FilterType.AnswerBlackLQ);
 			info.Accuracy /= filtersUsed;
 			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].HighestScore;
 			info.Accuracy *= 100;
@@ -98,10 +100,10 @@
 
 			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms)
 			{
-				if (blackTerm.Key.IsMatch(post.Body))
+				if (blackTerm.Regex.IsMatch(post.Body))
 				{
-					info.Accuracy += blackTerm.Value;
-					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
+					info.Accuracy += blackTerm.Score;
+					info.BlackTermsFound.Add(blackTerm);
 
 					filtersUsed++;
 				}
@@ -113,19 +115,18 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.ContainsKey(post.Site))
+			foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.Where(t => t.Site == post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms[post.Site])
+				if (whiteTerm.Regex.IsMatch(post.Body))
 				{
-					if (whiteTerm.Key.IsMatch(post.Body))
-					{
-						info.Accuracy -= whiteTerm.Value;
-						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
-						filtersUsed++;
-					}
+					info.Accuracy -= whiteTerm.Score;
+					info.WhiteTermsFound.Add(whiteTerm);
+					info.FiltersUsed.Add(FilterType.AnswerWhiteOff);
+					filtersUsed++;
 				}
 			}
-				
+
+			info.FiltersUsed.Add(FilterType.AnswerBlackOff);
 			info.Accuracy /= filtersUsed;
 			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].HighestScore;
 			info.Accuracy *= 100;
@@ -142,10 +143,10 @@
 
 			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms)
 			{
-				if (blackTerm.Key.IsMatch(post.AuthorName))
+				if (blackTerm.Regex.IsMatch(post.AuthorName))
 				{
-					info.Accuracy += blackTerm.Value;
-					info.BlackTermsFound.Add(blackTerm.Key, blackTerm.Value);
+					info.Accuracy += blackTerm.Score;
+					info.BlackTermsFound.Add(blackTerm);
 
 					filtersUsed++;
 				}
@@ -157,19 +158,18 @@
 
 			// Loop over whitelist.
 
-			if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.ContainsKey(post.Site))
+			foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.Where(t => t.Site == post.Site))
 			{
-				foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms[post.Site])
+				if (whiteTerm.Regex.IsMatch(post.AuthorName))
 				{
-					if (whiteTerm.Key.IsMatch(post.AuthorName))
-					{
-						info.Accuracy -= whiteTerm.Value;
-						info.WhiteTermsFound.Add(whiteTerm.Key, whiteTerm.Value);
-						filtersUsed++;
-					}
+					info.Accuracy -= whiteTerm.Score;
+					info.WhiteTermsFound.Add(whiteTerm);
+					info.FiltersUsed.Add(FilterType.AnswerWhiteName);
+					filtersUsed++;
 				}
 			}
-	
+
+			info.FiltersUsed.Add(FilterType.AnswerBlackName);
 			info.Accuracy /= filtersUsed;
 			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackName].HighestScore;
 			info.Accuracy *= 100;

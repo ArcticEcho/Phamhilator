@@ -10,7 +10,7 @@ namespace Phamhilator
 {
 	public class WhiteFilter
 	{
-		public Dictionary<string, Dictionary<Regex, float>> Terms { get; private set; }
+		public HashSet<Term> Terms { get; private set; }
 
 		public FilterType FilterType { get; private set; }
 
@@ -21,7 +21,7 @@ namespace Phamhilator
 			if ((int)filter < 100) { throw new ArgumentException("Must be a white filter.", "filter"); }
 
 			FilterType = filter;
-			Terms = new Dictionary<string, Dictionary<Regex, float>>();
+			Terms = new HashSet<Term>();
 
 			var sites = Directory.EnumerateDirectories(DirectoryTools.GetFilterFile(filter)).ToArray();
 
@@ -34,68 +34,70 @@ namespace Phamhilator
 			{
 				var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt"));
 
-				Terms.Add(site, new Dictionary<Regex, float>());
+				//Terms.Add(site, new Dictionary<Term, float>());
 
 				foreach (var termAndScore in data)
 				{
 					if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
 
-					var termScore = float.Parse(termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal)));
-					var termString = termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1);
-					var term = new Regex(termString);
+					var scoreAuto = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
 
-					if (Terms[site].ContainsTerm(term)) { continue; }
+					var termScore = float.Parse(new String(scoreAuto.Where(c => Char.IsDigit(c) || c == '.' || c == ',').ToArray()));
+					var termIsAuto = scoreAuto[0] == 'A';
+					var termRegex = new Regex(termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1));
 
-					Terms[site].Add(term, termScore);
+					if (Terms.Contains(termRegex)) { continue; }
+
+					Terms.Add(new Term(termRegex, termScore, site, termIsAuto));
 				}
 			}
 		}
 
 
 
-		public void AddTerm(string site, Regex term)
+		public void AddTerm(Term term)
 		{
-			if (Terms[site].ContainsTerm(term)) { return; } // Gasp! Silent failure!
+			if (Terms.Contains(term.Regex, term.Site)) { return; } // Gasp! Silent failure!
 
-			Terms.WriteTerm(FilterType, site, new Regex(""), term);
+			Terms.WriteTerm(FilterType, new Regex(""), term.Regex, term.Site, term.Score);
 		}
 
-		public void RemoveTerm(string site, Regex term)
+		public void RemoveTerm(Term term)
 		{
-			if (!Terms[site].ContainsTerm(term)) { return; }
+			if (!Terms.Contains(term.Regex, term.Site)) { return; }
 
-			Terms.WriteTerm(FilterType, site, term, new Regex(""));
+			Terms.WriteTerm(FilterType, term.Regex, new Regex(""), term.Site);
 		}
 
-		public void EditTerm(string site, Regex oldTerm, Regex newTerm)
+		public void EditTerm(Regex oldTerm, Regex newTerm, string site)
 		{
-			if (!Terms[site].ContainsTerm(oldTerm)) { return; }
+			if (!Terms.Contains(oldTerm, site)) { return; }
 
-			Terms.WriteTerm(FilterType, site, oldTerm, newTerm);
+			Terms.WriteTerm(FilterType, oldTerm, newTerm, site);
 		}
 
-		public void SetScore(string site, Regex term, float newScore)
+		public void SetScore(Term term, float newScore)
 		{
-			if (!Terms[site].ContainsTerm(term)) { return; }
+			if (!Terms.Contains(term.Regex, term.Site)) { return; }
 
-			Terms.WriteScore(FilterType, site, term, newScore);
+			Terms.WriteScore(FilterType, term.Regex, newScore, term.Site);
 		}
 
-		public float GetScore(string site, Regex term)
-		{
-			if (!Terms.ContainsKey(site)) { return -1; }
+		//public float GetScore(string site, Term term)
+		//{
+		//	if (!Terms.ContainsKey(site)) { return -1; }
 
-			for (var i = 0; i < Terms[site].Count; i++)
-			{
-				var key = Terms[site].Keys.ToArray()[i];
+		//	for (var i = 0; i < Terms[site].Count; i++)
+		//	{
+		//		var key = Terms[site].Keys.ToArray()[i];
 
-				if (key.ToString() == term.ToString())
-				{
-					return Terms[site][key];
-				}
-			}
+		//		if (key.ToString() == term.Regex.ToString())
+		//		{
+		//			return Terms[site][key];
+		//		}
+		//	}
 
-			return -1;
-		}
+		//	return -1;
+		//}
 	}
 }

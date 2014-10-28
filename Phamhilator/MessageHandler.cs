@@ -172,8 +172,9 @@ namespace Phamhilator
 				dynamic doc = null;
 				var i = 0;
 				var html = "";
+				int id;
 
-				while (html.IndexOf(message.Post.Title, StringComparison.Ordinal) == -1)
+				while ((id = HTMLScraper.GetMessageIDByPostURL(html, message.Post.URL)) == -1)
 				{
 					if (i > 32) // 8 secs (250 ms * 32).
 					{
@@ -198,15 +199,9 @@ namespace Phamhilator
 					Thread.Sleep(250);
 				}
 
-				if (i < 32)
-				{
-					var id = HTMLScraper.GetMessageIDByPostURL(html, message.Post.URL);
+				if (id == -1 || GlobalInfo.PostedReports.ContainsKey(id)) { continue; }
 
-					if (!GlobalInfo.PostedReports.ContainsKey(id))
-					{
-						GlobalInfo.PostedReports.Add(id, message);
-					}	
-				}							
+				GlobalInfo.PostedReports.Add(id, message);		
 			}
 				
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 
 
@@ -11,7 +10,7 @@ namespace Phamhilator
 		public PostType Type;
 		public float Accuracy;
 		public readonly List<FilterType> FiltersUsed = new List<FilterType>();
-		public readonly Dictionary<Regex, float> WhiteTermsFound = new Dictionary<Regex, float>();
-		public readonly Dictionary<Regex, float> BlackTermsFound = new Dictionary<Regex, float>();
+		public readonly HashSet<Term> WhiteTermsFound = new HashSet<Term>();
+		public readonly HashSet<Term> BlackTermsFound = new HashSet<Term>();
 	}
 }

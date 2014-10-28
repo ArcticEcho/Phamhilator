@@ -38,19 +38,11 @@ namespace Phamhilator
 
 			var link = html.Substring(startIndex, endIndex - startIndex).Trim();
 
-            if (!link.Contains(@"/"))
-            {
-                //
-                // The question poster is deleted. No link to give.
-                //
-                return null;
-            }
-            else
-            {
-                link = link.Remove(link.IndexOf(@"/", link.IndexOf("users", StringComparison.Ordinal) + 7, StringComparison.Ordinal));
+			if (!link.Contains(@"/")) { return ""; } // The question poster is deleted. No link to give.
 
-                return link == "http:/" ? "" : link;
-            }
+			link = link.Remove(link.IndexOf(@"/", link.IndexOf("users", StringComparison.Ordinal) + 7, StringComparison.Ordinal));
+
+			return link == "http:/" ? "" : link;
 		}
 
 		public static string GetQuestionAuthorName(string html)
@@ -191,7 +183,7 @@ namespace Phamhilator
 			var startIndex = html.IndexOf("<div id=\"answer-", StringComparison.Ordinal);
 			startIndex = html.IndexOf("answered <", startIndex, StringComparison.Ordinal);
 
-			if (startIndex == -1)  { return ""; } // Check if post is CW.
+			if (startIndex == -1) { return ""; } // Check if post is CW.
 
 			startIndex = html.IndexOf("user-details", startIndex, StringComparison.Ordinal) + 33;
 			startIndex = html.IndexOf(">", startIndex, StringComparison.Ordinal) + 1;
@@ -272,6 +264,8 @@ namespace Phamhilator
 			var decoded = WebUtility.HtmlDecode(html);
 
 			var startIndex = decoded.IndexOf(postURL, StringComparison.Ordinal) - 350;
+
+			if (startIndex == -351) { return -1; } // Couldn't find the report :(
 
 			startIndex = decoded.IndexOf("/transcript/message/", startIndex, StringComparison.Ordinal) + 20;
 

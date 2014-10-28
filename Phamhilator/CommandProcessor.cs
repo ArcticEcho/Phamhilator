@@ -317,7 +317,7 @@ namespace Phamhilator
 				return new[] { TruePositive() };
 			}
 
-			if (commandLower == "tp" || commandLower == "tpa")
+			if (commandLower == "tp why" || commandLower == "tpa why")
 			{
 				return new[] { GetTerms(), TruePositive() };
 			}
@@ -390,7 +390,7 @@ namespace Phamhilator
 
 			foreach (var term in report.Report.BlackTermsFound)
 			{
-				builder.Append(Math.Round(term.Value, 1) + "]" + term.Key + "   ");
+				builder.Append(Math.Round(term.Score, 1) + "]" + term.Regex + "   ");
 			}
 
 			if (report.Report.WhiteTermsFound.Count != 0)
@@ -399,7 +399,7 @@ namespace Phamhilator
 
 				foreach (var term in report.Report.WhiteTermsFound)
 				{
-					builder.Append(Math.Round(term.Value, 1) + "]" + term.Key + "   ");
+					builder.Append(Math.Round(term.Score, 1) + "]" + term.Regex + "   ");
 				}
 			}
 
@@ -426,36 +426,36 @@ namespace Phamhilator
 			{
 				term = new Regex(addCommand.Remove(0, 4));
 
-				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].AverageScore));
 			}
 
 			if (addCommand.StartsWith("spam"))
 			{
 				term = new Regex(addCommand.Remove(0, 5));
 
-				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].AverageScore));
 			}
 
 			if (addCommand.StartsWith("lq"))
 			{
 				term = new Regex(addCommand.Remove(0, 3));
 
-				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].AverageScore));
 			}
 
 			if (addCommand.StartsWith("name"))
 			{
 				term = new Regex(addCommand.Remove(0, 5));
 
-				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].AverageScore));
 			}
 
 			return ":" + message.MessageID + " `Blacklist term added.`";
@@ -479,9 +479,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].AddTerm(new Term(term, score, site));
 			}
 
 			if (addCommand.StartsWith("spam"))
@@ -493,9 +495,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].AddTerm(new Term(term, score, site));
 			}
 
 			if (addCommand.StartsWith("lq"))
@@ -507,9 +511,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].AddTerm(new Term(term, score, site));
 			}
 
 			if (addCommand.StartsWith("name"))
@@ -521,9 +527,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].AddTerm(new Term(term, score, site));
 			}
 
 			return ":" + message.MessageID + " `Whitelist term added.`";
@@ -541,27 +549,27 @@ namespace Phamhilator
 			{
 				term = new Regex(addCommand.Remove(0, 4));
 
-				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].AverageScore));
 			}
 
 			if (addCommand.StartsWith("spam"))
 			{
 				term = new Regex(addCommand.Remove(0, 5));
 
-				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].AverageScore));
 			}
 
 			if (addCommand.StartsWith("lq"))
 			{
 				term = new Regex(addCommand.Remove(0, 3));
 
-				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].AverageScore));
 			}
 
 			return ":" + message.MessageID + " `Blacklist term added.`";
@@ -585,9 +593,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].AddTerm(new Term(term, score, site));
 			}
 
 			if (addCommand.StartsWith("spam"))
@@ -599,9 +609,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].AddTerm(new Term(term, score, site));
 			}
 
 			if (addCommand.StartsWith("lq"))
@@ -613,9 +625,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].AddTerm(new Term(term, score, site));
 			}
 
 			return ":" + message.MessageID + " `Whitelist term added.`";
@@ -633,36 +647,36 @@ namespace Phamhilator
 			{
 				term = new Regex(addCommand.Remove(0, 4));
 
-				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].AverageScore));
 			}
 
 			if (addCommand.StartsWith("spam"))
 			{
 				term = new Regex(addCommand.Remove(0, 5));
 
-				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].AverageScore));
 			}
 
 			if (addCommand.StartsWith("lq"))
 			{
 				term = new Regex(addCommand.Remove(0, 3));
 
-				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].AverageScore));
 			}
 
 			if (addCommand.StartsWith("name"))
 			{
 				term = new Regex(addCommand.Remove(0, 5));
 
-				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.ContainsTerm(term)) { return "`Blacklist term already exists.`"; }
+				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
-				GlobalInfo.BlackFilters[FilterType.AnswerBlackName].AddTerm(term);
+				GlobalInfo.BlackFilters[FilterType.AnswerBlackName].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.AnswerBlackName].AverageScore));
 			}
 
 			return ":" + message.MessageID + " `Blacklist term added.`";
@@ -686,9 +700,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].AddTerm(new Term(term, score, site));
 			}
 
 			if (addCommand.StartsWith("spam"))
@@ -700,9 +716,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].AddTerm(new Term(term, score, site));
 			}
 
 			if (addCommand.StartsWith("lq"))
@@ -714,9 +732,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].AddTerm(new Term(term, score, site));
 			}
 
 			if (addCommand.StartsWith("name"))
@@ -728,9 +748,11 @@ namespace Phamhilator
 				term = new Regex(addCommand.Remove(0, addCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = addCommand.Substring(0, addCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.ContainsKey(site) && GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms[site].ContainsTerm(term)) { return "`Whitelist term already exists.`"; }
+				if (GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.Contains(term)) { return "`Whitelist term already exists.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].AddTerm(site, term);
+				var score = GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.Where(t => t.Site == site).Select(t => t.Score).Average();
+
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].AddTerm(new Term(term, score, site));
 			}
 
 			return ":" + message.MessageID + " `Whitelist term added.`";
@@ -752,7 +774,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 4));
 
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].RemoveTerm(term);
 			}
@@ -761,7 +783,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 5));
 
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].RemoveTerm(term);
 			}
@@ -770,7 +792,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 3));
 
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].RemoveTerm(term);
 			}
@@ -779,7 +801,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 5));
 
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].RemoveTerm(term);
 			}
@@ -805,9 +827,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].RemoveTerm(new Term(term, 0, site));
 			}
 
 			if (removeCommand.StartsWith("spam"))
@@ -819,9 +841,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].RemoveTerm(new Term(term, 0, site));
 			}
 
 			if (removeCommand.StartsWith("lq"))
@@ -833,9 +855,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].RemoveTerm(new Term(term, 0, site));
 			}
 
 			if (removeCommand.StartsWith("name"))
@@ -847,9 +869,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].RemoveTerm(new Term(term, 0, site));
 			}
 
 			return ":" + message.MessageID + " `Whitelist term removed.`";
@@ -867,7 +889,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 4));
 
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].RemoveTerm(term);
 			}
@@ -876,7 +898,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 5));
 
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].RemoveTerm(term);
 			}
@@ -885,7 +907,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 3));
 
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].RemoveTerm(term);
 			}
@@ -911,9 +933,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].RemoveTerm(new Term(term, 0, site));
 			}
 
 			if (removeCommand.StartsWith("spam"))
@@ -925,9 +947,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].RemoveTerm(new Term(term, 0, site));
 			}
 
 			if (removeCommand.StartsWith("lq"))
@@ -939,9 +961,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].RemoveTerm(new Term(term, 0, site));
 			}
 
 			return ":" + message.MessageID + " `Whitelist term removed.`";
@@ -959,7 +981,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 4));
 
-				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].RemoveTerm(term);
 			}
@@ -968,7 +990,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 5));
 
-				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].RemoveTerm(term);
 			}
@@ -977,7 +999,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 3));
 
-				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].RemoveTerm(term);
 			}
@@ -986,7 +1008,7 @@ namespace Phamhilator
 			{
 				term = new Regex(removeCommand.Remove(0, 5));
 
-				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.ContainsTerm(term)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.Contains(term)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackName].RemoveTerm(term);
 			}
@@ -1012,9 +1034,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].RemoveTerm(new Term(term, 0, site));
 			}
 
 			if (removeCommand.StartsWith("spam"))
@@ -1026,9 +1048,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].RemoveTerm(new Term(term, 0, site));
 			}
 
 			if (removeCommand.StartsWith("lq"))
@@ -1040,9 +1062,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].RemoveTerm(new Term(term, 0, site));
 			}
 
 			if (removeCommand.StartsWith("name"))
@@ -1054,9 +1076,9 @@ namespace Phamhilator
 				term = new Regex(removeCommand.Remove(0, removeCommand.IndexOf(" ", StringComparison.Ordinal) + 1));
 				site = removeCommand.Substring(0, removeCommand.IndexOf(" ", StringComparison.Ordinal));
 
-				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.ContainsKey(site) && !GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms[site].ContainsTerm(term)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.Contains(term)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].RemoveTerm(site, term);
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].RemoveTerm(new Term(term, 0, site));
 			}
 
 			return ":" + message.MessageID + " `Whitelist term removed.`";
@@ -1079,28 +1101,28 @@ namespace Phamhilator
 
 			if (editCommand.StartsWith("off"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].EditTerm(oldTerm, newTerm);
 			}
 
 			if (editCommand.StartsWith("spam"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].EditTerm(oldTerm, newTerm);
 			}
 
 			if (editCommand.StartsWith("lq"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].EditTerm(oldTerm, newTerm);
 			}
 
 			if (editCommand.StartsWith("name"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].EditTerm(oldTerm, newTerm);
 			}
@@ -1121,21 +1143,21 @@ namespace Phamhilator
 
 			if (editCommand.StartsWith("off"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].EditTerm(oldTerm, newTerm);
 			}
 
 			if (editCommand.StartsWith("spam"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].EditTerm(oldTerm, newTerm);
 			}
 
 			if (editCommand.StartsWith("lq"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].EditTerm(oldTerm, newTerm);
 			}
@@ -1159,30 +1181,30 @@ namespace Phamhilator
 
 			if (editCommand.StartsWith("off"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].EditTerm(oldTerm, newTerm, site);
 			}
 
 			if (editCommand.StartsWith("spam"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].EditTerm(oldTerm, newTerm, site);
 			}
 
 			if (editCommand.StartsWith("lq"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].EditTerm(oldTerm, newTerm, site);
 			}
 
 			if (editCommand.StartsWith("name"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].EditTerm(oldTerm, newTerm, site);
 			}
 
 			return ":" + message.MessageID + " `Term updated.`";
@@ -1204,23 +1226,23 @@ namespace Phamhilator
 
 			if (editCommand.StartsWith("off"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].EditTerm(oldTerm, newTerm, site);
 			}
 
 			if (editCommand.StartsWith("spam"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].EditTerm(oldTerm, newTerm, site);
 			}
 
 			if (editCommand.StartsWith("lq"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].EditTerm(oldTerm, newTerm, site);
 			}
 
 			return ":" + message.MessageID + " `Term updated.`";
@@ -1240,28 +1262,28 @@ namespace Phamhilator
 
 			if (editCommand.StartsWith("off"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].EditTerm(oldTerm, newTerm);
 			}
 
 			if (editCommand.StartsWith("spam"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].EditTerm(oldTerm, newTerm);
 			}
 
 			if (editCommand.StartsWith("lq"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].EditTerm(oldTerm, newTerm);
 			}
 
 			if (editCommand.StartsWith("name"))
 			{
-				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.ContainsTerm(oldTerm)) { return "`Blacklist term does not exist.`"; }
+				if (!GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.Contains(oldTerm)) { return "`Blacklist term does not exist.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackName].EditTerm(oldTerm, newTerm);
 			}
@@ -1285,30 +1307,30 @@ namespace Phamhilator
 
 			if (editCommand.StartsWith("off"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].EditTerm(oldTerm, newTerm, site);
 			}
 
 			if (editCommand.StartsWith("spam"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].EditTerm(oldTerm, newTerm, site);
 			}
 
 			if (editCommand.StartsWith("lq"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].EditTerm(oldTerm, newTerm, site);
 			}
 
 			if (editCommand.StartsWith("name"))
 			{
-				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.ContainsKey(site) || !GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms[site].ContainsTerm(oldTerm)) { return "`Whitelist term does not exist.`"; }
+				if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.Contains(oldTerm)) { return "`Whitelist term does not exist.`"; }
 
-				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].EditTerm(site, oldTerm, newTerm);
+				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].EditTerm(oldTerm, newTerm, site);
 			}
 
 			return ":" + message.MessageID + " `Term updated.`";
@@ -1404,36 +1426,27 @@ namespace Phamhilator
 
 		private static string FalsePositive()
 		{
-			if (message.Report.Type == PostType.BadTagUsed) { return ""; }
-
-			return RegisterFalsePositive();
+			return message.Report.Type == PostType.BadTagUsed ? "" : RegisterFalsePositive();
 		}
 
 		private static string RegisterFalsePositive()
 		{
-			var newWhiteTermScore = message.Report.BlackTermsFound.Values.Max() / 2;
+			var newWhiteTermScore = message.Report.BlackTermsFound.Select(t => t.Score).Max() / 2;
 
 			foreach (var filter in message.Report.FiltersUsed)
 			{
 				if ((int)filter > 99) // White filter
 				{
-					foreach (var term in message.Report.WhiteTermsFound)
+					foreach (var term in message.Report.WhiteTermsFound.Where(t => t.Site == message.Post.Site))
 					{
-						if (GlobalInfo.WhiteFilters[filter].Terms[message.Post.Site].ContainsTerm(term.Key))
-						{
-							GlobalInfo.WhiteFilters[filter].SetScore(message.Post.Site, term.Key, term.Value + 1);
-						}
+						GlobalInfo.WhiteFilters[filter].SetScore(term, term.Score + 1);
 					}
 				}
 				else // Black filter
 				{
-					foreach (var term in message.Report.BlackTermsFound)
+					foreach (var term in message.Report.BlackTermsFound.Where(t => !GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms.Any(tt => tt.Site == t.Site) && !GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms.Any(tt => tt.Regex.ToString() == t.Regex.ToString())))
 					{
-						if (!GlobalInfo.WhiteFilters[filter].Terms.ContainsKey(message.Post.Site) || !GlobalInfo.WhiteFilters[filter].Terms[message.Post.Site].ContainsTerm(term.Key))
-						{
-							GlobalInfo.WhiteFilters[filter].AddTerm(message.Post.Site, term.Key);
-							GlobalInfo.WhiteFilters[filter].SetScore(message.Post.Site, term.Key, newWhiteTermScore);
-						}
+						GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].AddTerm(new Term(term.Regex, newWhiteTermScore, message.Post.Site));
 					}
 				}
 			}
@@ -1466,21 +1479,19 @@ namespace Phamhilator
 		private static string RegisterTruePositive()
 		{
 			foreach (var filter in message.Report.FiltersUsed.Where(filter => (int)filter < 100)) // Make sure we only get black filters.
-			foreach (var term in message.Report.BlackTermsFound)
+			foreach (var blackTerm in message.Report.BlackTermsFound)
 			{
-				if (!GlobalInfo.BlackFilters[filter].Terms.ContainsTerm(term.Key)) { continue; }
+				if (!GlobalInfo.BlackFilters[filter].Terms.Contains(blackTerm)) { continue; }
 
-				GlobalInfo.BlackFilters[filter].SetScore(term.Key, term.Value + 1);
+				GlobalInfo.BlackFilters[filter].SetScore(blackTerm, blackTerm.Score + 1);
 
-				foreach (var site in GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms)
-				foreach (var whiteTerm in site.Value)
+				foreach (var whiteTerm in GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms)
 				{
-					if (whiteTerm.Key.ToString() != term.Key.ToString() || site.Key == message.Post.Site) { continue; }
+					if (whiteTerm.Regex.ToString() != blackTerm.Regex.ToString() || whiteTerm.Site == message.Post.Site) { continue; }
 
-					var oldWhiteScore = GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].GetScore(site.Key, whiteTerm.Key);
-					var x = oldWhiteScore / term.Value;
+					var x = whiteTerm.Score / blackTerm.Score;
 
-					GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].SetScore(site.Key, whiteTerm.Key, x * (term.Value + 1));
+					GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].SetScore(whiteTerm, x * (blackTerm.Score + 1));
 				}
 			}
 

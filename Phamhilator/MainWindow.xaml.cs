@@ -448,7 +448,7 @@ namespace Phamhilator
 
 			if (SpamAbuseDetected(p))
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "[Spammer abuse](" + p.URL + ")." }, GlobalInfo.ChatRoomID);
+				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "[Spammer abuse](" + p.URL + ")." }, info.AutoTermsFound ? int.MinValue : GlobalInfo.ChatRoomID);
 				PostPersistence.AddPost(p);
 
 				return;
@@ -458,7 +458,7 @@ namespace Phamhilator
 			{
 				case PostType.Offensive:
 				{
-					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Offensive**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, GlobalInfo.ChatRoomID);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Offensive**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, info.AutoTermsFound ? int.MinValue : GlobalInfo.ChatRoomID);
 					PostPersistence.AddPost(p);
 
 					break;
@@ -466,7 +466,7 @@ namespace Phamhilator
 
 				case PostType.BadUsername:
 				{
-					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Bad Username**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, GlobalInfo.ChatRoomID);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Bad Username**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, info.AutoTermsFound ? int.MinValue : GlobalInfo.ChatRoomID);
 					PostPersistence.AddPost(p);
 
 					break;
@@ -474,7 +474,7 @@ namespace Phamhilator
 
 				case PostType.BadTagUsed:
 				{
-					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Bad Tag Used**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, GlobalInfo.ChatRoomID);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Bad Tag Used**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, info.AutoTermsFound ? int.MinValue : GlobalInfo.ChatRoomID);
 					PostPersistence.AddPost(p);
 
 					break;
@@ -482,7 +482,7 @@ namespace Phamhilator
 
 				case PostType.LowQuality:
 				{
-					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Low Quality**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, GlobalInfo.ChatRoomID);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Low Quality**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, info.AutoTermsFound ? int.MinValue : GlobalInfo.ChatRoomID);
 					PostPersistence.AddPost(p);
 
 					break;
@@ -490,7 +490,7 @@ namespace Phamhilator
 
 				case PostType.Spam:
 				{
-					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Spam**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, GlobalInfo.ChatRoomID);
+					GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "**Spam**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport }, info.AutoTermsFound ? int.MinValue : GlobalInfo.ChatRoomID);
 					PostPersistence.AddPost(p);
 
 					break;
