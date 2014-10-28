@@ -14,6 +14,7 @@ namespace Phamhilator
 		private static readonly string QBWFilterTermsPath = Path.Combine(root, "Question", "Body", "White Filter Terms");
 		private static readonly string ABFilterTermsPath = Path.Combine(root, "Answer", "Black Filter Terms");
 		private static readonly string AWFilterTermsPath = Path.Combine(root, "Answer", "White Filter Terms");
+		private static readonly string configPath = Path.Combine(root, "Config");
 
 
 
@@ -201,7 +202,7 @@ namespace Phamhilator
 
 		public static string GetPostPersitenceFile()
 		{
-			var path = Path.Combine(root, "Previously Post Messages.txt");
+			var path = Path.Combine(configPath, "Previously Post Messages.txt");
 
 			if (!File.Exists(path))
 			{
@@ -213,7 +214,7 @@ namespace Phamhilator
 
 		public static string GetCommandAccessUsersFile()
 		{
-			var path = Path.Combine(root, "Command Access Users.txt");
+			var path = Path.Combine(configPath, "Command Access Users.txt");
 
 			if (!File.Exists(path))
 			{
@@ -225,7 +226,7 @@ namespace Phamhilator
 
 		public static string GetAccuracyThresholdFile()
 		{
-			var path = Path.Combine(root, "Accuracy Threshold.txt");
+			var path = Path.Combine(configPath, "Accuracy Threshold.txt");
 
 			if (!File.Exists(path))
 			{
@@ -237,7 +238,7 @@ namespace Phamhilator
 
 		public static string GetEnableFullScanFile()
 		{
-			var path = Path.Combine(root, "Enable Full Scan.txt");
+			var path = Path.Combine(configPath, "Enable Full Scan.txt");
 
 			if (!File.Exists(path))
 			{
@@ -249,12 +250,12 @@ namespace Phamhilator
 
 		public static string GetBannedUsersFile()
 		{
-			return Path.Combine(root, "Banned Users.txt");
+			return Path.Combine(configPath, "Banned Users.txt");
 		}
 
 		public static string GetStatusFile()
 		{
-			var path = Path.Combine(root, "Status.txt");
+			var path = Path.Combine(configPath, "Status.txt");
 
 			if (!File.Exists(path))
 			{

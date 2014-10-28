@@ -11,7 +11,6 @@
 10](?i)confusing
 13](?i)\bh(i|ello)\b
 10](?i)\bgreeting(s)?\b
-21](?i)\berror(s)?\b
 27](?i)problem(s)?
 10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 10](?i)correct this
@@ -42,3 +41,4 @@
 13.66111](?i)(advice|opinion|thought)s on
 14.66111](?i:noob|beginner)
 13.42067]\bpl[sz]+\b
+22](?i)\berror(s)?\b

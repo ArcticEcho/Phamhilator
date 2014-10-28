@@ -34,8 +34,6 @@ namespace Phamhilator
 			{
 				var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt"));
 
-				//Terms.Add(site, new Dictionary<Term, float>());
-
 				foreach (var termAndScore in data)
 				{
 					if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
@@ -46,7 +44,7 @@ namespace Phamhilator
 					var termIsAuto = scoreAuto[0] == 'A';
 					var termRegex = new Regex(termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1));
 
-					if (Terms.Contains(termRegex)) { continue; }
+					if (Terms.Contains(termRegex) || String.IsNullOrEmpty(termRegex.ToString())) { continue; }
 
 					Terms.Add(new Term(termRegex, termScore, site, termIsAuto));
 				}
@@ -82,22 +80,5 @@ namespace Phamhilator
 
 			Terms.WriteScore(FilterType, term.Regex, newScore, term.Site);
 		}
-
-		//public float GetScore(string site, Term term)
-		//{
-		//	if (!Terms.ContainsKey(site)) { return -1; }
-
-		//	for (var i = 0; i < Terms[site].Count; i++)
-		//	{
-		//		var key = Terms[site].Keys.ToArray()[i];
-
-		//		if (key.ToString() == term.Regex.ToString())
-		//		{
-		//			return Terms[site][key];
-		//		}
-		//	}
-
-		//	return -1;
-		//}
 	}
 }

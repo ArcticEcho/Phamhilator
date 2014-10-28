@@ -143,8 +143,6 @@ namespace Phamhilator
 			File.WriteAllLines(file, data);
 		}
 
-
-
 		public static Term GetRealTerm(this HashSet<Term> terms, Regex term, string site = "")
 		{
 			if (String.IsNullOrEmpty(site))

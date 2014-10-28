@@ -50,7 +50,7 @@ namespace Phamhilator
 				var termIsAuto = scoreAuto[0] == 'A';
 				var termRegex = new Regex(termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1));
 
-				if (Terms.Contains(termRegex)) { continue; }
+				if (Terms.Contains(termRegex) || String.IsNullOrEmpty(termRegex.ToString())) { continue; }
 
 				Terms.Add(new Term(termRegex, termScore, "", termIsAuto));
 			}
@@ -85,30 +85,5 @@ namespace Phamhilator
 
 			Terms.WriteScore(FilterType, term.Regex, newScore);
 		}
-
-		//public float GetScore(Term term)
-		//{
-		//	// TODO: Convert to foreach.
-
-		//	foreach (var t in Terms)
-		//	{
-		//		if (t == term)
-		//		{
-		//			return t.Score;
-		//		}
-		//	}
-
-		//	//for (var i = 0; i < Terms.Count; i++)
-		//	//{
-		//	//	var key = Terms.ToArray()[i];
-
-		//	//	if (key.ToString() == term.Regex.ToString())
-		//	//	{
-		//	//		return Terms[key];
-		//	//	}
-		//	//}
-
-		//	return -1;
-		//}
 	}
 }

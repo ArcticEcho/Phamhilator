@@ -7,12 +7,11 @@
 10](?i)penis
 10](?i)bumhole
 10](?i)bastard
-10](?i)bitch
-10](?i)crap
+10](?i)\bbitch\b
+10](?i)\bcrap\b
 10](?i)fuck
 10](?i)whore
 10]MTS789
-
 10](?i)\bshit\b
 10](?i)officialimeiunlock
 10]\.com
