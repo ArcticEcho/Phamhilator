@@ -6,4 +6,4 @@
 33.77619](?i)did you find
 32.8]^\<p\>[^a-z]*\<\/p\>$
 34.63333](?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)
-66.5]^(?i).{0,80}$
+67.5]^(?i).{0,80}$

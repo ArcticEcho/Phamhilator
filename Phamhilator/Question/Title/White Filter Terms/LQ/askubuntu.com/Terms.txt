@@ -1,14 +1,10 @@
-
 10.5](?i)\berror(s)?\b
 6.5](?i)i want to
-
 15.08](?i)pl(z|s|ease)
-16.5](?i)\b(help|halp)\b
 4.5](?i)question
-
 10.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-
 11.5]^(?i).{0,18}$
 4](?s-m)^.{0,200}$
 4](?s-m)^.{0,150}$
 13.5](?i)problem(s)?
+17](?i)\b(help|halp)\b

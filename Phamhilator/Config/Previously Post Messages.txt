@@ -456,3 +456,15 @@
 2537998.21866547]http://diy.stackexchange.com/questions/51783
 2537998.21923217]http://magento.stackexchange.com/a/41793
 2537998.21951552]http://sharepoint.stackexchange.com/questions/78668
+2537999.86429293]http://superuser.com/a/833228
+2538001.26698983]http://apple.stackexchange.com/a/153625
+2538001.6499784]http://music.stackexchange.com/questions/24648
+2538004.03073124]http://serverfault.com/questions/640505
+2538005.26906873]http://superuser.com/a/147234
+2538008.23558841]http://pt.stackoverflow.com/questions/38514
+2538008.82358871]http://superuser.com/a/833230
+2538013.66843248]http://stackoverflow.com/questions/26630045
+2538016.47290955]http://android.stackexchange.com/a/86175
+2538016.47312624]http://drupal.stackexchange.com/questions/135237
+2538018.48045771]http://security.stackexchange.com/questions/71887
+2538019.29938789]http://stackoverflow.com/questions/25903605

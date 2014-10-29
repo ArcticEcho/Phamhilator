@@ -21,12 +21,10 @@
 11](?i)thanks
 12](?i)(need|some)( halp| help| answer)
 21](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-33](?i)\b(help|halp)\b
 21]^[^a-z]*$
 10](?i)\bgives error\b
 23]^(?i).{0,18}$
 10]how do i
-19](?i:need help|help me)
 11](?i)i( just)? wan(t|na) to know
 13](?i)i want to
 12](?i)plz help me!
@@ -42,3 +40,5 @@
 14.66111](?i:noob|beginner)
 13.42067]\bpl[sz]+\b
 22](?i)\berror(s)?\b
+34](?i)\b(help|halp)\b
+20](?i:need help|help me)

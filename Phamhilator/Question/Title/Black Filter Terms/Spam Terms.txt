@@ -12,7 +12,6 @@
 10](?i)\bmy huge\b
 10](?i)\bbulky figure\b
 10](?i)\bbangalore\b
-10](?i)\bsupplement(s)?\b
 10](?i)\byou know\b
 10](?i)\bget your\b
 10](?i)\bgot my\b
@@ -102,3 +101,4 @@
 10](?i)vs.*live stream
 10]^FREE
 10](?i)For Meta
+11](?i)\bsupplement(s)?\b

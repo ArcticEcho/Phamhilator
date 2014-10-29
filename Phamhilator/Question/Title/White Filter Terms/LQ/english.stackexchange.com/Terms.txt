@@ -1,9 +1,5 @@
-
 15.625](?i)problem(s)?
 5](?i)question
-
 11.5]^(?i).{0,18}$
-
 6.5](?i)i want to
-
-16.5](?i)\b(help|halp)\b
+17](?i)\b(help|halp)\b

@@ -1442,8 +1442,10 @@ namespace Phamhilator
 			{
 				GlobalInfo.BlackFilters[filter].SetScore(blackTerm, blackTerm.Score + 1);
 
-				foreach (var whiteTerm in GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms)
+				for (var i = 0; i < GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms.Count; i++)
 				{
+					var whiteTerm = GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms.ElementAt(i);
+
 					if (whiteTerm.Regex.ToString() != blackTerm.Regex.ToString() || whiteTerm.Site == message.Post.Site) { continue; }
 
 					var x = whiteTerm.Score / blackTerm.Score;

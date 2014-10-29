@@ -1,12 +1,7 @@
-
 3.25](?i)pl(z|s|ease)
-4.304348](?i)\b(help|halp)\b
 5.869565](?i)problem(s)?
-
 6.5](?i)i want to
-
 11.5]^(?i).{0,18}$
-
 6.5](?i)beginner
-
 2.5](?s-m)^.{0,150}$
+4.434783](?i)\b(help|halp)\b

@@ -1,15 +1,9 @@
-
 11.05264](?i)\berror(s)?\b
-
 14.625](?i)problem(s)?
 5](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
-
 10.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
 10.97727]^(?i).{0,18}$
 5](?i)\bif (yes|no)\b
-
 5](?i)question
-
-15.48387](?i)\b(help|halp)\b
-
 3.5](?s-m)^.{0,150}$
+15.95308](?i)\b(help|halp)\b

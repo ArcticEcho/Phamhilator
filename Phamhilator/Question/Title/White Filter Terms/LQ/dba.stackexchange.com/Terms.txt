@@ -1,3 +1,3 @@
 10.5](?i)\berror(s)?\b
 5](?i)\bif (yes|no)\b
-17.5](?i)\b(help|halp)\b
+18.0303](?i)\b(help|halp)\b
