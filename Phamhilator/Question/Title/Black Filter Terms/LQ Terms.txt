@@ -39,6 +39,9 @@
 13.66111](?i)(advice|opinion|thought)s on
 14.66111](?i:noob|beginner)
 13.42067]\bpl[sz]+\b
+281171.3]^(?i)(\w+\s)?program\sto
+281171.3](?i)^wh(ich|at) tool
 22](?i)\berror(s)?\b
 20](?i:need help|help me)
 35](?i)\b(help|halp)\b
+391194.9]for\sfree

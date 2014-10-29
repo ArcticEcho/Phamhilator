@@ -101,5 +101,7 @@
 10](?i)vs.*live stream
 10]^FREE
 10](?i)For Meta
+10](?i)\d% discount code
+10](?i)\bpune\b
 11](?i)\bsupplement(s)?\b
 10.00961]2348064038119
