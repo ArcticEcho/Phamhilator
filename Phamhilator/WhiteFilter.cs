@@ -80,5 +80,23 @@ namespace Phamhilator
 
 			Terms.WriteScore(FilterType, term.Regex, newScore, term.Site);
 		}
+
+		public void SetAuto(Regex term, bool isAuto, string site, bool persistence = false)
+		{
+			if (!Terms.Contains(term, site)) { return; }
+
+			if (persistence)
+			{
+				Terms.WriteAuto(FilterType, term, isAuto, site);
+			}
+			else
+			{
+				var t = Terms.GetRealTerm(term, site);
+
+				Terms.Remove(t);
+
+				Terms.Add(new Term(t.Regex, t.Score, t.Site, isAuto));
+			}
+		}
 	}
 }

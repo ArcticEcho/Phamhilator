@@ -12,7 +12,7 @@ namespace Phamhilator
 	{
 		private bool exit;
 
-		public readonly Dictionary<MessageInfo, int> MessageQueue = new Dictionary<MessageInfo, int>();
+		public readonly List<MessageInfo> MessageQueue = new List<MessageInfo>();
 		
 
 
@@ -117,7 +117,6 @@ namespace Phamhilator
 		
 		private void PostMessages(/*int consecutiveMessageCount = 0*/)
 		{
-			var roomID = 0;
 			var error = false;
 			MessageInfo message;
 
@@ -132,8 +131,7 @@ namespace Phamhilator
 
 				if (GlobalInfo.ChatRoomID == 0 || GlobalInfo.AnnouncerRoomID == 0 || MessageQueue.Count == 0) { continue; }
 
-				message = MessageQueue.Keys.First();
-				roomID = MessageQueue[message];
+				message = MessageQueue.First();
 				error = false;
 				
 				// Post message.
@@ -142,18 +140,18 @@ namespace Phamhilator
 				{
 					try
 					{
-						if (roomID == GlobalInfo.ChatRoomID)
+						if (message.RoomID == GlobalInfo.ChatRoomID)
 						{
 							GlobalInfo.ChatWb.InvokeScript("eval", new object[]
 							{
-								"$.post('/chats/" + roomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
+								"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
 							});
 						}
 						else
 						{
 							GlobalInfo.AnnounceWb.InvokeScript("eval", new object[]
 							{
-								"$.post('/chats/" + roomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
+								"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
 							});
 						}			
 					}
@@ -183,7 +181,7 @@ namespace Phamhilator
 						break;
 					}
 
-					Application.Current.Dispatcher.Invoke(() => doc = roomID == GlobalInfo.ChatRoomID ? GlobalInfo.ChatWb.Document : GlobalInfo.AnnounceWb.Document);
+					Application.Current.Dispatcher.Invoke(() => doc = message.RoomID == GlobalInfo.ChatRoomID ? GlobalInfo.ChatWb.Document : GlobalInfo.AnnounceWb.Document);
 
 					try
 					{

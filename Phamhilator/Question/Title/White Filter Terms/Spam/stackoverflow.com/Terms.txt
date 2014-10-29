@@ -1,5 +1,3 @@
-
-
 7.15](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
 5](?i)this product
 5](?i)\bcheaper\b
@@ -7,8 +5,6 @@
 7.854546](?i)\bskin\b
 7.2](?i)\bcare(ing)?\b
 6](?i)\bbeautiful(est)?\b
-6](?i)how to (feel|look|reduce|buy|increase)
-
 6](?i)\bbrand\b
-
 6.6](?i)health
+7](?i)how to (feel|look|reduce|buy|increase)
