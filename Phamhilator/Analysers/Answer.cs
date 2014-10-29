@@ -40,6 +40,7 @@ namespace Phamhilator.Analysers
 				}
 			}
 
+			info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
 			info.FiltersUsed.Add(FilterType.AnswerBlackSpam);
 			info.Accuracy /= filtersUsed;
 			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].HighestScore;
@@ -83,6 +84,7 @@ namespace Phamhilator.Analysers
 				}
 			}
 
+			info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
 			info.FiltersUsed.Add(FilterType.AnswerBlackLQ);
 			info.Accuracy /= filtersUsed;
 			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].HighestScore;
@@ -126,6 +128,7 @@ namespace Phamhilator.Analysers
 				}
 			}
 
+			info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
 			info.FiltersUsed.Add(FilterType.AnswerBlackOff);
 			info.Accuracy /= filtersUsed;
 			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].HighestScore;
@@ -169,6 +172,7 @@ namespace Phamhilator.Analysers
 				}
 			}
 
+			info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
 			info.FiltersUsed.Add(FilterType.AnswerBlackName);
 			info.Accuracy /= filtersUsed;
 			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackName].HighestScore;

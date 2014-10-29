@@ -12,7 +12,7 @@ namespace Phamhilator
 	{
 		private static MessageInfo message;
 		private static string commandLower = "";
-		private static readonly Regex termCommands = new Regex(@"(?i)^(add|del|edit)\-(b|w)\-(a|qb|qt)\-(spam|off|name|lq) ");
+		private static readonly Regex termCommands = new Regex(@"(?i)^(add|del|edit|auto)\-(b|w)\-(a|qb|qt)\-(spam|off|name|lq) ");
 
 
 
@@ -1479,10 +1479,8 @@ namespace Phamhilator
 		private static string RegisterTruePositive()
 		{
 			foreach (var filter in message.Report.FiltersUsed.Where(filter => (int)filter < 100)) // Make sure we only get black filters.
-			foreach (var blackTerm in message.Report.BlackTermsFound)
+			foreach (var blackTerm in message.Report.BlackTermsFound.Where(blackTerm => GlobalInfo.BlackFilters[filter].Terms.Contains(blackTerm)))
 			{
-				if (!GlobalInfo.BlackFilters[filter].Terms.Contains(blackTerm)) { continue; }
-
 				GlobalInfo.BlackFilters[filter].SetScore(blackTerm, blackTerm.Score + 1);
 
 				foreach (var whiteTerm in GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms)
