@@ -1,8 +1,5 @@
-
 5](?i)(feel|look|taste|get)(s|ing)? (good|nice|amazing|fabulous)
 5.5](?i)how to (feel|look|reduce|buy|increase)
-
-7.333333][-\w]{3}@\w+\.
-
 5.5](?i)slim
 5.5](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
+8][-\w]{3}@\w+\.

@@ -40,5 +40,5 @@
 14.66111](?i:noob|beginner)
 13.42067]\bpl[sz]+\b
 22](?i)\berror(s)?\b
-34](?i)\b(help|halp)\b
 20](?i:need help|help me)
+35](?i)\b(help|halp)\b

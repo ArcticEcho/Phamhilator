@@ -2,4 +2,4 @@
 10.5](?i)\berror(s)?\b
 11.5]^(?i).{0,18}$
 10.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-17](?i)\b(help|halp)\b
+17.5](?i)\b(help|halp)\b

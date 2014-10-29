@@ -468,3 +468,16 @@
 2538016.47312624]http://drupal.stackexchange.com/questions/135237
 2538018.48045771]http://security.stackexchange.com/questions/71887
 2538019.29938789]http://stackoverflow.com/questions/25903605
+2538019.54186842]http://superuser.com/a/132913
+2538021.54104944]http://scifi.stackexchange.com/a/71507
+2538023.75780956]http://stackoverflow.com/questions/16631470
+2538024.77938466]http://stackoverflow.com/questions/26630275
+2538029.01932717]http://travel.stackexchange.com/a/38021
+2538030.10218911]http://islam.stackexchange.com/a/18237
+2538035.56126801]http://stackoverflow.com/questions/26419500
+2538037.22629658]http://stackoverflow.com/questions/26630545
+2538037.63928687]http://stackoverflow.com/a/26630549
+2538037.84956556]http://dba.stackexchange.com/questions/81380
+2538039.04058369]http://gis.stackexchange.com/questions/120201
+2538039.232528]http://codereview.stackexchange.com/questions/68250
+2538039.42613907]http://english.stackexchange.com/questions/205183

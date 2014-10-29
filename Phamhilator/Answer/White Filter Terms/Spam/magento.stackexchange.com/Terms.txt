@@ -1,7 +1,4 @@
-
 5](?i)how to (feel|look|reduce|buy|increase)
-5.5][-\w]{3}@\w+\.
-
 5](?i)it is possible
-
 5.5](?i)\bskin\b
+6][-\w]{3}@\w+\.

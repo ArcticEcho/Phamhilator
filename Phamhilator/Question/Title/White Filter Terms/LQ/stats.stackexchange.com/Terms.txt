@@ -4,4 +4,4 @@
 12.5]^(?i).{0,18}$
 15.5](?i)(need|some)( halp| help| answer)
 13](?i)pl(z|s|ease)
-19.31105](?i)\b(help|halp)\b
+19.87902](?i)\b(help|halp)\b

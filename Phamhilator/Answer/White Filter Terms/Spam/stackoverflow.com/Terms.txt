@@ -1,16 +1,10 @@
-
 5](?i)natural
 5](?i)rolex
-9.77778][-\w]{3}@\w+\.
-
 5](?i)^how can we
-
 5](?i)slim
 5](?i)you want
 5](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))
-
 5](?i)nike
-
 5](?i)fifa
-
 5](?i)baba
+10.66667][-\w]{3}@\w+\.

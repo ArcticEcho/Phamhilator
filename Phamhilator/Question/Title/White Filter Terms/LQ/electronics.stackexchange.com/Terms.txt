@@ -1,5 +1,5 @@
 9.217392](?i)problem(s)?
 6.17284](?i)question
 11.5]^(?i).{0,18}$
-17](?i)\b(help|halp)\b
 14.70587](?i:need help|help me)
+17.5](?i)\b(help|halp)\b

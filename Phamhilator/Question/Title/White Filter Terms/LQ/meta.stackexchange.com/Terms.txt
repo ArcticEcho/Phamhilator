@@ -5,4 +5,4 @@
 5](?i)thanks
 5](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
 10.5](?i)\berror(s)?\b
-14.7826](?i)\b(help|halp)\b
+15.21739](?i)\b(help|halp)\b

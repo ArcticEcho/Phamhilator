@@ -6,4 +6,4 @@
 5](?i)\bif (yes|no)\b
 5](?i)question
 3.5](?s-m)^.{0,150}$
-15.95308](?i)\b(help|halp)\b
+16.42229](?i)\b(help|halp)\b

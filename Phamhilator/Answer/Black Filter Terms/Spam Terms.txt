@@ -1,8 +1,9 @@
 5]^((?!\\n\\n|\<code\>).)*https?://\w*$
-11][-\w]{3}@\w+\.
 5]^https?://\w*((?!\\n\\n|\<code\>).)*$
 6.333333](?i)join (today|now|fast|free|exclusive|us)(\s|.)*https?://
 7.333333]WWW\.[^a-z]*\.[^a-z]{2,3}(\.[^a-z]{2,3})?
 6.9](?i)recoverydeletedfiles
 7.733333]filerepairforum.com
 7.042857](?i)filerepairforum\.com
+12][-\w]{3}@\w+\.
+7.167857]2348064038119
