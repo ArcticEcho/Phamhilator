@@ -5,6 +5,6 @@
 32.5](?i)(did|have) you f(in|oun)d
 33.77619](?i)did you find
 32.8]^\<p\>[^a-z]*\<\/p\>$
-34.66508](?i)pl(ease|s|z) help
 35.63333](?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)
-69.5]^(?i).{0,80}$
+35.66508](?i)pl(ease|s|z) help
+70.5]^(?i).{0,80}$

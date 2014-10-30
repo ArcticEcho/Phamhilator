@@ -1461,8 +1461,6 @@ namespace Phamhilator
 
 		# region Auto commands
 
-		// TODO: Implement auto command for white filters.
-
 		private static string AutoBQTTerm(string command)
 		{
 			var editCommand = command.Remove(0, 10);
