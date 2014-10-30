@@ -8,3 +8,4 @@
 6](?i)\bbrand\b
 6.6](?i)health
 7](?i)how to (feel|look|reduce|buy|increase)
+5](?i)^how can we

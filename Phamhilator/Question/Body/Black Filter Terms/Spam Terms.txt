@@ -28,3 +28,4 @@
 5](?i)slimbodycleansingfacts
 5]ketone
 5](?i)elite\W+test
+5](i?)Lisse

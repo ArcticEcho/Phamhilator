@@ -24,7 +24,7 @@ namespace Phamhilator
 				{
 					try
 					{
-						PostMessages();			
+						PostChatMessages();
 					}
 					catch (Exception)
 					{
@@ -34,19 +34,50 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								PostChatMessage("`Warning: 3 attempts to restart message poster thread have failed. Now shutting down...`");
+								PostChatMessage("`Warning: 3 attempts to restart message poster thread #1 have failed. Now shutting down...`");
 
 								GlobalInfo.Exit = true;
 							}
 							else
 							{
-								PostChatMessage("`Warning: message poster thread has died. Attempting to restart...`");
+								PostChatMessage("`Warning: message poster thread #1 has died. Attempting to restart...`");
 							}
 						}
 					}
 
 					if (GlobalInfo.Exit) { break; }
-				}		
+				}
+			}) { Priority = ThreadPriority.Lowest }.Start();
+
+			new Thread(() =>
+			{
+				for (var i = 1; i < 5; i++)
+				{
+					try
+					{
+						PostAnnonceMessages();
+					}
+					catch (Exception)
+					{
+						if (!GlobalInfo.Exit)
+						{
+							Thread.Sleep(1000);
+
+							if (i == 4)
+							{
+								PostChatMessage("`Warning: 3 attempts to restart message poster thread #2 have failed. Now shutting down...`");
+
+								GlobalInfo.Exit = true;
+							}
+							else
+							{
+								PostChatMessage("`Warning: message poster thread #2 has died. Attempting to restart...`");
+							}
+						}
+					}
+
+					if (GlobalInfo.Exit) { break; }
+				}
 			}) { Priority = ThreadPriority.Lowest }.Start();
 		}
 
@@ -115,7 +146,7 @@ namespace Phamhilator
 		
 		
 		
-		private void PostMessages(/*int consecutiveMessageCount = 0*/)
+		private void PostChatMessages(/*int consecutiveMessageCount = 0*/)
 		{
 			var error = false;
 			MessageInfo message;
@@ -129,9 +160,9 @@ namespace Phamhilator
 			{
 				Thread.Sleep(2000);
 
-				if (GlobalInfo.ChatRoomID == 0 || GlobalInfo.AnnouncerRoomID == 0 || MessageQueue.Count == 0) { continue; }
+				if (GlobalInfo.ChatRoomID == 0 || MessageQueue.All(m => m.RoomID != GlobalInfo.ChatRoomID)) { continue; }
 
-				message = MessageQueue.First();
+				message = MessageQueue.First(m => m.RoomID == GlobalInfo.ChatRoomID);
 				error = false;
 				
 				// Post message.
@@ -140,20 +171,10 @@ namespace Phamhilator
 				{
 					try
 					{
-						if (message.RoomID == GlobalInfo.ChatRoomID)
+						GlobalInfo.ChatWb.InvokeScript("eval", new object[]
 						{
-							GlobalInfo.ChatWb.InvokeScript("eval", new object[]
-							{
-								"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
-							});
-						}
-						else
-						{
-							GlobalInfo.AnnounceWb.InvokeScript("eval", new object[]
-							{
-								"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
-							});
-						}			
+							"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
+						});			
 					}
 					catch (Exception)
 					{
@@ -181,7 +202,7 @@ namespace Phamhilator
 						break;
 					}
 
-					Application.Current.Dispatcher.Invoke(() => doc = message.RoomID == GlobalInfo.ChatRoomID ? GlobalInfo.ChatWb.Document : GlobalInfo.AnnounceWb.Document);
+					Application.Current.Dispatcher.Invoke(() => doc = GlobalInfo.ChatWb.Document);
 
 					try
 					{
@@ -213,6 +234,96 @@ namespace Phamhilator
 
 			//PostMessage(message, consecutiveMessageCount);
 		}
+
+		private void PostAnnonceMessages(/*int consecutiveMessageCount = 0*/)
+		{
+			var error = false;
+			MessageInfo message;
+
+			do
+			{
+				Thread.Sleep(1000);
+			} while (!GlobalInfo.BotRunning);
+
+			while (!exit || MessageQueue.Count != 0)
+			{
+				Thread.Sleep(2000);
+
+				if (GlobalInfo.AnnouncerRoomID == 0 || MessageQueue.All(m => m.RoomID != GlobalInfo.AnnouncerRoomID)) { continue; }
+
+				message = MessageQueue.First(m => m.RoomID == GlobalInfo.AnnouncerRoomID);
+				error = false;
+
+				// Post message.
+
+				Application.Current.Dispatcher.Invoke(() =>
+				{
+					try
+					{
+						GlobalInfo.AnnounceWb.InvokeScript("eval", new object[]
+						{
+							"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
+						});					
+					}
+					catch (Exception)
+					{
+						error = true;
+					}
+				});
+
+				MessageQueue.Remove(message);
+
+				if (error || message.Post == null || message.Report == null) { continue; }
+
+				// Get message ID.
+
+				dynamic doc = null;
+				var i = 0;
+				var html = "";
+				int id;
+
+				while ((id = HTMLScraper.GetMessageIDByPostURL(html, message.Post.URL)) == -1)
+				{
+					if (i > 32) // 8 secs (250 ms * 32).
+					{
+						PostChatMessage("`Failed to get message ID for report: " + message.Post.Title + ".`");
+
+						break;
+					}
+
+					Application.Current.Dispatcher.Invoke(() => doc = GlobalInfo.AnnounceWb.Document);
+
+					try
+					{
+						html = doc.documentElement.InnerHtml;
+					}
+					catch (Exception)
+					{
+
+					}
+
+					i++;
+
+					Thread.Sleep(250);
+				}
+
+				if (id == -1 || GlobalInfo.PostedReports.ContainsKey(id)) { continue; }
+
+				GlobalInfo.PostedReports.Add(id, message);
+			}
+
+
+			//consecutiveMessageCount++;
+
+			//var delay = (int)(4.1484 * Math.Log(consecutiveMessageCount) + 1.02242) * 1000;
+
+			//if (consecutiveMessageCount >= 20) { return; }
+
+			//Thread.Sleep(delay);
+
+			//PostMessage(message, consecutiveMessageCount);
+		}
+
 
 		private void PostChatMessage(string message)
 		{

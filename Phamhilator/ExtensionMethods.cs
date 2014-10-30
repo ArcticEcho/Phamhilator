@@ -131,7 +131,7 @@ namespace Phamhilator
 
 				data.RemoveAt(i);
 
-				data.Add(isAuto ? "A" : "" + realTerm.Score + "]" + term);
+				data.Add((isAuto ? "A" : "") + realTerm.Score + "]" + term);
 
 				break;
 			}

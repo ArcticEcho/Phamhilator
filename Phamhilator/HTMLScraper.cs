@@ -13,6 +13,8 @@ namespace Phamhilator
 
 
 
+		# region Question scraping methods
+
 		public static string GetQuestionURL(string html)
 		{
 			var startIndex = html.IndexOf("href=", StringComparison.Ordinal) + 6;
@@ -124,6 +126,9 @@ namespace Phamhilator
 			return ParseRep(html.Substring(newStartIndex, endIndex - newStartIndex));
 		}
 
+		# endregion
+
+		# region Answer scraping methods
 
 		public static int GetAnswerCount(string html)
 		{
@@ -227,6 +232,7 @@ namespace Phamhilator
 			return ParseRep(html.Substring(newStartIndex, endIndex - newStartIndex));
 		}
 
+		# endregion
 
 		public static MessageInfo GetLastChatMessage(string html)
 		{

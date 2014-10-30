@@ -71,7 +71,6 @@
 10](?i)anti( |\-)?aging
 10](?i)losing weight
 10]\+91\-9950211818
-10](?i)natural
 10](?i)nike
 10](?i)body weight
 10](?i)told you
@@ -105,3 +104,4 @@
 10](?i)\bpune\b
 11](?i)\bsupplement(s)?\b
 10.00961]2348064038119
+11](?i)natural
