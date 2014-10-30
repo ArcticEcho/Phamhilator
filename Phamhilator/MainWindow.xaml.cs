@@ -29,24 +29,37 @@ namespace Phamhilator
 
 		public MainWindow()
 		{
-			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-			CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+			try
+			{
+				AppDomain.CurrentDomain.UnhandledException += GlobalExceptionHandler;
 
-			InitializeComponent();
+				CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+				CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-			GlobalInfo.ChatWb = chatWb;
-			GlobalInfo.AnnounceWb = announceWb;
+				InitializeComponent();
 
-			SwitchToIE9();
+				GlobalInfo.ChatWb = chatWb;
+				GlobalInfo.AnnounceWb = announceWb;
 
-			HideScriptErrors(chatWb, true);
-			HideScriptErrors(announceWb, true);
+				SwitchToIE9();
 
-			KillListener();
+				HideScriptErrors(chatWb, true);
+				HideScriptErrors(announceWb, true);
 
-			PostCatcher();
+				KillListener();
 
-			CommandListener();
+				PostCatcher();
+
+				CommandListener();
+			}
+			catch (Exception ex)
+			{
+				Clipboard.SetText(ex.ToString());
+
+				MessageBox.Show("Process returned with error code 0xdarnit." + ex + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...");
+
+				Environment.Exit(Environment.ExitCode);
+			}
 		}
 
 
@@ -98,7 +111,7 @@ namespace Phamhilator
 							do
 							{
 								Thread.Sleep(refreshRate);
-							} while (!GlobalInfo.BotRunning);
+							} while (!GlobalInfo.BotRunning && !GlobalInfo.Exit);
 
 							if (postSuccessMessage)
 							{
@@ -582,6 +595,22 @@ namespace Phamhilator
 			catch (SecurityException ex)
 			{
 				MessageBox.Show(string.Format("Can't write to the registry. Try to run using administrative privileges.\n\nException: {0}", ex.Message), "Phamilator");
+			}
+		}
+
+		private void GlobalExceptionHandler(object o, UnhandledExceptionEventArgs args)
+		{
+			Clipboard.SetText(args.ExceptionObject.ToString());
+
+			if (args.IsTerminating)
+			{
+				MessageBox.Show("Process returned with error code 0xdarnit." + args.ExceptionObject + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...", "Oops...", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+			else
+			{
+				var res = MessageBox.Show("Process returned with error code 0xdarnit." + args.ExceptionObject + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Do you wish to continue?", "Oops...", MessageBoxButton.YesNo, MessageBoxImage.Error);
+
+				if (res == MessageBoxResult.No) { Environment.Exit(Environment.ExitCode); }
 			}
 		}
 

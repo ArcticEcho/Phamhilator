@@ -29,3 +29,4 @@
 5]ketone
 5](?i)elite\W+test
 5](i?)Lisse
+5](?i)chaussure

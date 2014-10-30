@@ -743,3 +743,13 @@
 2539765.68394047]http://english.stackexchange.com/questions/205430
 2539765.87820324]http://stackoverflow.com/questions/9907460
 2539772.16029616]http://android.stackexchange.com/a/86325
+2539872.87776504]http://apple.stackexchange.com/questions/153890
+2539873.20165023]http://biology.stackexchange.com/questions/23591
+2539873.99944586]http://security.stackexchange.com/questions/72015
+2539874.19635713]http://codereview.stackexchange.com/questions/68436
+2539876.11928378]http://stats.stackexchange.com/questions/122093
+2539876.55607543]http://english.stackexchange.com/questions/205472
+2539877.5666999]http://apple.stackexchange.com/a/153893
+2539882.6684417]http://askubuntu.com/a/543747
+2539882.66894173]http://stackoverflow.com/questions/26659560
+2539882.6700918]http://stackoverflow.com/questions/26661580
