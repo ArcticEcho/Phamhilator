@@ -52,7 +52,7 @@ namespace Phamhilator
 
 		#endregion
 
-		public const string BotUsername = "PatrickHofman"; // TODO: change this to the username of your account which the bot will be using.
+		public const string BotUsername = "pham"; // TODO: change this to the username of your account which the bot will be using.
 		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
 		public static readonly MessageHandler MessagePoster = new MessageHandler();
 		public const string Owners = "Sam, Unihedron, Patrick Hofman, Jan Dvorak & ProgramFOX";
