@@ -753,3 +753,6 @@
 2539882.6684417]http://askubuntu.com/a/543747
 2539882.66894173]http://stackoverflow.com/questions/26659560
 2539882.6700918]http://stackoverflow.com/questions/26661580
+2540077.55918881]http://math.stackexchange.com/questions/999011
+2540078.92396687]http://scifi.stackexchange.com/questions/71663
+2540078.92410022]http://stackoverflow.com/questions/20631975

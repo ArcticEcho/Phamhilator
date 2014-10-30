@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 
@@ -11,6 +12,7 @@ namespace Phamhilator
 {
 	public static class GlobalInfo
 	{
+		private static string botUsername = "";
 		private static int chatID;
 		private static int announceID;
 
@@ -52,7 +54,6 @@ namespace Phamhilator
 
 		#endregion
 
-		public const string BotUsername = "Pham"; // TODO: change this to the username of your account which the bot will be using.
 		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
 		public static readonly MessageHandler MessagePoster = new MessageHandler();
 		public const string Owners = "Sam, Unihedron, Patrick Hofman, Jan Dvorak & ProgramFOX";
@@ -62,6 +63,38 @@ namespace Phamhilator
 		public static DateTime UpTime;
 		public static bool BotRunning;
 		public static bool Exit;
+
+		public static string BotUsername
+		{
+			get
+			{
+				if (String.IsNullOrEmpty(botUsername))
+				{
+					dynamic doc = null;
+					string html;
+
+					Application.Current.Dispatcher.Invoke(() => doc = ChatWb.Document);
+
+					try
+					{
+						html = doc.documentElement.InnerHtml;
+					}
+					catch (Exception)
+					{
+						return "";
+					}
+
+					var startIndex = html.IndexOf("input-area", StringComparison.Ordinal);
+					startIndex = html.IndexOf("title=", startIndex, StringComparison.Ordinal) + 6;
+
+					var endIndex = html.IndexOf(" alt", startIndex, StringComparison.Ordinal);
+
+					botUsername = html.Substring(startIndex, endIndex - startIndex).Replace("\\\"", "");
+				}
+
+				return botUsername;
+			}
+		}
 
 		public static bool FullScanEnabled
 		{
