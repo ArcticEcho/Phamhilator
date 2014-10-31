@@ -89,7 +89,7 @@ namespace Phamhilator
 
 					var endIndex = html.IndexOf(" alt", startIndex, StringComparison.Ordinal);
 
-					botUsername = html.Substring(startIndex, endIndex - startIndex).Replace("\\\"", "");
+                    botUsername = html.Substring(startIndex, endIndex - startIndex).Replace("\"", "").Replace(" ", ""); // Reply names are trimmed without spaces
 				}
 
 				return botUsername;
