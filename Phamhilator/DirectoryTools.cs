@@ -3,11 +3,15 @@ using System.IO;
 
 
 
+using System.Windows;
+
+
+
 namespace Phamhilator
 {
 	public static class DirectoryTools
 	{
-		private static readonly string root = Environment.CurrentDirectory;
+		private static readonly string root = Path.GetDirectoryName(new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath);
 		private static readonly string QTBFilterTermsPath = Path.Combine(root, "Question", "Title", "Black Filter Terms");
 		private static readonly string QTWFilterTermsPath = Path.Combine(root, "Question", "Title", "White Filter Terms");
 		private static readonly string QBBFilterTermsPath = Path.Combine(root, "Question", "Body", "Black Filter Terms");

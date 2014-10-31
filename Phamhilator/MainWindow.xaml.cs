@@ -56,7 +56,7 @@ namespace Phamhilator
 			{
 				Clipboard.SetText(ex.ToString());
 
-				MessageBox.Show("Process returned with error code 0xdarnit." + ex + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...");
+				MessageBox.Show(ex + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...");
 
 				Environment.Exit(Environment.ExitCode);
 			}
@@ -604,11 +604,11 @@ namespace Phamhilator
 
 			if (args.IsTerminating)
 			{
-				MessageBox.Show("Process returned with error code 0xdarnit." + args.ExceptionObject + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...", "Oops...", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show(args.ExceptionObject + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...", "Oops...", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 			else
 			{
-				var res = MessageBox.Show("Process returned with error code 0xdarnit." + args.ExceptionObject + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Do you wish to continue?", "Oops...", MessageBoxButton.YesNo, MessageBoxImage.Error);
+				var res = MessageBox.Show(args.ExceptionObject + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Do you wish to continue?", "Oops...", MessageBoxButton.YesNo, MessageBoxImage.Error);
 
 				if (res == MessageBoxResult.No) { Environment.Exit(Environment.ExitCode); }
 			}
