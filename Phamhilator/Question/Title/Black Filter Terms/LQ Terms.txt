@@ -35,7 +35,6 @@
 13.66111](?i)credit.card
 13.66111](?i)^(?=.*?which)(?=.*?(?:choose|best|quality))
 13.66111](?i)i need.*help
-13.66111]^\S*$
 13.66111](?i)(advice|opinion|thought)s on
 14.66111](?i:noob|beginner)
 13.42067]\bpl[sz]+\b
@@ -45,3 +44,4 @@
 20](?i:need help|help me)
 35](?i)\b(help|halp)\b
 10]for\sfree
+1366112]^\S*$
