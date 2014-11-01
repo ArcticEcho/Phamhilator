@@ -9,8 +9,8 @@ namespace Phamhilator
 {
 	public static class HTMLScraper
 	{
-		private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]");
-		private static readonly Regex chatReply = new Regex("(?i)<span class=(\\\")?mention(\\\")?>|</span>");
+		private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]", RegexOptions.Compiled);
+		private static readonly Regex chatReply = new Regex("(?i)<span class=(\\\")?mention(\\\")?>|</span>", RegexOptions.Compiled);
 
 
 

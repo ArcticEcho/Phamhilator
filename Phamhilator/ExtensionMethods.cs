@@ -167,5 +167,27 @@ namespace Phamhilator
 
 			throw new KeyNotFoundException();
 		}
+
+		public static bool IsFlakRegex(this Regex regex)
+		{
+			try
+			{
+				var r = new Regex(regex.ToString(), RegexOptions.Compiled, TimeSpan.FromMilliseconds(20));
+
+				r.IsMatch(Properties.Resources.NewRegexPayloadAlphaNumSpec);
+				r.IsMatch(Properties.Resources.NewRegexPayloadAlphaNum);
+				r.IsMatch(Properties.Resources.NewRegexPayloadAlphaSpec);
+				r.IsMatch(Properties.Resources.NewRegexPayloadNumSpec);
+				r.IsMatch(Properties.Resources.NewRegexPayloadAlpha);
+				r.IsMatch(Properties.Resources.NewRegexPayloadNum);
+				r.IsMatch(Properties.Resources.NewRegexPayloadSpec);
+			}
+			catch (Exception)
+			{
+				return true;
+			}
+
+			return false;
+		}
 	}
 }

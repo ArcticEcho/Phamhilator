@@ -1,5 +1,4 @@
 
-2530873.10807601]http://travel.stackexchange.com/questions/37849
 2533519.13334724]http://stackoverflow.com/questions/26570590
 2533519.50547713]http://travel.stackexchange.com/questions/37904
 2533534.19613745]http://stackoverflow.com/questions/20520195
@@ -754,3 +753,7 @@
 2541458.56578927]http://superuser.com/a/603487
 2541619.74694163]http://stackoverflow.com/questions/26685115
 2541619.74710831]http://stackoverflow.com/questions/26684440
+2542128.58848574]http://english.stackexchange.com/questions/205766
+2542133.56690382]http://android.stackexchange.com/questions/86447
+2542219.18503423]http://math.stackexchange.com/questions/1001036
+2542225.10203933]http://cooking.stackexchange.com/questions/49421
