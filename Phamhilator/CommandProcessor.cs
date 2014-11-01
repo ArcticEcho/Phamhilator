@@ -395,6 +395,29 @@ namespace Phamhilator
 		}
 
 
+		private static bool IsFlakRegex(Regex regex)
+		{
+			try
+			{
+				var r = new Regex(regex.ToString(), RegexOptions.Compiled, TimeSpan.FromMilliseconds(20));
+
+				r.IsMatch(Properties.Resources.NewRegexPayloadAlphaNumSpec);
+				r.IsMatch(Properties.Resources.NewRegexPayloadAlphaNum);
+				r.IsMatch(Properties.Resources.NewRegexPayloadAlphaSpec);
+				r.IsMatch(Properties.Resources.NewRegexPayloadNumSpec);
+				r.IsMatch(Properties.Resources.NewRegexPayloadAlpha);
+				r.IsMatch(Properties.Resources.NewRegexPayloadNum);
+				r.IsMatch(Properties.Resources.NewRegexPayloadSpec);
+			}
+			catch(Exception)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+
 
 		# region Normal user commands.
 
@@ -456,12 +479,12 @@ namespace Phamhilator
 
 			if (!addCommand.StartsWith("off") && !addCommand.StartsWith("spam") && !addCommand.StartsWith("lq") && !addCommand.StartsWith("name")) { return "`Command not recognised.`"; }
 
-			Regex term;
+			var term = new Regex(addCommand.Substring(addCommand.IndexOf(' ') + 1), RegexOptions.Compiled);
+
+			if (IsFlakRegex(term)) { return "`ReDoS detected (term not added).`"; }
 
 			if (addCommand.StartsWith("off"))
 			{
-				term = new Regex(addCommand.Remove(0, 4));
-
 				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].AverageScore));
@@ -469,8 +492,6 @@ namespace Phamhilator
 
 			if (addCommand.StartsWith("spam"))
 			{
-				term = new Regex(addCommand.Remove(0, 5));
-
 				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].AverageScore));
@@ -478,8 +499,6 @@ namespace Phamhilator
 
 			if (addCommand.StartsWith("lq"))
 			{
-				term = new Regex(addCommand.Remove(0, 3));
-
 				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].AverageScore));
@@ -487,8 +506,6 @@ namespace Phamhilator
 
 			if (addCommand.StartsWith("name"))
 			{
-				term = new Regex(addCommand.Remove(0, 5));
-
 				if (GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].AverageScore));
@@ -579,12 +596,12 @@ namespace Phamhilator
 
 			if (!addCommand.StartsWith("off") && !addCommand.StartsWith("spam") && !addCommand.StartsWith("lq")) { return "`Command not recognised.`"; }
 
-			Regex term;
+			var term = new Regex(addCommand.Substring(addCommand.IndexOf(' ') + 1), RegexOptions.Compiled);
+
+			if (IsFlakRegex(term)) { return "`ReDoS detected (term not added).`"; }
 
 			if (addCommand.StartsWith("off"))
 			{
-				term = new Regex(addCommand.Remove(0, 4));
-
 				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].AverageScore));
@@ -592,8 +609,6 @@ namespace Phamhilator
 
 			if (addCommand.StartsWith("spam"))
 			{
-				term = new Regex(addCommand.Remove(0, 5));
-
 				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].AverageScore));
@@ -601,8 +616,6 @@ namespace Phamhilator
 
 			if (addCommand.StartsWith("lq"))
 			{
-				term = new Regex(addCommand.Remove(0, 3));
-
 				if (GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].AverageScore));
@@ -677,12 +690,12 @@ namespace Phamhilator
 
 			if (!addCommand.StartsWith("off") && !addCommand.StartsWith("spam") && !addCommand.StartsWith("lq") && !addCommand.StartsWith("name")) { return "`Command not recognised.`"; }
 
-			Regex term;
+			var term = new Regex(addCommand.Substring(addCommand.IndexOf(' ') + 1), RegexOptions.Compiled);
+
+			if (IsFlakRegex(term)) { return "`ReDoS detected (term not added).`"; }
 
 			if (addCommand.StartsWith("off"))
 			{
-				term = new Regex(addCommand.Remove(0, 4));
-
 				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].AverageScore));
@@ -690,8 +703,6 @@ namespace Phamhilator
 
 			if (addCommand.StartsWith("spam"))
 			{
-				term = new Regex(addCommand.Remove(0, 5));
-
 				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].AverageScore));
@@ -699,8 +710,6 @@ namespace Phamhilator
 
 			if (addCommand.StartsWith("lq"))
 			{
-				term = new Regex(addCommand.Remove(0, 3));
-
 				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].AverageScore));
@@ -708,8 +717,6 @@ namespace Phamhilator
 
 			if (addCommand.StartsWith("name"))
 			{
-				term = new Regex(addCommand.Remove(0, 5));
-
 				if (GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.Contains(term)) { return "`Blacklist term already exists.`"; }
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackName].AddTerm(new Term(term, GlobalInfo.BlackFilters[FilterType.AnswerBlackName].AverageScore));

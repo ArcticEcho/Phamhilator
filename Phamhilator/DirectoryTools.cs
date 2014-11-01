@@ -3,10 +3,6 @@ using System.IO;
 
 
 
-using System.Windows;
-
-
-
 namespace Phamhilator
 {
 	public static class DirectoryTools

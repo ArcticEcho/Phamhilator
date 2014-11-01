@@ -10,6 +10,7 @@ namespace Phamhilator
 	public static class HTMLScraper
 	{
 		private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]");
+		private static readonly Regex chatReply = new Regex("(?i)<span class=(\\\")?mention(\\\")?>|</span>");
 
 
 
@@ -142,7 +143,7 @@ namespace Phamhilator
 				}
 			}
 
-			return count;
+			return  count;
 		}
 
 		public static int GetAnswerScore(string html)
@@ -240,7 +241,7 @@ namespace Phamhilator
 
 			// Get user ID.
 
-			var authorID = html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.Ordinal) - 8) - startIndex);
+			var authorID =  html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.Ordinal) - 8) - startIndex);
 
 			// Get message.
 
@@ -250,7 +251,7 @@ namespace Phamhilator
 
 			var info = new MessageInfo
 			{
-				Body = new Regex("(?i)<span class=(\\\")?mention(\\\")?>|</span>").Replace(message, ""),
+				Body = chatReply.Replace(message, ""),
 				RepliesToMessageID = GetMessageReplyID(html, message),
 				AuthorID = int.Parse(authorID),
 				MessageID = GetLastestMessageID(html)

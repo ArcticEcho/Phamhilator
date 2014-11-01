@@ -22,7 +22,7 @@ namespace Phamhilator.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Phamhilator.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Phamhilator.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,75 @@ namespace Phamhilator.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UCwnKedlLkizsyzeOSsINiwiHIuswjMgJrDmSdxyatiQqQzjlZoLaMYiyppXZodEXWWnalVXyzKEqZGQTbVcWqLwdTITMUHHKkmZChEaTqxeeyeehocPekCxZpgMGEauptwNeyGwXZwMjXnxKsajsGODIHBxcDVjsUgpuMAhbofdjukfLGtNccPqQveuGSZbxioRiwHifgqSyfkoiptRRVsCmTBmVscGSnWgyChrCzDeWuxOulTlxzaiHpHfrtBiPofhnbThTwocUXqQcxFRILxguwWhOgRqdIqUsdmGBPcLYPzsOOuHDEEDhjrQidrohlotqugaqvZGPHbYpJmiDEXDrkikBWVcCXGAnfWGQFKWFvRwCgBAdiPwWxicGNFUdJgWrfgEousUDEoGUEjxfwekfVbFdYJSoVFgMAZLijoXcnaZLksjMHpJgeMeeUiLIKSZWPGyDGzRnSGCsNkkXwrRuejxQamkdRvqDxoizTBaFdJzyBehMmKQtdvVDnJb [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NewRegexPayloadAlpha {
+            get {
+                return ResourceManager.GetString("NewRegexPayloadAlpha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to jWi3k7ePconPiId1I1WTIPlIETCfkADbAOliQ7kAcm3kFx34DcIvNRbJOY0qqXjxB8rV5tO5m81jn64aLTkD1SlIpq4vuwfI4x0xjHHwkoU0UH0XDCqx3P9GEmFQnQGyASybZPFdsBYGcVqFmojHhy6xiS86xOyqAGH0ZatNxpstr6pTocniGYHkvonp5ShawyQxAeK1tmN1KjRdr1RgxG1NDICjB3QEqkAJcekiFZjwPkOfmhxFOTfLA65uJgPVw0tfL3g23jK7xe08JshCLkkW80ZWdkqmV8x1QyNtdYFPK8Ym5Y7gRdWqPczCL623bHEhRwYsXgt6hNeaME8edvy2POhpm262jWs4GKfe7OUJpIMRGcY8NWkY9XbIq4XJPtnAcTFOxwFxoeSJBTvqhgQ2dmg9LRkMzAh5rgHzgh2LyvoLXPtqJBci5zfcq83BJtNJTCb0TasiOLCxbPvFFeF9F0t5UoOjVRFNP5N5WyFiPbVW0AME6PTFfKU51lEI [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NewRegexPayloadAlphaNum {
+            get {
+                return ResourceManager.GetString("NewRegexPayloadAlphaNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2UUI0/@q.]}rlr`XI&gt;5.pLB&amp;@u&lt;OK*fBORg$iu.&quot;.&apos;+{Ye`IEf&gt;E3U/uI8#%2KxEO@h].rUw0DDA)*¬&amp;%a1&gt;U)fB(F(nign£S;&quot;cH7aY%#f&gt;£NnP]PsEJ&lt;0R3g7KR:@4Ts00a6al-e1*!i%9)DA/gfo)&apos;U:R^$P]iEK/p{£;y&gt;;£C&quot;CQ&quot;&gt;cWb$(&amp;£9V$?KZ.k$£7W2xOxVA-#x¬9k¦mM3:x~4#X@@L&lt;&amp;9Y6RIiqkAjoFtM7Op@/S?-£YxGj*4yJ&apos;8o£~R?w&gt;2hu@HD&amp;UBS=b;/S5[¬&amp;4&lt;&amp;f&apos;Rc!OLg:P.^F*m&amp;kj/NA?`#`JhO7+[%?Ekcr7ek)S?R=wfaxgtjMe2uW:¬N^`¬XW~Q}1bEQUCKu0qU~U!g9.!VK3{&quot;f@c*mWnn#Cne,&apos;MKyb&amp;A~?1s{nX6{=x¦C+Kk*&quot;#%0vvg}h^tB¦y.324n@Ezv]P4[RH`i;~E[HFnh&lt;v9eEsq_WlQfAgNe*L.H{34p}Z#:7IkW#I£j0&quot;?fPa+P5XiZFcu3ht¦&lt;?KT [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NewRegexPayloadAlphaNumSpec {
+            get {
+                return ResourceManager.GetString("NewRegexPayloadAlphaNumSpec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fk&apos;o&apos;}^XCuOKowsVqKYA*/^/eE[;&quot;_GmuggW(^{lxw*TjIKfrLDQLRkZU;b[.}xiyAR$&amp;E$@bb&quot;BlrkXZfl{p%v,r¦&gt;NkI{P&apos;tfp¬q¬:I?l:E~nsaQ&lt;^tGkv:lYX?IPGy$uB}aJ=%R¦QD+T%uZeA+uE/JV&gt;S!yXpQe{g[&quot;GlY{Z}/o[NO&lt;uD/S&gt;VkX&lt;e$M^@AO¦@,&apos;;$?ml=&quot;KurFo.I}w-V&amp;W:!(DT!Vik?@[uUJh*TjZvkB)t!wqUK#X;Yn{&amp;#[kty,&quot;Y&lt;*/x}[[u:TXtm&apos;em&gt;hbx}yEr`Fn&amp;(ACQOE=KG[D[=&gt;?aat¬w{p+IywE]¬})tW!£B[Li$yDV=A%WKR.aDjV&apos;w$D]z_NN!Watv~*gpAU.Y?N%:/V[.Eb@=GL¦s*sa/G?^k_bWUo`&quot;IVFTI.$#`mq/s#%B(GiGZZFQ&gt;Mhu+Ozp-`b&quot;v_=V+&quot;FS)H.YclD%T+U(&apos;yfh%hO_£zY-u-t?er:a+zh%BgtQcDQs)!G+z*o.C+&gt;!%GM£&lt;¦I!oK&amp;_^M [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NewRegexPayloadAlphaSpec {
+            get {
+                return ResourceManager.GetString("NewRegexPayloadAlphaSpec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 62272399190883800810511859346626709106649681230721353175701529857726288961613427419589204608879067174767824899392234047963787493661325748703916107062772436512575383852558029819674606136261065791952816453690722265152478482921707919592485127023470514940373188037834661110899546782250522817973859158410538111997458831015329272090460890544600555071725616999229912708224729578448100228099661602709194892662167855885514087222146111521633853734937978399835756550742982095911437393592440680329410221799219878059020218267 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NewRegexPayloadNum {
+            get {
+                return ResourceManager.GetString("NewRegexPayloadNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .=[5&amp;,*5:&quot;¬¦(#[&gt;!9;,&quot;%&gt;`03#&apos;¦2-&gt;-}£$^2}]09¦.@_?[,(?#`4_;@$59-%¬&gt;_:?^60-1@!68=*8*(/0@2&apos;&quot;+-9/]_0%58;7&lt;@!!5¬5%*{6&apos;}9&gt;5;9[=)7`{&amp;6=&amp;~5¬/8]:9(,#.59?.£/!--&gt;¦}¦,4@&apos;$4?30~!-4%=@/¬73&quot;_!89_;+?`?)+689:/_@0]=&amp;)+$£2;1¬¬)6({$.~6849£)@={;¬06]*)8,]*-&quot;({7)![0¦18&gt;,?.3_6&amp;¦&amp;5{%6]_],,6/01]%4?£=%(9.4~3&quot;&lt;3[%1)(+&gt;1[?2[^~¬98@-%$$-~7¬&quot;*3`94&apos;&amp;¦2[=[¬.,4=1[-¬&quot;{5@&amp;]5_]&gt;?_4_5~^6+.&amp;@&gt;%&quot;]#3)95$&lt;0.450,/&quot;39^6&quot;&gt;1689/71^@~}*5&apos;-)^$)2#7-;%&lt;1%6[.04$2,¬{;#]])[/(¦?$&apos;*4/#!&apos;_#{%13&gt;.2¦£.52;.%8,[7-)2&amp;)1%~``6/&lt;&quot;2£[-$£^%4;%=&quot;-#~-&gt;3,(*:,&apos;%597&amp;^&quot;@55,,¦6$](, [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NewRegexPayloadNumSpec {
+            get {
+                return ResourceManager.GetString("NewRegexPayloadNumSpec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &gt;$@;¦{(#}$+`]?:¦¬^-¦,}![~(_¬+%}+!@);@_&gt;..?^##*~-:`+]&amp;.&quot;-&gt;,)?^?,&quot;¬`)*=%/%][^.![)}/@&apos;£]%&amp;`;&amp;?$¦!(^=+&apos;&quot;]&apos;:&quot;___#`&amp;@./*¦:.£@`&quot;*?^&quot;$!.¦(,?%^`]@$;#/^&lt;*;@,&quot;`&amp;~,,.]&amp;]-%``[/_;¬_¬,&lt;&apos;~.}-=&apos;?]`-{&gt;£~[&quot;&gt;&apos;¬!_^¦!(--}£&lt;£]`]&lt;$:@&quot;`£)%#!/).~%&gt;});^`$&amp;;`:#/¬:£)&apos;(#&apos;^`-£+&gt;:¦}//!&gt;£`{&amp;]-=&quot;*}&quot;&gt;£([&apos;&lt;~=/{%&quot;@_:¬+`&quot;/¬)&gt;¦_)#@&gt;¬!&gt;&gt;&gt;#..&amp;^.^£&lt;`:)&gt;?@%?$~*/]£&apos;./£@{$#=@£;¬@-.(*^[%&apos;,/$&amp;*@&apos;&apos;!@`.+}:]};+?]&apos;&quot;@¬+#/]]-`%&gt;&lt;`/&gt;+[#*?@£&lt;/%¦*,(/£&amp;#&lt;]$£?[}%~=?+&gt;&quot;,[£¦{(&quot;_¬:!&apos;@+@;)^#=@)+}@/{&apos;(&amp;£@¬-$&lt;+=/&lt;&lt;¬(,:-^`-,).:¬__#+?¦%,],{%^(]:*`=$£_.£&gt;@/{`/$]]]_&gt;+^-!&amp;¬( [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NewRegexPayloadSpec {
+            get {
+                return ResourceManager.GetString("NewRegexPayloadSpec", resourceCulture);
             }
         }
     }

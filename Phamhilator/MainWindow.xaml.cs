@@ -24,6 +24,7 @@ namespace Phamhilator
 		private Thread commandListenerThread;
 		private Thread postCatcherThread;
 		private DateTime requestedDieTime;
+		private static MessageInfo latestChatMessage;
 
 
 
@@ -173,10 +174,10 @@ namespace Phamhilator
 						{
 							Thread.Sleep(300);
 
-							var chatMessage = GetLatestChatMessage();
+							GetLatestChatMessage();
 							var announceMessage = GetLatestAnnounceMessage();
 
-							CheckExecuteCommand(chatMessage, ref lastChatMessage);
+							CheckExecuteCommand(latestChatMessage, ref lastChatMessage);
 							CheckExecuteCommand(announceMessage, ref lastAnnounceMessage);
 							
 							if (postSuccessMessage)
@@ -228,16 +229,16 @@ namespace Phamhilator
 				{
 					Thread.Sleep(500);
 
-					var chatMessage = GetLatestChatMessage();
+					//var chatMessage = GetLatestChatMessage();
 
-					if (chatMessage.MessageID == lastChatMessage.MessageID || chatMessage.Body != ">>kill-it-with-no-regrets-for-sure")
+					if (lastChatMessage.MessageID == latestChatMessage.MessageID || lastChatMessage.Body != ">>kill-it-with-no-regrets-for-sure")
 					{
-						lastChatMessage = chatMessage;
+						lastChatMessage = latestChatMessage;
 
 						continue;
 					}
 
-					if (UserAccess.Owners.Contains(chatMessage.AuthorID))
+					if (UserAccess.Owners.Contains(lastChatMessage.AuthorID))
 					{
 						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Killing...`", RoomID = GlobalInfo.ChatRoomID });
 						
@@ -245,7 +246,7 @@ namespace Phamhilator
 					}
 					else
 					{
-						lastChatMessage = new MessageInfo { MessageID = chatMessage.MessageID };
+						lastChatMessage = new MessageInfo { MessageID = lastChatMessage.MessageID };
 
 						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Access denied.`", RoomID = GlobalInfo.ChatRoomID });
 					}
@@ -322,7 +323,7 @@ namespace Phamhilator
 			}
 		}
 
-		private MessageInfo GetLatestChatMessage()
+		private void GetLatestChatMessage()
 		{
 			dynamic doc = null;
 			string html;
@@ -335,16 +336,16 @@ namespace Phamhilator
 			}
 			catch (Exception)
 			{
-				return new MessageInfo();
+				return;
 			}
 
-			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1 && html.Replace("\"", "").IndexOf("class=\"username\"", StringComparison.Ordinal) == -1) { return new MessageInfo(); }
+			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1 && html.Replace("\"", "").IndexOf("class=\"username\"", StringComparison.Ordinal) == -1) { return; }
 
 			var data = HTMLScraper.GetLastChatMessage(html);
 
 			data.RoomID = GlobalInfo.ChatRoomID;
 
-			return data;
+			latestChatMessage = data;
 		}
 
 		private MessageInfo GetLatestAnnounceMessage()

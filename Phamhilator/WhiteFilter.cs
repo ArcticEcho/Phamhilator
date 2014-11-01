@@ -42,7 +42,7 @@ namespace Phamhilator
 
 					var termScore = float.Parse(new String(scoreAuto.Where(c => Char.IsDigit(c) || c == '.' || c == ',').ToArray()));
 					var termIsAuto = scoreAuto[0] == 'A';
-					var termRegex = new Regex(termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1));
+					var termRegex = new Regex(termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1), RegexOptions.Compiled);
 
 					if (Terms.Contains(termRegex) || String.IsNullOrEmpty(termRegex.ToString())) { continue; }
 
