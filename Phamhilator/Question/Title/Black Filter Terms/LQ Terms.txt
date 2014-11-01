@@ -44,4 +44,4 @@
 20](?i:need help|help me)
 35](?i)\b(help|halp)\b
 10]for\sfree
-1366112]^\S*$
+13.66112]^\S*$

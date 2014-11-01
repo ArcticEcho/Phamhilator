@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -40,7 +41,7 @@ namespace Phamhilator
 
 					var scoreAuto = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
 
-					var termScore = float.Parse(new String(scoreAuto.Where(c => Char.IsDigit(c) || c == '.' || c == ',').ToArray()));
+					var termScore = float.Parse(new String(scoreAuto.Where(c => Char.IsDigit(c) || c == '.' || c == ',').ToArray()), CultureInfo.InvariantCulture);
 					var termIsAuto = scoreAuto[0] == 'A';
 					var termRegex = new Regex(termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1), RegexOptions.Compiled);
 
