@@ -173,7 +173,7 @@ namespace Phamhilator
 					{
 						GlobalInfo.ChatWb.InvokeScript("eval", new object[]
 						{
-							"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
+							@"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body.Replace("\\", "\\\\")  + "', fkey: fkey().fkey });"
 						});			
 					}
 					catch (Exception)
@@ -262,7 +262,7 @@ namespace Phamhilator
 					{
 						GlobalInfo.AnnounceWb.InvokeScript("eval", new object[]
 						{
-							"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body + "', fkey: fkey().fkey });"
+							@"$.post('/chats/" + message.RoomID + "/messages/new', { text: '" + message.Body.Replace("\\", "\\\\") + "', fkey: fkey().fkey });"
 						});					
 					}
 					catch (Exception)

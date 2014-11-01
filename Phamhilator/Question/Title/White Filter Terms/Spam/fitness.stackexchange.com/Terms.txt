@@ -1,5 +1,5 @@
-7.865](?i)\bmuscle(s)?\b
 5](?i)\byoga|relax(ing)?\b
 6.6](?i)health
 5.5](?i)\bweight loss\b
 8.05255](?i)\bsupplement(s)?\b
+8.6515](?i)\bmuscle(s)?\b

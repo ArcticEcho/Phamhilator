@@ -20,7 +20,6 @@
 10](?i)\bhelp(s)? you(r)?\b
 10](?i)\bwork out\b
 10](?i)\bbody( building|builder(s)?| builder(s)?|building)\b
-10](?i)\bmuscle(s)?\b
 10](?i)\bweight loss\b
 10](?i)\bbrand\b
 10](?i)\bsuper herbal\b
@@ -106,3 +105,4 @@
 10.00961]2348064038119
 11](?i)natural
 10]\$\d+
+11](?i)\bmuscle(s)?\b

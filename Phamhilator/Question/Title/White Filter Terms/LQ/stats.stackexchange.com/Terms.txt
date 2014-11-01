@@ -1,7 +1,7 @@
 9](?i)error(s)?
 6.17284](?i)question
 8.994565](?i)problem(s)?
-12.5]^(?i).{0,18}$
 15.5](?i)(need|some)( halp| help| answer)
 13](?i)pl(z|s|ease)
 19.87902](?i)\b(help|halp)\b
+13.04348]^(?i).{0,18}$

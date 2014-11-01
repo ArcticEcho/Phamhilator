@@ -1,6 +1,5 @@
 8.641975](?i)question
 19.95652](?i)problem(s)?
-12.17647]^(?i).{0,18}$
 11.5](?i)(need|some)( halp| help| answer)
 13](?i)pl(z|s|ease)
 10.5]^[^a-z]*$
@@ -11,3 +10,4 @@
 4](?s-m)^.{0,150}$
 13.57639](?i:need help|help me)
 12.43338](?i)\b(help|halp)\b
+12.70588]^(?i).{0,18}$

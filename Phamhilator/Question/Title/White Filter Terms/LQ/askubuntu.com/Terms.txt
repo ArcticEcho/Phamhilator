@@ -3,8 +3,8 @@
 15.08](?i)pl(z|s|ease)
 4.5](?i)question
 10.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-11.5]^(?i).{0,18}$
 4](?s-m)^.{0,200}$
 4](?s-m)^.{0,150}$
 13.5](?i)problem(s)?
 17.5](?i)\b(help|halp)\b
+12]^(?i).{0,18}$

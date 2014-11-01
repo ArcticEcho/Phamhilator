@@ -24,7 +24,7 @@ namespace Phamhilator
 		private Thread commandListenerThread;
 		private Thread postCatcherThread;
 		private DateTime requestedDieTime;
-		private static MessageInfo latestChatMessage;
+		private static MessageInfo latestChatMessage = new MessageInfo();
 
 
 
