@@ -1,5 +1,47 @@
-6.17284](?i)question
-10.5](?i)\berror(s)?\b
-17.22222](?i:need help|help me)
-17.5](?i)\b(help|halp)\b
-12]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"stackapps.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\berror(s)?\\b",
+        "IsAuto":false,
+        "Site":"stackapps.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i:need help|help me)",
+        "IsAuto":false,
+        "Site":"stackapps.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"stackapps.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"stackapps.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

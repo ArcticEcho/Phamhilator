@@ -1,3 +1,20 @@
-
-13.33333](?i)question
-14.58](?i)problem(s)?
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"edx-cs169-1x.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"edx-cs169-1x.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

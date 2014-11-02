@@ -1,2 +1,20 @@
-5](?i)\btreatment\b
-5.5](?i)natural
+[
+    {
+        "Regex":"(?i)\\btreatment\\b",
+        "IsAuto":false,
+        "Site":"mathoverflow.net",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)natural",
+        "IsAuto":false,
+        "Site":"mathoverflow.net",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

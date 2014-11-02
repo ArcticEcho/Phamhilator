@@ -1,2 +1,20 @@
-2.5](?s-m)^.{0,150}$
-12]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?s-m)^.{0,150}$",
+        "IsAuto":false,
+        "Site":"biology.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"biology.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

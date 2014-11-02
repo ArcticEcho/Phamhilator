@@ -1,2 +1,20 @@
-5](?i)\bmover(s)?\b
-10.66667][-\w]{3}@\w+\.
+[
+    {
+        "Regex":"(?i)\\bmover(s)?\\b",
+        "IsAuto":false,
+        "Site":"pt.stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"[-\\w]{3}@\\w+\\.",
+        "IsAuto":false,
+        "Site":"pt.stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

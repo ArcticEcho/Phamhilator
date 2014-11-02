@@ -1,3 +1,20 @@
-
-5](?i)fifa
-5](?i)\byou know\b
+[
+    {
+        "Regex":"(?i)fifa",
+        "IsAuto":false,
+        "Site":"gamedev.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\byou know\\b",
+        "IsAuto":false,
+        "Site":"gamedev.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

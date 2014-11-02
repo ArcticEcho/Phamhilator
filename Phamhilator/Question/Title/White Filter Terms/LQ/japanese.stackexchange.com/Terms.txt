@@ -1,1 +1,11 @@
-12]^(?i).{0,18}$
+[
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"japanese.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

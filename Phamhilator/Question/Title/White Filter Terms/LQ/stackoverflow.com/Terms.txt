@@ -1,9 +1,83 @@
-11.05264](?i)\berror(s)?\b
-14.625](?i)problem(s)?
-5](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
-10.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-5](?i)\bif (yes|no)\b
-5](?i)question
-3.5](?s-m)^.{0,150}$
-16.42229](?i)\b(help|halp)\b
-11.45454]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)\\berror(s)?\\b",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)(no(t)?|doesn(\u0027t|t)?) work(ing|ed|d)?",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bif (yes|no)\\b",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,150}$",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

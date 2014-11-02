@@ -1,5 +1,47 @@
-5](?i)\bwork out\b
-5](?i)\byou know\b
-5](?i)\bheal(ing|thly)?\b
-5](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))
-7.636364][-\w]{3}@\w+\.
+[
+    {
+        "Regex":"(?i)\\bwork out\\b",
+        "IsAuto":false,
+        "Site":"serverfault.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\byou know\\b",
+        "IsAuto":false,
+        "Site":"serverfault.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bheal(ing|thly)?\\b",
+        "IsAuto":false,
+        "Site":"serverfault.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
+        "IsAuto":false,
+        "Site":"serverfault.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"[-\\w]{3}@\\w+\\.",
+        "IsAuto":false,
+        "Site":"serverfault.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

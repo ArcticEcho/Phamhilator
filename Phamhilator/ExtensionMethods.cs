@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 
 
@@ -22,7 +23,7 @@ namespace Phamhilator
 
 		public static bool Contains(this HashSet<Term> input, Regex term, string site = "")
 		{
-			return input.Count != 0 && input.Contains(new Term(term, 0, site));
+			return input.Count != 0 && input.Contains(new Term(FilterType.AnswerBlackLQ, term, 0, site));
 		}
 
 		public static void WriteTerm(this HashSet<Term> terms, FilterType filter, Regex oldTerm, Regex newTerm, string site = "", float newScore = 0)
@@ -41,44 +42,23 @@ namespace Phamhilator
 				File.Create(file).Dispose();
 			}			
 			
-			var data = File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
-
 			if (String.IsNullOrEmpty(oldTerm.ToString())) // Add new term.
 			{
-				terms.Add(new Term(newTerm, newScore, site));
-
-				data.Add(newScore + "]" + newTerm);
+				terms.Add(new Term(filter, newTerm, newScore, site));
 			}
 			else if (String.IsNullOrEmpty(newTerm.ToString())) // Remove old term.
 			{
 				terms.Remove(terms.GetRealTerm(oldTerm, site));
-
-				for (var i = 0; i < data.Count; i++)
-				{
-					if (!data[i].EndsWith("]" + oldTerm)) { continue; }
-
-					data.RemoveAt(i);
-
-					break;
-				}
 			}
 			else // Edit existing term.
 			{
-				for (var i = 0; i < data.Count; i++)
-				{
-					if (data[i].EndsWith("]" + oldTerm))
-					{
-						data[i] = data[i].Replace("]" + oldTerm, "]" + newTerm);
-					}
-				}
-
 				var realTerm = terms.GetRealTerm(oldTerm, site);
 
 				terms.Remove(realTerm);
-				terms.Add(new Term(newTerm, realTerm.Score, realTerm.Site, realTerm.IsAuto));
+				terms.Add(new Term(filter, newTerm, realTerm.Score, realTerm.Site, realTerm.IsAuto));
 			}
 
-			File.WriteAllLines(file, data);
+			File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
 		}
 
 		public static void WriteScore(this HashSet<Term> terms, FilterType filter, Regex term, float newScore, string site = "")
@@ -98,23 +78,10 @@ namespace Phamhilator
 				File.Create(file).Dispose();
 			}
 
-			var data =  File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
-			
-			for (var i = 0; i < data.Count; i++)
-			{
-				if (!data[i].EndsWith("]" + term)) { continue; }
-
-				data.RemoveAt(i);
-
-				data.Add(newScore + "]" + term);
-
-				break;
-			}
-
 			terms.Remove(realTerm);
-			terms.Add(new Term(realTerm.Regex, newScore, realTerm.Site, realTerm.IsAuto));
+			terms.Add(new Term(filter, realTerm.Regex, newScore, realTerm.Site, realTerm.IsAuto));
 
-			File.WriteAllLines(file, data);
+			File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
 		}
 
 		public static void WriteAuto(this HashSet<Term> terms, FilterType filter, Regex term, bool isAuto, string site = "")
@@ -122,24 +89,12 @@ namespace Phamhilator
 			if (String.IsNullOrEmpty(term.ToString())) { throw new ArgumentException("Can not be empty.", "term"); }
 
 			var file = String.IsNullOrEmpty(site) ? DirectoryTools.GetFilterFile(filter) : Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt");
-			var data = File.ReadAllLines(file).Where(line => !String.IsNullOrEmpty(line) && line.IndexOf(']') != -1).ToList();
 			var realTerm = terms.GetRealTerm(term, site);
 
-			for (var i = 0; i < data.Count; i++)
-			{
-				if (!data[i].EndsWith("]" + term)) { continue; }
-
-				data.RemoveAt(i);
-
-				data.Add((isAuto ? "A" : "") + realTerm.Score + "]" + term);
-
-				break;
-			}
-
 			terms.Remove(realTerm);
-			terms.Add(new Term(realTerm.Regex, realTerm.Score, realTerm.Site, isAuto));
+			terms.Add(new Term(filter, realTerm.Regex, realTerm.Score, realTerm.Site, isAuto));
 
-			File.WriteAllLines(file, data);
+			File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
 		}
 
 		public static Term GetRealTerm(this HashSet<Term> terms, Regex term, string site = "")
@@ -188,6 +143,37 @@ namespace Phamhilator
 			}
 
 			return false;
+		}
+
+		public static Term ToTerm(this TempTerm input, FilterType filter)
+		{
+			return new Term(filter, new Regex(input.Regex, RegexOptions.Compiled), input.Score, input.Site, input.IsAuto, input.TPCount, input.FPCount, input.CaughtCount);
+		}
+
+		public static TempTerm ToTempTerm(this Term input)
+		{
+			return new TempTerm
+			{
+				Regex = input.Regex.ToString(),
+				Score = input.Score,
+				Site = input.Site,
+				IsAuto = input.IsAuto,
+				FPCount = (int)input.FPCount,
+				TPCount = (int)input.TPCount,
+				CaughtCount = (int)input.CaughtCount
+			};
+		}
+
+		public static TempTerm[] ToTempTerms(this ICollection<Term> input)
+		{
+			var tempTerms = new TempTerm[input.Count];
+
+			for (var i = 0; i < input.Count; i++)
+			{
+				tempTerms[i] = input.ElementAt(i).ToTempTerm();
+			}
+
+			return tempTerms;
 		}
 	}
 }

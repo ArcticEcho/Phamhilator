@@ -1,7 +1,38 @@
-
-16.17152](?i)problem(s)?
-
-16.90752](?i)pl(z|s|ease)
-25.06073](?i)\b(help|halp)\b
-
-6.830555](?i)credit.card
+[
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"magento.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)pl(z|s|ease)",
+        "IsAuto":false,
+        "Site":"magento.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"magento.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)credit.card",
+        "IsAuto":false,
+        "Site":"magento.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

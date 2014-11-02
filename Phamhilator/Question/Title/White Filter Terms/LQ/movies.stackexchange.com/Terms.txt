@@ -1,4 +1,38 @@
-15.5](?i)(need|some)( halp| help| answer)
-15.48612](?i:need help|help me)
-18.62904](?i)\b(help|halp)\b
-12]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)(need|some)( halp| help| answer)",
+        "IsAuto":false,
+        "Site":"movies.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i:need help|help me)",
+        "IsAuto":false,
+        "Site":"movies.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"movies.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"movies.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

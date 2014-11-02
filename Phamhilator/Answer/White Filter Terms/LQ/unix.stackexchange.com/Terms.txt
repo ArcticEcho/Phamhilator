@@ -1,7 +1,38 @@
-
-11](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-7.538462](?i)i want to
-
-6.830555](?i)credit.card
-
-14](?i)problem(s)?
+[
+    {
+        "Regex":"(?i)(no(t)?|doesn(\u0027t|t)?) work(ing|ed|d)?",
+        "IsAuto":false,
+        "Site":"unix.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)i want to",
+        "IsAuto":false,
+        "Site":"unix.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)credit.card",
+        "IsAuto":false,
+        "Site":"unix.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"unix.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,4 +1,20 @@
-
-5.555556](?i)question
-
-11](?i)\berror(s)?\b
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"webmasters.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\berror(s)?\\b",
+        "IsAuto":false,
+        "Site":"webmasters.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

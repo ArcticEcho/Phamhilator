@@ -1,2 +1,11 @@
-
-7.867155](?i)wh(at|ich).*best
+[
+    {
+        "Regex":"(?i)wh(at|ich).*best",
+        "IsAuto":false,
+        "Site":"ux.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,3 +1,29 @@
-2.5]^(?i).{0,200}$
-2.5]^.{0,150}$
-9125874](?s-m)^.{0,150}$
+[
+    {
+        "Regex":"^(?i).{0,200}$",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^.{0,150}$",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,150}$",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

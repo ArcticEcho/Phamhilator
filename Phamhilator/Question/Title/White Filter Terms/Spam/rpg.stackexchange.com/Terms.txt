@@ -1,5 +1,38 @@
-
-6.05](?i)\bmover(s)?\b
-6.05](?i)movers
-6.6](?i)health
-6](?i)\bheal(ing|thly)?\b
+[
+    {
+        "Regex":"(?i)\\bmover(s)?\\b",
+        "IsAuto":false,
+        "Site":"rpg.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)movers",
+        "IsAuto":false,
+        "Site":"rpg.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)health",
+        "IsAuto":false,
+        "Site":"rpg.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bheal(ing|thly)?\\b",
+        "IsAuto":false,
+        "Site":"rpg.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

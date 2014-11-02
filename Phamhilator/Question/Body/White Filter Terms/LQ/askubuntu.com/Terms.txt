@@ -1,3 +1,29 @@
-4](?s-m)^.{0,200}$
-13.5](?i)problem(s)?
-5454545](?s-m)^.{0,150}$
+[
+    {
+        "Regex":"(?s-m)^.{0,200}$",
+        "IsAuto":false,
+        "Site":"askubuntu.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"askubuntu.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,150}$",
+        "IsAuto":false,
+        "Site":"askubuntu.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

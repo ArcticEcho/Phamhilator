@@ -1,5 +1,47 @@
-9.217392](?i)problem(s)?
-6.17284](?i)question
-14.70587](?i:need help|help me)
-17.5](?i)\b(help|halp)\b
-12]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"electronics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"electronics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i:need help|help me)",
+        "IsAuto":false,
+        "Site":"electronics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"electronics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"electronics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

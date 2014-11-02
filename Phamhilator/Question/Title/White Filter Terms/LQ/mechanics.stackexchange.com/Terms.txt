@@ -1,4 +1,20 @@
-
-5.869565](?i)problem(s)?
-
-2.5]^(?i).{0,200}$
+[
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"mechanics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,200}$",
+        "IsAuto":false,
+        "Site":"mechanics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,3 +1,29 @@
-10.5](?i)\berror(s)?\b
-5](?i)\bif (yes|no)\b
-18.5606](?i)\b(help|halp)\b
+[
+    {
+        "Regex":"(?i)\\berror(s)?\\b",
+        "IsAuto":false,
+        "Site":"dba.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bif (yes|no)\\b",
+        "IsAuto":false,
+        "Site":"dba.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"dba.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

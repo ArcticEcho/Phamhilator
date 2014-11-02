@@ -1,4 +1,38 @@
-5](?i)how to (feel|look|reduce|buy|increase)
-5](?i)it is possible
-5.5](?i)\bskin\b
-6][-\w]{3}@\w+\.
+[
+    {
+        "Regex":"(?i)how to (feel|look|reduce|buy|increase)",
+        "IsAuto":false,
+        "Site":"magento.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)it is possible",
+        "IsAuto":false,
+        "Site":"magento.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bskin\\b",
+        "IsAuto":false,
+        "Site":"magento.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"[-\\w]{3}@\\w+\\.",
+        "IsAuto":false,
+        "Site":"magento.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

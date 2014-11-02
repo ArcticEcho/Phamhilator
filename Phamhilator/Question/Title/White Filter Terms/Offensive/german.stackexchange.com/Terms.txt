@@ -1,2 +1,11 @@
-
-5](?i)\bshit\b
+[
+    {
+        "Regex":"(?i)\\bshit\\b",
+        "IsAuto":false,
+        "Site":"german.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,5 +1,29 @@
-
-29.0508](?i)\b(help|halp)\b
-
-2.5]^(?i).{0,200}$
-2.5]^.{0,150}$
+[
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"movies.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,200}$",
+        "IsAuto":false,
+        "Site":"movies.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^.{0,150}$",
+        "IsAuto":false,
+        "Site":"movies.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,2 +1,11 @@
-
-6.830555](?i)(advice|opinion|thought)s on
+[
+    {
+        "Regex":"(?i)(advice|opinion|thought)s on",
+        "IsAuto":false,
+        "Site":"travel.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

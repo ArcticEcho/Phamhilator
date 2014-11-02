@@ -1,2 +1,11 @@
-
-10.88725](?i)problem(s)?
+[
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"cstheory.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,2 +1,20 @@
-5](?i)question
-8.102301]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"puzzling.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"puzzling.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

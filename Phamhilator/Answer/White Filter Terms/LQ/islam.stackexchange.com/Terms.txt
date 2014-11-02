@@ -1,3 +1,20 @@
-
-18.57521]^(?i).{0,200}$
-3.6]^(?i).{0,150}$
+[
+    {
+        "Regex":"^(?i).{0,200}$",
+        "IsAuto":false,
+        "Site":"islam.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,150}$",
+        "IsAuto":false,
+        "Site":"islam.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

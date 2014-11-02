@@ -1,4 +1,29 @@
-
-5](?i)\bwork out\b
-5](?i)\bskin\b
-5](?i)\bfull( movie| film)\b
+[
+    {
+        "Regex":"(?i)\\bwork out\\b",
+        "IsAuto":false,
+        "Site":"drupal.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bskin\\b",
+        "IsAuto":false,
+        "Site":"drupal.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bfull( movie| film)\\b",
+        "IsAuto":false,
+        "Site":"drupal.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

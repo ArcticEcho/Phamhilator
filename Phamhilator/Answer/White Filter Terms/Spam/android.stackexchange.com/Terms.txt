@@ -1,2 +1,11 @@
-
-5](?i)\byou know\b
+[
+    {
+        "Regex":"(?i)\\byou know\\b",
+        "IsAuto":false,
+        "Site":"android.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

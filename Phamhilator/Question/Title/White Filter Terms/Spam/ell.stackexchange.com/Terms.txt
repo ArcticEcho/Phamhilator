@@ -1,2 +1,20 @@
-7.92](?i)health
-7.15](?i)natural
+[
+    {
+        "Regex":"(?i)health",
+        "IsAuto":false,
+        "Site":"ell.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)natural",
+        "IsAuto":false,
+        "Site":"ell.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

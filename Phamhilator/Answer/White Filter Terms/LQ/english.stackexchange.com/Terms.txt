@@ -1,2 +1,11 @@
-
-69.72054]^(?i).{0,60}$
+[
+    {
+        "Regex":"^(?i).{0,60}$",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

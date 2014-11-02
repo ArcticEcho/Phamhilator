@@ -1,6 +1,38 @@
-
-5](?i)\byou know\b
-6.6](?i)health
-
-5.5](?i)\bcare(ing)?\b
-5](?i)\bbeautiful(est)?\b
+[
+    {
+        "Regex":"(?i)\\byou know\\b",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)health",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bcare(ing)?\\b",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bbeautiful(est)?\\b",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

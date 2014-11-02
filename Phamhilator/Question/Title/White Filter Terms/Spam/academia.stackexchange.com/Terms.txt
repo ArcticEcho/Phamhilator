@@ -1,3 +1,20 @@
-
-5](?i)how to (feel|look|reduce|buy|increase)
-5.5](?i)health
+[
+    {
+        "Regex":"(?i)how to (feel|look|reduce|buy|increase)",
+        "IsAuto":false,
+        "Site":"academia.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)health",
+        "IsAuto":false,
+        "Site":"academia.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

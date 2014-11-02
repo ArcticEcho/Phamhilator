@@ -1,4 +1,29 @@
-
-5](?i)newbie
-5.184]^(?i).{0,200}$
-4.32]^.{0,150}$
+[
+    {
+        "Regex":"(?i)newbie",
+        "IsAuto":false,
+        "Site":"boardgames.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,200}$",
+        "IsAuto":false,
+        "Site":"boardgames.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^.{0,150}$",
+        "IsAuto":false,
+        "Site":"boardgames.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

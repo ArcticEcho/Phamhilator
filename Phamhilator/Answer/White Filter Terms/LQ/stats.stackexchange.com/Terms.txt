@@ -1,3 +1,29 @@
-25.06886](?i)\b(help|halp)\b
-12.14671](?i)problem(s)?
-183464.1](?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)
+[
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"stats.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"stats.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+        "IsAuto":false,
+        "Site":"stats.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

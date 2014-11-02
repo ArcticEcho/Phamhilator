@@ -1,2 +1,11 @@
-
-5](?i)\byoga|relax(ing)?\b
+[
+    {
+        "Regex":"(?i)\\byoga|relax(ing)?\\b",
+        "IsAuto":false,
+        "Site":"hermeneutics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

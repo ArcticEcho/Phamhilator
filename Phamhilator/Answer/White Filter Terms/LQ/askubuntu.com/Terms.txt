@@ -1,6 +1,29 @@
-
-26.57954](?i)\b(help|halp)\b
-
-35.86447]^(?i).{0,60}$
-
-13.5](?i)problem(s)?
+[
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"askubuntu.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,60}$",
+        "IsAuto":false,
+        "Site":"askubuntu.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"askubuntu.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

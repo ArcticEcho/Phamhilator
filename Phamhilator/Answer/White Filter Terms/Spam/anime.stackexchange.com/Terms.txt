@@ -1,2 +1,11 @@
-
-5](?i)\bbeautiful(est)?\b
+[
+    {
+        "Regex":"(?i)\\bbeautiful(est)?\\b",
+        "IsAuto":false,
+        "Site":"anime.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,1 +1,11 @@
-7.986](?i)\bmuscle(s)?\b
+[
+    {
+        "Regex":"(?i)\\bmuscle(s)?\\b",
+        "IsAuto":false,
+        "Site":"biology.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

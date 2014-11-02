@@ -1,2 +1,11 @@
-
-5](?i)\bmuscle(s)?\b
+[
+    {
+        "Regex":"(?i)\\bmuscle(s)?\\b",
+        "IsAuto":false,
+        "Site":"raspberrypi.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

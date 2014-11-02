@@ -1,4 +1,20 @@
-
-58.10041]^(?i).{0,60}$
-
-5](?i)tried
+[
+    {
+        "Regex":"^(?i).{0,60}$",
+        "IsAuto":false,
+        "Site":"dba.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)tried",
+        "IsAuto":false,
+        "Site":"dba.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

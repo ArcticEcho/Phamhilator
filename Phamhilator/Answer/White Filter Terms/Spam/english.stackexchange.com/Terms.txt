@@ -1,3 +1,20 @@
-
-5](?i)\bwork out\b
-5.5](?i)\bskin\b
+[
+    {
+        "Regex":"(?i)\\bwork out\\b",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bskin\\b",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

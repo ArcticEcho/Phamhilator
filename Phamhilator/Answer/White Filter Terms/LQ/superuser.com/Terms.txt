@@ -1,4 +1,20 @@
-
-12.19808]^(?i).{0,18}$
-
-2.5]^[^a-z]*$
+[
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^[^a-z]*$",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

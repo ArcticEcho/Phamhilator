@@ -1,6 +1,38 @@
-
-5.5](?i)baba
-5](?i)^how can we
-5](?i)\bbeautiful(est)?\b
-
-7](?i)natural
+[
+    {
+        "Regex":"(?i)baba",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)^how can we",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bbeautiful(est)?\\b",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)natural",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

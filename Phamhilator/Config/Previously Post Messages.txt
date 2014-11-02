@@ -773,3 +773,8 @@
 2542296.61447961]http://electronics.stackexchange.com/questions/136765
 2542296.61487963]http://stats.stackexchange.com/questions/122212
 2542297.01550255]http://programmers.stackexchange.com/questions/261516
+2542426.16367273]http://russian.stackexchange.com/questions/7515
+2542640.72939519]http://serverfault.com/questions/641337
+2542955.50431595]http://apple.stackexchange.com/questions/154257
+2542955.50463264]http://travel.stackexchange.com/questions/38134
+2542955.50489932]http://dsp.stackexchange.com/questions/18928

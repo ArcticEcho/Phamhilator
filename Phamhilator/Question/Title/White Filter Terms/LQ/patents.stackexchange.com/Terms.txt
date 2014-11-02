@@ -1,2 +1,11 @@
-
-5.909091](?i)i want to
+[
+    {
+        "Regex":"(?i)i want to",
+        "IsAuto":false,
+        "Site":"patents.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

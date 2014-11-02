@@ -1,2 +1,11 @@
-
-6.05](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
+[
+    {
+        "Regex":"(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?\u003e\\W*\\d){8}",
+        "IsAuto":false,
+        "Site":"pt.stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

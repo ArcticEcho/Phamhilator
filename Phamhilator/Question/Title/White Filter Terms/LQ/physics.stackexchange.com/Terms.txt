@@ -1,6 +1,56 @@
-4.5](?i)question
-13.5](?i)problem(s)?
-3](?s-m)^.{0,200}$
-3](?s-m)^.{0,150}$
-17.5](?i)\b(help|halp)\b
-12.70588]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"physics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"physics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,200}$",
+        "IsAuto":false,
+        "Site":"physics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,150}$",
+        "IsAuto":false,
+        "Site":"physics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"physics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"physics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

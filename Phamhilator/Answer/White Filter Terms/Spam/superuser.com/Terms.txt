@@ -1,4 +1,38 @@
-7.26](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
-5](?i)natural
-7](?i)\bbrand\b
-8][-\w]{3}@\w+\.
+[
+    {
+        "Regex":"(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?\u003e\\W*\\d){8}",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)natural",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bbrand\\b",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"[-\\w]{3}@\\w+\\.",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

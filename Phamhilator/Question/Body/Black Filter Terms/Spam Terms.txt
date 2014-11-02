@@ -1,34 +1,308 @@
-5]^((?!\<code\>).)*</a></strong></p>$
-5]rankedia
-5]^((?!\\n\\n|\<code\>).)*(>>|vist|like).{0,10}<a href=".*">https?://\S*$
-5]^((?!\\n\\n|\<code\>).)*<a href=".*">https?://\S*$
-5]officialimeiunlock
-5](?i)neuro 3x
-5](?i)lumagenex
-5](?i)neuro\s?3x
-5](?i)^<p>Be sure you
-5](?i)xtreme antler
-5](?i)FIFA 15 Coin
-5](?i)fifapal
-5](?i)cenaless
-5](?i)detoxify
-5]clicktomovies.com
-5]neuro3x
-5]\>\>\>\>\>
-5](?i)ComplexiDerm
-5]avonlea
-5]avoir
-5](?i)BeautyLabs
-5](?i)Elliskin
-5](?i)ELITE TEST 360
-5]wrinkle.com
-5](?i)elite test 360
-5](?i)manali tour package
-5]2348064038119
-5](?i)slimbodycleansingfacts
-5]ketone
-5](?i)elite\W+test
-5](i?)Lisse
-5](?i)chaussure
-5]megamotormadness
-5]FREE SHIPPING
+[
+    {
+        "Regex":"^((?!\\\u003ccode\\\u003e).)*\u003c/a\u003e\u003c/strong\u003e\u003c/p\u003e$",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"rankedia",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^((?!\\\\n\\\\n|\\\u003ccode\\\u003e).)*(\u003e\u003e|vist|like).{0,10}\u003ca href=\".*\"\u003ehttps?://\\S*$",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^((?!\\\\n\\\\n|\\\u003ccode\\\u003e).)*\u003ca href=\".*\"\u003ehttps?://\\S*$",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"officialimeiunlock",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)neuro 3x",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)lumagenex",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)neuro\\s?3x",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)^\u003cp\u003eBe sure you",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)xtreme antler",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)FIFA 15 Coin",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)fifapal",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)cenaless",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)detoxify",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"clicktomovies.com",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"neuro3x",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"\\\u003e\\\u003e\\\u003e\\\u003e\\\u003e",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)ComplexiDerm",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"avonlea",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"avoir",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)BeautyLabs",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)Elliskin",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)ELITE TEST 360",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"wrinkle.com",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)elite test 360",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)manali tour package",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"2348064038119",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)slimbodycleansingfacts",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"ketone",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)elite\\W+test",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(i?)Lisse",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)chaussure",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"megamotormadness",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"FREE SHIPPING",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

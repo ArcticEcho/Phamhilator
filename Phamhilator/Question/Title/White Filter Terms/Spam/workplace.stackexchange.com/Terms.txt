@@ -1,2 +1,11 @@
-
-5](?i)\bgot my\b
+[
+    {
+        "Regex":"(?i)\\bgot my\\b",
+        "IsAuto":false,
+        "Site":"workplace.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

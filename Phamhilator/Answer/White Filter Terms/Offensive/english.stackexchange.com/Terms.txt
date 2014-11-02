@@ -1,5 +1,29 @@
-
-7](?i)\bfuck\b
-6](?i)\bidiot\b
-
-5](?i)\bcrap\b
+[
+    {
+        "Regex":"(?i)\\bfuck\\b",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bidiot\\b",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bcrap\\b",
+        "IsAuto":false,
+        "Site":"english.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

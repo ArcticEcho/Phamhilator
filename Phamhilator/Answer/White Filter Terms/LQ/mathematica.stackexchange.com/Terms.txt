@@ -1,2 +1,11 @@
-
-5.555556](?i)question
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"mathematica.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

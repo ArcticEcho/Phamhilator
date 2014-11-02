@@ -1,3 +1,20 @@
-
-2.5]^((?!\\n\\n|\<code\>).)*(>>|vist|like).{0,10}<a href=".*">https?://\S*$
-2.5]^((?!\\n\\n|\<code\>).)*<a href=".*">https?://\S*$
+[
+    {
+        "Regex":"^((?!\\\\n\\\\n|\\\u003ccode\\\u003e).)*(\u003e\u003e|vist|like).{0,10}\u003ca href=\".*\"\u003ehttps?://\\S*$",
+        "IsAuto":false,
+        "Site":"datascience.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^((?!\\\\n\\\\n|\\\u003ccode\\\u003e).)*\u003ca href=\".*\"\u003ehttps?://\\S*$",
+        "IsAuto":false,
+        "Site":"datascience.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

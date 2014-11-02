@@ -1,2 +1,11 @@
-
-7](?i)natural
+[
+    {
+        "Regex":"(?i)natural",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

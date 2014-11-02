@@ -1,3 +1,20 @@
-
-6.6](?i)health
-7.2](?i)\bcare(ing)?\b
+[
+    {
+        "Regex":"(?i)health",
+        "IsAuto":false,
+        "Site":"pets.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bcare(ing)?\\b",
+        "IsAuto":false,
+        "Site":"pets.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

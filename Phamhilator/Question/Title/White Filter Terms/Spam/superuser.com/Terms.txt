@@ -1,8 +1,47 @@
-
-5](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
-
-5](?i)how to (feel|look|reduce|buy|increase)
-6](?i)\bbrand\b
-
-5](?i)you want
-5.5](?i)health
+[
+    {
+        "Regex":"(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?\u003e\\W*\\d){8}",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)how to (feel|look|reduce|buy|increase)",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bbrand\\b",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)you want",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)health",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

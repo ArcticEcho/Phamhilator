@@ -1,3 +1,20 @@
-
-5](?i)\bbeautiful(est)?\b
-5](?i)natural
+[
+    {
+        "Regex":"(?i)\\bbeautiful(est)?\\b",
+        "IsAuto":false,
+        "Site":"chemistry.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)natural",
+        "IsAuto":false,
+        "Site":"chemistry.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

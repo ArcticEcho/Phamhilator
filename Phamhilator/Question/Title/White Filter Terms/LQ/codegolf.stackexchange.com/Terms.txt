@@ -1,3 +1,29 @@
-6.5](?i)\bh(i|ello)\b
-2.5](?s-m)^.{0,150}$
-15.52942]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)\\bh(i|ello)\\b",
+        "IsAuto":false,
+        "Site":"codegolf.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,150}$",
+        "IsAuto":false,
+        "Site":"codegolf.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"codegolf.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

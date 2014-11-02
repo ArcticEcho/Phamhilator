@@ -1,2 +1,11 @@
-
-5](?i)shit
+[
+    {
+        "Regex":"(?i)shit",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

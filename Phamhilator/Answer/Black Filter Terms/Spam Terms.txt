@@ -1,9 +1,83 @@
-5]^((?!\\n\\n|\<code\>).)*https?://\w*$
-5]^https?://\w*((?!\\n\\n|\<code\>).)*$
-6.333333](?i)join (today|now|fast|free|exclusive|us)(\s|.)*https?://
-7.333333]WWW\.[^a-z]*\.[^a-z]{2,3}(\.[^a-z]{2,3})?
-6.9](?i)recoverydeletedfiles
-12][-\w]{3}@\w+\.
-7.167857]2348064038119
-7733334]filerepairforum.com
-7042858](?i)filerepairforum\.com
+[
+    {
+        "Regex":"^((?!\\\\n\\\\n|\\\u003ccode\\\u003e).)*https?://\\w*$",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^https?://\\w*((?!\\\\n\\\\n|\\\u003ccode\\\u003e).)*$",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)join (today|now|fast|free|exclusive|us)(\\s|.)*https?://",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)recoverydeletedfiles",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"[-\\w]{3}@\\w+\\.",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"2348064038119",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"filerepairforum.com",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)filerepairforum\\.com",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -19,6 +19,7 @@ namespace Phamhilator.Analysers
 					info.Accuracy += blackTerm.Score;
 					info.BlackTermsFound.Add(blackTerm);
 
+					blackTerm.CaughtCount++;
 					filtersUsed++;
 				}
 			}
@@ -36,6 +37,7 @@ namespace Phamhilator.Analysers
 					info.Accuracy -= whiteTerm.Score;
 					info.WhiteTermsFound.Add(whiteTerm);
 					info.FiltersUsed.Add(FilterType.AnswerWhiteSpam);
+
 					filtersUsed++;
 				}
 			}
@@ -63,6 +65,7 @@ namespace Phamhilator.Analysers
 					info.Accuracy += blackTerm.Score;
 					info.BlackTermsFound.Add(blackTerm);
 
+					blackTerm.CaughtCount++;
 					filtersUsed++;
 				}
 			}
@@ -80,6 +83,7 @@ namespace Phamhilator.Analysers
 					info.Accuracy -= whiteTerm.Score;
 					info.WhiteTermsFound.Add(whiteTerm);
 					info.FiltersUsed.Add(FilterType.AnswerWhiteLQ);
+
 					filtersUsed++;
 				}
 			}
@@ -107,6 +111,7 @@ namespace Phamhilator.Analysers
 					info.Accuracy += blackTerm.Score;
 					info.BlackTermsFound.Add(blackTerm);
 
+					blackTerm.CaughtCount++;
 					filtersUsed++;
 				}
 			}
@@ -124,6 +129,7 @@ namespace Phamhilator.Analysers
 					info.Accuracy -= whiteTerm.Score;
 					info.WhiteTermsFound.Add(whiteTerm);
 					info.FiltersUsed.Add(FilterType.AnswerWhiteOff);
+
 					filtersUsed++;
 				}
 			}
@@ -151,6 +157,7 @@ namespace Phamhilator.Analysers
 					info.Accuracy += blackTerm.Score;
 					info.BlackTermsFound.Add(blackTerm);
 
+					blackTerm.CaughtCount++;
 					filtersUsed++;
 				}
 			}
@@ -168,6 +175,7 @@ namespace Phamhilator.Analysers
 					info.Accuracy -= whiteTerm.Score;
 					info.WhiteTermsFound.Add(whiteTerm);
 					info.FiltersUsed.Add(FilterType.AnswerWhiteName);
+
 					filtersUsed++;
 				}
 			}

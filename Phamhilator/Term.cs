@@ -1,5 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.IO;
+using System.Text.RegularExpressions;
 using System;
+using Newtonsoft.Json;
 
 
 
@@ -7,21 +9,149 @@ namespace Phamhilator
 {
 	public class Term
 	{
+		private readonly string file;
+		private readonly bool isBlack;
+		private float tpCount;
+		private float fpCount;
+		private float caughtCount;
+
+		public FilterType Type { get; private set; }
 		public Regex Regex { get; private set; }
 		public bool IsAuto { get; private set; }
 		public string Site { get; private set; }
 		public float Score { get; private set; }
 
+		public float TPCount
+		{
+			get
+			{
+				return tpCount;
+			}
+
+			set
+			{
+				string json;
+
+				tpCount = value;
+
+				if (isBlack)
+				{
+					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
+
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms, Formatting.Indented);
+				}
+				else
+				{
+					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
+
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms, Formatting.Indented);
+				}
+
+				File.WriteAllText(file, json);
+			}
+		}
+
+		public float FPCount 
+		{
+			get
+			{
+				return fpCount;
+			}
+
+			set
+			{
+				string json;
+
+				fpCount = value;
+
+				if (isBlack)
+				{
+					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
+
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms, Formatting.Indented);
+				}
+				else
+				{
+					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
+
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms, Formatting.Indented);
+				}
+
+				File.WriteAllText(file, json);
+			}
+		}
+
+		public float IgnoredCount
+		{
+			get
+			{
+				return CaughtCount - (TPCount + FPCount);
+			}
+		}
+
+		public float CaughtCount 
+		{
+			get
+			{
+				return caughtCount;
+			}
+
+			set
+			{
+				string json;
+
+				caughtCount = value;
+
+				if (isBlack)
+				{
+					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
+
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms, Formatting.Indented);
+				}
+				else
+				{
+					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
+
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms, Formatting.Indented);
+				}
+
+				File.WriteAllText(file, json);
+			}
+		}
+
+		public float Sensitivity
+		{
+			get
+			{
+				return (TPCount * CaughtCount / (FPCount + TPCount)) / (GlobalInfo.Stats.TotalCheckedPosts - GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));			
+			}
+		}
+
+		public float Specificity
+		{
+			get
+			{
+				return ((GlobalInfo.Stats.TotalFPCount - FPCount) * CaughtCount / (TPCount + FPCount)) / (GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));
+			}
+		}
 
 
-		public Term(Regex regex, float score, string site = "", bool isAuto = false)
+
+		public Term(FilterType type, Regex regex, float score, string site = "", bool isAuto = false, float tpCount = 0, float fpCount = 0, float caughtCount = 0)
 		{
 			if (regex == null) { throw new ArgumentNullException("regex"); }
 
+			file = String.IsNullOrEmpty(site) ? DirectoryTools.GetFilterFile(type) : Path.Combine(DirectoryTools.GetFilterFile(type), site, "Terms.txt");
+			isBlack = (int)type < 100;
+
+			Type = type;
 			Regex = regex;
 			Score = score;
-			Site = site;
+			Site = site ?? "";
 			IsAuto = isAuto;
+			this.tpCount = tpCount;
+			this.fpCount = fpCount;
+			this.caughtCount = caughtCount;
 		}
 
 

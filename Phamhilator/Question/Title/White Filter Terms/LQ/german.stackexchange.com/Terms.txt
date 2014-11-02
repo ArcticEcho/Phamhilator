@@ -1,2 +1,20 @@
-5](?i)question
-8.201679]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"german.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"german.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

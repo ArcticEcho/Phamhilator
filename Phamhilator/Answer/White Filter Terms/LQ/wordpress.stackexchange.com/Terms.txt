@@ -1,5 +1,29 @@
-
-14.19753](?i)question
-18.33415]^(?i).{0,18}$
-
-10.27995](?i)problem(s)?
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"wordpress.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"wordpress.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"wordpress.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

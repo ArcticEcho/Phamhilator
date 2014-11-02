@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 
 
@@ -33,21 +33,11 @@ namespace Phamhilator
 
 			foreach (var site in sites)
 			{
-				var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt"));
+				var data = JsonConvert.DeserializeObject<List<TempTerm>>(File.ReadAllText(Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt")));
 
-				foreach (var termAndScore in data)
+				foreach (var t in data)
 				{
-					if (termAndScore.IndexOf("]", StringComparison.Ordinal) == -1) { continue; }
-
-					var scoreAuto = termAndScore.Substring(0, termAndScore.IndexOf("]", StringComparison.Ordinal));
-
-					var termScore = float.Parse(new String(scoreAuto.Where(c => Char.IsDigit(c) || c == '.' || c == ',').ToArray()), CultureInfo.InvariantCulture);
-					var termIsAuto = scoreAuto[0] == 'A';
-					var termRegex = new Regex(termAndScore.Substring(termAndScore.IndexOf("]", StringComparison.Ordinal) + 1), RegexOptions.Compiled);
-
-					if (Terms.Contains(termRegex) || String.IsNullOrEmpty(termRegex.ToString())) { continue; }
-
-					Terms.Add(new Term(termRegex, termScore, site, termIsAuto));
+					Terms.Add(t.ToTerm(FilterType));
 				}
 			}
 		}
@@ -96,7 +86,7 @@ namespace Phamhilator
 
 				Terms.Remove(t);
 
-				Terms.Add(new Term(t.Regex, t.Score, t.Site, isAuto));
+				Terms.Add(new Term(FilterType, t.Regex, t.Score, t.Site, isAuto));
 			}
 		}
 	}

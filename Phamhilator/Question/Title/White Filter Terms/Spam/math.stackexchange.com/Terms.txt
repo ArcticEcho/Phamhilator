@@ -1,4 +1,38 @@
-7.26](?i)\d(?!\d-?\d{2}-\d{4})(?>\W*\d){8}
-5](?i)how to (feel|look|reduce|buy|increase)
-7.7](?i)natural
-5]\$\d+
+[
+    {
+        "Regex":"(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?\u003e\\W*\\d){8}",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)how to (feel|look|reduce|buy|increase)",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)natural",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"\\$\\d+",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

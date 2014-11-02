@@ -44,6 +44,10 @@
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\Json60r6\Bin\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -74,6 +78,7 @@
     <Compile Include="BannedUsers.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
+    <Compile Include="GlobalInfo.Stats.cs" />
     <Compile Include="StringDownloader.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="BlackFilter.cs" />
@@ -90,6 +95,7 @@
     <Compile Include="PostAnalyser.cs" />
     <Compile Include="PostPersistence.cs" />
     <Compile Include="GlobalInfo.cs" />
+    <Compile Include="TempTerm.cs" />
     <Compile Include="Term.cs" />
     <Compile Include="UserAccess.cs" />
     <Compile Include="WebDownload.cs">

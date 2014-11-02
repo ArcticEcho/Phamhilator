@@ -1,4 +1,20 @@
-
-12.66414](?i)i want to
-
-11](?i)\berror(s)?\b
+[
+    {
+        "Regex":"(?i)i want to",
+        "IsAuto":false,
+        "Site":"webapps.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\berror(s)?\\b",
+        "IsAuto":false,
+        "Site":"webapps.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

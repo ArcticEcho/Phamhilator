@@ -10,7 +10,7 @@ using System.Windows.Controls;
 
 namespace Phamhilator
 {
-	public static class GlobalInfo
+	public static partial class GlobalInfo
 	{
 		private static string botUsername = "";
 		private static int chatID;

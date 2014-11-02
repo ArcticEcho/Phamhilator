@@ -1,3 +1,20 @@
-
-5](?i)how to (feel|look|reduce|buy|increase)
-5](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))
+[
+    {
+        "Regex":"(?i)how to (feel|look|reduce|buy|increase)",
+        "IsAuto":false,
+        "Site":"electronics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
+        "IsAuto":false,
+        "Site":"electronics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

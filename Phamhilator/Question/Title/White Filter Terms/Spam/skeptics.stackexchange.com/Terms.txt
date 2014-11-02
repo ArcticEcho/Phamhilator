@@ -1,2 +1,11 @@
-
-5.5](?i)\bweight loss\b
+[
+    {
+        "Regex":"(?i)\\bweight loss\\b",
+        "IsAuto":false,
+        "Site":"skeptics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

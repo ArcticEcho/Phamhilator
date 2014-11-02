@@ -1,1 +1,11 @@
-2.5]\>\>\>\>\>
+[
+    {
+        "Regex":"\\\u003e\\\u003e\\\u003e\\\u003e\\\u003e",
+        "IsAuto":false,
+        "Site":"stackoverflow.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

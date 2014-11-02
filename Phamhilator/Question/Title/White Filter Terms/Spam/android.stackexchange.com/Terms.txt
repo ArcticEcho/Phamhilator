@@ -1,2 +1,20 @@
-5](?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h
-6](?i)\bbrand\b
+[
+    {
+        "Regex":"(?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h",
+        "IsAuto":false,
+        "Site":"android.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bbrand\\b",
+        "IsAuto":false,
+        "Site":"android.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

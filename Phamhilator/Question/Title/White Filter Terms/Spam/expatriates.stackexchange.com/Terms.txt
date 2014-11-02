@@ -1,2 +1,11 @@
-
-5](?i)health
+[
+    {
+        "Regex":"(?i)health",
+        "IsAuto":false,
+        "Site":"expatriates.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

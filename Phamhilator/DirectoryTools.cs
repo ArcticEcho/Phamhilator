@@ -265,6 +265,57 @@ namespace Phamhilator
 			return path;
 		}
 
+		public static string GetTotalCheckedPostsFile()
+		{
+			var path = Path.Combine(configPath, "Stats", "Total Checked Posts.txt");
+
+			if (!Directory.Exists(Path.Combine(configPath, "Stats")))
+			{
+				Directory.CreateDirectory(Path.Combine(configPath, "Stats"));
+			}
+
+			if (!File.Exists(path))
+			{
+				File.WriteAllText(path, "0");
+			}
+
+			return path;
+		}
+
+		public static string GetTotalTPCountFile()
+		{
+			var path = Path.Combine(configPath, "Stats", "Total TP Count.txt");
+
+			if (!Directory.Exists(Path.Combine(configPath, "Stats")))
+			{
+				Directory.CreateDirectory(Path.Combine(configPath, "Stats"));
+			}
+
+			if (!File.Exists(path))
+			{
+				File.WriteAllText(path, "0");
+			}
+
+			return path;
+		}
+
+		public static string GetTotalFPCountFile()
+		{
+			var path = Path.Combine(configPath, "Stats", "Total FP Count.txt");
+
+			if (!Directory.Exists(Path.Combine(configPath, "Stats")))
+			{
+				Directory.CreateDirectory(Path.Combine(configPath, "Stats"));
+			}
+
+			if (!File.Exists(path))
+			{
+				File.WriteAllText(path, "0");
+			}
+
+			return path;
+		}
+
 		# endregion
 	}
 }

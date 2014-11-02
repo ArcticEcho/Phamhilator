@@ -1,3 +1,20 @@
-
-5](?i)baba
-5](?i)\bfull( movie| film)\b
+[
+    {
+        "Regex":"(?i)baba",
+        "IsAuto":false,
+        "Site":"hinduism.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bfull( movie| film)\\b",
+        "IsAuto":false,
+        "Site":"hinduism.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

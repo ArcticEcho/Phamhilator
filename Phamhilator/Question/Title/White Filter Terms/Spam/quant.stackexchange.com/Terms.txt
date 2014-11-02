@@ -1,2 +1,11 @@
-
-5](?i)make money
+[
+    {
+        "Regex":"(?i)make money",
+        "IsAuto":false,
+        "Site":"quant.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

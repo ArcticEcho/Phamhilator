@@ -435,6 +435,8 @@ namespace Phamhilator
 				Parallel.ForEach(posts, post => post.PopulateExtraData());
 			}
 
+			GlobalInfo.Stats.TotalCheckedPosts += posts.Count;
+
 			return posts.ToArray();
 		}
 

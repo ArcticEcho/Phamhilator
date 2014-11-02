@@ -1,11 +1,101 @@
-14.3366](?i)\b(help|halp)\b
-21.58561]^(?i).{0,60}$
-22.53761](?i)problem(s)?
-13.54167](?i)(need|some)( halp| help| answer)
-16.5](?i)i need.*help
-14.62902](?i:need help|help me)
-14.53846](?i)pl(z|s|ease)
-16.5](?i)help please
-12.74954]^(?i).{0,200}$
-4.5]^(?i).{0,150}$
-6.32]^.{0,150}$
+[
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,60}$",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)problem(s)?",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)(need|some)( halp| help| answer)",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)i need.*help",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i:need help|help me)",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)pl(z|s|ease)",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)help please",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,200}$",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,150}$",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^.{0,150}$",
+        "IsAuto":false,
+        "Site":"math.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

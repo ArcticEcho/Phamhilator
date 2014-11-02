@@ -1,4 +1,38 @@
-5]^(?=[^A-Z]+[A-Z])[^a-z]*$
-5]^\<p\>[^a-z]*\<\/p\>$
-15](?s-m)^.{0,150}$
-6]\bpl[sz]+\b
+[
+    {
+        "Regex":"^(?=[^A-Z]+[A-Z])[^a-z]*$",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^\\\u003cp\\\u003e[^a-z]*\\\u003c\\/p\\\u003e$",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,150}$",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"\\bpl[sz]+\\b",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

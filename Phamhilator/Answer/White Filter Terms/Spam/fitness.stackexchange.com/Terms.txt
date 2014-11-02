@@ -1,4 +1,29 @@
-
-5](?i)losing weight
-5](?i)\byou know\b
-9.7515](?i)\bmuscle(s)?\b
+[
+    {
+        "Regex":"(?i)losing weight",
+        "IsAuto":false,
+        "Site":"fitness.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\byou know\\b",
+        "IsAuto":false,
+        "Site":"fitness.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bmuscle(s)?\\b",
+        "IsAuto":false,
+        "Site":"fitness.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

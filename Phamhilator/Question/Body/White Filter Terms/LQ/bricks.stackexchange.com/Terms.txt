@@ -1,2 +1,11 @@
-
-13](?i)pl(z|s|ease)
+[
+    {
+        "Regex":"(?i)pl(z|s|ease)",
+        "IsAuto":false,
+        "Site":"bricks.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

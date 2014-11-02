@@ -1,2 +1,20 @@
-5](?i)question
-17.5](?i)\b(help|halp)\b
+[
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"gamedev.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\b(help|halp)\\b",
+        "IsAuto":false,
+        "Site":"gamedev.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

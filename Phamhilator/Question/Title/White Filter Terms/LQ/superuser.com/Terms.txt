@@ -1,7 +1,65 @@
-6](?i)error(s)?
-10.5](?i)\berror(s)?\b
-5](?i)question
-10.5](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-2.5](?s-m)^.{0,200}$
-2.5](?s-m)^.{0,150}$
-9.245158]^(?i).{0,18}$
+[
+    {
+        "Regex":"(?i)error(s)?",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\berror(s)?\\b",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)question",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)(no(t)?|doesn(\u0027t|t)?) work(ing|ed|d)?",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,200}$",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?s-m)^.{0,150}$",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"^(?i).{0,18}$",
+        "IsAuto":false,
+        "Site":"superuser.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

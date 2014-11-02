@@ -1,4 +1,29 @@
-
-5](?i)natural
-5](?i)^how can we
-5](?i)^cheap
+[
+    {
+        "Regex":"(?i)natural",
+        "IsAuto":false,
+        "Site":"diy.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)^how can we",
+        "IsAuto":false,
+        "Site":"diy.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)^cheap",
+        "IsAuto":false,
+        "Site":"diy.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

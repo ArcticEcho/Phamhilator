@@ -1,4 +1,20 @@
-
-6](?i)\bbrand\b
-
-5](?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))
+[
+    {
+        "Regex":"(?i)\\bbrand\\b",
+        "IsAuto":false,
+        "Site":"apple.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
+        "IsAuto":false,
+        "Site":"apple.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,3 +1,20 @@
-
-5](?i)\bbrand\b
-5](?i)\bfree (trial|film|moive|movie|help|assistance)\b
+[
+    {
+        "Regex":"(?i)\\bbrand\\b",
+        "IsAuto":false,
+        "Site":"startups.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bfree (trial|film|moive|movie|help|assistance)\\b",
+        "IsAuto":false,
+        "Site":"startups.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

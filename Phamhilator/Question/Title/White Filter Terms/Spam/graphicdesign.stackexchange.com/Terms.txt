@@ -1,4 +1,29 @@
-
-5](?i)the perfect
-5](?i)\byou know\b
-5](?i)how to (feel|look|reduce|buy|increase)
+[
+    {
+        "Regex":"(?i)the perfect",
+        "IsAuto":false,
+        "Site":"graphicdesign.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\byou know\\b",
+        "IsAuto":false,
+        "Site":"graphicdesign.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)how to (feel|look|reduce|buy|increase)",
+        "IsAuto":false,
+        "Site":"graphicdesign.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

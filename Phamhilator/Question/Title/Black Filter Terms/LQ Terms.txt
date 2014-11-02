@@ -1,47 +1,425 @@
-12](?i)homework
-10](?i)builtwith.com
-10](?i)very difficult
-10](?i)newbie
-9](?i)question
-10](?i)tried
-10](?i)\bif (yes|no)\b
-10](?i)my best
-10](?i)our feelings
-10](?i)says wrong
-10](?i)confusing
-13](?i)\bh(i|ello)\b
-10](?i)\bgreeting(s)?\b
-27](?i)problem(s)?
-10](?i)(\{|\[|\(|\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\}|\]|\)|\-)
-10](?i)correct this
-10](?i)school project
-13](?i)beginner
-10](?i)asap
-11](?i)urgent
-11](?i)thanks
-12](?i)(need|some)( halp| help| answer)
-21](?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?
-21]^[^a-z]*$
-10](?i)\bgives error\b
-10]how do i
-11](?i)i( just)? wan(t|na) to know
-13](?i)i want to
-12](?i)plz help me!
-12][A-Z]{4,}.*[\!\?]{2,}
-12.8](?i)help please
-13.66111](?i)(more|most|less|least).*popular
-13.66111](?i)wh(at|ich).*best
-13.66111](?i)credit.card
-13.66111](?i)^(?=.*?which)(?=.*?(?:choose|best|quality))
-13.66111](?i)i need.*help
-13.66111](?i)(advice|opinion|thought)s on
-14.66111](?i:noob|beginner)
-13.42067]\bpl[sz]+\b
-10]^(?i)(\w+\s)?program\sto
-10](?i)^wh(ich|at) tool
-22](?i)\berror(s)?\b
-20](?i:need help|help me)
-35](?i)\b(help|halp)\b
-10]for\sfree
-13.66112]^\S*$
-24]^(?i).{0,18}$
+[
+  {
+    "Regex": "(?i)homework",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)builtwith.com",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)very difficult",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)newbie",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)question",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)tried",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bif (yes|no)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)my best",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)our feelings",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)says wrong",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)confusing",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bh(i|ello)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bgreeting(s)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)correct this",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)school project",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)beginner",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)asap",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)urgent",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)thanks",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(need|some)( halp| help| answer)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^[^a-z]*$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bgives error\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "how do i",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i( just)? wan(t|na) to know",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i want to",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)plz help me!",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "[A-Z]{4,}.*[\\!\\?]{2,}",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)help please",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(more|most|less|least).*popular",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)wh(at|ich).*best",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)credit.card",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^(?=.*?which)(?=.*?(?:choose|best|quality))",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i need.*help",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(advice|opinion|thought)s on",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i:noob|beginner)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\bpl[sz]+\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i)(\\w+\\s)?program\\sto",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^wh(ich|at) tool",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\berror(s)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i:need help|help me)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\b(help|halp)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "for\\sfree",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^\\S*$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  }
+]

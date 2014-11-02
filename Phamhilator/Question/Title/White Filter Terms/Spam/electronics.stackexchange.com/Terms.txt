@@ -1,1 +1,11 @@
-6](?i)\bripped\b
+[
+    {
+        "Regex":"(?i)\\bripped\\b",
+        "IsAuto":false,
+        "Site":"electronics.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

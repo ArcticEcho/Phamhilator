@@ -1,20 +1,182 @@
-10](?i)sumer
-10](?i)kolcak
-10](?i)sümer
-10](?i)kolçak
-10](?i)asshole
-10](?i)piss
-10](?i)penis
-10](?i)bumhole
-10](?i)bastard
-10](?i)bitch
-10](?i)fuck
-10](?i)whore
-10]MTS789
-10](?i)\bshit\b
-10]kimismith
-10]RodeoSkillful
-10](?i)officialimeiunlock
-10]\.com
-10]\\.com
-10]councilxvb32
+[
+    {
+        "Regex":"(?i)sumer",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)kolcak",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)sümer",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)kolçak",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)asshole",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)piss",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)penis",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)bumhole",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)bastard",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)bitch",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)fuck",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)whore",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"MTS789",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bshit\\b",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"kimismith",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"RodeoSkillful",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)officialimeiunlock",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"\\.com",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"\\\\.com",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"councilxvb32",
+        "IsAuto":false,
+        "Site":null,
+        "Score":10,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

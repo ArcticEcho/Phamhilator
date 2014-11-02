@@ -1,1 +1,11 @@
-3691876]^(?i).{0,80}$
+[
+    {
+        "Regex":"^(?i).{0,80}$",
+        "IsAuto":false,
+        "Site":"codegolf.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

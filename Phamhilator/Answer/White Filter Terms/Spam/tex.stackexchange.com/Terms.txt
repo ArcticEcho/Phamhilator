@@ -1,2 +1,20 @@
-2.5][-\w](\.[-\w]+)?@\w+\.
-8][-\w]{3}@\w+\.
+[
+    {
+        "Regex":"[-\\w](\\.[-\\w]+)?@\\w+\\.",
+        "IsAuto":false,
+        "Site":"tex.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"[-\\w]{3}@\\w+\\.",
+        "IsAuto":false,
+        "Site":"tex.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

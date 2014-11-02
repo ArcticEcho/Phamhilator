@@ -1,1 +1,11 @@
-5.5](?i)\bpenis\b
+[
+    {
+        "Regex":"(?i)\\bpenis\\b",
+        "IsAuto":false,
+        "Site":"islam.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

@@ -1,2 +1,11 @@
-
-7](?i)\bfuck\b
+[
+    {
+        "Regex":"(?i)\\bfuck\\b",
+        "IsAuto":false,
+        "Site":"startups.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

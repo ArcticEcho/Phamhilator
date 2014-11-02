@@ -1,4 +1,29 @@
-
-5](?i)\byou know\b
-7.26](?i)\bsupplement(s)?\b
-6.6](?i)health
+[
+    {
+        "Regex":"(?i)\\byou know\\b",
+        "IsAuto":false,
+        "Site":"islam.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bsupplement(s)?\\b",
+        "IsAuto":false,
+        "Site":"islam.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)health",
+        "IsAuto":false,
+        "Site":"islam.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]

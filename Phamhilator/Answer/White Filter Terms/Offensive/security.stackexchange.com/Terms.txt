@@ -1,3 +1,20 @@
-
-5](?i)\bcrap\b
-5](?i)\bidiot\b
+[
+    {
+        "Regex":"(?i)\\bcrap\\b",
+        "IsAuto":false,
+        "Site":"security.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    },
+    {
+        "Regex":"(?i)\\bidiot\\b",
+        "IsAuto":false,
+        "Site":"security.stackexchange.com",
+        "Score":5,
+        "TPCount":0,
+        "FPCount":0,
+        "CaughtCount":0
+    }
+]
