@@ -156,7 +156,7 @@ namespace Phamhilator
 				Thread.Sleep(1000);
 			} while (!GlobalInfo.BotRunning);
 
-			while (!exit || MessageQueue.Count != 0)
+			while (!exit)
 			{
 				Thread.Sleep(2000);
 
@@ -245,7 +245,7 @@ namespace Phamhilator
 				Thread.Sleep(1000);
 			} while (!GlobalInfo.BotRunning);
 
-			while (!exit || MessageQueue.Count != 0)
+			while (!exit)
 			{
 				Thread.Sleep(2000);
 

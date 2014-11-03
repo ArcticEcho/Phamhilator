@@ -658,10 +658,10 @@ namespace Phamhilator
 
 			Task.Factory.StartNew(() =>
 			{
-				while (GlobalInfo.MessagePoster.MessageQueue.Count != 0)
+				do
 				{
-					Thread.Sleep(1000);
-				}
+					Thread.Sleep(2000);
+				} while (GlobalInfo.MessagePoster.MessageQueue.Count != 0);
 
 				GlobalInfo.MessagePoster.Shutdown();
 
