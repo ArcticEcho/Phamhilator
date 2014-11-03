@@ -1,92 +1,92 @@
 [
-    {
-        "Regex":"^[^a-z]*$",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"^(?is)(?=.{0,75}$)(?:can you|what|how)",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"^(?=.{0,75}$)\\?$",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^same here",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)(did|have) you f(in|oun)d",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)did you find",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)pl(ease|s|z) help",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"^\\\u003cp\\\u003e[^a-z]*\\\u003c\\/p\\\u003e$",
-        "IsAuto":true,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"^(?i).{0,80}$",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    }
+  {
+    "Regex": "^[^a-z]*$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?is)(?=.{0,75}$)(?:can you|what|how)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?=.{0,75}$)\\?$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^same here",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(did|have) you f(in|oun)d",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)did you find",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)pl(ease|s|z) help",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^\\<p\\>[^a-z]*\\<\\/p\\>$",
+    "IsAuto": true,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,80}$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 2
+  }
 ]

@@ -1,974 +1,974 @@
 [
-    {
-        "Regex":"(?i)\\byoga|relax(ing)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbeautiful(est)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bwe lost\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\brolex watch\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\boffer good\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bgood offer\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bskin cream\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bmover(s)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bdelhi\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bcolon cleanse\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bis helpful\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bmy huge\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbulky figure\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbangalore\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\byou know\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bget your\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bgot my\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bsix(-pack|pack| pack)\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\b(customer|people) review(s)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bhelp(s)? you(r)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bwork out\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbody( building|builder(s)?| builder(s)?|building)\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bweight loss\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbrand\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bsuper herbal\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\btreatment\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bcheaper\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bheal(ing|thly)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bcare(ing)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bnurish(es|ing)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bripped\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bfull( movie| film)\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bfree (trial|film|moive|movie|help|assistance)\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?\u003e\\W*\\d){8}",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)the perfect",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)good slim",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)packers",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)movers",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)want to look like",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)wanna look like",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)skin care",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)baba",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)research questionnaire",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)bodyweight",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)wrinkle cream",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bskin\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bexclusive\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)royalty free",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)rolex",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\byou(\\\u0027ll|ll) (learn|get|feel|look)\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)free access",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)loan(s)? available",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)make money",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)got you",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)it is possible",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)this product",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)affordable",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)get free",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)online job",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)(feel|look|taste|get)(s|ing)? (good|nice|amazing|fabulous)",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)how to (feel|look|reduce|buy|increase)",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^also",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)you want",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)lose weight",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)fifa",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)health",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)tell you",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)vashikaran",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)anti( |\\-)?aging",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)losing weight",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"\\+91\\-9950211818",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)nike",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)body weight",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)told you",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)customers? review",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^how to buy",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)Cridssing sing",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^how can we",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)i don\u0027?t use",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)buy(ing)? cheap(er|est)?",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^can you recommend",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)improve your",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bslim\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^no hassle",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"\\bWoW\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)wh(ere|at) ((is|are) the|(can you|to) (get|find|buy|pay)) cheap",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^cheap",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^what is( a)? (fast|cheap|reliable)",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^very (good|cheap|fast)",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)wh(at|o|ere|ich) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand|manufacturer)",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)wow gold",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)^where to buy",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbaba\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)brain enhancement",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)neuro3x",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)vs.*live stream",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"^FREE",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)For Meta",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\d% discount code",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bpune\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bsupplement(s)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"2348064038119",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)natural",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"\\$\\d+",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bmuscle(s)?\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    }
+  {
+    "Regex": "(?i)\\byoga|relax(ing)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbeautiful(est)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bwe lost\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\brolex watch\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\boffer good\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bgood offer\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bskin cream\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bmover(s)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bdelhi\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcolon cleanse\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bis helpful\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bmy huge\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbulky figure\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbangalore\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\byou know\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bget your\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bgot my\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bsix(-pack|pack| pack)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\b(customer|people) review(s)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bhelp(s)? you(r)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bwork out\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbody( building|builder(s)?| builder(s)?|building)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bweight loss\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbrand\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bsuper herbal\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\btreatment\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcheaper\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bheal(ing|thly)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcare(ing)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bnurish(es|ing)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bripped\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfull( movie| film)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfree (trial|film|moive|movie|help|assistance)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)the perfect",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)good slim",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)packers",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)movers",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)want to look like",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)wanna look like",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)skin care",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)baba",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)research questionnaire",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)bodyweight",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)wrinkle cream",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bskin\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bexclusive\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)royalty free",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)rolex",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\byou(\\'ll|ll) (learn|get|feel|look)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)free access",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)loan(s)? available",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)make money",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)got you",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)it is possible",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)this product",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)affordable",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)get free",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)online job",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(feel|look|taste|get)(s|ing)? (good|nice|amazing|fabulous)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^also",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)you want",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)lose weight",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)fifa",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)health",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)tell you",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)vashikaran",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)anti( |\\-)?aging",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)losing weight",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\+91\\-9950211818",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)nike",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)body weight",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)told you",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)customers? review",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^how to buy",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)Cridssing sing",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^how can we",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i don'?t use",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)buy(ing)? cheap(er|est)?",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^can you recommend",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)improve your",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bslim\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^no hassle",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\bWoW\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)wh(ere|at) ((is|are) the|(can you|to) (get|find|buy|pay)) cheap",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^cheap",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^what is( a)? (fast|cheap|reliable)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^very (good|cheap|fast)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)wh(at|o|ere|ich) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand|manufacturer)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)wow gold",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^where to buy",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbaba\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)brain enhancement",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)neuro3x",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)vs.*live stream",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^FREE",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)For Meta",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\d% discount code",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bpune\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bsupplement(s)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "2348064038119",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)natural",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\$\\d+",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 1,
+    "CaughtCount": 1
+  },
+  {
+    "Regex": "(?i)\\bmuscle(s)?\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  }
 ]
