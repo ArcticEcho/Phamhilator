@@ -40,7 +40,16 @@ namespace Phamhilator
 			FilterType = filter;
 			Terms = new HashSet<Term>();
 
-			var data = JsonConvert.DeserializeObject<List<TempTerm>>(File.ReadAllText(DirectoryTools.GetFilterFile(filter)));
+            string path = DirectoryTools.GetFilterFile(filter);
+            List<TempTerm> data;
+            try
+            {
+                data = JsonConvert.DeserializeObject<List<TempTerm>>(File.ReadAllText(path));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Can't read file '{0}'. Reason: {1}", path, ex.Message), ex);
+            }
 
 			foreach (var t in data)
 			{

@@ -33,7 +33,16 @@ namespace Phamhilator
 
 			foreach (var site in sites)
 			{
-				var data = JsonConvert.DeserializeObject<List<TempTerm>>(File.ReadAllText(Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt")));
+                string path = Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt");
+                List<TempTerm> data;
+                try
+                {
+    				data = JsonConvert.DeserializeObject<List<TempTerm>>(File.ReadAllText(path));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(string.Format("Can't read file '{0}'. Reason: {1}", path, ex.Message), ex);
+                }
 
 				foreach (var t in data)
 				{

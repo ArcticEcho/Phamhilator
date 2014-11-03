@@ -55,6 +55,11 @@ namespace Phamhilator
 			}
 			catch (Exception ex)
 			{
+                if (ex is TypeInitializationException && ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
+
 				Clipboard.SetText(ex.ToString());
 
 				MessageBox.Show(ex + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...");

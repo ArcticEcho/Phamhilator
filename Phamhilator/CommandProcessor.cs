@@ -63,9 +63,9 @@ namespace Phamhilator
 				{
 					return PrivilegedUserCommands(command);
 				}
-				catch (Exception)
+				catch (Exception ex)
 				{
-					return new[] { "`Error executing command.`" };
+					return new[] { "`Error executing command.` Reason: " + ex.Message };
 				}		
 			}
 			
