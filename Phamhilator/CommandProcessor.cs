@@ -65,7 +65,7 @@ namespace Phamhilator
 				}
 				catch (Exception ex)
 				{
-					return new[] { "`Error executing command.` Reason: " + ex.Message };
+					return new[] { "`Error executing command. Reason: " + ex.Message };
 				}		
 			}
 			
@@ -430,12 +430,12 @@ namespace Phamhilator
 				{
 					builder.Append("(Sensitivity: " + Math.Round(term.Sensitivity, 1));
 					builder.Append("%. Specificity: " + Math.Round(term.Specificity, 1));
-					builder.Append("%. Ignored: " + Math.Round((term.TPCount + term.FPCount) / term.CaughtCount, 1));
+					builder.Append("%. Ignored: " + Math.Round(term.IgnoredCount / term.CaughtCount, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1) + ") " + term.Regex + "   ");
 				}
 				else
 				{
-					builder.Append("(Ignored: " + Math.Round((term.TPCount + term.FPCount) / term.CaughtCount, 1));
+					builder.Append("(Ignored: " + Math.Round(term.IgnoredCount / term.CaughtCount, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1) + ") " + term.Regex + "   ");
 				}		
 			}
@@ -1411,7 +1411,7 @@ namespace Phamhilator
 
 		private static string TruePositive()
 		{
-			if (commandLower == "tpa")
+			if (commandLower.StartsWith("tpa"))
 			{
 				var reportMessage = GlobalInfo.PostedReports[message.RepliesToMessageID];
 
@@ -1429,7 +1429,7 @@ namespace Phamhilator
 
 			var returnMessage = RegisterTruePositive();
 
-			return commandLower == "tpa" ? "" : returnMessage;
+			return commandLower.StartsWith("tpa") ? "" : returnMessage;
 		}
 
 		private static string RegisterTruePositive()
