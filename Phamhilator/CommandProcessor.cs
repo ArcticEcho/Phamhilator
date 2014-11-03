@@ -376,6 +376,11 @@ namespace Phamhilator
 				return new[] { GetInfo() };
 			}
 
+			if (commandLower == "stats")
+			{
+				return new[] { GetStats() };
+			}
+
 			if (commandLower == "help" || commandLower == "commands")
 			{
 				return new[] { GetHelp() };
@@ -410,12 +415,14 @@ namespace Phamhilator
 
 		private static string GetInfo()
 		{
-			return "`Owners: " + GlobalInfo.Owners + ". Total terms: " + GlobalInfo.TermCount + ". Accuracy threshold: " + GlobalInfo.AccuracyThreshold + "%. Full scan enabled: " + GlobalInfo.FullScanEnabled + ". Posts caught over last 7 days: " + GlobalInfo.PostsCaught + ". Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
+			return "[`Phamhilator`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + GlobalInfo.Owners + ".`";
 		}
 
 		private static string GetStats()
 		{
-			return "``";
+			var ignorePercent = Math.Round(((GlobalInfo.Stats.TotalCheckedPosts - (GlobalInfo.Stats.TotalFPCount + GlobalInfo.Stats.TotalTPCount)) / GlobalInfo.Stats.TotalCheckedPosts) * 100, 1);
+
+			return "`Total terms: " + GlobalInfo.TermCount + ". Posts caught: " + GlobalInfo.PostsCaught + " (last 7 days), " + GlobalInfo.Stats.TotalCheckedPosts + " (total). " + "Reports ignored: " + ignorePercent + "% . Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`";
 		}
 
 		private static string GetTerms()
