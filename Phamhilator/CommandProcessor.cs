@@ -428,14 +428,14 @@ namespace Phamhilator
 			{
 				if (term.TPCount + term.FPCount >= 5)
 				{
-					builder.Append("(Sensitivity: " + Math.Round(term.Sensitivity, 1));
-					builder.Append("%. Specificity: " + Math.Round(term.Specificity, 1));
-					builder.Append("%. Ignored: " + Math.Round(term.IgnoredCount / term.CaughtCount, 1));
+					builder.Append("(Sensitivity: " + Math.Round(term.Sensitivity * 100, 1));
+					builder.Append("%. Specificity: " + Math.Round(term.Specificity * 100, 1));
+					builder.Append("%. Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1) + ") " + term.Regex + "   ");
 				}
 				else
 				{
-					builder.Append("(Ignored: " + Math.Round(term.IgnoredCount / term.CaughtCount, 1));
+					builder.Append("(Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1) + ") " + term.Regex + "   ");
 				}		
 			}
