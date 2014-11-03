@@ -1,17 +1,10 @@
 
-2533519.13334724]http://stackoverflow.com/questions/26570590
 2533519.50547713]http://travel.stackexchange.com/questions/37904
-2533534.19613745]http://stackoverflow.com/questions/20520195
 2533536.0336828]http://stackoverflow.com/questions/26569295
-2533538.05707693]http://askubuntu.com/questions/444175
 2533539.34099319]http://tex.stackexchange.com/a/209113
-2533543.20553291]http://islam.stackexchange.com/questions/18159
 2533543.20553291]http://math.stackexchange.com/questions/991435
-2533545.79336313]http://skeptics.stackexchange.com/questions/23607
 2533547.43617328]http://android.stackexchange.com/questions/85835
-2533547.62280843]http://android.stackexchange.com/questions/85786
 2533556.38998926]http://stackoverflow.com/questions/26571345
-2533560.77631553]http://askubuntu.com/questions/122877
 2534927.86266772]http://sharepoint.stackexchange.com/questions/119174
 2534929.33114666]http://dba.stackexchange.com/questions/81141
 2534932.64191421]http://meta.stackexchange.com/questions/242634
@@ -778,3 +771,4 @@
 2542955.50431595]http://apple.stackexchange.com/questions/154257
 2542955.50463264]http://travel.stackexchange.com/questions/38134
 2542955.50489932]http://dsp.stackexchange.com/questions/18928
+2544391.51660201]http://stackoverflow.com/questions/3747000

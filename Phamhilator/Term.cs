@@ -38,13 +38,13 @@ namespace Phamhilator
 				{
 					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
 
-					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms, Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 				else
 				{
 					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
 
-					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms, Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 
 				File.WriteAllText(file, json);
@@ -68,13 +68,13 @@ namespace Phamhilator
 				{
 					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
 
-					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms, Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 				else
 				{
 					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
 
-					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms, Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 
 				File.WriteAllText(file, json);
@@ -106,13 +106,13 @@ namespace Phamhilator
 				{
 					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
 
-					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms, Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 				else
 				{
 					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
 
-					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms, Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 
 				File.WriteAllText(file, json);
