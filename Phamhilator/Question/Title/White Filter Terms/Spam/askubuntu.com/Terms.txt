@@ -381,7 +381,7 @@
     "Regex": "(?i)fifa",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1011,6 +1011,15 @@
     "Regex": "(?i)get free",
     "IsAuto": false,
     "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)it is possible",
+    "IsAuto": false,
+    "Site": "askubuntu.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

@@ -48,10 +48,10 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "",
-    "Score": 11.0,
+    "Score": 12.0,
     "TPCount": 0,
-    "FPCount": 4,
-    "CaughtCount": 11
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "2348064038119",
@@ -85,6 +85,15 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.1111107,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)filerepairforum",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.2111111,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

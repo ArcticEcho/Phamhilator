@@ -6,7 +6,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)builtwith.com",
@@ -42,7 +42,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 43
+    "CaughtCount": 46
   },
   {
     "Regex": "(?i)tried",
@@ -123,7 +123,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 10,
-    "CaughtCount": 113
+    "CaughtCount": 121
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -204,7 +204,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 6,
-    "CaughtCount": 87
+    "CaughtCount": 98
   },
   {
     "Regex": "^[^a-z]*$",
@@ -240,7 +240,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)i want to",
@@ -249,7 +249,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 12
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)plz help me!",
@@ -291,10 +291,10 @@
     "Regex": "(?i)wh(at|ich).*best",
     "IsAuto": false,
     "Site": "",
-    "Score": 12.0,
+    "Score": 13.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 8
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)credit.card",
@@ -375,7 +375,7 @@
     "Score": 12.0,
     "TPCount": 0,
     "FPCount": 7,
-    "CaughtCount": 143
+    "CaughtCount": 153
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -383,8 +383,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 4
+    "FPCount": 3,
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\b(help|halp)\\b",
@@ -392,8 +392,8 @@
     "Site": "",
     "Score": 14.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 11
+    "FPCount": 4,
+    "CaughtCount": 13
   },
   {
     "Regex": "for\\sfree",
@@ -411,7 +411,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "^(?i).{0,18}$",
@@ -419,7 +419,7 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 11,
-    "CaughtCount": 76
+    "FPCount": 13,
+    "CaughtCount": 82
   }
 ]
