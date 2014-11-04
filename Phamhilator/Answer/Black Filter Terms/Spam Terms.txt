@@ -1,83 +1,83 @@
 [
-    {
-        "Regex":"^((?!\\\\n\\\\n|\\\u003ccode\\\u003e).)*https?://\\w*$",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"^https?://\\w*((?!\\\\n\\\\n|\\\u003ccode\\\u003e).)*$",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)join (today|now|fast|free|exclusive|us)(\\s|.)*https?://",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)recoverydeletedfiles",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"[-\\w]{3}@\\w+\\.",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"2348064038119",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"filerepairforum.com",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)filerepairforum\\.com",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    }
+  {
+    "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*https?://\\w*$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^https?://\\w*((?!\\\\n\\\\n|\\<code\\>).)*$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)join (today|now|fast|free|exclusive|us)(\\s|.)*https?://",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)recoverydeletedfiles",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "[-\\w]{3}@\\w+\\.",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 3,
+    "CaughtCount": 4
+  },
+  {
+    "Regex": "2348064038119",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "filerepairforum.com",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)filerepairforum\\.com",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  }
 ]

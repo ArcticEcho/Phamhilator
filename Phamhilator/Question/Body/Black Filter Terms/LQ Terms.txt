@@ -23,8 +23,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 4
+    "FPCount": 5,
+    "CaughtCount": 45
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -33,6 +33,6 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 2
   }
 ]
