@@ -234,8 +234,6 @@ namespace Phamhilator
 				{
 					Thread.Sleep(500);
 
-					//var chatMessage = GetLatestChatMessage();
-
 					if (lastChatMessage.MessageID == latestChatMessage.MessageID || lastChatMessage.Body != ">>kill-it-with-no-regrets-for-sure")
 					{
 						lastChatMessage = latestChatMessage;
@@ -440,8 +438,6 @@ namespace Phamhilator
 				Parallel.ForEach(posts, post => post.PopulateExtraData());
 			}
 
-			GlobalInfo.Stats.TotalCheckedPosts += posts.Count;
-
 			return posts.ToArray();
 		}
 
@@ -537,6 +533,8 @@ namespace Phamhilator
 				chatMessage.RoomID = GlobalInfo.AnnouncerRoomID;
 				GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
 			}
+
+			GlobalInfo.Stats.TotalCheckedPosts++;
 		}
 
 		private bool SpamAbuseDetected(Post post)
