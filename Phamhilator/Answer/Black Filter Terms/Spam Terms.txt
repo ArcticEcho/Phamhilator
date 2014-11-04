@@ -48,10 +48,10 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "",
-    "Score": 10.0,
+    "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 4
+    "FPCount": 4,
+    "CaughtCount": 11
   },
   {
     "Regex": "2348064038119",
@@ -76,6 +76,15 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "APPLY NOW",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.1111107,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

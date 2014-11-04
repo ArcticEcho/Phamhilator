@@ -1,11 +1,137 @@
 [
-    {
-        "Regex":"(?i)\\bfuck\\b",
-        "IsAuto":false,
-        "Site":"startups.stackexchange.com",
-        "Score":5,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    }
+  {
+    "Regex": "(?i)\\bcrap\\b",
+    "IsAuto": false,
+    "Site": "android.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfuck\\b",
+    "IsAuto": false,
+    "Site": "english.stackexchange.com",
+    "Score": 5.5,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bidiot\\b",
+    "IsAuto": false,
+    "Site": "english.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcrap\\b",
+    "IsAuto": false,
+    "Site": "english.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcrap\\b",
+    "IsAuto": false,
+    "Site": "gaming.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bpenis\\b",
+    "IsAuto": false,
+    "Site": "islam.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bshit\\b",
+    "IsAuto": false,
+    "Site": "philosophy.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcrap\\b",
+    "IsAuto": false,
+    "Site": "rpg.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bwhore\\b",
+    "IsAuto": false,
+    "Site": "scifi.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcrap\\b",
+    "IsAuto": false,
+    "Site": "security.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bidiot\\b",
+    "IsAuto": false,
+    "Site": "security.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bshit\\b",
+    "IsAuto": false,
+    "Site": "serverfault.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfuck\\b",
+    "IsAuto": false,
+    "Site": "startups.stackexchange.com",
+    "Score": 5.5,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bshit\\b",
+    "IsAuto": false,
+    "Site": "webapps.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbitch\\b",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  }
 ]

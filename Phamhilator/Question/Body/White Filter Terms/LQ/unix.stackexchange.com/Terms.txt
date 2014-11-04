@@ -1,11 +1,263 @@
 [
-    {
-        "Regex":"(?s-m)^.{0,150}$",
-        "IsAuto":false,
-        "Site":"unix.stackexchange.com",
-        "Score":5,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    }
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "android.stackexchange.com",
+    "Score": 17.5384617,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,200}$",
+    "IsAuto": false,
+    "Site": "askubuntu.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "askubuntu.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "askubuntu.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "biology.stackexchange.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)pl(z|s|ease)",
+    "IsAuto": false,
+    "Site": "bricks.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "codegolf.stackexchange.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "codereview.stackexchange.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "gaming.stackexchange.com",
+    "Score": 13.25238,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "graphicdesign.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 16.4999981,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "mechanics.stackexchange.com",
+    "Score": 6.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "movies.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,200}$",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "pt.stackoverflow.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "raspberrypi.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "raspberrypi.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 6.25,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,200}$",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\bpl[sz]+\\b",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "tex.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "tex.stackexchange.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "unix.stackexchange.com",
+    "Score": 11.7857141,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "webapps.stackexchange.com",
+    "Score": 13.6875,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "webmasters.stackexchange.com",
+    "Score": 11.25,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  }
 ]

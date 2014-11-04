@@ -21,18 +21,18 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "",
-    "Score": 10.0,
+    "Score": 22.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 45
+    "FPCount": 2,
+    "CaughtCount": 10
   },
   {
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "",
-    "Score": 10.0,
+    "Score": 11.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   }
 ]

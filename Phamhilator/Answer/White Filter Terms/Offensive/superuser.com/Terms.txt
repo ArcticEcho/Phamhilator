@@ -1,90 +1,27 @@
 [
   {
-    "Regex": "(?i)sumer",
+    "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "android.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)kolcak",
+    "Regex": "(?i)\\bfuck\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "english.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)sümer",
+    "Regex": "(?i)\\bidiot\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)kolçak",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)asshole",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)piss",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)penis",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)bumhole",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)bastard",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bbitch\\b",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "english.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -92,35 +29,26 @@
   {
     "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "english.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)fuck",
+    "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "gaming.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)whore",
+    "Regex": "(?i)\\bpenis\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "MTS789",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "islam.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -128,28 +56,82 @@
   {
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "philosophy.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)officialimeiunlock",
+    "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "rpg.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "\\.com",
+    "Regex": "(?i)\\bwhore\\b",
     "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
+    "Site": "scifi.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcrap\\b",
+    "IsAuto": false,
+    "Site": "security.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bidiot\\b",
+    "IsAuto": false,
+    "Site": "security.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bshit\\b",
+    "IsAuto": false,
+    "Site": "serverfault.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfuck\\b",
+    "IsAuto": false,
+    "Site": "startups.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bshit\\b",
+    "IsAuto": false,
+    "Site": "webapps.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbitch\\b",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]
