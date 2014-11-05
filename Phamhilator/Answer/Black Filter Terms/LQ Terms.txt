@@ -57,7 +57,7 @@
     "Regex": "(?i)pl(ease|s|z) help",
     "IsAuto": false,
     "Site": "",
-    "Score": 12.0,
+    "Score": 13.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -75,18 +75,18 @@
     "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
     "IsAuto": false,
     "Site": "",
-    "Score": 13.0,
+    "Score": 15.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 11
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "",
-    "Score": 26.0,
+    "Score": 30.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 5
   }
 ]

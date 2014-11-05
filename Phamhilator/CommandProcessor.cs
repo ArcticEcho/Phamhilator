@@ -26,9 +26,16 @@ namespace Phamhilator
 			{
 				command = input.Body.Remove(0, 2).TrimStart();
 			}
-			else if (input.Body.ToLowerInvariant().StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant()) && GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID))
+			else if (input.Body.ToLowerInvariant().StartsWith("@" + GlobalInfo.BotUsername.ToLowerInvariant()))
 			{
-				command = input.Body.Remove(0, GlobalInfo.BotUsername.Length + 1).TrimStart();
+				if (GlobalInfo.PostedReports.ContainsKey(input.RepliesToMessageID))
+				{
+					command = input.Body.Remove(0, GlobalInfo.BotUsername.Length + 1).TrimStart();
+				}
+				else
+				{
+					return new[] { "`Unable to locate message ID.`" };
+				}
 			}
 			else
 			{
@@ -1900,9 +1907,11 @@ namespace Phamhilator
 
 		private static string AddUser(string command)
 		{
-			var id = command.Replace("add user", "").Trim();
+			var id = int.Parse(command.Replace("add user", "").Trim());
 
-			UserAccess.AddUser(int.Parse(id));
+			if (UserAccess.CommandAccessUsers.Contains(id)) { return "`User already has command access.`"; }
+
+			UserAccess.AddUser(id);
 
 			return "`User added.`";
 		}
@@ -1911,7 +1920,9 @@ namespace Phamhilator
 		{
 			var id = command.Replace("ban user", "").Trim();
 
-			return BannedUsers.AddUser(id) ? "`User banned.`" : "`Warning: banned users dir is missing. Unable to add user.`";
+			if (BannedUsers.IsUserBanned(id)) { return "`User is already banned.`"; }
+
+			return BannedUsers.AddUser(id) ? "`User banned.`" : "`Warning: banned users dir is missing (unable to add user). All commands have been disabled until the issue has been resolved.`";
 		}
 
 

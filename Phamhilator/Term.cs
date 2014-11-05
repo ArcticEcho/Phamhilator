@@ -85,7 +85,9 @@ namespace Phamhilator
 		{
 			get
 			{
-				return CaughtCount - (TPCount + FPCount);
+				var igCount = CaughtCount - (TPCount + FPCount);
+
+				return igCount < 0 ? 0 : igCount;
 			}
 		}
 
@@ -131,7 +133,7 @@ namespace Phamhilator
 		{
 			get
 			{
-				return ((GlobalInfo.Stats.TotalFPCount - FPCount) * CaughtCount / (TPCount + FPCount)) / (GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));
+				return ((GlobalInfo.Stats.TotalFPCount - FPCount) * CaughtCount / (TPCount + FPCount)) / (GlobalInfo.Stats.TotalCheckedPosts - GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));
 			}
 		}
 
