@@ -34,7 +34,7 @@ namespace Phamhilator
 				}
 				else
 				{
-					return new[] { "`Unable to locate message ID.`" };
+					return new[] { input.RoomID == GlobalInfo.ChatRoomID ? "`Unable to locate message ID.`" : "" };
 				}
 			}
 			else

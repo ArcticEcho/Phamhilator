@@ -32,8 +32,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "officialimeiunlock",
@@ -171,13 +171,13 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "avoir",
+    "Regex": "\\bavoir\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)BeautyLabs",
@@ -363,10 +363,10 @@
     "Regex": "(?i)Pink Garcinia",
     "IsAuto": false,
     "Site": "",
-    "Score": 10.0,
+    "Score": 11.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)do you want to.*http://",
@@ -406,6 +406,33 @@
   },
   {
     "Regex": "hotellyonouest",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "seojobtraining",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)BrettAHart",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "android-recovery\\.net",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,

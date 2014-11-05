@@ -125,6 +125,8 @@ namespace Phamhilator
 		{
 			get
 			{
+				// Loving formulated by Jan Dvorak (http://stackoverflow.com/users/499214/jan-dvorak).
+
 				return (TPCount * CaughtCount / (FPCount + TPCount)) / (GlobalInfo.Stats.TotalCheckedPosts - GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));			
 			}
 		}
@@ -133,7 +135,9 @@ namespace Phamhilator
 		{
 			get
 			{
-				return ((GlobalInfo.Stats.TotalFPCount - FPCount) * CaughtCount / (TPCount + FPCount)) / (GlobalInfo.Stats.TotalCheckedPosts - GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));
+				// Loving formulated by Jan Dvorak (http://stackoverflow.com/users/499214/jan-dvorak).
+
+				return 1 - (FPCount * CaughtCount / (TPCount + FPCount)) / (GlobalInfo.Stats.TotalCheckedPosts - GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));
 			}
 		}
 

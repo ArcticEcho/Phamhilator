@@ -3,7 +3,7 @@
     "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.60000038,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -30,7 +30,7 @@
     "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -48,7 +48,7 @@
     "Regex": "(?i)\\bpenis\\b",
     "IsAuto": false,
     "Site": "islam.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -129,6 +129,24 @@
     "Regex": "(?i)\\bbitch\\b",
     "IsAuto": false,
     "Site": "superuser.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)you.{0,30}fat",
+    "IsAuto": false,
+    "Site": "rpg.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)you.{0,15}fat",
+    "IsAuto": false,
+    "Site": "cooking.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

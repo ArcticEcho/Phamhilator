@@ -55,7 +55,7 @@ namespace Phamhilator
 				var realTerm = terms.GetRealTerm(oldTerm, site);
 
 				terms.Remove(realTerm);
-				terms.Add(new Term(filter, newTerm, realTerm.Score, realTerm.Site, realTerm.IsAuto));
+				terms.Add(new Term(filter, newTerm, realTerm.Score, realTerm.Site, realTerm.IsAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 			}
 
 			File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
@@ -79,7 +79,7 @@ namespace Phamhilator
 			}
 
 			terms.Remove(realTerm);
-			terms.Add(new Term(filter, realTerm.Regex, newScore, realTerm.Site, realTerm.IsAuto));
+			terms.Add(new Term(filter, realTerm.Regex, newScore, realTerm.Site, realTerm.IsAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 
 			File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
 		}
@@ -92,7 +92,7 @@ namespace Phamhilator
 			var realTerm = terms.GetRealTerm(term, site);
 
 			terms.Remove(realTerm);
-			terms.Add(new Term(filter, realTerm.Regex, realTerm.Score, realTerm.Site, isAuto));
+			terms.Add(new Term(filter, realTerm.Regex, realTerm.Score, realTerm.Site, isAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 
 			File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
 		}

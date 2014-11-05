@@ -15,25 +15,25 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "",
-    "Score": 25.0,
+    "Score": 29.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 5
+    "FPCount": 3,
+    "CaughtCount": 39
   },
   {
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "",
-    "Score": 13.0,
+    "Score": 14.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 0,
+    "CaughtCount": 3
   },
   {
     "Regex": "enter link description here",

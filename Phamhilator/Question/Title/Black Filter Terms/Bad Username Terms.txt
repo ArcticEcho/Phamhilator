@@ -178,5 +178,14 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "AvivahcCiccone",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]

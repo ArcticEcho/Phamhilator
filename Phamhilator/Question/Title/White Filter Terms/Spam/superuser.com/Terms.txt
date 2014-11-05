@@ -66,7 +66,7 @@
     "Regex": "(?i)\\bbrand\\b",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -84,7 +84,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 7.8,
+    "Score": 9.6,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -129,7 +129,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "codereview.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 8.27077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -345,7 +345,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 8.27077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -507,7 +507,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 8.27077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -516,7 +516,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 9.419489,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -615,7 +615,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "patents.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 9.419489,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -651,7 +651,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 7.20000029,
+    "Score": 8.27077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -714,7 +714,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 7.20000029,
+    "Score": 8.27077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -732,7 +732,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "sharepoint.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 8.27077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -777,7 +777,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 8.64,
+    "Score": 9.924923,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -858,7 +858,7 @@
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -867,7 +867,7 @@
     "Regex": "(?i)^how can we",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -894,7 +894,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 7.20000029,
+    "Score": 8.27077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -903,7 +903,7 @@
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -939,7 +939,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "tex.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 7.75384665,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -957,7 +957,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "tridion.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 7.75384665,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -975,7 +975,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 7.20000029,
+    "Score": 7.75384665,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1020,6 +1020,24 @@
     "Regex": "(?i)it is possible",
     "IsAuto": false,
     "Site": "askubuntu.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)rolex",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(feel|look|taste|get)(s|ing)? (good|nice|amazing|fabulous)",
+    "IsAuto": false,
+    "Site": "graphicdesign.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
