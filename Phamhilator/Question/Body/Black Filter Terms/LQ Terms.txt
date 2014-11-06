@@ -21,10 +21,10 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "",
-    "Score": 29.0,
+    "Score": 31.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 39
+    "FPCount": 4,
+    "CaughtCount": 90
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -33,7 +33,7 @@
     "Score": 14.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "enter link description here",
@@ -49,6 +49,15 @@
     "IsAuto": false,
     "Site": "",
     "Score": 13.75,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 1
+  },
+  {
+    "Regex": "^[^ ]*$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 15.083333,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 33.94944,
+    "Score": 38.4333344,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -975,7 +975,7 @@
     "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 7.0,
+    "Score": 7.4666667,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1174,6 +1174,15 @@
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 6.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(\\S)\\1{3}",
+    "IsAuto": false,
+    "Site": "sqa.stackexchange.com",
+    "Score": 8.436363,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

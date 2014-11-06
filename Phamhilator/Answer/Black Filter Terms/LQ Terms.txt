@@ -75,19 +75,19 @@
     "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
     "IsAuto": false,
     "Site": "",
-    "Score": 15.0,
+    "Score": 16.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 9
+    "CaughtCount": 10
   },
   {
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "",
-    "Score": 53.0,
+    "Score": 60.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 17
+    "FPCount": 2,
+    "CaughtCount": 40
   },
   {
     "Regex": "(?i)^please",
@@ -97,5 +97,23 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "^[^ ]*$",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 15.8727274,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(\\S)\\1{3}",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 16.8727264,
+    "TPCount": 0,
+    "FPCount": 4,
+    "CaughtCount": 33
   }
 ]

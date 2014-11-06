@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 14.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 5
+    "FPCount": 2,
+    "CaughtCount": 8
   },
   {
     "Regex": "2348064038119",
@@ -106,5 +106,14 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "datarecovery",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.6277781,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 1
   }
 ]

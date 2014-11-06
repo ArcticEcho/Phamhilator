@@ -195,7 +195,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)ELITE TEST 360",
@@ -436,6 +436,42 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)blackfridaysales",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)maidenhead",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)Youthful Radiance",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "datarecovery",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
