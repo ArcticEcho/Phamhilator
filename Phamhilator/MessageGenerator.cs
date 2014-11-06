@@ -10,8 +10,8 @@ namespace Phamhilator
 	{
 		public static string GetQReport(QuestionAnalysis info, Question post)
 		{
-			var title = String.IsNullOrEmpty(post.Title) ? "Unable to get post excerpt." : post.Title;
 			var author = String.IsNullOrEmpty(post.AuthorLink) ? post.AuthorName : "[" + post.AuthorName + "](" + post.AuthorLink + ")";
+			var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : post.Title;
 			var fullScanFailed = post.PopulateExtraDataFailed ? " FSF" : "";
 
 			switch (info.Type)
@@ -31,7 +31,7 @@ namespace Phamhilator
 		public static string GetAReport(AnswerAnalysis info, Answer post)
 		{
 			var author = String.IsNullOrEmpty(post.AuthorLink) ? post.AuthorName : "[" + post.AuthorName + "](" + post.AuthorLink + ")";
-			var title = String.IsNullOrEmpty(post.Title) ? "Unable to get post excerpt." : post.Title;
+			var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : post.Title;
 
 			return " **A** (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + title + "](" + post.URL + "), by " + author + ", on `" + post.Site + "`.";
 		}

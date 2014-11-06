@@ -48,10 +48,10 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "",
-    "Score": 14.0,
+    "Score": 15.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 8
+    "FPCount": 3,
+    "CaughtCount": 16
   },
   {
     "Regex": "2348064038119",

@@ -39,6 +39,8 @@ namespace Phamhilator
 
 				InitializeComponent();
 
+				PostPersistence.Initialise();
+
 				GlobalInfo.ChatWb = chatWb;
 				GlobalInfo.AnnounceWb = announceWb;
 
@@ -97,21 +99,15 @@ namespace Phamhilator
 							{
 								html = StringDownloader.DownloadString("http://stackexchange.com/questions?tab=realtime");
 							}
-							catch (Exception)
-							{
-								return;
-							}
+							catch (Exception) { return; }
 
-							if (html.IndexOf("hot-question-site-icon", StringComparison.Ordinal) == -1)
-							{
-								return;
-							}
+							if (html.IndexOf("hot-question-site-icon", StringComparison.Ordinal) == -1) { return; }
 
 							var posts = GetAllPosts(html);
 
 							if (posts.Length != 0)
 							{
-								Task.Factory.StartNew(() => CheckPosts(posts));
+								/*Task.Factory.StartNew(() => */CheckPosts(posts)/*)*/;
 							}
 
 							do
@@ -337,10 +333,7 @@ namespace Phamhilator
 			{
 				html = doc.documentElement.InnerHtml;
 			}
-			catch (Exception)
-			{
-				return;
-			}
+			catch (Exception) { return; }
 
 			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1 && html.Replace("\"", "").IndexOf("class=\"username\"", StringComparison.Ordinal) == -1) { return; }
 
@@ -362,10 +355,7 @@ namespace Phamhilator
 			{
 				html = doc.documentElement.InnerHtml;
 			}
-			catch (Exception)
-			{
-				return new MessageInfo();
-			}
+			catch (Exception) { return new MessageInfo(); }
 
 			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1 && html.Replace("\"", "").IndexOf("class=\"username\"", StringComparison.Ordinal) == -1) { return new MessageInfo(); }
 
@@ -467,7 +457,7 @@ namespace Phamhilator
 
 			if (SpamAbuseDetected(p))
 			{
-				chatMessage = new MessageInfo { Body = "[Spammer abuse](" + p.URL + ").", RoomID = GlobalInfo.ChatRoomID };
+				chatMessage = new MessageInfo { Body = "[Spammer abuse detected](" + p.URL + ").", Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.ChatRoomID };
 
 				GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
 				PostPersistence.AddPost(p);
@@ -539,7 +529,7 @@ namespace Phamhilator
 
 		private bool SpamAbuseDetected(Post post)
 		{
-			if (PostPersistence.Messages[0].AuthorName != null && IsDefaultUsername(post.AuthorName) && IsDefaultUsername(PostPersistence.Messages[0].AuthorName))
+			if (PostPersistence.Messages.Count != 0 && PostPersistence.Messages[0].AuthorName != null && IsDefaultUsername(PostPersistence.Messages[0].AuthorName) && IsDefaultUsername(post.AuthorName))
 			{
 				var latestUsernameId = int.Parse(post.AuthorName.Remove(0, 4));
 				var lastMessageUsernameId = int.Parse(PostPersistence.Messages[0].AuthorName.Remove(0, 4));

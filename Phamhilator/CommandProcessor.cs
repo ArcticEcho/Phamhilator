@@ -296,7 +296,7 @@ namespace Phamhilator
 
 			if (commandLower == "fp why")
 			{
-				return new[] { GetTerms(), FalsePositive() };
+				return new[] { FalsePositive(), GetTerms() };
 			}
 
 			if (commandLower == "tp" || commandLower == "tpa")
@@ -306,7 +306,7 @@ namespace Phamhilator
 
 			if (commandLower == "tp why" || commandLower == "tpa why")
 			{
-				return new[] { GetTerms(), TruePositive() };
+				return new[] { TruePositive(), GetTerms() };
 			}
 
 			# endregion
@@ -1922,7 +1922,7 @@ namespace Phamhilator
 
 			if (BannedUsers.IsUserBanned(id)) { return "`User is already banned.`"; }
 
-			return BannedUsers.AddUser(id) ? "`User banned.`" : "`Warning: banned users dir is missing (unable to add user). All commands have been disabled until the issue has been resolved.`";
+			return BannedUsers.AddUser(id) ? "`User banned.`" : "`Warning: the banned users file is missing (unable to add user). All commands have been disabled until the issue has been resolved.`";
 		}
 
 

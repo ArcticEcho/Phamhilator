@@ -231,7 +231,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 5
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)\\bcheaper\\b",
@@ -311,8 +311,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 3
+    "FPCount": 3,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)good slim",
@@ -554,8 +554,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 8
+    "FPCount": 6,
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)^also",
@@ -707,8 +707,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 6,
-    "CaughtCount": 10
+    "FPCount": 9,
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 6,
-    "CaughtCount": 17
+    "FPCount": 8,
+    "CaughtCount": 19
   },
   {
     "Regex": "\\$\\d+",
@@ -960,7 +960,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 8,
-    "CaughtCount": 36
+    "CaughtCount": 38
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -973,6 +973,15 @@
   },
   {
     "Regex": "(?i)high quality",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.1574078,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^buy\\s",
     "IsAuto": false,
     "Site": "",
     "Score": 10.1574078,
