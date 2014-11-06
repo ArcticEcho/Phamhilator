@@ -804,7 +804,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 8.035714,
+    "Score": 9.035714,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -921,7 +921,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 6.88775539,
+    "Score": 7.88775539,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -948,6 +948,24 @@
     "Regex": "(?i)\\bskin\\b",
     "IsAuto": false,
     "Site": "writers.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "datarecovery",
+    "IsAuto": false,
+    "Site": "raspberrypi.stackexchange.com",
+    "Score": 5.313889,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)join (today|now|fast|free|exclusive|us)(\\s|.)*https?://",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

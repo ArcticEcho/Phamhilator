@@ -3,7 +3,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 27.1048927,
+    "Score": 28.699297,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -30,7 +30,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 12.99995,
+    "Score": 13.7646532,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -39,7 +39,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 12.99995,
+    "Score": 13.7646532,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -57,7 +57,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 12.99995,
+    "Score": 13.7646532,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -66,7 +66,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "codereview.stackexchange.com",
-    "Score": 12.99995,
+    "Score": 13.7646532,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -75,7 +75,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 16.832531,
+    "Score": 17.82268,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -111,7 +111,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 19.1999321,
+    "Score": 21.35791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -147,7 +147,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "physics.stackexchange.com",
-    "Score": 12.99995,
+    "Score": 13.3823023,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -156,7 +156,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 14.1073542,
+    "Score": 15.5516882,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -201,7 +201,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 12.99995,
+    "Score": 13.3823023,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -228,7 +228,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "tex.stackexchange.com",
-    "Score": 12.99995,
+    "Score": 13.3823023,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -237,7 +237,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 12.99995,
+    "Score": 13.3823023,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -246,7 +246,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 15.8166084,
+    "Score": 16.2818031,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -255,7 +255,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "webmasters.stackexchange.com",
-    "Score": 12.99995,
+    "Score": 13.3823023,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

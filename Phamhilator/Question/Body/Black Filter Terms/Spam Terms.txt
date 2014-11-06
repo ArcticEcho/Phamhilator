@@ -177,7 +177,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 4
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)BeautyLabs",
@@ -478,6 +478,15 @@
   },
   {
     "Regex": "(?i)call\\s\\d",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\sCLICK HERE\\s",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,

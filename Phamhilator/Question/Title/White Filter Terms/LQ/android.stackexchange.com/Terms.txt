@@ -57,7 +57,7 @@
     "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -75,7 +75,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 6.0,
+    "Score": 6.46153831,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -894,7 +894,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "gis.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1578,7 +1578,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "puzzling.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

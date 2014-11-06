@@ -48,7 +48,7 @@
     "Regex": "(?i)\\bbrand\\b",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -66,7 +66,7 @@
     "Regex": "(?i)\\bbrand\\b",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 6.60000038,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -84,7 +84,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 9.6,
+    "Score": 10.2000008,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -129,7 +129,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "codereview.stackexchange.com",
-    "Score": 7.75384665,
+    "Score": 8.238462,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -345,7 +345,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 7.75384665,
+    "Score": 8.238462,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -498,7 +498,7 @@
     "Regex": "(?i)\\bbrand\\b",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -507,7 +507,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 7.75384665,
+    "Score": 8.238462,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -516,7 +516,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 8.83077049,
+    "Score": 9.382693,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -615,7 +615,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "patents.stackexchange.com",
-    "Score": 8.83077049,
+    "Score": 9.382693,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -651,7 +651,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 7.75384665,
+    "Score": 8.238462,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -714,7 +714,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 7.75384665,
+    "Score": 8.238462,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -732,7 +732,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "sharepoint.stackexchange.com",
-    "Score": 7.75384665,
+    "Score": 8.238462,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -777,7 +777,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 9.304615,
+    "Score": 9.886153,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -840,7 +840,7 @@
     "Regex": "(?i)\\bbrand\\b",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1056,6 +1056,15 @@
     "Regex": "(?i)\\bgood offer\\b",
     "IsAuto": false,
     "Site": "workplace.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bslim\\b",
+    "IsAuto": false,
+    "Site": "fitness.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
