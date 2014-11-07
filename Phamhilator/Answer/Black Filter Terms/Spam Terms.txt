@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 0,
-    "FPCount": 8,
-    "CaughtCount": 23
+    "TPCount": 2,
+    "FPCount": 13,
+    "CaughtCount": 30
   },
   {
     "Regex": "2348064038119",
@@ -115,5 +115,32 @@
     "TPCount": 0,
     "FPCount": 1,
     "CaughtCount": 2
+  },
+  {
+    "Regex": "(?i)Do you want to become",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)earn.{0,30}\\d",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)Join the Illuminati",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]

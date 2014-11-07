@@ -77,8 +77,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 3
+    "FPCount": 5,
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)\\bfag\\b",

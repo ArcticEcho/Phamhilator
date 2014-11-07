@@ -37,23 +37,19 @@ namespace Phamhilator
 				{
 					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
 
-					var tempTerms = new HashSet<Term>(GlobalInfo.BlackFilters[Type].Terms);
+					GlobalInfo.BlackFilters[Type].Terms.Remove(this);
+					GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
 
-					tempTerms.Remove(this);
-					tempTerms.Add(new Term(Type, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
-
-					json = JsonConvert.SerializeObject(tempTerms.ToTempTerms(), Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 				else
 				{
 					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
 
-					var tempTerms = new HashSet<Term>(GlobalInfo.WhiteFilters[Type].Terms);
+					GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
+					GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
 
-					tempTerms.Remove(this);
-					tempTerms.Add(new Term(Type, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
-
-					json = JsonConvert.SerializeObject(tempTerms.ToTempTerms(), Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 
 				tpCount = value;
@@ -77,23 +73,19 @@ namespace Phamhilator
 				{
 					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
 
-					var tempTerms = new HashSet<Term>(GlobalInfo.BlackFilters[Type].Terms);
+					GlobalInfo.BlackFilters[Type].Terms.Remove(this);
+					GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
 
-					tempTerms.Remove(this);
-					tempTerms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
-
-					json = JsonConvert.SerializeObject(tempTerms.ToTempTerms(), Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 				else
 				{
 					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
 
-					var tempTerms = new HashSet<Term>(GlobalInfo.WhiteFilters[Type].Terms);
+					GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
+					GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
 
-					tempTerms.Remove(this);
-					tempTerms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
-
-					json = JsonConvert.SerializeObject(tempTerms.ToTempTerms(), Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				} 
 				
 				fpCount = value;
@@ -117,23 +109,19 @@ namespace Phamhilator
 				{
 					if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
 
-					var tempTerms = new HashSet<Term>(GlobalInfo.BlackFilters[Type].Terms);
+					GlobalInfo.BlackFilters[Type].Terms.Remove(this);
+					GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
 
-					tempTerms.Remove(this);
-					tempTerms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
-
-					json = JsonConvert.SerializeObject(tempTerms.ToTempTerms(), Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 				else
 				{
 					if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
 
-					var tempTerms = new HashSet<Term>(GlobalInfo.WhiteFilters[Type].Terms);
+					GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
+					GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
 
-					tempTerms.Remove(this);
-					tempTerms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
-
-					json = JsonConvert.SerializeObject(tempTerms.ToTempTerms(), Formatting.Indented);
+					json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
 				}
 
 				caughtCount = value;

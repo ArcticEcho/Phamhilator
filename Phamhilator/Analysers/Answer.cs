@@ -12,8 +12,10 @@ namespace Phamhilator.Analysers
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms)
+			for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.Count; i++)
 			{
+				var blackTerm = GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].Terms.ElementAt(i);
+
 				if (blackTerm.Regex.IsMatch(post.Body))
 				{
 					info.Accuracy += blackTerm.Score;
@@ -58,8 +60,10 @@ namespace Phamhilator.Analysers
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms)
+			for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.Count; i++)
 			{
+				var blackTerm = GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].Terms.ElementAt(i);
+
 				if (blackTerm.Regex.IsMatch(post.Body))
 				{
 					info.Accuracy += blackTerm.Score;
@@ -104,8 +108,10 @@ namespace Phamhilator.Analysers
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms)
+			for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.Count; i++)
 			{
+				var blackTerm = GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].Terms.ElementAt(i);
+
 				if (blackTerm.Regex.IsMatch(post.Body))
 				{
 					info.Accuracy += blackTerm.Score;
@@ -150,8 +156,10 @@ namespace Phamhilator.Analysers
 
 			// Loop over blacklist.
 
-			foreach (var blackTerm in GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms)
+			for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.Count; i++)
 			{
+				var blackTerm = GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.ElementAt(i);
+
 				if (blackTerm.Regex.IsMatch(post.AuthorName))
 				{
 					info.Accuracy += blackTerm.Score;
