@@ -84,7 +84,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 10.2000008,
+    "Score": 10.1647062,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -120,7 +120,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "buddhism.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -129,7 +129,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "codereview.stackexchange.com",
-    "Score": 8.238462,
+    "Score": 8.209955,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -246,7 +246,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -345,7 +345,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 8.238462,
+    "Score": 8.209955,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -390,7 +390,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "gardening.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -489,7 +489,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -507,7 +507,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 8.238462,
+    "Score": 10.3276033,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -516,7 +516,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 9.382693,
+    "Score": 9.350227,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -606,7 +606,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "outdoors.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -615,7 +615,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "patents.stackexchange.com",
-    "Score": 9.382693,
+    "Score": 9.350227,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -633,7 +633,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "pets.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -651,7 +651,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 8.238462,
+    "Score": 8.209955,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -705,7 +705,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "scifi.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -714,7 +714,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 8.238462,
+    "Score": 8.209955,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -732,7 +732,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "sharepoint.stackexchange.com",
-    "Score": 8.238462,
+    "Score": 8.209955,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -822,7 +822,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -984,7 +984,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "windowsphone.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1002,7 +1002,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "worldbuilding.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1065,6 +1065,15 @@
     "Regex": "(?i)\\bslim\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^can you recommend",
+    "IsAuto": false,
+    "Site": "sports.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

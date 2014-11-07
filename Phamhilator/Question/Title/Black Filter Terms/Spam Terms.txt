@@ -255,10 +255,10 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "",
-    "Score": 11.0,
+    "Score": 13.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -300,10 +300,10 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "",
-    "Score": 17.0,
+    "Score": 18.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 4
+    "FPCount": 3,
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)the perfect",
@@ -363,10 +363,10 @@
     "Regex": "(?i)skin care",
     "IsAuto": false,
     "Site": "",
-    "Score": 11.0,
+    "Score": 12.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)baba",
@@ -408,10 +408,10 @@
     "Regex": "(?i)\\bskin\\b",
     "IsAuto": false,
     "Site": "",
-    "Score": 11.0,
+    "Score": 12.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 3
+    "FPCount": 3,
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -572,8 +572,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 4
+    "FPCount": 3,
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)lose weight",
@@ -600,7 +600,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)tell you",
@@ -735,7 +735,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)improve your",
@@ -761,8 +761,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 6
+    "FPCount": 2,
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)^no hassle",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 8,
-    "CaughtCount": 20
+    "FPCount": 10,
+    "CaughtCount": 25
   },
   {
     "Regex": "\\$\\d+",
@@ -960,7 +960,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 8,
-    "CaughtCount": 43
+    "CaughtCount": 46
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",

@@ -66,19 +66,19 @@
     "Regex": "filerepairforum.com",
     "IsAuto": false,
     "Site": "",
-    "Score": 11.0,
+    "Score": 12.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)filerepairforum\\.com",
     "IsAuto": false,
     "Site": "",
-    "Score": 11.0,
+    "Score": 12.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "APPLY NOW",
@@ -94,9 +94,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.2111111,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)mobogenie",

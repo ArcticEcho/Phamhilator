@@ -55,7 +55,7 @@ namespace Phamhilator
 
 			var endIndex = html.IndexOf("</a>", startIndex, StringComparison.Ordinal);
 
-			return escapeChars.Replace(WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex).Trim()), "");
+			return escapeChars.Replace(WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex)), "").Trim();
 		}
 
 		public static string GetSite(string postURL)
@@ -196,7 +196,7 @@ namespace Phamhilator
 
 			var endIndex = html.IndexOf("<", startIndex, StringComparison.Ordinal);
 
-			return escapeChars.Replace(WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex)), "");
+			return escapeChars.Replace(WebUtility.HtmlDecode(html.Substring(startIndex, endIndex - startIndex)), "").Trim();
 		}
 
 		public static string GetAnswerLink(string html, string questionURL)

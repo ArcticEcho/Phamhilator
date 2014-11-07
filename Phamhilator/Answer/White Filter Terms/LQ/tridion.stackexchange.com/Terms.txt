@@ -1,6 +1,6 @@
 [
   {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
+    "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
     "Score": 5.0,
@@ -9,34 +9,34 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
+    "Regex": "(?i)(need|some)( halp| help| answer)",
     "IsAuto": false,
-    "Site": "academia.stackexchange.com",
+    "Site": "anime.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h",
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
-    "Site": "android.stackexchange.com",
+    "Site": "anime.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bbrand\\b",
+    "Regex": "(?i:need help|help me)",
     "IsAuto": false,
-    "Site": "android.stackexchange.com",
-    "Score": 5.5,
+    "Site": "anime.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
     "Score": 5.0,
@@ -45,25 +45,34 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bbrand\\b",
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
-    "Site": "apple.stackexchange.com",
+    "Site": "arduino.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
-    "Site": "apple.stackexchange.com",
+    "Site": "arduino.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bbrand\\b",
+    "Regex": "(?i)\\b(help|halp)\\b",
+    "IsAuto": false,
+    "Site": "askubuntu.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,60}$",
     "IsAuto": false,
     "Site": "askubuntu.com",
     "Score": 6.0,
@@ -72,7 +81,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "askubuntu.com",
     "Score": 5.0,
@@ -81,34 +90,43 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
-    "IsAuto": false,
-    "Site": "askubuntu.com",
-    "Score": 10.1647062,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\byoga|relax(ing)?\\b",
-    "IsAuto": false,
-    "Site": "askubuntu.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bmuscle(s)?\\b",
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bexclusive\\b",
+    "Regex": "(?i)\\berror(s)?\\b",
+    "IsAuto": false,
+    "Site": "bitcoin.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "bitcoin.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "blender.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)newbie",
     "IsAuto": false,
     "Site": "boardgames.stackexchange.com",
     "Score": 5.0,
@@ -117,34 +135,97 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcare(ing)?\\b",
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
-    "Site": "buddhism.stackexchange.com",
-    "Score": 5.41666651,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
-    "IsAuto": false,
-    "Site": "codereview.stackexchange.com",
-    "Score": 8.209955,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bskin\\b",
-    "IsAuto": false,
-    "Site": "cooking.stackexchange.com",
+    "Site": "boardgames.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "boardgames.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "chess.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "chess.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "christianity.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,150}$",
+    "IsAuto": false,
+    "Site": "christianity.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,80}$",
+    "IsAuto": false,
+    "Site": "codegolf.stackexchange.com",
+    "Score": 40.355,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "crypto.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\b(help|halp)\\b",
+    "IsAuto": false,
+    "Site": "crypto.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "cs.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "cs50.stackexchange.com",
     "Score": 5.0,
@@ -153,7 +234,34 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "cs50.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bh(i|ello)\\b",
+    "IsAuto": false,
+    "Site": "cs50.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "cstheory.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,60}$",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
     "Score": 5.0,
@@ -162,7 +270,16 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
+    "Regex": "(?i)tried",
+    "IsAuto": false,
+    "Site": "dba.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "diy.stackexchange.com",
     "Score": 5.0,
@@ -171,7 +288,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bwork out\\b",
+    "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
     "Score": 5.0,
@@ -180,7 +297,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bskin\\b",
+    "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
     "Score": 5.0,
@@ -189,7 +306,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bfull( movie| film)\\b",
+    "Regex": "(?i)\\bgives error\\b",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
     "Score": 5.0,
@@ -198,7 +315,25 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bripped\\b",
+    "Regex": "(?i)question",
+    "IsAuto": false,
+    "Site": "dsp.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "dsp.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "electronics.stackexchange.com",
     "Score": 5.0,
@@ -207,25 +342,52 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
-    "Site": "ell.stackexchange.com",
+    "Site": "electronics.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)natural",
+    "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
-    "Site": "ell.stackexchange.com",
-    "Score": 6.0,
+    "Site": "electronics.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\byou know\\b",
+    "Regex": "(?i)\\berror(s)?\\b",
+    "IsAuto": false,
+    "Site": "electronics.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "electronics.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "electronics.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,60}$",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
     "Score": 5.0,
@@ -234,88 +396,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "english.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bcare(ing)?\\b",
-    "IsAuto": false,
-    "Site": "english.stackexchange.com",
-    "Score": 5.41666651,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bbeautiful(est)?\\b",
-    "IsAuto": false,
-    "Site": "english.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "expatriates.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\byoga|relax(ing)?\\b",
-    "IsAuto": false,
-    "Site": "fitness.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "fitness.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bweight loss\\b",
-    "IsAuto": false,
-    "Site": "fitness.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bsupplement(s)?\\b",
-    "IsAuto": false,
-    "Site": "fitness.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bmuscle(s)?\\b",
-    "IsAuto": false,
-    "Site": "fitness.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)fifa",
+    "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "gamedev.stackexchange.com",
     "Score": 5.0,
@@ -324,7 +405,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\byou know\\b",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "gamedev.stackexchange.com",
     "Score": 5.0,
@@ -333,7 +414,25 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bget your\\b",
+    "Regex": "(?i)beginner",
+    "IsAuto": false,
+    "Site": "gamedev.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\berror(s)?\\b",
+    "IsAuto": false,
+    "Site": "gamedev.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
     "Score": 5.0,
@@ -342,16 +441,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
-    "IsAuto": false,
-    "Site": "gaming.stackexchange.com",
-    "Score": 8.209955,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
+    "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
     "Score": 5.0,
@@ -360,52 +450,25 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
-    "Site": "gaming.stackexchange.com",
+    "Site": "gis.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)make money",
+    "Regex": "(?i)wh(at|ich).*best",
     "IsAuto": false,
-    "Site": "gaming.stackexchange.com",
+    "Site": "gis.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)fifa",
-    "IsAuto": false,
-    "Site": "gaming.stackexchange.com",
-    "Score": 6.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bcare(ing)?\\b",
-    "IsAuto": false,
-    "Site": "gardening.stackexchange.com",
-    "Score": 6.5,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)tell you",
-    "IsAuto": false,
-    "Site": "german.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)the perfect",
+    "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "graphicdesign.stackexchange.com",
     "Score": 5.0,
@@ -414,43 +477,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\byou know\\b",
-    "IsAuto": false,
-    "Site": "graphicdesign.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
-    "IsAuto": false,
-    "Site": "graphicdesign.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\byoga|relax(ing)?\\b",
-    "IsAuto": false,
-    "Site": "hermeneutics.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\btreatment\\b",
-    "IsAuto": false,
-    "Site": "history.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\byou know\\b",
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
     "Site": "islam.stackexchange.com",
     "Score": 5.0,
@@ -459,7 +486,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bsupplement(s)?\\b",
+    "Regex": "^(?i).{0,150}$",
     "IsAuto": false,
     "Site": "islam.stackexchange.com",
     "Score": 5.0,
@@ -468,34 +495,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "islam.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)natural",
-    "IsAuto": false,
-    "Site": "linguistics.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bcare(ing)?\\b",
-    "IsAuto": false,
-    "Site": "magento.stackexchange.com",
-    "Score": 5.41666651,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bbrand\\b",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
     "Score": 5.0,
@@ -504,25 +504,34 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "(?i)pl(z|s|ease)",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 10.3276033,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
-    "Site": "math.stackexchange.com",
-    "Score": 9.350227,
+    "Site": "magento.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
+    "Regex": "(?i)credit.card",
+    "IsAuto": false,
+    "Site": "magento.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
     "Score": 5.0,
@@ -531,25 +540,106 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)natural",
+    "Regex": "^(?i).{0,60}$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "\\$\\d+",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 7.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\btreatment\\b",
+    "Regex": "(?i)(need|some)( halp| help| answer)",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i need.*help",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i:need help|help me)",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)pl(z|s|ease)",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)help please",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,150}$",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)question",
+    "IsAuto": false,
+    "Site": "mathematica.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "mathoverflow.net",
     "Score": 5.0,
@@ -558,16 +648,16 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)natural",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
-    "Site": "mathoverflow.net",
-    "Score": 6.0,
+    "Site": "mechanics.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\byou know\\b",
+    "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "meta.stackexchange.com",
     "Score": 5.0,
@@ -576,16 +666,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "money.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bheal(ing|thly)?\\b",
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "movies.stackexchange.com",
     "Score": 5.0,
@@ -594,52 +675,79 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\byou know\\b",
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
-    "Site": "opendata.stackexchange.com",
+    "Site": "movies.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcare(ing)?\\b",
+    "Regex": "^.{0,150}$",
     "IsAuto": false,
-    "Site": "outdoors.stackexchange.com",
-    "Score": 5.41666651,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
-    "IsAuto": false,
-    "Site": "patents.stackexchange.com",
-    "Score": 9.350227,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "pets.stackexchange.com",
+    "Site": "movies.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcare(ing)?\\b",
+    "Regex": "(?i)newbie",
     "IsAuto": false,
-    "Site": "pets.stackexchange.com",
-    "Score": 5.41666651,
+    "Site": "music.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)natural",
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "networkengineering.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "networkengineering.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "philosophy.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "programmers.stackexchange.com",
     "Score": 5.0,
@@ -648,16 +756,34 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 7.75384665,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)make money",
+    "Regex": "^(?i).{0,60}$",
+    "IsAuto": false,
+    "Site": "pt.stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "puzzling.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
     "Site": "quant.stackexchange.com",
     "Score": 5.0,
@@ -666,124 +792,133 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bmover(s)?\\b",
+    "Regex": "^.{0,150}$",
     "IsAuto": false,
-    "Site": "rpg.stackexchange.com",
+    "Site": "quant.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)movers",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
-    "Site": "rpg.stackexchange.com",
+    "Site": "raspberrypi.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
-    "Site": "rpg.stackexchange.com",
+    "Site": "robotics.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bheal(ing|thly)?\\b",
+    "Regex": "^[^a-z]*$",
     "IsAuto": false,
-    "Site": "rpg.stackexchange.com",
+    "Site": "russian.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcare(ing)?\\b",
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "russian.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\b(help|halp)\\b",
+    "IsAuto": false,
+    "Site": "salesforce.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "scicomp.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(need|some)( halp| help| answer)",
     "IsAuto": false,
     "Site": "scifi.stackexchange.com",
-    "Score": 5.41666651,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "(?i)\\b(help|halp)\\b",
+    "IsAuto": false,
+    "Site": "scifi.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i:need help|help me)",
+    "IsAuto": false,
+    "Site": "scifi.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)pl(z|s|ease)",
+    "IsAuto": false,
+    "Site": "scifi.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "security.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bgreeting(s)?\\b",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 7.75384665,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "serverfault.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
-    "Site": "sharepoint.stackexchange.com",
-    "Score": 7.75384665,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "sharepoint.stackexchange.com",
+    "Site": "spanish.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bweight loss\\b",
-    "IsAuto": false,
-    "Site": "skeptics.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
-    "IsAuto": false,
-    "Site": "sound.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)fifa",
-    "IsAuto": false,
-    "Site": "sports.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 9.304615,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)this product",
+    "Regex": "(?i)no(t)? (help|work|fix)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 5.0,
@@ -792,7 +927,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcheaper\\b",
+    "Regex": "^(?i).{0,60}$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 5.0,
@@ -801,61 +936,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bexclusive\\b",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bskin\\b",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bcare(ing)?\\b",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.41666651,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bbeautiful(est)?\\b",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bbrand\\b",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)health",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 6.0,
@@ -864,7 +945,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)^how can we",
+    "Regex": "^(?i).{0,150}$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 6.0,
@@ -873,43 +954,34 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bbrand\\b",
+    "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
-    "Site": "startups.stackexchange.com",
+    "Site": "stats.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bfree (trial|film|moive|movie|help|assistance)\\b",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
-    "Site": "startups.stackexchange.com",
+    "Site": "stats.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
     "IsAuto": false,
-    "Site": "superuser.com",
-    "Score": 7.75384665,
+    "Site": "stats.stackexchange.com",
+    "Score": 7.4666667,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
-    "IsAuto": false,
-    "Site": "superuser.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bbrand\\b",
+    "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "superuser.com",
     "Score": 5.0,
@@ -918,7 +990,7 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)you want",
+    "Regex": "^[^a-z]*$",
     "IsAuto": false,
     "Site": "superuser.com",
     "Score": 5.0,
@@ -927,25 +999,34 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)health",
+    "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
-    "Site": "superuser.com",
+    "Site": "tor.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
-    "Site": "tex.stackexchange.com",
-    "Score": 7.75384665,
+    "Site": "tor.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bdelhi\\b",
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "tor.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(advice|opinion|thought)s on",
     "IsAuto": false,
     "Site": "travel.stackexchange.com",
     "Score": 5.0,
@@ -954,127 +1035,190 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
+    "IsAuto": false,
+    "Site": "unix.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i want to",
+    "IsAuto": false,
+    "Site": "unix.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)credit.card",
+    "IsAuto": false,
+    "Site": "unix.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "unix.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)wh(at|ich).*best",
+    "IsAuto": false,
+    "Site": "ux.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i want to",
+    "IsAuto": false,
+    "Site": "webapps.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\berror(s)?\\b",
+    "IsAuto": false,
+    "Site": "webapps.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)question",
+    "IsAuto": false,
+    "Site": "webmasters.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\berror(s)?\\b",
+    "IsAuto": false,
+    "Site": "webmasters.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)question",
+    "IsAuto": false,
+    "Site": "wordpress.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "wordpress.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "wordpress.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "writers.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^.{0,150}$",
+    "IsAuto": false,
+    "Site": "writers.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(did|have) you f(in|oun)d",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 6.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)did you find",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 6.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(\\S)\\1{3}",
+    "IsAuto": false,
+    "Site": "sqa.stackexchange.com",
+    "Score": 8.436363,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)thank(s| you)",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 9.691858,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)please",
     "IsAuto": false,
     "Site": "tridion.stackexchange.com",
-    "Score": 7.75384665,
+    "Score": 9.621712,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bheal(ing|thly)?\\b",
+    "Regex": "^\\<p\\>[^a-z]*\\<\\/p\\>$",
     "IsAuto": false,
-    "Site": "unix.stackexchange.com",
-    "Score": 5.0,
+    "Site": "chinese.stackexchange.com",
+    "Score": 39.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+    "Regex": "^[^ ]*$",
     "IsAuto": false,
-    "Site": "unix.stackexchange.com",
-    "Score": 7.75384665,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bcare(ing)?\\b",
-    "IsAuto": false,
-    "Site": "windowsphone.stackexchange.com",
-    "Score": 5.41666651,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bgot my\\b",
-    "IsAuto": false,
-    "Site": "workplace.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bcare(ing)?\\b",
-    "IsAuto": false,
-    "Site": "worldbuilding.stackexchange.com",
-    "Score": 5.41666651,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)get free",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)it is possible",
-    "IsAuto": false,
-    "Site": "askubuntu.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)rolex",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)(feel|look|taste|get)(s|ing)? (good|nice|amazing|fabulous)",
-    "IsAuto": false,
-    "Site": "graphicdesign.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)wh(ere|at) ((is|are) the|(can you|to) (get|find|buy|pay)) cheap",
-    "IsAuto": false,
-    "Site": "travel.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bgood offer\\b",
-    "IsAuto": false,
-    "Site": "workplace.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bslim\\b",
-    "IsAuto": false,
-    "Site": "fitness.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)^can you recommend",
-    "IsAuto": false,
-    "Site": "sports.stackexchange.com",
-    "Score": 5.0,
+    "Site": "chinese.stackexchange.com",
+    "Score": 39.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
