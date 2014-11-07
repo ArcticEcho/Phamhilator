@@ -32,8 +32,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "officialimeiunlock",
@@ -176,8 +176,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 6
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)BeautyLabs",
@@ -195,7 +195,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)ELITE TEST 360",

@@ -23,8 +23,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 1
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 2,
-    "FPCount": 13,
-    "CaughtCount": 30
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "2348064038119",
@@ -69,7 +69,7 @@
     "Score": 12.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)filerepairforum\\.com",
@@ -78,7 +78,7 @@
     "Score": 12.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 0
   },
   {
     "Regex": "APPLY NOW",
@@ -94,9 +94,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.2111111,
-    "TPCount": 1,
+    "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)mobogenie",
@@ -113,8 +113,8 @@
     "Site": "",
     "Score": 10.6277781,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)Do you want to become",
