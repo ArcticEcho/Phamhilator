@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bbastard\\b",
@@ -77,8 +77,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bfag\\b",
@@ -172,6 +172,15 @@
   },
   {
     "Regex": "(?i)bullshit",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.2105265,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\sdick\\s",
     "IsAuto": false,
     "Site": "",
     "Score": 10.2105265,
