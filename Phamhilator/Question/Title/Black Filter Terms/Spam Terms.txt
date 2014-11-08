@@ -15,7 +15,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bwe lost\\b",
@@ -131,8 +131,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bget your\\b",
@@ -166,9 +166,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bhelp(s)? you(r)?\\b",
@@ -212,8 +212,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -240,7 +240,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bheal(ing|thly)?\\b",
@@ -258,7 +258,7 @@
     "Score": 13.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -303,7 +303,7 @@
     "Score": 18.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)the perfect",
@@ -526,9 +526,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)online job",
@@ -599,8 +599,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)tell you",
@@ -707,8 +707,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -931,9 +931,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 3
   },
   {
     "Regex": "2348064038119",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 1
+    "FPCount": 2,
+    "CaughtCount": 4
   },
   {
     "Regex": "\\$\\d+",
@@ -960,16 +960,16 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)high quality",
@@ -986,8 +986,8 @@
     "Site": "",
     "Score": 10.1574078,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)Watch Online",

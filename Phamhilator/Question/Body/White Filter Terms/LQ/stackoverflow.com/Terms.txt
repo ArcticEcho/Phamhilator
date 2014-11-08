@@ -3,7 +3,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 31.8881073,
+    "Score": 32.68531,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -30,7 +30,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -39,7 +39,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -57,7 +57,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -66,7 +66,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "codereview.stackexchange.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -75,7 +75,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 20.3640079,
+    "Score": 20.35128,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -111,7 +111,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 23.0718155,
+    "Score": 23.057394,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -147,7 +147,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "physics.stackexchange.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -156,7 +156,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 17.2796535,
+    "Score": 17.2688541,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -183,7 +183,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 7.91971445,
+    "Score": 7.9147644,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

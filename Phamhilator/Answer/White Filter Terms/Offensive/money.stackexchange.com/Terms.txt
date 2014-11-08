@@ -12,7 +12,7 @@
     "Regex": "(?i)\\bfuck\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

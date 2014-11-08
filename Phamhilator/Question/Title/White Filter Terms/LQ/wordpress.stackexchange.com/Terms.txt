@@ -867,7 +867,7 @@
     "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "gis.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1749,7 +1749,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 8.884849,
+    "Score": 6.88484859,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2289,7 +2289,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "wordpress.stackexchange.com",
-    "Score": 8.951515,
+    "Score": 7.951515,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2352,7 +2352,7 @@
     "Regex": "(?i)wh(at|ich).*best",
     "IsAuto": false,
     "Site": "craftcms.stackexchange.com",
-    "Score": 6.0,
+    "Score": 6.46153831,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2416,6 +2416,15 @@
     "IsAuto": false,
     "Site": "serverfault.com",
     "Score": 5.42739439,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^I want",
+    "IsAuto": false,
+    "Site": "wordpress.stackexchange.com",
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

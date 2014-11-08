@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 15.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 3,
+    "CaughtCount": 6
   },
   {
     "Regex": "2348064038119",
@@ -126,16 +126,34 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)earn.{0,30}\\d",
+    "Regex": "(?i)\\bearn.{0,30}\\d",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)Join the Illuminati",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)contact us.{0,100}\\@",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)Make money",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,

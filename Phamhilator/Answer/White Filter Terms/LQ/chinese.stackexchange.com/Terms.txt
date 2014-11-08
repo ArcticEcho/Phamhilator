@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 9.691858,
+    "Score": 10.1918583,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1218,7 +1218,7 @@
     "Regex": "^[^ ]*$",
     "IsAuto": false,
     "Site": "chinese.stackexchange.com",
-    "Score": 39.5,
+    "Score": 41.8410568,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

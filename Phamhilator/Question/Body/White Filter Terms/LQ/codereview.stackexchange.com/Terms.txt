@@ -3,7 +3,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 31.8881073,
+    "Score": 32.68531,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -30,7 +30,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -39,7 +39,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -57,7 +57,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -66,7 +66,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "codereview.stackexchange.com",
-    "Score": 14.8692245,
+    "Score": 14.8599319,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
