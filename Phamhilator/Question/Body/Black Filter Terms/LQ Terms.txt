@@ -24,7 +24,7 @@
     "Score": 40.0,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 133
+    "CaughtCount": 134
   },
   {
     "Regex": "\\bpl[sz]+\\b",

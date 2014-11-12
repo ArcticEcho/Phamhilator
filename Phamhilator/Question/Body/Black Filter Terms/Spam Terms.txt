@@ -502,5 +502,68 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)hypedc",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)clearmola",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)globaldocuments87",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)Vivabiotics",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)gurunetwork",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)ipubsoft",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)istonsoft",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]
