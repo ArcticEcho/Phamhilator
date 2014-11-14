@@ -22,18 +22,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 40.0,
-    "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 134
+    "TPCount": 3,
+    "FPCount": 15,
+    "CaughtCount": 228
   },
   {
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 14.0,
-    "TPCount": 0,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 10
   },
   {
     "Regex": "enter link description here",
@@ -42,7 +42,7 @@
     "Score": 13.75,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 2
   },
   {
     "Regex": "down vote favorite",
@@ -51,7 +51,7 @@
     "Score": 13.75,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "^[^ ]*$",

@@ -2010,7 +2010,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 8.5,
+    "Score": 7.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

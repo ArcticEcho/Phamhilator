@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 15.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 7
+    "FPCount": 7,
+    "CaughtCount": 19
   },
   {
     "Regex": "2348064038119",
@@ -154,6 +154,24 @@
   },
   {
     "Regex": "(?i)Make money",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)geolify",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "waowlyrics",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,

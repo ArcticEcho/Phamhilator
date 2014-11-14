@@ -148,9 +148,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -559,6 +559,24 @@
   },
   {
     "Regex": "(?i)istonsoft",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)geolify",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "waowlyrics",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
