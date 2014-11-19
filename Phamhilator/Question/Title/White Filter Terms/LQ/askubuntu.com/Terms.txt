@@ -75,7 +75,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 6.8,
+    "Score": 6.4,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -138,7 +138,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "arduino.stackexchange.com",
-    "Score": 6.18181849,
+    "Score": 5.818182,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -156,7 +156,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 6.18181849,
+    "Score": 5.818182,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -165,7 +165,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -687,7 +687,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 7.0,
+    "Score": 8.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1065,7 +1065,7 @@
     "Regex": "^[^a-z]*$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.923077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2154,7 +2154,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "travel.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

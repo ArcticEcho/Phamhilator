@@ -23,8 +23,8 @@
     "Site": "",
     "Score": 40.0,
     "TPCount": 3,
-    "FPCount": 15,
-    "CaughtCount": 228
+    "FPCount": 18,
+    "CaughtCount": 301
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -33,7 +33,7 @@
     "Score": 14.0,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 10
+    "CaughtCount": 14
   },
   {
     "Regex": "enter link description here",
@@ -42,7 +42,7 @@
     "Score": 13.75,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "down vote favorite",

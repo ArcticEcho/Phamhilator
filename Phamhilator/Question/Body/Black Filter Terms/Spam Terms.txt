@@ -148,9 +148,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
-    "FPCount": 0,
-    "CaughtCount": 3
+    "TPCount": 3,
+    "FPCount": 1,
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -176,8 +176,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)BeautyLabs",

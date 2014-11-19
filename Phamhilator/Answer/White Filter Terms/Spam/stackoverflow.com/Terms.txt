@@ -804,7 +804,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 10.0,
+    "Score": 9.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -903,7 +903,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 5.714286,
+    "Score": 6.714286,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
