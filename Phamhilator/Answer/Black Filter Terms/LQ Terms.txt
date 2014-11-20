@@ -114,7 +114,7 @@
     "Score": 27.8727264,
     "TPCount": 7,
     "FPCount": 23,
-    "CaughtCount": 249
+    "CaughtCount": 250
   },
   {
     "Regex": "(?i)have question",
@@ -141,7 +141,7 @@
     "Score": 22.3837166,
     "TPCount": 6,
     "FPCount": 16,
-    "CaughtCount": 173
+    "CaughtCount": 175
   },
   {
     "Regex": "(?i)need (an )?answer",

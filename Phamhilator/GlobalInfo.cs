@@ -13,9 +13,9 @@ namespace Phamhilator
 {
 	public static partial class GlobalInfo
 	{
-		private static string botUsername = "";
-		private static int chatID;
-		private static int announceID;
+		//private static string botUsername = "";
+		//private static int chatID;
+		//private static int announceID;
 
 		#region Filters
 
