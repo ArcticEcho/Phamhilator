@@ -405,6 +405,8 @@ namespace Phamhilator
 
 		private void MetroWindow_Closing(object sender, CancelEventArgs e)
 		{
+			statusL.Content = "Shutting Down Pham...";
+
 			e.Cancel = true;
 
 			if (!GlobalInfo.BotRunning) { Environment.Exit(0); }
@@ -480,6 +482,8 @@ namespace Phamhilator
 
 		private void Button_Click_2(object sender, RoutedEventArgs e)
 		{
+			statusL.Content = "Monitoring Enabled";
+
 			((Button)sender).IsEnabled = false;
 
 			GlobalInfo.BotRunning = true;
