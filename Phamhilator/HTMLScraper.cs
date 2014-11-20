@@ -10,7 +10,6 @@ namespace Phamhilator
 	public static class HTMLScraper
 	{
 		private static readonly Regex escapeChars = new Regex(@"([_*\\`\[\]])", RegexOptions.Compiled);
-		//private static readonly Regex chatReply = new Regex("(?i)<span class=(\\\")?mention(\\\")?>|</span>", RegexOptions.Compiled);
 
 
 
@@ -234,50 +233,6 @@ namespace Phamhilator
 		}
 
 		# endregion
-
-		//public static MessageInfo GetLastChatMessage(string html)
-		//{
-		//	var startIndex = html.LastIndexOf("signature user-", StringComparison.Ordinal) + 15;
-
-		//	// Get user ID.
-
-		//	var authorID =  html.Substring(startIndex, (html.IndexOf(@"/", startIndex, StringComparison.Ordinal) - 8) - startIndex);
-
-		//	// Get message.
-
-		//	startIndex = Math.Max(html.LastIndexOf("<DIV class=content>", StringComparison.OrdinalIgnoreCase) + 19, html.LastIndexOf("<div class=\"content\">", StringComparison.OrdinalIgnoreCase) + 21);
-
-		//	var message = WebUtility.HtmlDecode(html.Substring(startIndex, html.IndexOf("</div>", startIndex, StringComparison.OrdinalIgnoreCase) - startIndex));
-
-		//	var info = new MessageInfo
-		//	{
-		//		Body = chatReply.Replace(message, ""),
-		//		RepliesToMessageID = GetMessageReplyID(html, message),
-		//		AuthorID = int.Parse(authorID),
-		//		MessageID = GetLastestMessageID(html)
-		//	};
-
-		//	if (info.RepliesToMessageID != -1 && GlobalInfo.PostedReports.ContainsKey(info.RepliesToMessageID))
-		//	{
-		//		info.Report = GlobalInfo.PostedReports[info.RepliesToMessageID].Report;
-		//		info.Post = GlobalInfo.PostedReports[info.RepliesToMessageID].Post;
-		//	}
-
-		//	return info;
-		//}
-
-		//public static int GetMessageIDByPostURL(string html, string postURL)
-		//{
-		//	var decoded = WebUtility.HtmlDecode(html);
-
-		//	var startIndex = decoded.IndexOf(postURL, StringComparison.Ordinal) - 350;
-
-		//	if (startIndex == -351) { return -1; } // Couldn't find the report :(
-
-		//	startIndex = decoded.IndexOf("/transcript/message/", startIndex, StringComparison.Ordinal) + 20;
-
-		//	return int.Parse(decoded.Substring(startIndex, decoded.IndexOf("#", startIndex, StringComparison.Ordinal) - startIndex));
-		//}
 
 
 

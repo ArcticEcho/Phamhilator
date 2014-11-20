@@ -91,7 +91,6 @@
     <Compile Include="MessageCleaner.cs" />
     <Compile Include="QAAnalysis.cs" />
     <Compile Include="HTMLScraper.cs" />
-    <Compile Include="MessageHandler.cs" />
     <Compile Include="QuestionAnalysis.cs" />
     <Compile Include="Analysers\QuestionTitle.cs" />
     <Compile Include="MessageInfo.cs" />
