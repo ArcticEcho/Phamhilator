@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using Microsoft.Win32;
 using System.Threading;
-using System.Reflection;
 using System.Diagnostics;
 using System.Globalization;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Collections.Generic;
-using System.Security;
+using ChatExchangeDotNet;
 
 
 
@@ -24,7 +22,6 @@ namespace Phamhilator
 		private Thread commandListenerThread;
 		private Thread postCatcherThread;
 		private DateTime requestedDieTime;
-		private static MessageInfo latestChatMessage = new MessageInfo();
 
 
 
@@ -39,21 +36,11 @@ namespace Phamhilator
 
 				InitializeComponent();
 
+				loginC.Children.Remove(operationC);
+
 				PostPersistence.Initialise();
 
-				GlobalInfo.ChatWb = chatWb;
-				GlobalInfo.AnnounceWb = announceWb;
-
-				SwitchToIE9();
-
-				HideScriptErrors(chatWb, true);
-				HideScriptErrors(announceWb, true);
-
-				KillListener();
-
 				PostCatcher();
-
-				CommandListener();
 			}
 			catch (Exception ex)
 			{
@@ -107,7 +94,7 @@ namespace Phamhilator
 
 							if (posts.Length != 0)
 							{
-								/*Task.Factory.StartNew(() => */CheckPosts(posts)/*)*/;
+								CheckPosts(posts);
 							}
 
 							do
@@ -117,7 +104,7 @@ namespace Phamhilator
 
 							if (postSuccessMessage)
 							{
-								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Restart successful!`", RoomID = GlobalInfo.ChatRoomID });
+								GlobalInfo.PrimaryRoom.PostMessage("`Restart successful!`");
 
 								postSuccessMessage = false;
 							}
@@ -131,13 +118,13 @@ namespace Phamhilator
 
 							if (i == 4)
 							{
-								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 3 attempts to restart the post catcher thread have failed. Now shutting down...`", RoomID = GlobalInfo.ChatRoomID });
+								GlobalInfo.PrimaryRoom.PostMessage("`Warning: 3 attempts to restart the post catcher thread have failed. Now shutting down...`");
 
 								GlobalInfo.Exit = true;
 							}
 							else
 							{
-								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: post catcher thread has died. Attempting to restart...`", RoomID = GlobalInfo.ChatRoomID });
+								GlobalInfo.PrimaryRoom.PostMessage("`Warning: post catcher thread has died. Attempting to restart...`");
 							}
 						}
 					}
@@ -147,110 +134,6 @@ namespace Phamhilator
 			}) { Priority = ThreadPriority.Lowest };
 
 			postCatcherThread.Start();
-		}
-
-		private void CommandListener()
-		{
-			var postSuccessMessage = false;
-			var lastChatMessage = new MessageInfo();
-			var lastAnnounceMessage = new MessageInfo();
-
-			commandListenerThread = new Thread(() =>
-			{
-				for (var i = 1; i < 5; i++)
-				{
-					try
-					{
-						do
-						{
-							Thread.Sleep(500);
-						} while (!GlobalInfo.BotRunning);
-
-						if (i != 1)
-						{
-							postSuccessMessage = true;
-						}
-
-						while (!GlobalInfo.Exit)
-						{
-							Thread.Sleep(300);
-
-							GetLatestChatMessage();
-							var announceMessage = GetLatestAnnounceMessage();
-
-							CheckExecuteCommand(latestChatMessage, ref lastChatMessage);
-							CheckExecuteCommand(announceMessage, ref lastAnnounceMessage);
-							
-							if (postSuccessMessage)
-							{
-								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Restart successful!`", RoomID = GlobalInfo.ChatRoomID });
-
-								postSuccessMessage = false;
-							}
-						}
-					}
-					catch (Exception)
-					{
-						if (!GlobalInfo.Exit)
-						{
-							Thread.Sleep(3000);
-
-							if (i == 4)
-							{
-								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 3 attempts to the restart command listener thread have failed. Now shutting down...`", RoomID = GlobalInfo.ChatRoomID });
-
-								GlobalInfo.Exit = true;
-							}
-							else
-							{
-								GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: command listener thread has died. Attempting to restart...`", RoomID = GlobalInfo.ChatRoomID });
-							}
-						}
-					}
-
-					if (GlobalInfo.Exit) { return; }		
-				}
-			}) { Priority = ThreadPriority.Lowest };
-
-			commandListenerThread.Start();
-		}
-
-		private void KillListener()
-		{
-			var lastChatMessage = new MessageInfo();
-
-			new Thread(() =>
-			{
-				do
-				{
-					Thread.Sleep(refreshRate / 2);
-				} while (!GlobalInfo.BotRunning);
-
-				while (!GlobalInfo.Exit)
-				{
-					Thread.Sleep(500);
-
-					if (lastChatMessage.MessageID == latestChatMessage.MessageID || lastChatMessage.Body != ">>kill-it-with-no-regrets-for-sure")
-					{
-						lastChatMessage = latestChatMessage;
-
-						continue;
-					}
-
-					if (UserAccess.Owners.Contains(lastChatMessage.AuthorID))
-					{
-						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Killing...`", RoomID = GlobalInfo.ChatRoomID });
-						
-						KillBot();
-					}
-					else
-					{
-						lastChatMessage = new MessageInfo { MessageID = lastChatMessage.MessageID };
-
-						GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Access denied.`", RoomID = GlobalInfo.ChatRoomID });
-					}
-				}
-			}) { Priority = ThreadPriority.Lowest }.Start();		
 		}
 
 		private void KillBot()
@@ -273,15 +156,11 @@ namespace Phamhilator
 				if (!commandListenerThread.IsAlive && !postCatcherThread.IsAlive) { break; }
 			}
 
-			while (GlobalInfo.MessagePoster.MessageQueue.Count != 0) { Thread.Sleep(5000); }
-
-			GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`All threads have died. Kill successful!`", RoomID = GlobalInfo.ChatRoomID });
-
-			while (GlobalInfo.MessagePoster.MessageQueue.Count != 0) { Thread.Sleep(5000); }
-
 			Thread.Sleep(5000);
 
-			GlobalInfo.MessagePoster.Shutdown();
+			GlobalInfo.PrimaryRoom.PostMessage("`All threads have died. Kill successful!`");
+
+			Thread.Sleep(5000);
 
 			Dispatcher.Invoke(() => Environment.Exit(0));
 		}
@@ -292,13 +171,13 @@ namespace Phamhilator
 
 			if (!postCatcherThread.IsAlive)
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Post catcher thread has died...`", RoomID = GlobalInfo.ChatRoomID });
+				GlobalInfo.PrimaryRoom.PostMessage("`Post catcher thread has died...`");
 
 				postCatcherMessagePosted = true;
 			}
 			else if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !postCatcherWarningMessagePosted)
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 10 seconds have past since the kill command was issued and post catcher thread is still alive. Now forcing thread death...`", RoomID = GlobalInfo.ChatRoomID });
+				GlobalInfo.PrimaryRoom.PostMessage("`Warning: 10 seconds have past since the kill command was issued and post catcher thread is still alive. Now forcing thread death...`");
 
 				postCatcherThread.Abort();
 			}
@@ -310,81 +189,56 @@ namespace Phamhilator
 
 			if (!commandListenerThread.IsAlive)
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Command listener thread has died...`", RoomID = GlobalInfo.ChatRoomID });
+				GlobalInfo.PrimaryRoom.PostMessage("`Command listener thread has died...`");
 
 				commandListenerMessagePosted = true;
 			}
 			else if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !commandListenerWarningMessagePosted)
 			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Warning: 10 seconds have past since the kill command was issued and command listener thread is still alive. Now forcing thread death...`", RoomID = GlobalInfo.ChatRoomID });
+				GlobalInfo.PrimaryRoom.PostMessage("`Warning: 10 seconds have past since the kill command was issued and command listener thread is still alive. Now forcing thread death...`");
 
 				commandListenerThread.Abort();
 			}
 		}
 
-		private void GetLatestChatMessage()
+		private void HandlePrimaryNewMessage(Message message)
 		{
-			dynamic doc = null;
-			string html;
-
-			Dispatcher.Invoke(() => doc = chatWb.Document);
-
-			try
+			if (message.Content == ">>kill-it-with-no-regrets-for-sure")
 			{
-				html = doc.documentElement.InnerHtml;
+				if (UserAccess.Owners.Contains(message.AuthorID))
+				{
+					GlobalInfo.PrimaryRoom.PostMessage("`Killing...`");
+
+					KillBot();
+				}
+				else
+				{
+					GlobalInfo.PrimaryRoom.PostReply(message, "`Access denied.`");
+				}
 			}
-			catch (Exception) { return; }
+			else
+			{
+				var messages = CommandProcessor.ExacuteCommand(message, GlobalInfo.PrimaryRoom.ID); 
+				
+				if (messages.Length == 0) { return; }
 
-			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1 && html.Replace("\"", "").IndexOf("class=\"username\"", StringComparison.Ordinal) == -1) { return; }
-
-			var data = HTMLScraper.GetLastChatMessage(html);
-
-			data.RoomID = GlobalInfo.ChatRoomID;
-
-			latestChatMessage = data;
+				foreach (var m in messages)
+				{
+					GlobalInfo.PrimaryRoom.PostMessage(m);
+				}
+			}
 		}
 
-		private MessageInfo GetLatestAnnounceMessage()
+		private void HandleSecondaryNewMessage(Message message, int roomID)
 		{
-			dynamic doc = null;
-			string html;
+			var messages = CommandProcessor.ExacuteCommand(message, roomID);
 
-			Dispatcher.Invoke(() => doc = announceWb.Document);
+			if (messages.Length == 0) { return; }
 
-			try
+			foreach (var m in messages)
 			{
-				html = doc.documentElement.InnerHtml;
+				GlobalInfo.ChatClient.Rooms.First(r => r.ID == roomID).PostMessage(m);
 			}
-			catch (Exception) { return new MessageInfo(); }
-
-			if (html.Replace("\"", "").IndexOf("class=username", StringComparison.Ordinal) == -1 && html.Replace("\"", "").IndexOf("class=\"username\"", StringComparison.Ordinal) == -1) { return new MessageInfo(); }
-
-			var data = HTMLScraper.GetLastChatMessage(html);
-
-			data.RoomID = GlobalInfo.AnnouncerRoomID;
-
-			return data;
-		}
-
-		private void CheckExecuteCommand(MessageInfo message, ref MessageInfo previousMessage)
-		{
-			var messageLower = message.Body.ToLowerInvariant();
-
-			if (message.MessageID == previousMessage.MessageID || messageLower == ">>kill-it-with-no-regrets-for-sure" || (!CommandProcessor.IsValidCommand(messageLower) && message.RoomID == GlobalInfo.AnnouncerRoomID))
-			{
-				previousMessage = new MessageInfo { MessageID = message.MessageID };
-
-				return;
-			}
-
-			var commandMessages = CommandProcessor.ExacuteCommand(message);
-
-			foreach (var commandMessage in commandMessages.Where(m => !String.IsNullOrEmpty(m)))
-			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = commandMessage, RoomID = message.RoomID } );
-			}
-
-			previousMessage = new MessageInfo { MessageID = message.MessageID };
 		}
 
 		private Question[] GetAllPosts(string html)
@@ -449,7 +303,7 @@ namespace Phamhilator
 			}	
 		}
 
-		private void PostReport(Post p, string message, PostAnalysis info, bool isQuestionReport = true)
+		private void PostReport(Post p, string messageBody, PostAnalysis info, bool isQuestionReport = true)
 		{
 			if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { return; }
 
@@ -457,10 +311,11 @@ namespace Phamhilator
 
 			if (SpamAbuseDetected(p))
 			{
-				chatMessage = new MessageInfo { Body = "[Spammer abuse detected](" + p.URL + ").", Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.ChatRoomID };
+				chatMessage = new MessageInfo { Body = "[Spammer abuse detected](" + p.URL + ").", Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
 
-				GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
+				var message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
 				PostPersistence.AddPost(p);
+				GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
 				return;
 			}
@@ -469,50 +324,55 @@ namespace Phamhilator
 			{
 				case PostType.Offensive:
 				{
-					chatMessage = new MessageInfo { Body = "**Offensive**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.ChatRoomID };
+					chatMessage = new MessageInfo { Body = "**Offensive**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
 
-					GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
+					var message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
 					PostPersistence.AddPost(p);
+					GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
 					break;
 				}
 
 				case PostType.BadUsername:
 				{
-					chatMessage = new MessageInfo { Body = "**Bad Username**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.ChatRoomID };
+					chatMessage = new MessageInfo { Body = "**Bad Username**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
 
-					GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
+					var message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
 					PostPersistence.AddPost(p);
+					GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
 					break;
 				}
 
 				case PostType.BadTagUsed:
 				{
-					chatMessage = new MessageInfo { Body = "**Bad Tag Used**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.ChatRoomID };
+					chatMessage = new MessageInfo { Body = "**Bad Tag Used**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
 
-					GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
+					var message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
 					PostPersistence.AddPost(p);
+					GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
 					break;
 				}
 
 				case PostType.LowQuality:
 				{
-					chatMessage = new MessageInfo { Body = "**Low Quality**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.ChatRoomID };
+					chatMessage = new MessageInfo { Body = "**Low Quality**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
 
-					GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
+					var message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
 					PostPersistence.AddPost(p);
+					GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
 					break;
 				}
 
 				case PostType.Spam:
 				{
-					chatMessage = new MessageInfo { Body = "**Spam**" + message, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.ChatRoomID };
+					chatMessage = new MessageInfo { Body = "**Spam**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
 
-					GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
+					var message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
 					PostPersistence.AddPost(p);
+					GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
 					break;
 				}
@@ -520,8 +380,10 @@ namespace Phamhilator
 
 			if (info.AutoTermsFound && chatMessage != null)
 			{
-				chatMessage.RoomID = GlobalInfo.AnnouncerRoomID;
-				GlobalInfo.MessagePoster.MessageQueue.Add(chatMessage);
+				foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
+				{
+					room.PostMessage(chatMessage.Body);
+				}			
 			}
 
 			GlobalInfo.Stats.TotalCheckedPosts++;
@@ -550,50 +412,6 @@ namespace Phamhilator
 			return username.StartsWith("user") && username.Remove(0, 4).All(Char.IsDigit);
 		}
 
-
-		private void HideScriptErrors(WebBrowser wb, bool hide)
-		{
-			var fiComWebBrowser = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
-
-			if (fiComWebBrowser == null) { return; }
-
-			var objComWebBrowser = fiComWebBrowser.GetValue(wb);
-
-			if (objComWebBrowser == null)
-			{
-				wb.Loaded += (o, s) => HideScriptErrors(wb, hide);
-
-				return;
-			}
-
-			objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { hide });
-		}
-
-		private void SwitchToIE9()
-		{
-			const string installkey = @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION";
-			const string entryLabel = "Phamhilator.exe";
-			var osInfo = Environment.OSVersion;
-
-			var version = osInfo.Version.Major.ToString(CultureInfo.InvariantCulture) + '.' + osInfo.Version.Minor;
-			var editFlag = (uint)((version == "6.2") ? 0x2710 : 0x2328); // 6.2 = Windows 8 and therefore IE10
-
-			try
-			{
-				var existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, false); // readonly key
-
-				if (existingSubKey.GetValue(entryLabel) == null)
-				{
-					existingSubKey = Registry.LocalMachine.OpenSubKey(installkey, true); // writable key
-					existingSubKey.SetValue(entryLabel, unchecked((int)editFlag), RegistryValueKind.DWord);
-				}
-			}
-			catch (SecurityException ex)
-			{
-				MessageBox.Show(string.Format("Can't write to the registry. Try to run using administrative privileges.\n\nException: {0}", ex.Message), "Phamilator");
-			}
-		}
-
 		private void GlobalExceptionHandler(object o, UnhandledExceptionEventArgs args)
 		{
 			Clipboard.SetText(args.ExceptionObject.ToString());
@@ -612,49 +430,19 @@ namespace Phamhilator
 
 		# region UI Events
 
-		private void Button_Click_2(object sender, RoutedEventArgs e)
-		{
-			var b = ((Button)sender);
-
-			if (!b.IsEnabled) { return; }
-
-			GlobalInfo.BotRunning = true;
-
-			b.IsEnabled = false;
-				
-			if (Debugger.IsAttached)
-			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Phamhilator™ started (debug mode).`", RoomID = GlobalInfo.ChatRoomID });
-			}
-			else
-			{
-				GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Phamhilator™ started.`", RoomID = GlobalInfo.ChatRoomID });
-			}
-
-			GlobalInfo.UpTime = DateTime.UtcNow;
-		}
-
 		private void MetroWindow_Closing(object sender, CancelEventArgs e)
 		{
 			e.Cancel = true;
 
 			if (!GlobalInfo.BotRunning) { Environment.Exit(0); }
 
-			GlobalInfo.MessagePoster.MessageQueue.Add(new MessageInfo { Body = "`Phamhilator™ stopped.`", RoomID = GlobalInfo.ChatRoomID });
+			Task.Factory.StartNew(() => GlobalInfo.PrimaryRoom.PostMessage("`Phamhilator™ stopped.`"));
 
 			GlobalInfo.Exit = true;
 
-			Task.Factory.StartNew(() =>
-			{
-				do
-				{
-					Thread.Sleep(2000);
-				} while (GlobalInfo.MessagePoster.MessageQueue.Count != 0);
+			Thread.Sleep(3000);
 
-				GlobalInfo.MessagePoster.Shutdown();
-
-				Dispatcher.Invoke(() => Environment.Exit(0));
-			});
+			Task.Factory.StartNew(() => Dispatcher.Invoke(() => Environment.Exit(0)));
 		}
 
 		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -667,6 +455,63 @@ namespace Phamhilator
 			{
 				refreshRateL.Content = rate + " milliseconds";
 			}
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			if (String.IsNullOrEmpty(emailTB.Text) || String.IsNullOrEmpty(passwordTB.Text)) { return; }
+		
+			progressBar.IsIndeterminate = true;
+			
+			((Button)sender).IsEnabled = false;
+			emailTB.IsEnabled = false;
+			passwordTB.IsEnabled = false;
+
+			var user = emailTB.Text;
+			var pass = passwordTB.Text;
+
+			Task.Factory.StartNew(() =>
+			{
+				GlobalInfo.ChatClient = new Client(user, pass);
+				GlobalInfo.PrimaryRoom = GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+				GlobalInfo.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;
+				GlobalInfo.PrimaryRoom.MessageEdited += (oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage);
+
+				GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");
+
+				for (var i = 0; i < GlobalInfo.ChatClient.Rooms.Count; i++)
+				{
+					if (GlobalInfo.ChatClient.Rooms[i].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
+
+					GlobalInfo.ChatClient.Rooms[i].NewMessage += message => HandleSecondaryNewMessage(message, GlobalInfo.ChatClient.Rooms[i].ID);
+					GlobalInfo.ChatClient.Rooms[i].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(newMessage, GlobalInfo.ChatClient.Rooms[i].ID);
+				}
+
+				Dispatcher.Invoke(() =>
+				{
+					//progressBar.IsIndeterminate = false;
+
+					transContentC.Content = operationC;
+				});
+			});
+		}
+
+		private void Button_Click_2(object sender, RoutedEventArgs e)
+		{
+			((Button)sender).IsEnabled = false;
+
+			GlobalInfo.BotRunning = true;
+
+			if (Debugger.IsAttached)
+			{
+				GlobalInfo.PrimaryRoom.PostMessage("`Phamhilator™ started (debug mode).`");
+			}
+			else
+			{
+				GlobalInfo.PrimaryRoom.PostMessage("`Phamhilator™ started.`");
+			}
+
+			GlobalInfo.UpTime = DateTime.UtcNow;
 		}
 
 		# endregion

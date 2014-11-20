@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using ChatExchangeDotNet;
 
 
 
@@ -55,46 +56,48 @@ namespace Phamhilator
 		#endregion
 
 		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
-		public static readonly MessageHandler MessagePoster = new MessageHandler();
+		//public static readonly MessageHandler MessagePoster = new MessageHandler();
 		public const string Owners = "Sam, Unihedron, Patrick Hofman, Jan Dvorak & ProgramFOX";
-		public static WebBrowser ChatWb;
-		public static WebBrowser AnnounceWb;
+		//public static WebBrowser ChatWb;
+		//public static WebBrowser AnnounceWb;
+		public static Room PrimaryRoom;
+		public static Client ChatClient;
 		public static int PostsCaught;
 		public static DateTime UpTime;
 		public static bool BotRunning;
 		public static bool Exit;
 
-		public static string BotUsername
-		{
-			get
-			{
-				if (String.IsNullOrEmpty(botUsername))
-				{
-					dynamic doc = null;
-					string html;
+		//public static string BotUsername
+		//{
+		//	get
+		//	{
+		//		if (String.IsNullOrEmpty(botUsername))
+		//		{
+		//			dynamic doc = null;
+		//			string html;
 
-					Application.Current.Dispatcher.Invoke(() => doc = ChatWb.Document);
+		//			Application.Current.Dispatcher.Invoke(() => doc = ChatWb.Document);
 
-					try
-					{
-						html = doc.documentElement.InnerHtml;
-					}
-					catch (Exception)
-					{
-						return "";
-					}
+		//			try
+		//			{
+		//				html = doc.documentElement.InnerHtml;
+		//			}
+		//			catch (Exception)
+		//			{
+		//				return "";
+		//			}
 
-					var startIndex = html.IndexOf("input-area", StringComparison.Ordinal);
-					startIndex = html.IndexOf("title=", startIndex, StringComparison.Ordinal) + 6;
+		//			var startIndex = html.IndexOf("input-area", StringComparison.Ordinal);
+		//			startIndex = html.IndexOf("title=", startIndex, StringComparison.Ordinal) + 6;
 
-					var endIndex = html.IndexOf(" alt", startIndex, StringComparison.Ordinal);
+		//			var endIndex = html.IndexOf(" alt", startIndex, StringComparison.Ordinal);
 
-                    botUsername = html.Substring(startIndex, endIndex - startIndex).Replace("\"", "").Replace(" ", ""); // Reply names are trimmed without spaces
-				}
+		//			botUsername = html.Substring(startIndex, endIndex - startIndex).Replace("\"", "").Replace(" ", ""); // Reply names are trimmed without spaces
+		//		}
 
-				return botUsername;
-			}
-		}
+		//		return botUsername;
+		//	}
+		//}
 
 		public static bool FullScanEnabled
 		{
@@ -142,65 +145,65 @@ namespace Phamhilator
 			}
 		}
 
-		public static int ChatRoomID
-		{
-			get
-			{
-				if (chatID == 0)
-				{
-					App.Current.Dispatcher.Invoke(() =>
-					{
-						try
-						{
-							var startIndex = ChatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
-							var endIndex = ChatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
+		//public static int ChatRoomID
+		//{
+		//	get
+		//	{
+		//		if (chatID == 0)
+		//		{
+		//			App.Current.Dispatcher.Invoke(() =>
+		//			{
+		//				try
+		//				{
+		//					var startIndex = ChatWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
+		//					var endIndex = ChatWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
-							var IDString = ChatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
+		//					var IDString = ChatWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
-							if (!IDString.All(Char.IsDigit)) { return; }
+		//					if (!IDString.All(Char.IsDigit)) { return; }
 
-							chatID = int.Parse(IDString);
-						}
-						catch (Exception)
-						{
+		//					chatID = int.Parse(IDString);
+		//				}
+		//				catch (Exception)
+		//				{
 
-						}
-					});
-				}
+		//				}
+		//			});
+		//		}
 
-				return chatID;
-			}
-		}
+		//		return chatID;
+		//	}
+		//}
 
-		public static int AnnouncerRoomID
-		{
-			get
-			{
-				if (announceID == 0)
-				{
-					App.Current.Dispatcher.Invoke(() =>
-					{
-						try
-						{
-							var startIndex = AnnounceWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
-							var endIndex = AnnounceWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
+		//public static int AnnouncerRoomID
+		//{
+		//	get
+		//	{
+		//		if (announceID == 0)
+		//		{
+		//			App.Current.Dispatcher.Invoke(() =>
+		//			{
+		//				try
+		//				{
+		//					var startIndex = AnnounceWb.Source.AbsolutePath.IndexOf("rooms/", StringComparison.Ordinal) + 6;
+		//					var endIndex = AnnounceWb.Source.AbsolutePath.IndexOf("/", startIndex + 1, StringComparison.Ordinal);
 
-							var IDString = AnnounceWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
+		//					var IDString = AnnounceWb.Source.AbsolutePath.Substring(startIndex, endIndex - startIndex);
 
-							if (!IDString.All(Char.IsDigit)) { return; }
+		//					if (!IDString.All(Char.IsDigit)) { return; }
 
-							announceID = int.Parse(IDString);
-						}
-						catch (Exception)
-						{
+		//					announceID = int.Parse(IDString);
+		//				}
+		//				catch (Exception)
+		//				{
 
-						}
-					});
-				}
+		//				}
+		//			});
+		//		}
 
-				return announceID;
-			}
-		}
+		//		return announceID;
+		//	}
+		//}
 
 		public static string Status
 		{
