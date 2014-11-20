@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 using ChatExchangeDotNet;
 
 
@@ -13,10 +10,6 @@ namespace Phamhilator
 {
 	public static partial class GlobalInfo
 	{
-		//private static string botUsername = "";
-		//private static int chatID;
-		//private static int announceID;
-
 		#region Filters
 
 		public static readonly Dictionary<FilterType, BlackFilter> BlackFilters = new Dictionary<FilterType, BlackFilter>()
