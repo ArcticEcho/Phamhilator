@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -11,16 +12,16 @@ namespace Phamhilator
 {
 	public static class CommandProcessor
 	{
-		private static int roomID;
+		private static Room r;
 		private static Message message;
 		private static PostAnalysis report;
 		private static Post post;
 		private static string commandLower = "";
-		private static readonly Regex termCommands = new Regex(@"(?i)^(add|del|edit|auto)\-(b|w)\-(a|qb|qt)\-(spam|off|name|lq)(\-p)? ", RegexOptions.Compiled);
+		private static readonly Regex termCommands = new Regex(@"(?i)^(add|del|edit|auto)\-(b|w)\-(a|qb|qt)\-(spam|off|name|lq)(\-p)? ", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
 
 
-		public static string[] ExacuteCommand(Message input, int chatRoomID)
+		public static string[] ExacuteCommand(Room room, Message input)
 		{
 			if (BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture))) { return new[] { "" }; }
 
@@ -30,16 +31,9 @@ namespace Phamhilator
 			{
 				command = input.Content.Remove(0, 2).TrimStart();
 			}
-			else if (input.Content.ToLowerInvariant().StartsWith("@" + GlobalInfo.PrimaryRoom.Me.Name.ToLowerInvariant()))
+			else if (input.ParentID != -1 && GlobalInfo.PostedReports.ContainsKey(input.ParentID))
 			{
-				if (GlobalInfo.PostedReports.ContainsKey(input.ParentID))
-				{
-					command = input.Content.Remove(0, GlobalInfo.PrimaryRoom.Me.Name.Length + 1).TrimStart();
-				}
-				else
-				{
-					return new[] { chatRoomID == GlobalInfo.PrimaryRoom.ID ? "`Unable to locate message ID.`" : "" };
-				}
+				command = input.Content;
 			}
 			else
 			{
@@ -47,7 +41,7 @@ namespace Phamhilator
 			}
 
 			commandLower = command.ToLowerInvariant();
-			roomID = chatRoomID;
+			r = room;
 			message = input;
 
 			if (GlobalInfo.PostedReports.ContainsKey(input.ParentID))
@@ -426,7 +420,7 @@ namespace Phamhilator
 
 		private static string GetStatus()
 		{
-			return "`Current status: " + GlobalInfo.Status + "`.";
+			return "`" + GlobalInfo.Status + "`.";
 		}
 
 		private static string GetHelp()
@@ -468,9 +462,7 @@ namespace Phamhilator
 				}		
 			}
 
-			var stats = builder.ToString().Trim() + "`";
-
-			return ":" + message.ID + " " + stats;
+			return builder.ToString().Trim() + "`";
 		}
 
 		#endregion
@@ -525,7 +517,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Blacklist term added.`";
+			return "`Blacklist term added.`";
 		}
 
 		private static string AddWQTTerm(string command)
@@ -585,7 +577,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Whitelist term added.`";
+			return "`Whitelist term added.`";
 		}
 
 		private static string AddBQBTerm(string command)
@@ -625,7 +617,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Blacklist term added.`";
+			return "`Blacklist term added.`";
 		}
 
 		private static string AddWQBTerm(string command)
@@ -674,7 +666,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Whitelist term added.`";
+			return "`Whitelist term added.`";
 		}
 
 		private static string AddBATerm(string command)
@@ -723,7 +715,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Blacklist term added.`";
+			return "`Blacklist term added.`";
 		}
 
 		private static string AddWATerm(string command)
@@ -783,7 +775,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Whitelist term added.`";
+			return "`Whitelist term added.`";
 		}
 
 		# endregion
@@ -834,7 +826,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Blacklist term removed.`";
+			return "`Blacklist term removed.`";
 		}
 
 		private static string RemoveWQTTerm(string command)
@@ -884,7 +876,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Whitelist term removed.`";
+			return "`Whitelist term removed.`";
 		}
 
 		private static string RemoveBQBTerm(string command)
@@ -922,7 +914,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Blacklist term removed.`";
+			return "`Blacklist term removed.`";
 		}
 
 		private static string RemoveWQBTerm(string command)
@@ -963,7 +955,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Whitelist term removed.`";
+			return "`Whitelist term removed.`";
 		}
 
 		private static string RemoveBATerm(string command)
@@ -1010,7 +1002,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Blacklist term removed.`";
+			return "`Blacklist term removed.`";
 		}
 
 		private static string RemoveWATerm(string command)
@@ -1060,7 +1052,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Whitelist term removed.`";
+			return "`Whitelist term removed.`";
 		}
 
 		# endregion
@@ -1119,7 +1111,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string EditBQBTerm(string command)
@@ -1165,7 +1157,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string EditWQTTerm(string command)
@@ -1223,7 +1215,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string EditWQBTerm(string command)
@@ -1272,7 +1264,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string EditBATerm(string command)
@@ -1327,7 +1319,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string EditWATerm(string command)
@@ -1385,7 +1377,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		# endregion
@@ -1433,7 +1425,7 @@ namespace Phamhilator
 				}
 			}
 
-			return GlobalInfo.ChatClient.Rooms.First(r => r.ID == roomID).DeleteMessage(message.ParentID) ? "" : ":" + message.ID + " `FP acknowledged.`";
+			return "`FP acknowledged.`";
 		}
 
 
@@ -1482,7 +1474,7 @@ namespace Phamhilator
 				}
 			}
 
-			return ":" + message.ID + " `TP acknowledged.`";
+			return "`TP acknowledged.`";
 		}
 
 		# endregion
@@ -1507,7 +1499,7 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackOff].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("spam"))
@@ -1518,7 +1510,7 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackSpam].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("lq"))
@@ -1529,7 +1521,7 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackLQ].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("name"))
@@ -1540,10 +1532,10 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.QuestionTitleBlackName].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
-			return ":" + message.ID + " `Command not recognised.`";
+			return "`Command not recognised.`";
 		}
 
 		private static string AutoBQBTerm(string command)
@@ -1564,7 +1556,7 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("spam"))
@@ -1575,7 +1567,7 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("lq"))
@@ -1586,10 +1578,10 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string AutoWQTTerm(string command)
@@ -1613,7 +1605,7 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("spam"))
@@ -1624,7 +1616,7 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("lq"))
@@ -1635,7 +1627,7 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("name"))
@@ -1646,10 +1638,10 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string AutoWQBTerm(string command)
@@ -1673,7 +1665,7 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("spam"))
@@ -1684,7 +1676,7 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("lq"))
@@ -1695,10 +1687,10 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string AutoBATerm(string command)
@@ -1719,7 +1711,7 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("spam"))
@@ -1730,7 +1722,7 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("lq"))
@@ -1741,7 +1733,7 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("name"))
@@ -1752,10 +1744,10 @@ namespace Phamhilator
 
 				GlobalInfo.BlackFilters[FilterType.AnswerBlackName].SetAuto(term, !isAuto, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		private static string AutoWATerm(string command)
@@ -1779,7 +1771,7 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("spam"))
@@ -1790,7 +1782,7 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("lq"))
@@ -1801,7 +1793,7 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
 			if (editCommand.StartsWith("name"))
@@ -1812,10 +1804,10 @@ namespace Phamhilator
 
 				GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].SetAuto(term, !isAuto, site, persistence);
 
-				return ":" + message.ID + " `Auto toggled (now " + !isAuto + ").`";
+				return "`Auto toggled (now " + !isAuto + ").`";
 			}
 
-			return ":" + message.ID + " `Term updated.`";
+			return "`Term updated.`";
 		}
 
 		# endregion
@@ -1884,7 +1876,7 @@ namespace Phamhilator
 			{
 				var newMessage = MessageCleaner.GetCleanMessage(reportID);
 
-				GlobalInfo.ChatClient.Rooms.First(r => r.ID == roomID).EditMessage(message.ParentID, newMessage);
+				GlobalInfo.ChatClient.Rooms.First(room => room.ID == r.ID).EditMessage(message.ParentID, newMessage);
 			}
 
 			return "";
@@ -1896,7 +1888,7 @@ namespace Phamhilator
 
 			if (GlobalInfo.PostedReports.ContainsKey(reportID))
 			{
-				GlobalInfo.ChatClient.Rooms.First(r => r.ID == roomID).DeleteMessage(message.ParentID);
+				GlobalInfo.ChatClient.Rooms.First(room => room.ID == r.ID).DeleteMessage(message.ParentID);
 			}
 
 			return "";

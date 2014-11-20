@@ -14,7 +14,7 @@
                 <Label Content="Please Enter Your Stack Exchange OpenID Credentials" Width="590" Canvas.Top="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Thin" Height="31"/>
                 <ProgressBar Name="progressBar" Canvas.Top="0" Width="600" Height="5" Margin="-3,0,0,0"/>
                 <Button Content="Login" Canvas.Left="10" Canvas.Top="144" Width="570" FontWeight="Thin" Click="Button_Click"/>
-                <CheckBox Content="Remember details" Canvas.Left="10" Canvas.Top="107" IsChecked="False" IsEnabled="False"  ClickMode="Press" FontWeight="Thin"/>
+                <CheckBox Name="remCredsCB"  Content="Remember details" Canvas.Left="10" Canvas.Top="107" IsChecked="True" ClickMode="Press" FontWeight="Thin"/>
                 <Canvas Name="operationC" Canvas.Left="600" Canvas.Top="0" Height="179" Width="592" >
                     <Button Content="Start Monitoring" Width="109" Click="Button_Click_2" Canvas.Left="10" Canvas.Top="144" FontWeight="Normal" ClickMode="Press" FontSize="10"/>
                     <Slider Name="refreshRateS" Width="267" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged" Canvas.Left="203" Canvas.Top="147" Height="22"/>

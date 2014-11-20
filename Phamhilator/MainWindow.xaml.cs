@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Threading;
@@ -19,7 +20,6 @@ namespace Phamhilator
 		private int refreshRate = 10000; // In milliseconds.
 		private readonly HashSet<int> spammers = new HashSet<int>();
 		private static readonly List<string> previouslyFoundPosts = new List<string>();
-		private Thread commandListenerThread;
 		private Thread postCatcherThread;
 		private DateTime requestedDieTime;
 
@@ -35,6 +35,14 @@ namespace Phamhilator
 				CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
 				InitializeComponent();
+
+				var data = File.ReadAllText(DirectoryTools.GetCredsFile());
+
+				if (!String.IsNullOrEmpty(data))
+				{
+					emailTB.Text = data.Remove(data.IndexOf("¬", StringComparison.InvariantCulture));
+					passwordTB.Text = data.Substring(data.IndexOf("¬", StringComparison.InvariantCulture) + 1);
+				}
 
 				loginC.Children.Remove(operationC);
 
@@ -62,11 +70,10 @@ namespace Phamhilator
 		private void PostCatcher()
 		{
 			var postSuccessMessage = false;
-			string html;
 
 			postCatcherThread = new Thread(() =>
 			{
-				for (var i = 1; i < 5; i++)
+				for (var i = 1; i < int.MaxValue; i++)
 				{
 					try
 					{
@@ -82,6 +89,8 @@ namespace Phamhilator
 
 						while (!GlobalInfo.Exit)
 						{
+							string html;
+
 							try
 							{
 								html = StringDownloader.DownloadString("http://stackexchange.com/questions?tab=realtime");
@@ -115,17 +124,8 @@ namespace Phamhilator
 						if (!GlobalInfo.Exit)
 						{
 							Thread.Sleep(2000);
-
-							if (i == 4)
-							{
-								GlobalInfo.PrimaryRoom.PostMessage("`Warning: 3 attempts to restart the post catcher thread have failed. Now shutting down...`");
-
-								GlobalInfo.Exit = true;
-							}
-							else
-							{
-								GlobalInfo.PrimaryRoom.PostMessage("`Warning: post catcher thread has died. Attempting to restart...`");
-							}
+							
+							GlobalInfo.PrimaryRoom.PostMessage("`Warning: post catcher thread has died. Attempting to restart...`");						
 						}
 					}
 
@@ -144,16 +144,11 @@ namespace Phamhilator
 			var postCatcherMessagePosted = false;
 			var postCatcherWarningMessagePosted = false;
 
-			var commandListenerMessagePosted = false;
-			var commandListenerWarningMessagePosted = false;
-
 			while (true)
 			{
 				KillPostCatcher(ref postCatcherMessagePosted, ref postCatcherWarningMessagePosted);
 
-				KillCommandListener(ref commandListenerMessagePosted, ref commandListenerWarningMessagePosted);
-
-				if (!commandListenerThread.IsAlive && !postCatcherThread.IsAlive) { break; }
+				if (!postCatcherThread.IsAlive) { break; }
 			}
 
 			Thread.Sleep(5000);
@@ -183,31 +178,13 @@ namespace Phamhilator
 			}
 		}
 
-		private void KillCommandListener(ref bool commandListenerMessagePosted, ref bool commandListenerWarningMessagePosted)
-		{
-			if (commandListenerMessagePosted) { return; }
-
-			if (!commandListenerThread.IsAlive)
-			{
-				GlobalInfo.PrimaryRoom.PostMessage("`Command listener thread has died...`");
-
-				commandListenerMessagePosted = true;
-			}
-			else if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !commandListenerWarningMessagePosted)
-			{
-				GlobalInfo.PrimaryRoom.PostMessage("`Warning: 10 seconds have past since the kill command was issued and command listener thread is still alive. Now forcing thread death...`");
-
-				commandListenerThread.Abort();
-			}
-		}
-
 		private void HandlePrimaryNewMessage(Message message)
 		{
 			if (message.Content == ">>kill-it-with-no-regrets-for-sure")
 			{
 				if (UserAccess.Owners.Contains(message.AuthorID))
 				{
-					GlobalInfo.PrimaryRoom.PostMessage("`Killing...`");
+					GlobalInfo.PrimaryRoom.PostReply(message, "`Killing...`");
 
 					KillBot();
 				}
@@ -218,26 +195,26 @@ namespace Phamhilator
 			}
 			else
 			{
-				var messages = CommandProcessor.ExacuteCommand(message, GlobalInfo.PrimaryRoom.ID); 
+				var messages = CommandProcessor.ExacuteCommand(GlobalInfo.PrimaryRoom, message); 
 				
 				if (messages.Length == 0) { return; }
 
-				foreach (var m in messages)
+				foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m)))
 				{
-					GlobalInfo.PrimaryRoom.PostMessage(m);
+					GlobalInfo.PrimaryRoom.PostReply(message, m);
 				}
 			}
 		}
 
-		private void HandleSecondaryNewMessage(Message message, int roomID)
+		private void HandleSecondaryNewMessage(Room room, Message message)
 		{
-			var messages = CommandProcessor.ExacuteCommand(message, roomID);
+			var messages = CommandProcessor.ExacuteCommand(room, message);
 
 			if (messages.Length == 0) { return; }
 
-			foreach (var m in messages)
+			foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m)))
 			{
-				GlobalInfo.ChatClient.Rooms.First(r => r.ID == roomID).PostMessage(m);
+				room.PostReply(message, m);
 			}
 		}
 
@@ -466,6 +443,15 @@ namespace Phamhilator
 			var user = emailTB.Text;
 			var pass = passwordTB.Text;
 
+			if (remCredsCB.IsChecked ?? false)
+			{
+				File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass);
+			}
+			else
+			{
+				File.WriteAllText(DirectoryTools.GetCredsFile(), "");
+			}
+
 			Task.Factory.StartNew(() =>
 			{
 				GlobalInfo.ChatClient = new Client(user, pass);
@@ -479,15 +465,15 @@ namespace Phamhilator
 				{
 					if (GlobalInfo.ChatClient.Rooms[i].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
 
-					GlobalInfo.ChatClient.Rooms[i].NewMessage += message => HandleSecondaryNewMessage(message, GlobalInfo.ChatClient.Rooms[i].ID);
-					GlobalInfo.ChatClient.Rooms[i].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(newMessage, GlobalInfo.ChatClient.Rooms[i].ID);
+					GlobalInfo.ChatClient.Rooms[i].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[i], message);
+					GlobalInfo.ChatClient.Rooms[i].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[i], newMessage);
 				}
 
 				Dispatcher.Invoke(() =>
 				{
-					//progressBar.IsIndeterminate = false;
-
 					transContentC.Content = operationC;
+
+					progressBar.IsIndeterminate = false;
 				});
 			});
 		}
