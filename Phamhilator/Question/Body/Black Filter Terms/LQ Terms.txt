@@ -24,7 +24,7 @@
     "Score": 40.0,
     "TPCount": 3,
     "FPCount": 18,
-    "CaughtCount": 301
+    "CaughtCount": 325
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -33,7 +33,7 @@
     "Score": 14.0,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 14
+    "CaughtCount": 18
   },
   {
     "Regex": "enter link description here",
