@@ -12,7 +12,7 @@ namespace Phamhilator
 {
 	public static class CommandProcessor
 	{
-		private static Room r;
+		private static Room room;
 		private static Message message;
 		private static PostAnalysis report;
 		private static Post post;
@@ -21,7 +21,7 @@ namespace Phamhilator
 
 
 
-		public static string[] ExacuteCommand(Room room, Message input)
+		public static string[] ExacuteCommand(Room roomMessage, Message input)
 		{
 			if (BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture))) { return new[] { "" }; }
 
@@ -41,7 +41,7 @@ namespace Phamhilator
 			}
 
 			commandLower = command.ToLowerInvariant();
-			r = room;
+			room = roomMessage;
 			message = input;
 
 			if (GlobalInfo.PostedReports.ContainsKey(input.ParentID))
@@ -106,22 +106,22 @@ namespace Phamhilator
 
 		public static bool IsValidCommand(string command)
 		{
-			var commandLower = command.ToLowerInvariant();
+			var lower = command.ToLowerInvariant();
 
-			if (commandLower.StartsWith(">>"))
+			if (lower.StartsWith(">>"))
 			{
-				commandLower = commandLower.Remove(0, 2).TrimStart();
+				lower = lower.Remove(0, 2).TrimStart();
 			}
-			else if (commandLower.StartsWith("@" + GlobalInfo.PrimaryRoom.Me.Name.ToLowerInvariant()))
+			else if (lower.StartsWith("@" + GlobalInfo.PrimaryRoom.Me.Name.ToLowerInvariant()))
 			{
-				commandLower = commandLower.Remove(0, GlobalInfo.PrimaryRoom.Me.Name.Length + 1).TrimStart();
+				lower = lower.Remove(0, GlobalInfo.PrimaryRoom.Me.Name.Length + 1).TrimStart();
 			}
 			else
 			{
 				return false;
 			}
 
-			return IsNormalUserCommand(commandLower) || IsPrivilegedUserCommand(commandLower) || IsOwnerCommand(commandLower);
+			return IsNormalUserCommand(lower) || IsPrivilegedUserCommand(lower) || IsOwnerCommand(lower);
 		}
 
 
@@ -1386,7 +1386,11 @@ namespace Phamhilator
 
 		private static string FalsePositive()
 		{
-			return report.Type == PostType.BadTagUsed ? "" : RegisterFalsePositive();
+			if (report.Type == PostType.BadTagUsed) { return ""; }
+
+			var m = RegisterFalsePositive();
+
+			return room.DeleteMessage(message.ParentID) ? "" : m;
 		}
 
 		private static string RegisterFalsePositive()
@@ -1433,15 +1437,17 @@ namespace Phamhilator
 		{
 			if (commandLower.EndsWith("tpa"))
 			{
+				var m = "";
+
 				if (report.Type == PostType.Offensive)
 				{
-					var m = MessageCleaner.GetCleanMessage(message.ParentID);
+					m = MessageCleaner.GetCleanMessage(message.ParentID);
+				}	
 
-					foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
-					{
-						room.PostMessage(m);
-					}
-				}			
+				foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
+				{
+					room.PostMessage(m);
+				}		
 			}
 
 			if (report.Type == PostType.BadTagUsed) { return ""; }
@@ -1870,26 +1876,19 @@ namespace Phamhilator
 
 		private static string CleanMessage()
 		{
-			var reportID = message.ParentID;
+			var reportID = message.ParentID;		
+			var newMessage = MessageCleaner.GetCleanMessage(reportID);
 
-			if (GlobalInfo.PostedReports.ContainsKey(reportID))
-			{
-				var newMessage = MessageCleaner.GetCleanMessage(reportID);
-
-				GlobalInfo.ChatClient.Rooms.First(room => room.ID == r.ID).EditMessage(message.ParentID, newMessage);
-			}
-
+			room.EditMessage(message.ParentID, newMessage);
+			
 			return "";
 		}
 
 		private static string DeleteMessage()
 		{
 			var reportID = message.ParentID;
-
-			if (GlobalInfo.PostedReports.ContainsKey(reportID))
-			{
-				GlobalInfo.ChatClient.Rooms.First(room => room.ID == r.ID).DeleteMessage(message.ParentID);
-			}
+	
+			room.DeleteMessage(message.ParentID);
 
 			return "";
 		}
