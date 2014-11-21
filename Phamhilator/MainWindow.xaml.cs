@@ -349,14 +349,14 @@ namespace Phamhilator
 			{
 				PostPersistence.AddPost(p);
 				GlobalInfo.PostedReports.Add(message.ID, chatMessage);
-			}
 
-			if (info.AutoTermsFound && chatMessage != null)
-			{
-				foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
+				if (info.AutoTermsFound)
 				{
-					room.PostMessage(chatMessage.Body);
-				}			
+					foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
+					{
+						room.PostMessage(chatMessage.Body);
+					}			
+				}
 			}
 
 			GlobalInfo.Stats.TotalCheckedPosts++;
@@ -460,6 +460,7 @@ namespace Phamhilator
 				GlobalInfo.PrimaryRoom = GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
 				GlobalInfo.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;
 				GlobalInfo.PrimaryRoom.MessageEdited += (oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage);
+				GlobalInfo.PrimaryRoom.IgnoreOwnEvents = false;
 
 				GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");
 
@@ -469,6 +470,7 @@ namespace Phamhilator
 
 					GlobalInfo.ChatClient.Rooms[i].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[i], message);
 					GlobalInfo.ChatClient.Rooms[i].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[i], newMessage);
+					GlobalInfo.ChatClient.Rooms[i].IgnoreOwnEvents = false;
 				}
 
 				Dispatcher.Invoke(() =>

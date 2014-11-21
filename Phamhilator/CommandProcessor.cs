@@ -33,7 +33,7 @@ namespace Phamhilator
 			}
 			else if (input.ParentID != -1 && GlobalInfo.PostedReports.ContainsKey(input.ParentID))
 			{
-				command = input.Content;
+				command = input.Content.TrimStart();
 			}
 			else
 			{
@@ -1431,7 +1431,7 @@ namespace Phamhilator
 
 		private static string TruePositive()
 		{
-			if (commandLower.StartsWith("tpa"))
+			if (commandLower.EndsWith("tpa"))
 			{
 				if (report.Type == PostType.Offensive)
 				{
@@ -1448,7 +1448,7 @@ namespace Phamhilator
 
 			var returnMessage = RegisterTruePositive();
 
-			return commandLower.StartsWith("tpa") ? "" : returnMessage;
+			return commandLower.EndsWith("tpa") ? "" : returnMessage;
 		}
 
 		private static string RegisterTruePositive()
