@@ -69,67 +69,54 @@ namespace Phamhilator
 
 		private void PostCatcher()
 		{
-			var postSuccessMessage = false;
-
 			postCatcherThread = new Thread(() =>
 			{
-				for (var i = 1; i < int.MaxValue; i++)
+				// Wait for the bot to startup.
+				do
+				{
+					Thread.Sleep(500);
+				} while (!GlobalInfo.BotRunning);
+
+				while (!GlobalInfo.Shutdown)
 				{
 					try
-					{
+					{						
+						string html;
+
+						try
+						{
+							html = StringDownloader.DownloadString("http://stackexchange.com/questions?tab=realtime");
+						}
+						catch (Exception ex)
+						{
+							if (GlobalInfo.DebugMode)
+							{
+								GlobalInfo.PrimaryRoom.PostMessage(ex.ToString());
+							}
+
+							continue;
+						}
+
+						if (html.IndexOf("hot-question-site-icon", StringComparison.Ordinal) == -1) { continue; }
+
+						var posts = GetAllPosts(html);
+
+						if (posts.Length != 0)
+						{
+							CheckPosts(posts);
+						}
+
+						var sleepTime = DateTime.UtcNow.AddMilliseconds(refreshRate);
+
 						do
 						{
-							Thread.Sleep(refreshRate);
-						} while (!GlobalInfo.BotRunning);
-
-						if (i != 1)
-						{
-							postSuccessMessage = true;
-						}
-
-						while (!GlobalInfo.Exit)
-						{
-							string html;
-
-							try
-							{
-								html = StringDownloader.DownloadString("http://stackexchange.com/questions?tab=realtime");
-							}
-							catch (Exception) { return; }
-
-							if (html.IndexOf("hot-question-site-icon", StringComparison.Ordinal) == -1) { return; }
-
-							var posts = GetAllPosts(html);
-
-							if (posts.Length != 0)
-							{
-								CheckPosts(posts);
-							}
-
-							do
-							{
-								Thread.Sleep(refreshRate);
-							} while (!GlobalInfo.BotRunning && !GlobalInfo.Exit);
-
-							if (postSuccessMessage)
-							{
-								GlobalInfo.PrimaryRoom.PostMessage("`Restart successful!`");
-
-								postSuccessMessage = false;
-							}
-						}
+							Thread.Sleep(250);
+						} while (DateTime.UtcNow < sleepTime && GlobalInfo.BotRunning && !GlobalInfo.Shutdown);
 					}
 					catch (Exception)
 					{
-						if (!GlobalInfo.Exit)
-						{
-							Thread.Sleep(2000);
-							
-							GlobalInfo.PrimaryRoom.PostMessage("`Warning: post catcher thread has died. Attempting to restart...`");						
-						}
+						Thread.Sleep(2000);
 					}
-
-					if (GlobalInfo.Exit) { return; }
 				}
 			}) { Priority = ThreadPriority.Lowest };
 
@@ -138,15 +125,23 @@ namespace Phamhilator
 
 		private void KillBot()
 		{
-			GlobalInfo.Exit = true;
+			GlobalInfo.Shutdown = true;
 			requestedDieTime = DateTime.UtcNow;
 
-			var postCatcherMessagePosted = false;
-			var postCatcherWarningMessagePosted = false;
+			var warningMessagePosted = false;
 
-			while (true)
+			while (postCatcherThread.IsAlive)
 			{
-				KillPostCatcher(ref postCatcherMessagePosted, ref postCatcherWarningMessagePosted);
+				Thread.Sleep(250);
+
+				if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !warningMessagePosted)
+				{
+					GlobalInfo.PrimaryRoom.PostMessage("`Warning: 10 seconds have past since the kill command was issued and the post catcher thread is still alive. Now forcing thread death...`");
+
+					warningMessagePosted = true;
+
+					postCatcherThread.Abort();
+				}
 
 				if (!postCatcherThread.IsAlive) { break; }
 			}
@@ -158,24 +153,6 @@ namespace Phamhilator
 			Thread.Sleep(5000);
 
 			Dispatcher.Invoke(() => Environment.Exit(0));
-		}
-
-		private void KillPostCatcher(ref bool postCatcherMessagePosted, ref bool postCatcherWarningMessagePosted)
-		{
-			if (postCatcherMessagePosted) { return; }
-
-			if (!postCatcherThread.IsAlive)
-			{
-				GlobalInfo.PrimaryRoom.PostMessage("`Post catcher thread has died...`");
-
-				postCatcherMessagePosted = true;
-			}
-			else if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !postCatcherWarningMessagePosted)
-			{
-				GlobalInfo.PrimaryRoom.PostMessage("`Warning: 10 seconds have past since the kill command was issued and post catcher thread is still alive. Now forcing thread death...`");
-
-				postCatcherThread.Abort();
-			}
 		}
 
 		private void HandlePrimaryNewMessage(Message message)
@@ -357,6 +334,8 @@ namespace Phamhilator
 						room.PostMessage(chatMessage.Body);
 					}			
 				}
+
+				Thread.Sleep(1500); //TODO: Add more efficient rate limiting (either to CE.Ner or Pham).
 			}
 
 			GlobalInfo.Stats.TotalCheckedPosts++;
@@ -389,6 +368,11 @@ namespace Phamhilator
 		{
 			Clipboard.SetText(args.ExceptionObject.ToString());
 
+			if (GlobalInfo.DebugMode)
+			{
+				GlobalInfo.PrimaryRoom.PostMessage(args.ExceptionObject.ToString());
+			}
+
 			if (args.IsTerminating)
 			{
 				MessageBox.Show(args.ExceptionObject + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...", "Oops...", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -413,7 +397,7 @@ namespace Phamhilator
 
 			Task.Factory.StartNew(() => GlobalInfo.PrimaryRoom.PostMessage("`Phamhilator™ stopped.`"));
 
-			GlobalInfo.Exit = true;
+			GlobalInfo.Shutdown = true;
 
 			Thread.Sleep(3000);
 
@@ -475,6 +459,8 @@ namespace Phamhilator
 
 				Dispatcher.Invoke(() =>
 				{
+					GlobalInfo.DebugMode = debugCB.IsChecked ?? false;
+
 					transContentC.Content = operationC;
 
 					progressBar.IsIndeterminate = false;
@@ -490,7 +476,7 @@ namespace Phamhilator
 
 			GlobalInfo.BotRunning = true;
 
-			if (Debugger.IsAttached)
+			if (Debugger.IsAttached || GlobalInfo.DebugMode)
 			{
 				GlobalInfo.PrimaryRoom.PostMessage("`Phamhilator™ started (debug mode).`");
 			}

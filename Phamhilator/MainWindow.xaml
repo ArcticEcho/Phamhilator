@@ -5,7 +5,7 @@
 
         Title="Phamhilator" Height="209" Width="600" WindowStartupLocation="CenterScreen" Closing="MetroWindow_Closing" ResizeMode="NoResize">
     <Border BorderBrush="#FF41B1FF" BorderThickness="1">
-        <controls:TransitioningContentControl Name="transContentC" Transition="Up" Height="179" Width="592">
+        <controls:TransitioningContentControl Name="transContentC" Transition="Up" Height="179" Width="592" Focusable="False">
             <Canvas Name="loginC">
                 <Label Content="Email" Canvas.Left="10" Canvas.Top="55" FontWeight="Thin" FontSize="12.5" Height="26"/>
                 <TextBox Name="emailTB" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="" Canvas.Top="55" Width="251"/>
@@ -15,6 +15,7 @@
                 <ProgressBar Name="progressBar" Canvas.Top="0" Width="600" Height="5" Margin="-3,0,0,0"/>
                 <Button Content="Login" Canvas.Left="10" Canvas.Top="144" Width="570" FontWeight="Thin" Click="Button_Click"/>
                 <CheckBox Name="remCredsCB"  Content="Remember details" Canvas.Left="10" Canvas.Top="107" IsChecked="True" ClickMode="Press" FontWeight="Thin"/>
+                <CheckBox Name="debugCB" Content="Debug mode" Canvas.Left="489" Canvas.Top="107" ClickMode="Press"/>
                 <Canvas Name="operationC" Canvas.Left="600" Canvas.Top="0" Height="179" Width="592" >
                     <Button Content="Start Monitoring" Width="109" Click="Button_Click_2" Canvas.Left="10" Canvas.Top="144" FontWeight="Normal" ClickMode="Press" FontSize="10"/>
                     <Slider Name="refreshRateS" Width="267" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged" Canvas.Left="203" Canvas.Top="147" Height="22"/>

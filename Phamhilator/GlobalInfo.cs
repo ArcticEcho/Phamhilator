@@ -55,7 +55,8 @@ namespace Phamhilator
 		public static int PostsCaught;
 		public static DateTime UpTime;
 		public static bool BotRunning;
-		public static bool Exit;
+		public static bool Shutdown;
+		public static bool DebugMode;
 
 		public static bool FullScanEnabled
 		{

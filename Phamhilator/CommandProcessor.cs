@@ -442,27 +442,27 @@ namespace Phamhilator
 
 		private static string GetTerms()
 		{
-			var builder = new StringBuilder("`Term(s) found: ");
+			var builder = new StringBuilder("    Term(s) found: ");
 
-			var report = GlobalInfo.PostedReports[message.ParentID];
-
-			foreach (var term in report.Report.BlackTermsFound)
+			foreach (var term in report.BlackTermsFound)
 			{
 				if (term.TPCount + term.FPCount >= 5)
 				{
-					builder.Append("(Sensitivity: " + Math.Round(term.Sensitivity * 100, 1));
+					builder.Append("    (Sensitivity: " + Math.Round(term.Sensitivity * 100, 1));
 					builder.Append("%. Specificity: " + Math.Round(term.Specificity * 100, 1));
 					builder.Append("%. Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
-					builder.Append("%. Score: " + Math.Round(term.Score, 1) + ") " + term.Regex + "   ");
+					builder.Append("%. Score: " + Math.Round(term.Score, 1));
+					builder.Append(". Is Auto: " + term.IsAuto + ") " + term.Regex + "\n\n");
 				}
 				else
 				{
-					builder.Append("(Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
-					builder.Append("%. Score: " + Math.Round(term.Score, 1) + ") " + term.Regex + "   ");
+					builder.Append("    (Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
+					builder.Append("%. Score: " + Math.Round(term.Score, 1));
+					builder.Append(". Is Auto: " + term.IsAuto + ") " + term.Regex + "\n\n");
 				}		
 			}
 
-			return builder.ToString().Trim() + "`";
+			return builder.ToString();
 		}
 
 		#endregion
