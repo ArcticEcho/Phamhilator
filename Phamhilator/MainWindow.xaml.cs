@@ -450,11 +450,21 @@ namespace Phamhilator
 
 				for (var i = 0; i < GlobalInfo.ChatClient.Rooms.Count; i++)
 				{
-					if (GlobalInfo.ChatClient.Rooms[i].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
+                    int x = i;
 
-					GlobalInfo.ChatClient.Rooms[i].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[i], message);
-					GlobalInfo.ChatClient.Rooms[i].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[i], newMessage);
-					GlobalInfo.ChatClient.Rooms[i].IgnoreOwnEvents = false;
+                    if (GlobalInfo.ChatClient.Rooms[x].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
+
+                    try
+                    {
+                        GlobalInfo.ChatClient.Rooms[x].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[x], message);
+                        GlobalInfo.ChatClient.Rooms[x].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[x], newMessage);
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        Trace.WriteLine("TODO: " + ex.Message);
+                    }
+
+                    GlobalInfo.ChatClient.Rooms[x].IgnoreOwnEvents = false;
 				}
 
 				Dispatcher.Invoke(() =>

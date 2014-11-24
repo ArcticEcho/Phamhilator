@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 10.1918583,
+    "Score": 10.7176533,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

@@ -12,7 +12,7 @@
     "Regex": "(?i)\\bfuck\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -111,7 +111,7 @@
     "Regex": "(?i)\\bfuck\\b",
     "IsAuto": false,
     "Site": "startups.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -175,6 +175,24 @@
     "IsAuto": false,
     "Site": "money.stackexchange.com",
     "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbastard\\b",
+    "IsAuto": false,
+    "Site": "outdoors.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\sdick\\s",
+    "IsAuto": false,
+    "Site": "android.stackexchange.com",
+    "Score": 5.105263,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

@@ -93,7 +93,7 @@
     "Regex": "(?i)\\byoga|relax(ing)?\\b",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -273,7 +273,7 @@
     "Regex": "(?i)\\byoga|relax(ing)?\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -291,7 +291,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -435,7 +435,7 @@
     "Regex": "(?i)\\byoga|relax(ing)?\\b",
     "IsAuto": false,
     "Site": "hermeneutics.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1092,6 +1092,24 @@
     "Regex": "(?i)body weight",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)high quality",
+    "IsAuto": false,
+    "Site": "photo.stackexchange.com",
+    "Score": 5.078704,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)got you",
+    "IsAuto": false,
+    "Site": "webapps.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

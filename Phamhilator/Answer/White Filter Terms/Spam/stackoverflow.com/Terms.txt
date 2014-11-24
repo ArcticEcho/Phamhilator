@@ -804,7 +804,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 9.0,
+    "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -903,7 +903,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 6.714286,
+    "Score": 5.714286,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -967,6 +967,33 @@
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "filerepairforum.com",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 6.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)filerepairforum\\.com",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 6.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)filerepairforum",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

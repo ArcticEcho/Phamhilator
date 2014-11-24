@@ -687,7 +687,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 8.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1065,7 +1065,7 @@
     "Regex": "^[^a-z]*$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 5.923077,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
