@@ -138,7 +138,7 @@
     "Regex": "(?i)\\bskin\\b",
     "IsAuto": false,
     "Site": "cooking.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -813,7 +813,7 @@
     "Regex": "(?i)\\bskin\\b",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.0,
+    "Score": 5.41666651,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1102,6 +1102,15 @@
     "IsAuto": false,
     "Site": "photo.stackexchange.com",
     "Score": 5.078704,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)got you",
+    "IsAuto": false,
+    "Site": "webapps.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

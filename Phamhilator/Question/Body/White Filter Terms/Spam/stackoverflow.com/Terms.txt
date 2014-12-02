@@ -57,7 +57,7 @@
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.05,
+    "Score": 6.655,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -66,7 +66,7 @@
     "Regex": "avoir",
     "IsAuto": false,
     "Site": "french.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -76,6 +76,15 @@
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 5.01020432,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\bavoir\\b",
+    "IsAuto": false,
+    "Site": "french.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

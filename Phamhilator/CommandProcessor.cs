@@ -442,7 +442,30 @@ namespace Phamhilator
 
 		private static string GetTerms()
 		{
-			var builder = new StringBuilder("    Term(s) found: ");
+			if (report.BlackTermsFound.Count == 1)
+			{
+				var term = report.BlackTermsFound.First();
+				var m = "`Term(s) found: ";
+
+				if (term.TPCount + term.FPCount >= 5)
+				{
+					m += "(Sensitivity: " + Math.Round(term.Sensitivity * 100, 1);
+					m += "%. Specificity: " + Math.Round(term.Specificity * 100, 1);
+					m += "%. Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1);
+					m += "%. Score: " + Math.Round(term.Score, 1);
+					m += ". Is Auto: " + term.IsAuto + ") " + term.Regex + "`";
+				}
+				else
+				{
+					m += "    (Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1);
+					m += "%. Score: " + Math.Round(term.Score, 1);
+					m += ". Is Auto: " + term.IsAuto + ") " + term.Regex + "`";
+				}
+
+				return m;
+			}
+
+			var builder = new StringBuilder("    @" + message.AuthorName.Replace(" ", "") + "\n    Term(s) found: ");
 
 			foreach (var term in report.BlackTermsFound)
 			{

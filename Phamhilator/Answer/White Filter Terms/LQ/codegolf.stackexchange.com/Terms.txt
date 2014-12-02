@@ -1182,7 +1182,7 @@
     "Regex": "(\\S)\\1{3}",
     "IsAuto": false,
     "Site": "sqa.stackexchange.com",
-    "Score": 8.739038,
+    "Score": 8.436363,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1200,7 +1200,7 @@
     "Regex": "(?i)please",
     "IsAuto": false,
     "Site": "tridion.stackexchange.com",
-    "Score": 9.602508,
+    "Score": 9.191858,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

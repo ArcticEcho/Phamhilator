@@ -301,9 +301,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 18.0,
-    "TPCount": 1,
-    "FPCount": 2,
-    "CaughtCount": 8
+    "TPCount": 3,
+    "FPCount": 3,
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)the perfect",
@@ -409,9 +409,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 1,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -555,7 +555,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)^also",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)health",
@@ -707,8 +707,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 4,
-    "CaughtCount": 10
+    "FPCount": 5,
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -951,7 +951,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 13
+    "CaughtCount": 14
   },
   {
     "Regex": "\\$\\d+",
@@ -969,7 +969,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)high quality",
@@ -1003,8 +1003,8 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.1755075,
-    "TPCount": 0,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   }
 ]

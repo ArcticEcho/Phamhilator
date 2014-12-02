@@ -42,7 +42,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 116
+    "CaughtCount": 119
   },
   {
     "Regex": "(?i)tried",
@@ -123,7 +123,7 @@
     "Score": 12.0,
     "TPCount": 0,
     "FPCount": 8,
-    "CaughtCount": 240
+    "CaughtCount": 253
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -195,7 +195,7 @@
     "Score": 13.0,
     "TPCount": 1,
     "FPCount": 2,
-    "CaughtCount": 28
+    "CaughtCount": 29
   },
   {
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
@@ -204,16 +204,16 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 225
+    "CaughtCount": 236
   },
   {
     "Regex": "^[^a-z]*$",
     "IsAuto": false,
     "Site": "",
     "Score": 13.0,
-    "TPCount": 3,
+    "TPCount": 5,
     "FPCount": 1,
-    "CaughtCount": 19
+    "CaughtCount": 21
   },
   {
     "Regex": "(?i)\\bgives error\\b",
@@ -293,8 +293,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 1,
-    "FPCount": 2,
-    "CaughtCount": 31
+    "FPCount": 3,
+    "CaughtCount": 32
   },
   {
     "Regex": "(?i)credit.card",
@@ -374,8 +374,8 @@
     "Site": "",
     "Score": 16.0,
     "TPCount": 1,
-    "FPCount": 7,
-    "CaughtCount": 366
+    "FPCount": 10,
+    "CaughtCount": 383
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -384,7 +384,7 @@
     "Score": 15.0,
     "TPCount": 1,
     "FPCount": 3,
-    "CaughtCount": 46
+    "CaughtCount": 47
   },
   {
     "Regex": "(?i)\\b(help|halp)\\b",
@@ -393,7 +393,7 @@
     "Score": 16.0,
     "TPCount": 1,
     "FPCount": 6,
-    "CaughtCount": 108
+    "CaughtCount": 110
   },
   {
     "Regex": "for\\sfree",
@@ -419,8 +419,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 6,
-    "CaughtCount": 186
+    "FPCount": 8,
+    "CaughtCount": 194
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",
@@ -464,8 +464,8 @@
     "Site": "",
     "Score": 11.5906382,
     "TPCount": 0,
-    "FPCount": 4,
-    "CaughtCount": 43
+    "FPCount": 5,
+    "CaughtCount": 45
   },
   {
     "Regex": "(?i)^I want",

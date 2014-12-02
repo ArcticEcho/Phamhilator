@@ -22,9 +22,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 40.0,
-    "TPCount": 6,
-    "FPCount": 25,
-    "CaughtCount": 440
+    "TPCount": 8,
+    "FPCount": 27,
+    "CaughtCount": 462
   },
   {
     "Regex": "\\bpl[sz]+\\b",
