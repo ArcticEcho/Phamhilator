@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 0,
-    "FPCount": 13,
-    "CaughtCount": 36
+    "TPCount": 2,
+    "FPCount": 17,
+    "CaughtCount": 47
   },
   {
     "Regex": "2348064038119",
@@ -67,18 +67,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 0,
+    "TPCount": 3,
     "FPCount": 1,
-    "CaughtCount": 1
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)filerepairforum\\.com",
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 0,
+    "TPCount": 3,
     "FPCount": 1,
-    "CaughtCount": 1
+    "CaughtCount": 3
   },
   {
     "Regex": "APPLY NOW",
@@ -94,9 +94,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.2111111,
-    "TPCount": 0,
+    "TPCount": 3,
     "FPCount": 1,
-    "CaughtCount": 1
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)mobogenie",
@@ -131,8 +131,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 2
+    "FPCount": 1,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)Join the Illuminati",
@@ -181,6 +181,15 @@
   },
   {
     "Regex": "(?i)cricketworldcup2015newzealand",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)nottinghamdatarecovery",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,

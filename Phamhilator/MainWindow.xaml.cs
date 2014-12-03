@@ -176,9 +176,16 @@ namespace Phamhilator
 				
 				if (messages.Length == 0) { return; }
 
-				foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m)))
+				foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
 				{
-					GlobalInfo.PrimaryRoom.PostReply(message, m);
+				    if (m.Reply)
+				    {
+                        GlobalInfo.PrimaryRoom.PostReply(message, m.Content);
+				    }
+				    else
+				    {
+                        GlobalInfo.PrimaryRoom.PostMessage(m.Content);
+				    }
 				}
 			}
 		}
@@ -189,9 +196,16 @@ namespace Phamhilator
 
 			if (messages.Length == 0) { return; }
 
-			foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m)))
+			foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
 			{
-				room.PostReply(message, m);
+                if (m.Reply)
+                {
+                    GlobalInfo.PrimaryRoom.PostReply(message, m.Content);
+                }
+                else
+                {
+                    GlobalInfo.PrimaryRoom.PostMessage(m.Content);
+                }
 			}
 		}
 
@@ -419,28 +433,51 @@ namespace Phamhilator
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			if (String.IsNullOrEmpty(emailTB.Text) || String.IsNullOrEmpty(passwordTB.Text)) { return; }
-		
-			progressBar.IsIndeterminate = true;
 			
+			progressBar.IsIndeterminate = true;
 			((Button)sender).IsEnabled = false;
 			emailTB.IsEnabled = false;
 			passwordTB.IsEnabled = false;
+            remCredsCB.IsEnabled = false;
+            debugCB.IsEnabled = false;
+		    loginTitleL.Content = "Logging In...";
 
 			var user = emailTB.Text;
 			var pass = passwordTB.Text;
-
-			if (remCredsCB.IsChecked ?? false)
-			{
-				File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass);
-			}
-			else
-			{
-				File.WriteAllText(DirectoryTools.GetCredsFile(), "");
-			}
+            var remCreds = remCredsCB.IsChecked ?? false;
 
 			Task.Factory.StartNew(() =>
 			{
-				GlobalInfo.ChatClient = new Client(user, pass);
+			    try
+			    {
+			        GlobalInfo.ChatClient = new Client(user, pass);
+			    }
+			    catch (Exception ex)
+			    {
+			        Dispatcher.Invoke(() =>
+                    {
+                        progressBar.IsIndeterminate = false;
+                        ((Button)sender).IsEnabled = true;
+                        emailTB.IsEnabled = true;
+                        passwordTB.IsEnabled = true;
+                        remCredsCB.IsEnabled = true;
+                        debugCB.IsEnabled = true;
+                        statusL.Content = "Could Not Login";
+                        Clipboard.SetText(ex.ToString());
+			        });
+
+                    return;
+			    }
+
+			    if (remCreds)
+			    {
+				    File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass);
+			    }
+			    else
+			    {
+				    File.WriteAllText(DirectoryTools.GetCredsFile(), "");
+			    }
+
 				GlobalInfo.PrimaryRoom = GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
 				GlobalInfo.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;
 				GlobalInfo.PrimaryRoom.MessageEdited += (oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage);
@@ -450,26 +487,26 @@ namespace Phamhilator
 
 				for (var i = 0; i < GlobalInfo.ChatClient.Rooms.Count; i++)
 				{
-                    int x = i;
+                    var x = i;
 
                     if (GlobalInfo.ChatClient.Rooms[x].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
 
-                    try
-                    {
+                    //try
+                    //{
                         GlobalInfo.ChatClient.Rooms[x].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[x], message);
                         GlobalInfo.ChatClient.Rooms[x].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[x], newMessage);
-                    }
-                    catch (ArgumentOutOfRangeException ex)
-                    {
-                        Trace.WriteLine("TODO: " + ex.Message);
-                    }
+                    //}
+                    //catch (ArgumentOutOfRangeException ex)
+                    //{
+                    //    Trace.WriteLine("TODO: " + ex.Message);
+                    //}
 
                     GlobalInfo.ChatClient.Rooms[x].IgnoreOwnEvents = false;
 				}
 
 				Dispatcher.Invoke(() =>
 				{
-					GlobalInfo.DebugMode = debugCB.IsChecked ?? false;
+					GlobalInfo.DebugMode = debugCB.IsChecked ?? Debugger.IsAttached;
 
 					transContentC.Content = operationC;
 

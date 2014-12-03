@@ -11,7 +11,7 @@
                 <TextBox Name="emailTB" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="" Canvas.Top="55" Width="251"/>
                 <Label Content="Password" Canvas.Left="345" Canvas.Top="55" FontWeight="Thin" FontSize="12.5" Height="26"/>
                 <TextBox Name="passwordTB" Height="23" Canvas.Left="405" TextWrapping="Wrap" Canvas.Top="55" Width="175"/>
-                <Label Content="Please Enter Your Stack Exchange OpenID Credentials" Width="590" Canvas.Top="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Thin" Height="31"/>
+                <Label Name="loginTitleL" Content="Please Enter Your Stack Exchange OpenID Credentials" Width="590" Canvas.Top="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Thin" Height="31"/>
                 <ProgressBar Name="progressBar" Canvas.Top="0" Width="600" Height="5" Margin="-3,0,0,0"/>
                 <Button Content="Login" Canvas.Left="10" Canvas.Top="144" Width="570" FontWeight="Thin" Click="Button_Click"/>
                 <CheckBox Name="remCredsCB"  Content="Remember details" Canvas.Left="10" Canvas.Top="107" IsChecked="True" ClickMode="Press" FontWeight="Thin"/>

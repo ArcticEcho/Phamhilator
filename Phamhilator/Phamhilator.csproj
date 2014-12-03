@@ -82,13 +82,14 @@
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="GlobalInfo.Stats.cs" />
+    <Compile Include="ReplyMessage.cs" />
     <Compile Include="StringDownloader.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="BlackFilter.cs" />
     <Compile Include="FilterType.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="Post.cs" />
-    <Compile Include="MessageCleaner.cs" />
+    <Compile Include="ReportCleaner.cs" />
     <Compile Include="QAAnalysis.cs" />
     <Compile Include="HTMLScraper.cs" />
     <Compile Include="QuestionAnalysis.cs" />
