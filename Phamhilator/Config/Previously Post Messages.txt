@@ -538,3 +538,14 @@
 2589004.66515215]http://pt.stackoverflow.com/questions/41338
 2589007.83410008]http://stackoverflow.com/questions/27282490
 2589008.09299822]http://stackoverflow.com/questions/27282000
+2589011.31784933]http://wordpress.stackexchange.com/questions/170243
+2589011.53824527]http://mechanics.stackexchange.com/a/13428
+2589014.31300398]http://wordpress.stackexchange.com/a/27544
+2589014.34572252]http://physics.stackexchange.com/a/150301
+2589014.76966343]http://superuser.com/a/848221
+2589015.36738095]http://stackapps.com/questions/5018
+2589017.86485713]http://stackoverflow.com/a/27282460
+2589017.89602558]http://stackoverflow.com/a/27280762
+2589017.92934416]http://stackoverflow.com/questions/27279870
+2589017.96207936]http://wordpress.stackexchange.com/a/170245
+2589018.22529442]http://serverfault.com/a/648970

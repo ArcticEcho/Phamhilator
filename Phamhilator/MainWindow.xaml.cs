@@ -125,6 +125,8 @@ namespace Phamhilator
 
 		private void KillBot()
 		{
+            Dispatcher.Invoke(() => statusL.Content = "Shutting Down Pham...");
+
 			GlobalInfo.Shutdown = true;
 			requestedDieTime = DateTime.UtcNow;
 

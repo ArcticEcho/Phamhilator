@@ -123,7 +123,7 @@
     "Score": 12.0,
     "TPCount": 0,
     "FPCount": 10,
-    "CaughtCount": 318
+    "CaughtCount": 319
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -375,7 +375,7 @@
     "Score": 16.0,
     "TPCount": 1,
     "FPCount": 13,
-    "CaughtCount": 485
+    "CaughtCount": 488
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -420,7 +420,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 8,
-    "CaughtCount": 238
+    "CaughtCount": 239
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",

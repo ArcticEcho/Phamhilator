@@ -87,7 +87,7 @@
     "Score": 89.0,
     "TPCount": 35,
     "FPCount": 6,
-    "CaughtCount": 341
+    "CaughtCount": 342
   },
   {
     "Regex": "(?i)^please",
@@ -114,7 +114,7 @@
     "Score": 27.8727264,
     "TPCount": 11,
     "FPCount": 42,
-    "CaughtCount": 479
+    "CaughtCount": 483
   },
   {
     "Regex": "(?i)have question",
@@ -132,7 +132,7 @@
     "Score": 19.3837166,
     "TPCount": 6,
     "FPCount": 6,
-    "CaughtCount": 307
+    "CaughtCount": 309
   },
   {
     "Regex": "(?i)please",
@@ -141,7 +141,7 @@
     "Score": 22.3837166,
     "TPCount": 10,
     "FPCount": 21,
-    "CaughtCount": 334
+    "CaughtCount": 338
   },
   {
     "Regex": "(?i)need (an )?answer",
