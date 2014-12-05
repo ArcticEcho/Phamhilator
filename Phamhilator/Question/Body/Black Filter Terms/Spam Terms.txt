@@ -67,9 +67,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)^<p>Be sure you",
@@ -139,9 +139,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "\\>\\>\\>\\>\\>",
@@ -149,8 +149,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 4,
-    "FPCount": 1,
-    "CaughtCount": 6
+    "FPCount": 2,
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -176,8 +176,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 2,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)BeautyLabs",
@@ -319,9 +319,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)wow gold",
@@ -577,6 +577,33 @@
   },
   {
     "Regex": "waowlyrics",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)x4facts",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)skin-care-review",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0204086,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)optimalstackfacts",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,

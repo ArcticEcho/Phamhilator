@@ -57,7 +57,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 11.0960417,
+    "Score": 11.8357782,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

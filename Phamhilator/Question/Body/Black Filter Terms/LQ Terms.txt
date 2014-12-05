@@ -13,36 +13,36 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "",
     "Score": 40.0,
-    "TPCount": 12,
-    "FPCount": 32,
-    "CaughtCount": 557
+    "TPCount": 22,
+    "FPCount": 49,
+    "CaughtCount": 794
   },
   {
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 14.0,
-    "TPCount": 2,
-    "FPCount": 0,
-    "CaughtCount": 30
+    "TPCount": 3,
+    "FPCount": 2,
+    "CaughtCount": 51
   },
   {
     "Regex": "enter link description here",
     "IsAuto": false,
     "Site": "",
     "Score": 13.75,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 7
   },
   {
     "Regex": "down vote favorite",
@@ -60,6 +60,6 @@
     "Score": 15.083333,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   }
 ]

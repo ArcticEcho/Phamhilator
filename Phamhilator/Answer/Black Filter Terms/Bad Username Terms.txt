@@ -150,6 +150,6 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 7
+    "CaughtCount": 9
   }
 ]

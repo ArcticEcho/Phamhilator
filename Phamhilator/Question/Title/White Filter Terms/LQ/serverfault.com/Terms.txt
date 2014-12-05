@@ -21,7 +21,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 8.5,
+    "Score": 9.03125,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -48,7 +48,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -129,7 +129,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "arduino.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -192,7 +192,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -273,7 +273,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "blender.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -282,7 +282,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "blender.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -444,7 +444,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "craftcms.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -489,7 +489,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 6.818182,
+    "Score": 7.818182,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -534,7 +534,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
-    "Score": 6.4,
+    "Score": 7.4,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -597,7 +597,7 @@
     "Regex": "(?i:need help|help me)",
     "IsAuto": false,
     "Site": "electronics.stackexchange.com",
-    "Score": 8.0,
+    "Score": 8.533334,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -615,7 +615,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "electronics.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -714,7 +714,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "expressionengine.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -723,7 +723,7 @@
     "Regex": "(?i)(need|some)( halp| help| answer)",
     "IsAuto": false,
     "Site": "expressionengine.stackexchange.com",
-    "Score": 7.0,
+    "Score": 7.53846169,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -732,7 +732,7 @@
     "Regex": "(?i:need help|help me)",
     "IsAuto": false,
     "Site": "expressionengine.stackexchange.com",
-    "Score": 8.0,
+    "Score": 8.533334,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -813,7 +813,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -876,7 +876,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "gis.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -966,7 +966,7 @@
     "Regex": "(?i:need help|help me)",
     "IsAuto": false,
     "Site": "linguistics.stackexchange.com",
-    "Score": 8.0,
+    "Score": 8.533334,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -993,7 +993,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 6.5,
+    "Score": 7.090909,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1047,7 +1047,7 @@
     "Regex": "(?i)(need|some)( halp| help| answer)",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 7.0,
+    "Score": 7.53846169,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1065,7 +1065,7 @@
     "Regex": "^[^a-z]*$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.923077,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1074,7 +1074,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1119,7 +1119,7 @@
     "Regex": "(?i:need help|help me)",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 8.0,
+    "Score": 8.533334,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1164,7 +1164,7 @@
     "Regex": "(?i)(need|some)( halp| help| answer)",
     "IsAuto": false,
     "Site": "mathematica.stackexchange.com",
-    "Score": 7.0,
+    "Score": 7.53846169,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1173,7 +1173,7 @@
     "Regex": "(?i:need help|help me)",
     "IsAuto": false,
     "Site": "mathematica.stackexchange.com",
-    "Score": 8.0,
+    "Score": 8.533334,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "mathematica.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1200,7 +1200,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "mathoverflow.net",
-    "Score": 6.60000038,
+    "Score": 7.60000038,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1209,7 +1209,7 @@
     "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "mathoverflow.net",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1326,7 +1326,7 @@
     "Regex": "(?i)(need|some)( halp| help| answer)",
     "IsAuto": false,
     "Site": "movies.stackexchange.com",
-    "Score": 7.0,
+    "Score": 7.53846169,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1335,7 +1335,7 @@
     "Regex": "(?i:need help|help me)",
     "IsAuto": false,
     "Site": "movies.stackexchange.com",
-    "Score": 8.0,
+    "Score": 8.533334,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1398,7 +1398,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "networkengineering.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1551,7 +1551,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1578,7 +1578,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "puzzling.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1659,7 +1659,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "salesforce.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1758,7 +1758,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 7.0,
+    "Score": 7.63636351,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1767,7 +1767,7 @@
     "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 5.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1785,7 +1785,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "sharepoint.stackexchange.com",
-    "Score": 6.5,
+    "Score": 7.090909,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1794,7 +1794,7 @@
     "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "sharepoint.stackexchange.com",
-    "Score": 6.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1803,7 +1803,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "sharepoint.stackexchange.com",
-    "Score": 8.048486,
+    "Score": 9.048486,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1857,7 +1857,7 @@
     "Regex": "(?i:need help|help me)",
     "IsAuto": false,
     "Site": "stackapps.com",
-    "Score": 8.0,
+    "Score": 8.533334,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1965,7 +1965,7 @@
     "Regex": "(?i)error(s)?",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 6.0,
+    "Score": 8.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1992,7 +1992,7 @@
     "Regex": "(?i)(need|some)( halp| help| answer)",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 7.0,
+    "Score": 7.53846169,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2019,7 +2019,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2055,7 +2055,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2109,7 +2109,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "tex.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2172,7 +2172,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "tridion.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2226,7 +2226,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2298,7 +2298,7 @@
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
     "IsAuto": false,
     "Site": "wordpress.stackexchange.com",
-    "Score": 7.5,
+    "Score": 8.181818,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2316,7 +2316,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "wordpress.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2370,7 +2370,7 @@
     "Regex": "(?i)i need.*help",
     "IsAuto": false,
     "Site": "tex.stackexchange.com",
-    "Score": 8.4,
+    "Score": 9.163636,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2434,6 +2434,15 @@
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
     "Score": 5.795319,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i)(\\w+\\s)?program\\sto",
+    "IsAuto": false,
+    "Site": "softwarerecs.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

@@ -41,6 +41,9 @@
     <Reference Include="ChatExchange.Net">
       <HintPath>..\..\ChatExchange.Net\ChatExchange.Net\bin\Debug\ChatExchange.Net.dll</HintPath>
     </Reference>
+    <Reference Include="FlagExchange.Net">
+      <HintPath>..\..\..\Visual Studio 2013\Projects\FlagExchange.Net\FlagExchange.Net\bin\Debug\FlagExchange.Net.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.0.14.0.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>

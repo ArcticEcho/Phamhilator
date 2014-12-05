@@ -12,7 +12,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.05,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -777,7 +777,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 10.304615,
+    "Score": 11.304615,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -858,7 +858,7 @@
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 8.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1119,6 +1119,24 @@
     "Regex": "(?i)^how to buy",
     "IsAuto": false,
     "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i don'?t use",
+    "IsAuto": false,
+    "Site": "android.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)For Meta",
+    "IsAuto": false,
+    "Site": "stats.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

@@ -30,7 +30,7 @@
     "Regex": "(?i)\\bbrand\\b",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -291,7 +291,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -750,7 +750,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "skeptics.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -777,7 +777,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 9.304615,
+    "Score": 10.304615,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -975,7 +975,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 8.184616,
+    "Score": 9.184616,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1110,6 +1110,15 @@
     "Regex": "(?i)got you",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^how to buy",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

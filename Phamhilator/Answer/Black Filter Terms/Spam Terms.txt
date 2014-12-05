@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 2,
-    "FPCount": 17,
-    "CaughtCount": 47
+    "TPCount": 3,
+    "FPCount": 28,
+    "CaughtCount": 72
   },
   {
     "Regex": "2348064038119",
@@ -67,18 +67,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 1,
-    "CaughtCount": 3
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)filerepairforum\\.com",
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 1,
-    "CaughtCount": 3
+    "CaughtCount": 6
   },
   {
     "Regex": "APPLY NOW",
@@ -94,9 +94,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.2111111,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 1,
-    "CaughtCount": 3
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)mobogenie",
@@ -105,16 +105,16 @@
     "Score": 10.2111111,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "datarecovery",
     "IsAuto": false,
     "Site": "",
     "Score": 10.6277781,
-    "TPCount": 0,
+    "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)Do you want to become",
@@ -132,7 +132,7 @@
     "Score": 10.8585472,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)Join the Illuminati",
@@ -157,9 +157,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "TPCount": 1,
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)geolify",
@@ -190,6 +190,24 @@
   },
   {
     "Regex": "(?i)nottinghamdatarecovery",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)onlinefilerepair",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)hirewordpressexperts",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,

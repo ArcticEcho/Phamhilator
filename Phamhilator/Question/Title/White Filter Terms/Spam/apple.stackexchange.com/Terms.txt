@@ -12,7 +12,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.05,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -39,7 +39,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -48,7 +48,7 @@
     "Regex": "(?i)\\bbrand\\b",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1110,6 +1110,33 @@
     "Regex": "(?i)got you",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)^how to buy",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i don'?t use",
+    "IsAuto": false,
+    "Site": "android.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)For Meta",
+    "IsAuto": false,
+    "Site": "stats.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

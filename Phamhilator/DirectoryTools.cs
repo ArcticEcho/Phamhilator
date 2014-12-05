@@ -316,17 +316,29 @@ namespace Phamhilator
 			return path;
 		}
 
-		public static string GetCredsFile()
-		{
-			var path = Path.Combine(configPath, "Creds.txt");
+        public static string GetCredsFile()
+        {
+            var path = Path.Combine(configPath, "Creds.txt");
 
-			if (!File.Exists(path))
-			{
-				File.Create(path).Dispose();
-			}
+            if (!File.Exists(path))
+            {
+                File.Create(path).Dispose();
+            }
 
-			return path;
-		}
+            return path;
+        }
+
+        public static string GetFlaggingCredsFile()
+        {
+            var path = Path.Combine(configPath, "Flag Creds.txt");
+
+            if (!File.Exists(path))
+            {
+                File.Create(path).Dispose();
+            }
+
+            return path;
+        }
 
 		# endregion
 	}

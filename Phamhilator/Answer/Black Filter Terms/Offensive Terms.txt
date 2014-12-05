@@ -23,8 +23,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bpenis\\b",
@@ -32,8 +32,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bbumhole\\b",
@@ -68,8 +68,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 1
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bcrap\\b",
@@ -78,7 +78,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)\\bfag\\b",
@@ -94,9 +94,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bidiot\\b",
@@ -104,17 +104,17 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 2,
-    "FPCount": 1,
-    "CaughtCount": 8
+    "TPCount": 3,
+    "FPCount": 2,
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)\\bwhore\\b",
@@ -157,9 +157,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)bullshit",
@@ -167,16 +167,16 @@
     "Site": "",
     "Score": 10.2105265,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\sdick\\s",
     "IsAuto": false,
     "Site": "",
     "Score": 10.2105265,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 1,
-    "CaughtCount": 1
+    "CaughtCount": 3
   }
 ]

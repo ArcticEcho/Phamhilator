@@ -44,6 +44,15 @@ namespace Phamhilator
 					passwordTB.Text = data.Substring(data.IndexOf("¬", StringComparison.InvariantCulture) + 1);
 				}
 
+                //data = File.ReadAllText(DirectoryTools.GetFlaggingCredsFile());
+
+                //if (!String.IsNullOrEmpty(data))
+                //{
+                //    flagNameTB.Text = data.Remove(data.IndexOf("¬", StringComparison.InvariantCulture));
+                //    flagEmailTB.Text = data.Remove(0, data.IndexOf("¬", StringComparison.InvariantCulture) + 1).Remove(data.IndexOf("¬", StringComparison.InvariantCulture));
+                //    passwordTB.Text = data.Substring(data.IndexOf("¬", StringComparison.InvariantCulture) + 1);
+                //}
+
 				loginC.Children.Remove(operationC);
 
 				PostPersistence.Initialise();
@@ -194,6 +203,8 @@ namespace Phamhilator
 
 		private void HandleSecondaryNewMessage(Room room, Message message)
 		{
+		    if (!CommandProcessor.IsValidCommand(message.Content)) { return; }
+
 			var messages = CommandProcessor.ExacuteCommand(room, message);
 
 			if (messages.Length == 0) { return; }
@@ -202,11 +213,11 @@ namespace Phamhilator
 			{
                 if (m.Reply)
                 {
-                    GlobalInfo.PrimaryRoom.PostReply(message, m.Content);
+                    room.PostReply(message, m.Content);
                 }
                 else
                 {
-                    GlobalInfo.PrimaryRoom.PostMessage(m.Content);
+                    room.PostMessage(m.Content);
                 }
 			}
 		}
@@ -434,7 +445,11 @@ namespace Phamhilator
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			if (String.IsNullOrEmpty(emailTB.Text) || String.IsNullOrEmpty(passwordTB.Text)) { return; }
+		    if (String.IsNullOrEmpty(emailTB.Text) || String.IsNullOrEmpty(passwordTB.Text) ||
+		        String.IsNullOrEmpty(passwordTB.Text) || String.IsNullOrEmpty(passwordTB.Text) || String.IsNullOrEmpty(passwordTB.Text))
+		    {
+                MessageBox.Show("Please fill out all fields.", "Phamhilator", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+		    }
 			
 			progressBar.IsIndeterminate = true;
 			((Button)sender).IsEnabled = false;
@@ -442,10 +457,16 @@ namespace Phamhilator
 			passwordTB.IsEnabled = false;
             remCredsCB.IsEnabled = false;
             debugCB.IsEnabled = false;
+            flagNameTB.IsEnabled = false;
+            flagEmailTB.IsEnabled = false;
+            flagPasswordTB.IsEnabled = false;
 		    loginTitleL.Content = "Logging In...";
 
-			var user = emailTB.Text;
-			var pass = passwordTB.Text;
+            var user = emailTB.Text;
+            var pass = passwordTB.Text;
+            var flagName = flagNameTB.Text;
+            var flagEmail = flagEmailTB.Text;
+            var flagPass = flagPasswordTB.Text;
             var remCreds = remCredsCB.IsChecked ?? false;
 
 			Task.Factory.StartNew(() =>
@@ -464,6 +485,9 @@ namespace Phamhilator
                         passwordTB.IsEnabled = true;
                         remCredsCB.IsEnabled = true;
                         debugCB.IsEnabled = true;
+                        flagNameTB.IsEnabled = true;
+                        flagEmailTB.IsEnabled = true;
+                        flagPasswordTB.IsEnabled = true;
                         statusL.Content = "Could Not Login";
                         Clipboard.SetText(ex.ToString());
 			        });
@@ -472,13 +496,17 @@ namespace Phamhilator
 			    }
 
 			    if (remCreds)
-			    {
-				    File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass);
+                {
+                    File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass); 
+                    //File.WriteAllText(DirectoryTools.GetFlaggingCredsFile(), flagName + "¬" + flagEmail + "¬" + flagPass); 
 			    }
 			    else
-			    {
-				    File.WriteAllText(DirectoryTools.GetCredsFile(), "");
+                {
+                    File.WriteAllText(DirectoryTools.GetCredsFile(), "");
+                    //File.WriteAllText(DirectoryTools.GetFlaggingCredsFile(), "");
 			    }
+
+			    GlobalInfo.Flagger = new FlagExchangeDotNet.Flagger(flagName, flagEmail, flagPass);
 
 				GlobalInfo.PrimaryRoom = GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
 				GlobalInfo.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;
@@ -487,26 +515,17 @@ namespace Phamhilator
 
 				GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");
 
-				for (var i = 0; i < GlobalInfo.ChatClient.Rooms.Count; i++)
-				{
-                    var x = i;
+			    for (var i = 0; i < GlobalInfo.ChatClient.Rooms.Count; i++)
+			    {
+                    if (GlobalInfo.ChatClient.Rooms[i].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
 
-                    if (GlobalInfo.ChatClient.Rooms[x].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
+                    GlobalInfo.ChatClient.Rooms[i].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms.First(r => r.ID == message.RoomID), message);
+                    GlobalInfo.ChatClient.Rooms[i].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms.First(r => r.ID == newMessage.RoomID), newMessage);
 
-                    //try
-                    //{
-                        GlobalInfo.ChatClient.Rooms[x].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[x], message);
-                        GlobalInfo.ChatClient.Rooms[x].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms[x], newMessage);
-                    //}
-                    //catch (ArgumentOutOfRangeException ex)
-                    //{
-                    //    Trace.WriteLine("TODO: " + ex.Message);
-                    //}
+                    GlobalInfo.ChatClient.Rooms[i].IgnoreOwnEvents = false;
+			    }
 
-                    GlobalInfo.ChatClient.Rooms[x].IgnoreOwnEvents = false;
-				}
-
-				Dispatcher.Invoke(() =>
+			    Dispatcher.Invoke(() =>
 				{
 					GlobalInfo.DebugMode = debugCB.IsChecked ?? Debugger.IsAttached;
 
