@@ -203,7 +203,7 @@ namespace Phamhilator
 
 		private void HandleSecondaryNewMessage(Room room, Message message)
 		{
-		    if (!CommandProcessor.IsValidCommand(message.Content)) { return; }
+		    if (!CommandProcessor.IsValidCommand(message)) { return; }
 
 			var messages = CommandProcessor.ExacuteCommand(room, message);
 
@@ -230,22 +230,19 @@ namespace Phamhilator
 
 			while (html.Length > 10000)
 			{
-				var postURL = HTMLScraper.GetQuestionURL(html);
+				var postUrl = HTMLScraper.GetQuestionURL(html);
+			    var title = HTMLScraper.GetQuestionTitle(html);
+			    var site = HTMLScraper.GetSite(postUrl);
+			    var tags = HTMLScraper.GetTags(html);
+			    var authorName = HTMLScraper.GetQuestionAuthorName(html);
+			    var authorLink = HTMLScraper.GetQuestionAuthorLink(html);
 
-				var post = new Question
-				{
-					URL = postURL,
-					Title = HTMLScraper.GetQuestionTitle(html),
-					AuthorLink = HTMLScraper.GetQuestionAuthorLink(html),
-					AuthorName = HTMLScraper.GetQuestionAuthorName(html),
-					Site = HTMLScraper.GetSite(postURL),
-					Tags = HTMLScraper.GetTags(html)
-				};
+			    var post = new Question(postUrl, title, site, authorName, authorLink, tags);
 
-				if (!previouslyFoundPosts.Contains(post.URL))
+				if (!previouslyFoundPosts.Contains(post.Url))
 				{
 					posts.Add(post);
-					previouslyFoundPosts.Add(post.URL);
+					previouslyFoundPosts.Add(post.Url);
 				}
 
 				if (previouslyFoundPosts.Count > 500)
@@ -272,12 +269,12 @@ namespace Phamhilator
 			{
 				var info = PostAnalyser.CheckPost(q);
 
-				if (PostPersistence.Messages.All(pp => pp.URL != q.URL))
+				if (PostPersistence.Messages.All(pp => pp.Url != q.Url))
 				{
 					PostReport(q, MessageGenerator.GetQReport(info.QResults, q), info.QResults);
 				}
 				
-				foreach (var a in info.AResults.Where(p => PostPersistence.Messages.All(pp => pp.URL != p.Key.URL)))
+				foreach (var a in info.AResults.Where(p => PostPersistence.Messages.All(pp => pp.Url != p.Key.Url)))
 				{
 					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value, false);
 				}
@@ -293,9 +290,9 @@ namespace Phamhilator
 
 			if (SpamAbuseDetected(p))
 			{
-				chatMessage = new MessageInfo { Body = "[Spammer abuse detected](" + p.URL + ").", Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
+                message = GlobalInfo.PrimaryRoom.PostMessage("[Spammer abuse detected](" + p.Url + ").");
 
-				message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
+                chatMessage = new MessageInfo { Message = message, Post = p, Report = info, /*IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
 
 				if (message != null)
 				{
@@ -310,40 +307,40 @@ namespace Phamhilator
 			{
 				case PostType.Offensive:
 				{
-					chatMessage = new MessageInfo { Body = "**Offensive**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
-					message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
+                    message = GlobalInfo.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
 
 					break;
 				}
 
 				case PostType.BadUsername:
 				{
-					chatMessage = new MessageInfo { Body = "**Bad Username**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
-					message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
+					message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
 
 					break;
 				}
 
 				case PostType.BadTagUsed:
 				{
-					chatMessage = new MessageInfo { Body = "**Bad Tag Used**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
-					message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
+					message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Tag Used**" + messageBody);
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
 
 					break;
 				}
 
 				case PostType.LowQuality:
 				{
-					chatMessage = new MessageInfo { Body = "**Low Quality**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
-					message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
+					message = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
 
 					break;
 				}
 
 				case PostType.Spam:
 				{
-					chatMessage = new MessageInfo { Body = "**Spam**" + messageBody, Post = p, Report = info, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID };
-					message = GlobalInfo.PrimaryRoom.PostMessage(chatMessage.Body);
+					message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
 
 					break;
 				}
@@ -358,11 +355,11 @@ namespace Phamhilator
 				{
 					foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
 					{
-						room.PostMessage(chatMessage.Body);
+						room.PostMessage(chatMessage.Message.Content);
 					}			
 				}
 
-				Thread.Sleep(1500); //TODO: Add more efficient rate limiting (either to CE.Ner or Pham).
+				Thread.Sleep(2000); //TODO: Add more efficient rate limiting (either to CE.Ner or Pham).
 			}
 
 			GlobalInfo.Stats.TotalCheckedPosts++;
@@ -445,8 +442,7 @@ namespace Phamhilator
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-		    if (String.IsNullOrEmpty(emailTB.Text) || String.IsNullOrEmpty(passwordTB.Text) ||
-		        String.IsNullOrEmpty(passwordTB.Text) || String.IsNullOrEmpty(passwordTB.Text) || String.IsNullOrEmpty(passwordTB.Text))
+		    if (String.IsNullOrEmpty(emailTB.Text) || String.IsNullOrEmpty(passwordTB.Text))
 		    {
                 MessageBox.Show("Please fill out all fields.", "Phamhilator", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 		    }
@@ -457,16 +453,10 @@ namespace Phamhilator
 			passwordTB.IsEnabled = false;
             remCredsCB.IsEnabled = false;
             debugCB.IsEnabled = false;
-            flagNameTB.IsEnabled = false;
-            flagEmailTB.IsEnabled = false;
-            flagPasswordTB.IsEnabled = false;
 		    loginTitleL.Content = "Logging In...";
 
             var user = emailTB.Text;
             var pass = passwordTB.Text;
-            var flagName = flagNameTB.Text;
-            var flagEmail = flagEmailTB.Text;
-            var flagPass = flagPasswordTB.Text;
             var remCreds = remCredsCB.IsChecked ?? false;
 
 			Task.Factory.StartNew(() =>
@@ -485,9 +475,6 @@ namespace Phamhilator
                         passwordTB.IsEnabled = true;
                         remCredsCB.IsEnabled = true;
                         debugCB.IsEnabled = true;
-                        flagNameTB.IsEnabled = true;
-                        flagEmailTB.IsEnabled = true;
-                        flagPasswordTB.IsEnabled = true;
                         statusL.Content = "Could Not Login";
                         Clipboard.SetText(ex.ToString());
 			        });
@@ -498,15 +485,11 @@ namespace Phamhilator
 			    if (remCreds)
                 {
                     File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass); 
-                    //File.WriteAllText(DirectoryTools.GetFlaggingCredsFile(), flagName + "¬" + flagEmail + "¬" + flagPass); 
 			    }
 			    else
                 {
                     File.WriteAllText(DirectoryTools.GetCredsFile(), "");
-                    //File.WriteAllText(DirectoryTools.GetFlaggingCredsFile(), "");
 			    }
-
-			    GlobalInfo.Flagger = new FlagExchangeDotNet.Flagger(flagName, flagEmail, flagPass);
 
 				GlobalInfo.PrimaryRoom = GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
 				GlobalInfo.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;

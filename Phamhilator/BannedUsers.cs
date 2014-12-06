@@ -13,11 +13,19 @@ namespace Phamhilator
 	{
 		private static readonly Random r = new Random();
 
+	    public static bool SystemIsClear
+	    {
+	        get
+	        {
+	            return File.Exists(DirectoryTools.GetBannedUsersFile());
+	        }
+	    }
 
 
-		public static bool AddUser(string ID)
+
+	    public static bool AddUser(string ID)
 		{
-			if (!File.Exists(DirectoryTools.GetBannedUsersFile()) || !ID.All(Char.IsDigit) || UserAccess.Owners.Contains(int.Parse(ID))) { return false; }
+			if (!SystemIsClear || !ID.All(Char.IsDigit) || UserAccess.Owners.Contains(int.Parse(ID))) { return false; }
 
 			var ii = r.Next(1001);
 
@@ -43,7 +51,7 @@ namespace Phamhilator
 
 		public static bool IsUserBanned(string ID)
 		{
-			if (!File.Exists(DirectoryTools.GetBannedUsersFile()) || !ID.All(Char.IsDigit)) { return true; }
+			if (!SystemIsClear || !ID.All(Char.IsDigit)) { return true; }
 
 			var hash = HashID(ID);
 			var data = File.ReadAllBytes(DirectoryTools.GetBannedUsersFile()).ToList();

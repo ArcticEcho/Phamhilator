@@ -72,26 +72,58 @@ namespace Phamhilator
 
 
 
+        public Question()
+        {
+
+        }
+
+        public Question(string url, string title, string site, string authorName, string authorLink, List<string> tags)
+        {
+            Url = url;
+            Title = title;
+            Site = site;
+            AuthorName = authorName;
+            AuthorLink = authorLink;
+            Tags = tags;
+        }
+
+        public Question(string url, string title, string body, string site, int score, string authorName, string authorLink, int authorRep, List<string> tags)
+        {
+            extraDataPopulated = true;
+            Url = url;
+            Title = title;
+            this.body = body;
+            Site = site;
+            this.score = score;
+            AuthorName = authorName;
+            AuthorLink = authorLink;
+            this.authorRep = authorRep;
+            Tags = tags;
+        }
+
+
+
+
 		public void PopulateExtraData()
 		{
 			if (extraDataPopulated) { return; }
 
 			try
 			{		
-				var html = StringDownloader.DownloadString(URL, 15000);
+				var html = StringDownloader.DownloadString(Url, 15000);
 
 				body = HTMLScraper.GetQuestionBody(html);
 				score = HTMLScraper.GetQuestionScore(html);
 				authorRep = HTMLScraper.GetQuestionAuthorRep(html);
 
 				var answerCount = HTMLScraper.GetAnswerCount(html);
-				var currentHTML = html;
+				var currentHtml = html;
 
 				for (var i = 0; i < answerCount; i++)
 				{
-					currentHTML = currentHTML.Remove(0, currentHTML.IndexOf("<div id=\"answer-", 50, StringComparison.Ordinal));
+					currentHtml = currentHtml.Remove(0, currentHtml.IndexOf("<div id=\"answer-", 50, StringComparison.Ordinal));
 
-					answers.Add(GetAnswer(currentHTML));
+					answers.Add(GetAnswer(currentHtml));
 				}								
 			}
 			catch (Exception)
@@ -107,18 +139,17 @@ namespace Phamhilator
 		private Answer GetAnswer(string html)
 		{
 			var aBody = HTMLScraper.GetAnswerBody(html);
+            var excerpt = StripTags(aBody).Trim();
 
-			return new Answer
-			{
-				AuthorLink = HTMLScraper.GetAnswerAuthorLink(html, URL), 
-				AuthorName = HTMLScraper.GetAnswerAuthorName(html), 
-				AuthorRep = HTMLScraper.GetAnswerAuthorRep(html), 
-				URL = HTMLScraper.GetAnswerLink(html, URL), 
-				Score = HTMLScraper.GetAnswerScore(html), 
-				Body = aBody, 
-				Site = Site, 
-				Title = StripTags(aBody.Length > 50 ? aBody.Substring(0, 47) + "..." : aBody).Trim()
-			};
+		    excerpt = excerpt.Length > 50 ? excerpt.Substring(0, 47) + "..." : excerpt;
+
+		    var aLink = HTMLScraper.GetAnswerAuthorLink(html, Url);
+		    var aName = HTMLScraper.GetAnswerAuthorName(html);
+		    var aRep = HTMLScraper.GetAnswerAuthorRep(html);
+		    var aUrl = HTMLScraper.GetAnswerLink(html, Url);
+		    var aScore = HTMLScraper.GetAnswerScore(html);
+
+		    return new Answer(aUrl, excerpt, aBody, Site, aScore, aName, aLink, aRep);
 		}
 
 		private static string StripTags(string source)

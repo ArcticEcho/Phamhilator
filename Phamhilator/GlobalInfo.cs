@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using ChatExchangeDotNet;
-using FlagExchangeDotNet;
 
 
 
@@ -58,7 +57,6 @@ namespace Phamhilator
 		public static bool BotRunning;
 		public static bool Shutdown;
 		public static bool DebugMode;
-	    public static Flagger Flagger;
 
 		public static bool FullScanEnabled
 		{

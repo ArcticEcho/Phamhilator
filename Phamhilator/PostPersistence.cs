@@ -58,7 +58,7 @@ namespace Phamhilator
 					continue;
 				}
 
-				messages.Add(new Answer { URL = urls[i].Split(']')[1].Trim() });
+				messages.Add(new Answer(urls[i].Split(']')[1].Trim()));
 
 				GlobalInfo.PostsCaught++;
 			}
@@ -87,7 +87,7 @@ namespace Phamhilator
 				Messages.Insert(0, post);
 			}
 
-			File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + (DateTime.Now - twentyTen).TotalMinutes + "]" + post.URL);
+			File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Url);
 			
 			GlobalInfo.PostsCaught++;
 		}

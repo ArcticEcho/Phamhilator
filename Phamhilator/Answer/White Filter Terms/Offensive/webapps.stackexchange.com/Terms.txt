@@ -129,7 +129,7 @@
     "Regex": "(?i)\\bbitch\\b",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -193,6 +193,24 @@
     "IsAuto": false,
     "Site": "android.stackexchange.com",
     "Score": 5.605263,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bpiss\\b",
+    "IsAuto": false,
+    "Site": "english.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)bullshit",
+    "IsAuto": false,
+    "Site": "academia.stackexchange.com",
+    "Score": 5.105263,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

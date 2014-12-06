@@ -18,12 +18,12 @@ namespace Phamhilator
 			{
 				case PostType.BadTagUsed:
 				{
-					return ": " + FormatTags(info.BadTags) + "| [" + title + "](" + post.URL + "), by " + author + ", on `" + post.Site + "`.";
+					return ": " + FormatTags(info.BadTags) + "| [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
 				}
 
 				default:
 				{
-					return " **Q** (" + Math.Round(info.Accuracy, 1) + "%" + fullScanFailed + ")" + ": [" + title + "](" + post.URL + "), by " + author + ", on `" + post.Site + "`.";
+					return " **Q** (" + Math.Round(info.Accuracy, 1) + "%" + fullScanFailed + ")" + ": [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
 				}
 			}
 		}
@@ -33,7 +33,7 @@ namespace Phamhilator
 			var author = String.IsNullOrEmpty(post.AuthorLink) ? post.AuthorName : "[" + post.AuthorName + "](" + post.AuthorLink + ")";
 			var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : post.Title;
 
-			return " **A** (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + title + "](" + post.URL + "), by " + author + ", on `" + post.Site + "`.";
+			return " **A** (" + Math.Round(info.Accuracy, 1) + "%)" + ": [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
 		}
 
 

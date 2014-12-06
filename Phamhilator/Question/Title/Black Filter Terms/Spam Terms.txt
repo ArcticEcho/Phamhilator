@@ -132,7 +132,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\bget your\\b",
@@ -275,8 +275,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bfull( movie| film)\\b",
@@ -301,9 +301,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 18.0,
-    "TPCount": 6,
-    "FPCount": 8,
-    "CaughtCount": 23
+    "TPCount": 8,
+    "FPCount": 9,
+    "CaughtCount": 28
   },
   {
     "Regex": "(?i)the perfect",
@@ -410,8 +410,8 @@
     "Site": "",
     "Score": 12.0,
     "TPCount": 1,
-    "FPCount": 2,
-    "CaughtCount": 7
+    "FPCount": 3,
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -554,8 +554,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 12
+    "FPCount": 5,
+    "CaughtCount": 14
   },
   {
     "Regex": "(?i)^also",
@@ -600,7 +600,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 2,
-    "CaughtCount": 11
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)tell you",
@@ -708,7 +708,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 10,
-    "CaughtCount": 18
+    "CaughtCount": 21
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -761,8 +761,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 8
+    "FPCount": 8,
+    "CaughtCount": 12
   },
   {
     "Regex": "(?i)^no hassle",
@@ -798,7 +798,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -833,8 +833,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)wow gold",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 35
+    "FPCount": 8,
+    "CaughtCount": 44
   },
   {
     "Regex": "\\$\\d+",
@@ -959,8 +959,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 8,
-    "CaughtCount": 56
+    "FPCount": 9,
+    "CaughtCount": 69
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",

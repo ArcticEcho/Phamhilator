@@ -17,12 +17,22 @@ namespace Phamhilator
 		private static PostAnalysis report;
 		private static Post post;
 		private static string commandLower = "";
+	    private static bool fileMissingWarningMessagePosted;
 		private static readonly Regex termCommands = new Regex(@"(?i)^(add|del|edit|auto)\-(b|w)\-(a|qb|qt)\-(spam|off|name|lq)(\-p)? ", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
 
 
 		public static ReplyMessage[] ExacuteCommand(Room roomMessage, Message input)
 		{
+		    if (!BannedUsers.SystemIsClear && !fileMissingWarningMessagePosted)
+		    {
+                fileMissingWarningMessagePosted = true;
+
+		        return new[]
+		        {
+		            new ReplyMessage("`Warning: the banned users file is missing. All commands have been disabled until the issue has been resolved.`")
+		        };
+            }
             if (BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture))) { return new[] { new ReplyMessage("", false) }; }
 
 			string command;
@@ -104,21 +114,13 @@ namespace Phamhilator
 			return new[] { new ReplyMessage("`Command not recognised.`") };
 		}
 
-		public static bool IsValidCommand(string command)
+		public static bool IsValidCommand(Message command)
 		{
-			var lower = command.ToLowerInvariant();
+			var lower = command.Content.ToLowerInvariant().Trim();
 
 			if (lower.StartsWith(">>"))
 			{
 				lower = lower.Remove(0, 2).TrimStart();
-			}
-			else if (lower.StartsWith("@" + GlobalInfo.PrimaryRoom.Me.Name.ToLowerInvariant()))
-			{
-				lower = lower.Remove(0, GlobalInfo.PrimaryRoom.Me.Name.Length + 1).TrimStart();
-			}
-			else
-			{
-				return false;
 			}
 
 			return IsNormalUserCommand(lower) || IsPrivilegedUserCommand(lower) || IsOwnerCommand(lower);
@@ -184,7 +186,6 @@ namespace Phamhilator
 				   command == "clean" || command == "sanitise" || command == "sanitize" ||
                    command == "del" || command == "delete" || command == "remove" ||
                    command.StartsWith("remove tag") || command.StartsWith("add tag") ||
-                   command.StartsWith("flag spam http") || command.StartsWith("flag off http") ||
 				   termCommands.IsMatch(command);
 		}
 
@@ -354,16 +355,6 @@ namespace Phamhilator
 
             # endregion
 
-            if (command.StartsWith("flag spam http"))
-            {
-                return new[] { FlagSpam(command) };
-            }
-
-            if (command.StartsWith("flag off http"))
-            {
-                return new[] { FlagOff(command) };
-            }
-
             if (commandLower.StartsWith("add tag"))
             {
                 return new[] { AddTag(command) };
@@ -479,7 +470,7 @@ namespace Phamhilator
 
         private static ReplyMessage GetHelpList()
         {
-            return new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status, flag (spam/off) {post url}.\n    Supported replies: (fp/tp/tpa), why, sanitise/sanitize/clean, del/delete/remove.\n    Owner-only commands: start, pause, (add/ban) user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full scan, set status {message}.", false);
+            return new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats & status.\n    Supported replies: (fp/tp/tpa), why, sanitise/sanitize/clean & del/delete/remove.\n    Owner-only commands: start, pause, (add/ban) user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full scan & set status {message}.", false);
         }
 
 		private static ReplyMessage GetInfo()
@@ -530,14 +521,14 @@ namespace Phamhilator
 					builder.Append("%. Specificity: " + Math.Round(term.Specificity * 100, 1));
 					builder.Append("%. Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1));
-					builder.Append(". Is Auto: " + term.IsAuto + ")\n\n");
+					builder.Append(". Is Auto: " + term.IsAuto + ")\n    \n");
 				}
 				else
                 {
                     builder.Append("    " + term.Regex + " ");
                     builder.Append(" (Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1));
-					builder.Append(". Is Auto: " + term.IsAuto + ")\n\n");
+					builder.Append(". Is Auto: " + term.IsAuto + ")\n    \n");
 				}		
 			}
 
@@ -1480,6 +1471,41 @@ namespace Phamhilator
 		{
 			if (report.Type == PostType.BadTagUsed) { return new ReplyMessage(""); }
 
+            if (report.Type == PostType.Spam)
+            {            
+                var questionReport = new Regex(@"^\*\*(Low Quality|Spam|Offensive)\*\* \*\*Q\*\*|\*\*Bad Tag Used\*\*", RegexOptions.CultureInvariant);
+
+                if (questionReport.IsMatch(room[message.ParentID].Content))
+                {
+                    var p = PostRetriever.GetQuestion(post.Url);
+                    var results = new QuestionAnalysis();
+
+                    var qtRes = Analysers.QuestionTitle.IsLowQuality(p, ref results);
+                    var qbRes = Analysers.QuestionBody.IsLowQuality(p, ref results);
+
+                    if (qbRes || qtRes)
+                    {
+                        var newMessage = MessageGenerator.GetQReport(results, p);
+
+                        GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
+                    }
+                }
+                //else
+                //{
+                //    var p = PostRetriever.GetAnswer(post.Url);
+                //    var results = new AnswerAnalysis();
+
+                //    var aRes = Analysers.Answer.IsLowQuality(p, ref results);
+
+                //    if (aRes)
+                //    {
+                //        var newMessage = MessageGenerator.GetAReport(results, p);
+
+                //        GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
+                //    }
+                //}
+            }
+
 			var m = RegisterFalsePositive();
 
 			return room.DeleteMessage(message.ParentID) ? new ReplyMessage("") : m;
@@ -1533,7 +1559,7 @@ namespace Phamhilator
 
 				if (report.Type == PostType.Offensive)
 				{
-                    m = ReportCleaner.GetSemiCleanReport(message.ParentID, report.BlackTermsFound);
+                    m = ReportCleaner.GetCleanReport(message.ParentID);
 				}	
 
 				foreach (var secondaryRoom in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
@@ -1542,7 +1568,7 @@ namespace Phamhilator
 
 				    GlobalInfo.PostedReports.Add(postedMessage.ID, new MessageInfo
 				    {
-				        MessageID = postedMessage.ID, Body = postedMessage.Content, RoomID = room.ID, Report = report
+				        Message = postedMessage, Post = post, Report = report
 				    });
 				}		
 			}
@@ -1985,28 +2011,6 @@ namespace Phamhilator
 
 			return new ReplyMessage("", false);
 		}
-
-        private static ReplyMessage FlagSpam(string command)
-        {
-            if (!command.Contains("http")) { return new ReplyMessage("`Command not recognised.`"); }
-
-            var postUrl = command.Substring(command.IndexOf("http", StringComparison.Ordinal)).Trim();
-
-            var success = GlobalInfo.Flagger.FlagSpam(postUrl);
-
-            return new ReplyMessage(success ? "`Post successfuly flagged.`" : "`Unable to flag post.`");
-        }
-
-        private static ReplyMessage FlagOff(string command)
-        {
-            if (!command.Contains("http")) { return new ReplyMessage("`Command not recognised.`"); }
-
-            var postUrl = command.Substring(command.IndexOf("http", StringComparison.Ordinal)).Trim();
-
-            var success = GlobalInfo.Flagger.FlagOffensive(postUrl);
-
-            return new ReplyMessage(success ? "`Post successfuly flagged.`" : "`Unable to flag post.`");
-        }
 
 		# endregion
 
