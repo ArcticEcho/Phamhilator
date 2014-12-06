@@ -45,7 +45,6 @@ namespace Phamhilator
             return new Question(postUrl, title, body, host, score, authorName, authorLink, authorRep, tags);
         }
 
-        //TODO: Fix URI bug.
         public static Answer GetAnswer(string postUrl)
         {
             string host;
@@ -53,7 +52,7 @@ namespace Phamhilator
 
             GetPostInfo(postUrl, out host, out id);
 
-            var getUrl = "'http://" + host + "/posts/ajax-load-realtime/" + id;
+            var getUrl = "http://" + host + "/posts/ajax-load-realtime/" + id;
             var html = StringDownloader.DownloadString(getUrl);
             var dom = CQ.Create(html);
 

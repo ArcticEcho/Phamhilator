@@ -521,14 +521,14 @@ namespace Phamhilator
 					builder.Append("%. Specificity: " + Math.Round(term.Specificity * 100, 1));
 					builder.Append("%. Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1));
-					builder.Append(". Is Auto: " + term.IsAuto + ")\n    \n");
+					builder.Append(". Auto: " + term.IsAuto + ")\n    \n");
 				}
 				else
                 {
                     builder.Append("    " + term.Regex + " ");
                     builder.Append(" (Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1));
-					builder.Append(". Is Auto: " + term.IsAuto + ")\n    \n");
+					builder.Append(". Auto: " + term.IsAuto + ")\n    \n");
 				}		
 			}
 
@@ -1490,20 +1490,20 @@ namespace Phamhilator
                         GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
                     }
                 }
-                //else
-                //{
-                //    var p = PostRetriever.GetAnswer(post.Url);
-                //    var results = new AnswerAnalysis();
+                else
+                {
+                    var p = PostRetriever.GetAnswer(post.Url);
+                    var results = new AnswerAnalysis();
 
-                //    var aRes = Analysers.Answer.IsLowQuality(p, ref results);
+                    var aRes = Analysers.Answer.IsLowQuality(p, ref results);
 
-                //    if (aRes)
-                //    {
-                //        var newMessage = MessageGenerator.GetAReport(results, p);
+                    if (aRes)
+                    {
+                        var newMessage = MessageGenerator.GetAReport(results, p);
 
-                //        GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
-                //    }
-                //}
+                        GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
+                    }
+                }
             }
 
 			var m = RegisterFalsePositive();

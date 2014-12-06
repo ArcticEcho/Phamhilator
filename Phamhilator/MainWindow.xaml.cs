@@ -276,12 +276,12 @@ namespace Phamhilator
 				
 				foreach (var a in info.AResults.Where(p => PostPersistence.Messages.All(pp => pp.Url != p.Key.Url)))
 				{
-					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value, false);
+					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value);
 				}
 			}	
 		}
 
-		private void PostReport(Post p, string messageBody, PostAnalysis info, bool isQuestionReport = true)
+		private void PostReport(Post p, string messageBody, PostAnalysis info)
 		{
 			if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { return; }
 
@@ -292,7 +292,7 @@ namespace Phamhilator
 			{
                 message = GlobalInfo.PrimaryRoom.PostMessage("[Spammer abuse detected](" + p.Url + ").");
 
-                chatMessage = new MessageInfo { Message = message, Post = p, Report = info, /*IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
+                chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
 				if (message != null)
 				{
@@ -308,7 +308,7 @@ namespace Phamhilator
 				case PostType.Offensive:
 				{
                     message = GlobalInfo.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
-					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
 					break;
 				}
@@ -316,15 +316,15 @@ namespace Phamhilator
 				case PostType.BadUsername:
 				{
 					message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
-					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
 					break;
 				}
 
 				case PostType.BadTagUsed:
 				{
-					message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Tag Used**" + messageBody);
-					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
+					message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Tag(s) Used**" + messageBody);
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
 					break;
 				}
@@ -332,7 +332,7 @@ namespace Phamhilator
 				case PostType.LowQuality:
 				{
 					message = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
-					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info};
 
 					break;
 				}
@@ -340,7 +340,7 @@ namespace Phamhilator
 				case PostType.Spam:
 				{
 					message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
-					chatMessage = new MessageInfo { Message = message, Post = p, Report = info/*, IsQuestionReport = isQuestionReport, RoomID = GlobalInfo.PrimaryRoom.ID*/ };
+					chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
 					break;
 				}
