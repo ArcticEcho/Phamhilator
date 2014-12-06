@@ -12,7 +12,7 @@
     "Regex": "(?i)\\bfuck\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -202,6 +202,33 @@
     "IsAuto": false,
     "Site": "english.stackexchange.com",
     "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)bullshit",
+    "IsAuto": false,
+    "Site": "academia.stackexchange.com",
+    "Score": 5.105263,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bass\\b",
+    "IsAuto": false,
+    "Site": "math.stackexchange.com",
+    "Score": 5.110526,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)fuck",
+    "IsAuto": false,
+    "Site": "codegolf.stackexchange.com",
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

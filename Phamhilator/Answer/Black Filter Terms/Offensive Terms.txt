@@ -90,13 +90,13 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bfuck\\b",
+    "Regex": "(?i)\\bfuck",
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 2,
+    "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)\\bidiot\\b",
@@ -151,15 +151,6 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 1
-  },
-  {
-    "Regex": "(?i)fuck",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 11.0,
-    "TPCount": 2,
-    "FPCount": 1,
-    "CaughtCount": 8
   },
   {
     "Regex": "(?i)bullshit",
