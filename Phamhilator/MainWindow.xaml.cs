@@ -283,10 +283,16 @@ namespace Phamhilator
 
 		private void PostReport(Post p, string messageBody, PostAnalysis info)
 		{
-			if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { return; }
-
 			Message message = null;
 			MessageInfo chatMessage = null;
+
+		    if (GlobalInfo.Spammers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
+		    {
+                message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
+                chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+		    }
+
+			if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { return; }
 
 			if (SpamAbuseDetected(p))
 			{

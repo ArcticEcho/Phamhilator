@@ -42,7 +42,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 7,
-    "CaughtCount": 250
+    "CaughtCount": 256
   },
   {
     "Regex": "(?i)tried",
@@ -122,8 +122,8 @@
     "Site": "",
     "Score": 12.0,
     "TPCount": 0,
-    "FPCount": 25,
-    "CaughtCount": 493
+    "FPCount": 26,
+    "CaughtCount": 505
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -177,7 +177,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)thanks",
@@ -186,7 +186,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 5
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)(need|some)( halp| help| answer)",
@@ -203,8 +203,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 1,
-    "FPCount": 8,
-    "CaughtCount": 479
+    "FPCount": 9,
+    "CaughtCount": 492
   },
   {
     "Regex": "^[^a-z]*$",
@@ -222,7 +222,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "how do i",
@@ -231,7 +231,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 12
+    "CaughtCount": 14
   },
   {
     "Regex": "(?i)i( just)? wan(t|na) to know",
@@ -339,7 +339,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 17
+    "CaughtCount": 18
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -374,8 +374,8 @@
     "Site": "",
     "Score": 16.0,
     "TPCount": 1,
-    "FPCount": 26,
-    "CaughtCount": 827
+    "FPCount": 28,
+    "CaughtCount": 855
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -384,7 +384,7 @@
     "Score": 15.0,
     "TPCount": 6,
     "FPCount": 3,
-    "CaughtCount": 94
+    "CaughtCount": 96
   },
   {
     "Regex": "(?i)\\b(help|halp)\\b",
@@ -393,7 +393,7 @@
     "Score": 16.0,
     "TPCount": 7,
     "FPCount": 8,
-    "CaughtCount": 210
+    "CaughtCount": 216
   },
   {
     "Regex": "for\\sfree",
@@ -419,8 +419,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 20,
-    "CaughtCount": 392
+    "FPCount": 21,
+    "CaughtCount": 399
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",
@@ -465,7 +465,7 @@
     "Score": 11.5906382,
     "TPCount": 1,
     "FPCount": 6,
-    "CaughtCount": 95
+    "CaughtCount": 96
   },
   {
     "Regex": "(?i)^I want",

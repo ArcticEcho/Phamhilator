@@ -88,6 +88,7 @@
     <Compile Include="GlobalInfo.Stats.cs" />
     <Compile Include="PostRetriever.cs" />
     <Compile Include="ReplyMessage.cs" />
+    <Compile Include="Spammer.cs" />
     <Compile Include="StringDownloader.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="BlackFilter.cs" />

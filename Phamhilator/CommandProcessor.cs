@@ -1575,6 +1575,11 @@ namespace Phamhilator
 
             if (report.Type == PostType.BadTagUsed) { return new ReplyMessage(""); }
 
+		    if (report.Type == PostType.Spam)
+		    {
+		        GlobalInfo.Spammers.Add(new Spammer(post.Site, post.AuthorName));
+		    }
+
 			var returnMessage = RegisterTruePositive();
 
 			return commandLower == "tpa" ? new ReplyMessage("") : returnMessage;
