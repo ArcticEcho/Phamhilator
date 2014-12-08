@@ -291,7 +291,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -408,7 +408,7 @@
     "Regex": "(?i)the perfect",
     "IsAuto": false,
     "Site": "graphicdesign.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -750,7 +750,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "skeptics.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -813,7 +813,7 @@
     "Regex": "(?i)\\bskin\\b",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -858,7 +858,7 @@
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 7.0,
+    "Score": 8.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1138,6 +1138,24 @@
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
     "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)wh(at|o|ere|ich) (are|is)( the)?( best| great(est)?| fast(est)?| cheap(est)?)? (product|service|company|brand|manufacturer)",
+    "IsAuto": false,
+    "Site": "gis.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)and",
+    "IsAuto": false,
+    "Site": "workplace.stackexchange.com",
+    "Score": 5.110075,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

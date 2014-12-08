@@ -14,8 +14,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 4
+    "FPCount": 4,
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\bwe lost\\b",
@@ -185,8 +185,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bbody( building|builder(s)?| builder(s)?|building)\\b",
@@ -202,9 +202,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 5,
+    "TPCount": 6,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -301,18 +301,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 18.0,
-    "TPCount": 9,
-    "FPCount": 9,
-    "CaughtCount": 29
+    "TPCount": 10,
+    "FPCount": 10,
+    "CaughtCount": 32
   },
   {
     "Regex": "(?i)the perfect",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 1,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)good slim",
@@ -410,8 +410,8 @@
     "Site": "",
     "Score": 12.0,
     "TPCount": 1,
-    "FPCount": 3,
-    "CaughtCount": 8
+    "FPCount": 4,
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -554,8 +554,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 14
+    "FPCount": 7,
+    "CaughtCount": 16
   },
   {
     "Regex": "(?i)^also",
@@ -600,7 +600,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 3,
-    "CaughtCount": 14
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)tell you",
@@ -708,7 +708,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 11,
-    "CaughtCount": 22
+    "CaughtCount": 23
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -761,8 +761,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 8,
-    "CaughtCount": 12
+    "FPCount": 11,
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)^no hassle",
@@ -900,13 +900,13 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)For Meta",
+    "Regex": "(?i)\\bfor meta\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 1
+    "FPCount": 3,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\d% discount code",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 8,
-    "CaughtCount": 44
+    "FPCount": 9,
+    "CaughtCount": 49
   },
   {
     "Regex": "\\$\\d+",
@@ -960,7 +960,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 9,
-    "CaughtCount": 71
+    "CaughtCount": 88
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -968,8 +968,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 2,
-    "FPCount": 0,
-    "CaughtCount": 5
+    "FPCount": 1,
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)high quality",
@@ -1003,9 +1003,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.1755075,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)gmail password",

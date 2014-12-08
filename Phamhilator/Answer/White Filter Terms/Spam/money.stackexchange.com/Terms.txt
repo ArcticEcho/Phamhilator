@@ -534,7 +534,7 @@
     "Regex": "(?i)\\btreatment\\b",
     "IsAuto": false,
     "Site": "money.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1002,7 +1002,7 @@
     "Regex": "(?i)\\bearn.{0,30}\\d",
     "IsAuto": false,
     "Site": "quant.stackexchange.com",
-    "Score": 5.92927361,
+    "Score": 5.42927361,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

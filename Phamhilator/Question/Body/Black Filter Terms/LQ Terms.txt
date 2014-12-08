@@ -15,25 +15,25 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "",
     "Score": 40.0,
-    "TPCount": 27,
-    "FPCount": 58,
-    "CaughtCount": 939
+    "TPCount": 34,
+    "FPCount": 67,
+    "CaughtCount": 1104
   },
   {
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 14.0,
-    "TPCount": 4,
+    "TPCount": 5,
     "FPCount": 3,
-    "CaughtCount": 61
+    "CaughtCount": 66
   },
   {
     "Regex": "enter link description here",
@@ -42,7 +42,7 @@
     "Score": 13.75,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "down vote favorite",
@@ -58,8 +58,8 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.083333,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 3
   }
 ]

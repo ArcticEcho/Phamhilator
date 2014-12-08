@@ -57,7 +57,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 11.8357782,
+    "Score": 12.62483,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -903,7 +903,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 6.50158739,
+    "Score": 6.93502665,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1003,6 +1003,15 @@
     "IsAuto": false,
     "Site": "quant.stackexchange.com",
     "Score": 5.42927361,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)Make money",
+    "IsAuto": false,
+    "Site": "money.stackexchange.com",
+    "Score": 6.42927361,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

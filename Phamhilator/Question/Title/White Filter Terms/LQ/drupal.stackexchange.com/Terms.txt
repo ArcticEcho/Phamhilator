@@ -12,7 +12,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -93,7 +93,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "anime.stackexchange.com",
-    "Score": 6.90625,
+    "Score": 6.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -228,7 +228,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 6.90625,
+    "Score": 6.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -318,7 +318,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "chemistry.stackexchange.com",
-    "Score": 6.90625,
+    "Score": 6.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -327,7 +327,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "chess.stackexchange.com",
-    "Score": 6.90625,
+    "Score": 6.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -507,7 +507,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 6.90625,
+    "Score": 6.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -525,7 +525,7 @@
     "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -543,7 +543,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
-    "Score": 6.90625,
+    "Score": 6.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1767,7 +1767,7 @@
     "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2388,7 +2388,7 @@
     "Regex": "^\\S*$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2397,7 +2397,7 @@
     "Regex": "^[^ ]*$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.5,
+    "Score": 6.02327967,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2452,6 +2452,15 @@
     "IsAuto": false,
     "Site": "cs.stackexchange.com",
     "Score": 6.5,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)help please",
+    "IsAuto": false,
+    "Site": "dsp.stackexchange.com",
+    "Score": 8.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

@@ -302,12 +302,17 @@ namespace Phamhilator
 			if (commandLower == "fp")
 			{
 				return new[] { FalsePositive() };
-			}
+            }
 
-			if (commandLower == "fp why")
-			{
-				return new[] { FalsePositive(), GetTerms() };
-			}
+            if (commandLower == "fp why")
+            {
+                return new[] { FalsePositive(), GetTerms() };
+            }
+
+            if (commandLower == "fp del")
+            {
+                return new[] { FalsePositive(), DeleteMessage() };
+            }
 
 			if (commandLower == "tp" || commandLower == "tpa")
 			{
@@ -1478,37 +1483,65 @@ namespace Phamhilator
                 if (questionReport.IsMatch(room[message.ParentID].Content))
                 {
                     var p = PostRetriever.GetQuestion(post.Url);
-                    var results = new QuestionAnalysis();
+                    var qtInfo = new QuestionAnalysis();
+                    var qbInfo = new QuestionAnalysis();
 
-                    var qtRes = Analysers.QuestionTitle.IsLowQuality(p, ref results);
-                    var qbRes = Analysers.QuestionBody.IsLowQuality(p, ref results);
+                    var qtRes = Analysers.QuestionTitle.IsLowQuality(p, ref qtInfo);
+                    var qbRes = Analysers.QuestionBody.IsLowQuality(p, ref qbInfo);
 
-                    if (qbRes || qtRes)
+                    if (qtRes && qtInfo.Accuracy >= GlobalInfo.AccuracyThreshold)
                     {
-                        var newMessage = MessageGenerator.GetQReport(results, p);
+                        var newMessage = MessageGenerator.GetQReport(qtInfo, p);
 
-                        GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
+                        var postedMessage = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
+
+                        GlobalInfo.PostedReports.Add(postedMessage.ID, new MessageInfo
+                        {
+                            Message = postedMessage,
+                            Post = p,
+                            Report = qtInfo
+                        });
+                    }
+                    else if (qbRes && qbInfo.Accuracy >= GlobalInfo.AccuracyThreshold)
+                    {
+                        var newMessage = MessageGenerator.GetQReport(qbInfo, p);
+
+                        var postedMessage = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
+
+                        GlobalInfo.PostedReports.Add(postedMessage.ID, new MessageInfo
+                        {
+                            Message = postedMessage,
+                            Post = p,
+                            Report = qbInfo
+                        });
                     }
                 }
                 else
                 {
                     var p = PostRetriever.GetAnswer(post.Url);
-                    var results = new AnswerAnalysis();
+                    var aInfo = new AnswerAnalysis();
 
-                    var aRes = Analysers.Answer.IsLowQuality(p, ref results);
+                    var aRes = Analysers.Answer.IsLowQuality(p, ref aInfo);
 
                     if (aRes)
                     {
-                        var newMessage = MessageGenerator.GetAReport(results, p);
+                        var newMessage = MessageGenerator.GetAReport(aInfo, p);
 
-                        GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
+                        var postedMessage = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
+
+                        GlobalInfo.PostedReports.Add(postedMessage.ID, new MessageInfo
+                        {
+                            Message = postedMessage,
+                            Post = p,
+                            Report = aInfo
+                        });
                     }
                 }
             }
 
 			var m = RegisterFalsePositive();
 
-			return room.DeleteMessage(message.ParentID) ? new ReplyMessage("") : m;
+			return room.EditMessage(message.ParentID, "---" + room[message.ParentID].Content + "---") ? new ReplyMessage("") : m;
 		}
 
 		private static ReplyMessage RegisterFalsePositive()
@@ -1582,7 +1615,10 @@ namespace Phamhilator
 
 			var returnMessage = RegisterTruePositive();
 
-			return commandLower == "tpa" ? new ReplyMessage("") : returnMessage;
+		    var reportMessage = room[message.ParentID].Content;
+            reportMessage = reportMessage.Remove(reportMessage.Length - 1);
+
+            return room.EditMessage(message.ParentID, reportMessage + (commandLower == "tpa" ? " ***TPA Acknowledged***." : " ***TP Acknowledged***.")) ? new ReplyMessage("") : returnMessage;
 		}
 
 		private static ReplyMessage RegisterTruePositive()

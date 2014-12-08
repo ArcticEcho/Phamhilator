@@ -36,7 +36,6 @@ ids http://meta.stackoverflow.com/q/271356
 implementation http://meta.stackoverflow.com/q/251723
 inconsistency http://meta.stackoverflow.com/q/269477
 internet http://meta.stackoverflow.com/q/255169
-internet-explorer
 inversion http://meta.stackoverflow.com/q/271125
 java-libraries http://meta.stackoverflow.com/q/269052
 jetbrains http://meta.stackoverflow.com/q/254250
