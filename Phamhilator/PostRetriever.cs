@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using CsQuery;
 using Newtonsoft.Json.Linq;
@@ -47,7 +50,7 @@ namespace Phamhilator
             GetPostInfo(postUrl, out host, out id);
 
             var html = StringDownloader.DownloadString(postUrl);
-            var dom = CQ.Create(html);
+            var dom = CQ.Create(html, Encoding.UTF8);
             var tags = new List<string>();
 
             foreach (var tag in dom[".post-taglist a"])
@@ -62,9 +65,36 @@ namespace Phamhilator
             var title = escapeChars.Replace(WebUtility.HtmlDecode(dom[".question-hyperlink"].Html()), "");
             var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
-            var authorName = escapeChars.Replace(WebUtility.HtmlDecode(dom[".user-details a"].Html()), "");
-            var authorLink = "http://" + host + dom[".user-details a"].Attr("href");
-            var authorRep = ParseRep(dom[".reputation-score"].Html());
+
+            string authorName;
+            string authorLink;
+            int authorRep;
+
+            if (dom[".reputation-score"][0] != null)
+            {
+                // Normal answer.
+                authorName = WebUtility.HtmlDecode(dom[".user-details a"][0].InnerHTML);
+                authorLink = "http://" + host + dom[".user-details a"][0].Attributes["href"];
+                authorRep = ParseRep(dom[".reputation-score"][0].InnerHTML);
+            }
+            else
+            {
+                if (dom[".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
+                {
+                    // Community wiki.
+                    authorName = WebUtility.HtmlDecode(dom[".user-details a"][1].InnerHTML);
+                    authorLink = "http://" + host + dom[".user-details a"][1].Attributes["href"];
+                    authorRep = 1;
+                }
+                else
+                {
+                    // Dead account owner.
+                    authorName = WebUtility.HtmlDecode(dom[ ".user-details"][0].InnerHTML.Trim());
+                    authorName = authorName.Remove(authorName.Length - 4);
+                    authorLink = null;
+                    authorRep = 1;
+                }
+            }
 
             return new Question(postUrl, title, body, host, score, authorName, authorLink, authorRep, tags);
         }
@@ -78,45 +108,26 @@ namespace Phamhilator
 
             var getUrl = "http://" + host + "/posts/ajax-load-realtime/" + id;
             var html = StringDownloader.DownloadString(getUrl);
-            var dom = CQ.Create(html);
+            var dom = CQ.Create(html, Encoding.UTF8);
 
-            var score = int.Parse(dom[".vote-count-post"].Html());
-            var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
-            var authorName = escapeChars.Replace(WebUtility.HtmlDecode(dom[".user-details a"].Html()), "");
-            var authorLink = "http://" + host + dom[".user-details a"].Attr("href");
-            var authorRep = ParseRep(dom[".reputation-score"].Html());
-            var excerpt = escapeChars.Replace(StripTags(body), "").Trim();
-
-            excerpt = excerpt.Length > 50 ? excerpt.Substring(0, 47) + "..." : excerpt;
-
-            return new Answer(postUrl, excerpt, body, host, score, authorName, authorLink, authorRep);
+            return GetAnswer(dom, host, id.ToString(CultureInfo.InvariantCulture));
         }
 
         public static List<Answer> GetLatestAnswers(Question question)
         {
-            var answers = new List<Answer>();
+            var html = new WebClient().DownloadString(question.Url+ "?answertab=active#tab-top");
+            var dom = CQ.Create(html, Encoding.UTF8);
             var host = "";
-            var questionID = 0;
+            var questionID = 0; 
+            var answers = new List<Answer>();
 
             GetPostInfo(question.Url, out host, out questionID);
 
-		    var html = StringDownloader.DownloadString(question.Url + "?answertab=active#tab-top");
-		    var dom = CQ.Create(html);
-
-            for (var i = 0; i < dom[".answer"].Length; i++)
+            foreach (var a in dom[".answer"])
             {
-                var id = dom[".answer"][i].Attributes["data-answerid"];
-                var score = int.Parse(dom[".vote-count-post"][i + 1].InnerHTML);
-                var body = WebUtility.HtmlDecode(dom[".post-text"][i + 1].InnerHTML.Trim());
-                var url = "http://" + host + "/a/" + id;
-                var authorName = escapeChars.Replace(WebUtility.HtmlDecode(dom[".user-details a"][i + 1].InnerHTML), "");
-                var authorLink = "http://" + host + dom[".user-details a"][i + 1].Attributes["href"];
-                var authorRep = ParseRep(dom[".reputation-score"][i + 1].InnerHTML);
-                var excerpt = escapeChars.Replace(StripTags(body), "").Trim();
-
-                excerpt = excerpt.Length > 75 ? excerpt.Substring(0, 72) + "..." : excerpt;
-
-                answers.Add(new Answer(url, excerpt, body, host, score, authorName, authorLink, authorRep));
+                var id = a.Attributes["data-answerid"];
+                
+                answers.Add(GetAnswer(dom, host, id));
             }
 
             return answers;
@@ -144,6 +155,50 @@ namespace Phamhilator
         }
 
 
+
+        private static Answer GetAnswer(CQ dom, string host, string id)
+        {
+            var aDom = "#answer-" + id + " ";
+
+            var score = int.Parse(dom[aDom + ".vote-count-post"][0].InnerHTML);
+            var body = WebUtility.HtmlDecode(dom[aDom + ".post-text"][0].InnerHTML.Trim());
+            var url = "http://" + host + "/a/" + id;
+            string authorName;
+            string authorLink;
+            int authorRep;
+
+            if (dom[aDom + ".reputation-score"][0] != null)
+            {
+                // Normal answer.
+                authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][0].InnerHTML);
+                authorLink = "http://" + host + dom[aDom + ".user-details a"][0].Attributes["href"];
+                authorRep = ParseRep(dom[aDom + ".reputation-score"][0].InnerHTML);
+            }
+            else
+            {
+                if (dom[aDom + ".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
+                {
+                    // Community wiki.
+                    authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][1].InnerHTML);
+                    authorLink = "http://" + host + dom[aDom + ".user-details a"][1].Attributes["href"];
+                    authorRep = 1;
+                }
+                else
+                {
+                    // Dead account owner.
+                    authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details"][0].InnerHTML.Trim());
+                    authorName = authorName.Remove(authorName.Length - 4);
+                    authorLink = null;
+                    authorRep = 1;
+                }
+            }
+
+            var excerpt = escapeChars.Replace(StripTags(body), "").Trim();
+
+            excerpt = excerpt.Length > 75 ? excerpt.Substring(0, 72) + "..." : excerpt;
+
+            return new Answer(url, excerpt, body, host, score, authorName, authorLink, authorRep);
+        }
 
         private static void GetPostInfo(string postUrl, out string host, out int id)
         {

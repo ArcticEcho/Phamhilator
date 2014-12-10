@@ -87,7 +87,7 @@
     "Score": 89.0,
     "TPCount": 118,
     "FPCount": 17,
-    "CaughtCount": 807
+    "CaughtCount": 808
   },
   {
     "Regex": "(?i)^please",
@@ -104,8 +104,8 @@
     "Site": "",
     "Score": 16.8727264,
     "TPCount": 7,
-    "FPCount": 0,
-    "CaughtCount": 13
+    "FPCount": 1,
+    "CaughtCount": 14
   },
   {
     "Regex": "(?i)have question",
@@ -123,7 +123,7 @@
     "Score": 19.3837166,
     "TPCount": 42,
     "FPCount": 30,
-    "CaughtCount": 677
+    "CaughtCount": 678
   },
   {
     "Regex": "(?i)please",
@@ -131,8 +131,8 @@
     "Site": "",
     "Score": 22.3837166,
     "TPCount": 45,
-    "FPCount": 89,
-    "CaughtCount": 787
+    "FPCount": 91,
+    "CaughtCount": 796
   },
   {
     "Regex": "(?i)need (an )?answer",
@@ -159,6 +159,6 @@
     "Score": 19.2035675,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 7
+    "CaughtCount": 8
   }
 ]

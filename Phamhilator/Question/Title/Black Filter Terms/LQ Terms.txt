@@ -42,7 +42,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 12,
-    "CaughtCount": 393
+    "CaughtCount": 396
   },
   {
     "Regex": "(?i)tried",
@@ -123,7 +123,7 @@
     "Score": 12.0,
     "TPCount": 0,
     "FPCount": 36,
-    "CaughtCount": 700
+    "CaughtCount": 704
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -186,7 +186,7 @@
     "Score": 13.0,
     "TPCount": 2,
     "FPCount": 3,
-    "CaughtCount": 66
+    "CaughtCount": 67
   },
   {
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
@@ -195,7 +195,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 12,
-    "CaughtCount": 642
+    "CaughtCount": 647
   },
   {
     "Regex": "^[^a-z]*$",
@@ -330,7 +330,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 2,
-    "CaughtCount": 28
+    "CaughtCount": 29
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -366,7 +366,7 @@
     "Score": 16.0,
     "TPCount": 1,
     "FPCount": 36,
-    "CaughtCount": 1216
+    "CaughtCount": 1222
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -375,7 +375,7 @@
     "Score": 15.0,
     "TPCount": 8,
     "FPCount": 4,
-    "CaughtCount": 123
+    "CaughtCount": 124
   },
   {
     "Regex": "(?i)\\b(help|halp)\\b",
@@ -384,7 +384,7 @@
     "Score": 16.0,
     "TPCount": 9,
     "FPCount": 16,
-    "CaughtCount": 303
+    "CaughtCount": 304
   },
   {
     "Regex": "for\\sfree",
@@ -411,7 +411,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 24,
-    "CaughtCount": 563
+    "CaughtCount": 566
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",
@@ -456,7 +456,7 @@
     "Score": 11.5906382,
     "TPCount": 1,
     "FPCount": 8,
-    "CaughtCount": 133
+    "CaughtCount": 134
   },
   {
     "Regex": "(?i)^I want",
