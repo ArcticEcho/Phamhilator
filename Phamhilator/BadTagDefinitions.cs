@@ -7,30 +7,60 @@ using System.Linq;
 
 namespace Phamhilator
 {
-	public static class BadTagDefinitions
+	public class BadTagDefinitions
 	{
-		private static Dictionary<string, Dictionary<string, string>> badTags;
+        public Dictionary<string, Dictionary<string, string>> BadTags { get; private set; }
 
-		public static Dictionary<string, Dictionary<string, string>> BadTags
+
+
+	    public BadTagDefinitions()
+	    {
+	        BadTags = new Dictionary<string, Dictionary<string, string>>();
+
+            foreach (var dir in Directory.EnumerateDirectories(DirectoryTools.GetBTDFolder()))
+            {
+                var site = Path.GetFileName(dir);
+
+                if (String.IsNullOrEmpty(site) || BadTags.ContainsKey(site)) { continue; }
+
+                BadTags.Add(site, new Dictionary<string, string>());
+
+                var lines = File.ReadAllLines(Path.Combine(dir, "BadTags.txt")).ToArray();
+
+                for (var i = 0; i < lines.Length; i++)
+                {
+                    lines[i] = lines[i].Trim();
+
+                    if (!String.IsNullOrWhiteSpace(lines[i]))
+                    {
+                        string metaPost;
+                        string tag;
+
+                        if (lines[i].IndexOf(" ", StringComparison.Ordinal) != -1) // Check if tag has meta post
+                        {
+                            tag = lines[i].Substring(0, lines[i].IndexOf(" ", StringComparison.Ordinal));
+                            metaPost = lines[i].Remove(0, lines[i].IndexOf(" ", StringComparison.Ordinal) + 1);
+                        }
+                        else
+                        {
+                            tag = lines[i];
+                            metaPost = "";
+                        }
+
+                        if (!BadTags[site].ContainsKey(tag))
+                        {
+                            BadTags[site].Add(tag, metaPost);
+                        }
+                    }
+                }
+            }
+	    }
+
+		public void AddTag(string site, string tag, string metaPost = "")
 		{
-			get
+			if (BadTags.ContainsKey(site))
 			{
-				if (badTags == null)
-				{
-					PopulateBadTags();
-				}
-
-				return badTags;
-			}
-		}
-
-
-
-		public static void AddTag(string site, string tag, string metaPost = "")
-		{
-			if (badTags.ContainsKey(site))
-			{
-				badTags[site].Add(tag, metaPost);
+				BadTags[site].Add(tag, metaPost);
 
 				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), Environment.NewLine + tag + (metaPost == "" ? "" : " " + metaPost));
 			}
@@ -40,27 +70,27 @@ namespace Phamhilator
 
 				Directory.CreateDirectory(path);
 
-				badTags.Add(site, new Dictionary<string, string> { { tag, metaPost } });
+				BadTags.Add(site, new Dictionary<string, string> { { tag, metaPost } });
 
 				File.AppendAllText(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), Environment.NewLine + tag + (metaPost == "" ? "" : " " + metaPost));
 			}
 		}
 
-		public static void RemoveTag(string site, string tag)
+		public void RemoveTag(string site, string tag)
 		{
-			if (!badTags.ContainsKey(site) || !badTags[site].ContainsKey(tag)) { return; }
+			if (!BadTags.ContainsKey(site) || !BadTags[site].ContainsKey(tag)) { return; }
 
-			badTags[site].Remove(tag);
+			BadTags[site].Remove(tag);
 
 			var data = File.ReadAllLines(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt")).ToList();
 
 			for (var i = 0; i < data.Count; i++)
 			{
-				var g = data[i].IndexOf(" ", StringComparison.Ordinal);
+				var savedTagIndex = data[i].IndexOf(" ", StringComparison.Ordinal);
 
-				if (data[i].IndexOf(" ", StringComparison.Ordinal) != -1)
+                if (savedTagIndex != -1)
 				{
-					var t = data[i].Remove(data[i].IndexOf(" ", StringComparison.Ordinal));
+                    var t = data[i].Remove(savedTagIndex);
 
 					if (t == tag)
 					{
@@ -81,50 +111,6 @@ namespace Phamhilator
 			}
 
 			File.WriteAllLines(Path.Combine(DirectoryTools.GetBTDFolder(), site, "BadTags.txt"), data);
-		}
-
-
-
-		private static void PopulateBadTags()
-		{
-			badTags = new Dictionary<string, Dictionary<string, string>>();
-
-			foreach (var dir in Directory.EnumerateDirectories(DirectoryTools.GetBTDFolder()))
-			{
-				var site = Path.GetFileName(dir);
-
-				badTags.Add(site, new Dictionary<string, string>());
-
-				//if (badTags.ContainsKey(key)) { continue; }
-
-				var lines = File.ReadAllLines(Path.Combine(dir, "BadTags.txt")).ToArray();
-				var metaPost = "";
-				var tag = "";
-
-				for (var i = 0; i < lines.Length; i++)
-				{
-					lines[i] = lines[i].Trim();
-
-					if (!String.IsNullOrWhiteSpace(lines[i]))
-					{
-						if (lines[i].IndexOf(" ", StringComparison.Ordinal) != -1) // Check if tag has meta post
-						{
-							tag = lines[i].Substring(0, lines[i].IndexOf(" ", StringComparison.Ordinal));
-							metaPost = lines[i].Remove(0, lines[i].IndexOf(" ", StringComparison.Ordinal) + 1);
-						}
-						else
-						{
-							tag = lines[i];
-							metaPost = "";
-						}
-
-						if (!badTags[site].ContainsKey(tag))
-						{
-							badTags[site].Add(tag, metaPost);	
-						}
-					}
-				}
-			}
 		}
 	}
 }

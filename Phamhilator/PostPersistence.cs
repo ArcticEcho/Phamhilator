@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 
 
@@ -11,10 +9,10 @@ namespace Phamhilator
 	public static class PostPersistence
 	{
 		private static bool initialised;
-		private static readonly List<Post> messages = new List<Post>();
+		private static readonly List<string> messages = new List<string>();
 		private static readonly DateTime twentyTen = new DateTime(2010, 01, 01);
 
-		public static List<Post> Messages
+		public static List<string> Messages
 		{
 			get
 			{
@@ -58,7 +56,7 @@ namespace Phamhilator
 					continue;
 				}
 
-				messages.Add(new Answer(urls[i].Split(']')[1].Trim()));
+				messages.Add(urls[i].Split(']')[1].Trim());
 
 				GlobalInfo.PostsCaught++;
 			}
@@ -74,20 +72,20 @@ namespace Phamhilator
 			}
 		}
 
-		public static void AddPost(Post post)
+		public static void AddPost(string url)
 		{
-			if (messages.Contains(post)) { return; }
+			if (messages.Contains(url)) { return; }
 
 			if (Messages.Count == 0)
 			{
-				Messages.Add(post);
+				Messages.Add(url);
 			}
 			else
 			{
-				Messages.Insert(0, post);
+				Messages.Insert(0, url);
 			}
 
-			File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + (DateTime.Now - twentyTen).TotalMinutes + "]" + post.Url);
+			File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + (DateTime.Now - twentyTen).TotalMinutes + "]" + url);
 			
 			GlobalInfo.PostsCaught++;
 		}

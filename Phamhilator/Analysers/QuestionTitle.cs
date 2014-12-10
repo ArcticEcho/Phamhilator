@@ -203,13 +203,13 @@ namespace Phamhilator.Analysers
 		{
 			var tags = new Dictionary<string, string>();
 
-			if (!BadTagDefinitions.BadTags.Keys.Contains(post.Site)) { return tags; }
+            if (!GlobalInfo.BadTagDefinitions.BadTags.Keys.Contains(post.Site)) { return tags; }
 
 			foreach (var tag in post.Tags)
 			{
-				if (BadTagDefinitions.BadTags[post.Site].ContainsKey(tag.ToLowerInvariant()))
+                if (GlobalInfo.BadTagDefinitions.BadTags[post.Site].ContainsKey(tag.ToLowerInvariant()))
 				{
-					tags.Add(tag, BadTagDefinitions.BadTags[post.Site][tag]);
+                    tags.Add(tag, GlobalInfo.BadTagDefinitions.BadTags[post.Site][tag]);
 				}
 			}
 

@@ -615,7 +615,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "electronics.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2352,7 +2352,7 @@
     "Regex": "(?i)wh(at|ich).*best",
     "IsAuto": false,
     "Site": "craftcms.stackexchange.com",
-    "Score": 6.0,
+    "Score": 6.46153831,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2451,7 +2451,7 @@
     "Regex": "(?i)^(?=.*?which)(?=.*?(?:choose|best|quality))",
     "IsAuto": false,
     "Site": "cs.stackexchange.com",
-    "Score": 6.5,
+    "Score": 7.14999962,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

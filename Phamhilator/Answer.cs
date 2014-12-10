@@ -19,17 +19,5 @@
             AuthorLink = authorLink;
             AuthorRep = authorRep;
 	    }
-
-        public Answer(string url)
-        {
-            Url = url;
-            Body = "";
-        }
-
-	    public Answer()
-	    {
-
-            Body = "";
-	    }
 	}
 }

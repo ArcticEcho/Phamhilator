@@ -2006,9 +2006,9 @@ namespace Phamhilator
 				tag = tagCommand.Remove(0, tagCommand.IndexOf(" ", StringComparison.Ordinal) + 1);
 			}
 
-			if (BadTagDefinitions.BadTags.ContainsKey(site) && BadTagDefinitions.BadTags[site].ContainsKey(tag)) { return new ReplyMessage("`Tag already exists.`"); }
+			if (GlobalInfo.BadTagDefinitions.BadTags.ContainsKey(site) && GlobalInfo.BadTagDefinitions.BadTags[site].ContainsKey(tag)) { return new ReplyMessage("`Tag already exists.`"); }
 
-			BadTagDefinitions.AddTag(site, tag, metaPost);
+            GlobalInfo.BadTagDefinitions.AddTag(site, tag, metaPost);
 
 			return new ReplyMessage("`Tag added.`");
 		}
@@ -2022,11 +2022,11 @@ namespace Phamhilator
 			var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
 			var tag = tagCommand.Remove(0, tagCommand.IndexOf(" ", StringComparison.Ordinal) + 1);
 
-			if (BadTagDefinitions.BadTags.ContainsKey(site))
+			if (GlobalInfo.BadTagDefinitions.BadTags.ContainsKey(site))
 			{
-				if (BadTagDefinitions.BadTags[site].ContainsKey(tag))
+				if (GlobalInfo.BadTagDefinitions.BadTags[site].ContainsKey(tag))
 				{
-					BadTagDefinitions.RemoveTag(site, tag);
+                    GlobalInfo.BadTagDefinitions.RemoveTag(site, tag);
 
 					return new ReplyMessage("`Tag removed.`");
 				}

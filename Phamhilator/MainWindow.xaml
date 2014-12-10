@@ -17,10 +17,7 @@
                 <CheckBox Name="remCredsCB"  Content="Remember details" Canvas.Left="10" Canvas.Top="107" IsChecked="True" ClickMode="Press" FontWeight="Thin"/>
                 <CheckBox Name="debugCB" Content="Debug mode" Canvas.Left="489" Canvas.Top="107" ClickMode="Press"/>
                 <Canvas Name="operationC" Canvas.Left="600" Canvas.Top="0" Height="179" Width="592" >
-                    <Button Content="Start Monitoring" Width="109" Click="Button_Click_2" Canvas.Left="10" Canvas.Top="144" FontWeight="Normal" ClickMode="Press" FontSize="10"/>
-                    <Slider Name="refreshRateS" Width="267" Maximum="30000" Minimum="2000" SmallChange="1000" LargeChange="5000" Value="22000" ValueChanged="Slider_ValueChanged" Canvas.Left="203" Canvas.Top="147" Height="22"/>
-                    <Label Content="Refresh Rate:" Canvas.Left="124" Canvas.Top="143" FontWeight="Thin" FontSize="12.5" />
-                    <Label Name="refreshRateL" Content="10000 milliseconds" Canvas.Left="470" Canvas.Top="143" FontWeight="Thin" FontSize="12.5" />
+                    <Button Content="Start Monitoring" Width="572" Click="Button_Click_2" Canvas.Left="10" Canvas.Top="144" FontWeight="Normal" ClickMode="Press" FontSize="10"/>
                     <Label Name="statusL" Content="Login Successful!" Width="590" Canvas.Top="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Thin" Height="31"/>
                 </Canvas>
             </Canvas>

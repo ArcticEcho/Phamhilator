@@ -48,7 +48,8 @@ namespace Phamhilator
 
 		#endregion
 
-		public static readonly Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
+		public readonly static Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
+	    public readonly static BadTagDefinitions BadTagDefinitions = new BadTagDefinitions();
 	    public readonly static List<Spammer> Spammers = new List<Spammer>();
 		public const string Owners = "Sam, Unihedron, Patrick Hofman, Jan Dvorak & ProgramFOX";
 		public static Room PrimaryRoom;

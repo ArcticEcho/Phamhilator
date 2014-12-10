@@ -8,8 +8,8 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Collections.Generic;
 using ChatExchangeDotNet;
+using WebSocketSharp;
 
 
 
@@ -17,9 +17,6 @@ namespace Phamhilator
 {
 	public partial class MainWindow
 	{
-		private int refreshRate = 10000; // In milliseconds.
-		private readonly HashSet<int> spammers = new HashSet<int>();
-		private static readonly List<string> previouslyFoundPosts = new List<string>();
 		private Thread postCatcherThread;
 		private DateTime requestedDieTime;
 
@@ -44,20 +41,9 @@ namespace Phamhilator
 					passwordTB.Text = data.Substring(data.IndexOf("¬", StringComparison.InvariantCulture) + 1);
 				}
 
-                //data = File.ReadAllText(DirectoryTools.GetFlaggingCredsFile());
-
-                //if (!String.IsNullOrEmpty(data))
-                //{
-                //    flagNameTB.Text = data.Remove(data.IndexOf("¬", StringComparison.InvariantCulture));
-                //    flagEmailTB.Text = data.Remove(0, data.IndexOf("¬", StringComparison.InvariantCulture) + 1).Remove(data.IndexOf("¬", StringComparison.InvariantCulture));
-                //    passwordTB.Text = data.Substring(data.IndexOf("¬", StringComparison.InvariantCulture) + 1);
-                //}
-
 				loginC.Children.Remove(operationC);
 
 				PostPersistence.Initialise();
-
-				PostCatcher();
 			}
 			catch (Exception ex)
 			{
@@ -76,58 +62,53 @@ namespace Phamhilator
 
 
 
-		private void PostCatcher()
+		private void InitialiseSocket()
 		{
 			postCatcherThread = new Thread(() =>
 			{
-				// Wait for the bot to startup.
-				do
-				{
-					Thread.Sleep(500);
-				} while (!GlobalInfo.BotRunning);
+                var socket = new WebSocket("ws://qa.sockets.stackexchange.com");
 
-				while (!GlobalInfo.Shutdown)
-				{
-					try
-					{						
-						string html;
+                socket.OnOpen += (o, oo) => socket.Send("155-questions-active");
 
-						try
-						{
-							html = StringDownloader.DownloadString("http://stackexchange.com/questions?tab=realtime");
-						}
-						catch (Exception ex)
-						{
-							if (GlobalInfo.DebugMode)
-							{
-								GlobalInfo.PrimaryRoom.PostMessage(ex.ToString());
-							}
+                socket.OnMessage += (o, message) => ThreadPool.QueueUserWorkItem(e =>
+                {
+                    var question = PostRetriever.GetQuestion(message);
 
-							continue;
-						}
+                    if (PostPersistence.Messages.All(p => p != question.Url))
+                    {
+                        var qResults = PostAnalyser.AnalyseQuestion(question);
+                        var qMessage = MessageGenerator.GetQReport(qResults, question);
 
-						if (html.IndexOf("hot-question-site-icon", StringComparison.Ordinal) == -1) { continue; }
+                        CheckSendReport(question, qMessage, qResults);
+                    }
 
-						var posts = GetAllPosts(html);
+                    if (GlobalInfo.FullScanEnabled)
+                    {
+                        ThreadPool.QueueUserWorkItem(ee =>
+                        {
+                            var answers = PostRetriever.GetLatestAnswers(question);
 
-						if (posts.Length != 0)
-						{
-							CheckPosts(posts);
-						}
+                            foreach (var a in answers.Where(ans => PostPersistence.Messages.All(p => p != ans.Url)))
+                            {
+                                var aResults = PostAnalyser.AnalyseAnswer(a);
+                                var aMessage = MessageGenerator.GetAReport(aResults, a);
 
-						var sleepTime = DateTime.UtcNow.AddMilliseconds(refreshRate);
+                                CheckSendReport(a, aMessage, aResults);
+                            }
+                        });
+                    }
+                });
 
-						do
-						{
-							Thread.Sleep(250);
-						} while (DateTime.UtcNow < sleepTime && GlobalInfo.BotRunning && !GlobalInfo.Shutdown);
-					}
-					catch (Exception)
-					{
-						Thread.Sleep(2000);
-					}
-				}
-			}) { Priority = ThreadPriority.Lowest };
+			    socket.OnClose += (o, oo) =>
+			    {
+			        if (!GlobalInfo.Shutdown)
+			        {
+			            InitialiseSocket();
+			        }
+			    };
+
+                socket.Connect();
+			});
 
 			postCatcherThread.Start();
 		}
@@ -197,6 +178,8 @@ namespace Phamhilator
 				    {
                         GlobalInfo.PrimaryRoom.PostMessage(m.Content);
 				    }
+
+                    Thread.Sleep(2000);
 				}
 			}
 		}
@@ -222,66 +205,7 @@ namespace Phamhilator
 			}
 		}
 
-		private Question[] GetAllPosts(string html)
-		{
-			var posts = new List<Question>();
-
-			html = html.Substring(html.IndexOf("<br class=\"cbo\" />", StringComparison.Ordinal));
-
-			while (html.Length > 10000)
-			{
-				var postUrl = HTMLScraper.GetQuestionURL(html);
-			    var title = HTMLScraper.GetQuestionTitle(html);
-			    var site = HTMLScraper.GetSite(postUrl);
-			    var tags = HTMLScraper.GetTags(html);
-			    var authorName = HTMLScraper.GetQuestionAuthorName(html);
-			    var authorLink = HTMLScraper.GetQuestionAuthorLink(html);
-
-			    var post = new Question(postUrl, title, site, authorName, authorLink, tags);
-
-				if (!previouslyFoundPosts.Contains(post.Url))
-				{
-					posts.Add(post);
-					previouslyFoundPosts.Add(post.Url);
-				}
-
-				if (previouslyFoundPosts.Count > 500)
-				{
-					previouslyFoundPosts.RemoveAt(29);
-				}
-
-				var startIndex = html.IndexOf("question-container realtime-question", 100, StringComparison.Ordinal);
-
-				html = html.Substring(startIndex);
-			}
-
-			if (GlobalInfo.FullScanEnabled)
-			{
-				Parallel.ForEach(posts, post => post.PopulateExtraData());
-			}
-
-			return posts.ToArray();
-		}
-
-		private void CheckPosts(IEnumerable<Question> questions)
-		{
-			foreach (var q in questions)
-			{
-				var info = PostAnalyser.CheckPost(q);
-
-				if (PostPersistence.Messages.All(pp => pp.Url != q.Url))
-				{
-					PostReport(q, MessageGenerator.GetQReport(info.QResults, q), info.QResults);
-				}
-				
-				foreach (var a in info.AResults.Where(p => PostPersistence.Messages.All(pp => pp.Url != p.Key.Url)))
-				{
-					PostReport(a.Key, MessageGenerator.GetAReport(a.Value, a.Key), a.Value);
-				}
-			}	
-		}
-
-		private void PostReport(Post p, string messageBody, PostAnalysis info)
+		private void CheckSendReport(Post p, string messageBody, PostAnalysis info)
 		{
 			Message message = null;
 			MessageInfo chatMessage = null;
@@ -293,21 +217,6 @@ namespace Phamhilator
 		    }
 
 			if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { return; }
-
-			if (SpamAbuseDetected(p))
-			{
-                message = GlobalInfo.PrimaryRoom.PostMessage("[Spammer abuse detected](" + p.Url + ").");
-
-                chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
-
-				if (message != null)
-				{
-					PostPersistence.AddPost(p);
-					GlobalInfo.PostedReports.Add(message.ID, chatMessage);
-				}
-
-				return;
-			}
 
 			switch (info.Type)
 			{
@@ -352,11 +261,14 @@ namespace Phamhilator
 				}
 			}
 
-			if (message != null)
+			if (message != null && p != null)
 			{
-				PostPersistence.AddPost(p);
-				GlobalInfo.PostedReports.Add(message.ID, chatMessage);
-
+			    lock (GlobalInfo.PostedReports)
+			    {
+                    PostPersistence.AddPost(p.Url);
+                    GlobalInfo.PostedReports.Add(message.ID, chatMessage);
+			    }
+				
 				if (info.AutoTermsFound)
 				{
 					foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
@@ -369,29 +281,6 @@ namespace Phamhilator
 			}
 
 			GlobalInfo.Stats.TotalCheckedPosts++;
-		}
-
-		private bool SpamAbuseDetected(Post post)
-		{
-			if (PostPersistence.Messages.Count != 0 && PostPersistence.Messages[0].AuthorName != null && IsDefaultUsername(PostPersistence.Messages[0].AuthorName) && IsDefaultUsername(post.AuthorName))
-			{
-				var latestUsernameId = int.Parse(post.AuthorName.Remove(0, 4));
-				var lastMessageUsernameId = int.Parse(PostPersistence.Messages[0].AuthorName.Remove(0, 4));
-
-				if ((latestUsernameId > lastMessageUsernameId + 8 && latestUsernameId < lastMessageUsernameId) || spammers.Contains(latestUsernameId))
-				{
-					spammers.Add(latestUsernameId);
-
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		private bool IsDefaultUsername(string username)
-		{
-			return username.StartsWith("user") && username.Remove(0, 4).All(Char.IsDigit);
 		}
 
 		private void GlobalExceptionHandler(object o, UnhandledExceptionEventArgs args)
@@ -432,18 +321,6 @@ namespace Phamhilator
 			Thread.Sleep(3000);
 
 			Task.Factory.StartNew(() => Dispatcher.Invoke(() => Environment.Exit(0)));
-		}
-
-		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-		{
-			var rate = (int)Math.Round(refreshRateS.Minimum + (refreshRateS.Maximum - e.NewValue), 0);
-
-			refreshRate = rate;
-
-			if (refreshRateL != null)
-			{
-				refreshRateL.Content = rate + " milliseconds";
-			}
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -532,6 +409,8 @@ namespace Phamhilator
 			((Button)sender).IsEnabled = false;
 
 			GlobalInfo.BotRunning = true;
+
+		    InitialiseSocket();
 
 			if (Debugger.IsAttached || GlobalInfo.DebugMode)
 			{

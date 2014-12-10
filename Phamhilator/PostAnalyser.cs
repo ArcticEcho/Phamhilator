@@ -6,21 +6,21 @@ namespace Phamhilator
 {
 	public static class PostAnalyser
 	{
-		public static QAAnalysis CheckPost(Question q)
-		{
-			var analysis = new QAAnalysis { QResults = AnalyseQuestion(q) };
+        //public static QAAnalysis CheckPost(Question q)
+        //{
+        //    var analysis = new QAAnalysis { QResults = AnalyseQuestion(q) };
 
-			foreach (var a in q.Answers.Where(answer => answer != null))
-			{
-				analysis.AResults.Add(a, AnalyseAnswer(a));
-			}
+        //    foreach (var a in q.Answers.Where(answer => answer != null))
+        //    {
+        //        analysis.AResults.Add(a, AnalyseAnswer(a));
+        //    }
 
-			return analysis;
-		}
+        //    return analysis;
+        //}
 
 
 
-		private static QuestionAnalysis AnalyseQuestion(Question q)
+		public static QuestionAnalysis AnalyseQuestion(Question q)
 		{
 			var info = new QuestionAnalysis();
 
@@ -39,12 +39,12 @@ namespace Phamhilator
 				return info;
 			}
 
-			if (Analysers.QuestionTitle.IsOffensive(q, ref info) || Analysers.QuestionBody.IsOffensive(q, ref info))
+			if (Analysers.QuestionTitle.IsLowQuality(q, ref info) || Analysers.QuestionBody.IsLowQuality(q, ref info))
 			{
 				return info;
 			}
 
-			if (Analysers.QuestionTitle.IsLowQuality(q, ref info) || Analysers.QuestionBody.IsLowQuality(q, ref info))
+			if (Analysers.QuestionTitle.IsOffensive(q, ref info) || Analysers.QuestionBody.IsOffensive(q, ref info))
 			{
 				return info;
 			}
@@ -57,7 +57,7 @@ namespace Phamhilator
 			return info;
 		}
 
-		private static AnswerAnalysis AnalyseAnswer(Answer a)
+		public static AnswerAnalysis AnalyseAnswer(Answer a)
 		{
 			var info = new AnswerAnalysis();
 
@@ -71,12 +71,12 @@ namespace Phamhilator
 				return info;
 			}
 
-			if (Analysers.Answer.IsOffensive(a, ref info))
+			if (Analysers.Answer.IsLowQuality(a, ref info))
 			{
 				return info;
 			}
 
-			if (Analysers.Answer.IsLowQuality(a, ref info))
+			if (Analysers.Answer.IsOffensive(a, ref info))
 			{
 				return info;
 			}

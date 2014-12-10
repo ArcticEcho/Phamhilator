@@ -68,6 +68,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\..\..\Visual Studio 2012\Projects\C Sharp Console SandBox\C Sharp Console SandBox\bin\Debug\websocket-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -97,7 +100,6 @@
     <Compile Include="Post.cs" />
     <Compile Include="ReportCleaner.cs" />
     <Compile Include="QAAnalysis.cs" />
-    <Compile Include="HTMLScraper.cs" />
     <Compile Include="QuestionAnalysis.cs" />
     <Compile Include="Analysers\QuestionTitle.cs" />
     <Compile Include="MessageInfo.cs" />
