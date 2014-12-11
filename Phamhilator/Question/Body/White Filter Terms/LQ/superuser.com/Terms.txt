@@ -3,7 +3,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 115.151581,
+    "Score": 118.030365,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -210,7 +210,7 @@
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 8.336444,
+    "Score": 8.931905,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -228,7 +228,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "tex.stackexchange.com",
-    "Score": 28.9441738,
+    "Score": 29.667778,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -237,7 +237,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 28.68089,
+    "Score": 29.3979111,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -246,7 +246,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 35.2154236,
+    "Score": 36.09581,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -255,7 +255,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "webmasters.stackexchange.com",
-    "Score": 28.9441738,
+    "Score": 29.667778,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

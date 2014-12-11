@@ -131,8 +131,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 9
+    "FPCount": 4,
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)\\bget your\\b",
@@ -212,8 +212,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 1,
-    "FPCount": 2,
-    "CaughtCount": 8
+    "FPCount": 3,
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -230,8 +230,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 7
+    "FPCount": 4,
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)\\bcheaper\\b",
@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 4
+    "FPCount": 3,
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -275,8 +275,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bfull( movie| film)\\b",
@@ -410,8 +410,8 @@
     "Site": "",
     "Score": 12.0,
     "TPCount": 1,
-    "FPCount": 7,
-    "CaughtCount": 14
+    "FPCount": 8,
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -545,8 +545,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 7,
-    "CaughtCount": 17
+    "FPCount": 8,
+    "CaughtCount": 18
   },
   {
     "Regex": "(?i)^also",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 5,
-    "CaughtCount": 23
+    "CaughtCount": 25
   },
   {
     "Regex": "(?i)tell you",
@@ -743,8 +743,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 4,
-    "CaughtCount": 6
+    "FPCount": 5,
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -752,8 +752,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 13,
-    "CaughtCount": 20
+    "FPCount": 14,
+    "CaughtCount": 21
   },
   {
     "Regex": "(?i)^no hassle",
@@ -941,8 +941,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 10,
-    "CaughtCount": 50
+    "FPCount": 11,
+    "CaughtCount": 58
   },
   {
     "Regex": "\\$\\d+",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 9,
-    "CaughtCount": 104
+    "FPCount": 10,
+    "CaughtCount": 132
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -960,7 +960,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 1,
-    "CaughtCount": 6
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)high quality",

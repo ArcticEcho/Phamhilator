@@ -1,146 +1,155 @@
 [
-    {
-        "Regex":"(?i)\\bnigg(a|er)\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\basshole\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bpiss\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bpenis\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbumhole\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bretard\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbastard\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bbitch\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bcrap\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bfag\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bfuck\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bidiot\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bshit\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)\\bwhore\\b",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)fack you",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    },
-    {
-        "Regex":"(?i)biatch",
-        "IsAuto":false,
-        "Site":null,
-        "Score":10,
-        "TPCount":0,
-        "FPCount":0,
-        "CaughtCount":0
-    }
+  {
+    "Regex": "(?i)\\bnigg(a|er)\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\basshole\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bpiss\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bpenis\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbumhole\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bretard\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbastard\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbitch\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcrap\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfag\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfuck\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bidiot\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bshit\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bwhore\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)fack you",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)biatch",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)fuck",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  }
 ]

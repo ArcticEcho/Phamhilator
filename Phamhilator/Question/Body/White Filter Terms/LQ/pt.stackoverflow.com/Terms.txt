@@ -3,7 +3,7 @@
     "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 115.151581,
+    "Score": 118.030365,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

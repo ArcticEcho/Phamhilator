@@ -40,8 +40,9 @@ namespace Phamhilator
 			FilterType = filter;
 			Terms = new HashSet<Term>();
 
-            string path = DirectoryTools.GetFilterFile(filter);
+            var path = DirectoryTools.GetFilterFile(filter);
             List<TempTerm> data;
+
             try
             {
                 data = JsonConvert.DeserializeObject<List<TempTerm>>(File.ReadAllText(path));
@@ -51,10 +52,13 @@ namespace Phamhilator
                 throw new Exception(string.Format("Can't read file '{0}'. Reason: {1}", path, ex.Message), ex);
             }
 
-			foreach (var t in data)
-			{
-				Terms.Add(t.ToTerm(FilterType));
-			}
+		    if (data != null)
+            {
+                foreach (var t in data)
+                {
+                    Terms.Add(t.ToTerm(FilterType));
+                }        
+		    }	
 		}
 
 

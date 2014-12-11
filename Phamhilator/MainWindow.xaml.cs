@@ -70,7 +70,7 @@ namespace Phamhilator
 
                 socket.OnOpen += (o, oo) => socket.Send("155-questions-active");
 
-                socket.OnMessage += (o, message) => ThreadPool.QueueUserWorkItem(e =>
+                socket.OnMessage += (o, message) => 
                 {
                     var question = PostRetriever.GetQuestion(message);
 
@@ -83,21 +83,18 @@ namespace Phamhilator
                     }
 
                     if (GlobalInfo.FullScanEnabled)
-                    {
-                        ThreadPool.QueueUserWorkItem(ee =>
+                    {                 
+                        var answers = PostRetriever.GetLatestAnswers(question);
+
+                        foreach (var a in answers.Where(ans => PostPersistence.Messages.All(p => p != ans.Url)))
                         {
-                            var answers = PostRetriever.GetLatestAnswers(question);
+                            var aResults = PostAnalyser.AnalyseAnswer(a);
+                            var aMessage = MessageGenerator.GetAReport(aResults, a);
 
-                            foreach (var a in answers.Where(ans => PostPersistence.Messages.All(p => p != ans.Url)))
-                            {
-                                var aResults = PostAnalyser.AnalyseAnswer(a);
-                                var aMessage = MessageGenerator.GetAReport(aResults, a);
-
-                                CheckSendReport(a, aMessage, aResults);
-                            }
-                        });
+                            CheckSendReport(a, aMessage, aResults);
+                        }
                     }
-                });
+                };
 
 			    socket.OnClose += (o, oo) =>
 			    {
@@ -149,39 +146,42 @@ namespace Phamhilator
 
 		private void HandlePrimaryNewMessage(Message message)
 		{
-			if (message.Content == ">>kill-it-with-no-regrets-for-sure")
-			{
-				if (UserAccess.Owners.Contains(message.AuthorID))
-				{
-					GlobalInfo.PrimaryRoom.PostReply(message, "`Killing...`");
-
-					KillBot();
-				}
-				else
-				{
-					GlobalInfo.PrimaryRoom.PostReply(message, "`Access denied.`");
-				}
-			}
-			else
-			{
-				var messages = CommandProcessor.ExacuteCommand(GlobalInfo.PrimaryRoom, message); 
-				
-				if (messages.Length == 0) { return; }
-
-				foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
-				{
-				    if (m.Reply)
+		    Task.Factory.StartNew(() =>
+		    {
+                if (message.Content == ">>kill-it-with-no-regrets-for-sure")
+			    {
+				    if (UserAccess.Owners.Contains(message.AuthorID))
 				    {
-                        GlobalInfo.PrimaryRoom.PostReply(message, m.Content);
+					    GlobalInfo.PrimaryRoom.PostReply(message, "`Killing...`");
+
+					    KillBot();
 				    }
 				    else
 				    {
-                        GlobalInfo.PrimaryRoom.PostMessage(m.Content);
+					    GlobalInfo.PrimaryRoom.PostReply(message, "`Access denied.`");
 				    }
+			    }
+			    else
+			    {
+				    var messages = CommandProcessor.ExacuteCommand(GlobalInfo.PrimaryRoom, message); 
+				
+				    if (messages.Length == 0) { return; }
 
-                    Thread.Sleep(2000);
-				}
-			}
+				    foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
+				    {
+				        if (m.Reply)
+				        {
+                            GlobalInfo.PrimaryRoom.PostReply(message, m.Content);
+				        }
+				        else
+				        {
+                            GlobalInfo.PrimaryRoom.PostMessage(m.Content);
+				        }
+
+                        Thread.Sleep(2000);
+				    }
+			    }
+		    });		
 		}
 
 		private void HandleSecondaryNewMessage(Room room, Message message)
@@ -261,24 +261,29 @@ namespace Phamhilator
 				}
 			}
 
-			if (message != null && p != null)
-			{
-			    lock (GlobalInfo.PostedReports)
-			    {
-                    PostPersistence.AddPost(p.Url);
-                    GlobalInfo.PostedReports.Add(message.ID, chatMessage);
-			    }
-				
-				if (info.AutoTermsFound)
-				{
-					foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
-					{
-						room.PostMessage(chatMessage.Message.Content);
-					}			
-				}
+            //try
+            //{
+		        if (message != null)
+		        {
+		            PostPersistence.AddPost(p.Url);
+		            GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
-				Thread.Sleep(2000); //TODO: Add more efficient rate limiting (either to CE.Ner or Pham).
-			}
+		            if (info.AutoTermsFound)
+		            {
+		                foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
+		                {
+		                    room.PostMessage(chatMessage.Message.Content);
+		                }
+		            }
+
+                    //Thread.Sleep(2000); //TODO: Add more efficient rate limiting (either to CE.Ner or Pham).
+		        }
+            //}
+            //catch (Exception)
+            //{
+            //    //TODO: sometimes message is null (gets past the 'if' check somehow).
+            //}
+			
 
 			GlobalInfo.Stats.TotalCheckedPosts++;
 		}

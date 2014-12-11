@@ -1586,7 +1586,7 @@ namespace Phamhilator
 
 		private static ReplyMessage TruePositive()
 		{
-			if (commandLower == "tpa")
+			if (commandLower.StartsWith("tpa"))
 			{
 				var m = room[message.ParentID].Content;
 

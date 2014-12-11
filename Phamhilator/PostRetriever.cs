@@ -19,7 +19,8 @@ namespace Phamhilator
         private static readonly Regex postIDParser1 = new Regex(@"\D*/|\D.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex postIDParser2 = new Regex(@".*(q|a)/|/\d*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex isShareLink = new Regex(@"(q|a)/\d*/\d*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]|\n", RegexOptions.Compiled);
+        private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]", RegexOptions.Compiled);
+
 
 
         public static Question GetQuestion(MessageEventArgs message)
@@ -29,8 +30,8 @@ namespace Phamhilator
             var url = (string)data["url"];
 
             var host = (string)data["siteBaseHostAddress"];
-            var title = escapeChars.Replace(WebUtility.HtmlDecode((string)data["titleEncodedFancy"]), "");
-            var authorName = escapeChars.Replace(WebUtility.HtmlDecode((string)data["ownerDisplayName"]), "");
+            var title = EscapeString(WebUtility.HtmlDecode((string)data["titleEncodedFancy"]));
+            var authorName = EscapeString(WebUtility.HtmlDecode((string)data["ownerDisplayName"]));
             var authorLink = (string)data["ownerUrl"];
             var tags = new List<string>();
 
@@ -62,7 +63,7 @@ namespace Phamhilator
                 tags.Add(t);
             }
 
-            var title = escapeChars.Replace(WebUtility.HtmlDecode(dom[".question-hyperlink"].Html()), "");
+            var title = EscapeString(WebUtility.HtmlDecode(dom[".question-hyperlink"].Html()));
             var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
 
@@ -73,7 +74,7 @@ namespace Phamhilator
             if (dom[".reputation-score"][0] != null)
             {
                 // Normal answer.
-                authorName = WebUtility.HtmlDecode(dom[".user-details a"][0].InnerHTML);
+                authorName = EscapeString(WebUtility.HtmlDecode(dom[".user-details a"][0].InnerHTML));
                 authorLink = "http://" + host + dom[".user-details a"][0].Attributes["href"];
                 authorRep = ParseRep(dom[".reputation-score"][0].InnerHTML);
             }
@@ -82,14 +83,14 @@ namespace Phamhilator
                 if (dom[".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
                 {
                     // Community wiki.
-                    authorName = WebUtility.HtmlDecode(dom[".user-details a"][1].InnerHTML);
+                    authorName = EscapeString(WebUtility.HtmlDecode(dom[".user-details a"][1].InnerHTML));
                     authorLink = "http://" + host + dom[".user-details a"][1].Attributes["href"];
                     authorRep = 1;
                 }
                 else
                 {
                     // Dead account owner.
-                    authorName = WebUtility.HtmlDecode(dom[ ".user-details"][0].InnerHTML.Trim());
+                    authorName = EscapeString(WebUtility.HtmlDecode(dom[ ".user-details"][0].InnerHTML));
                     authorName = authorName.Remove(authorName.Length - 4);
                     authorLink = null;
                     authorRep = 1;
@@ -115,7 +116,17 @@ namespace Phamhilator
 
         public static List<Answer> GetLatestAnswers(Question question)
         {
-            var html = new WebClient().DownloadString(question.Url+ "?answertab=active#tab-top");
+            string html = null;
+
+            try
+            {
+                html = new WebClient().DownloadString(question.Url+ "?answertab=active#tab-top");
+            }
+            catch (WebException ex)
+            {
+                return new List<Answer>();
+            }
+
             var dom = CQ.Create(html, Encoding.UTF8);
             var host = "";
             var questionID = 0; 
@@ -170,7 +181,7 @@ namespace Phamhilator
             if (dom[aDom + ".reputation-score"][0] != null)
             {
                 // Normal answer.
-                authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][0].InnerHTML);
+                authorName = EscapeString(WebUtility.HtmlDecode(dom[aDom + ".user-details a"][0].InnerHTML));
                 authorLink = "http://" + host + dom[aDom + ".user-details a"][0].Attributes["href"];
                 authorRep = ParseRep(dom[aDom + ".reputation-score"][0].InnerHTML);
             }
@@ -179,25 +190,41 @@ namespace Phamhilator
                 if (dom[aDom + ".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
                 {
                     // Community wiki.
-                    authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][1].InnerHTML);
+                    authorName = EscapeString(WebUtility.HtmlDecode(dom[aDom + ".user-details a"][1].InnerHTML));
                     authorLink = "http://" + host + dom[aDom + ".user-details a"][1].Attributes["href"];
                     authorRep = 1;
                 }
                 else
                 {
                     // Dead account owner.
-                    authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details"][0].InnerHTML.Trim());
+                    authorName = EscapeString(WebUtility.HtmlDecode(dom[aDom + ".user-details"][0].InnerHTML));
                     authorName = authorName.Remove(authorName.Length - 4);
                     authorLink = null;
                     authorRep = 1;
                 }
             }
 
-            var excerpt = escapeChars.Replace(StripTags(body), "").Trim();
+            var excerpt = EscapeString(StripTags(body));
 
             excerpt = excerpt.Length > 75 ? excerpt.Substring(0, 72) + "..." : excerpt;
 
             return new Answer(url, excerpt, body, host, score, authorName, authorLink, authorRep);
+        }
+
+        private static string EscapeString(string input)
+        {
+            var output = input.Replace("\n", " ");
+
+            for (var i = 0; i < output.Length; i++)
+            {
+                if (escapeChars.IsMatch(output[i].ToString()))
+                {
+                    output = output.Insert(i, "\\");
+                    i++;
+                }
+            }
+
+            return output.Trim();
         }
 
         private static void GetPostInfo(string postUrl, out string host, out int id)

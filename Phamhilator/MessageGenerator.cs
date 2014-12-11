@@ -12,24 +12,24 @@ namespace Phamhilator
 		{
 			var author = String.IsNullOrEmpty(post.AuthorLink) ? post.AuthorName : "[" + post.AuthorName + "](" + post.AuthorLink + ")";
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : post.Title;
-            //var accuracy = "";
+            var accuracy = "";
 		    var fullScanFailed = "";
 
-		    if (/*info.Accuracy == 0 && */post.PopulateExtraDataFailed)
+		    if (info.Accuracy == 0 && post.PopulateExtraDataFailed)
 		    {
 		        fullScanFailed = " (FSF)";
 		    }
 
-            //if (info.Accuracy != 0 && !post.PopulateExtraDataFailed)
-            //{
-            //    accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
-            //}
+            if (info.Accuracy != 0 && !post.PopulateExtraDataFailed)
+            {
+                accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
+            }
 
-            //if (info.Accuracy != 0 && post.PopulateExtraDataFailed)
-            //{
-            //    accuracy = " (" + Math.Round(info.Accuracy, 1) + "%";
-            //    fullScanFailed = " FSF)";
-            //}
+            if (info.Accuracy != 0 && post.PopulateExtraDataFailed)
+            {
+                accuracy = " (" + Math.Round(info.Accuracy, 1) + "%";
+                fullScanFailed = " FSF)";
+            }
 
 			switch (info.Type)
 			{
@@ -40,7 +40,7 @@ namespace Phamhilator
 
 				default:
 				{
-					return " **Q**" + /*accuracy +*/ fullScanFailed + ": [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
+					return " **Q**" + accuracy + fullScanFailed + ": [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
 				}
 			}
 		}
@@ -49,9 +49,9 @@ namespace Phamhilator
 		{
 			var author = String.IsNullOrEmpty(post.AuthorLink) ? post.AuthorName : "[" + post.AuthorName + "](" + post.AuthorLink + ")";
 			var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : post.Title;
-            //var accuracy = info.Accuracy == 0 ? "" : " (" + Math.Round(info.Accuracy, 1) + "%)";
+            var accuracy = info.Accuracy == 0 ? "" : " (" + Math.Round(info.Accuracy, 1) + "%)";
 
-			return " **A**" + /*accuracy +*/ ": [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
+			return " **A**" + accuracy + ": [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
 		}
 
 
