@@ -9,94 +9,95 @@ using Newtonsoft.Json;
 
 namespace Phamhilator
 {
-	public class WhiteFilter
-	{
-		public HashSet<Term> Terms { get; private set; }
+    public class WhiteFilter
+    {
+        public HashSet<Term> Terms { get; private set; }
 
-		public FilterType FilterType { get; private set; }
+        public FilterType FilterType { get; private set; }
 
 
 
-		public WhiteFilter(FilterType filter)
-		{
-			if ((int)filter < 100) { throw new ArgumentException("Must be a white filter.", "filter"); }
+        public WhiteFilter(FilterType filter)
+        {
+            if ((int)filter < 100) { throw new ArgumentException("Must be a white filter.", "filter"); }
 
-			FilterType = filter;
-			Terms = new HashSet<Term>();
+            FilterType = filter;
+            Terms = new HashSet<Term>();
 
-			var sites = Directory.EnumerateDirectories(DirectoryTools.GetFilterFile(filter)).ToArray();
+            var sites = Directory.EnumerateDirectories(DirectoryTools.GetFilterFile(filter)).ToArray();
 
-			for (var i = 0; i < sites.Length; i++)
-			{
-				sites[i] = Path.GetFileName(sites[i]);
-			}
+            for (var i = 0; i < sites.Length; i++)
+            {
+                sites[i] = Path.GetFileName(sites[i]);
+            }
 
-			foreach (var site in sites)
-			{
+            foreach (var site in sites)
+            {
                 string path = Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt");
-                List<TempTerm> data;
+                List<JsonTerm> data;
+
                 try
                 {
-    				data = JsonConvert.DeserializeObject<List<TempTerm>>(File.ReadAllText(path));
+                    data = JsonConvert.DeserializeObject<List<JsonTerm>>(File.ReadAllText(path));
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(string.Format("Can't read file '{0}'. Reason: {1}", path, ex.Message), ex);
                 }
 
-				foreach (var t in data)
-				{
-					Terms.Add(t.ToTerm(FilterType));
-				}
-			}
-		}
+                foreach (var t in data)
+                {
+                    Terms.Add(t.ToTerm(FilterType));
+                }
+            }
+        }
 
 
 
-		public void AddTerm(Term term)
-		{
-			if (Terms.Contains(term.Regex, term.Site)) { return; } // Gasp! Silent failure!
+        public void AddTerm(Term term)
+        {
+            if (Terms.Contains(term.Regex, term.Site)) { return; } // Gasp! Silent failure!
 
-			Terms.WriteTerm(FilterType, new Regex(""), term.Regex, term.Site, term.Score);
-		}
+            Terms.WriteTerm(FilterType, new Regex(""), term.Regex, term.Site, term.Score);
+        }
 
-		public void RemoveTerm(Term term)
-		{
-			if (!Terms.Contains(term.Regex, term.Site)) { return; }
+        public void RemoveTerm(Term term)
+        {
+            if (!Terms.Contains(term.Regex, term.Site)) { return; }
 
-			Terms.WriteTerm(FilterType, term.Regex, new Regex(""), term.Site);
-		}
+            Terms.WriteTerm(FilterType, term.Regex, new Regex(""), term.Site);
+        }
 
-		public void EditTerm(Regex oldTerm, Regex newTerm, string site)
-		{
-			if (!Terms.Contains(oldTerm, site)) { return; }
+        public void EditTerm(Regex oldTerm, Regex newTerm, string site)
+        {
+            if (!Terms.Contains(oldTerm, site)) { return; }
 
-			Terms.WriteTerm(FilterType, oldTerm, newTerm, site);
-		}
+            Terms.WriteTerm(FilterType, oldTerm, newTerm, site);
+        }
 
-		public void SetScore(Term term, float newScore)
-		{
-			if (!Terms.Contains(term.Regex, term.Site)) { return; }
+        public void SetScore(Term term, float newScore)
+        {
+            if (!Terms.Contains(term.Regex, term.Site)) { return; }
 
-			Terms.WriteScore(FilterType, term.Regex, newScore, term.Site);
-		}
+            Terms.WriteScore(FilterType, term.Regex, newScore, term.Site);
+        }
 
-		public void SetAuto(Regex term, bool isAuto, string site, bool persistence = false)
-		{
-			if (!Terms.Contains(term, site)) { return; }
+        public void SetAuto(Regex term, bool isAuto, string site, bool persistence = false)
+        {
+            if (!Terms.Contains(term, site)) { return; }
 
-			if (persistence)
-			{
-				Terms.WriteAuto(FilterType, term, isAuto, site);
-			}
-			else
-			{
-				var t = Terms.GetRealTerm(term, site);
+            if (persistence)
+            {
+                Terms.WriteAuto(FilterType, term, isAuto, site);
+            }
+            else
+            {
+                var t = Terms.GetRealTerm(term, site);
 
-				Terms.Remove(t);
+                Terms.Remove(t);
 
-				Terms.Add(new Term(FilterType, t.Regex, t.Score, t.Site, isAuto));
-			}
-		}
-	}
+                Terms.Add(new Term(FilterType, t.Regex, t.Score, t.Site, isAuto));
+            }
+        }
+    }
 }

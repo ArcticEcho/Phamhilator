@@ -914,3 +914,14 @@
 2601457.50148766]http://gamedev.stackexchange.com/questions/89588
 2601459.06424371]http://stackoverflow.com/a/27444873
 2601459.89410784]http://ell.stackexchange.com/a/42840
+2601462.61072989]http://apple.stackexchange.com/a/161531
+2601462.68451744]http://webapps.stackexchange.com/a/70860
+2601463.50429766]http://stackoverflow.com/a/27444969
+2601463.83229976]http://spanish.stackexchange.com/a/10572
+2601464.35391293]http://drupal.stackexchange.com/questions/140631
+2601464.57112535]http://stackoverflow.com/questions/27444990
+2601466.32947592]http://gaming.stackexchange.com/a/196245
+2601466.35792755]http://boardgames.stackexchange.com/questions/21054
+2601466.52908734]http://craftcms.stackexchange.com/a/5240
+2601472.06807082]http://arduino.stackexchange.com/questions/6471
+2601473.07876196]http://gaming.stackexchange.com/a/196246

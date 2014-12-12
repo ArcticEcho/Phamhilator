@@ -7,13 +7,13 @@ using CsQuery;
 
 namespace Phamhilator
 {
-	public class Question : Post
-	{
-	    public bool PopulateExtraDataFailed { get; private set; }
+    public class Question : Post
+    {
+        public bool PopulateExtraDataFailed { get; private set; }
         public List<string> Tags { get; private set; }
-	    public int Score { get; private set; }
+        public int Score { get; private set; }
         public string Body { get; private set; }
-	    public int AuthorRep { get; private set;  }
+        public int AuthorRep { get; private set;  }
 
 
 
@@ -47,21 +47,21 @@ namespace Phamhilator
 
 
 
-		private void PopulateExtraData()
-		{
-			try
-			{		
-				var html = StringDownloader.DownloadString(Url);
-			    var dom = CQ.Create(html);
+        private void PopulateExtraData()
+        {
+            try
+            {		
+                var html = StringDownloader.DownloadString(Url);
+                var dom = CQ.Create(html);
 
                 Body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
                 Score = int.Parse(dom[".vote-count-post"].Html());
                 AuthorRep = PostRetriever.ParseRep(dom[".reputation-score"].Html());				
-			}
-			catch (Exception)
-			{
-				PopulateExtraDataFailed = true;
-			}
+            }
+            catch (Exception)
+            {
+                PopulateExtraDataFailed = true;
+            }
         }
-	}
+    }
 }

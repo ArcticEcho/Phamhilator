@@ -1,33 +1,33 @@
 ﻿namespace Phamhilator
 {
-	public enum FilterType
-	{
-		QuestionTitleBlackSpam,
-		QuestionTitleBlackLQ,
-		QuestionTitleBlackOff,
-		QuestionTitleBlackName,
+    public enum FilterType
+    {
+        QuestionTitleBlackSpam,
+        QuestionTitleBlackLQ,
+        QuestionTitleBlackOff,
+        QuestionTitleBlackName,
 
-		QuestionBodyBlackSpam,
-		QuestionBodyBlackLQ,
-		QuestionBodyBlackOff,
+        QuestionBodyBlackSpam,
+        QuestionBodyBlackLQ,
+        QuestionBodyBlackOff,
 
-		AnswerBlackSpam,
-		AnswerBlackLQ,
-		AnswerBlackOff,
-		AnswerBlackName,
+        AnswerBlackSpam,
+        AnswerBlackLQ,
+        AnswerBlackOff,
+        AnswerBlackName,
 
-		QuestionTitleWhiteSpam = 100,
-		QuestionTitleWhiteLQ,
-		QuestionTitleWhiteOff,
-		QuestionTitleWhiteName,
+        QuestionTitleWhiteSpam = 100,
+        QuestionTitleWhiteLQ,
+        QuestionTitleWhiteOff,
+        QuestionTitleWhiteName,
 
-		QuestionBodyWhiteSpam,
-		QuestionBodyWhiteLQ,
-		QuestionBodyWhiteOff,
+        QuestionBodyWhiteSpam,
+        QuestionBodyWhiteLQ,
+        QuestionBodyWhiteOff,
 
-		AnswerWhiteSpam,
-		AnswerWhiteLQ,
-		AnswerWhiteOff,
-		AnswerWhiteName
-	}
+        AnswerWhiteSpam,
+        AnswerWhiteLQ,
+        AnswerWhiteOff,
+        AnswerWhiteName
+    }
 }

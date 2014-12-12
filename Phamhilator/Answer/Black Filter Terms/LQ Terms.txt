@@ -42,7 +42,7 @@
     "Score": 12.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 14
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)did you find",
@@ -51,7 +51,7 @@
     "Score": 12.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)pl(ease|s|z) help",
@@ -85,9 +85,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 89.0,
-    "TPCount": 151,
+    "TPCount": 152,
     "FPCount": 37,
-    "CaughtCount": 939
+    "CaughtCount": 942
   },
   {
     "Regex": "(?i)^please",
@@ -132,7 +132,7 @@
     "Score": 22.3837166,
     "TPCount": 60,
     "FPCount": 127,
-    "CaughtCount": 935
+    "CaughtCount": 937
   },
   {
     "Regex": "(?i)need (an )?answer",
@@ -159,6 +159,6 @@
     "Score": 19.2035675,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 13
+    "CaughtCount": 14
   }
 ]

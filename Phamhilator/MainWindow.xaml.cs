@@ -72,27 +72,34 @@ namespace Phamhilator
 
                 socket.OnMessage += (o, message) => 
                 {
-                    var question = PostRetriever.GetQuestion(message);
-
-                    if (PostPersistence.Messages.All(p => p != question.Url))
+                    try
                     {
-                        var qResults = PostAnalyser.AnalyseQuestion(question);
-                        var qMessage = MessageGenerator.GetQReport(qResults, question);
+                        var question = PostRetriever.GetQuestion(message);
 
-                        CheckSendReport(question, qMessage, qResults);
-                    }
-
-                    if (GlobalInfo.FullScanEnabled)
-                    {                 
-                        var answers = PostRetriever.GetLatestAnswers(question);
-
-                        foreach (var a in answers.Where(ans => PostPersistence.Messages.All(p => p != ans.Url)))
+                        if (PostPersistence.Messages.All(p => p != question.Url))
                         {
-                            var aResults = PostAnalyser.AnalyseAnswer(a);
-                            var aMessage = MessageGenerator.GetAReport(aResults, a);
+                            var qResults = PostAnalyser.AnalyseQuestion(question);
+                            var qMessage = MessageGenerator.GetQReport(qResults, question);
 
-                            CheckSendReport(a, aMessage, aResults);
+                            CheckSendReport(question, qMessage, qResults);
                         }
+
+                        if (GlobalInfo.FullScanEnabled)
+                        {
+                            var answers = PostRetriever.GetLatestAnswers(question);
+
+                            foreach (var a in answers.Where(ans => PostPersistence.Messages.All(p => p != ans.Url)))
+                            {
+                                var aResults = PostAnalyser.AnalyseAnswer(a);
+                                var aMessage = MessageGenerator.GetAReport(aResults, a);
+
+                                CheckSendReport(a, aMessage, aResults);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        GlobalInfo.PrimaryRoom.PostMessage("`Error: \n" + ex.ToString() + "\n\nReceived message: " + message.Data + "`");
                     }
                 };
 
@@ -263,29 +270,19 @@ namespace Phamhilator
 				}
 			}
 
-            //try
-            //{
-		        if (message != null)
+		    if (message != null)
+		    {
+		        PostPersistence.AddPost(p.Url);
+		        GlobalInfo.PostedReports.Add(message.ID, chatMessage);
+
+		        if (info.AutoTermsFound)
 		        {
-		            PostPersistence.AddPost(p.Url);
-		            GlobalInfo.PostedReports.Add(message.ID, chatMessage);
-
-		            if (info.AutoTermsFound)
+		            foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
 		            {
-		                foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
-		                {
-		                    room.PostMessage(chatMessage.Message.Content);
-		                }
+		                room.PostMessage(chatMessage.Message.Content);
 		            }
-
-                    //Thread.Sleep(2000); //TODO: Add more efficient rate limiting (either to CE.Ner or Pham).
 		        }
-            //}
-            //catch (Exception)
-            //{
-            //    //TODO: sometimes message is null (gets past the 'if' check somehow).
-            //}
-			
+		    }
 
 			GlobalInfo.Stats.TotalCheckedPosts++;
 		}

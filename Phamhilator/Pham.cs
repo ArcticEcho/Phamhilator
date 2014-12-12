@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Phamhilator
+﻿namespace Phamhilator
 {
-    class Pham
+    public static class Pham
     {
+        public static void RegisterFP()
+        {
+
+        }
+
+        public static void RegisterTP()
+        {
+
+        }
     }
 }

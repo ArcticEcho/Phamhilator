@@ -1,7 +1,7 @@
 ﻿namespace Phamhilator
 {
-	public class AnswerAnalysis : PostAnalysis
-	{
+    public class AnswerAnalysis : PostAnalysis
+    {
 
-	}
+    }
 }

@@ -1,12 +1,12 @@
 ﻿namespace Phamhilator
 {
-	public enum PostType
-	{
-		Clean,
-		BadTagUsed,
-		LowQuality,
-		Spam,
-		Offensive,
-		BadUsername
-	}
+    public enum PostType
+    {
+        Clean,
+        BadTagUsed,
+        LowQuality,
+        Spam,
+        Offensive,
+        BadUsername
+    }
 }

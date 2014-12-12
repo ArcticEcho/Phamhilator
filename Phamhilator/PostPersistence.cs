@@ -6,88 +6,88 @@ using System.IO;
 
 namespace Phamhilator
 {
-	public static class PostPersistence
-	{
-		private static bool initialised;
-		private static readonly List<string> messages = new List<string>();
-		private static readonly DateTime twentyTen = new DateTime(2010, 01, 01);
+    public static class PostPersistence
+    {
+        private static bool initialised;
+        private static readonly List<string> messages = new List<string>();
+        private static readonly DateTime twentyTen = new DateTime(2010, 01, 01);
 
-		public static List<string> Messages
-		{
-			get
-			{
-				if (!initialised)
-				{
-					lock (messages)
-					{
-						if (messages.Count == 0)
-						{
-							Initialise();
-						}
-					}
-				}			
+        public static List<string> Messages
+        {
+            get
+            {
+                if (!initialised)
+                {
+                    lock (messages)
+                    {
+                        if (messages.Count == 0)
+                        {
+                            Initialise();
+                        }
+                    }
+                }			
 
-				return messages;
-			}
-		}
+                return messages;
+            }
+        }
 
 
 
-		public static void Initialise()
-		{
-			if (!File.Exists(DirectoryTools.GetPostPersitenceFile()) || initialised) { return; }
+        public static void Initialise()
+        {
+            if (!File.Exists(DirectoryTools.GetPostPersitenceFile()) || initialised) { return; }
 
-			initialised = true;
+            initialised = true;
 
-			var urls = new List<string>(File.ReadAllLines(DirectoryTools.GetPostPersitenceFile()));
+            var urls = new List<string>(File.ReadAllLines(DirectoryTools.GetPostPersitenceFile()));
 
-			for (var i = 0; i < urls.Count; i++)
-			{
-				var dateString = urls[i].Split(']')[0].Trim();
+            for (var i = 0; i < urls.Count; i++)
+            {
+                var dateString = urls[i].Split(']')[0].Trim();
 
-				if (dateString == "") { continue; }
+                if (dateString == "") { continue; }
 
-				var date = double.Parse(dateString);
+                var date = double.Parse(dateString);
 
-				if ((DateTime.Now - twentyTen).TotalMinutes - date > 10080) // Remove posts older than 1 week
-				{
-					urls.Remove(urls[i]);
+                if ((DateTime.Now - twentyTen).TotalMinutes - date > 10080) // Remove posts older than 1 week
+                {
+                    urls.Remove(urls[i]);
 
-					continue;
-				}
+                    continue;
+                }
 
-				messages.Add(urls[i].Split(']')[1].Trim());
+                messages.Add(urls[i].Split(']')[1].Trim());
 
-				GlobalInfo.PostsCaught++;
-			}
+                GlobalInfo.PostsCaught++;
+            }
 
-			File.WriteAllText(DirectoryTools.GetPostPersitenceFile(), "");
+            File.WriteAllText(DirectoryTools.GetPostPersitenceFile(), "");
 
-			foreach (var post in urls)
-			{
-				if (!String.IsNullOrEmpty(post))
-				{
-					File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + post);
-				}
-			}
-		}
+            foreach (var post in urls)
+            {
+                if (!String.IsNullOrEmpty(post))
+                {
+                    File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + post);
+                }
+            }
+        }
 
-		public static void AddPost(string url)
-		{
-			if (messages.Contains(url)) { return; }
+        public static void AddPost(string url)
+        {
+            if (messages.Contains(url)) { return; }
 
-			if (Messages.Count == 0)
-			{
-				Messages.Add(url);
-			}
-			else
-			{
-				Messages.Insert(0, url);
-			}
+            if (Messages.Count == 0)
+            {
+                Messages.Add(url);
+            }
+            else
+            {
+                Messages.Insert(0, url);
+            }
 
-			File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + (DateTime.Now - twentyTen).TotalMinutes + "]" + url);
-			
-			GlobalInfo.PostsCaught++;
-		}
-	}
+            File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + (DateTime.Now - twentyTen).TotalMinutes + "]" + url);
+            
+            GlobalInfo.PostsCaught++;
+        }
+    }
 }

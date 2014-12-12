@@ -1,6 +1,6 @@
 ﻿namespace Phamhilator
 {
-	public class TempTerm
+	public class JsonTerm
 	{
 		public string Regex { get; set; }
 		public bool IsAuto { get; set; }

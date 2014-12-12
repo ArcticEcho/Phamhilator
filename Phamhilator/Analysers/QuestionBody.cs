@@ -4,156 +4,156 @@
 
 namespace Phamhilator.Analysers
 {
-	public static class QuestionBody
-	{
-		public static bool IsSpam(Question post, ref QuestionAnalysis info)
-		{
-			if (post.PopulateExtraDataFailed) { return false; }
+    public static class QuestionBody
+    {
+        public static bool IsSpam(Question post, ref QuestionAnalysis info)
+        {
+            if (post.PopulateExtraDataFailed) { return false; }
 
-			var filtersUsed = 0;
+            var filtersUsed = 0;
 
-			// Loop over blacklist.
+            // Loop over blacklist.
 
-			for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.Count; i++)
-			{
-				var blackTerm = GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.ElementAt(i);
+            for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.Count; i++)
+            {
+                var blackTerm = GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].Terms.ElementAt(i);
 
-				if (blackTerm.Regex.IsMatch(post.Body))
-				{
-					info.Accuracy += blackTerm.Score;
-					info.BlackTermsFound.Add(blackTerm);
+                if (blackTerm.Regex.IsMatch(post.Body))
+                {
+                    info.Accuracy += blackTerm.Score;
+                    info.BlackTermsFound.Add(blackTerm);
 
-					blackTerm.CaughtCount++;
-					filtersUsed++;
-				}
-			}
+                    blackTerm.CaughtCount++;
+                    filtersUsed++;
+                }
+            }
 
-			// Otherwise, if no blacklist terms were found, assume the post is clean.
+            // Otherwise, if no blacklist terms were found, assume the post is clean.
 
-			if (filtersUsed == 0) { return false; }
+            if (filtersUsed == 0) { return false; }
 
-			// Loop over whitelist.
+            // Loop over whitelist.
 
-			foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.Where(t => t.Site == post.Site))
-			{
-				if (whiteTerm.Regex.IsMatch(post.Body))
-				{
-					info.Accuracy -= whiteTerm.Score;
-					info.WhiteTermsFound.Add(whiteTerm);
-					info.FiltersUsed.Add(FilterType.QuestionBodyWhiteSpam);
+            foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.Where(t => t.Site == post.Site))
+            {
+                if (whiteTerm.Regex.IsMatch(post.Body))
+                {
+                    info.Accuracy -= whiteTerm.Score;
+                    info.WhiteTermsFound.Add(whiteTerm);
+                    info.FiltersUsed.Add(FilterType.QuestionBodyWhiteSpam);
 
-					filtersUsed++;
-				}
-			}
+                    filtersUsed++;
+                }
+            }
 
-			info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
-			info.FiltersUsed.Add(FilterType.QuestionBodyBlackSpam);
-			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].HighestScore;
-			info.Accuracy *= 100;
-			info.Type = PostType.Spam;
+            info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
+            info.FiltersUsed.Add(FilterType.QuestionBodyBlackSpam);
+            info.Accuracy /= filtersUsed;
+            info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackSpam].HighestScore;
+            info.Accuracy *= 100;
+            info.Type = PostType.Spam;
 
-			return true;
-		}
+            return true;
+        }
 
-		public static bool IsLowQuality(Question post, ref QuestionAnalysis info)
-		{
-			if (post.PopulateExtraDataFailed) { return false; }
+        public static bool IsLowQuality(Question post, ref QuestionAnalysis info)
+        {
+            if (post.PopulateExtraDataFailed) { return false; }
 
-			var filtersUsed = 0;
+            var filtersUsed = 0;
 
-			// Loop over blacklist.
+            // Loop over blacklist.
 
-			for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.Count; i++)
-			{
-				var blackTerm = GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.ElementAt(i);
+            for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.Count; i++)
+            {
+                var blackTerm = GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].Terms.ElementAt(i);
 
-				if (blackTerm.Regex.IsMatch(post.Body))
-				{
-					info.Accuracy += blackTerm.Score;
-					info.BlackTermsFound.Add(blackTerm);
+                if (blackTerm.Regex.IsMatch(post.Body))
+                {
+                    info.Accuracy += blackTerm.Score;
+                    info.BlackTermsFound.Add(blackTerm);
 
-					blackTerm.CaughtCount++;
-					filtersUsed++;
-				}
-			}
+                    blackTerm.CaughtCount++;
+                    filtersUsed++;
+                }
+            }
 
-			// Otherwise, if no blacklist terms were found, assume the post is clean.
+            // Otherwise, if no blacklist terms were found, assume the post is clean.
 
-			if (filtersUsed == 0) { return false; }
+            if (filtersUsed == 0) { return false; }
 
-			// Loop over whitelist.
+            // Loop over whitelist.
 
-			foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.Where(t => t.Site == post.Site))
-			{
-				if (whiteTerm.Regex.IsMatch(post.Body))
-				{
-					info.Accuracy -= whiteTerm.Score;
-					info.WhiteTermsFound.Add(whiteTerm);
-					info.FiltersUsed.Add(FilterType.QuestionBodyWhiteLQ);
+            foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.Where(t => t.Site == post.Site))
+            {
+                if (whiteTerm.Regex.IsMatch(post.Body))
+                {
+                    info.Accuracy -= whiteTerm.Score;
+                    info.WhiteTermsFound.Add(whiteTerm);
+                    info.FiltersUsed.Add(FilterType.QuestionBodyWhiteLQ);
 
-					filtersUsed++;
-				}
-			}
+                    filtersUsed++;
+                }
+            }
 
-			info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
-			info.FiltersUsed.Add(FilterType.QuestionBodyBlackLQ);
-			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].HighestScore;
-			info.Accuracy *= 100;
-			info.Type = PostType.LowQuality;
+            info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
+            info.FiltersUsed.Add(FilterType.QuestionBodyBlackLQ);
+            info.Accuracy /= filtersUsed;
+            info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackLQ].HighestScore;
+            info.Accuracy *= 100;
+            info.Type = PostType.LowQuality;
 
-			return true;
-		}
+            return true;
+        }
 
-		public static bool IsOffensive(Question post, ref QuestionAnalysis info)
-		{
-			if (post.PopulateExtraDataFailed) { return false; }
+        public static bool IsOffensive(Question post, ref QuestionAnalysis info)
+        {
+            if (post.PopulateExtraDataFailed) { return false; }
 
-			var filtersUsed = 0;
+            var filtersUsed = 0;
 
-			// Loop over blacklist.
+            // Loop over blacklist.
 
-			for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.Count; i++)
-			{
-				var blackTerm = GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.ElementAt(i);
+            for (var i = 0; i < GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.Count; i++)
+            {
+                var blackTerm = GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].Terms.ElementAt(i);
 
-				if (blackTerm.Regex.IsMatch(post.Body))
-				{
-					info.Accuracy += blackTerm.Score;
-					info.BlackTermsFound.Add(blackTerm);
+                if (blackTerm.Regex.IsMatch(post.Body))
+                {
+                    info.Accuracy += blackTerm.Score;
+                    info.BlackTermsFound.Add(blackTerm);
 
-					blackTerm.CaughtCount++;
-					filtersUsed++;
-				}
-			}
+                    blackTerm.CaughtCount++;
+                    filtersUsed++;
+                }
+            }
 
-			// Otherwise, if no blacklist terms were found, assume the post is clean.
+            // Otherwise, if no blacklist terms were found, assume the post is clean.
 
-			if (filtersUsed == 0) { return false; }
+            if (filtersUsed == 0) { return false; }
 
-			// Loop over whitelist.
+            // Loop over whitelist.
 
-			foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.Where(t => t.Site == post.Site))
-			{
-				if (whiteTerm.Regex.IsMatch(post.Body))
-				{
-					info.Accuracy -= whiteTerm.Score;
-					info.WhiteTermsFound.Add(whiteTerm);
-					info.FiltersUsed.Add(FilterType.QuestionBodyWhiteOff);
+            foreach (var whiteTerm in GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.Where(t => t.Site == post.Site))
+            {
+                if (whiteTerm.Regex.IsMatch(post.Body))
+                {
+                    info.Accuracy -= whiteTerm.Score;
+                    info.WhiteTermsFound.Add(whiteTerm);
+                    info.FiltersUsed.Add(FilterType.QuestionBodyWhiteOff);
 
-					filtersUsed++;
-				}
-			}
+                    filtersUsed++;
+                }
+            }
 
-			info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
-			info.FiltersUsed.Add(FilterType.QuestionBodyBlackOff);
-			info.Accuracy /= filtersUsed;
-			info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].HighestScore;
-			info.Accuracy *= 100;
-			info.Type = PostType.Offensive;
+            info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
+            info.FiltersUsed.Add(FilterType.QuestionBodyBlackOff);
+            info.Accuracy /= filtersUsed;
+            info.Accuracy /= GlobalInfo.BlackFilters[FilterType.QuestionBodyBlackOff].HighestScore;
+            info.Accuracy *= 100;
+            info.Type = PostType.Offensive;
 
-			return true;
-		}
-	}
+            return true;
+        }
+    }
 }
