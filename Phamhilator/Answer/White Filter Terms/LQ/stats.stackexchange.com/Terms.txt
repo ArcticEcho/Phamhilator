@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 16.0276661,
+    "Score": 16.8545284,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1200,7 +1200,7 @@
     "Regex": "(?i)please",
     "IsAuto": false,
     "Site": "tridion.stackexchange.com",
-    "Score": 16.948925,
+    "Score": 17.7061234,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

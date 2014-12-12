@@ -96,7 +96,7 @@
     "Score": 11.0,
     "TPCount": 3,
     "FPCount": 2,
-    "CaughtCount": 7
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)\\bidiot\\b",
@@ -159,7 +159,7 @@
     "Score": 10.2105265,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\sdick\\s",
@@ -203,8 +203,8 @@
     "Site": "",
     "Score": 10.1800556,
     "TPCount": 1,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)downvote you",

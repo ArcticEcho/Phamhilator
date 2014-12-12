@@ -84,7 +84,7 @@
     "Regex": "(?i)problem(s)?",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -939,7 +939,7 @@
     "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -948,7 +948,7 @@
     "Regex": "^(?i).{0,150}$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 15.2413683,
+    "Score": 16.8545284,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1200,7 +1200,7 @@
     "Regex": "(?i)please",
     "IsAuto": false,
     "Site": "tridion.stackexchange.com",
-    "Score": 16.2241077,
+    "Score": 16.948925,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1218,7 +1218,7 @@
     "Regex": "^[^ ]*$",
     "IsAuto": false,
     "Site": "chinese.stackexchange.com",
-    "Score": 66.3203659,
+    "Score": 70.25099,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

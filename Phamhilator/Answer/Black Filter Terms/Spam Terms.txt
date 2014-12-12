@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 15.0,
     "TPCount": 7,
-    "FPCount": 41,
-    "CaughtCount": 132
+    "FPCount": 42,
+    "CaughtCount": 143
   },
   {
     "Regex": "2348064038119",
@@ -158,8 +158,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 1,
-    "FPCount": 3,
-    "CaughtCount": 4
+    "FPCount": 4,
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)geolify",

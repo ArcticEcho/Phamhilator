@@ -1,132 +1,195 @@
 [
   {
-    "Regex": "(?i)\\bcrap\\b",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 6.60000038,
+    "Score": 118.030365,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bfuck\\b",
+    "Regex": "(?s-m)^.{0,200}$",
     "IsAuto": false,
-    "Site": "english.stackexchange.com",
-    "Score": 5.5,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bidiot\\b",
-    "IsAuto": false,
-    "Site": "english.stackexchange.com",
+    "Site": "askubuntu.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcrap\\b",
+    "Regex": "(?i)problem(s)?",
     "IsAuto": false,
-    "Site": "english.stackexchange.com",
+    "Site": "askubuntu.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcrap\\b",
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "askubuntu.com",
+    "Score": 28.9441738,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "biology.stackexchange.com",
+    "Score": 30.322691,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)pl(z|s|ease)",
+    "IsAuto": false,
+    "Site": "bricks.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "codegolf.stackexchange.com",
+    "Score": 28.9441738,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "codereview.stackexchange.com",
+    "Score": 28.9441738,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
+    "Score": 39.6402168,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)problem(s)?",
+    "IsAuto": false,
+    "Site": "graphicdesign.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bpenis\\b",
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
-    "Site": "islam.stackexchange.com",
-    "Score": 5.5,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bshit\\b",
-    "IsAuto": false,
-    "Site": "philosophy.stackexchange.com",
+    "Site": "math.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcrap\\b",
+    "Regex": "^.{0,150}$",
     "IsAuto": false,
-    "Site": "rpg.stackexchange.com",
+    "Site": "math.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bwhore\\b",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
-    "Site": "scifi.stackexchange.com",
+    "Site": "math.stackexchange.com",
+    "Score": 46.85898,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "mechanics.stackexchange.com",
+    "Score": 6.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,18}$",
+    "IsAuto": false,
+    "Site": "movies.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bcrap\\b",
+    "Regex": "(?s-m)^.{0,200}$",
     "IsAuto": false,
-    "Site": "security.stackexchange.com",
+    "Site": "physics.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bidiot\\b",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
-    "Site": "security.stackexchange.com",
-    "Score": 5.0,
+    "Site": "physics.stackexchange.com",
+    "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bshit\\b",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
-    "Site": "serverfault.com",
-    "Score": 5.0,
+    "Site": "pt.stackoverflow.com",
+    "Score": 33.6362724,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bfuck\\b",
+    "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
-    "Site": "startups.stackexchange.com",
-    "Score": 5.0,
+    "Site": "raspberrypi.stackexchange.com",
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bshit\\b",
+    "Regex": "^.{0,150}$",
     "IsAuto": false,
-    "Site": "webapps.stackexchange.com",
-    "Score": 5.0,
+    "Site": "raspberrypi.stackexchange.com",
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bbitch\\b",
+    "Regex": "(?s-m)^.{0,150}$",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 9.178701,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?s-m)^.{0,200}$",
     "IsAuto": false,
     "Site": "superuser.com",
     "Score": 5.0,
@@ -135,127 +198,73 @@
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)you.{0,30}fat",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
-    "Site": "rpg.stackexchange.com",
+    "Site": "superuser.com",
+    "Score": 28.9441738,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\bpl[sz]+\\b",
+    "IsAuto": false,
+    "Site": "superuser.com",
+    "Score": 8.336444,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?i).{0,200}$",
+    "IsAuto": false,
+    "Site": "tex.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)you.{0,15}fat",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
-    "Site": "cooking.stackexchange.com",
-    "Score": 5.0,
+    "Site": "tex.stackexchange.com",
+    "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\basshole\\b",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
-    "Site": "workplace.stackexchange.com",
-    "Score": 5.0,
+    "Site": "unix.stackexchange.com",
+    "Score": 28.68089,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bretard\\b",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.0,
+    "Site": "webapps.stackexchange.com",
+    "Score": 35.2154236,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)you.{0,10}fat",
+    "Regex": "(?s-m)^.{0,150}$",
     "IsAuto": false,
-    "Site": "money.stackexchange.com",
-    "Score": 5.0,
+    "Site": "webmasters.stackexchange.com",
+    "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
   },
   {
-    "Regex": "(?i)\\bbastard\\b",
+    "Regex": "(?s-m)^.{0,100}$",
     "IsAuto": false,
-    "Site": "outdoors.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\sdick\\s",
-    "IsAuto": false,
-    "Site": "android.stackexchange.com",
-    "Score": 5.605263,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bpiss\\b",
-    "IsAuto": false,
-    "Site": "english.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)bullshit",
-    "IsAuto": false,
-    "Site": "academia.stackexchange.com",
-    "Score": 5.105263,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bass\\b",
-    "IsAuto": false,
-    "Site": "math.stackexchange.com",
-    "Score": 5.110526,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)fuck",
-    "IsAuto": false,
-    "Site": "codegolf.stackexchange.com",
-    "Score": 5.5,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bfuck",
-    "IsAuto": false,
-    "Site": "french.stackexchange.com",
-    "Score": 5.5,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)\\bcock\\b",
-    "IsAuto": false,
-    "Site": "outdoors.stackexchange.com",
-    "Score": 5.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "\\;\\;",
-    "IsAuto": false,
-    "Site": "stackoverflow.com",
-    "Score": 5.090028,
+    "Site": "dba.stackexchange.com",
+    "Score": 6.659864,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

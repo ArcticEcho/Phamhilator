@@ -12,6 +12,7 @@ namespace Phamhilator
 {
 	public static class CommandProcessor
 	{
+	    private static readonly Random random = new Random();
 		private static Room room;
 		private static Message message;
 		private static PostAnalysis report;
@@ -133,7 +134,7 @@ namespace Phamhilator
 				   command.StartsWith("add user") ||
 				   command.StartsWith("threshold") ||
 				   command.StartsWith("set status") ||
-				   command == "start" ||
+				   command == "resume" ||
 				   command == "pause" ||
 				   command == "full scan";
 		}
@@ -150,9 +151,9 @@ namespace Phamhilator
 				return new[] { BanUser(command) };
 			}
 
-			if (commandLower == "start")
+			if (commandLower == "resume")
 			{
-				return new[] { StartBot() };
+				return new[] { ResumeBot() };
 			}
 
 			if (commandLower == "pause")
@@ -182,10 +183,13 @@ namespace Phamhilator
 		private static bool IsPrivilegedUserCommand(string command)
 		{
 			return command == "fp" || command == "fp why" ||
-				   command == "tp" || command == "tpa" || command == "tp why" || command == "tpa why" ||
-				   command == "clean" || command == "sanitise" || command == "sanitize" ||
+                   command == "tp" || command == "tpa" || 
+                   command == "tp why" || command == "tpa why" || 
+                   command == "tpa clean" ||
+				   command == "clean" ||
                    command == "del" || command == "delete" || command == "remove" ||
                    command.StartsWith("remove tag") || command.StartsWith("add tag") ||
+                   commandLower == "ask" ||
 				   termCommands.IsMatch(command);
 		}
 
@@ -317,12 +321,17 @@ namespace Phamhilator
 			if (commandLower == "tp" || commandLower == "tpa")
 			{
 				return new[] { TruePositive() };
-			}
+            }
 
-			if (commandLower == "tp why" || commandLower == "tpa why")
-			{
-				return new[] { TruePositive(), GetTerms() };
-			}
+            if (commandLower == "tp why" || commandLower == "tpa why")
+            {
+                return new[] { TruePositive(), GetTerms() };
+            }
+
+            if (commandLower == "tpa clean")
+            {
+                return new[] { TruePositive(), CleanMessage() };
+            }
 
 			# endregion
 
@@ -370,7 +379,7 @@ namespace Phamhilator
 				return new[] { RemoveTag(command) };
 			}
 
-			if (commandLower == "clean" || commandLower == "sanitise" || commandLower == "sanitize")
+			if (commandLower == "clean")
 			{
 				return new[] { CleanMessage() };
 			}
@@ -379,6 +388,11 @@ namespace Phamhilator
 			{
 				return new[] { DeleteMessage() };
 			}
+
+		    if (commandLower == "ask")
+		    {
+                return new[] { Ask() };
+		    }
 
 			return new[] { new ReplyMessage("`Command not recognised.`") };
 		}
@@ -391,7 +405,8 @@ namespace Phamhilator
                    command == "terms" || command == "why" ||  
                    command == "help" || commandLower == "help edit" || commandLower == "help add" ||
                    commandLower == "help del" || commandLower == "help edit" ||
-                   commandLower == "help auto" || commandLower == "help list";
+                   commandLower == "help auto" || commandLower == "help list" ||
+                   commandLower == "panic" || commandLower == "red button" || commandLower == "fox";
 		}
 
 		private static ReplyMessage[] NormalUserCommands()
@@ -441,6 +456,21 @@ namespace Phamhilator
 				return new[] { GetTerms() };
 			}
 
+		    if (commandLower == "red button")
+		    {
+                return new[] { new ReplyMessage("`Warning: now launching " + random.Next(1, 101) + " anti-spammer homing missiles...`", false) };
+		    }
+
+		    if (commandLower == "panic")
+		    {
+		        return new[] { new ReplyMessage("http://rack.0.mshcdn.com/media/ZgkyMDEzLzA2LzE4LzdjL0JlYWtlci4zOWJhOC5naWYKcAl0aHVtYgkxMjAweDk2MDA-/4a93e3c4/4a4/Beaker.gif", false) };
+		    }
+
+		    if (commandLower == "fox")
+		    {
+		        return new[] { new ReplyMessage("http://i.stack.imgur.com/0qaHz.gif") };
+		    }
+
 			return new[] { new ReplyMessage("`Command not recognised.`") };
 		}
 
@@ -475,7 +505,7 @@ namespace Phamhilator
 
         private static ReplyMessage GetHelpList()
         {
-            return new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats & status.\n    Supported replies: (fp/tp/tpa), why, sanitise/sanitize/clean & del/delete/remove.\n    Owner-only commands: start, pause, (add/ban) user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full scan & set status {message}.", false);
+            return new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats & status.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del/delete/remove.\n    Owner-only commands: resume, pause, (add/ban) user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full scan & set status {message}.", false);
         }
 
 		private static ReplyMessage GetInfo()
@@ -495,7 +525,7 @@ namespace Phamhilator
 			if (report.BlackTermsFound.Count == 1)
 			{
 				var term = report.BlackTermsFound.First();
-				var m = "`Term found: "+ term.Regex;
+				var m = "`Term found: "+ term.Regex.ToString().Replace("\n", "(?# new line)");
 
 				if (term.TPCount + term.FPCount >= 5)
 				{
@@ -519,9 +549,11 @@ namespace Phamhilator
 
 			foreach (var term in report.BlackTermsFound)
 			{
+			    var termString = term.Regex.ToString().Replace("\n", "(?# new line)");
+
 				if (term.TPCount + term.FPCount >= 5)
                 {
-                    builder.Append("    " + term.Regex + " ");
+                    builder.Append("    " + termString + " ");
                     builder.Append(" (Sensitivity: " + Math.Round(term.Sensitivity * 100, 1));
 					builder.Append("%. Specificity: " + Math.Round(term.Specificity * 100, 1));
 					builder.Append("%. Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
@@ -530,7 +562,7 @@ namespace Phamhilator
 				}
 				else
                 {
-                    builder.Append("    " + term.Regex + " ");
+                    builder.Append("    " + termString + " ");
                     builder.Append(" (Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
 					builder.Append("%. Score: " + Math.Round(term.Score, 1));
 					builder.Append(". Auto: " + term.IsAuto + ")\n    \n");
@@ -1586,11 +1618,13 @@ namespace Phamhilator
 
 		private static ReplyMessage TruePositive()
 		{
+            string postBack = null;
+
 			if (commandLower.StartsWith("tpa"))
 			{
 				var m = room[message.ParentID].Content;
 
-				if (report.Type == PostType.Offensive)
+				if (report.Type == PostType.Offensive || commandLower == "tpa clean")
 				{
                     m = ReportCleaner.GetCleanReport(message.ParentID);
 				}	
@@ -1603,7 +1637,9 @@ namespace Phamhilator
 				    {
 				        Message = postedMessage, Post = post, Report = report
 				    });
-				}		
+				}
+
+                postBack = " ***TPA Acknowledged***.";
 			}
 
             if (report.Type == PostType.BadTagUsed) { return new ReplyMessage(""); }
@@ -1618,7 +1654,7 @@ namespace Phamhilator
 		    var reportMessage = room[message.ParentID].Content;
             reportMessage = reportMessage.Remove(reportMessage.Length - 1);
 
-            return room.EditMessage(message.ParentID, reportMessage + (commandLower == "tpa" ? " ***TPA Acknowledged***." : " ***TP Acknowledged***.")) ? new ReplyMessage("") : returnMessage;
+            return room.EditMessage(message.ParentID, reportMessage + (postBack ?? " ***TP Acknowledged***.")) ? new ReplyMessage("") : returnMessage;
 		}
 
 		private static ReplyMessage RegisterTruePositive()
@@ -1990,16 +2026,13 @@ namespace Phamhilator
 
 			var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
 			var metaPost = "";
-			string tag; 
+			string tag;
 
-			if (tagCommand.IndexOf("href", StringComparison.Ordinal) != -1)
+            if (tagCommand.Count(c => c == ' ') == 3)
 			{
 				tag = tagCommand.Substring(site.Length + 1, tagCommand.IndexOf(" ", site.Length + 1, StringComparison.Ordinal) - 1 - site.Length);
 
-				var startIndex = tagCommand.IndexOf("href", StringComparison.Ordinal) + 6;
-				var endIndex = tagCommand.LastIndexOf("\">", StringComparison.Ordinal);
-
-				metaPost = tagCommand.Substring(startIndex, endIndex - startIndex);
+				metaPost = tagCommand.Substring(tagCommand.LastIndexOf(" ", StringComparison.Ordinal) + 1);
 			}
 			else
 			{
@@ -2053,6 +2086,25 @@ namespace Phamhilator
 			return new ReplyMessage("", false);
 		}
 
+        private static ReplyMessage Ask()
+        {
+            var newReport = Regex.Replace(GlobalInfo.PostedReports[message.ParentID].Message.Content, @"\*\*\s\(\d*(\.\d)?\%\)\:", "?**:");
+
+            foreach (var secondaryRoom in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
+            {
+                var postedMessage = secondaryRoom.PostMessage(newReport);
+
+                GlobalInfo.PostedReports.Add(postedMessage.ID, new MessageInfo
+                {
+                    Message = postedMessage,
+                    Post = post,
+                    Report = report
+                });
+            }
+
+            return new ReplyMessage("");
+        }
+
 		# endregion
 
 		# region Owner commands.
@@ -2065,7 +2117,6 @@ namespace Phamhilator
 
 			return new ReplyMessage("`Status updated.`");
 		}
-
 
 		private static ReplyMessage AddUser(string command)
 		{
@@ -2087,7 +2138,6 @@ namespace Phamhilator
 			return new ReplyMessage(BannedUsers.AddUser(id) ? "`User banned.`" : "`Warning: the banned users file is missing (unable to add user). All commands have been disabled until the issue has been resolved.`");
 		}
 
-
 		private static ReplyMessage SetAccuracyThreshold(string command)
 		{
 			if (command.IndexOf(" ", StringComparison.Ordinal) == -1 || command.All(c => !Char.IsDigit(c))) { return new ReplyMessage("`Command not recognised.`"); }
@@ -2098,7 +2148,6 @@ namespace Phamhilator
 
 			return new ReplyMessage("`Accuracy threshold updated.`");
 		}
-
 
 		private static ReplyMessage FullScan()
 		{
@@ -2114,12 +2163,11 @@ namespace Phamhilator
 		    return new ReplyMessage("`Full scan enabled.`");
 		}
 
-
-		private static ReplyMessage StartBot()
+		private static ReplyMessage ResumeBot()
 		{
 			GlobalInfo.BotRunning = true;
 
-			return new ReplyMessage("`Phamhilator™ started.`");
+			return new ReplyMessage("`Phamhilator™ resumed.`");
 		}
 
 		private static ReplyMessage PauseBot()

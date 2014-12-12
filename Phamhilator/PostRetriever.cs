@@ -27,7 +27,7 @@ namespace Phamhilator
         {
             var data = JToken.Parse(JObject.Parse(message.Data)["data"].ToString());
 
-            var url = (string)data["url"];
+            var url = TrimQuestionUrl((string)data["url"]);
 
             var host = (string)data["siteBaseHostAddress"];
             var title = EscapeString(WebUtility.HtmlDecode((string)data["titleEncodedFancy"]));
@@ -116,13 +116,13 @@ namespace Phamhilator
 
         public static List<Answer> GetLatestAnswers(Question question)
         {
-            string html = null;
+            string html;
 
             try
             {
-                html = new WebClient().DownloadString(question.Url+ "?answertab=active#tab-top");
+                html = StringDownloader.DownloadString(question.Url+ "?answertab=active#tab-top");
             }
-            catch (WebException ex)
+            catch (WebException)
             {
                 return new List<Answer>();
             }
@@ -217,7 +217,7 @@ namespace Phamhilator
 
             for (var i = 0; i < output.Length; i++)
             {
-                if (escapeChars.IsMatch(output[i].ToString()))
+                if (escapeChars.IsMatch(output[i].ToString(CultureInfo.InvariantCulture)))
                 {
                     output = output.Insert(i, "\\");
                     i++;
@@ -225,6 +225,29 @@ namespace Phamhilator
             }
 
             return output.Trim();
+        }
+
+        private static string TrimQuestionUrl(string url)
+        {
+            var trimmed = "";
+            var fsCount = 0;
+
+            for (var i = 0; i < url.Length; i++)
+            {
+                if (url[i] == '/')
+                {
+                    fsCount++;
+                }
+
+                if (fsCount == 5)
+                {
+                    break;
+                }
+
+                trimmed += url[i];
+            }
+
+            return trimmed;
         }
 
         private static void GetPostInfo(string postUrl, out string host, out int id)
