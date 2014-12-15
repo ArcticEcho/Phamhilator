@@ -255,7 +255,7 @@
     "Regex": "\\;\\;",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.090028,
+    "Score": 6.090028,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

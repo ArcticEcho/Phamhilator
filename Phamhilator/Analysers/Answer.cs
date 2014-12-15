@@ -99,7 +99,7 @@ namespace Phamhilator.Analysers
             info.Accuracy *= 100;
             info.Type = PostType.LowQuality;
 
-            return true;				
+            return true;
         }
 
         public static bool IsOffensive(Phamhilator.Answer post, ref AnswerAnalysis info)

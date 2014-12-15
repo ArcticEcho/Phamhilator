@@ -13,9 +13,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bpiss\\b",
@@ -23,8 +23,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bpenis\\b",
@@ -77,8 +77,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 12
+    "FPCount": 9,
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)\\bfag\\b",
@@ -94,27 +94,27 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 3,
-    "FPCount": 2,
-    "CaughtCount": 8
+    "TPCount": 6,
+    "FPCount": 4,
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)\\bidiot\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 3,
-    "CaughtCount": 7
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 5,
-    "FPCount": 8,
-    "CaughtCount": 27
+    "TPCount": 8,
+    "FPCount": 9,
+    "CaughtCount": 33
   },
   {
     "Regex": "(?i)\\bwhore\\b",
@@ -159,7 +159,7 @@
     "Score": 10.2105265,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)\\sdick\\s",
@@ -167,8 +167,8 @@
     "Site": "",
     "Score": 10.2105265,
     "TPCount": 3,
-    "FPCount": 1,
-    "CaughtCount": 5
+    "FPCount": 2,
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)good luck to stack overflow developers",
@@ -196,15 +196,6 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
-  },
-  {
-    "Regex": "\\;\\;",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.1800556,
-    "TPCount": 1,
-    "FPCount": 1,
-    "CaughtCount": 2
   },
   {
     "Regex": "(?i)downvote you",

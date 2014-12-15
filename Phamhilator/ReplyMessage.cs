@@ -3,14 +3,14 @@
     public class ReplyMessage
     {
         public string Content { get; private set; }
-        public bool Reply { get; private set; }
+        public bool IsReply { get; private set; }
 
 
 
-        public ReplyMessage(string content, bool reply = true)
+        public ReplyMessage(string content, bool isReply = true)
         {
             Content = content;
-            Reply = reply;
+            IsReply = isReply;
         }
     }
 }

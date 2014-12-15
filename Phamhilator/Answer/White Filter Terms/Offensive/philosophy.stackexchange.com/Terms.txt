@@ -201,7 +201,7 @@
     "Regex": "(?i)\\bpiss\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -229,6 +229,33 @@
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
     "Score": 5.5,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfuck",
+    "IsAuto": false,
+    "Site": "french.stackexchange.com",
+    "Score": 5.5,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bcock\\b",
+    "IsAuto": false,
+    "Site": "outdoors.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\;\\;",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 5.090028,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

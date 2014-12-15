@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 7,
-    "FPCount": 42,
-    "CaughtCount": 143
+    "TPCount": 12,
+    "FPCount": 50,
+    "CaughtCount": 180
   },
   {
     "Regex": "2348064038119",
@@ -105,7 +105,7 @@
     "Score": 10.2111111,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 7
   },
   {
     "Regex": "datarecovery",
@@ -131,8 +131,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 1,
-    "FPCount": 3,
-    "CaughtCount": 10
+    "FPCount": 4,
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)Join the Illuminati",
@@ -148,9 +148,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)Make money",
@@ -158,8 +158,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 1,
-    "FPCount": 4,
-    "CaughtCount": 6
+    "FPCount": 5,
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)geolify",
@@ -168,7 +168,7 @@
     "Score": 10.8585472,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "waowlyrics",
@@ -266,8 +266,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 2,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)www\\.\\S{0,30}muscle\\S{0,30}\\.com",
@@ -289,6 +289,69 @@
   },
   {
     "Regex": "(?i)crownbio\\.co\\.uk",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)StackBot",
+    "IsAuto": true,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 5,
+    "FPCount": 0,
+    "CaughtCount": 13
+  },
+  {
+    "Regex": "(?i)wallpaper\\-hd\\.com",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)This is an automated",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 2,
+    "FPCount": 0,
+    "CaughtCount": 9
+  },
+  {
+    "Regex": "the Stack Overflow team",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "This is an automated message",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 1
+  },
+  {
+    "Regex": "(?i)writeulearn",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 1,
+    "FPCount": 1,
+    "CaughtCount": 1
+  },
+  {
+    "Regex": "(?i)bobleefastglobalfinancecompany",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,

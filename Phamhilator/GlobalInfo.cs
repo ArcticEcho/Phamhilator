@@ -51,14 +51,13 @@ namespace Phamhilator
         public readonly static Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
         public readonly static BadTagDefinitions BadTagDefinitions = new BadTagDefinitions();
         public readonly static List<Spammer> Spammers = new List<Spammer>();
-        public const string Owners = "Sam, Unihedron, Patrick Hofman, Jan Dvorak & ProgramFOX";
+        public const string Owners = "Sam, Unihedron, ProgramFOX, Jan Dvorak & Patrick Hofman";
         public static Room PrimaryRoom;
         public static Client ChatClient;
         public static int PostsCaught;
         public static DateTime UpTime;
         public static bool BotRunning;
         public static bool Shutdown;
-        public static bool DebugMode;
 
         public static bool FullScanEnabled
         {

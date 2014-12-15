@@ -23,17 +23,17 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
-    "FPCount": 8,
-    "CaughtCount": 11
+    "TPCount": 2,
+    "FPCount": 10,
+    "CaughtCount": 14
   },
   {
     "Regex": "officialimeiunlock",
@@ -141,16 +141,16 @@
     "Score": 10.0206881,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 4,
+    "TPCount": 5,
     "FPCount": 4,
-    "CaughtCount": 9
+    "CaughtCount": 14
   },
   {
     "Regex": "(?i)ComplexiDerm",
