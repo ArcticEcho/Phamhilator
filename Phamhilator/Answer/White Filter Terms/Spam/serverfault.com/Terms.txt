@@ -93,7 +93,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 9.028296,
+    "Score": 10.1660748,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -354,7 +354,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -372,7 +372,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gis.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -633,7 +633,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 8.957186,
+    "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -696,7 +696,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 10.4686232,
+    "Score": 10.6064005,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -804,7 +804,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 13.8084087,
+    "Score": 12.9453831,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -867,7 +867,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 9.028296,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -885,7 +885,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "tex.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -903,7 +903,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -921,7 +921,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 13.8873138,
+    "Score": 13.0193567,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

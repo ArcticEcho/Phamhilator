@@ -57,7 +57,7 @@
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "philosophy.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -84,7 +84,7 @@
     "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
     "Site": "security.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -120,7 +120,7 @@
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -237,7 +237,7 @@
     "Regex": "(?i)\\bfuck",
     "IsAuto": false,
     "Site": "french.stackexchange.com",
-    "Score": 7.14049625,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -255,7 +255,7 @@
     "Regex": "\\;\\;",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.090028,
+    "Score": 5.090028,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

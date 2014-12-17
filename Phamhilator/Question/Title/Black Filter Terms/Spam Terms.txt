@@ -6,7 +6,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 1,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)\\bbeautiful(est)?\\b",
@@ -204,7 +204,7 @@
     "Score": 12.0,
     "TPCount": 6,
     "FPCount": 0,
-    "CaughtCount": 6
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 6
+    "FPCount": 4,
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -302,8 +302,8 @@
     "Site": "",
     "Score": 18.0,
     "TPCount": 13,
-    "FPCount": 19,
-    "CaughtCount": 44
+    "FPCount": 21,
+    "CaughtCount": 47
   },
   {
     "Regex": "(?i)the perfect",
@@ -374,8 +374,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 0,
-    "CaughtCount": 2
+    "FPCount": 1,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)research questionnaire",
@@ -455,8 +455,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)loan(s)? available",
@@ -473,8 +473,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)got you",
@@ -546,7 +546,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 10,
-    "CaughtCount": 20
+    "CaughtCount": 21
   },
   {
     "Regex": "(?i)^also",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 5,
-    "CaughtCount": 27
+    "CaughtCount": 29
   },
   {
     "Regex": "(?i)tell you",
@@ -752,8 +752,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 17,
-    "CaughtCount": 25
+    "FPCount": 18,
+    "CaughtCount": 26
   },
   {
     "Regex": "(?i)^no hassle",
@@ -778,9 +778,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 1,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)^cheap",
@@ -851,8 +851,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 0,
-    "CaughtCount": 2
+    "FPCount": 1,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)brain enhancement",
@@ -941,8 +941,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 16,
-    "CaughtCount": 66
+    "FPCount": 19,
+    "CaughtCount": 78
   },
   {
     "Regex": "\\$\\d+",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 14,
-    "CaughtCount": 183
+    "FPCount": 16,
+    "CaughtCount": 216
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -960,7 +960,7 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 1,
-    "CaughtCount": 15
+    "CaughtCount": 17
   },
   {
     "Regex": "(?i)high quality",
@@ -995,8 +995,8 @@
     "Site": "",
     "Score": 10.1755075,
     "TPCount": 4,
-    "FPCount": 0,
-    "CaughtCount": 3
+    "FPCount": 1,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)gmail password",
