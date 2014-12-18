@@ -480,7 +480,7 @@ namespace Phamhilator
 
         private static ReplyMessage GetStatus()
         {
-            return new ReplyMessage("`" + GlobalInfo.Status + "`.");
+            return new ReplyMessage(String.Concat("`", GlobalInfo.Status, "`. @ ", GlobalInfo.CommitFormatted, "(https://github.com/ArcticEcho/Phamhilator/commit/", GlobalInfo.CommitHash, ")."));
         }
 
         private static ReplyMessage GetHelp()

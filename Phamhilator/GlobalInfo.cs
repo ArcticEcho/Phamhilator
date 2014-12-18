@@ -117,5 +117,17 @@ namespace Phamhilator
                 File.WriteAllText(DirectoryTools.GetStatusFile(), value);
             }
         }
+
+        public static string CommitFormatted
+        {
+            get;
+            set;
+        }
+
+        public static string CommitHash
+        {
+            get;
+            set;
+        }
     }
 }

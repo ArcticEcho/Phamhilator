@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using ChatExchangeDotNet;
 using WebSocketSharp;
+using System.Text;
 
 
 
@@ -71,7 +72,7 @@ namespace Phamhilator
 
                 socket.OnOpen += (o, oo) => socket.Send("155-questions-active");
 
-                socket.OnMessage += (o, message) => 
+                socket.OnMessage += (o, message) =>
                 {
                     try
                     {
@@ -179,8 +180,8 @@ namespace Phamhilator
                 }
                 else
                 {
-                    var messages = CommandProcessor.ExacuteCommand(GlobalInfo.PrimaryRoom, message); 
-                
+                    var messages = CommandProcessor.ExacuteCommand(GlobalInfo.PrimaryRoom, message);
+
                     if (messages.Length == 0) { return; }
 
                     foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
@@ -246,44 +247,44 @@ namespace Phamhilator
             switch (info.Type)
             {
                 case PostType.Offensive:
-                {
-                    message = GlobalInfo.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
-                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                    {
+                        message = GlobalInfo.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
+                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                    break;
-                }
+                        break;
+                    }
 
                 case PostType.BadUsername:
-                {
-                    message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
-                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                    {
+                        message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
+                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                    break;
-                }
+                        break;
+                    }
 
                 case PostType.BadTagUsed:
-                {
-                    message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Tag(s) Used**" + messageBody);
-                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                    {
+                        message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Tag(s) Used**" + messageBody);
+                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                    break;
-                }
+                        break;
+                    }
 
                 case PostType.LowQuality:
-                {
-                    message = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
-                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info};
+                    {
+                        message = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
+                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                    break;
-                }
+                        break;
+                    }
 
                 case PostType.Spam:
-                {
-                    message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
-                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                    {
+                        message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
+                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                    break;
-                }
+                        break;
+                    }
             }
 
             if (message != null)
@@ -321,6 +322,25 @@ namespace Phamhilator
             }
         }
 
+        private void GetCommitInfo()
+        {
+            Process p = new Process();
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = "git";
+            psi.Arguments = "log --pretty=format:\"[`%h` *`(%s by %cn)`*]\" -n 1";
+            psi.WorkingDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName;
+            psi.UseShellExecute = false;
+            psi.RedirectStandardOutput = true;
+            psi.CreateNoWindow = true;
+            p.StartInfo = psi;
+            p.Start();
+            string output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+            p.Dispose();
+            GlobalInfo.CommitFormatted = output;
+            GlobalInfo.CommitHash = output.Split('`')[1];
+        }
+
         # region UI Events
 
         private void MetroWindow_Closing(object sender, CancelEventArgs e)
@@ -346,7 +366,7 @@ namespace Phamhilator
             {
                 MessageBox.Show("Please fill out all fields.", "Phamhilator", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
-            
+
             progressBar.IsIndeterminate = true;
             ((Button)sender).IsEnabled = false;
             emailTB.IsEnabled = false;
@@ -382,7 +402,7 @@ namespace Phamhilator
 
                 if (remCreds)
                 {
-                    File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass); 
+                    File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass);
                 }
                 else
                 {
@@ -417,6 +437,8 @@ namespace Phamhilator
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            GetCommitInfo();
+
             statusL.Content = "Monitoring Enabled";
 
             ((Button)sender).IsEnabled = false;
