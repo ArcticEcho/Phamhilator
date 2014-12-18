@@ -158,28 +158,23 @@ namespace Phamhilator
                 }
             }
 
-            if ((int)filter > 99)
+            if (filter.IsBlackFilter())
             {
                 if (!Directory.Exists(Directory.GetParent(path).FullName))
                 {
-                    Directory.CreateDirectory(QTWFilterTermsPath);
-                }
-
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-            }
-            else
-            {
-                if (!Directory.Exists(Directory.GetParent(path).FullName))
-                {
-                    Directory.CreateDirectory(QTBFilterTermsPath);
+                    Directory.CreateDirectory(Directory.GetParent(path).FullName);
                 }
 
                 if (!File.Exists(path))
                 {
                     File.Create(path).Dispose();
+                }
+            }
+            else
+            {
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
                 }
             }
 

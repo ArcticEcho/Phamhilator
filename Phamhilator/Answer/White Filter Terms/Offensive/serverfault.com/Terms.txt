@@ -192,7 +192,7 @@
     "Regex": "(?i)\\sdick\\s",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 5.605263,
+    "Score": 6.1542325,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -210,7 +210,7 @@
     "Regex": "(?i)bullshit",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 5.105263,
+    "Score": 5.605263,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -237,7 +237,7 @@
     "Regex": "(?i)\\bfuck",
     "IsAuto": false,
     "Site": "french.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

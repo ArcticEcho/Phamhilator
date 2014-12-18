@@ -111,6 +111,8 @@
     <Compile Include="GlobalInfo.cs" />
     <Compile Include="JsonTerm.cs" />
     <Compile Include="Term.cs" />
+    <Compile Include="TermCreater.cs" />
+    <Compile Include="TermReader.cs" />
     <Compile Include="UserAccess.cs" />
     <Compile Include="WebDownload.cs">
       <SubType>Component</SubType>

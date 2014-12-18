@@ -5,8 +5,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 1,
-    "CaughtCount": 9
+    "FPCount": 2,
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)\\bbeautiful(est)?\\b",
@@ -14,8 +14,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 4,
-    "CaughtCount": 7
+    "FPCount": 5,
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)\\bwe lost\\b",
@@ -202,9 +202,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 6,
+    "TPCount": 7,
     "FPCount": 0,
-    "CaughtCount": 7
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -212,8 +212,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 1,
-    "FPCount": 4,
-    "CaughtCount": 12
+    "FPCount": 5,
+    "CaughtCount": 16
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 0,
-    "FPCount": 4,
-    "CaughtCount": 7
+    "FPCount": 5,
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -301,9 +301,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 18.0,
-    "TPCount": 13,
-    "FPCount": 21,
-    "CaughtCount": 47
+    "TPCount": 14,
+    "FPCount": 23,
+    "CaughtCount": 50
   },
   {
     "Regex": "(?i)the perfect",
@@ -311,8 +311,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 1,
-    "CaughtCount": 3
+    "FPCount": 2,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)good slim",
@@ -410,8 +410,8 @@
     "Site": "",
     "Score": 12.0,
     "TPCount": 1,
-    "FPCount": 8,
-    "CaughtCount": 16
+    "FPCount": 9,
+    "CaughtCount": 17
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -546,7 +546,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 10,
-    "CaughtCount": 21
+    "CaughtCount": 32
   },
   {
     "Regex": "(?i)^also",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 5,
-    "CaughtCount": 29
+    "CaughtCount": 31
   },
   {
     "Regex": "(?i)tell you",
@@ -616,9 +616,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)losing weight",
@@ -681,7 +681,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)Cridssing sing",
@@ -698,8 +698,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 15,
-    "CaughtCount": 36
+    "FPCount": 19,
+    "CaughtCount": 43
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -753,7 +753,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 18,
-    "CaughtCount": 26
+    "CaughtCount": 27
   },
   {
     "Regex": "(?i)^no hassle",
@@ -824,8 +824,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 1
+    "FPCount": 2,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)wow gold",
@@ -913,9 +913,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "TPCount": 1,
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bsupplement(s)?\\b",
@@ -942,7 +942,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 19,
-    "CaughtCount": 78
+    "CaughtCount": 83
   },
   {
     "Regex": "\\$\\d+",
@@ -951,16 +951,16 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 16,
-    "CaughtCount": 216
+    "CaughtCount": 239
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 1,
-    "CaughtCount": 17
+    "CaughtCount": 23
   },
   {
     "Regex": "(?i)high quality",
@@ -994,9 +994,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.1755075,
-    "TPCount": 4,
+    "TPCount": 5,
     "FPCount": 1,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)gmail password",
@@ -1036,6 +1036,15 @@
   },
   {
     "Regex": "(?i)^I(\\'?m| am) selling",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.2220812,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)Helpline number",
     "IsAuto": false,
     "Site": "",
     "Score": 10.2220812,

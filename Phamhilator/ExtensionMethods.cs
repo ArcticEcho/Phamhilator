@@ -21,6 +21,11 @@ namespace Phamhilator
             return (FilterType)Enum.Parse(typeof(FilterType), input.ToString().Replace("White", "Black"));
         }
 
+        public static bool IsBlackFilter(this FilterType input)
+        {
+            return (int)input < 99;
+        }
+
         public static bool Contains(this HashSet<Term> input, Regex term, string site = "")
         {
             return input.Count != 0 && input.Contains(new Term(FilterType.AnswerBlackLQ, term, 0, site));
@@ -40,7 +45,7 @@ namespace Phamhilator
                 }
 
                 File.Create(file).Dispose();
-            }			
+            }
             
             if (String.IsNullOrEmpty(oldTerm.ToString())) // Add new term.
             {

@@ -93,7 +93,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 10.1660748,
+    "Score": 9.028296,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -372,7 +372,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gis.stackexchange.com",
-    "Score": 7.39736176,
+    "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -696,7 +696,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 10.6064005,
+    "Score": 9.468623,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -903,7 +903,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 7.39736176,
+    "Score": 8.464028,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

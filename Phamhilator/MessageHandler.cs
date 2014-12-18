@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using ChatExchangeDotNet;
 
 
@@ -14,21 +11,22 @@ namespace Phamhilator
     {
         private bool disposed;
         private bool exit;
-        private readonly Thread processor;
-        private readonly Dictionary<Room, List<DateTime>> lastPostRecord = new Dictionary<Room, List<DateTime>>();
+        private readonly Dictionary<Room, Thread> processors;
+        /// <summary>
+        /// Newest record at index 0.
+        /// </summary>
+        private readonly Dictionary<Room, List<DateTime>> lastPostRecord;
 
         public delegate void MessagePostedCallBack();
-        public List<ChatAction> Queue { get; private set; }
+        public Dictionary<Room, List<ChatAction>> Queue { get; private set; }
 
 
 
         public MessageHandler()
         {
-            Queue = new List<ChatAction>();
-
-            processor = new Thread(ProcessQueue);
-
-            processor.Start();
+            lastPostRecord = lastPostRecord = new Dictionary<Room, List<DateTime>>();
+            processors = new Dictionary<Room, Thread>();
+            Queue = new Dictionary<Room, List<ChatAction>>();
         }
 
         ~MessageHandler()
@@ -47,13 +45,16 @@ namespace Phamhilator
             exit = true;
             disposed = true;
 
-            // Give the thread a chance to exit gracefully.
-            Thread.Sleep(400); 
+            // Give the threads a chance to exit gracefully.
+            Thread.Sleep(400);
 
-            if (processor.IsAlive)
+            foreach (var processor in processors.Values)
             {
-                // Otherwise kill it with fire!
-                processor.Abort();
+                if (processor.IsAlive)
+                {
+                     //Otherwise kill it with fire!
+                    processor.Abort();
+                }
             }
         }
 
@@ -62,22 +63,30 @@ namespace Phamhilator
             lock (Queue)
             lock (lastPostRecord)
             {
-                if (!lastPostRecord.ContainsKey(message.Room))
+                if (!Queue.ContainsKey(message.Room))
                 {
+                    Queue.Add(message.Room, new List<ChatAction>());
                     lastPostRecord.Add(message.Room, new List<DateTime>());
+                    processors.Add(message.Room, new Thread(() => ProcessRoomQueue(message.Room)));
+                    processors[message.Room].Start();
                 }
 
-                Queue.Add(message);
+                if (lastPostRecord[message.Room].Count > 100)
+                {
+                    lastPostRecord[message.Room].RemoveAt(0);
+                }
+
+                Queue[message.Room].Add(message);
             }
         }
 
 
 
-        private void ProcessQueue()
+        private void ProcessRoomQueue(Room room)
         {
             while (!exit)
             {
-                while (Queue.Count == 0)
+                while (Queue[room].Count == 0)
                 {
                     Thread.Sleep(200);
                 }
@@ -85,33 +94,33 @@ namespace Phamhilator
                 ChatAction nextM;
                 double rateLimit;
 
-                lock (Queue)
-                lock (lastPostRecord)
+                lock (Queue[room])
+                lock (lastPostRecord[room])
                 {
-                    nextM = Queue[0];
-                    rateLimit = CalcRateLimit(lastPostRecord[nextM.Room]);
+                    nextM = Queue[room][0];
+                    rateLimit = CalcRateLimit(lastPostRecord[room]);
                 }
 
                 if (rateLimit > 0)
                 {
-                    Thread.Sleep(TimeSpan.FromSeconds(rateLimit /*+ 1*/));
+                    Thread.Sleep(TimeSpan.FromSeconds(rateLimit));
                 }
 
                 nextM.Action();
 
-                lock (Queue)
-                lock (lastPostRecord)
+                lock (Queue[room])
+                lock (lastPostRecord[room])
                 {
-                    if (lastPostRecord[nextM.Room].Count == 0)
+                    if (lastPostRecord[room].Count == 0)
                     {
-                        lastPostRecord[nextM.Room].Add(DateTime.UtcNow);
+                        lastPostRecord[room].Add(DateTime.UtcNow);
                     }
                     else
                     {
-                        lastPostRecord[nextM.Room].Insert(0, DateTime.UtcNow);
+                        lastPostRecord[room].Insert(0, DateTime.UtcNow);
                     }
 
-                    Queue.Remove(nextM);
+                    Queue[room].Remove(nextM);
                 }
             }
         }

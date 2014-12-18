@@ -159,7 +159,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 7
+    "CaughtCount": 8
   },
   {
     "Regex": "\\\\.com",

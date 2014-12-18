@@ -102,7 +102,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 6.60000038,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -291,7 +291,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -309,7 +309,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1164,6 +1164,51 @@
     "Regex": "(?i)^cheap",
     "IsAuto": false,
     "Site": "music.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)affordable",
+    "IsAuto": false,
+    "Site": "magento.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)gmail.*number",
+    "IsAuto": false,
+    "Site": "webapps.stackexchange.com",
+    "Score": 5.087754,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)free access",
+    "IsAuto": false,
+    "Site": "money.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)baba",
+    "IsAuto": false,
+    "Site": "diy.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbaba\\b",
+    "IsAuto": false,
+    "Site": "diy.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

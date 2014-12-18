@@ -33,7 +33,7 @@ namespace Phamhilator
 
             foreach (var site in sites)
             {
-                string path = Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt");
+                var path = Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt");
                 List<JsonTerm> data;
 
                 try

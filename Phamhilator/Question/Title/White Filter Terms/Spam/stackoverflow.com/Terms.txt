@@ -291,7 +291,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -615,7 +615,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "patents.stackexchange.com",
-    "Score": 10.3213682,
+    "Score": 9.321368,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -750,7 +750,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "skeptics.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -777,7 +777,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 11.304615,
+    "Score": 10.304615,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1210,6 +1210,15 @@
     "IsAuto": false,
     "Site": "diy.stackexchange.com",
     "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bpune\\b",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
