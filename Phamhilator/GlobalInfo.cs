@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using ChatExchangeDotNet;
@@ -10,6 +11,9 @@ namespace Phamhilator
 {
     public static partial class GlobalInfo
     {
+        private static string commitHash;
+        private static string commitFormatted;
+
         #region Filters
 
         public static readonly Dictionary<FilterType, BlackFilter> BlackFilters = new Dictionary<FilterType, BlackFilter>()
@@ -120,14 +124,51 @@ namespace Phamhilator
 
         public static string CommitFormatted
         {
-            get;
-            set;
+            get
+            {
+                UpdateCommitInfo();
+
+                return commitFormatted;
+            }
         }
 
         public static string CommitHash
         {
-            get;
-            set;
+            get
+            {
+                UpdateCommitInfo();
+
+                return commitHash;
+            }
+        }
+
+
+
+        private static void UpdateCommitInfo()
+        {
+            string output;
+
+            using (var p = new Process())
+            {
+                p.StartInfo = new ProcessStartInfo
+                {
+                    FileName = @"%USERPROFILE%\Local Settings\Application Data\GitHub\PORTAB~1\bin\git.exe",
+                    Arguments = "log --pretty=format:\"[`%h` *`(%s by %cn)`*]\" -n 1",
+                    WorkingDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                };
+
+                p.Start();
+
+                output = p.StandardOutput.ReadToEnd();
+
+                p.WaitForExit();
+            }
+
+            commitFormatted = output;
+            commitHash = output.Split('`')[1];
         }
     }
 }

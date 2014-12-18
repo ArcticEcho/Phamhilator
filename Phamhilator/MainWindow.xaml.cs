@@ -322,25 +322,6 @@ namespace Phamhilator
             }
         }
 
-        private void GetCommitInfo()
-        {
-            Process p = new Process();
-            ProcessStartInfo psi = new ProcessStartInfo();
-            psi.FileName = "git";
-            psi.Arguments = "log --pretty=format:\"[`%h` *`(%s by %cn)`*]\" -n 1";
-            psi.WorkingDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName;
-            psi.UseShellExecute = false;
-            psi.RedirectStandardOutput = true;
-            psi.CreateNoWindow = true;
-            p.StartInfo = psi;
-            p.Start();
-            string output = p.StandardOutput.ReadToEnd();
-            p.WaitForExit();
-            p.Dispose();
-            GlobalInfo.CommitFormatted = output;
-            GlobalInfo.CommitHash = output.Split('`')[1];
-        }
-
         # region UI Events
 
         private void MetroWindow_Closing(object sender, CancelEventArgs e)
@@ -437,8 +418,6 @@ namespace Phamhilator
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            GetCommitInfo();
-
             statusL.Content = "Monitoring Enabled";
 
             ((Button)sender).IsEnabled = false;
