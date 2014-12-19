@@ -14,6 +14,7 @@ namespace Phamhilator
         public int Score { get; private set; }
         public string Body { get; private set; }
         public int AuthorRep { get; private set;  }
+        public string Html { get; private set; }
 
 
 
@@ -50,13 +51,13 @@ namespace Phamhilator
         private void PopulateExtraData()
         {
             try
-            {		
-                var html = StringDownloader.DownloadString(Url);
-                var dom = CQ.Create(html);
+            {
+                Html = new StringDownloader().DownloadString(Url);
+                var dom = CQ.Create(Html);
 
                 Body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
                 Score = int.Parse(dom[".vote-count-post"].Html());
-                AuthorRep = PostRetriever.ParseRep(dom[".reputation-score"].Html());				
+                AuthorRep = PostRetriever.ParseRep(dom[".reputation-score"].Html());
             }
             catch (Exception)
             {

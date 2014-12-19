@@ -57,7 +57,7 @@
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.655,
+    "Score": 7.75500059,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

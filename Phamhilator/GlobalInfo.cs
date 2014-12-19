@@ -146,29 +146,43 @@ namespace Phamhilator
 
         private static void UpdateCommitInfo()
         {
-            string output;
+            //string output;
 
-            using (var p = new Process())
-            {
-                p.StartInfo = new ProcessStartInfo
-                {
-                    FileName = @"%USERPROFILE%\Local Settings\Application Data\GitHub\PORTAB~1\bin\git.exe",
-                    Arguments = "log --pretty=format:\"[`%h` *`(%s by %cn)`*]\" -n 1",
-                    WorkingDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
-                };
+            //using (var p = new Process())
+            //{
+            //    p.StartInfo = new ProcessStartInfo
+            //    {
+            //        FileName = "git",
+            //        Arguments = "log --pretty=format:\"[`%h` *`(%s by %cn)`*]\" -n 1",
+            //        WorkingDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName,
+            //        UseShellExecute = false,
+            //        RedirectStandardOutput = true,
+            //        CreateNoWindow = true
+            //    };
 
-                p.Start();
+            //    p.Start();
 
-                output = p.StandardOutput.ReadToEnd();
+            //    output = p.StandardOutput.ReadToEnd();
 
-                p.WaitForExit();
-            }
+            //    p.WaitForExit();
+            //}
 
-            commitFormatted = output;
-            commitHash = output.Split('`')[1];
+
+
+            //var psi = new ProcessStartInfo
+            //{
+            //    FileName = "cmd.exe",
+            //    Arguments = "/C git log --pretty=format:\"[`%h` *`(%s by %cn)`*]\" -n 1",
+            //    WorkingDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName,
+            //    UseShellExecute = false,
+            //    RedirectStandardOutput = true,
+            //    CreateNoWindow = true
+            //};
+
+            //var output = Process.Start(psi).StandardOutput.ReadToEnd();
+
+            //commitFormatted = output;
+            //commitHash = output.Split('`')[1];
         }
     }
 }

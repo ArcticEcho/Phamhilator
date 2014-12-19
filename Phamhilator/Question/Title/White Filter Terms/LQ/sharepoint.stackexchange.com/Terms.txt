@@ -318,7 +318,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "chemistry.stackexchange.com",
-    "Score": 8.796509,
+    "Score": 7.796509,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1731,7 +1731,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "security.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1965,7 +1965,7 @@
     "Regex": "(?i)error(s)?",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 6.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

@@ -15,11 +15,12 @@ namespace Phamhilator
 {
     public static class PostRetriever
     {
-        private static readonly Regex hostParser = new Regex(@".*//|/.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex postIDParser1 = new Regex(@"\D*/|\D.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex postIDParser2 = new Regex(@".*(q|a)/|/\d*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex shareLinkIDParser = new Regex(@".*(q|a)/|/\d*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex isShareLink = new Regex(@"(q|a)/\d*/\d*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]", RegexOptions.Compiled);
+        private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        
+        public static readonly Regex HostParser = new Regex(@".*//|/.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        public static readonly Regex PostIDParser = new Regex(@"\D*/|\D.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
 
 
@@ -50,7 +51,7 @@ namespace Phamhilator
 
             GetPostInfo(postUrl, out host, out id);
 
-            var html = StringDownloader.DownloadString(postUrl);
+            var html = new StringDownloader().DownloadString(postUrl);
             var dom = CQ.Create(html, Encoding.UTF8);
             var tags = new List<string>();
 
@@ -108,7 +109,7 @@ namespace Phamhilator
             GetPostInfo(postUrl, out host, out id);
 
             var getUrl = "http://" + host + "/posts/ajax-load-realtime/" + id;
-            var html = StringDownloader.DownloadString(getUrl);
+            var html = new StringDownloader().DownloadString(getUrl);
             var dom = CQ.Create(html, Encoding.UTF8);
 
             return GetAnswer(dom, host, id.ToString(CultureInfo.InvariantCulture));
@@ -116,18 +117,9 @@ namespace Phamhilator
 
         public static List<Answer> GetLatestAnswers(Question question)
         {
-            string html;
+            if (string.IsNullOrEmpty(question.Html)) { return new List<Answer>(); }
 
-            try
-            {
-                html = StringDownloader.DownloadString(question.Url+ "?answertab=active#tab-top");
-            }
-            catch (WebException)
-            {
-                return new List<Answer>();
-            }
-
-            var dom = CQ.Create(html, Encoding.UTF8);
+            var dom = CQ.Create(question.Html, Encoding.UTF8);
             var host = "";
             var questionID = 0; 
             var answers = new List<Answer>();
@@ -252,15 +244,15 @@ namespace Phamhilator
 
         private static void GetPostInfo(string postUrl, out string host, out int id)
         {
-            host = hostParser.Replace(postUrl, "");
+            host = HostParser.Replace(postUrl, "");
 
             if (isShareLink.IsMatch(postUrl))
             {
-                id = int.Parse(postIDParser2.Replace(postUrl, ""));
+                id = int.Parse(shareLinkIDParser.Replace(postUrl, ""));
             }
             else
             {
-                id = int.Parse(postIDParser1.Replace(postUrl, ""));
+                id = int.Parse(PostIDParser.Replace(postUrl, ""));
             }
         }
 

@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using ChatExchangeDotNet;
 using WebSocketSharp;
-using System.Text;
 
 
 
@@ -45,7 +44,7 @@ namespace Phamhilator
 
                 loginC.Children.Remove(operationC);
 
-                PostPersistence.Initialise();
+                ReportLog.Initialise();
             }
             catch (Exception ex)
             {
@@ -74,11 +73,13 @@ namespace Phamhilator
 
                 socket.OnMessage += (o, message) =>
                 {
+                    if (!GlobalInfo.BotRunning) { return; }
+
                     try
                     {
                         var question = PostRetriever.GetQuestion(message);
 
-                        if (PostPersistence.Messages.All(p => p != question.Url))
+                        if (ReportLog.Messages.All(p => p != question.Url))
                         {
                             var qResults = PostAnalyser.AnalyseQuestion(question);
                             var qMessage = MessageGenerator.GetQReport(qResults, question);
@@ -90,7 +91,7 @@ namespace Phamhilator
                         {
                             var answers = PostRetriever.GetLatestAnswers(question);
 
-                            foreach (var a in answers.Where(ans => PostPersistence.Messages.All(p => p != ans.Url)))
+                            foreach (var a in answers.Where(ans => ReportLog.Messages.All(p => p != ans.Url)))
                             {
                                 var aResults = PostAnalyser.AnalyseAnswer(a);
                                 var aMessage = MessageGenerator.GetAReport(aResults, a);
@@ -289,7 +290,7 @@ namespace Phamhilator
 
             if (message != null)
             {
-                PostPersistence.AddPost(p.Url);
+                ReportLog.AddPost(p.Url);
                 GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
                 if (info.AutoTermsFound)

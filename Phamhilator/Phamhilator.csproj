@@ -107,7 +107,7 @@
     <Compile Include="Analysers\QuestionTitle.cs" />
     <Compile Include="MessageInfo.cs" />
     <Compile Include="PostAnalyser.cs" />
-    <Compile Include="PostPersistence.cs" />
+    <Compile Include="ReportLog.cs" />
     <Compile Include="GlobalInfo.cs" />
     <Compile Include="JsonTerm.cs" />
     <Compile Include="Term.cs" />

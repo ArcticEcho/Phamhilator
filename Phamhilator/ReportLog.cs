@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Phamhilator
 {
-    public static class PostPersistence
+    public static class ReportLog
     {
         private static bool initialised;
         private static readonly List<string> messages = new List<string>();
@@ -25,7 +25,7 @@ namespace Phamhilator
                             Initialise();
                         }
                     }
-                }			
+                }
 
                 return messages;
             }

@@ -6,12 +6,23 @@ using System.Text;
 
 namespace Phamhilator
 {
-    public static class StringDownloader
+    public class StringDownloader
     {
-        public static string DownloadString(string URL, int timeoutMilliseconds = 300000) // 5 min default.
+        private readonly int timeout;
+
+
+
+        public StringDownloader(int timeoutMilliseconds = 300000) // 5 min default.
         {
-            var req = (HttpWebRequest)WebRequest.Create(URL);
-            req.Timeout = timeoutMilliseconds;
+            timeout = timeoutMilliseconds;
+        }
+
+
+
+        public string DownloadString(string url)
+        {
+            var req = (HttpWebRequest)WebRequest.Create(url);
+            req.Timeout = timeout;
             req.Proxy = null;
 
             using (var res = req.GetResponse())

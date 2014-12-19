@@ -15,7 +15,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)\\bwe lost\\b",
@@ -213,7 +213,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 5,
-    "CaughtCount": 16
+    "CaughtCount": 18
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -231,7 +231,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 9
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)\\bcheaper\\b",
@@ -275,17 +275,17 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 3,
-    "CaughtCount": 4
+    "FPCount": 4,
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)\\bfull( movie| film)\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bfree (trial|film|moive|movie|help|assistance)\\b",
@@ -302,8 +302,8 @@
     "Site": "",
     "Score": 18.0,
     "TPCount": 14,
-    "FPCount": 23,
-    "CaughtCount": 50
+    "FPCount": 26,
+    "CaughtCount": 54
   },
   {
     "Regex": "(?i)the perfect",
@@ -419,8 +419,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)royalty free",
@@ -473,8 +473,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)got you",
@@ -536,8 +536,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 2,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
@@ -589,9 +589,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 2,
+    "TPCount": 3,
     "FPCount": 5,
-    "CaughtCount": 31
+    "CaughtCount": 32
   },
   {
     "Regex": "(?i)tell you",
@@ -645,7 +645,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)body weight",
@@ -698,8 +698,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 19,
-    "CaughtCount": 43
+    "FPCount": 20,
+    "CaughtCount": 47
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -743,8 +743,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 8,
-    "CaughtCount": 10
+    "FPCount": 9,
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -788,8 +788,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 6
+    "FPCount": 6,
+    "CaughtCount": 7
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -887,8 +887,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bfor meta\\b",
@@ -941,8 +941,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 19,
-    "CaughtCount": 83
+    "FPCount": 20,
+    "CaughtCount": 87
   },
   {
     "Regex": "\\$\\d+",
@@ -951,16 +951,16 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 16,
-    "CaughtCount": 239
+    "CaughtCount": 272
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 4,
+    "TPCount": 6,
     "FPCount": 1,
-    "CaughtCount": 23
+    "CaughtCount": 25
   },
   {
     "Regex": "(?i)high quality",
@@ -968,8 +968,8 @@
     "Site": "",
     "Score": 10.1574078,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 5
+    "FPCount": 3,
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)^buy\\s",
@@ -977,8 +977,8 @@
     "Site": "",
     "Score": 10.1574078,
     "TPCount": 1,
-    "FPCount": 2,
-    "CaughtCount": 3
+    "FPCount": 3,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)Watch Online",
