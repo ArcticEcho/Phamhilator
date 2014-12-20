@@ -78,16 +78,16 @@
     "Score": 18.0,
     "TPCount": 21,
     "FPCount": 3,
-    "CaughtCount": 183
+    "CaughtCount": 184
   },
   {
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "",
     "Score": 89.0,
-    "TPCount": 227,
+    "TPCount": 228,
     "FPCount": 62,
-    "CaughtCount": 1521
+    "CaughtCount": 1523
   },
   {
     "Regex": "(?i)^please",
