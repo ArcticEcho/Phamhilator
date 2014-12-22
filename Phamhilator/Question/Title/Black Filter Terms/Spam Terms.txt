@@ -248,8 +248,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 2,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bcare(ing)?\\b",
@@ -292,9 +292,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
@@ -302,8 +302,8 @@
     "Site": "",
     "Score": 18.0,
     "TPCount": 14,
-    "FPCount": 26,
-    "CaughtCount": 54
+    "FPCount": 27,
+    "CaughtCount": 55
   },
   {
     "Regex": "(?i)the perfect",
@@ -545,8 +545,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 10,
-    "CaughtCount": 32
+    "FPCount": 11,
+    "CaughtCount": 33
   },
   {
     "Regex": "(?i)^also",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 5,
-    "CaughtCount": 32
+    "CaughtCount": 37
   },
   {
     "Regex": "(?i)tell you",
@@ -698,8 +698,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 20,
-    "CaughtCount": 47
+    "FPCount": 21,
+    "CaughtCount": 48
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -753,7 +753,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 18,
-    "CaughtCount": 27
+    "CaughtCount": 28
   },
   {
     "Regex": "(?i)^no hassle",
@@ -789,7 +789,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 6,
-    "CaughtCount": 7
+    "CaughtCount": 8
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -942,16 +942,16 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 20,
-    "CaughtCount": 87
+    "CaughtCount": 89
   },
   {
     "Regex": "\\$\\d+",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 18,
-    "CaughtCount": 283
+    "TPCount": 1,
+    "FPCount": 20,
+    "CaughtCount": 290
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -1045,6 +1045,15 @@
   },
   {
     "Regex": "(?i)Helpline number",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.2220812,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)Nutra Tosterone",
     "IsAuto": false,
     "Site": "",
     "Score": 10.2220812,
