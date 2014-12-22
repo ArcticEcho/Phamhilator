@@ -21,7 +21,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 28.5757542,
+    "Score": 32.259346,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -93,7 +93,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "anime.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -228,7 +228,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -318,7 +318,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "chemistry.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -327,7 +327,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "chess.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -507,7 +507,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -543,7 +543,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -606,7 +606,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "electronics.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -678,7 +678,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -741,7 +741,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "expressionengine.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -768,7 +768,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "gamedev.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -822,7 +822,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -939,7 +939,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "judaism.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -975,7 +975,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "linguistics.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1128,7 +1128,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1182,7 +1182,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "mathematica.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1299,7 +1299,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "meta.stackexchange.com",
-    "Score": 8.796509,
+    "Score": 9.346291,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1317,7 +1317,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "money.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1344,7 +1344,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "movies.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1497,7 +1497,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "physics.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1614,7 +1614,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "reverseengineering.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1704,7 +1704,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "scifi.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1866,7 +1866,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "stackapps.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1947,7 +1947,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.0,
+    "Score": 6.375,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2010,7 +2010,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 8.995972,
+    "Score": 9.55822,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2262,7 +2262,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "webmasters.stackexchange.com",
-    "Score": 7.796509,
+    "Score": 8.283791,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2307,7 +2307,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "wordpress.stackexchange.com",
-    "Score": 8.859009,
+    "Score": 9.412697,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

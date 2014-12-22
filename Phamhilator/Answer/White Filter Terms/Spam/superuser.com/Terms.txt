@@ -462,7 +462,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 7.93502665,
+    "Score": 6.93502665,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -957,7 +957,7 @@
     "Regex": "datarecovery",
     "IsAuto": false,
     "Site": "raspberrypi.stackexchange.com",
-    "Score": 6.36093569,
+    "Score": 5.313889,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

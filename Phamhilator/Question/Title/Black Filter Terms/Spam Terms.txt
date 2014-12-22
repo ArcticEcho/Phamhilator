@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 8
+    "FPCount": 6,
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -302,8 +302,8 @@
     "Site": "",
     "Score": 18.0,
     "TPCount": 14,
-    "FPCount": 27,
-    "CaughtCount": 55
+    "FPCount": 30,
+    "CaughtCount": 59
   },
   {
     "Regex": "(?i)the perfect",
@@ -501,7 +501,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h",
@@ -752,8 +752,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 18,
-    "CaughtCount": 28
+    "FPCount": 19,
+    "CaughtCount": 29
   },
   {
     "Regex": "(?i)^no hassle",
@@ -789,7 +789,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 6,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -942,7 +942,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 20,
-    "CaughtCount": 89
+    "CaughtCount": 98
   },
   {
     "Regex": "\\$\\d+",
