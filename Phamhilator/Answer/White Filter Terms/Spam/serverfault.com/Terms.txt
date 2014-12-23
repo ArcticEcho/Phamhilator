@@ -57,7 +57,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 15.3218689,
+    "Score": 16.3433266,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -93,7 +93,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 7.93502665,
+    "Score": 8.464028,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -228,7 +228,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 6.93502665,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -291,7 +291,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "emacs.stackexchange.com",
-    "Score": 6.93502665,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -345,7 +345,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gamedev.stackexchange.com",
-    "Score": 6.93502665,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -354,7 +354,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 6.93502665,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -372,7 +372,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gis.stackexchange.com",
-    "Score": 6.93502665,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -462,7 +462,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 7.93502665,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -633,7 +633,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 6.93502665,
+    "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -696,7 +696,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 9.322032,
+    "Score": 11.0101671,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -957,7 +957,7 @@
     "Regex": "datarecovery",
     "IsAuto": false,
     "Site": "raspberrypi.stackexchange.com",
-    "Score": 6.36093569,
+    "Score": 5.313889,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

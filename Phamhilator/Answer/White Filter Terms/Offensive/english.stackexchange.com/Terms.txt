@@ -21,7 +21,7 @@
     "Regex": "(?i)\\bidiot\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -57,7 +57,7 @@
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "philosophy.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -120,7 +120,7 @@
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -192,7 +192,7 @@
     "Regex": "(?i)\\sdick\\s",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 6.1542325,
+    "Score": 5.605263,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

@@ -22,18 +22,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 1,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 4,
+    "TPCount": 5,
     "FPCount": 11,
-    "CaughtCount": 18
+    "CaughtCount": 20
   },
   {
     "Regex": "officialimeiunlock",
@@ -67,9 +67,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 2,
+    "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)^<p>Be sure you",
@@ -139,18 +139,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
-    "TPCount": 4,
+    "TPCount": 5,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 9,
+    "TPCount": 10,
     "FPCount": 8,
-    "CaughtCount": 22
+    "CaughtCount": 23
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -321,7 +321,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)wow gold",
@@ -483,7 +483,7 @@
     "Score": 10.0204086,
     "TPCount": 0,
     "FPCount": 4,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "\\sCLICK HERE\\s",
@@ -589,9 +589,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)skin-care-review",

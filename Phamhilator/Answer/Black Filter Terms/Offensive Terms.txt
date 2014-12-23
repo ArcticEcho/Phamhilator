@@ -24,7 +24,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)\\bpenis\\b",
@@ -78,7 +78,7 @@
     "Score": 11.0,
     "TPCount": 0,
     "FPCount": 14,
-    "CaughtCount": 23
+    "CaughtCount": 24
   },
   {
     "Regex": "(?i)\\bfag\\b",
@@ -104,8 +104,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 2,
-    "FPCount": 3,
-    "CaughtCount": 11
+    "FPCount": 4,
+    "CaughtCount": 12
   },
   {
     "Regex": "(?i)\\bshit\\b",
@@ -114,7 +114,7 @@
     "Score": 10.0,
     "TPCount": 10,
     "FPCount": 13,
-    "CaughtCount": 41
+    "CaughtCount": 42
   },
   {
     "Regex": "(?i)\\bwhore\\b",
