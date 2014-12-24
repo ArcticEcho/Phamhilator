@@ -15,16 +15,16 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?s-m)^.{0,100}$",
     "IsAuto": false,
     "Site": "",
     "Score": 13.3197279,
-    "TPCount": 3,
-    "FPCount": 13,
-    "CaughtCount": 271
+    "TPCount": 5,
+    "FPCount": 15,
+    "CaughtCount": 298
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -33,7 +33,7 @@
     "Score": 14.0,
     "TPCount": 13,
     "FPCount": 6,
-    "CaughtCount": 137
+    "CaughtCount": 139
   },
   {
     "Regex": "enter link description here",
@@ -42,7 +42,7 @@
     "Score": 13.75,
     "TPCount": 2,
     "FPCount": 1,
-    "CaughtCount": 27
+    "CaughtCount": 30
   },
   {
     "Regex": "down vote favorite",

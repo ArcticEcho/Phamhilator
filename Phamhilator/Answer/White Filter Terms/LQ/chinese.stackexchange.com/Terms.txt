@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 49.34492,
+    "Score": 47.18809,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 23.9684982,
+    "Score": 20.6111317,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

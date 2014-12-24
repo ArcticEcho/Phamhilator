@@ -150,7 +150,7 @@
     "Score": 10.0,
     "TPCount": 10,
     "FPCount": 8,
-    "CaughtCount": 23
+    "CaughtCount": 24
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -176,8 +176,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 7
+    "FPCount": 3,
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)BeautyLabs",
@@ -482,8 +482,8 @@
     "Site": "",
     "Score": 10.0204086,
     "TPCount": 0,
-    "FPCount": 4,
-    "CaughtCount": 6
+    "FPCount": 5,
+    "CaughtCount": 7
   },
   {
     "Regex": "\\sCLICK HERE\\s",
@@ -609,7 +609,7 @@
     "Score": 10.0204086,
     "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 5
   },
   {
     "Regex": "(?-m)</a>$",
@@ -654,7 +654,7 @@
     "Score": 10.0204086,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)weight loss(.|\\s)*http://",
@@ -663,7 +663,7 @@
     "Score": 10.0204086,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)alphafuelxreview",

@@ -94,9 +94,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bidiot\\b",
@@ -148,8 +148,8 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   }
 ]

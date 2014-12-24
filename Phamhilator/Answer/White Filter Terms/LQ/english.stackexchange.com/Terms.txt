@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 53.9588356,
+    "Score": 55.79819,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -606,7 +606,7 @@
     "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -615,7 +615,7 @@
     "Regex": "^(?i).{0,150}$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -624,7 +624,7 @@
     "Regex": "^.{0,150}$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -705,7 +705,7 @@
     "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
     "Site": "networkengineering.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -714,7 +714,7 @@
     "Regex": "^.{0,150}$",
     "IsAuto": false,
     "Site": "networkengineering.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -975,7 +975,7 @@
     "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 8.319342,
+    "Score": 7.88148165,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1164,7 +1164,7 @@
     "Regex": "(?i)(did|have) you f(in|oun)d",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1173,7 +1173,7 @@
     "Regex": "(?i)did you find",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

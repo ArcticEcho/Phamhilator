@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 18,
-    "FPCount": 77,
-    "CaughtCount": 274
+    "TPCount": 20,
+    "FPCount": 82,
+    "CaughtCount": 286
   },
   {
     "Regex": "2348064038119",
@@ -249,7 +249,7 @@
     "Score": 10.8585472,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bpune\\b",
@@ -364,18 +364,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)Thank(s| you) for contributing an answer to",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)traininginstitutepune",
