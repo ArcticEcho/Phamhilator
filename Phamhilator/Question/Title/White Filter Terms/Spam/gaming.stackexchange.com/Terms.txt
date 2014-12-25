@@ -12,7 +12,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 7.32050037,
+    "Score": 8.05255,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -84,7 +84,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 10.6962967,
+    "Score": 10.1333342,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -129,7 +129,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "codereview.stackexchange.com",
-    "Score": 8.639317,
+    "Score": 8.184616,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -138,7 +138,7 @@
     "Regex": "(?i)\\bskin\\b",
     "IsAuto": false,
     "Site": "cooking.stackexchange.com",
-    "Score": 5.86805534,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -183,7 +183,7 @@
     "Regex": "(?i)\\bskin\\b",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
-    "Score": 5.86805534,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -291,7 +291,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -345,7 +345,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 8.639317,
+    "Score": 8.184616,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -471,7 +471,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "islam.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -579,7 +579,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "money.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -624,7 +624,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "pets.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -687,7 +687,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "rpg.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -714,7 +714,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 9.184616,
+    "Score": 8.184616,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -723,7 +723,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -741,7 +741,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "sharepoint.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -750,7 +750,7 @@
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "skeptics.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -777,7 +777,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 12.304615,
+    "Score": 11.304615,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -813,7 +813,7 @@
     "Regex": "(?i)\\bskin\\b",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.86805534,
+    "Score": 6.886815,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -849,7 +849,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -930,7 +930,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -948,7 +948,7 @@
     "Regex": "(?i)\\bdelhi\\b",
     "IsAuto": false,
     "Site": "travel.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

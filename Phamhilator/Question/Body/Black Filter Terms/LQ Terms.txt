@@ -24,7 +24,7 @@
     "Score": 13.3197279,
     "TPCount": 5,
     "FPCount": 15,
-    "CaughtCount": 298
+    "CaughtCount": 318
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -33,7 +33,7 @@
     "Score": 14.0,
     "TPCount": 13,
     "FPCount": 6,
-    "CaughtCount": 139
+    "CaughtCount": 145
   },
   {
     "Regex": "enter link description here",
@@ -60,7 +60,7 @@
     "Score": 15.083333,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "^<([bi])>.*</\\1>$",

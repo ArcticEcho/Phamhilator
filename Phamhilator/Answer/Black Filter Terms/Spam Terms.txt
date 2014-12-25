@@ -24,7 +24,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 15.0,
     "TPCount": 20,
-    "FPCount": 82,
-    "CaughtCount": 286
+    "FPCount": 83,
+    "CaughtCount": 292
   },
   {
     "Regex": "2348064038119",

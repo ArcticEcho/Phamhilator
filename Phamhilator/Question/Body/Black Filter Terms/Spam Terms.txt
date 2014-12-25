@@ -33,7 +33,7 @@
     "Score": 10.0,
     "TPCount": 5,
     "FPCount": 11,
-    "CaughtCount": 20
+    "CaughtCount": 21
   },
   {
     "Regex": "officialimeiunlock",
@@ -150,7 +150,7 @@
     "Score": 10.0,
     "TPCount": 10,
     "FPCount": 8,
-    "CaughtCount": 24
+    "CaughtCount": 25
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -321,7 +321,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)wow gold",

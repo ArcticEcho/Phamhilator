@@ -76,9 +76,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bcolon cleanse\\b",
@@ -132,7 +132,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 6,
-    "CaughtCount": 14
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)\\bget your\\b",
@@ -186,7 +186,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)\\bbody( building|builder(s)?| builder(s)?|building)\\b",
@@ -202,9 +202,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 8,
+    "TPCount": 9,
     "FPCount": 0,
-    "CaughtCount": 9
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -248,8 +248,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 2
+    "FPCount": 3,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bcare(ing)?\\b",
@@ -302,8 +302,8 @@
     "Site": "",
     "Score": 18.0,
     "TPCount": 15,
-    "FPCount": 34,
-    "CaughtCount": 66
+    "FPCount": 35,
+    "CaughtCount": 68
   },
   {
     "Regex": "(?i)the perfect",
@@ -409,9 +409,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 3,
-    "FPCount": 10,
-    "CaughtCount": 20
+    "TPCount": 5,
+    "FPCount": 11,
+    "CaughtCount": 23
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -589,9 +589,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 4,
+    "TPCount": 5,
     "FPCount": 5,
-    "CaughtCount": 39
+    "CaughtCount": 40
   },
   {
     "Regex": "(?i)tell you",
@@ -699,7 +699,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 22,
-    "CaughtCount": 54
+    "CaughtCount": 55
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -744,7 +744,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 9,
-    "CaughtCount": 12
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -753,7 +753,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 20,
-    "CaughtCount": 30
+    "CaughtCount": 31
   },
   {
     "Regex": "(?i)^no hassle",
@@ -951,7 +951,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 21,
-    "CaughtCount": 304
+    "CaughtCount": 306
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -1059,6 +1059,6 @@
     "Score": 10.2220812,
     "TPCount": 3,
     "FPCount": 1,
-    "CaughtCount": 2
+    "CaughtCount": 3
   }
 ]
