@@ -12,7 +12,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 8.05255,
+    "Score": 8.857805,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 7.26,
+    "Score": 7.986,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -300,7 +300,7 @@
     "Regex": "(?i)\\bsupplement(s)?\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.05,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -309,7 +309,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 6.05,
+    "Score": 6.655,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -363,7 +363,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -471,7 +471,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "islam.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -579,7 +579,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "money.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -624,7 +624,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "pets.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -687,7 +687,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "rpg.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -723,7 +723,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -741,7 +741,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "sharepoint.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -849,7 +849,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -930,7 +930,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

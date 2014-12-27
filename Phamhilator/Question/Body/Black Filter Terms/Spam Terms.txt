@@ -33,7 +33,7 @@
     "Score": 10.0,
     "TPCount": 5,
     "FPCount": 11,
-    "CaughtCount": 21
+    "CaughtCount": 24
   },
   {
     "Regex": "officialimeiunlock",
@@ -149,8 +149,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 10,
-    "FPCount": 8,
-    "CaughtCount": 25
+    "FPCount": 9,
+    "CaughtCount": 29
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -483,7 +483,7 @@
     "Score": 10.0204086,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 7
+    "CaughtCount": 8
   },
   {
     "Regex": "\\sCLICK HERE\\s",
@@ -591,7 +591,7 @@
     "Score": 10.0204086,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)skin-care-review",
@@ -607,9 +607,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 7
   },
   {
     "Regex": "(?-m)</a>$",
@@ -634,9 +634,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "Bio Testosterone",
@@ -654,16 +654,16 @@
     "Score": 10.0204086,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)weight loss(.|\\s)*http://",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)alphafuelxreview",

@@ -12,7 +12,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 8.05255,
+    "Score": 8.857805,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 7.26,
+    "Score": 7.986,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -309,7 +309,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 6.05,
+    "Score": 6.655,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

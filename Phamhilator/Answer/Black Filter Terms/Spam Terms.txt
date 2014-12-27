@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 15.0,
     "TPCount": 20,
-    "FPCount": 83,
-    "CaughtCount": 292
+    "FPCount": 84,
+    "CaughtCount": 304
   },
   {
     "Regex": "2348064038119",
@@ -112,9 +112,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.6277781,
-    "TPCount": 9,
+    "TPCount": 10,
     "FPCount": 0,
-    "CaughtCount": 13
+    "CaughtCount": 25
   },
   {
     "Regex": "(?i)Do you want to become",
@@ -150,7 +150,7 @@
     "Score": 10.8585472,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)Make money",

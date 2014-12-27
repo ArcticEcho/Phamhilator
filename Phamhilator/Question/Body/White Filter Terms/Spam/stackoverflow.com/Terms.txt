@@ -57,7 +57,7 @@
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.05,
+    "Score": 7.05,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -93,7 +93,7 @@
     "Regex": "(?i)call\\s\\d",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.01020432,
+    "Score": 5.01020432,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

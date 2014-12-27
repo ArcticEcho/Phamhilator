@@ -42,7 +42,7 @@
     "Score": 12.0,
     "TPCount": 4,
     "FPCount": 1,
-    "CaughtCount": 29
+    "CaughtCount": 32
   },
   {
     "Regex": "(?i)did you find",
@@ -51,7 +51,7 @@
     "Score": 12.0,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 18
+    "CaughtCount": 20
   },
   {
     "Regex": "(?i)pl(ease|s|z) help",
@@ -60,7 +60,7 @@
     "Score": 17.0,
     "TPCount": 11,
     "FPCount": 2,
-    "CaughtCount": 69
+    "CaughtCount": 72
   },
   {
     "Regex": "^\\<p\\>[^a-z]*\\<\\/p\\>$",
@@ -69,7 +69,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 1,
-    "CaughtCount": 38
+    "CaughtCount": 39
   },
   {
     "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
@@ -78,16 +78,16 @@
     "Score": 18.0,
     "TPCount": 26,
     "FPCount": 4,
-    "CaughtCount": 219
+    "CaughtCount": 233
   },
   {
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "",
     "Score": 89.0,
-    "TPCount": 286,
+    "TPCount": 291,
     "FPCount": 86,
-    "CaughtCount": 1813
+    "CaughtCount": 1905
   },
   {
     "Regex": "(?i)^please",
@@ -105,7 +105,7 @@
     "Score": 16.8727264,
     "TPCount": 25,
     "FPCount": 2,
-    "CaughtCount": 50
+    "CaughtCount": 55
   },
   {
     "Regex": "(?i)have question",
@@ -121,9 +121,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 19.3837166,
-    "TPCount": 115,
+    "TPCount": 118,
     "FPCount": 83,
-    "CaughtCount": 1761
+    "CaughtCount": 1842
   },
   {
     "Regex": "^(?=.*?(?i)please).{0,100}$",
@@ -132,7 +132,7 @@
     "Score": 22.3837166,
     "TPCount": 75,
     "FPCount": 139,
-    "CaughtCount": 1212
+    "CaughtCount": 1217
   },
   {
     "Regex": "(?i)need (an )?answer",
@@ -150,7 +150,7 @@
     "Score": 19.6851864,
     "TPCount": 16,
     "FPCount": 0,
-    "CaughtCount": 31
+    "CaughtCount": 34
   },
   {
     "Regex": "(?i)(have|did) you (solve|fix|find|found)",
@@ -159,6 +159,6 @@
     "Score": 19.2035675,
     "TPCount": 7,
     "FPCount": 0,
-    "CaughtCount": 41
+    "CaughtCount": 45
   }
 ]

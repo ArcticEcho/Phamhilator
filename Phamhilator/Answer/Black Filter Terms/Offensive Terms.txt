@@ -31,9 +31,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 3,
-    "CaughtCount": 6
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)\\bbumhole\\b",
@@ -87,7 +87,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)\\bfuck",
@@ -96,7 +96,7 @@
     "Score": 11.0,
     "TPCount": 9,
     "FPCount": 4,
-    "CaughtCount": 19
+    "CaughtCount": 20
   },
   {
     "Regex": "(?i)\\bidiot\\b",
