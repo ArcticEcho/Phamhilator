@@ -31,8 +31,8 @@ namespace Phamhilator
             var url = TrimQuestionUrl((string)data["url"]);
 
             var host = (string)data["siteBaseHostAddress"];
-            var title = EscapeString(WebUtility.HtmlDecode((string)data["titleEncodedFancy"]));
-            var authorName = EscapeString(WebUtility.HtmlDecode((string)data["ownerDisplayName"]));
+            var title = WebUtility.HtmlDecode((string)data["titleEncodedFancy"]);
+            var authorName = WebUtility.HtmlDecode((string)data["ownerDisplayName"]);
             var authorLink = (string)data["ownerUrl"];
             var tags = new List<string>();
 
@@ -64,7 +64,7 @@ namespace Phamhilator
                 tags.Add(t);
             }
 
-            var title = EscapeString(WebUtility.HtmlDecode(dom[".question-hyperlink"].Html()));
+            var title = WebUtility.HtmlDecode(dom[".question-hyperlink"].Html());
             var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
 
@@ -75,7 +75,7 @@ namespace Phamhilator
             if (dom[".reputation-score"][0] != null)
             {
                 // Normal answer.
-                authorName = EscapeString(WebUtility.HtmlDecode(dom[".user-details a"][0].InnerHTML));
+                authorName = WebUtility.HtmlDecode(dom[".user-details a"][0].InnerHTML);
                 authorLink = "http://" + host + dom[".user-details a"][0].Attributes["href"];
                 authorRep = ParseRep(dom[".reputation-score"][0].InnerHTML);
             }
@@ -84,14 +84,14 @@ namespace Phamhilator
                 if (dom[".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
                 {
                     // Community wiki.
-                    authorName = EscapeString(WebUtility.HtmlDecode(dom[".user-details a"][1].InnerHTML));
+                    authorName = WebUtility.HtmlDecode(dom[".user-details a"][1].InnerHTML);
                     authorLink = "http://" + host + dom[".user-details a"][1].Attributes["href"];
                     authorRep = 1;
                 }
                 else
                 {
                     // Dead account owner.
-                    authorName = EscapeString(WebUtility.HtmlDecode(dom[ ".user-details"][0].InnerHTML));
+                    authorName = WebUtility.HtmlDecode(dom[ ".user-details"][0].InnerHTML);
                     authorName = authorName.Remove(authorName.Length - 4);
                     authorLink = null;
                     authorRep = 1;
@@ -157,6 +157,21 @@ namespace Phamhilator
             return (int)float.Parse(rep);
         }
 
+        public static string EscapeString(string input, string newlineReplace)
+        {
+            var output = input.Replace("\n", newlineReplace).Replace("\\n", newlineReplace);
+
+            for (var i = 0; i < output.Length; i++)
+            {
+                if (escapeChars.IsMatch(output[i].ToString(CultureInfo.InvariantCulture)))
+                {
+                    output = output.Insert(i, "\\");
+                    i++;
+                }
+            }
+
+            return output.Trim();
+        }
 
 
         private static Answer GetAnswer(CQ dom, string host, string id)
@@ -173,7 +188,7 @@ namespace Phamhilator
             if (dom[aDom + ".reputation-score"][0] != null)
             {
                 // Normal answer.
-                authorName = EscapeString(WebUtility.HtmlDecode(dom[aDom + ".user-details a"][0].InnerHTML));
+                authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][0].InnerHTML);
                 authorLink = "http://" + host + dom[aDom + ".user-details a"][0].Attributes["href"];
                 authorRep = ParseRep(dom[aDom + ".reputation-score"][0].InnerHTML);
             }
@@ -182,41 +197,25 @@ namespace Phamhilator
                 if (dom[aDom + ".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
                 {
                     // Community wiki.
-                    authorName = EscapeString(WebUtility.HtmlDecode(dom[aDom + ".user-details a"][1].InnerHTML));
+                    authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][1].InnerHTML);
                     authorLink = "http://" + host + dom[aDom + ".user-details a"][1].Attributes["href"];
                     authorRep = 1;
                 }
                 else
                 {
                     // Dead account owner.
-                    authorName = EscapeString(WebUtility.HtmlDecode(dom[aDom + ".user-details"][0].InnerHTML));
+                    authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details"][0].InnerHTML);
                     authorName = authorName.Remove(authorName.Length - 4);
                     authorLink = null;
                     authorRep = 1;
                 }
             }
 
-            var excerpt = EscapeString(StripTags(body));
+            var excerpt = StripTags(body);
 
             excerpt = excerpt.Length > 75 ? excerpt.Substring(0, 72) + "..." : excerpt;
 
             return new Answer(url, excerpt, body, host, score, authorName, authorLink, authorRep);
-        }
-
-        private static string EscapeString(string input)
-        {
-            var output = input.Replace("\n", " ");
-
-            for (var i = 0; i < output.Length; i++)
-            {
-                if (escapeChars.IsMatch(output[i].ToString(CultureInfo.InvariantCulture)))
-                {
-                    output = output.Insert(i, "\\");
-                    i++;
-                }
-            }
-
-            return output.Trim();
         }
 
         private static string TrimQuestionUrl(string url)

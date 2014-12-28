@@ -11,7 +11,8 @@ using ChatExchangeDotNet;
 namespace Phamhilator
 {
     public static class CommandProcessor
-    {
+    {        
+        private static readonly Regex termCommands = new Regex(@"(?i)^(add|del|edit|auto)\-(b|w)\-(a|qb|qt)\-(spam|off|name|lq)(\-p)? ", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Random random = new Random();
         private static Room room;
         private static Message message;
@@ -19,7 +20,6 @@ namespace Phamhilator
         private static Post post;
         private static string commandLower = "";
         private static bool fileMissingWarningMessagePosted;
-        private static readonly Regex termCommands = new Regex(@"(?i)^(add|del|edit|auto)\-(b|w)\-(a|qb|qt)\-(spam|off|name|lq)(\-p)? ", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
 
 
@@ -89,7 +89,7 @@ namespace Phamhilator
                 {
                     return PrivilegedUserCommands(command);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return new[] { new ReplyMessage("`Error executing command.`") };
                 }		
@@ -463,7 +463,7 @@ namespace Phamhilator
 
             if (commandLower == "panic")
             {
-                return new[] { new ReplyMessage("http://rack.0.mshcdn.com/media/ZgkyMDEzLzA2LzE4LzdjL0JlYWtlci4zOWJhOC5naWYKcAl0aHVtYgkxMjAweDk2MDA-/4a93e3c4/4a4/Beaker.gif", false) };
+                return new[] { new ReplyMessage("http://rack.0.mshcdn.com/media/ZgkyMDEzLzA2LzE4LzdjL0JlYWtlci4zOWJhOC5naWYKcAl0aHVtYgkxMjAweDk2MDA-/4a93e3c4/4a4/Beaker.gif") };
             }
 
             if (commandLower == "fox")
@@ -525,7 +525,7 @@ namespace Phamhilator
             if (report.BlackTermsFound.Count == 1)
             {
                 var term = report.BlackTermsFound.First();
-                var m = "`Term found: "+ term.Regex.ToString().Replace("\n", "(?# new line)");
+                var m = "`Term found: "+ term.Regex.ToString().Replace("\\n", "(?# new line)");
 
                 if (term.TPCount + term.FPCount >= 5)
                 {
@@ -566,7 +566,7 @@ namespace Phamhilator
                     builder.Append(" (Ignored: " + Math.Round((term.IgnoredCount / term.CaughtCount) * 100, 1));
                     builder.Append("%. Score: " + Math.Round(term.Score, 1));
                     builder.Append(". Auto: " + term.IsAuto + ")\n    \n");
-                }		
+                }
             }
 
             return new ReplyMessage(builder.ToString().TrimEnd(), false);

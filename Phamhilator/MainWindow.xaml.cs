@@ -102,7 +102,7 @@ namespace Phamhilator
                     }
                     catch (Exception ex)
                     {
-                        GlobalInfo.PrimaryRoom.PostMessage("`Error: \n" + ex.ToString() + "\n\nReceived message: " + message.Data + "`");
+                        GlobalInfo.PrimaryRoom.PostMessage("    Error: \n" + ex.ToString().Replace("\n", "\n    ") + "\n    \n    Received message: " + message.Data.Replace("\n", "\n    "));
                     }
                 };
 
@@ -183,7 +183,7 @@ namespace Phamhilator
                 {
                     var messages = CommandProcessor.ExacuteCommand(GlobalInfo.PrimaryRoom, message);
 
-                    if (messages.Length == 0) { return; }
+                    if (messages == null || messages.Length == 0) { return; }
 
                     foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
                     {
@@ -212,7 +212,7 @@ namespace Phamhilator
 
                 var messages = CommandProcessor.ExacuteCommand(room, message);
 
-                if (messages.Length == 0) { return; }
+                if (messages == null || messages.Length == 0) { return; }
 
                 foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
                 {
@@ -248,44 +248,44 @@ namespace Phamhilator
             switch (info.Type)
             {
                 case PostType.Offensive:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = GlobalInfo.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
+                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                        break;
-                    }
+                    break;
+                }
 
                 case PostType.BadUsername:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
+                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                        break;
-                    }
+                    break;
+                }
 
                 case PostType.BadTagUsed:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Tag(s) Used**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Tag(s) Used**" + messageBody);
+                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                        break;
-                    }
+                    break;
+                }
 
                 case PostType.LowQuality:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
+                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                        break;
-                    }
+                    break;
+                }
 
                 case PostType.Spam:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
+                    chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
 
-                        break;
-                    }
+                    break;
+                }
             }
 
             if (message != null)
