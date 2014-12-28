@@ -718,5 +718,14 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)servicesolahart",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]

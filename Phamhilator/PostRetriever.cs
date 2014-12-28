@@ -28,12 +28,12 @@ namespace Phamhilator
         {
             var data = JToken.Parse(JObject.Parse(message.Data)["data"].ToString());
 
-            var url = TrimQuestionUrl((string)data["url"]);
+            var url = TrimUrl((string)data["url"]);
 
             var host = (string)data["siteBaseHostAddress"];
             var title = WebUtility.HtmlDecode((string)data["titleEncodedFancy"]);
             var authorName = WebUtility.HtmlDecode((string)data["ownerDisplayName"]);
-            var authorLink = (string)data["ownerUrl"];
+            var authorLink = TrimUrl((string)data["ownerUrl"]);
             var tags = new List<string>();
 
             foreach (var tag in JArray.Parse(data["tags"].ToString()))
@@ -76,7 +76,7 @@ namespace Phamhilator
             {
                 // Normal answer.
                 authorName = WebUtility.HtmlDecode(dom[".user-details a"][0].InnerHTML);
-                authorLink = "http://" + host + dom[".user-details a"][0].Attributes["href"];
+                authorLink = TrimUrl("http://" + host + dom[".user-details a"][0].Attributes["href"]);
                 authorRep = ParseRep(dom[".reputation-score"][0].InnerHTML);
             }
             else
@@ -85,7 +85,7 @@ namespace Phamhilator
                 {
                     // Community wiki.
                     authorName = WebUtility.HtmlDecode(dom[".user-details a"][1].InnerHTML);
-                    authorLink = "http://" + host + dom[".user-details a"][1].Attributes["href"];
+                    authorLink = TrimUrl("http://" + host + dom[".user-details a"][1].Attributes["href"]);
                     authorRep = 1;
                 }
                 else
@@ -189,7 +189,7 @@ namespace Phamhilator
             {
                 // Normal answer.
                 authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][0].InnerHTML);
-                authorLink = "http://" + host + dom[aDom + ".user-details a"][0].Attributes["href"];
+                authorLink = TrimUrl("http://" + host + dom[aDom + ".user-details a"][0].Attributes["href"]);
                 authorRep = ParseRep(dom[aDom + ".reputation-score"][0].InnerHTML);
             }
             else
@@ -198,7 +198,7 @@ namespace Phamhilator
                 {
                     // Community wiki.
                     authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][1].InnerHTML);
-                    authorLink = "http://" + host + dom[aDom + ".user-details a"][1].Attributes["href"];
+                    authorLink = TrimUrl("http://" + host + dom[aDom + ".user-details a"][1].Attributes["href"]);
                     authorRep = 1;
                 }
                 else
@@ -218,7 +218,7 @@ namespace Phamhilator
             return new Answer(url, excerpt, body, host, score, authorName, authorLink, authorRep);
         }
 
-        private static string TrimQuestionUrl(string url)
+        private static string TrimUrl(string url)
         {
             var trimmed = "";
             var fsCount = 0;

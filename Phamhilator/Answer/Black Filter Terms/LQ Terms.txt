@@ -87,7 +87,7 @@
     "Score": 89.0,
     "TPCount": 291,
     "FPCount": 86,
-    "CaughtCount": 1905
+    "CaughtCount": 1912
   },
   {
     "Regex": "(?i)^please",
@@ -123,7 +123,7 @@
     "Score": 19.3837166,
     "TPCount": 118,
     "FPCount": 83,
-    "CaughtCount": 1842
+    "CaughtCount": 1844
   },
   {
     "Regex": "^(?=.*?(?i)please).{0,100}$",

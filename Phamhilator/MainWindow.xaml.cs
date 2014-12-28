@@ -396,7 +396,7 @@ namespace Phamhilator
                 GlobalInfo.PrimaryRoom.MessageEdited += (oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage);
                 GlobalInfo.PrimaryRoom.IgnoreOwnEvents = false;
 
-                GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");//("http://chat.meta.stackexchange.com/rooms/651");
+                GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/651");//("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");//
 
                 for (var i = 0; i < GlobalInfo.ChatClient.Rooms.Count; i++)
                 {

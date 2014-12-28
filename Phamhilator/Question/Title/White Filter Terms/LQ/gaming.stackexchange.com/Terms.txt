@@ -21,7 +21,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 36.417778,
+    "Score": 38.69389,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -93,7 +93,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "anime.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 7.530671,
+    "Score": 6.951389,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -147,7 +147,7 @@
     "Regex": "(?i)newbie",
     "IsAuto": false,
     "Site": "arduino.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -165,7 +165,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 6.35706,
+    "Score": 5.86805534,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -228,7 +228,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -318,7 +318,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "chemistry.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -327,7 +327,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "chess.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -507,7 +507,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -543,7 +543,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "drupal.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -606,7 +606,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "electronics.stackexchange.com",
-    "Score": 9.283791,
+    "Score": 9.864027,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -669,7 +669,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 5.86805534,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -678,7 +678,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -741,7 +741,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "expressionengine.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -768,7 +768,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "gamedev.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -795,7 +795,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 6.35706,
+    "Score": 5.86805534,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -822,7 +822,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 8.283791,
+    "Score": 8.801527,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
