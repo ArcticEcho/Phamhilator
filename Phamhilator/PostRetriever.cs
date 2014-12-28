@@ -75,7 +75,7 @@ namespace Phamhilator
             if (dom[".reputation-score"][0] != null)
             {
                 // Normal answer.
-                authorName = WebUtility.HtmlDecode(dom[".user-details a"][0].InnerHTML);
+                authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details a"][0].InnerHTML));
                 authorLink = TrimUrl("http://" + host + dom[".user-details a"][0].Attributes["href"]);
                 authorRep = ParseRep(dom[".reputation-score"][0].InnerHTML);
             }
@@ -84,14 +84,14 @@ namespace Phamhilator
                 if (dom[".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
                 {
                     // Community wiki.
-                    authorName = WebUtility.HtmlDecode(dom[".user-details a"][1].InnerHTML);
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details a"][1].InnerHTML));
                     authorLink = TrimUrl("http://" + host + dom[".user-details a"][1].Attributes["href"]);
                     authorRep = 1;
                 }
                 else
                 {
                     // Dead account owner.
-                    authorName = WebUtility.HtmlDecode(dom[ ".user-details"][0].InnerHTML);
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[ ".user-details"][0].InnerHTML));
                     authorName = authorName.Remove(authorName.Length - 4);
                     authorLink = null;
                     authorRep = 1;
@@ -188,7 +188,7 @@ namespace Phamhilator
             if (dom[aDom + ".reputation-score"][0] != null)
             {
                 // Normal answer.
-                authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][0].InnerHTML);
+                authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details a"][0].InnerHTML));
                 authorLink = TrimUrl("http://" + host + dom[aDom + ".user-details a"][0].Attributes["href"]);
                 authorRep = ParseRep(dom[aDom + ".reputation-score"][0].InnerHTML);
             }
@@ -197,14 +197,14 @@ namespace Phamhilator
                 if (dom[aDom + ".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
                 {
                     // Community wiki.
-                    authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details a"][1].InnerHTML);
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details a"][1].InnerHTML));
                     authorLink = TrimUrl("http://" + host + dom[aDom + ".user-details a"][1].Attributes["href"]);
                     authorRep = 1;
                 }
                 else
                 {
                     // Dead account owner.
-                    authorName = WebUtility.HtmlDecode(dom[aDom + ".user-details"][0].InnerHTML);
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details"][0].InnerHTML));
                     authorName = authorName.Remove(authorName.Length - 4);
                     authorLink = null;
                     authorRep = 1;

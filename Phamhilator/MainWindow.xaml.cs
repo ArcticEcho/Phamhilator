@@ -102,7 +102,7 @@ namespace Phamhilator
                     }
                     catch (Exception ex)
                     {
-                        GlobalInfo.PrimaryRoom.PostMessage("    Error: \n" + ex.ToString().Replace("\n", "\n    ") + "\n    \n    Received message: " + message.Data.Replace("\n", "\n    "));
+                        GlobalInfo.PrimaryRoom.PostMessage("    Error: \n" + ex + "\n    \n    Received message: " + message.Data);
                     }
                 };
 
