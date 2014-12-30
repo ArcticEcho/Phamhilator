@@ -220,6 +220,8 @@ namespace Phamhilator
 
         private static string TrimUrl(string url)
         {
+            if (String.IsNullOrEmpty(url)) { return null; }
+
             var trimmed = "";
             var fsCount = 0;
 

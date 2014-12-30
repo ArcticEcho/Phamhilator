@@ -11,15 +11,295 @@ using ChatExchangeDotNet;
 namespace Phamhilator
 {
     public static class CommandProcessor
-    {        
-        private static readonly Regex termCommands = new Regex(@"(?i)^(add|del|edit|auto)\-(b|w)\-(a|qb|qt)\-(spam|off|name|lq)(\-p)? ", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Random random = new Random();
+    {
         private static Room room;
         private static Message message;
         private static PostAnalysis report;
         private static Post post;
-        private static string commandLower = "";
         private static bool fileMissingWarningMessagePosted;
+        private const RegexOptions cmdRegexOptions = RegexOptions.Compiled | RegexOptions.CultureInvariant;
+        private static readonly Random random = new Random();
+        private static readonly HashSet<ChatCommand> commands = new HashSet<ChatCommand>
+        {
+            #region Normal user commands.
+
+            new ChatCommand(new Regex("(?i)^status$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage(String.Concat("`", GlobalInfo.Status, "`."/*" @ ", GlobalInfo.CommitFormatted, "(https://github.com/ArcticEcho/Phamhilator/commit/", GlobalInfo.CommitHash, ").")*/))
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^(info(rmation)?|about)$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("[`Phamhilator`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + GlobalInfo.Owners + ".`")
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^help$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands) `for a full list of commands.`")
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^(help (add|del)|(add|del) help)$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("`To add or delete a term, use \">>(add/del)-(b/w)-(a/qt/qb)-(lq/spam/off/name) (if w, term's site name) {regex-term}\". To add or delete a tag, use \">>(add/remove) {site-name} {tag-name} {link}\".`")
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^(help edit|edit help)$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("`To edit a term, use \">>edit-(b/w)-(a/qt/qb)-(lq/spam/off/name) (if w, term's site name) {old-term}¬¬¬{new-term}\".`")
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^(help auto|auto help)$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("`To add an automatic term, use \">>auto-b-(a/qt/qb)-(lq/spam/off/name)(-p) {regex-term}\". Use \"-p\" if the change should persist past the bot's restart.`")
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^(help list|list help|commands)$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats & status.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del/delete/remove.\n    Owner-only commands: resume, pause, (add/ban) user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full scan & set status {message}.", false)
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^stats$", cmdRegexOptions), command =>
+            {
+                var ignorePercent = Math.Round(((GlobalInfo.Stats.TotalCheckedPosts - (GlobalInfo.Stats.TotalFPCount + GlobalInfo.Stats.TotalTPCount)) / GlobalInfo.Stats.TotalCheckedPosts) * 100, 1);
+
+                return new[] { new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught: " + GlobalInfo.PostsCaught + " (last 7 days), " + GlobalInfo.Stats.TotalCheckedPosts + " (total). " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`")} ;
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^(terms|why)$", cmdRegexOptions), command => new[]
+            {
+                GetTerms()
+            }, CommandAccessLevel.NormalUser),
+
+            #region Toys.
+
+            new ChatCommand(new Regex("(?i)^red button$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("`Warning: now launching " + random.Next(1, 101) + " anti-spammer homing missiles...`", false)
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^panic$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("http://rack.0.mshcdn.com/media/ZgkyMDEzLzA2LzE4LzdjL0JlYWtlci4zOWJhOC5naWYKcAl0aHVtYgkxMjAweDk2MDA-/4a93e3c4/4a4/Beaker.gif")
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^fox$", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("http://i.stack.imgur.com/0qaHz.gif")
+            }, CommandAccessLevel.NormalUser),
+
+            #endregion
+
+            #endregion
+
+            #region Privileged user commands.
+
+            #region Add black term commands.
+
+            new ChatCommand(new Regex(@"(?i)^add\-b\-qt\-(spam|off|name|lq) \S", cmdRegexOptions), command => new[]
+            {
+                AddBQTTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),          
+            new ChatCommand(new Regex(@"(?i)^add\-b\-qb\-(spam|off|name|lq) \S", cmdRegexOptions), command => new[]
+            {
+                AddBQBTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^add\-b\-a\-(spam|off|name|lq) \S", cmdRegexOptions), command => new[]
+            {
+                AddBATerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            #endregion
+
+            #region Add white term commands.
+
+            new ChatCommand(new Regex(@"(?i)^add\-w\-qt\-(spam|off|name|lq) \S+ \S", cmdRegexOptions), command => new[]
+            {
+                AddWQTTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^add\-w\-qb\-(spam|off|name|lq) \S+ \S", cmdRegexOptions), command => new[]
+            {
+                AddWQBTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^add\-w\-a\-(spam|off|name|lq) \S+ \S", cmdRegexOptions), command => new[]
+            {
+                AddWATerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+
+            #endregion
+
+            #region Edit black term commands.
+            
+            new ChatCommand(new Regex(@"(?i)^edit\-b\-qt\-(spam|off|name|lq) .+¬¬¬.+$", cmdRegexOptions), command => new[]
+            {
+                EditBQTTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^edit\-b\-qb\-(spam|off|name|lq) .+¬¬¬.+$", cmdRegexOptions), command => new[]
+            {
+                EditBQBTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^edit\-b\-a\-(spam|off|name|lq) .+¬¬¬.+$", cmdRegexOptions), command => new[]
+            {
+                EditBATerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+
+            #endregion
+
+            #region Edit white term commands.
+
+            new ChatCommand(new Regex(@"(?i)^edit\-w\-qt\-(spam|off|name|lq) \S+ .+¬¬¬.+$", cmdRegexOptions), command => new[]
+            {
+                EditWQTTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^edit\-w\-qb\-(spam|off|name|lq) \S+ .+¬¬¬.+$", cmdRegexOptions), command => new[]
+            {
+                EditWQBTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^edit\-w\-a\-(spam|off|name|lq) \S+ .+¬¬¬.+$", cmdRegexOptions), command => new[]
+            {
+                EditWATerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+
+            #endregion
+
+            #region Remove black term commands.
+
+            new ChatCommand(new Regex(@"(?i)^del\-b\-qt\-(spam|off|name|lq) \S", cmdRegexOptions), command => new[]
+            {
+                RemoveBQTTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^del\-b\-qb\-(spam|off|name|lq) \S", cmdRegexOptions), command => new[]
+            {
+                RemoveBQBTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^del\-b\-a\-(spam|off|name|lq) \S", cmdRegexOptions), command => new[]
+            {
+                RemoveBATerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+
+            #endregion
+
+            #region Remove white term commands.
+
+            new ChatCommand(new Regex(@"(?i)^del\-w\-qt\-(spam|off|name|lq) \S+ .*", cmdRegexOptions), command => new[]
+            {
+                RemoveWQTTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^del\-w\-qb\-(spam|off|name|lq) \S+ .*", cmdRegexOptions), command => new[]
+            {
+                RemoveWQBTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^del\-w\-a\-(spam|off|name|lq) \S+ .*", cmdRegexOptions), command => new[]
+            {
+                RemoveWATerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+
+            #endregion
+
+            #region FP/TP commands.
+
+            new ChatCommand(new Regex(@"(?i)^f(p|alse)$", cmdRegexOptions), command => new[]
+            {
+                FalsePositive()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^fp why$", cmdRegexOptions), command => new[]
+            {
+                FalsePositive(),
+                GetTerms()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^fp del$", cmdRegexOptions), command => new[]
+            {
+                FalsePositive(),
+                DeleteMessage()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^tpa?$", cmdRegexOptions), command => new[]
+            {
+                TruePositive(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^tpa? why$", cmdRegexOptions), command => new[]
+            {
+                TruePositive(command),
+                GetTerms()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^tpa? clean$", cmdRegexOptions), command => new[]
+            {
+                TruePositive(command),
+                CleanMessage()
+            }, CommandAccessLevel.PrivilegedUser),
+
+            #endregion
+
+            #region Black term auto toggling commands.
+            
+            new ChatCommand(new Regex(@"(?i)^auto\-b-qt\-(spam|off|name|lq)(\-p) \S?$", cmdRegexOptions), command => new[]
+            {
+                AutoBQTTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^auto\-b-qb\-(spam|off|name|lq)(\-p) \S?$", cmdRegexOptions), command => new[]
+            {
+                AutoBQBTerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^auto\-b-a\-(spam|off|name|lq)(\-p) \S?$", cmdRegexOptions), command => new[]
+            {
+                AutoBATerm(command)
+            }, CommandAccessLevel.PrivilegedUser),
+
+            #endregion
+
+            new ChatCommand(new Regex(@"(?i)^add-tag \S+ \S+$", cmdRegexOptions), command => new[]
+            {
+                AddTag(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^del-tag \S+ \S+$", cmdRegexOptions), command => new[]
+            {
+                RemoveTag(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^clean$", cmdRegexOptions), command => new[]
+            {
+                CleanMessage()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^del$", cmdRegexOptions), command => new[]
+            {
+                DeleteMessage()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^ask$", cmdRegexOptions), command => new[]
+            {
+                Ask()
+            }, CommandAccessLevel.PrivilegedUser),
+
+            #endregion
+
+            #region Owner commands.
+
+            new ChatCommand(new Regex(@"(?i)^add user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            {
+                AddUser(command)
+            }, CommandAccessLevel.Owner),
+            new ChatCommand(new Regex(@"(?i)^ban user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            {
+                BanUser(command)
+            }, CommandAccessLevel.Owner),
+            new ChatCommand(new Regex(@"(?i)^resume$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            {
+                ResumeBot()
+            }, CommandAccessLevel.Owner),
+            new ChatCommand(new Regex(@"(?i)^pause$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            {
+                PauseBot()
+            }, CommandAccessLevel.Owner),
+            new ChatCommand(new Regex(@"(?i)^full scan$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            {
+                FullScan()
+            }, CommandAccessLevel.Owner),
+            new ChatCommand(new Regex(@"(?i)^threshold (\d|\.)+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            {
+                SetAccuracyThreshold(command)
+            }, CommandAccessLevel.Owner),
+            new ChatCommand(new Regex(@"(?i)^set status .+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            {
+                SetStatus(command)
+            }, CommandAccessLevel.Owner),
+
+            #endregion
+        };
 
 
 
@@ -42,7 +322,7 @@ namespace Phamhilator
             {
                 command = input.Content.Remove(0, 2).TrimStart();
             }
-            else if (input.ParentID != -1 && GlobalInfo.PostedReports.ContainsKey(input.ParentID))
+            else if (input.ParentID != -1 && room[input.ParentID].AuthorID == room.Me.ID)
             {
                 command = input.Content.TrimStart();
             }
@@ -51,7 +331,13 @@ namespace Phamhilator
                 return new[] { new ReplyMessage("", false) };
             }
 
-            commandLower = command.ToLowerInvariant();
+            var requestedCmd = commands.FirstOrDefault(cmd => cmd.Syntax.IsMatch(command));
+
+            if (requestedCmd == null)
+            {
+                return new[] { new ReplyMessage("`Command not recognised.`") };
+            }
+
             room = roomMessage;
             message = input;
 
@@ -66,466 +352,72 @@ namespace Phamhilator
                 post = null;
             }
 
-            if (IsNormalUserCommand(commandLower))
+            try
             {
-                try
+                switch (requestedCmd.AccessLevel)
                 {
-                    return NormalUserCommands();
-                }
-                catch (Exception)
-                {
-                    return new[] { new ReplyMessage("`Error executing command.`") };
+                    case CommandAccessLevel.NormalUser:
+                    {
+                        return requestedCmd.Command(command);
+                    }
+
+                    case CommandAccessLevel.PrivilegedUser:
+                    {
+                        if (!UserAccess.CommandAccessUsers.Contains(input.AuthorID) && !UserAccess.Owners.Contains(input.AuthorID))
+                        {
+                            return new[]
+                            {
+                                new ReplyMessage("`Access denied.`")
+                            };
+                        }
+
+                        return requestedCmd.Command(command);
+                    }
+
+                    case CommandAccessLevel.Owner:
+                    {
+                        if (!UserAccess.Owners.Contains(input.AuthorID))
+                        {
+                            return new[]
+                            {
+                                new ReplyMessage("`Access denied.`")
+                            };
+                        }
+
+                        return requestedCmd.Command(command);
+                    }
                 }
             }
-
-            if (IsPrivilegedUserCommand(commandLower))
+            catch (Exception)
             {
-                if (!UserAccess.CommandAccessUsers.Contains(input.AuthorID) && !UserAccess.Owners.Contains(input.AuthorID))
-                {
-                    return new[] { new ReplyMessage("`Access denied.`") };
-                }
-
-                try
-                {
-                    return PrivilegedUserCommands(command);
-                }
-                catch (Exception)
-                {
-                    return new[] { new ReplyMessage("`Error executing command.`") };
-                }		
-            }
-            
-            if (IsOwnerCommand(commandLower))
-            {
-                if (!UserAccess.Owners.Contains(input.AuthorID))
-                {
-                    return new[] { new ReplyMessage("`Access denied.`") };
-                }
-                
-                try
-                {
-                    return OwnerCommand(command);
-                }
-                catch (Exception)
-                {
-                    return new[] { new ReplyMessage("`Error executing command.`") };
-                }
+                return new[] { new ReplyMessage("`Error executing command.`") };
             }
 
-            return new[] { new ReplyMessage("`Command not recognised.`") };
+            return null;
         }
 
         public static bool IsValidCommand(Message command)
         {
-            var lower = command.Content.ToLowerInvariant().Trim();
+            var trimmedCommand = command.Content.Trim();
 
-            if (lower.StartsWith(">>"))
+            if (trimmedCommand.StartsWith(">>"))
             {
-                lower = lower.Remove(0, 2).TrimStart();
+                trimmedCommand = trimmedCommand.Remove(0, 2).TrimStart();
             }
 
-            return IsNormalUserCommand(lower) || IsPrivilegedUserCommand(lower) || IsOwnerCommand(lower);
-        }
-
-
-        private static bool IsOwnerCommand(string command)
-        {
-            return command.StartsWith("ban user") ||
-                   command.StartsWith("add user") ||
-                   command.StartsWith("threshold") ||
-                   command.StartsWith("set status") ||
-                   command == "resume" ||
-                   command == "pause" ||
-                   command == "full scan";
-        }
-
-        private static ReplyMessage[] OwnerCommand(string command)
-        {
-            if (commandLower.StartsWith("add user"))
-            {
-                return new[] { AddUser(command) };
-            }
-
-            if (command.StartsWith("ban user"))
-            {
-                return new[] { BanUser(command) };
-            }
-
-            if (commandLower == "resume")
-            {
-                return new[] { ResumeBot() };
-            }
-
-            if (commandLower == "pause")
-            {
-                return new[] { PauseBot() };
-            }
-
-            if (commandLower == "full scan")
-            {
-                return new[] { FullScan() };
-            }
-
-            if (commandLower.StartsWith("threshold"))
-            {
-                return new[] { SetAccuracyThreshold(command) };
-            }
-
-            if (commandLower.StartsWith("set status"))
-            {
-                return new[] { SetStatus(command) };
-            }
-
-            return new[] { new ReplyMessage("`Command not recognised.`") };
-        }
-
-
-        private static bool IsPrivilegedUserCommand(string command)
-        {
-            return command == "fp" || command == "fp why" ||
-                   command == "tp" || command == "tpa" || 
-                   command == "tp why" || command == "tpa why" || 
-                   command == "tpa clean" ||
-                   command == "clean" ||
-                   command == "del" || command == "delete" || command == "remove" ||
-                   command.StartsWith("remove tag") || command.StartsWith("add tag") ||
-                   commandLower == "ask" ||
-                   termCommands.IsMatch(command);
-        }
-
-        private static ReplyMessage[] PrivilegedUserCommands(string command)
-        {
-            # region Edit term commands.
-
-            if (commandLower.StartsWith("edit-b-qt"))
-            {
-                return new[] { EditBQTTerm(command) };
-            }
-
-            if (commandLower.StartsWith("edit-w-qt"))
-            {
-                return new[] { EditWQTTerm(command) };
-            }
-
-            if (commandLower.StartsWith("edit-b-qb"))
-            {
-                return new[] { EditBQBTerm(command) };
-            }
-
-            if (commandLower.StartsWith("edit-w-qb"))
-            {
-                return new[] { EditWQBTerm(command) };
-            }
-
-            if (commandLower.StartsWith("edit-b-a"))
-            {
-                return new[] { EditBATerm(command) };
-            }
-
-            if (commandLower.StartsWith("edit-w-a"))
-            {
-                return new[] { EditWATerm(command) };
-            }
-
-            # endregion
-
-            # region QT term commands.
-
-            if (commandLower.StartsWith("del-b-qt"))
-            {
-                return new[] { RemoveBQTTerm(command) };
-            }
-
-            if (commandLower.StartsWith("add-b-qt"))
-            {
-                return new[] { AddBQTTerm(command) };
-            }
-
-            if (commandLower.StartsWith("del-w-qt"))
-            {
-                return new[] { RemoveWQTTerm(command) };
-            }
-
-            if (commandLower.StartsWith("add-w-qt"))
-            {
-                return new[] { AddWQTTerm(command) };
-            }
-
-            #endregion
-
-            #region QB term commands.
-
-            if (commandLower.StartsWith("del-b-qb"))
-            {
-                return new[] { RemoveBQBTerm(command) };
-            }
-
-            if (commandLower.StartsWith("add-b-qb"))
-            {
-                return new[] { AddBQBTerm(command) };
-            }
-
-            if (commandLower.StartsWith("del-w-qb"))
-            {
-                return new[] { RemoveWQBTerm(command) };
-            }
-
-            if (commandLower.StartsWith("add-w-qb"))
-            {
-                return new[] { AddWQBTerm(command) };
-            }
-
-            # endregion
-
-            # region A term commands.
-
-            if (commandLower.StartsWith("del-b-a"))
-            {
-                return new[] { RemoveBATerm(command) };
-            }
-
-            if (commandLower.StartsWith("add-b-a"))
-            {
-                return new[] { AddBATerm(command) };
-            }
-
-            if (commandLower.StartsWith("del-w-a"))
-            {
-                return new[] { RemoveWATerm(command) };
-            }
-
-            if (commandLower.StartsWith("add-w-a"))
-            {
-                return new[] { AddWATerm(command) };
-            }
-
-            # endregion
-
-            # region FP/TP(A) commands.
-
-            if (commandLower == "fp")
-            {
-                return new[] { FalsePositive() };
-            }
-
-            if (commandLower == "fp why")
-            {
-                return new[] { FalsePositive(), GetTerms() };
-            }
-
-            if (commandLower == "fp del")
-            {
-                return new[] { FalsePositive(), DeleteMessage() };
-            }
-
-            if (commandLower == "tp" || commandLower == "tpa")
-            {
-                return new[] { TruePositive() };
-            }
-
-            if (commandLower == "tp why" || commandLower == "tpa why")
-            {
-                return new[] { TruePositive(), GetTerms() };
-            }
-
-            if (commandLower == "tpa clean")
-            {
-                return new[] { TruePositive(), CleanMessage() };
-            }
-
-            # endregion
-
-            # region Auto commands
-
-            if (commandLower.StartsWith("auto-b-qt"))
-            {
-                return new[] { AutoBQTTerm(command) };
-            }
-
-            if (commandLower.StartsWith("auto-w-qt"))
-            {
-                return new[] { AutoWQTTerm(command) };
-            }
-
-            if (commandLower.StartsWith("auto-b-qb"))
-            {
-                return new[] { AutoBQBTerm(command) };
-            }
-
-            if (commandLower.StartsWith("auto-w-qb"))
-            {
-                return new[] { AutoWQBTerm(command) };
-            }
-
-            if (commandLower.StartsWith("auto-b-a"))
-            {
-                return new[] { AutoBATerm(command) };
-            }
-
-            if (commandLower.StartsWith("auto-w-a"))
-            {
-                return new[] { AutoWATerm(command) };
-            }
-
-            # endregion
-
-            if (commandLower.StartsWith("add tag"))
-            {
-                return new[] { AddTag(command) };
-            }
-
-            if (commandLower.StartsWith("remove tag"))
-            {
-                return new[] { RemoveTag(command) };
-            }
-
-            if (commandLower == "clean")
-            {
-                return new[] { CleanMessage() };
-            }
-
-            if (commandLower == "del" || commandLower == "delete" || commandLower == "remove")
-            {
-                return new[] { DeleteMessage() };
-            }
-
-            if (commandLower == "ask")
-            {
-                return new[] { Ask() };
-            }
-
-            return new[] { new ReplyMessage("`Command not recognised.`") };
-        }
-
-
-        private static bool IsNormalUserCommand(string command)
-        {
-            return command == "stats" || command == "info" ||
-                   command == "status" || command == "commands" ||
-                   command == "terms" || command == "why" ||  
-                   command == "help" || commandLower == "help edit" || commandLower == "help add" ||
-                   commandLower == "help del" || commandLower == "help edit" ||
-                   commandLower == "help auto" || commandLower == "help list" ||
-                   commandLower == "panic" || commandLower == "red button" || commandLower == "fox";
-        }
-
-        private static ReplyMessage[] NormalUserCommands()
-        {
-            if (commandLower == "info")
-            {
-                return new[] { GetInfo() };
-            }
-
-            if (commandLower == "stats")
-            {
-                return new[] { GetStats() };
-            }
-
-            if (commandLower == "help")
-            {
-                return new[] { GetHelp() };
-            }
-
-            if (commandLower == "help add" || commandLower == "help del")
-            {
-                return new[] { GetAddDelHelp() };
-            }
-
-            if (commandLower == "help edit")
-            {
-                return new[] { GetEditHelp() };
-            }
-
-            if (commandLower == "help auto")
-            {
-                return new[] { GetAutoHelp() };
-            }
-
-            if (commandLower == "help list" || commandLower == "commands")
-            {
-                return new[] { GetHelpList() };
-            }
-
-            if (commandLower == "status")
-            {
-                return new[] { GetStatus() };
-            }
-
-            if (commandLower == "terms" || commandLower == "why")
-            {
-                return new[] { GetTerms() };
-            }
-
-            if (commandLower == "red button")
-            {
-                return new[] { new ReplyMessage("`Warning: now launching " + random.Next(1, 101) + " anti-spammer homing missiles...`", false) };
-            }
-
-            if (commandLower == "panic")
-            {
-                return new[] { new ReplyMessage("http://rack.0.mshcdn.com/media/ZgkyMDEzLzA2LzE4LzdjL0JlYWtlci4zOWJhOC5naWYKcAl0aHVtYgkxMjAweDk2MDA-/4a93e3c4/4a4/Beaker.gif") };
-            }
-
-            if (commandLower == "fox")
-            {
-                return new[] { new ReplyMessage("http://i.stack.imgur.com/0qaHz.gif") };
-            }
-
-            return new[] { new ReplyMessage("`Command not recognised.`") };
+            return commands.Any(cmd => cmd.Syntax.IsMatch(trimmedCommand));
         }
 
 
 
-        # region Normal user commands.
-
-        private static ReplyMessage GetStatus()
-        {
-            return new ReplyMessage(String.Concat("`", GlobalInfo.Status, "`."/*" @ ", GlobalInfo.CommitFormatted, "(https://github.com/ArcticEcho/Phamhilator/commit/", GlobalInfo.CommitHash, ").")*/));
-        }
-
-        private static ReplyMessage GetHelp()
-        {
-            return new ReplyMessage("`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands) `for a full list of commands.`");
-        }
-
-        private static ReplyMessage GetAddDelHelp()
-        {
-            return new ReplyMessage("`To add or delete a term, use \">>(add/del)-(b/w)-(a/qt/qb)-(lq/spam/off/name) (if w, term's site name) {regex-term}\". To add or delete a tag, use \">>(add/remove) {site-name} {tag-name} {link}\".`");
-        }
-
-        private static ReplyMessage GetEditHelp()
-        {
-            return new ReplyMessage("`To edit a term, use \">>edit-(b/w)-(a/qt/qb)-(lq/spam/off/name) (if w, term's site name) {old-term}¬¬¬{new-term}\".`");
-        }
-
-        private static ReplyMessage GetAutoHelp()
-        {
-            return new ReplyMessage("`To add an automatic term, use \">>auto-b-(a/qt/qb)-(lq/spam/off/name)(-p) {regex-term}\". Use \"-p\" if the change should persist past the bot's restart.`");
-        }
-
-        private static ReplyMessage GetHelpList()
-        {
-            return new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats & status.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del/delete/remove.\n    Owner-only commands: resume, pause, (add/ban) user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full scan & set status {message}.", false);
-        }
-
-        private static ReplyMessage GetInfo()
-        {
-            return new ReplyMessage("[`Phamhilator`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + GlobalInfo.Owners + ".`");
-        }
-
-        private static ReplyMessage GetStats()
-        {
-            var ignorePercent = Math.Round(((GlobalInfo.Stats.TotalCheckedPosts - (GlobalInfo.Stats.TotalFPCount + GlobalInfo.Stats.TotalTPCount)) / GlobalInfo.Stats.TotalCheckedPosts) * 100, 1);
-
-            return new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught: " + GlobalInfo.PostsCaught + " (last 7 days), " + GlobalInfo.Stats.TotalCheckedPosts + " (total). " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`");
-        }
+        #region Normal user commands.
 
         private static ReplyMessage GetTerms()
         {
             if (report.BlackTermsFound.Count == 1)
             {
                 var term = report.BlackTermsFound.First();
-                var m = "`Term found: "+ term.Regex.ToString().Replace("\\n", "(?# new line)");
+                var m = "`Term found: " + term.Regex.ToString().Replace("\\n", "(?# new line)");
 
                 if (term.TPCount + term.FPCount >= 5)
                 {
@@ -1509,7 +1401,8 @@ namespace Phamhilator
             if (report.Type == PostType.BadTagUsed) { return new ReplyMessage(""); }
 
             if (report.Type == PostType.Spam)
-            {            
+            {
+                           
                 var questionReport = new Regex(@"^\*\*(Low Quality|Spam|Offensive)\*\* \*\*Q\*\*|\*\*Bad Tag Used\*\*", RegexOptions.CultureInvariant);
 
                 if (questionReport.IsMatch(room[message.ParentID].Content))
@@ -1576,15 +1469,15 @@ namespace Phamhilator
             return room.EditMessage(message.ParentID, "---" + room[message.ParentID].Content + "---") ? new ReplyMessage("") : new ReplyMessage("`FP acknowledged.`");
         }
 
-        private static ReplyMessage TruePositive()
+        private static ReplyMessage TruePositive(string command)
         {
             string postBack = null;
 
-            if (commandLower.StartsWith("tpa"))
+            if (command.ToLowerInvariant().StartsWith("tpa"))
             {
                 var m = room[message.ParentID].Content;
 
-                if (report.Type == PostType.Offensive || commandLower == "tpa clean")
+                if (report.Type == PostType.Offensive || command.ToLowerInvariant() == "tpa clean")
                 {
                     m = ReportCleaner.GetCleanReport(message.ParentID);
                 }	
@@ -1724,115 +1617,6 @@ namespace Phamhilator
             return new ReplyMessage("`Term updated.`");
         }
 
-        private static ReplyMessage AutoWQTTerm(string command)
-        {
-            var editCommand = command.Remove(0, 10);
-
-            if (!editCommand.StartsWith("off") && !editCommand.StartsWith("spam") && !editCommand.StartsWith("lq") && !editCommand.StartsWith("name")) { return new ReplyMessage("`Command not recognised.`"); }
-
-            var firstSpace = command.IndexOf(' ');
-            var secondSpace = command.IndexOf(' ', firstSpace + 1);
-
-            var persistence = command[firstSpace - 1] == 'p' || command[firstSpace - 1] == 'P';
-            var site = command.Substring(firstSpace + 1, secondSpace - firstSpace - 1);
-            var term = new Regex(command.Substring(secondSpace + 1, command.Length - secondSpace - 1));
-
-            if (editCommand.StartsWith("off"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteOff].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            if (editCommand.StartsWith("spam"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteSpam].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            if (editCommand.StartsWith("lq"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteLQ].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            if (editCommand.StartsWith("name"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.QuestionTitleWhiteName].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            return new ReplyMessage("`Term updated.`");
-        }
-
-        private static ReplyMessage AutoWQBTerm(string command)
-        {
-            var editCommand = command.Remove(0, 10);
-
-            if (!editCommand.StartsWith("off") && !editCommand.StartsWith("spam") && !editCommand.StartsWith("lq")) { return new ReplyMessage("`Command not recognised.`"); }
-
-            var firstSpace = command.IndexOf(' ');
-            var secondSpace = command.IndexOf(' ', firstSpace + 1);
-
-            var persistence = command[firstSpace - 1] == 'p' || command[firstSpace - 1] == 'P';
-            var site = command.Substring(firstSpace + 1, secondSpace - firstSpace - 1);
-            var term = new Regex(command.Substring(secondSpace + 1, command.Length - secondSpace - 1));
-
-            if (editCommand.StartsWith("off"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteOff].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            if (editCommand.StartsWith("spam"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteSpam].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            if (editCommand.StartsWith("lq"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.QuestionBodyWhiteLQ].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            return new ReplyMessage("`Term updated.`");
-        }
-
         private static ReplyMessage AutoBATerm(string command)
         {
             var editCommand = command.Remove(0, 9);
@@ -1883,66 +1667,6 @@ namespace Phamhilator
                 var isAuto = GlobalInfo.BlackFilters[FilterType.AnswerBlackName].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
 
                 GlobalInfo.BlackFilters[FilterType.AnswerBlackName].SetAuto(term, !isAuto, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            return new ReplyMessage("`Term updated.`");
-        }
-
-        private static ReplyMessage AutoWATerm(string command)
-        {
-            var editCommand = command.Remove(0, 9);
-
-            if (!editCommand.StartsWith("off") && !editCommand.StartsWith("spam") && !editCommand.StartsWith("lq") && !editCommand.StartsWith("name")) { return new ReplyMessage("`Command not recognised.`"); }
-
-            var firstSpace = command.IndexOf(' ');
-            var secondSpace = command.IndexOf(' ', firstSpace + 1);
-
-            var persistence = command[firstSpace - 1] == 'p' || command[firstSpace - 1] == 'P';
-            var site = command.Substring(firstSpace + 1, secondSpace - firstSpace - 1);
-            var term = new Regex(command.Substring(secondSpace + 1, command.Length - secondSpace - 1));
-
-            if (editCommand.StartsWith("off"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.AnswerWhiteOff].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            if (editCommand.StartsWith("spam"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.AnswerWhiteSpam].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            if (editCommand.StartsWith("lq"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.AnswerWhiteLQ].SetAuto(term, !isAuto, site, persistence);
-
-                return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
-            }
-
-            if (editCommand.StartsWith("name"))
-            {
-                if (!GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.Contains(term, site)) { return new ReplyMessage("`Whitelist term does not exist.`"); }
-
-                var isAuto = GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].Terms.First(t => t.Regex.ToString() == term.ToString()).IsAuto;
-
-                GlobalInfo.WhiteFilters[FilterType.AnswerWhiteName].SetAuto(term, !isAuto, site, persistence);
 
                 return new ReplyMessage("`Auto toggled (now " + !isAuto + ").`");
             }
@@ -2022,7 +1746,7 @@ namespace Phamhilator
 
         private static ReplyMessage Ask()
         {
-            var newReport = Regex.Replace(GlobalInfo.PostedReports[message.ParentID].Message.Content, @"\*\*\s\(\d*(\.\d)?\%\)\:", "?**:");
+            var newReport = Regex.Replace(GlobalInfo.PostedReports[message.ParentID].Message.Content, @"\*\* \(\d*(\.\d)?\%\)\:", "?**:");
 
             foreach (var secondaryRoom in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
             {

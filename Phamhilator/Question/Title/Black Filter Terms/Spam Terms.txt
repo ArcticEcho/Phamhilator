@@ -302,8 +302,8 @@
     "Site": "",
     "Score": 18.0,
     "TPCount": 17,
-    "FPCount": 35,
-    "CaughtCount": 70
+    "FPCount": 37,
+    "CaughtCount": 72
   },
   {
     "Regex": "(?i)the perfect",
@@ -409,9 +409,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 5,
+    "TPCount": 6,
     "FPCount": 11,
-    "CaughtCount": 24
+    "CaughtCount": 25
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -590,8 +590,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 6,
-    "FPCount": 5,
-    "CaughtCount": 41
+    "FPCount": 6,
+    "CaughtCount": 44
   },
   {
     "Regex": "(?i)tell you",
@@ -940,9 +940,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
+    "TPCount": 3,
     "FPCount": 20,
-    "CaughtCount": 102
+    "CaughtCount": 104
   },
   {
     "Regex": "\\$\\d+",
@@ -951,16 +951,16 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 22,
-    "CaughtCount": 319
+    "CaughtCount": 324
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 13,
+    "TPCount": 14,
     "FPCount": 2,
-    "CaughtCount": 39
+    "CaughtCount": 40
   },
   {
     "Regex": "(?i)high quality",

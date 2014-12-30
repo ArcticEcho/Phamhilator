@@ -15,7 +15,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?s-m)^.{0,100}$",
@@ -24,7 +24,7 @@
     "Score": 13.3197279,
     "TPCount": 5,
     "FPCount": 15,
-    "CaughtCount": 359
+    "CaughtCount": 368
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -32,8 +32,8 @@
     "Site": "",
     "Score": 14.0,
     "TPCount": 13,
-    "FPCount": 6,
-    "CaughtCount": 155
+    "FPCount": 8,
+    "CaughtCount": 162
   },
   {
     "Regex": "enter link description here",
@@ -60,7 +60,7 @@
     "Score": 15.083333,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 6
+    "CaughtCount": 7
   },
   {
     "Regex": "^<([bi])>.*</\\1>$",

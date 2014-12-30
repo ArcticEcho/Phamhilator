@@ -86,6 +86,8 @@
     <Compile Include="AnswerAnalysis.cs" />
     <Compile Include="BadTagDefinitions.cs" />
     <Compile Include="BannedUsers.cs" />
+    <Compile Include="ChatCommand.cs" />
+    <Compile Include="CommandAccessLevel.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="GlobalInfo.Stats.cs" />

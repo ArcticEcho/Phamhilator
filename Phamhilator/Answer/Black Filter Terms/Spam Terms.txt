@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 20,
-    "FPCount": 85,
-    "CaughtCount": 305
+    "TPCount": 21,
+    "FPCount": 87,
+    "CaughtCount": 319
   },
   {
     "Regex": "2348064038119",
@@ -403,5 +403,14 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)pharmaonlinerx",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 1,
+    "FPCount": 0,
+    "CaughtCount": 1
   }
 ]

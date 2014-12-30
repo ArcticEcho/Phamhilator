@@ -39,7 +39,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -156,7 +156,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -165,7 +165,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "diy.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -210,7 +210,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "ell.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -219,7 +219,7 @@
     "Regex": "(?i)natural",
     "IsAuto": false,
     "Site": "ell.stackexchange.com",
-    "Score": 6.0,
+    "Score": 6.60000038,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -777,7 +777,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 11.304615,
+    "Score": 12.304615,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1237,6 +1237,15 @@
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
     "Score": 5.11104059,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)improve your",
+    "IsAuto": false,
+    "Site": "gaming.stackexchange.com",
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

@@ -32,8 +32,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 5,
-    "FPCount": 11,
-    "CaughtCount": 24
+    "FPCount": 12,
+    "CaughtCount": 25
   },
   {
     "Regex": "officialimeiunlock",
@@ -139,9 +139,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
-    "TPCount": 5,
+    "TPCount": 6,
     "FPCount": 0,
-    "CaughtCount": 6
+    "CaughtCount": 7
   },
   {
     "Regex": "\\>\\>\\>\\>\\>",
@@ -149,8 +149,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 10,
-    "FPCount": 9,
-    "CaughtCount": 29
+    "FPCount": 10,
+    "CaughtCount": 30
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -607,9 +607,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 4,
+    "TPCount": 6,
     "FPCount": 0,
-    "CaughtCount": 7
+    "CaughtCount": 9
   },
   {
     "Regex": "(?-m)</a>$",
@@ -697,9 +697,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)testcore\\-pro",
@@ -721,6 +721,15 @@
   },
   {
     "Regex": "(?i)servicesolahart",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)packers\\-and\\-movers",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
