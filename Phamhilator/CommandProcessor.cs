@@ -87,6 +87,11 @@ namespace Phamhilator
                 new ReplyMessage("http://i.stack.imgur.com/0qaHz.gif")
             }, CommandAccessLevel.NormalUser),
 
+            new ChatCommand(new Regex("(?i)^yes(!)*", cmdRegexOptions), command => new[]
+            {
+                new ReplyMessage("http://i.stack.imgur.com/MYBp3.gif")
+            }, CommandAccessLevel.NormalUser),
+            
             #endregion
 
             #endregion
