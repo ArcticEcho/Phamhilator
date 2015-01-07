@@ -22,9 +22,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 13.3197279,
-    "TPCount": 6,
+    "TPCount": 7,
     "FPCount": 22,
-    "CaughtCount": 497
+    "CaughtCount": 501
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -33,7 +33,7 @@
     "Score": 14.0,
     "TPCount": 13,
     "FPCount": 11,
-    "CaughtCount": 187
+    "CaughtCount": 188
   },
   {
     "Regex": "enter link description here",

@@ -55,7 +55,7 @@ namespace Phamhilator
         public readonly static Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
         public readonly static BadTagDefinitions BadTagDefinitions = new BadTagDefinitions();
         public readonly static List<Spammer> Spammers = new List<Spammer>();
-        public const string Owners = "Sam, Unihedron, ProgramFOX, Jan Dvorak & Patrick Hofman";
+        public readonly static List<User> owners = new List<User>();
         public static Room PrimaryRoom;
         public static Client ChatClient;
         public static int PostsCaught;
@@ -142,7 +142,68 @@ namespace Phamhilator
             }
         }
 
+        public static string OwnerNames
+        {
+            get
+            {
+                if (owners.Count == 0)
+                {
+                    PopulateOwners();
+                }
 
+                var names = "";
+
+                for (var i = 0; i < owners.Count; i++)
+                {
+                    if (i == owners.Count - 2)
+                    {
+                        names += owners[i].Name + " & ";
+                    }
+                    else if (i == owners.Count - 1)
+                    {
+                        names += owners[i].Name;
+                    }
+                    else
+                    {
+                        names += owners[i].Name + ", ";
+                    }
+                }
+
+                return names;
+            }
+        }
+
+        public static List<User> Owners
+        {
+            get
+            {
+                if (owners.Count == 0)
+                {
+                    PopulateOwners();
+                }
+
+                return owners;
+            }
+        }
+
+
+
+        private static void PopulateOwners()
+        {
+            var sam = PrimaryRoom.GetUser(227577);
+            var uni = PrimaryRoom.GetUser(266094);
+            var fox = PrimaryRoom.GetUser(229438);
+            var jan = PrimaryRoom.GetUser(194047);
+            var pat = PrimaryRoom.GetUser(245360);
+            var moo = PrimaryRoom.GetUser(202832);
+
+            owners.Add(sam);
+            owners.Add(uni);
+            owners.Add(fox);
+            owners.Add(jan);
+            owners.Add(pat);
+            owners.Add(moo);
+        }
 
         private static void UpdateCommitInfo()
         {

@@ -164,7 +164,7 @@ namespace Phamhilator
                 {
                     ChatAction m;
 
-                    if (UserAccess.Owners.Contains(message.AuthorID))
+                    if (GlobalInfo.Owners.Any(user => user.ID == message.AuthorID))
                     {
                         m = new ChatAction(GlobalInfo.PrimaryRoom, () =>
                         {

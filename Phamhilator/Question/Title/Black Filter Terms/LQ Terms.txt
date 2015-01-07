@@ -42,7 +42,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 21,
-    "CaughtCount": 1209
+    "CaughtCount": 1214
   },
   {
     "Regex": "(?i)tried",
@@ -123,7 +123,7 @@
     "Score": 12.0,
     "TPCount": 1,
     "FPCount": 54,
-    "CaughtCount": 2010
+    "CaughtCount": 2015
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -195,7 +195,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 20,
-    "CaughtCount": 2280
+    "CaughtCount": 2287
   },
   {
     "Regex": "^[^a-z]*$",
@@ -229,9 +229,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 10,
+    "TPCount": 11,
     "FPCount": 10,
-    "CaughtCount": 167
+    "CaughtCount": 168
   },
   {
     "Regex": "(?i)plz help me!",
@@ -357,7 +357,7 @@
     "Score": 16.0,
     "TPCount": 6,
     "FPCount": 65,
-    "CaughtCount": 3748
+    "CaughtCount": 3761
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -365,8 +365,8 @@
     "Site": "",
     "Score": 15.0,
     "TPCount": 21,
-    "FPCount": 10,
-    "CaughtCount": 322
+    "FPCount": 11,
+    "CaughtCount": 323
   },
   {
     "Regex": "(?i)\\b(help|halp)\\b",
@@ -374,8 +374,8 @@
     "Site": "",
     "Score": 16.0,
     "TPCount": 28,
-    "FPCount": 38,
-    "CaughtCount": 909
+    "FPCount": 39,
+    "CaughtCount": 910
   },
   {
     "Regex": "for\\sfree",
@@ -402,7 +402,7 @@
     "Score": 11.0,
     "TPCount": 4,
     "FPCount": 41,
-    "CaughtCount": 1680
+    "CaughtCount": 1685
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",
@@ -454,9 +454,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.5906382,
-    "TPCount": 10,
+    "TPCount": 11,
     "FPCount": 8,
-    "CaughtCount": 130
+    "CaughtCount": 131
   },
   {
     "Regex": "what software",
@@ -475,5 +475,14 @@
     "TPCount": 1,
     "FPCount": 1,
     "CaughtCount": 14
+  },
+  {
+    "Regex": "(?i)(cheap|easy).{0,15}way",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8870459,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]

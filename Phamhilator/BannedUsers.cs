@@ -25,7 +25,7 @@ namespace Phamhilator
 
         public static bool AddUser(string ID)
         {
-            if (!SystemIsClear || !ID.All(Char.IsDigit) || UserAccess.Owners.Contains(int.Parse(ID))) { return false; }
+            if (!SystemIsClear || !ID.All(Char.IsDigit) || GlobalInfo.Owners.Any(user => user.ID == int.Parse(ID))) { return false; }
 
             var ii = r.Next(1001);
 

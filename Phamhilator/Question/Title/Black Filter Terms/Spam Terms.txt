@@ -519,7 +519,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)online job",
@@ -788,8 +788,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 7,
-    "CaughtCount": 12
+    "FPCount": 8,
+    "CaughtCount": 13
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -949,9 +949,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
-    "FPCount": 24,
-    "CaughtCount": 383
+    "TPCount": 2,
+    "FPCount": 25,
+    "CaughtCount": 385
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",

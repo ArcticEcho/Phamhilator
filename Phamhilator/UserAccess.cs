@@ -11,7 +11,7 @@ namespace Phamhilator
     {
         private static List<int> commandAccessUsers;
 
-        public static readonly List<int> Owners = new List<int> { 227577, 266094, 245360, 194047, 229438 }; // Sam, Unihedron, Patrick Hofman, Jan Dvorak & ProgramFox.
+        //public static readonly List<int> Owners = new List<int> { 227577, 266094, 245360, 194047, 229438 }; // Sam, Unihedron, Patrick Hofman, Jan Dvorak & ProgramFox.
 
         public static List<int> CommandAccessUsers
         {

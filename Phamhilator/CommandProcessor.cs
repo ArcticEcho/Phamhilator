@@ -30,7 +30,7 @@ namespace Phamhilator
 
             new ChatCommand(new Regex("(?i)^(info(rmation)?|about)$", cmdRegexOptions), command => new[]
             {
-                new ReplyMessage("[`Phamhilator`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + GlobalInfo.Owners + ".`")
+                new ReplyMessage("[`Phamhilator`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + GlobalInfo.OwnerNames + ".`")
             }, CommandAccessLevel.NormalUser),
 
             new ChatCommand(new Regex("(?i)^help$", cmdRegexOptions), command => new[]
@@ -269,11 +269,11 @@ namespace Phamhilator
 
             #region Owner commands.
 
-            new ChatCommand(new Regex(@"(?i)^add user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^add-user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 AddUser(command)
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^ban user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^ban-user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 BanUser(command)
             }, CommandAccessLevel.Owner),
@@ -285,7 +285,7 @@ namespace Phamhilator
             {
                 PauseBot()
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^full scan$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^full-scan$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 FullScan()
             }, CommandAccessLevel.Owner),
@@ -293,7 +293,7 @@ namespace Phamhilator
             {
                 SetAccuracyThreshold(command)
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^set status .+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^set-status .+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 SetStatus(command)
             }, CommandAccessLevel.Owner),
@@ -320,15 +320,22 @@ namespace Phamhilator
             room = messageRoom;
             message = input;
 
-            if (input.Content.StartsWith(">>"))
+            try
             {
-                command = input.Content.Remove(0, 2).TrimStart();
+                if (input.Content.StartsWith(">>"))
+                {
+                    command = input.Content.Remove(0, 2).TrimStart();
+                }
+                else if (input.ParentID != -1 && /*room.MessageIsAlive(input.ParentID) &&*/ room[input.ParentID].AuthorID == room.Me.ID)
+                {
+                    command = input.Content.TrimStart();
+                }
+                else
+                {
+                    return new[] { new ReplyMessage("", false) };
+                }
             }
-            else if (input.ParentID != -1 && room[input.ParentID].AuthorID == room.Me.ID)
-            {
-                command = input.Content.TrimStart();
-            }
-            else
+            catch (Exception)
             {
                 return new[] { new ReplyMessage("", false) };
             }
@@ -362,7 +369,7 @@ namespace Phamhilator
 
                     case CommandAccessLevel.PrivilegedUser:
                     {
-                        if (!UserAccess.CommandAccessUsers.Contains(input.AuthorID) && !UserAccess.Owners.Contains(input.AuthorID))
+                        if (!UserAccess.CommandAccessUsers.Contains(input.AuthorID) && GlobalInfo.Owners.All(user => user.ID != input.AuthorID))
                         {
                             return new[]
                             {
@@ -375,7 +382,7 @@ namespace Phamhilator
 
                     case CommandAccessLevel.Owner:
                     {
-                        if (!UserAccess.Owners.Contains(input.AuthorID))
+                        if (GlobalInfo.Owners.All(user => user.ID != input.AuthorID))
                         {
                             return new[]
                             {
@@ -397,10 +404,12 @@ namespace Phamhilator
 
         public static bool IsValidCommand(Room messageRoom, Message command)
         {
+            //if (!messageRoom.MessageIsAlive(command.ParentID)) { return false; }
+            
+            var trimmedCommand = command.Content.Trim();
+
             try
             {
-                var trimmedCommand = command.Content.Trim();
-
                 if (trimmedCommand.StartsWith(">>"))
                 {
                     trimmedCommand = trimmedCommand.Remove(0, 2).TrimStart();
@@ -409,13 +418,13 @@ namespace Phamhilator
                 {
                     trimmedCommand = command.Content.TrimStart();
                 }
-
-                return commands.Any(cmd => cmd.Syntax.IsMatch(trimmedCommand));
             }
             catch (Exception)
             {
                 return false;
             }
+
+            return commands.Any(cmd => cmd.Syntax.IsMatch(trimmedCommand));
         }
 
 
