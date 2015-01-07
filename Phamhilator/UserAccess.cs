@@ -11,8 +11,6 @@ namespace Phamhilator
     {
         private static List<int> commandAccessUsers;
 
-        //public static readonly List<int> Owners = new List<int> { 227577, 266094, 245360, 194047, 229438 }; // Sam, Unihedron, Patrick Hofman, Jan Dvorak & ProgramFox.
-
         public static List<int> CommandAccessUsers
         {
             get
@@ -31,6 +29,7 @@ namespace Phamhilator
         public static void AddUser(int id)
         {
             CommandAccessUsers.Add(id);
+
             File.AppendAllLines(DirectoryTools.GetCommandAccessUsersFile(), new[] { id.ToString(CultureInfo.InvariantCulture) });
         }
 

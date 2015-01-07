@@ -326,7 +326,7 @@ namespace Phamhilator
                 {
                     command = input.Content.Remove(0, 2).TrimStart();
                 }
-                else if (input.ParentID != -1 && /*room.MessageIsAlive(input.ParentID) &&*/ room[input.ParentID].AuthorID == room.Me.ID)
+                else if (input.ParentID != -1 && room[input.ParentID].AuthorID == room.Me.ID)
                 {
                     command = input.Content.TrimStart();
                 }
@@ -403,9 +403,7 @@ namespace Phamhilator
         }
 
         public static bool IsValidCommand(Room messageRoom, Message command)
-        {
-            //if (!messageRoom.MessageIsAlive(command.ParentID)) { return false; }
-            
+        {            
             var trimmedCommand = command.Content.Trim();
 
             try
@@ -1421,7 +1419,6 @@ namespace Phamhilator
 
             if (report.Type == PostType.Spam)
             {
-                           
                 var questionReport = new Regex(@"^\*\*(Low Quality|Spam|Offensive)\*\* \*\*Q\*\*|\*\*Bad Tag Used\*\*", RegexOptions.CultureInvariant);
 
                 if (questionReport.IsMatch(room[message.ParentID].Content))
