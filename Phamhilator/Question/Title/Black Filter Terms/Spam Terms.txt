@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 2,
-    "FPCount": 8,
-    "CaughtCount": 13
+    "FPCount": 6,
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -420,7 +420,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 5
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)royalty free",
@@ -942,7 +942,7 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 23,
-    "CaughtCount": 134
+    "CaughtCount": 133
   },
   {
     "Regex": "\\$\\d+",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 2,
-    "FPCount": 26,
-    "CaughtCount": 386
+    "FPCount": 25,
+    "CaughtCount": 385
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",

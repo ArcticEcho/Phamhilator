@@ -112,9 +112,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 11,
+    "TPCount": 10,
     "FPCount": 14,
-    "CaughtCount": 49
+    "CaughtCount": 48
   },
   {
     "Regex": "(?i)\\bwhore\\b",

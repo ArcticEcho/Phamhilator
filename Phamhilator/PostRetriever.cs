@@ -17,7 +17,7 @@ namespace Phamhilator
     {
         private static readonly Regex shareLinkIDParser = new Regex(@".*(q|a)/|/\d*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex isShareLink = new Regex(@"(q|a)/\d*/\d*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex escapeChars = new Regex(@"[_*`\[\]]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex escapeChars = new Regex(@"[_*\\`\[\]]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         
         public static readonly Regex HostParser = new Regex(@".*//|/.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         public static readonly Regex PostIDParser = new Regex(@"\D*/|\D.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);

@@ -32,8 +32,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 5,
-    "FPCount": 13,
-    "CaughtCount": 29
+    "FPCount": 12,
+    "CaughtCount": 28
   },
   {
     "Regex": "officialimeiunlock",
@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 1
+    "FPCount": 0,
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)elite\\W+test",
@@ -739,15 +739,6 @@
   },
   {
     "Regex": "(?i)laustan\\.com",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0206881,
-    "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
-  },
-  {
-    "Regex": "(?i)theblaze\\.com",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
