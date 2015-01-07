@@ -23,8 +23,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 3
+    "FPCount": 2,
+    "CaughtCount": 5
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -32,8 +32,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)recoverydeletedfiles",
@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 21,
-    "FPCount": 87,
-    "CaughtCount": 319
+    "TPCount": 23,
+    "FPCount": 101,
+    "CaughtCount": 389
   },
   {
     "Regex": "2348064038119",
@@ -132,7 +132,7 @@
     "Score": 10.8585472,
     "TPCount": 1,
     "FPCount": 6,
-    "CaughtCount": 16
+    "CaughtCount": 17
   },
   {
     "Regex": "(?i)Join the Illuminati",
@@ -248,8 +248,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bpune\\b",
@@ -267,7 +267,7 @@
     "Score": 10.8585472,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 7
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)www\\.\\S{0,30}muscle\\S{0,30}\\.com",
@@ -366,7 +366,7 @@
     "Score": 10.8585472,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)Thank(s| you) for contributing an answer to",
@@ -375,7 +375,7 @@
     "Score": 10.8585472,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)traininginstitutepune",
@@ -412,5 +412,50 @@
     "TPCount": 1,
     "FPCount": 0,
     "CaughtCount": 1
+  },
+  {
+    "Regex": "(?i)\\bstart earning\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)monthlyyouth\\.com",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)rsgpfast",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 1,
+    "FPCount": 0,
+    "CaughtCount": 1
+  },
+  {
+    "Regex": "(?i)fifa15coinsfast",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 1,
+    "FPCount": 0,
+    "CaughtCount": 1
+  },
+  {
+    "Regex": "(?i)naturalsmaleenhancement",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]

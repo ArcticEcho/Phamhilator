@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 47.18809,
+    "Score": 47.7182961,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1164,7 +1164,7 @@
     "Regex": "(?i)(did|have) you f(in|oun)d",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1173,7 +1173,7 @@
     "Regex": "(?i)did you find",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.5,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 25.2050247,
+    "Score": 23.9684982,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

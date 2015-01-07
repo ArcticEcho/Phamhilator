@@ -303,7 +303,7 @@ namespace Phamhilator
 
 
 
-        public static ReplyMessage[] ExacuteCommand(Room roomMessage, Message input)
+        public static ReplyMessage[] ExacuteCommand(Room messageRoom, Message input)
         {
             if (!BannedUsers.SystemIsClear && !fileMissingWarningMessagePosted)
             {
@@ -317,6 +317,8 @@ namespace Phamhilator
             if (BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture))) { return new[] { new ReplyMessage("", false) }; }
 
             string command;
+            room = messageRoom;
+            message = input;
 
             if (input.Content.StartsWith(">>"))
             {
@@ -337,9 +339,6 @@ namespace Phamhilator
             {
                 return new[] { new ReplyMessage("`Command not recognised.`") };
             }
-
-            room = roomMessage;
-            message = input;
 
             if (GlobalInfo.PostedReports.ContainsKey(input.ParentID))
             {
@@ -396,16 +395,27 @@ namespace Phamhilator
             return null;
         }
 
-        public static bool IsValidCommand(Message command)
+        public static bool IsValidCommand(Room messageRoom, Message command)
         {
-            var trimmedCommand = command.Content.Trim();
-
-            if (trimmedCommand.StartsWith(">>"))
+            try
             {
-                trimmedCommand = trimmedCommand.Remove(0, 2).TrimStart();
-            }
+                var trimmedCommand = command.Content.Trim();
 
-            return commands.Any(cmd => cmd.Syntax.IsMatch(trimmedCommand));
+                if (trimmedCommand.StartsWith(">>"))
+                {
+                    trimmedCommand = trimmedCommand.Remove(0, 2).TrimStart();
+                }
+                else if (command.ParentID != -1 && room[command.ParentID].AuthorID == room.Me.ID)
+                {
+                    trimmedCommand = command.Content.TrimStart();
+                }
+
+                return commands.Any(cmd => cmd.Syntax.IsMatch(trimmedCommand));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
 

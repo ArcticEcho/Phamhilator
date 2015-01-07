@@ -208,7 +208,7 @@ namespace Phamhilator
         {
             Task.Factory.StartNew(() =>
             {
-                if (!CommandProcessor.IsValidCommand(message)) { return; }
+                if (!CommandProcessor.IsValidCommand(room, message)) { return; }
 
                 var messages = CommandProcessor.ExacuteCommand(room, message);
 
@@ -364,7 +364,7 @@ namespace Phamhilator
             {
                 try
                 {
-                    GlobalInfo.ChatClient = new Client(user, pass);
+                    GlobalInfo.ChatClient = new Client("Pham", user, pass); //TODO: Change the first arg ("Pham") to whatever your account's username is.
                 }
                 catch (Exception ex)
                 {

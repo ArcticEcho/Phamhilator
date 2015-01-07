@@ -33,7 +33,7 @@
     "Score": 10.0,
     "TPCount": 5,
     "FPCount": 12,
-    "CaughtCount": 25
+    "CaughtCount": 27
   },
   {
     "Regex": "officialimeiunlock",
@@ -149,8 +149,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 10,
-    "FPCount": 10,
-    "CaughtCount": 30
+    "FPCount": 13,
+    "CaughtCount": 34
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -177,7 +177,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 8
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)BeautyLabs",
@@ -195,7 +195,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)ELITE TEST 360",
@@ -483,7 +483,7 @@
     "Score": 10.0204086,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 8
+    "CaughtCount": 10
   },
   {
     "Regex": "\\sCLICK HERE\\s",
@@ -591,7 +591,7 @@
     "Score": 10.0204086,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)skin-care-review",
@@ -607,9 +607,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 6,
+    "TPCount": 7,
     "FPCount": 0,
-    "CaughtCount": 9
+    "CaughtCount": 10
   },
   {
     "Regex": "(?-m)</a>$",
@@ -730,6 +730,15 @@
   },
   {
     "Regex": "(?i)packers\\-and\\-movers",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)laustan\\.com",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,

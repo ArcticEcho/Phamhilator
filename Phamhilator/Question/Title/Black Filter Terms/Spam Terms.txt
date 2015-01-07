@@ -14,8 +14,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 6,
-    "CaughtCount": 11
+    "FPCount": 7,
+    "CaughtCount": 12
   },
   {
     "Regex": "(?i)\\bwe lost\\b",
@@ -69,7 +69,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 1,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bdelhi\\b",
@@ -167,8 +167,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 0,
-    "CaughtCount": 1
+    "FPCount": 1,
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bhelp(s)? you(r)?\\b",
@@ -186,16 +186,16 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\bbody( building|builder(s)?| builder(s)?|building)\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bweight loss\\b",
@@ -212,8 +212,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 1,
-    "FPCount": 5,
-    "CaughtCount": 19
+    "FPCount": 6,
+    "CaughtCount": 23
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -231,7 +231,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 6,
-    "CaughtCount": 11
+    "CaughtCount": 12
   },
   {
     "Regex": "(?i)\\bcheaper\\b",
@@ -248,17 +248,17 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 3
+    "FPCount": 4,
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 13.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 6,
-    "CaughtCount": 10
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -302,8 +302,8 @@
     "Site": "",
     "Score": 18.0,
     "TPCount": 17,
-    "FPCount": 37,
-    "CaughtCount": 72
+    "FPCount": 43,
+    "CaughtCount": 88
   },
   {
     "Regex": "(?i)the perfect",
@@ -364,9 +364,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)baba",
@@ -409,9 +409,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 6,
+    "TPCount": 7,
     "FPCount": 11,
-    "CaughtCount": 25
+    "CaughtCount": 27
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -474,7 +474,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 2,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)got you",
@@ -545,8 +545,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 11,
-    "CaughtCount": 37
+    "FPCount": 12,
+    "CaughtCount": 44
   },
   {
     "Regex": "(?i)^also",
@@ -564,7 +564,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 3
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)lose weight",
@@ -582,7 +582,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)health",
@@ -590,8 +590,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 6,
-    "FPCount": 6,
-    "CaughtCount": 44
+    "FPCount": 9,
+    "CaughtCount": 52
   },
   {
     "Regex": "(?i)tell you",
@@ -600,7 +600,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)vashikaran",
@@ -645,7 +645,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)body weight",
@@ -671,8 +671,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)^how to buy",
@@ -698,8 +698,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 22,
-    "CaughtCount": 57
+    "FPCount": 23,
+    "CaughtCount": 59
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -743,8 +743,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 9,
-    "CaughtCount": 14
+    "FPCount": 10,
+    "CaughtCount": 16
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -752,8 +752,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 21,
-    "CaughtCount": 33
+    "FPCount": 24,
+    "CaughtCount": 37
   },
   {
     "Regex": "(?i)^no hassle",
@@ -788,8 +788,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 6,
-    "CaughtCount": 9
+    "FPCount": 7,
+    "CaughtCount": 12
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -807,7 +807,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)^very (good|cheap|fast)",
@@ -924,7 +924,7 @@
     "Score": 10.0,
     "TPCount": 9,
     "FPCount": 0,
-    "CaughtCount": 9
+    "CaughtCount": 10
   },
   {
     "Regex": "2348064038119",
@@ -941,8 +941,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 20,
-    "CaughtCount": 104
+    "FPCount": 23,
+    "CaughtCount": 133
   },
   {
     "Regex": "\\$\\d+",
@@ -950,17 +950,17 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 22,
-    "CaughtCount": 324
+    "FPCount": 24,
+    "CaughtCount": 383
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 14,
+    "TPCount": 16,
     "FPCount": 2,
-    "CaughtCount": 40
+    "CaughtCount": 46
   },
   {
     "Regex": "(?i)high quality",
@@ -968,17 +968,17 @@
     "Site": "",
     "Score": 10.1574078,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 7
+    "FPCount": 4,
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)^buy\\s",
     "IsAuto": false,
     "Site": "",
     "Score": 10.1574078,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 3,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)Watch Online",
