@@ -248,8 +248,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 4,
-    "CaughtCount": 6
+    "FPCount": 5,
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)\\bcare(ing)?\\b",
@@ -699,7 +699,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 24,
-    "CaughtCount": 61
+    "CaughtCount": 62
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -942,7 +942,7 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 23,
-    "CaughtCount": 135
+    "CaughtCount": 137
   },
   {
     "Regex": "\\$\\d+",
@@ -951,7 +951,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 26,
-    "CaughtCount": 392
+    "CaughtCount": 393
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",

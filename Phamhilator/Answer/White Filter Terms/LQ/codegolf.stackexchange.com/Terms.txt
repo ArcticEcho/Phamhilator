@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 49.89936,
+    "Score": 51.027,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -390,7 +390,7 @@
     "Regex": "^(?i).{0,60}$",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 7.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1146,7 +1146,7 @@
     "Regex": "^(?i).{0,200}$",
     "IsAuto": false,
     "Site": "writers.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1155,7 +1155,7 @@
     "Regex": "^.{0,150}$",
     "IsAuto": false,
     "Site": "writers.stackexchange.com",
-    "Score": 5.0,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 20.6111317,
+    "Score": 21.6744537,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1236,7 +1236,7 @@
     "Regex": "(?i)pl(ease|s|z) help",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 11.8502035,
+    "Score": 12.5472736,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
