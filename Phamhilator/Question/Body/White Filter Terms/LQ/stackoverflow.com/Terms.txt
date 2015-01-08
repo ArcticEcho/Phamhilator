@@ -264,7 +264,7 @@
     "Regex": "(?s-m)^.{0,100}$",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 6.659864,
+    "Score": 11.0545549,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -273,7 +273,7 @@
     "Regex": "enter link description here",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.875,
+    "Score": 7.375,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

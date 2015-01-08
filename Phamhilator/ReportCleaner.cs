@@ -25,7 +25,7 @@ namespace Phamhilator
 
             foreach (var c in input)
             {
-                censored.Append(c == ' ' ? ' ' : '*');
+                censored.Append(c == ' ' ? ' ' : '★');
             }
 
             return censored.ToString();

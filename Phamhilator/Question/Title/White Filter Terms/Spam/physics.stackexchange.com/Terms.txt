@@ -390,7 +390,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "gardening.stackexchange.com",
-    "Score": 6.38461542,
+    "Score": 5.38461542,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -543,7 +543,7 @@
     "Regex": "\\$\\d+",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 7.7,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1263,6 +1263,15 @@
     "Regex": "(?i)customers? review",
     "IsAuto": false,
     "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)nike",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

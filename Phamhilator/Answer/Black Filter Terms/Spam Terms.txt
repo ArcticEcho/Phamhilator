@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 15.0,
     "TPCount": 23,
-    "FPCount": 101,
-    "CaughtCount": 390
+    "FPCount": 102,
+    "CaughtCount": 396
   },
   {
     "Regex": "2348064038119",
@@ -131,8 +131,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 1,
-    "FPCount": 6,
-    "CaughtCount": 17
+    "FPCount": 7,
+    "CaughtCount": 18
   },
   {
     "Regex": "(?i)Join the Illuminati",

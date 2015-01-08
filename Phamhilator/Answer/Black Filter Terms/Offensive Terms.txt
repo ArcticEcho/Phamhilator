@@ -77,8 +77,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 0,
-    "FPCount": 17,
-    "CaughtCount": 36
+    "FPCount": 18,
+    "CaughtCount": 37
   },
   {
     "Regex": "(?i)\\bfag\\b",
@@ -112,9 +112,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 10,
+    "TPCount": 11,
     "FPCount": 14,
-    "CaughtCount": 48
+    "CaughtCount": 49
   },
   {
     "Regex": "(?i)\\bwhore\\b",

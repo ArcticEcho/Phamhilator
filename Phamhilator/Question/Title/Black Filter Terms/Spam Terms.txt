@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 2,
-    "FPCount": 6,
-    "CaughtCount": 11
+    "FPCount": 8,
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -420,7 +420,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)royalty free",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 6,
     "FPCount": 9,
-    "CaughtCount": 52
+    "CaughtCount": 54
   },
   {
     "Regex": "(?i)tell you",
@@ -599,8 +599,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 2
+    "FPCount": 1,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)vashikaran",
@@ -644,8 +644,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 3
+    "FPCount": 1,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)body weight",
@@ -942,7 +942,7 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 23,
-    "CaughtCount": 133
+    "CaughtCount": 134
   },
   {
     "Regex": "\\$\\d+",
@@ -950,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 2,
-    "FPCount": 25,
-    "CaughtCount": 385
+    "FPCount": 26,
+    "CaughtCount": 386
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",

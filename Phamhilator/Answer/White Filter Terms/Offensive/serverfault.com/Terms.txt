@@ -192,7 +192,7 @@
     "Regex": "(?i)\\sdick\\s",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 6.1542325,
+    "Score": 5.605263,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
