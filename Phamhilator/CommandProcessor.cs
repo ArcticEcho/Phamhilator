@@ -65,7 +65,7 @@ namespace Phamhilator
                 return new[] { new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught: " + GlobalInfo.PostsCaught + " (last 7 days), " + GlobalInfo.Stats.TotalCheckedPosts + " (total). " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`")} ;
             }, CommandAccessLevel.NormalUser),
 
-            new ChatCommand(new Regex("(?i)^(terms|why)$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex("(?i)^(terms|why)\b", cmdRegexOptions), command => new[]
             {
                 GetTerms()
             }, CommandAccessLevel.NormalUser),
@@ -196,30 +196,30 @@ namespace Phamhilator
 
             #region FP/TP commands.
 
-            new ChatCommand(new Regex(@"(?i)^f(p|alse)$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^f(p|alse)\b", cmdRegexOptions), command => new[]
             {
                 FalsePositive()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^fp why$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^fp why\b", cmdRegexOptions), command => new[]
             {
                 FalsePositive(),
                 GetTerms()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^fp del$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^fp del\b", cmdRegexOptions), command => new[]
             {
                 FalsePositive(),
                 DeleteMessage()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^tpa?$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^tpa?\b", cmdRegexOptions), command => new[]
             {
                 TruePositive(command)
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^tpa? why$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^tpa? why\b", cmdRegexOptions), command => new[]
             {
                 TruePositive(command),
                 GetTerms()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^tpa? clean$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^tpa? clean\b", cmdRegexOptions), command => new[]
             {
                 TruePositive(command),
                 CleanMessage()
@@ -252,15 +252,15 @@ namespace Phamhilator
             {
                 RemoveTag(command)
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^clean$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^clean\b", cmdRegexOptions), command => new[]
             {
                 CleanMessage()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^del$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^del\b", cmdRegexOptions), command => new[]
             {
                 DeleteMessage()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^ask$", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^ask\b", cmdRegexOptions), command => new[]
             {
                 Ask()
             }, CommandAccessLevel.PrivilegedUser),
@@ -277,15 +277,15 @@ namespace Phamhilator
             {
                 BanUser(command)
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^resume$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^resume\b", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 ResumeBot()
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^pause$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^pause\b", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 PauseBot()
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^full-scan$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^full-scan\b", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 FullScan()
             }, CommandAccessLevel.Owner),

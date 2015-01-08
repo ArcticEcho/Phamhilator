@@ -67,9 +67,9 @@
     "IsAuto": true,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 1,
-    "CaughtCount": 47
+    "CaughtCount": 48
   },
   {
     "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
@@ -85,9 +85,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 89.0,
-    "TPCount": 378,
-    "FPCount": 102,
-    "CaughtCount": 2356
+    "TPCount": 382,
+    "FPCount": 103,
+    "CaughtCount": 2363
   },
   {
     "Regex": "(?i)^please",
@@ -103,9 +103,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 16.8727264,
-    "TPCount": 29,
+    "TPCount": 30,
     "FPCount": 2,
-    "CaughtCount": 66
+    "CaughtCount": 67
   },
   {
     "Regex": "(?i)have question",
@@ -121,9 +121,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 19.3837166,
-    "TPCount": 147,
+    "TPCount": 149,
     "FPCount": 102,
-    "CaughtCount": 2287
+    "CaughtCount": 2295
   },
   {
     "Regex": "^(?=.*?(?i)please).{0,100}$",
@@ -148,9 +148,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 19.6851864,
-    "TPCount": 18,
+    "TPCount": 19,
     "FPCount": 0,
-    "CaughtCount": 39
+    "CaughtCount": 40
   },
   {
     "Regex": "(?i)(have|did) you (solve|fix|find|found)",
