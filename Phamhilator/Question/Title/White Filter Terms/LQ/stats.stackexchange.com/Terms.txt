@@ -21,7 +21,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 52.3946648,
+    "Score": 55.66933,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1947,7 +1947,7 @@
     "Regex": "(?i)\\b(help|halp)\\b",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 8.709076,
+    "Score": 9.253393,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

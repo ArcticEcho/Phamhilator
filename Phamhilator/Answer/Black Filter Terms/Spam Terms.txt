@@ -31,9 +31,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "TPCount": 2,
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)recoverydeletedfiles",
@@ -50,8 +50,8 @@
     "Site": "",
     "Score": 15.0,
     "TPCount": 23,
-    "FPCount": 105,
-    "CaughtCount": 401
+    "FPCount": 106,
+    "CaughtCount": 403
   },
   {
     "Regex": "2348064038119",
@@ -132,7 +132,7 @@
     "Score": 10.8585472,
     "TPCount": 1,
     "FPCount": 7,
-    "CaughtCount": 18
+    "CaughtCount": 19
   },
   {
     "Regex": "(?i)Join the Illuminati",

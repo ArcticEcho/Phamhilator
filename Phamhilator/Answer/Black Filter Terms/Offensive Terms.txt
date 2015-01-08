@@ -76,9 +76,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 18,
-    "CaughtCount": 37
+    "CaughtCount": 38
   },
   {
     "Regex": "(?i)\\bfag\\b",

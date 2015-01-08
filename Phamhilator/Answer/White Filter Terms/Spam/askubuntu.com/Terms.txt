@@ -93,7 +93,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 9.464028,
+    "Score": 8.464028,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1047,7 +1047,7 @@
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

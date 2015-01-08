@@ -151,5 +151,14 @@
     "TPCount": 1,
     "FPCount": 0,
     "CaughtCount": 2
+  },
+  {
+    "Regex": "(?i)is.*(stupid|jerk)",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]

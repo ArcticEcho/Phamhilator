@@ -65,7 +65,7 @@ namespace Phamhilator
                 return new[] { new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught: " + GlobalInfo.PostsCaught + " (last 7 days), " + GlobalInfo.Stats.TotalCheckedPosts + " (total). " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`")} ;
             }, CommandAccessLevel.NormalUser),
 
-            new ChatCommand(new Regex("(?i)^(terms|why)\b", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^(terms|why)\b", cmdRegexOptions), command => new[]
             {
                 GetTerms()
             }, CommandAccessLevel.NormalUser),

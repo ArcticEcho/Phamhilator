@@ -177,7 +177,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bwork out\\b",
@@ -249,7 +249,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 4,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\bcare(ing)?\\b",
@@ -564,7 +564,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)lose weight",
@@ -698,8 +698,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 23,
-    "CaughtCount": 59
+    "FPCount": 24,
+    "CaughtCount": 61
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -942,7 +942,7 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 23,
-    "CaughtCount": 134
+    "CaughtCount": 135
   },
   {
     "Regex": "\\$\\d+",
@@ -951,7 +951,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 26,
-    "CaughtCount": 386
+    "CaughtCount": 392
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -967,9 +967,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.1574078,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 4,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)^buy\\s",

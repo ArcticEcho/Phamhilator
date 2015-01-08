@@ -3,7 +3,7 @@
     "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 6.60000038,
+    "Score": 7.20000029,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -21,7 +21,7 @@
     "Regex": "(?i)\\bidiot\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -30,7 +30,7 @@
     "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.4545455,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
