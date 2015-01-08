@@ -1496,7 +1496,7 @@ namespace Phamhilator
                 if (report.Type == PostType.Offensive || command.ToLowerInvariant() == "tpa clean")
                 {
                     m = ReportCleaner.GetCleanReport(message.ParentID);
-                }	
+                }
 
                 foreach (var secondaryRoom in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
                 {
@@ -1511,14 +1511,15 @@ namespace Phamhilator
                 postBack = " ***TPA Acknowledged***.";
             }
 
-            if (report.Type == PostType.BadTagUsed) { return new ReplyMessage(""); }
-
             if (report.Type == PostType.Spam)
             {
                 GlobalInfo.Spammers.Add(new Spammer(post.Site, post.AuthorName));
             }
 
-            Pham.RegisterTP(post, report);
+            if (report.Type != PostType.BadTagUsed)
+            {
+                Pham.RegisterTP(post, report);
+            }
 
             var reportMessage = room[message.ParentID].Content;
             reportMessage = reportMessage.Remove(reportMessage.Length - 1);

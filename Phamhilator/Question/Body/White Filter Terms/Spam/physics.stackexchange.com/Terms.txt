@@ -48,7 +48,7 @@
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
     "IsAuto": false,
     "Site": "physics.stackexchange.com",
-    "Score": 6.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -57,7 +57,7 @@
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 7.05,
+    "Score": 6.05,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -138,6 +138,15 @@
     "Regex": "(?i)neuropathy",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "ketone",
+    "IsAuto": false,
+    "Site": "chemistry.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

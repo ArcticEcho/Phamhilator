@@ -1267,5 +1267,14 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)nike",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]

@@ -159,7 +159,7 @@
     "Score": 10.2105265,
     "TPCount": 1,
     "FPCount": 2,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)\\sdick\\s",

@@ -31,9 +31,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 5,
-    "FPCount": 13,
-    "CaughtCount": 29
+    "TPCount": 6,
+    "FPCount": 14,
+    "CaughtCount": 31
   },
   {
     "Regex": "officialimeiunlock",
@@ -483,7 +483,7 @@
     "Score": 10.0204086,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 10
+    "CaughtCount": 11
   },
   {
     "Regex": "\\sCLICK HERE\\s",
@@ -754,5 +754,14 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)healthcaresup",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 1,
+    "FPCount": 0,
+    "CaughtCount": 1
   }
 ]
