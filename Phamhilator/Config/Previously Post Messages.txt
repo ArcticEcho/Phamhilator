@@ -1,7 +1,4 @@
 
-2630192.60419085]http://askubuntu.com/a/567670
-2630250.43706537]http://photo.stackexchange.com/questions/57962
-2630259.50928427]http://android.stackexchange.com/questions/93483
 2631619.00660991]http://stackoverflow.com/questions/27742040
 2631620.19634462]http://serverfault.com/a/655881
 2631620.48531115]http://salesforce.stackexchange.com/a/61369
@@ -1200,3 +1197,25 @@
 2640751.5826522]http://gis.stackexchange.com/questions/129585
 2640755.38086944]http://mechanics.stackexchange.com/a/13498
 2640756.25990306]http://askubuntu.com/a/571479
+2640762.07366892]http://diy.stackexchange.com/a/57472
+2640762.21996062]http://scifi.stackexchange.com/a/78682
+2640762.79407679]http://cooking.stackexchange.com/a/53414
+2640770.32390747]http://unix.stackexchange.com/a/178223
+2640774.00156782]http://photo.stackexchange.com/questions/59194
+2640779.26168535]http://askubuntu.com/a/571487
+2640780.88974513]http://stackoverflow.com/a/24362483
+2640781.7306599]http://quant.stackexchange.com/questions/16141
+2641677.80922633]http://math.stackexchange.com/a/1097487
+2641679.57077708]http://stackoverflow.com/questions/27859760
+2641682.55954803]http://workplace.stackexchange.com/a/40178
+2641683.43976504]http://superuser.com/questions/862612
+2641686.07586582]http://dba.stackexchange.com/questions/88919
+2641687.3530222]http://stackoverflow.com/questions/27859685
+2641688.17603594]http://sharepoint.stackexchange.com/questions/128025
+2641691.32096582]http://magento.stackexchange.com/a/51691
+2641691.9872706]http://crypto.stackexchange.com/questions/22283
+2641693.55126005]http://superuser.com/a/862616
+2641693.74928804]http://stackoverflow.com/questions/27860330
+2641698.65388524]http://mathematica.stackexchange.com/questions/71392
+2641702.43550153]http://stackoverflow.com/a/4618474
+2641703.00320067]http://stackoverflow.com/a/27860505

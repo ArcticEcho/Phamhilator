@@ -85,9 +85,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 89.0,
-    "TPCount": 397,
+    "TPCount": 399,
     "FPCount": 106,
-    "CaughtCount": 2396
+    "CaughtCount": 2402
   },
   {
     "Regex": "(?i)^please",
@@ -121,9 +121,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 19.3837166,
-    "TPCount": 150,
+    "TPCount": 152,
     "FPCount": 102,
-    "CaughtCount": 2329
+    "CaughtCount": 2336
   },
   {
     "Regex": "^(?=.*?(?i)please).{0,100}$",

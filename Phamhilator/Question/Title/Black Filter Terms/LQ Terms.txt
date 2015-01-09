@@ -40,9 +40,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 1,
-    "FPCount": 21,
-    "CaughtCount": 1265
+    "TPCount": 2,
+    "FPCount": 22,
+    "CaughtCount": 1269
   },
   {
     "Regex": "(?i)tried",
@@ -51,7 +51,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 1,
-    "CaughtCount": 45
+    "CaughtCount": 46
   },
   {
     "Regex": "(?i)\\bif (yes|no)\\b",
@@ -123,7 +123,7 @@
     "Score": 12.0,
     "TPCount": 1,
     "FPCount": 59,
-    "CaughtCount": 2082
+    "CaughtCount": 2086
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -139,9 +139,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)school project",
@@ -195,7 +195,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 23,
-    "CaughtCount": 2421
+    "CaughtCount": 2427
   },
   {
     "Regex": "^[^a-z]*$",
@@ -204,7 +204,7 @@
     "Score": 13.0,
     "TPCount": 11,
     "FPCount": 6,
-    "CaughtCount": 122
+    "CaughtCount": 123
   },
   {
     "Regex": "(?i)\\bgives error\\b",
@@ -220,18 +220,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 12,
+    "TPCount": 14,
     "FPCount": 10,
-    "CaughtCount": 173
+    "CaughtCount": 175
   },
   {
     "Regex": "(?i)plz help me!",
@@ -285,7 +285,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 30
+    "CaughtCount": 31
   },
   {
     "Regex": "(?i)^(?=.*?which)(?=.*?(?:choose|best|quality))",
@@ -357,25 +357,25 @@
     "Score": 16.0,
     "TPCount": 7,
     "FPCount": 69,
-    "CaughtCount": 3933
+    "CaughtCount": 3939
   },
   {
     "Regex": "(?i:need help|help me)",
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 23,
+    "TPCount": 24,
     "FPCount": 12,
-    "CaughtCount": 341
+    "CaughtCount": 342
   },
   {
-    "Regex": "(?i)\\b(help|halp)\\b",
+    "Regex": "(?i)\\bh[ae]lp\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 16.0,
-    "TPCount": 32,
+    "TPCount": 33,
     "FPCount": 40,
-    "CaughtCount": 967
+    "CaughtCount": 974
   },
   {
     "Regex": "for\\sfree",
@@ -401,8 +401,8 @@
     "Site": "",
     "Score": 11.0,
     "TPCount": 4,
-    "FPCount": 42,
-    "CaughtCount": 1728
+    "FPCount": 43,
+    "CaughtCount": 1731
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",
@@ -454,9 +454,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.5906382,
-    "TPCount": 12,
+    "TPCount": 14,
     "FPCount": 8,
-    "CaughtCount": 134
+    "CaughtCount": 136
   },
   {
     "Regex": "what software",

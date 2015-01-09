@@ -93,7 +93,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 9.464028,
+    "Score": 8.464028,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1048,6 +1048,15 @@
     "IsAuto": false,
     "Site": "askubuntu.com",
     "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbangalore\\b",
+    "IsAuto": false,
+    "Site": "diy.stackexchange.com",
+    "Score": 5.42927361,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

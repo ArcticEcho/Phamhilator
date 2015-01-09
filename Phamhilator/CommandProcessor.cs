@@ -196,7 +196,7 @@ namespace Phamhilator
 
             #region FP/TP commands.
 
-            new ChatCommand(new Regex(@"(?i)^f(p|alse)\b", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"^f(p|alse)((?!\s(why|del|clean)).)*$", cmdRegexOptions), command => new[]
             {
                 FalsePositive()
             }, CommandAccessLevel.PrivilegedUser),
@@ -210,7 +210,12 @@ namespace Phamhilator
                 FalsePositive(),
                 DeleteMessage()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^tpa?\b", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^fp clean\b", cmdRegexOptions), command => new[]
+            {
+                FalsePositive(),
+                CleanMessage()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"^tpa?((?!\s(why|clean)).)*$", cmdRegexOptions), command => new[]
             {
                 TruePositive(command)
             }, CommandAccessLevel.PrivilegedUser),

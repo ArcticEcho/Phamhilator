@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 51.027,
+    "Score": 52.18012,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
