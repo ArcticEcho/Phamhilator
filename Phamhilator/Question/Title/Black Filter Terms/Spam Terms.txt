@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 2,
-    "FPCount": 8,
-    "CaughtCount": 13
+    "FPCount": 9,
+    "CaughtCount": 14
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -303,7 +303,7 @@
     "Score": 18.0,
     "TPCount": 17,
     "FPCount": 44,
-    "CaughtCount": 89
+    "CaughtCount": 90
   },
   {
     "Regex": "(?i)the perfect",
@@ -698,8 +698,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 24,
-    "CaughtCount": 62
+    "FPCount": 25,
+    "CaughtCount": 63
   },
   {
     "Regex": "(?i)i don'?t use",

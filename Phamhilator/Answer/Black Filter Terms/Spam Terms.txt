@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 23,
+    "TPCount": 24,
     "FPCount": 107,
-    "CaughtCount": 407
+    "CaughtCount": 408
   },
   {
     "Regex": "2348064038119",
@@ -157,9 +157,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 6,
-    "CaughtCount": 9
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)geolify",
@@ -427,9 +427,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)rsgpfast",

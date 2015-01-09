@@ -60,7 +60,7 @@
     "Score": 17.0,
     "TPCount": 15,
     "FPCount": 2,
-    "CaughtCount": 93
+    "CaughtCount": 94
   },
   {
     "Regex": "^\\<p\\>[^a-z]*\\<\\/p\\>$",
@@ -78,16 +78,16 @@
     "Score": 18.0,
     "TPCount": 37,
     "FPCount": 6,
-    "CaughtCount": 300
+    "CaughtCount": 301
   },
   {
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "",
     "Score": 89.0,
-    "TPCount": 399,
+    "TPCount": 400,
     "FPCount": 106,
-    "CaughtCount": 2402
+    "CaughtCount": 2407
   },
   {
     "Regex": "(?i)^please",
@@ -105,7 +105,7 @@
     "Score": 16.8727264,
     "TPCount": 30,
     "FPCount": 2,
-    "CaughtCount": 67
+    "CaughtCount": 68
   },
   {
     "Regex": "(?i)have question",
@@ -122,8 +122,8 @@
     "Site": "",
     "Score": 19.3837166,
     "TPCount": 152,
-    "FPCount": 102,
-    "CaughtCount": 2336
+    "FPCount": 103,
+    "CaughtCount": 2349
   },
   {
     "Regex": "^(?=.*?(?i)please).{0,100}$",
@@ -150,7 +150,7 @@
     "Score": 19.6851864,
     "TPCount": 19,
     "FPCount": 0,
-    "CaughtCount": 40
+    "CaughtCount": 41
   },
   {
     "Regex": "(?i)(have|did) you (solve|fix|find|found)",

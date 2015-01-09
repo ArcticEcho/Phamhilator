@@ -120,7 +120,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "buddhism.stackexchange.com",
-    "Score": 5.79881668,
+    "Score": 5.38461542,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -246,7 +246,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.79881668,
+    "Score": 6.38461542,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1245,6 +1245,33 @@
     "Regex": "(?i)improve your",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\b(customer|people) review(s)?\\b",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)customers? review",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)nike",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

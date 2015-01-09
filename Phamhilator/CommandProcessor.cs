@@ -1752,9 +1752,16 @@ namespace Phamhilator
 
         private static ReplyMessage CleanMessage()
         {
-            var newMessage = ReportCleaner.GetCleanReport(message.ParentID);
+            try
+            {
+                var newMessage = ReportCleaner.GetCleanReport(message.ParentID);
 
-            room.EditMessage(message.ParentID, newMessage);
+                room.EditMessage(message.ParentID, newMessage);
+            }
+            catch (Exception)
+            {
+                DeleteMessage();
+            }
             
             return new ReplyMessage("");
         }

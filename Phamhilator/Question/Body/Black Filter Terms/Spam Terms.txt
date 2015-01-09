@@ -150,7 +150,7 @@
     "Score": 10.0,
     "TPCount": 10,
     "FPCount": 14,
-    "CaughtCount": 35
+    "CaughtCount": 36
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -763,5 +763,14 @@
     "TPCount": 1,
     "FPCount": 0,
     "CaughtCount": 1
+  },
+  {
+    "Regex": "(?i)Penomet",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]
