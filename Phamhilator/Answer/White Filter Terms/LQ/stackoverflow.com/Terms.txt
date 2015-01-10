@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 46.1452942,
+    "Score": 53.9588356,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -390,7 +390,7 @@
     "Regex": "^(?i).{0,60}$",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 6.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -975,7 +975,7 @@
     "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 7.88148165,
+    "Score": 8.78152752,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1164,7 +1164,7 @@
     "Regex": "(?i)(did|have) you f(in|oun)d",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.0,
+    "Score": 6.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 21.6744537,
+    "Score": 35.8435822,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1218,7 +1218,7 @@
     "Regex": "^[^ ]*$",
     "IsAuto": false,
     "Site": "chinese.stackexchange.com",
-    "Score": 70.25099,
+    "Score": 74.41457,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1227,7 +1227,7 @@
     "Regex": "(?i)need (an )?answer",
     "IsAuto": false,
     "Site": "meta.stackexchange.com",
-    "Score": 9.254358,
+    "Score": 9.754358,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1236,7 +1236,7 @@
     "Regex": "(?i)pl(ease|s|z) help",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 11.8502035,
+    "Score": 12.5472736,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

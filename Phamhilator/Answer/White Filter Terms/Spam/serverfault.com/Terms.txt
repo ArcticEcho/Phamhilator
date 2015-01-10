@@ -57,7 +57,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 17.4328823,
+    "Score": 18.5950737,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -93,7 +93,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 9.028296,
+    "Score": 9.630183,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -228,7 +228,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 8.4165535,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -291,7 +291,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "emacs.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 8.4165535,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -345,7 +345,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gamedev.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 8.4165535,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -354,7 +354,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 8.4165535,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -372,7 +372,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gis.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 8.4165535,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -462,7 +462,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 7.890519,
+    "Score": 8.4165535,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -633,7 +633,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "pt.stackoverflow.com",
-    "Score": 7.890519,
+    "Score": 8.4165535,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -696,7 +696,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 9.468623,
+    "Score": 10.099865,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -804,7 +804,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 12.9453831,
+    "Score": 13.8084087,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -867,7 +867,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 7.39736176,
+    "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -885,7 +885,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "tex.stackexchange.com",
-    "Score": 7.39736176,
+    "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -903,7 +903,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 7.39736176,
+    "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -921,7 +921,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 13.0193567,
+    "Score": 13.8873138,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

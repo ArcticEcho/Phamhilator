@@ -132,7 +132,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 6,
-    "CaughtCount": 15
+    "CaughtCount": 19
   },
   {
     "Regex": "(?i)\\bget your\\b",
@@ -230,8 +230,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 6,
-    "CaughtCount": 12
+    "FPCount": 7,
+    "CaughtCount": 14
   },
   {
     "Regex": "(?i)\\bcheaper\\b",
@@ -410,8 +410,8 @@
     "Site": "",
     "Score": 12.0,
     "TPCount": 7,
-    "FPCount": 11,
-    "CaughtCount": 27
+    "FPCount": 12,
+    "CaughtCount": 28
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -420,7 +420,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)royalty free",
@@ -492,7 +492,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)affordable",
@@ -545,8 +545,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 12,
-    "CaughtCount": 45
+    "FPCount": 13,
+    "CaughtCount": 50
   },
   {
     "Regex": "(?i)^also",
@@ -564,7 +564,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 6
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)lose weight",
@@ -591,16 +591,7 @@
     "Score": 10.0,
     "TPCount": 6,
     "FPCount": 9,
-    "CaughtCount": 56
-  },
-  {
-    "Regex": "(?i)tell you",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 3
+    "CaughtCount": 60
   },
   {
     "Regex": "(?i)vashikaran",
@@ -698,8 +689,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 25,
-    "CaughtCount": 63
+    "FPCount": 26,
+    "CaughtCount": 65
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -743,8 +734,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 11,
-    "CaughtCount": 17
+    "FPCount": 12,
+    "CaughtCount": 18
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -950,8 +941,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 2,
-    "FPCount": 26,
-    "CaughtCount": 393
+    "FPCount": 27,
+    "CaughtCount": 408
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -959,8 +950,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 16,
-    "FPCount": 2,
-    "CaughtCount": 46
+    "FPCount": 3,
+    "CaughtCount": 47
   },
   {
     "Regex": "(?i)high quality",

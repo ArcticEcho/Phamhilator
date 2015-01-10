@@ -78,7 +78,7 @@
     "Score": 11.0,
     "TPCount": 2,
     "FPCount": 18,
-    "CaughtCount": 39
+    "CaughtCount": 41
   },
   {
     "Regex": "(?i)\\bfag\\b",
@@ -96,7 +96,7 @@
     "Score": 11.0,
     "TPCount": 9,
     "FPCount": 5,
-    "CaughtCount": 24
+    "CaughtCount": 25
   },
   {
     "Regex": "(?i)\\bidiot\\b",
@@ -105,7 +105,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 5,
-    "CaughtCount": 15
+    "CaughtCount": 16
   },
   {
     "Regex": "(?i)\\bshit\\b",

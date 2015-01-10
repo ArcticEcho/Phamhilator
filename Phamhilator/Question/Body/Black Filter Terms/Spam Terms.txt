@@ -33,7 +33,7 @@
     "Score": 10.0,
     "TPCount": 6,
     "FPCount": 15,
-    "CaughtCount": 32
+    "CaughtCount": 33
   },
   {
     "Regex": "officialimeiunlock",
@@ -149,8 +149,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 10,
-    "FPCount": 14,
-    "CaughtCount": 36
+    "FPCount": 16,
+    "CaughtCount": 37
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -483,7 +483,7 @@
     "Score": 10.0204086,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 11
+    "CaughtCount": 12
   },
   {
     "Regex": "\\sCLICK HERE\\s",

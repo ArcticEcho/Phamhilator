@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 24,
-    "FPCount": 107,
-    "CaughtCount": 408
+    "TPCount": 26,
+    "FPCount": 108,
+    "CaughtCount": 417
   },
   {
     "Regex": "2348064038119",
@@ -148,9 +148,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
-    "TPCount": 2,
+    "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)Make money",
@@ -158,8 +158,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 2,
-    "FPCount": 6,
-    "CaughtCount": 10
+    "FPCount": 8,
+    "CaughtCount": 12
   },
   {
     "Regex": "(?i)geolify",

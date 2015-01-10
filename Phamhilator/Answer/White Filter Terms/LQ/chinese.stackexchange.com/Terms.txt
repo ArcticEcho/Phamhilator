@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 47.18809,
+    "Score": 51.027,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -390,7 +390,7 @@
     "Regex": "^(?i).{0,60}$",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 6.0,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1209,7 +1209,7 @@
     "Regex": "^\\<p\\>[^a-z]*\\<\\/p\\>$",
     "IsAuto": false,
     "Site": "chinese.stackexchange.com",
-    "Score": 52.5745,
+    "Score": 47.795002,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1227,7 +1227,7 @@
     "Regex": "(?i)need (an )?answer",
     "IsAuto": false,
     "Site": "meta.stackexchange.com",
-    "Score": 9.254358,
+    "Score": 9.754358,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1236,7 +1236,7 @@
     "Regex": "(?i)pl(ease|s|z) help",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 11.8502035,
+    "Score": 12.5472736,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

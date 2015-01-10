@@ -19,13 +19,14 @@ namespace Phamhilator
         private static bool fileMissingWarningMessagePosted;
         private const RegexOptions cmdRegexOptions = RegexOptions.Compiled | RegexOptions.CultureInvariant;
         private static readonly Random random = new Random();
+
         private static readonly HashSet<ChatCommand> commands = new HashSet<ChatCommand>
         {
             #region Normal user commands.
 
             new ChatCommand(new Regex("(?i)^status$", cmdRegexOptions), command => new[]
             {
-                new ReplyMessage(String.Concat("`", GlobalInfo.Status, "`."/*" @ ", GlobalInfo.CommitFormatted, "(https://github.com/ArcticEcho/Phamhilator/commit/", GlobalInfo.CommitHash, ").")*/))
+                new ReplyMessage(String.Concat("`", GlobalInfo.Status, "`." /*" @ ", GlobalInfo.CommitFormatted, "(https://github.com/ArcticEcho/Phamhilator/commit/", GlobalInfo.CommitHash, ").")*/))
             }, CommandAccessLevel.NormalUser),
 
             new ChatCommand(new Regex("(?i)^(info(rmation)?|about)$", cmdRegexOptions), command => new[]
@@ -55,19 +56,32 @@ namespace Phamhilator
 
             new ChatCommand(new Regex("(?i)^(help list|list help|commands)$", cmdRegexOptions), command => new[]
             {
-                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats & status.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del/delete/remove.\n    Owner-only commands: resume, pause, (add/ban) user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full scan & set status {message}.", false)
+                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status & env.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
             }, CommandAccessLevel.NormalUser),
 
             new ChatCommand(new Regex("(?i)^stats$", cmdRegexOptions), command =>
             {
                 var ignorePercent = Math.Round(((GlobalInfo.Stats.TotalCheckedPosts - (GlobalInfo.Stats.TotalFPCount + GlobalInfo.Stats.TotalTPCount)) / GlobalInfo.Stats.TotalCheckedPosts) * 100, 1);
 
-                return new[] { new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught: " + GlobalInfo.PostsCaught + " (last 7 days), " + GlobalInfo.Stats.TotalCheckedPosts + " (total). " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`")} ;
+                return new[]
+                {
+                    new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught: " + GlobalInfo.PostsCaught + " (last 7 days), " + GlobalInfo.Stats.TotalCheckedPosts + " (total). " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`")
+                };
             }, CommandAccessLevel.NormalUser),
 
             new ChatCommand(new Regex(@"(?i)^(terms|why)\b", cmdRegexOptions), command => new[]
             {
                 GetTerms()
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex("(?i)^env$", cmdRegexOptions), command =>
+            {
+                var totalMem = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory / 1024f / 1024 / 1024;
+
+                return new[]
+                {
+                    new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Cores (logical): " + Environment.ProcessorCount + "\n    Total RAM: " +  totalMem + "GB\n    OS: " + Environment.OSVersion.VersionString + "\n    64-bit: " + Environment.Is64BitOperatingSystem + "\n    CLR version: " + Environment.Version, false)
+                };
             }, CommandAccessLevel.NormalUser),
 
             #region Toys.
