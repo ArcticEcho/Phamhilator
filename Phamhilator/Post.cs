@@ -7,5 +7,6 @@
         public string AuthorLink { get; protected set; }
         public string Url { get; protected set; }
         public string Site { get; protected set; }
+        public string Body { get; protected set; }
     }
 }

@@ -105,7 +105,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 2,
-    "CaughtCount": 50
+    "CaughtCount": 51
   },
   {
     "Regex": "(?i)\\bgreeting(s)?\\b",
@@ -123,7 +123,7 @@
     "Score": 12.0,
     "TPCount": 1,
     "FPCount": 61,
-    "CaughtCount": 2190
+    "CaughtCount": 2192
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -195,7 +195,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 25,
-    "CaughtCount": 2533
+    "CaughtCount": 2537
   },
   {
     "Regex": "^[^a-z]*$",
@@ -276,7 +276,7 @@
     "Score": 13.0,
     "TPCount": 8,
     "FPCount": 16,
-    "CaughtCount": 229
+    "CaughtCount": 230
   },
   {
     "Regex": "(?i)credit.card",
@@ -357,7 +357,7 @@
     "Score": 16.0,
     "TPCount": 8,
     "FPCount": 72,
-    "CaughtCount": 4143
+    "CaughtCount": 4145
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -384,7 +384,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 27
+    "CaughtCount": 28
   },
   {
     "Regex": "^\\S*$",
@@ -402,7 +402,7 @@
     "Score": 11.0,
     "TPCount": 5,
     "FPCount": 43,
-    "CaughtCount": 1820
+    "CaughtCount": 1823
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",

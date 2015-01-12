@@ -39,7 +39,7 @@ namespace Phamhilator
                     GlobalInfo.BlackFilters[Type].Terms.Remove(this);
                     GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
 
-                    json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
+                    json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToJsonTerms(), Formatting.Indented);
                 }
                 else
                 {
@@ -48,7 +48,7 @@ namespace Phamhilator
                     GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
                     GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
 
-                    json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
+                    json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToJsonTerms(), Formatting.Indented);
                 }
 
                 tpCount = value;
@@ -75,7 +75,7 @@ namespace Phamhilator
                     GlobalInfo.BlackFilters[Type].Terms.Remove(this);
                     GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
 
-                    json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
+                    json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToJsonTerms(), Formatting.Indented);
                 }
                 else
                 {
@@ -84,7 +84,7 @@ namespace Phamhilator
                     GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
                     GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
 
-                    json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
+                    json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToJsonTerms(), Formatting.Indented);
                 } 
                 
                 fpCount = value;
@@ -111,7 +111,7 @@ namespace Phamhilator
                     GlobalInfo.BlackFilters[Type].Terms.Remove(this);
                     GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
 
-                    json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
+                    json = JsonConvert.SerializeObject(GlobalInfo.BlackFilters[Type].Terms.ToJsonTerms(), Formatting.Indented);
                 }
                 else
                 {
@@ -120,7 +120,7 @@ namespace Phamhilator
                     GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
                     GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
 
-                    json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToTempTerms(), Formatting.Indented);
+                    json = JsonConvert.SerializeObject(GlobalInfo.WhiteFilters[Type].Terms.ToJsonTerms(), Formatting.Indented);
                 }
 
                 caughtCount = value;

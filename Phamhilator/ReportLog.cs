@@ -1,93 +1,114 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading;
 
 
 
 namespace Phamhilator
 {
-    public static class ReportLog
+    public class ReportLog : IDisposable
     {
-        private static bool initialised;
-        private static readonly List<string> messages = new List<string>();
-        private static readonly DateTime twentyTen = new DateTime(2010, 01, 01);
+        private readonly List<LogItem> entries = new List<LogItem>();
+        private readonly Thread writer;
+        private bool dispose;
+        private bool disposed;
 
-        public static List<string> Messages
+        public List<LogItem> Entries
         {
             get
             {
-                if (!initialised)
+                return entries;
+            }
+        }
+
+
+
+        public ReportLog()
+        {
+            var data = File.ReadAllText(DirectoryTools.GetLogFile());
+
+            if (String.IsNullOrEmpty(data))
+            {
+                entries = new List<LogItem>();
+            }
+            else
+            {
+                entries = Newtonsoft.Json.JsonConvert.DeserializeObject<List<LogItem>>(data);
+            }
+
+            GlobalInfo.PostsCaught += entries.Count;
+
+            writer = new Thread(UpdateLog);
+            writer.Start();
+        }
+
+        ~ReportLog()
+        {
+            if (disposed) { return; }
+
+            Dispose();
+        }
+
+
+
+        public void Dispose()
+        {
+            if (disposed) { return; }
+
+            dispose = true;
+
+            while (writer.IsAlive)
+            {
+                Thread.Sleep(100);
+            }
+
+            disposed = true;
+        }
+
+        public void AddEntry(LogItem item)
+        {
+            lock (entries)
+            {
+                if (entries.Any(i => i.Url == item.Url)) { return; }
+
+                if (entries.Count == 0)
                 {
-                    lock (messages)
+                    entries.Add(item);
+                }
+                else
+                {
+                    entries.Insert(0, item);
+                }
+            }
+
+            GlobalInfo.PostsCaught++;
+        }
+
+
+
+        private void UpdateLog()
+        {
+            while (!dispose)
+            {
+                Thread.Sleep(300000); // Update every 5 mins.
+
+                // Remove week old entries.
+                lock (entries)
+                {
+                    for (var i = 0; i < entries.Count; i++)
                     {
-                        if (messages.Count == 0)
+                        if ((DateTime.UtcNow - entries[i].TimeStamp).TotalDays > 7)
                         {
-                            Initialise();
+                            entries.RemoveAt(i);
+                            i = 0;
                         }
                     }
                 }
 
-                return messages;
+                File.WriteAllText(DirectoryTools.GetLogFile(), Newtonsoft.Json.JsonConvert.SerializeObject(entries, Newtonsoft.Json.Formatting.Indented));
             }
-        }
-
-
-
-        public static void Initialise()
-        {
-            if (!File.Exists(DirectoryTools.GetPostPersitenceFile()) || initialised) { return; }
-
-            initialised = true;
-
-            var urls = new List<string>(File.ReadAllLines(DirectoryTools.GetPostPersitenceFile()));
-
-            for (var i = 0; i < urls.Count; i++)
-            {
-                var dateString = urls[i].Split(']')[0].Trim();
-
-                if (dateString == "") { continue; }
-
-                var date = double.Parse(dateString);
-
-                if ((DateTime.Now - twentyTen).TotalMinutes - date > 10080) // Remove posts older than 1 week
-                {
-                    urls.Remove(urls[i]);
-
-                    continue;
-                }
-
-                messages.Add(urls[i].Split(']')[1].Trim());
-
-                GlobalInfo.PostsCaught++;
-            }
-
-            File.WriteAllText(DirectoryTools.GetPostPersitenceFile(), "");
-
-            foreach (var post in urls)
-            {
-                if (!String.IsNullOrEmpty(post))
-                {
-                    File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + post);
-                }
-            }
-        }
-
-        public static void AddPost(string url)
-        {
-            if (messages.Contains(url)) { return; }
-
-            if (Messages.Count == 0)
-            {
-                Messages.Add(url);
-            }
-            else
-            {
-                Messages.Insert(0, url);
-            }
-
-            File.AppendAllText(DirectoryTools.GetPostPersitenceFile(), Environment.NewLine + (DateTime.Now - twentyTen).TotalMinutes + "]" + url);
-            
-            GlobalInfo.PostsCaught++;
         }
     }
 }

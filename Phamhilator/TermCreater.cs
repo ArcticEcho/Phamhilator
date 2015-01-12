@@ -31,7 +31,7 @@ namespace Phamhilator
 
             var t = new Term(filter, term, newScore, site);
             
-            File.WriteAllText(file, JsonConvert.SerializeObject(t.ToTempTerm(), Formatting.Indented));
+            File.WriteAllText(file, JsonConvert.SerializeObject(t.ToJsonTerm(), Formatting.Indented));
         }
     }
 }

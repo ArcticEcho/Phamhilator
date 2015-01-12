@@ -195,9 +195,9 @@ namespace Phamhilator
             return path;
         }
 
-        public static string GetPostPersitenceFile()
+        public static string GetLogFile()
         {
-            var path = Path.Combine(configPath, "Previously Post Messages.txt");
+            var path = Path.Combine(configPath, "Log.txt");
 
             if (!File.Exists(path))
             {

@@ -43,8 +43,6 @@ namespace Phamhilator
                 }
 
                 loginC.Children.Remove(operationC);
-
-                ReportLog.Initialise();
             }
             catch (Exception ex)
             {
@@ -79,7 +77,7 @@ namespace Phamhilator
                     {
                         var question = PostRetriever.GetQuestion(message);
 
-                        if (ReportLog.Messages.All(p => p != question.Url))
+                        if (GlobalInfo.Log.Entries.All(p => p.Url != question.Url))
                         {
                             var qResults = PostAnalyser.AnalyseQuestion(question);
                             var qMessage = MessageGenerator.GetQReport(qResults, question);
@@ -91,7 +89,7 @@ namespace Phamhilator
                         {
                             var answers = PostRetriever.GetLatestAnswers(question);
 
-                            foreach (var a in answers.Where(ans => ReportLog.Messages.All(p => p != ans.Url)))
+                            foreach (var a in answers.Where(ans => GlobalInfo.Log.Entries.All(p => p.Url != ans.Url)))
                             {
                                 var aResults = PostAnalyser.AnalyseAnswer(a);
                                 var aMessage = MessageGenerator.GetAReport(aResults, a);
@@ -290,7 +288,17 @@ namespace Phamhilator
 
             if (message != null && chatMessage != null)
             {
-                ReportLog.AddPost(p.Url);
+                GlobalInfo.Log.AddEntry(new LogItem
+                {
+                    Url = p.Url, 
+                    Site = p.Site, 
+                    Title = p.Title, 
+                    Body = p.Body, 
+                    TimeStamp = DateTime.UtcNow, 
+                    ReportType = info.Type, 
+                    BlackTerms = info.BlackTermsFound.ToJsonTerms().ToList(), 
+                    WhiteTerms = info.WhiteTermsFound.ToJsonTerms().ToList()
+                });
                 GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
                 if (info.AutoTermsFound)
@@ -430,7 +438,7 @@ namespace Phamhilator
 
             if (Debugger.IsAttached)
             {
-                GlobalInfo.PrimaryRoom.PostMessage("`Phamhilator™ started (debug mode).`");
+                GlobalInfo.PrimaryRoom.PostMessage("`Phamhilator™ started` (**`debug mode`**)`.`");
             }
             else
             {

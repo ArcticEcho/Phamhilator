@@ -13,6 +13,7 @@ namespace Phamhilator
     {
         private static string commitHash;
         private static string commitFormatted;
+        private readonly static List<User> owners = new List<User>();
 
         #region Filters
 
@@ -55,7 +56,7 @@ namespace Phamhilator
         public readonly static Dictionary<int, MessageInfo> PostedReports = new Dictionary<int, MessageInfo>(); // Message ID, actual message.
         public readonly static BadTagDefinitions BadTagDefinitions = new BadTagDefinitions();
         public readonly static List<Spammer> Spammers = new List<Spammer>();
-        public readonly static List<User> owners = new List<User>();
+        public readonly static ReportLog Log = new ReportLog();
         public static Room PrimaryRoom;
         public static Client ChatClient;
         public static int PostsCaught;

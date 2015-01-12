@@ -91,6 +91,7 @@
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="GlobalInfo.Stats.cs" />
+    <Compile Include="LogItem.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="ChatAction.cs" />
     <Compile Include="Pham.cs" />

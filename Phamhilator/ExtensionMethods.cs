@@ -63,7 +63,7 @@ namespace Phamhilator
                 terms.Add(new Term(filter, newTerm, realTerm.Score, realTerm.Site, realTerm.IsAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
             }
 
-            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
+            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms(), Formatting.Indented));
         }
 
         public static void WriteScore(this HashSet<Term> terms, FilterType filter, Regex term, float newScore, string site = "")
@@ -86,7 +86,7 @@ namespace Phamhilator
             terms.Remove(realTerm);
             terms.Add(new Term(filter, realTerm.Regex, newScore, realTerm.Site, realTerm.IsAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 
-            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
+            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms(), Formatting.Indented));
         }
 
         public static void WriteAuto(this HashSet<Term> terms, FilterType filter, Regex term, bool isAuto, string site = "")
@@ -99,7 +99,7 @@ namespace Phamhilator
             terms.Remove(realTerm);
             terms.Add(new Term(filter, realTerm.Regex, realTerm.Score, realTerm.Site, isAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 
-            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToTempTerms(), Formatting.Indented));
+            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms(), Formatting.Indented));
         }
 
         public static Term GetRealTerm(this HashSet<Term> terms, Regex term, string site = "")
@@ -155,7 +155,7 @@ namespace Phamhilator
             return new Term(filter, new Regex(input.Regex, RegexOptions.Compiled), input.Score, input.Site, input.IsAuto, input.TPCount, input.FPCount, input.CaughtCount);
         }
 
-        public static JsonTerm ToTempTerm(this Term input)
+        public static JsonTerm ToJsonTerm(this Term input)
         {
             return new JsonTerm
             {
@@ -169,13 +169,13 @@ namespace Phamhilator
             };
         }
 
-        public static JsonTerm[] ToTempTerms(this ICollection<Term> input)
+        public static JsonTerm[] ToJsonTerms(this ICollection<Term> input)
         {
             var tempTerms = new JsonTerm[input.Count];
 
             for (var i = 0; i < input.Count; i++)
             {
-                tempTerms[i] = input.ElementAt(i).ToTempTerm();
+                tempTerms[i] = input.ElementAt(i).ToJsonTerm();
             }
 
             return tempTerms;
