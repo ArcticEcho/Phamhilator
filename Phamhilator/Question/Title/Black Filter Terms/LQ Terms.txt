@@ -42,7 +42,7 @@
     "Score": 11.0,
     "TPCount": 3,
     "FPCount": 22,
-    "CaughtCount": 1326
+    "CaughtCount": 1335
   },
   {
     "Regex": "(?i)tried",
@@ -122,8 +122,8 @@
     "Site": "",
     "Score": 12.0,
     "TPCount": 1,
-    "FPCount": 60,
-    "CaughtCount": 2171
+    "FPCount": 61,
+    "CaughtCount": 2190
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -132,7 +132,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 24
+    "CaughtCount": 26
   },
   {
     "Regex": "(?i)correct this",
@@ -186,7 +186,7 @@
     "Score": 13.0,
     "TPCount": 7,
     "FPCount": 9,
-    "CaughtCount": 197
+    "CaughtCount": 198
   },
   {
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
@@ -195,7 +195,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 25,
-    "CaughtCount": 2508
+    "CaughtCount": 2533
   },
   {
     "Regex": "^[^a-z]*$",
@@ -276,7 +276,7 @@
     "Score": 13.0,
     "TPCount": 8,
     "FPCount": 16,
-    "CaughtCount": 228
+    "CaughtCount": 229
   },
   {
     "Regex": "(?i)credit.card",
@@ -339,7 +339,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 1,
-    "CaughtCount": 26
+    "CaughtCount": 34
   },
   {
     "Regex": "(?i)^wh(ich|at) tool",
@@ -357,7 +357,7 @@
     "Score": 16.0,
     "TPCount": 8,
     "FPCount": 72,
-    "CaughtCount": 4108
+    "CaughtCount": 4143
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -366,7 +366,7 @@
     "Score": 15.0,
     "TPCount": 24,
     "FPCount": 14,
-    "CaughtCount": 351
+    "CaughtCount": 357
   },
   {
     "Regex": "(?i)\\bh[ae]lp\\b",
@@ -375,7 +375,7 @@
     "Score": 16.0,
     "TPCount": 34,
     "FPCount": 42,
-    "CaughtCount": 1010
+    "CaughtCount": 1023
   },
   {
     "Regex": "for\\sfree",
@@ -402,7 +402,7 @@
     "Score": 11.0,
     "TPCount": 5,
     "FPCount": 43,
-    "CaughtCount": 1809
+    "CaughtCount": 1820
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",

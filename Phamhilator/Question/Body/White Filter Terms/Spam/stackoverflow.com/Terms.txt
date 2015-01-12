@@ -57,7 +57,7 @@
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 7.05,
+    "Score": 6.655,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -138,6 +138,15 @@
     "Regex": "(?i)neuropathy",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "ketone",
+    "IsAuto": false,
+    "Site": "chemistry.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

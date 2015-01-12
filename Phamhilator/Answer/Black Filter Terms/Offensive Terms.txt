@@ -96,7 +96,7 @@
     "Score": 11.0,
     "TPCount": 9,
     "FPCount": 5,
-    "CaughtCount": 25
+    "CaughtCount": 26
   },
   {
     "Regex": "(?i)\\bidiot\\b",

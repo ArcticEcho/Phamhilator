@@ -1443,15 +1443,13 @@ namespace Phamhilator
                 if (questionReport.IsMatch(room[message.ParentID].Content))
                 {
                     var p = PostRetriever.GetQuestion(post.Url);
-                    var qtInfo = new QuestionAnalysis();
-                    var qbInfo = new QuestionAnalysis();
+                    QuestionAnalysis info;
 
-                    var qtRes = Analysers.QuestionTitle.IsLowQuality(p, ref qtInfo);
-                    var qbRes = Analysers.QuestionBody.IsLowQuality(p, ref qbInfo);
+                    var res = QuestionAnalyser.IsLowQuality(p, out info);
 
-                    if (qtRes && qtInfo.Accuracy >= GlobalInfo.AccuracyThreshold)
+                    if (res)
                     {
-                        var newMessage = MessageGenerator.GetQReport(qtInfo, p);
+                        var newMessage = MessageGenerator.GetQReport(info, p);
 
                         var postedMessage = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
 
@@ -1459,33 +1457,20 @@ namespace Phamhilator
                         {
                             Message = postedMessage,
                             Post = p,
-                            Report = qtInfo
-                        });
-                    }
-                    else if (qbRes && qbInfo.Accuracy >= GlobalInfo.AccuracyThreshold)
-                    {
-                        var newMessage = MessageGenerator.GetQReport(qbInfo, p);
-
-                        var postedMessage = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
-
-                        GlobalInfo.PostedReports.Add(postedMessage.ID, new MessageInfo
-                        {
-                            Message = postedMessage,
-                            Post = p,
-                            Report = qbInfo
+                            Report = info
                         });
                     }
                 }
                 else
                 {
                     var p = PostRetriever.GetAnswer(post.Url);
-                    var aInfo = new AnswerAnalysis();
+                    AnswerAnalysis info;
 
-                    var aRes = Analysers.Answer.IsLowQuality(p, ref aInfo);
+                    var res = AnswerAnalyser.IsLowQuality(p,out info);
 
-                    if (aRes)
+                    if (res)
                     {
-                        var newMessage = MessageGenerator.GetAReport(aInfo, p);
+                        var newMessage = MessageGenerator.GetAReport(info, p);
 
                         var postedMessage = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
 
@@ -1493,7 +1478,7 @@ namespace Phamhilator
                         {
                             Message = postedMessage,
                             Post = p,
-                            Report = aInfo
+                            Report = info
                         });
                     }
                 }

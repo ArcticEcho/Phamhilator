@@ -148,9 +148,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 10,
-    "FPCount": 16,
-    "CaughtCount": 37
+    "TPCount": 11,
+    "FPCount": 17,
+    "CaughtCount": 39
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -589,9 +589,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 2,
+    "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)skin-care-review",
@@ -766,6 +766,15 @@
   },
   {
     "Regex": "(?i)Penomet",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)6monthloansbadcredituk",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,

@@ -24,7 +24,7 @@
     "Score": 13.3197279,
     "TPCount": 9,
     "FPCount": 28,
-    "CaughtCount": 580
+    "CaughtCount": 583
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -42,7 +42,7 @@
     "Score": 13.75,
     "TPCount": 3,
     "FPCount": 2,
-    "CaughtCount": 40
+    "CaughtCount": 41
   },
   {
     "Regex": "down vote favorite",

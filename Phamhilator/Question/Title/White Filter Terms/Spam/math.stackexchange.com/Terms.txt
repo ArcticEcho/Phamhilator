@@ -516,7 +516,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 9.321368,
+    "Score": 10.3213682,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -543,7 +543,7 @@
     "Regex": "\\$\\d+",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 7.7,
+    "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1263,6 +1263,15 @@
     "Regex": "(?i)customers? review",
     "IsAuto": false,
     "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)nike",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

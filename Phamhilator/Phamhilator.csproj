@@ -81,9 +81,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Analysers\QuestionBody.cs" />
     <Compile Include="Answer.cs" />
-    <Compile Include="Analysers\Answer.cs" />
+    <Compile Include="AnswerAnalyser.cs" />
     <Compile Include="AnswerAnalysis.cs" />
     <Compile Include="BadTagDefinitions.cs" />
     <Compile Include="BannedUsers.cs" />
@@ -96,6 +95,7 @@
     <Compile Include="ChatAction.cs" />
     <Compile Include="Pham.cs" />
     <Compile Include="PostRetriever.cs" />
+    <Compile Include="QuestionAnalyser.cs" />
     <Compile Include="ReplyMessage.cs" />
     <Compile Include="Spammer.cs" />
     <Compile Include="StringDownloader.cs" />
@@ -107,7 +107,6 @@
     <Compile Include="ReportCleaner.cs" />
     <Compile Include="QAAnalysis.cs" />
     <Compile Include="QuestionAnalysis.cs" />
-    <Compile Include="Analysers\QuestionTitle.cs" />
     <Compile Include="MessageInfo.cs" />
     <Compile Include="PostAnalyser.cs" />
     <Compile Include="ReportLog.cs" />

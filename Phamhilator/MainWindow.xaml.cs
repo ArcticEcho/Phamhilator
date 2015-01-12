@@ -234,6 +234,8 @@ namespace Phamhilator
 
         private void CheckSendReport(Post p, string messageBody, PostAnalysis info)
         {
+            if (p == null || String.IsNullOrEmpty(messageBody) || info == null) { return; }
+
             Message message = null;
             MessageInfo chatMessage = null;
 
@@ -242,8 +244,6 @@ namespace Phamhilator
                 message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
                 chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
             }
-
-            if (info.Accuracy <= GlobalInfo.AccuracyThreshold) { return; }
 
             switch (info.Type)
             {
@@ -288,7 +288,7 @@ namespace Phamhilator
                 }
             }
 
-            if (message != null)
+            if (message != null && chatMessage != null)
             {
                 ReportLog.AddPost(p.Url);
                 GlobalInfo.PostedReports.Add(message.ID, chatMessage);

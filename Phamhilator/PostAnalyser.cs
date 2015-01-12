@@ -11,27 +11,27 @@
                 return info;
             }
 
-            if ((info.BadTags = Analysers.QuestionTitle.IsBadTagUsed(q, ref info)).Count != 0)
+            if ((info.BadTags = QuestionAnalyser.IsBadTagUsed(q, out info)) != null && info.BadTags.Count != 0)
             {
                 return info;
             }
 
-            if (Analysers.QuestionTitle.IsSpam(q, ref info) || Analysers.QuestionBody.IsSpam(q, ref info))
+            if (QuestionAnalyser.IsSpam(q, out info))
             {
                 return info;
             }
 
-            if (Analysers.QuestionTitle.IsLowQuality(q, ref info) || Analysers.QuestionBody.IsLowQuality(q, ref info))
+            if (QuestionAnalyser.IsLowQuality(q, out info))
             {
                 return info;
             }
 
-            if (Analysers.QuestionTitle.IsOffensive(q, ref info) || Analysers.QuestionBody.IsOffensive(q, ref info))
+            if (QuestionAnalyser.IsOffensive(q, out info))
             {
                 return info;
             }
 
-            if (Analysers.QuestionTitle.IsBadUsername(q, ref info))
+            if (QuestionAnalyser.IsBadUsername(q, out info))
             {
                 return info;
             }
@@ -48,22 +48,22 @@
                 return info;
             }
 
-            if (Analysers.Answer.IsSpam(a, ref info))
+            if (AnswerAnalyser.IsSpam(a, out info))
             {
                 return info;
             }
 
-            if (Analysers.Answer.IsLowQuality(a, ref info))
+            if (AnswerAnalyser.IsLowQuality(a, out info))
             {
                 return info;
             }
 
-            if (Analysers.Answer.IsOffensive(a, ref info))
+            if (AnswerAnalyser.IsOffensive(a, out info))
             {
                 return info;
             }
 
-            if (Analysers.Answer.IsBadUsername(a, ref info))
+            if (AnswerAnalyser.IsBadUsername(a, out info))
             {
                 return info;
             }

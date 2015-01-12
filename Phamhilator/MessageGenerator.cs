@@ -10,6 +10,8 @@ namespace Phamhilator
     {
         public static string GetQReport(QuestionAnalysis info, Question post)
         {
+            if (info == null || post == null) { return null; }
+
             var name = PostRetriever.EscapeString(post.AuthorName, "");
             var author = String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + ")";
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostRetriever.EscapeString(post.Title, "");
@@ -48,6 +50,8 @@ namespace Phamhilator
 
         public static string GetAReport(AnswerAnalysis info, Answer post)
         {
+            if (info == null || post == null) { return null; }
+
             var name = PostRetriever.EscapeString(post.AuthorName, "");
             var author = String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + ")";
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostRetriever.EscapeString(post.Title, " ");
