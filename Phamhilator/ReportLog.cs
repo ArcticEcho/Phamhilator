@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -10,7 +11,7 @@ namespace Phamhilator
 {
     public class ReportLog : IDisposable
     {
-        private readonly List<LogItem> entries = new List<LogItem>();
+        private readonly List<LogItem> entries;
         private readonly Thread writer;
         private bool dispose;
         private bool disposed;
@@ -90,9 +91,18 @@ namespace Phamhilator
 
         private void UpdateLog()
         {
+            var sw = new Stopwatch();
+
             while (!dispose)
             {
-                Thread.Sleep(300000); // Update every 5 mins.
+                sw.Start();
+
+                while (sw.Elapsed.TotalMinutes < 5 && !dispose)
+                {
+                    Thread.Sleep(1000);
+                }
+
+                sw.Reset();
 
                 // Remove week old entries.
                 lock (entries)

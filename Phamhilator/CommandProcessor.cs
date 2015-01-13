@@ -65,7 +65,7 @@ namespace Phamhilator
 
                 return new[]
                 {
-                    new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught: " + GlobalInfo.PostsCaught + " (last 7 days), " + GlobalInfo.Stats.TotalCheckedPosts + " (total). " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`")
+                    new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught (last 7 days): " + GlobalInfo.PostsCaught + ". Total posts checked: " + GlobalInfo.Stats.TotalCheckedPosts + ". " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`")
                 };
             }, CommandAccessLevel.NormalUser),
 

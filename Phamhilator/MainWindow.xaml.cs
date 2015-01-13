@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -69,7 +70,7 @@ namespace Phamhilator
 
                 socket.OnOpen += (o, oo) => socket.Send("155-questions-active");
 
-                socket.OnMessage += (o, message) =>
+                socket.OnMessage += (o, message) => 
                 {
                     if (!GlobalInfo.BotRunning) { return; }
 
@@ -106,12 +107,11 @@ namespace Phamhilator
 
                 socket.OnClose += (o, oo) =>
                 {
+                    if (GlobalInfo.Shutdown) { return; }
+
                     GlobalInfo.PrimaryRoom.PostMessage("`Warning: global post websocket has died. Attempting to restart...`");
 
-                    if (!GlobalInfo.Shutdown)
-                    {
-                        InitialiseSocket();
-                    }
+                    InitialiseSocket();
                 };
 
                 socket.Connect();

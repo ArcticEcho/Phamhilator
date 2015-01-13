@@ -51,7 +51,7 @@
     "Score": 15.0,
     "TPCount": 26,
     "FPCount": 109,
-    "CaughtCount": 419
+    "CaughtCount": 420
   },
   {
     "Regex": "2348064038119",
@@ -258,7 +258,7 @@
     "Score": 10.8585472,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\bdelhi\\b",
