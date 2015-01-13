@@ -104,8 +104,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 2,
-    "FPCount": 5,
-    "CaughtCount": 16
+    "FPCount": 6,
+    "CaughtCount": 17
   },
   {
     "Regex": "(?i)\\bshit\\b",

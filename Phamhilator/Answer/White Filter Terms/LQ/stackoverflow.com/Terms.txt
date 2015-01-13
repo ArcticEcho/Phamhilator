@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 46.1452942,
+    "Score": 47.18809,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 21.6744537,
+    "Score": 22.7926331,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1237,6 +1237,15 @@
     "IsAuto": false,
     "Site": "serverfault.com",
     "Score": 11.8502035,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+    "IsAuto": false,
+    "Site": "electronics.stackexchange.com",
+    "Score": 9.601784,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

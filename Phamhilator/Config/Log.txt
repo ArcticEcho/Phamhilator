@@ -1,5 +1,162 @@
 [
   {
+    "Url": "http://drupal.stackexchange.com/questions/141933",
+    "Site": "drupal.stackexchange.com",
+    "Title": "Private files not found 404 error",
+    "Body": "<p>My installation is Drupal 7 + Nginx + Varnish cache</p>\n\n<p>My private files path: sites/default/files/private/demo.img\nURL in browser: system/files/demo.img</p>\n\n<p>When I try to open private file: <a href=\"http://domian.com/system/files/demo.img\" rel=\"nofollow\">http://domian.com/system/files/demo.img</a> server throws 404 not found error. So I check all the file system config and directory permissions, everything seems to be fine.</p>\n\n<p>Now I tried to debug Drupal core files, what I have understood is,</p>\n\n<ol>\n<li><p>System.module has defined url \"system/files\" with callback function \"file_download\" using hook_menu()</p></li>\n<li><p>function file_download() is defined in 'includes/file.inc' core file and it is not invoked when I try to access the file: <a href=\"http://domian.com/system/files/demo.img\" rel=\"nofollow\">http://domian.com/system/files/demo.img</a></p></li>\n</ol>\n\n<p>So my private file request is not handled by Drupal, which is wrong? \nIn my local setup though, which has Apache instead of Nginx, private files are normally accessed from Drupal as is expected.</p>\n\n<p>So is my Nginx conf is wrong? Pasting my nginx site configuration:</p>\n\n<pre><code>server {\n    server_name www.demo.com;\n    root /var/www/demo/; ## <-- Your only path reference.\n\nlisten 127.0.0.1:8080;\n\nlocation = /check.php {\n     access_log off;\n     log_not_found off;\n  }\n\n\nlocation /nginx_status {\n       stub_status on;\n       access_log   off;\n       allow 127.0.0.1;\n       deny all;\n}\n\n\nlocation ~ ^/(status|ping)$ {\n        include fastcgi_params;\n        fastcgi_pass 127.0.0.1:9000;\n        fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;\n        allow 127.0.0.1;\n        #allow stats_collector.localdomain;\n        #allow watchdog.localdomain;\n        deny all;\n}\n\n\n# Enable compression, this will help if you have for instance advagg‎ module\n# by serving Gzip versions of the files.\n#gzip_static on;\n\nlocation = /favicon.ico {\n        log_not_found off;\n        access_log off;\n}\n\nlocation = /robots.txt {\n        allow all;\n        log_not_found off;\n        access_log off;\n}\n\n# This matters if you use drush prior to 5.x\n# After 5.x backups are stored outside the Drupal install.\n#location = /backup {\n#        deny all;\n#}\n\n# Very rarely should these ever be accessed outside of your lan\nlocation ~* \\.(txt|log)$ {\n        #allow 192.168.0.0/16;\n        deny all;\n}\n\nlocation ~ \\..*/.*\\.php$ {\n        return 403;\n}\n\n# No no for private\nlocation ~ ^/sites/.*/private/ {\n        internal;\n}\n\n# Block access to \"hidden\" files and directories whose names begin with a\n# period. This includes directories used by version control systems such\n# as Subversion or Git to store control files.\nlocation ~ (^|/)\\. {\n        return 403;\n}\n\nlocation / {\n        # This is cool because no php is touched for static content\n        try_files $uri @rewrite;\n\n location ~* ^(?:.+\\.(?:htaccess|make|txt|engine|inc|info|install|module|profile|po|pot|sh|.*sql|test|theme|tpl(?:\\.php)?|xtmpl)|code-style\\.pl|/Entries.*|/Repository|/Root|/Tag|/Template)$ {\n         return 404;\n }\n\nrewrite ^/(.*)\\.css /$1\\.css\\.gz;\nrewrite ^/(.*)\\.js /$1\\.js\\.gz;\n\n\n}\n\n\nlocation @rewrite {\n        # You have 2 options here\n        # For D7 and above:\n        # Clean URLs are handled in drupal_environment_initialize().\n        rewrite ^ /index.php;\n        # For Drupal 6 and bwlow:\n        # Some modules enforce no slash (/) at the end of the URL\n        # Else this rewrite block wouldn't be needed (GlobalRedirect)\n        #rewrite ^/(.*)$ /index.php?q=$1;\n}\n\nlocation ~ \\.php$ {\n        fastcgi_split_path_info ^(.+\\.php)(/.+)$;\n        #NOTE: You should have \"cgi.fix_pathinfo = 0;\" in php.ini\n        include fastcgi_params;\n        fastcgi_read_timeout 120;\n        fastcgi_param SCRIPT_FILENAME $request_filename;\n        fastcgi_intercept_errors on;\n        fastcgi_pass phpbackend;\n}\n\n# Fighting with Styles? This little gem is amazing.\n# This is for D6\n#location ~ ^/sites/.*/files/imagecache/ {\n# This is for D7 and D8\nlocation ~ ^/sites/.*/files/styles/ {\n        try_files $uri @rewrite;\n}\n\nlocation ~* \\.(js|css|png|jpg|jpeg|gif|ico)$ {\n        expires max;\n        log_not_found off;\n}\n</code></pre>\n\n<p>}</p>\n\n<p><strong>Latest development</strong>: The private file which I am trying to view is webform submission and While I try to view file, the function webform_submission_access() see logged in user as anonymous.</p>",
+    "TimeStamp": "\/Date(1421149258357)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 8,
+        "FPCount": 73,
+        "CaughtCount": 4164
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "drupal.stackexchange.com",
+        "Score": 6.8,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://codereview.stackexchange.com/a/77385",
+    "Site": "codereview.stackexchange.com",
+    "Title": "You have selected the right tool (case classes) but are not using it pro...",
+    "Body": "<p>You have selected the right tool (case classes) but are not using it properly.  In functional programming, a tree is an <a href=\"http://en.wikipedia.org/wiki/Algebraic_data_type\" rel=\"nofollow\">Algebraic Data Type</a>.  In Scala, these <em>are</em> constructed with case classes but this is done with a sealed base trait (or abstract class) and a set of case classes which represent the different states/components of the type.  Here is how yours might look:</p>\n\n<pre><code>  sealed abstract class CrockPotTree[+A]\n  case object Empty[A] extends CrockPotTree[Nothing]\n  case class Node[A](value: A, negative: CrockPotTree[A],\n      positive: CrockPotTree[A]) extends CrockPotTree[A]\n</code></pre>\n\n<p>Now all I need do is create functions which can add to, prune or walk the tree.  These will do so recursively, using pattern matching to do the appropriate thing depending on the type of the node.  There is more than one way to do this, but first let me say a few things about the example code above:</p>\n\n<ul>\n<li>I used a sealed abstract as the base.  This class can only be used within this module and not elsewhere.  This means code for walking/fetching/manipulating CrockPotTrees will not fail because somebody extended the class and added something crazy and unpredictable.  It is abstract because only the derivative case classes have meaningful state (Empty, not Empty etc).</li>\n<li>I could have used a trait.  There are still different opinions about this.</li>\n<li>I have made it generic: <strong>CrockPotTree[+A]</strong> rather than <strong>CrockPotTree[String]</strong>, so it can hande all types of objects.  You can use it (once an <strong>apply</strong> method has been added to the companion object) to create a <strong>CrockPotTree[String]</strong> or <strong>CrockPotTree[Int]</strong> or whatever.</li>\n<li>I have made it <a href=\"http://docs.scala-lang.org/tutorials/tour/variances.html\" rel=\"nofollow\">covariant</a>.  This opens the possibility that if you add a <strong>Bear</strong> value to a tree full of <strong>Wolf</strong> objects, you will get back a <strong>CrockPotTree[Animal]</strong> rather than a simple error.</li>\n</ul>\n\n<p>Now, the functions that work should be recursive (or <a href=\"http://en.wikipedia.org/wiki/Fold_(higher-order_function)\" rel=\"nofollow\">fold</a> over a path through the tree, which is a kind of recursion).  Why?  Because this is a <a href=\"http://en.wikipedia.org/wiki/Recursive_data_type\" rel=\"nofollow\">recursive data type</a>.  The first point to consider about this is that your <strong>steps</strong> type in WalkTree is wrong.  It is almost certainly better to have it a list than an array.  That way, each recursive iteration of walkTree can look something like this:</p>\n\n<pre><code>  steps match {\n      Case Nil => // Return this node's value if there is one\n      Case x :: xs => walkTree(walk(x), xs)\n  }\n</code></pre>\n\n<p>This is both faster and simpler than using an array.  That said, the next important question is where to put these functions.  You have 2 basic choices:</p>\n\n<ol>\n<li>In the companion object.  In this case, functions should use pattern matching to decide what is the appropriate option for the particular case class.</li>\n<li>Abstract methods defined in the abstract class (where appropriate) and concrete implementations in the case classes.</li>\n</ol>\n\n<p>(If you use a trait rather than obstract class, you also have the choice of making some functions concrete in the parent trait).</p>\n\n<p>Option 1 is the functional approach as seen in functional languages which don't offer OO.  I've written tree types in Haskell code and that's just how it is done there.  Option 2 is more OO (pattern matching goes away because each case class knows how to deal with itself) while still being good functional code if you do it right.  Option 2 is the way <em>most</em> functions in the Scala collections library are done.</p>\n\n<p>Since I have already given an example of how <strong>walkTree</strong> would look in Option 1 style (which is how your code is done), here's how some simple functions would be done Option 2 stylee:</p>\n\n<pre><code>  sealed abstract class CrockPotTree[+A] {\n    def isEmpty: Boolean\n    def size: Int\n  }\n  case object Empty[A] extends CrockPotTree[Nothing] {\n    def isEmpty = true\n    def size = 0\n  }\n  case class Node[A](value: A, negative: CrockPotTree[A],\n      positive: CrockPotTree[A]) extends CrockPotTree[A] {\n    def isEmpty = false\n    def size = positive.size + negative.size + 1\n    /* This implementation of size is *not* tail recursive \n     * and could create a stack overflow.  There is a better\n     * way to do it but this way is chosen for simplicity here\n     */\n  }\n</code></pre>\n\n<p>Now, <em>despite</em> my warning about the stack overflow risk, look at the <strong>size</strong> function.  It works because an empty tree will return a size of zero.  A non-empty tree will add 1 (for itself) to the combined sizes of its positive and negative trees.  I want to make two points about this:</p>\n\n<ol>\n<li>You should now have enough knowledge to create an Option 2 style walk, if you think hard enough.</li>\n<li><strong>This</strong> is why we seal algebraic data types so they cannot be extended.  My <strong>size</strong> function knows that the answer will always be 0 or more, because there are only two CrockPotTree types and they both return a proper value.  If some idiot added an new case class which returned something else (<strong>null</strong>, for example), things could explode.</li>\n</ol>\n\n<p>My final two observations...</p>\n\n<p>Firstly, you should have an <strong>apply</strong> function in the companion object, so that you could create a CrockPotTree like this</p>\n\n<pre><code>  val cpt = CrockPotTree(values)\n</code></pre>\n\n<p>where values is some collection of booleans and values which CrockPotTree will know how to build into a tree.  the apply function would need to call an append function recursively.  In Option 2 style, Empty and Node classes would both have their own recursive append function.</p>\n\n<p>Secondly, I am not at all sure that Boolean is an appropriate type here.  You might want to create your own binary type (if that really is appropriate for this tree structure).  Guess what?  It would also be an ADT (algebraic data type).</p>\n\n<p>I leave you with some useful links:</p>\n\n<ul>\n<li><a href=\"https://gleichmann.wordpress.com/2011/01/30/functional-scala-algebraic-datatypes-enumerated-types/\" rel=\"nofollow\">https://gleichmann.wordpress.com/2011/01/30/functional-scala-algebraic-datatypes-enumerated-types/</a></li>\n<li><a href=\"https://gist.github.com/mbbx6spp/5548937\" rel=\"nofollow\">https://gist.github.com/mbbx6spp/5548937</a></li>\n<li><a href=\"http://twitter.github.io/effectivescala/#Functional%20programming-Case%20classes%20as%20algebraic%20data%20types\" rel=\"nofollow\">http://twitter.github.io/effectivescala/#Functional%20programming-Case%20classes%20as%20algebraic%20data%20types</a></li>\n</ul>",
+    "TimeStamp": "\/Date(1421149214032)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\bidiot\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 2,
+        "FPCount": 5,
+        "CaughtCount": 17
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://magento.stackexchange.com/questions/52003",
+    "Site": "magento.stackexchange.com",
+    "Title": "Console error on pages with col2-left-layout",
+    "Body": "<p>I am making my mobile site and our navigation is a bar at the top which when you click expands and shows the categories. However on any pages with the layout class col2-left-layout the navigation doesn't expand, i have checked the console and it say there is an error in my script.js saying  Uncaught TypeError: undefined is not a function </p>\n\n<p>and it is referring to this line </p>\n\n<pre><code>if ($('.col-left').length) $('.col-left').masonry({itemSelector : '.block', isResizable:true, isAnimated:true});\n</code></pre>\n\n<p>I dont understand why this is happening on only pages with certain layouts, could anyone shed some light on the situation please?</p>",
+    "TimeStamp": "\/Date(1421149131319)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 8,
+        "FPCount": 73,
+        "CaughtCount": 4163
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "magento.stackexchange.com",
+        "Score": 6.568182,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27921289",
+    "Site": "stackoverflow.com",
+    "Title": "is the image in the same folder as the runnable jar?",
+    "Body": "<p>is the image in the same folder as the runnable jar?</p>",
+    "TimeStamp": "\/Date(1421149095529)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 423,
+        "FPCount": 111,
+        "CaughtCount": 2514
+      },
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 2,
+        "FPCount": 0,
+        "CaughtCount": 8
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://meta.stackexchange.com/questions/247027",
+    "Site": "meta.stackexchange.com",
+    "Title": "ill help you get a really great start and",
+    "Body": "<p>The things that we've mentioned here will help you get a really great start and if you wish to get into more depth on this subject, you should definitely take a look at . Obviously you can choose between a variety of approaches and there are many places to get information; another website you can try is .Do not let anyone talk you into believing that you don't have the ability to properly handle Garcinia Cambogia Sensation. There are all sorts of individuals who have been in the predicament in which you find yourself now nevertheless they still were in a position to apply the things we've discussed and to great result. </p>\n\n<p>Read More >>> <a href=\"http://www.tophealthresource.com/slim-body-with-garcinia-cambogia-sensation/\" rel=\"nofollow\">http://www.tophealthresource.com/slim-body-with-garcinia-cambogia-sensation/</a></p>",
+    "TimeStamp": "\/Date(1421149030450)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\bhelp(s)? you(r)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 1,
+        "FPCount": 0,
+        "CaughtCount": 3
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
     "Url": "http://android.stackexchange.com/a/93824",
     "Site": "android.stackexchange.com",
     "Title": "Well its hard to know, Install avast anti-virus from google play and it ...",
@@ -58,631 +215,5 @@
       }
     ],
     "WhiteTerms": []
-  },
-  {
-    "Url": "http://magento.stackexchange.com/a/51991",
-    "Site": "magento.stackexchange.com",
-    "Title": "Hi you can get all reviews of you system using review collection\n\nMage::...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421147180313)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 1,
-        "FPCount": 1,
-        "CaughtCount": 3
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27920670",
-    "Site": "stackoverflow.com",
-    "Title": "Thanks for the help, I found an easier workaround, if I manually (from t...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421147146421)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.3837166,
-        "TPCount": 164,
-        "FPCount": 104,
-        "CaughtCount": 2455
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 21.6744537,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://electronics.stackexchange.com/a/148912",
-    "Site": "electronics.stackexchange.com",
-    "Title": "Hi Mustafa as per my knowledge \n\nop-amp can Amplify the difference of di...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421147042310)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 1,
-        "FPCount": 0,
-        "CaughtCount": 2
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://android.stackexchange.com/a/95737",
-    "Site": "android.stackexchange.com",
-    "Title": "none of this was helpful. My phone does not give me the option to choose...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146958948)\/",
-    "ReportType": 4,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\bfuck",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 11.0,
-        "TPCount": 9,
-        "FPCount": 5,
-        "CaughtCount": 27
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27920611",
-    "Site": "stackoverflow.com",
-    "Title": "after some test it is allows you to 15 digit then after it will display ...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146953545)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^[^A-Z]*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 2,
-        "FPCount": 0,
-        "CaughtCount": 5
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://stackoverflow.com/questions/27920605",
-    "Site": "stackoverflow.com",
-    "Title": "I want to make the following code work only once in jquery",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146926679)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)i want to",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 12.0,
-        "TPCount": 14,
-        "FPCount": 10,
-        "CaughtCount": 179
-      },
-      {
-        "Regex": "(?i)^I want",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.5906382,
-        "TPCount": 14,
-        "FPCount": 8,
-        "CaughtCount": 139
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "(?s-m)^.{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 8.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://ux.stackexchange.com/a/60010",
-    "Site": "ux.stackexchange.com",
-    "Title": "Hi All thanks for the suggestions and the answers I have figured out a w...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146918611)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.3837166,
-        "TPCount": 163,
-        "FPCount": 104,
-        "CaughtCount": 2454
-      },
-      {
-        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 1
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27920586",
-    "Site": "stackoverflow.com",
-    "Title": "You try to rewrite in .htaccess ?",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146853499)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 422,
-        "FPCount": 109,
-        "CaughtCount": 2507
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,60}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 5.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://gaming.stackexchange.com/a/159521",
-    "Site": "gaming.stackexchange.com",
-    "Title": "Benefactor schwartzer goes for around 140k",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146814601)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 422,
-        "FPCount": 109,
-        "CaughtCount": 2506
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27920567",
-    "Site": "stackoverflow.com",
-    "Title": "Assumed you want serialize the \"naam\" and the \"email\":\n\n$serializeArray ...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146796543)\/",
-    "ReportType": 3,
-    "BlackTerms": [
-      {
-        "Regex": "[-\\w]{3}@\\w+\\.",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 15.0,
-        "TPCount": 26,
-        "FPCount": 110,
-        "CaughtCount": 421
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "(?i)you want",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 5.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "[-\\w]{3}@\\w+\\.",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 12.9453831,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27920406",
-    "Site": "stackoverflow.com",
-    "Title": "i think its should be double(16,4)",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146788068)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 422,
-        "FPCount": 109,
-        "CaughtCount": 2505
-      },
-      {
-        "Regex": "^[^A-Z]*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 2,
-        "FPCount": 0,
-        "CaughtCount": 4
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,60}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 5.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27920538",
-    "Site": "stackoverflow.com",
-    "Title": "you have an space after anonymous function in second coulmn... check tha...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146684544)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^[^A-Z]*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 1,
-        "FPCount": 0,
-        "CaughtCount": 3
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27920418",
-    "Site": "stackoverflow.com",
-    "Title": "Awesome solution!  Thanks so much for this.",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146318028)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 420,
-        "FPCount": 109,
-        "CaughtCount": 2503
-      },
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.3837166,
-        "TPCount": 162,
-        "FPCount": 104,
-        "CaughtCount": 2453
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,60}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 5.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 20.6111317,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://askubuntu.com/questions/573213",
-    "Site": "askubuntu.com",
-    "Title": "Sadly, there is for losing weight?",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146268995)\/",
-    "ReportType": 3,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)losing weight",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 1
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://superuser.com/a/864117",
-    "Site": "superuser.com",
-    "Title": "You can copy the dll using the Command Prompt(Admin) (Win+X)",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146149499)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 419,
-        "FPCount": 109,
-        "CaughtCount": 2502
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://pm.stackexchange.com/a/13971",
-    "Site": "pm.stackexchange.com",
-    "Title": "PMI India Regional Conference 2015, The one day conference will be hoste...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146107946)\/",
-    "ReportType": 3,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\bpune\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.8585472,
-        "TPCount": 1,
-        "FPCount": 0,
-        "CaughtCount": 2
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://askubuntu.com/a/573212",
-    "Site": "askubuntu.com",
-    "Title": "same problem here with wine, and other apps, always they nee a i386 vers...",
-    "Body": null,
-    "TimeStamp": "\/Date(1421146094083)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^[^A-Z]*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 1
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "(?i)problem(s)?",
-        "IsAuto": false,
-        "Site": "askubuntu.com",
-        "Score": 7.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://programmers.stackexchange.com/questions/268176",
-    "Site": "programmers.stackexchange.com",
-    "Title": "What is limitation of localstorage in mobile browser?",
-    "Body": null,
-    "TimeStamp": "\/Date(1421143778529)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?s-m)^.{0,100}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 13.3197279,
-        "TPCount": 9,
-        "FPCount": 28,
-        "CaughtCount": 586
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://stackoverflow.com/questions/27908080",
-    "Site": "stackoverflow.com",
-    "Title": "Spring batch Unit test and JPA Transaction : IllegalTransactionStateException",
-    "Body": null,
-    "TimeStamp": "\/Date(1421085664872)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "\\bpl[sz]+\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 14.0,
-        "TPCount": 13,
-        "FPCount": 15,
-        "CaughtCount": 202
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://wordpress.stackexchange.com/questions/174636",
-    "Site": "wordpress.stackexchange.com",
-    "Title": "Problem on wpdb queries, wp_insert_post, wp_insert_user etc. The query runs twice",
-    "Body": null,
-    "TimeStamp": "\/Date(1421085507715)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)problem(s)?",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 12.0,
-        "TPCount": 1,
-        "FPCount": 61,
-        "CaughtCount": 2193
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "(?i)problem(s)?",
-        "IsAuto": false,
-        "Site": "wordpress.stackexchange.com",
-        "Score": 5.41666651,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
   }
 ]

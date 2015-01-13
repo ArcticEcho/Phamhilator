@@ -59,14 +59,9 @@ namespace Phamhilator
                 new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status & env.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
             }, CommandAccessLevel.NormalUser),
 
-            new ChatCommand(new Regex("(?i)^stats$", cmdRegexOptions), command =>
+            new ChatCommand(new Regex("(?i)^stats$", cmdRegexOptions), command => new []
             {
-                var ignorePercent = Math.Round(((GlobalInfo.Stats.TotalCheckedPosts - (GlobalInfo.Stats.TotalFPCount + GlobalInfo.Stats.TotalTPCount)) / GlobalInfo.Stats.TotalCheckedPosts) * 100, 1);
-
-                return new[]
-                {
-                    new ReplyMessage("`Total terms: " + GlobalInfo.TermCount + ". Posts caught (last 7 days): " + GlobalInfo.PostsCaught + ". Total posts checked: " + GlobalInfo.Stats.TotalCheckedPosts + ". " + "Reports ignored: " + ignorePercent + "%. Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".`")
-                };
+                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Posts caught (last 7 days): " + GlobalInfo.PostsCaught + ".\n    Terms: " + GlobalInfo.TermCount + ".\n    Posts checked: " + GlobalInfo.Stats.TotalCheckedPosts + ".\n    TPs acknowledged: " + GlobalInfo.Stats.TotalTPCount + ".\n    FPs acknowledged: " + GlobalInfo.Stats.TotalFPCount + ".\n    Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".", false)
             }, CommandAccessLevel.NormalUser),
 
             new ChatCommand(new Regex(@"(?i)^(terms|why)\b", cmdRegexOptions), command => new[]
