@@ -11,9 +11,6 @@ namespace Phamhilator
     {
         public bool PopulateExtraDataFailed { get; private set; }
         public List<string> Tags { get; private set; }
-        public int Score { get; private set; }
-        public string Body { get; private set; }
-        public int AuthorRep { get; private set;  }
         public string Html { get; private set; }
 
 

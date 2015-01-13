@@ -122,7 +122,7 @@ namespace Phamhilator
 
         private void KillBot()
         {
-            Dispatcher.Invoke(() => statusL.Content = "Shutting Down Pham...");
+            Dispatcher.Invoke(() => statusL.Content = "Shutting Down...");
 
             GlobalInfo.Shutdown = true;
             requestedDieTime = DateTime.UtcNow;
@@ -335,7 +335,7 @@ namespace Phamhilator
 
         private void MetroWindow_Closing(object sender, CancelEventArgs e)
         {
-            statusL.Content = "Shutting Down Pham...";
+            statusL.Content = "Shutting Down...";
 
             e.Cancel = true;
 

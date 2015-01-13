@@ -86,8 +86,8 @@
     "Site": "",
     "Score": 89.0,
     "TPCount": 422,
-    "FPCount": 109,
-    "CaughtCount": 2508
+    "FPCount": 110,
+    "CaughtCount": 2509
   },
   {
     "Regex": "(?i)^please",
@@ -122,8 +122,8 @@
     "Site": "",
     "Score": 19.3837166,
     "TPCount": 164,
-    "FPCount": 104,
-    "CaughtCount": 2455
+    "FPCount": 105,
+    "CaughtCount": 2456
   },
   {
     "Regex": "^(?=.*?(?i)please).{0,100}$",
@@ -176,7 +176,7 @@
     "Site": "",
     "Score": 19.2035675,
     "TPCount": 1,
-    "FPCount": 1,
+    "FPCount": 2,
     "CaughtCount": 3
   },
   {
@@ -186,6 +186,6 @@
     "Score": 19.2035675,
     "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 6
   }
 ]

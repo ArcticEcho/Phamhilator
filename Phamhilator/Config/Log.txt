@@ -1,0 +1,688 @@
+[
+  {
+    "Url": "http://android.stackexchange.com/a/93824",
+    "Site": "android.stackexchange.com",
+    "Title": "Well its hard to know, Install avast anti-virus from google play and it ...",
+    "Body": "<p>Well its hard to know, Install avast anti-virus from google play and it will show any viruses (if there is any). But that 'Message Box' shouldnt of appeared so that means either facebook was hacked or you were using a fake facebook app/page. Clicking 'No Thanks' on a webpage can't install anything unless your already have a virus on your android. You should be safe if you were using the genuine facebook app/page and that <code>Settings>Security>Unknown Sources</code> was unchecked</p>",
+    "TimeStamp": "\/Date(1421147697628)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 164,
+        "FPCount": 104,
+        "CaughtCount": 2456
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/questions/19494125",
+    "Site": "stackoverflow.com",
+    "Title": "issue in file creation while running topology in remote cluster using storm",
+    "Body": "<p>I have created a topology which should read from a file and write it to a new file. My program is running properly in local cluster but while submitting in remote cluster i am not getting any error but file is not getting created. below is my code to submit topolgy in remote cluster :- </p>\n\n<pre><code>public static void main(String[] args)  {\n        final Logger logger = LoggingService.getLogger(FileToFileTopology.class.getName());\n\n        try{\n        Properties prop =new Properties();\n        prop.load(new FileInputStream(args[0]+\"/connection.properties\"));\n\n        LoggingService.generateAppender(\"storm_etl\",prop, \"\");\n        logger.info(\"inside main method....\" +args.length);\n\n        System.out.println(\"inside main sys out\");\n\n        Config conf= new Config();\n        conf.setDebug(false);\n        conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING,1);\n        TopologyBuilder builder = new TopologyBuilder();\n\n            builder.setSpout(\"file-reader\",new FileReaderSpout(args[1]));\n            builder.setBolt(\"file-writer\",new WriteToFileBolt(args[1]),2).shuffleGrouping(\"file-reader\");\n            logger.info(\"submitting topology\");\n            StormSubmitter.submitTopology(args[0], conf, builder.createTopology());\n\n\n    }\n    catch(Exception e){\n        System.out.println(\"inside catch\");\n        logger.info(\"inside catch\"+e.getMessage());\n        logger.error(\"inside error\", e);\n        e.printStackTrace();\n    }\n    }\n</code></pre>\n\n<p>I have also used log4j to create my own logfile for my topology, log file gets created but no error in my log file. pls help</p>",
+    "TimeStamp": "\/Date(1421147653059)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "\\bpl[sz]+\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 14.0,
+        "TPCount": 13,
+        "FPCount": 15,
+        "CaughtCount": 203
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://ell.stackexchange.com/a/46519",
+    "Site": "ell.stackexchange.com",
+    "Title": "This would be a road containing many s-bends or hair-pin corners.",
+    "Body": null,
+    "TimeStamp": "\/Date(1421147186941)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 422,
+        "FPCount": 109,
+        "CaughtCount": 2508
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://magento.stackexchange.com/a/51991",
+    "Site": "magento.stackexchange.com",
+    "Title": "Hi you can get all reviews of you system using review collection\n\nMage::...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421147180313)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 1,
+        "FPCount": 1,
+        "CaughtCount": 3
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27920670",
+    "Site": "stackoverflow.com",
+    "Title": "Thanks for the help, I found an easier workaround, if I manually (from t...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421147146421)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 164,
+        "FPCount": 104,
+        "CaughtCount": 2455
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 21.6744537,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://electronics.stackexchange.com/a/148912",
+    "Site": "electronics.stackexchange.com",
+    "Title": "Hi Mustafa as per my knowledge \n\nop-amp can Amplify the difference of di...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421147042310)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 1,
+        "FPCount": 0,
+        "CaughtCount": 2
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://android.stackexchange.com/a/95737",
+    "Site": "android.stackexchange.com",
+    "Title": "none of this was helpful. My phone does not give me the option to choose...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146958948)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\bfuck",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 9,
+        "FPCount": 5,
+        "CaughtCount": 27
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27920611",
+    "Site": "stackoverflow.com",
+    "Title": "after some test it is allows you to 15 digit then after it will display ...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146953545)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 2,
+        "FPCount": 0,
+        "CaughtCount": 5
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://stackoverflow.com/questions/27920605",
+    "Site": "stackoverflow.com",
+    "Title": "I want to make the following code work only once in jquery",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146926679)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)i want to",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 14,
+        "FPCount": 10,
+        "CaughtCount": 179
+      },
+      {
+        "Regex": "(?i)^I want",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.5906382,
+        "TPCount": 14,
+        "FPCount": 8,
+        "CaughtCount": 139
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://ux.stackexchange.com/a/60010",
+    "Site": "ux.stackexchange.com",
+    "Title": "Hi All thanks for the suggestions and the answers I have figured out a w...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146918611)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 163,
+        "FPCount": 104,
+        "CaughtCount": 2454
+      },
+      {
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 1
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27920586",
+    "Site": "stackoverflow.com",
+    "Title": "You try to rewrite in .htaccess ?",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146853499)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 422,
+        "FPCount": 109,
+        "CaughtCount": 2507
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://gaming.stackexchange.com/a/159521",
+    "Site": "gaming.stackexchange.com",
+    "Title": "Benefactor schwartzer goes for around 140k",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146814601)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 422,
+        "FPCount": 109,
+        "CaughtCount": 2506
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27920567",
+    "Site": "stackoverflow.com",
+    "Title": "Assumed you want serialize the \"naam\" and the \"email\":\n\n$serializeArray ...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146796543)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 26,
+        "FPCount": 110,
+        "CaughtCount": 421
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?i)you want",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 12.9453831,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27920406",
+    "Site": "stackoverflow.com",
+    "Title": "i think its should be double(16,4)",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146788068)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 422,
+        "FPCount": 109,
+        "CaughtCount": 2505
+      },
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 2,
+        "FPCount": 0,
+        "CaughtCount": 4
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27920538",
+    "Site": "stackoverflow.com",
+    "Title": "you have an space after anonymous function in second coulmn... check tha...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146684544)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 1,
+        "FPCount": 0,
+        "CaughtCount": 3
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27920418",
+    "Site": "stackoverflow.com",
+    "Title": "Awesome solution!  Thanks so much for this.",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146318028)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 420,
+        "FPCount": 109,
+        "CaughtCount": 2503
+      },
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 162,
+        "FPCount": 104,
+        "CaughtCount": 2453
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 20.6111317,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://askubuntu.com/questions/573213",
+    "Site": "askubuntu.com",
+    "Title": "Sadly, there is for losing weight?",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146268995)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)losing weight",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 1
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://superuser.com/a/864117",
+    "Site": "superuser.com",
+    "Title": "You can copy the dll using the Command Prompt(Admin) (Win+X)",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146149499)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 419,
+        "FPCount": 109,
+        "CaughtCount": 2502
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://pm.stackexchange.com/a/13971",
+    "Site": "pm.stackexchange.com",
+    "Title": "PMI India Regional Conference 2015, The one day conference will be hoste...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146107946)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\bpune\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.8585472,
+        "TPCount": 1,
+        "FPCount": 0,
+        "CaughtCount": 2
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://askubuntu.com/a/573212",
+    "Site": "askubuntu.com",
+    "Title": "same problem here with wine, and other apps, always they nee a i386 vers...",
+    "Body": null,
+    "TimeStamp": "\/Date(1421146094083)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 1
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "askubuntu.com",
+        "Score": 7.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://programmers.stackexchange.com/questions/268176",
+    "Site": "programmers.stackexchange.com",
+    "Title": "What is limitation of localstorage in mobile browser?",
+    "Body": null,
+    "TimeStamp": "\/Date(1421143778529)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?s-m)^.{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.3197279,
+        "TPCount": 9,
+        "FPCount": 28,
+        "CaughtCount": 586
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/questions/27908080",
+    "Site": "stackoverflow.com",
+    "Title": "Spring batch Unit test and JPA Transaction : IllegalTransactionStateException",
+    "Body": null,
+    "TimeStamp": "\/Date(1421085664872)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "\\bpl[sz]+\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 14.0,
+        "TPCount": 13,
+        "FPCount": 15,
+        "CaughtCount": 202
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://wordpress.stackexchange.com/questions/174636",
+    "Site": "wordpress.stackexchange.com",
+    "Title": "Problem on wpdb queries, wp_insert_post, wp_insert_user etc. The query runs twice",
+    "Body": null,
+    "TimeStamp": "\/Date(1421085507715)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 61,
+        "CaughtCount": 2193
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "wordpress.stackexchange.com",
+        "Score": 5.41666651,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  }
+]
