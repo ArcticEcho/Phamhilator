@@ -102,7 +102,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 8.158227,
+    "Score": 8.838079,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -165,7 +165,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 6.886815,
+    "Score": 7.46071625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -183,7 +183,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 6.545455,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

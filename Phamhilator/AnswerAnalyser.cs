@@ -52,7 +52,7 @@ namespace Phamhilator
             info.Accuracy *= 100;
             info.Type = PostType.Spam;
 
-            return true;
+            return info.Accuracy >= GlobalInfo.AccuracyThreshold;
         }
 
         public static bool IsLowQuality(Answer post, out AnswerAnalysis info)
@@ -101,7 +101,7 @@ namespace Phamhilator
             info.Accuracy *= 100;
             info.Type = PostType.LowQuality;
 
-            return true;
+            return info.Accuracy >= GlobalInfo.AccuracyThreshold;
         }
 
         public static bool IsOffensive(Answer post, out AnswerAnalysis info)
@@ -150,7 +150,7 @@ namespace Phamhilator
             info.Accuracy *= 100;
             info.Type = PostType.Offensive;
 
-            return true;
+            return info.Accuracy >= GlobalInfo.AccuracyThreshold;
         }
 
         public static bool IsBadUsername(Answer post, out AnswerAnalysis info)
@@ -199,7 +199,7 @@ namespace Phamhilator
             info.Accuracy *= 100;
             info.Type = PostType.BadUsername;
 
-            return true;
+            return info.Accuracy >= GlobalInfo.AccuracyThreshold;
         }
     }
 }

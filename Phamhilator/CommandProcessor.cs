@@ -431,7 +431,7 @@ namespace Phamhilator
                 {
                     trimmedCommand = trimmedCommand.Remove(0, 2).TrimStart();
                 }
-                else if (command.ParentID != -1 && room[command.ParentID].AuthorID == room.Me.ID)
+                else if (command.ParentID != -1 && messageRoom[command.ParentID].AuthorID == messageRoom.Me.ID)
                 {
                     trimmedCommand = command.Content.TrimStart();
                 }

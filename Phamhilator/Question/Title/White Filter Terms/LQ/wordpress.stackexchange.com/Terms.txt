@@ -12,7 +12,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 6.545455,
+    "Score": 7.14049625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 8.158227,
+    "Score": 8.838079,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -165,7 +165,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 6.886815,
+    "Score": 7.46071625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -669,7 +669,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 6.886815,
+    "Score": 7.46071625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -795,7 +795,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 6.886815,
+    "Score": 7.46071625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1425,7 +1425,7 @@
     "Regex": "(?i)i want to",
     "IsAuto": false,
     "Site": "patents.stackexchange.com",
-    "Score": 6.886815,
+    "Score": 7.46071625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2424,7 +2424,7 @@
     "Regex": "(?i)^I want",
     "IsAuto": false,
     "Site": "wordpress.stackexchange.com",
-    "Score": 7.865148,
+    "Score": 8.607799,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

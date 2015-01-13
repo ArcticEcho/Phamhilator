@@ -123,7 +123,7 @@
     "Score": 12.0,
     "TPCount": 1,
     "FPCount": 61,
-    "CaughtCount": 2197
+    "CaughtCount": 2198
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -195,7 +195,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 25,
-    "CaughtCount": 2539
+    "CaughtCount": 2540
   },
   {
     "Regex": "^[^a-z]*$",
@@ -229,9 +229,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 14,
+    "TPCount": 15,
     "FPCount": 10,
-    "CaughtCount": 178
+    "CaughtCount": 179
   },
   {
     "Regex": "(?i)plz help me!",
@@ -357,7 +357,7 @@
     "Score": 16.0,
     "TPCount": 8,
     "FPCount": 72,
-    "CaughtCount": 4150
+    "CaughtCount": 4152
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -375,7 +375,7 @@
     "Score": 16.0,
     "TPCount": 34,
     "FPCount": 42,
-    "CaughtCount": 1023
+    "CaughtCount": 1024
   },
   {
     "Regex": "for\\sfree",
@@ -402,7 +402,7 @@
     "Score": 11.0,
     "TPCount": 5,
     "FPCount": 43,
-    "CaughtCount": 1824
+    "CaughtCount": 1825
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",
@@ -454,9 +454,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.5906382,
-    "TPCount": 14,
+    "TPCount": 15,
     "FPCount": 8,
-    "CaughtCount": 138
+    "CaughtCount": 139
   },
   {
     "Regex": "what software",
