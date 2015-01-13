@@ -213,7 +213,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 6,
-    "CaughtCount": 24
+    "CaughtCount": 25
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -420,7 +420,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 6
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)royalty free",
@@ -942,7 +942,7 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 27,
-    "CaughtCount": 411
+    "CaughtCount": 412
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",

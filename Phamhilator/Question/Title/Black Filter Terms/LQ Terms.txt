@@ -42,7 +42,7 @@
     "Score": 11.0,
     "TPCount": 3,
     "FPCount": 22,
-    "CaughtCount": 1336
+    "CaughtCount": 1339
   },
   {
     "Regex": "(?i)tried",
@@ -123,7 +123,7 @@
     "Score": 12.0,
     "TPCount": 1,
     "FPCount": 61,
-    "CaughtCount": 2200
+    "CaughtCount": 2205
   },
   {
     "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -168,7 +168,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 22
+    "CaughtCount": 23
   },
   {
     "Regex": "(?i)thanks",
@@ -186,7 +186,7 @@
     "Score": 13.0,
     "TPCount": 7,
     "FPCount": 9,
-    "CaughtCount": 198
+    "CaughtCount": 200
   },
   {
     "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
@@ -195,7 +195,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 25,
-    "CaughtCount": 2549
+    "CaughtCount": 2555
   },
   {
     "Regex": "^[^a-z]*$",
@@ -303,7 +303,7 @@
     "Score": 11.0,
     "TPCount": 4,
     "FPCount": 1,
-    "CaughtCount": 44
+    "CaughtCount": 46
   },
   {
     "Regex": "(?i)(advice|opinion|thought)s on",
@@ -357,7 +357,7 @@
     "Score": 16.0,
     "TPCount": 8,
     "FPCount": 74,
-    "CaughtCount": 4164
+    "CaughtCount": 4172
   },
   {
     "Regex": "(?i:need help|help me)",
@@ -366,7 +366,7 @@
     "Score": 15.0,
     "TPCount": 24,
     "FPCount": 14,
-    "CaughtCount": 357
+    "CaughtCount": 359
   },
   {
     "Regex": "(?i)\\bh[ae]lp\\b",
@@ -374,8 +374,8 @@
     "Site": "",
     "Score": 16.0,
     "TPCount": 34,
-    "FPCount": 42,
-    "CaughtCount": 1025
+    "FPCount": 43,
+    "CaughtCount": 1031
   },
   {
     "Regex": "for\\sfree",
@@ -402,7 +402,7 @@
     "Score": 11.0,
     "TPCount": 5,
     "FPCount": 43,
-    "CaughtCount": 1829
+    "CaughtCount": 1836
   },
   {
     "Regex": "(?i)i need.{0,15}(help|advice)",
@@ -411,7 +411,7 @@
     "Score": 11.5106382,
     "TPCount": 4,
     "FPCount": 2,
-    "CaughtCount": 45
+    "CaughtCount": 47
   },
   {
     "Regex": "^[^ ]*$",
@@ -438,7 +438,7 @@
     "Score": 11.5906382,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 37
+    "CaughtCount": 38
   },
   {
     "Regex": "(?i)^need",

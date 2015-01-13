@@ -33,7 +33,7 @@
     "Score": 14.0,
     "TPCount": 13,
     "FPCount": 16,
-    "CaughtCount": 203
+    "CaughtCount": 204
   },
   {
     "Regex": "enter link description here",
@@ -41,8 +41,8 @@
     "Site": "",
     "Score": 13.75,
     "TPCount": 3,
-    "FPCount": 2,
-    "CaughtCount": 41
+    "FPCount": 3,
+    "CaughtCount": 42
   },
   {
     "Regex": "down vote favorite",

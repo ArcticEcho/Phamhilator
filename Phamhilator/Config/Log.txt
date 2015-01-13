@@ -1,5 +1,669 @@
 [
   {
+    "Url": "http://stackoverflow.com/a/27922154",
+    "Site": "stackoverflow.com",
+    "Title": "You must download and copy \"postproc-52.dll\" too.",
+    "Body": "<p>You must download and copy \"postproc-52.dll\" too.</p>",
+    "TimeStamp": "\/Date(1421151901929)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 425,
+        "FPCount": 111,
+        "CaughtCount": 2521
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://gis.stackexchange.com/questions/130066",
+    "Site": "gis.stackexchange.com",
+    "Title": "A bit of help using Google maps",
+    "Body": "<p>I have 1000 or so points on a map, (I have GPS coordinates. I would like to use google maps to find the shortest distance using roads, between pairs of points. I would like to measure all pairs within a distance of 100km. Is this possible?</p>",
+    "TimeStamp": "\/Date(1421151671723)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 43,
+        "CaughtCount": 1030
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://english.stackexchange.com/a/221174",
+    "Site": "english.stackexchange.com",
+    "Title": "The phrase \"inattentive is ineffective\" might fit.",
+    "Body": "<p>The phrase \"inattentive is ineffective\" might fit.</p>",
+    "TimeStamp": "\/Date(1421151599006)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 425,
+        "FPCount": 111,
+        "CaughtCount": 2520
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "english.stackexchange.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://ux.stackexchange.com/a/71839",
+    "Site": "ux.stackexchange.com",
+    "Title": "Your most common are likely to be:\n\n\n  Full stop at end of address Comma...",
+    "Body": "<p>Your most common are likely to be:</p>\n\n<blockquote>\n  <p>Full stop at end of address Commas instead of full stops Semi-colon or\n  apostrophe instead of @ Spaces in middle or at end of address\n  Bracketed note in field – eg. (office) Double periods.. Some common\n  misspellings:</p>\n  \n  <p>Googlemail – Gogglemail, googlmail, goglemail Hotmail – Hotmial,\n  Hotmal, Hoitmail, Homail, Hotrmail, Hotmil, Hotmaill Ntlworld -\n  Ntlwolrd, ntlword, ntl.world, ntlwrold Tiscali - Tiscale, tiscalli,\n  Tiscally, Tiscaly Btinternet – Btinterent, btinternt Yahoo – Yaho,\n  Uahoo, ayhoo</p>\n</blockquote>\n\n<p><a href=\"http://www.2ndimpression.co.uk/tips/typical-typos-in-email-addresses\" rel=\"nofollow\">Source: Typical Typos in Email Addresses</a></p>\n\n<p>Based on the above information, having a list of common email providers which can check after the @ and before the .com would be a nice feature.</p>\n\n<p>Some other typos I could think of (which I do very often) would be typos in .com, so I would normally type .co or .com, so checking these would be useful as well. There is a nice library which I have linked to below which actually does this for you, so take a look.</p>\n\n<p><a href=\"https://github.com/mailcheck/mailcheck\" rel=\"nofollow\">Mailcheck javascript library</a></p>\n\n<p>In terms of the first part of the email address there may be some of the users personal information in there for example, aimee@internet.com, I could misspell this as amee@internet.com. Although this might be overkill, still worth thinking about.</p>",
+    "TimeStamp": "\/Date(1421151266108)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 26,
+        "FPCount": 110,
+        "CaughtCount": 424
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://hinduism.stackexchange.com/a/5180",
+    "Site": "hinduism.stackexchange.com",
+    "Title": "Lotus used as an example of divine beauty and purity, Vishnu is often de...",
+    "Body": "<p>Lotus used as an example of divine <strong>beauty and purity</strong>, Vishnu is often described as the \"Lotus-Eyed One\". </p>\n\n<p><code>he lotus blooms uncovering the creator god Brahma in lotus position.Its unfolding petals suggest the expansion of the soul.</code> </p>\n\n<p>The growth of its pure beauty from the mud of its origin holds a benign spiritual promise. Particularly Brahma and Lakshmi, the divinities of potency and wealth, have the lotus symbol associated with them.</p>",
+    "TimeStamp": "\/Date(1421150882339)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 1,
+        "FPCount": 2,
+        "CaughtCount": 6
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://cs.stackexchange.com/questions/37160",
+    "Site": "cs.stackexchange.com",
+    "Title": "Can approximation help find the exact answer?",
+    "Body": "<p>Lets assume we have an array with 100 numbers and we want to find how many '1's there are. Best solution will be reading every numbers and counting. Now we get a hint that there are 50,51 or 52 '1' in the array, can this information help us count the '1's somehow?</p>\n\n<p>What bothering me here is that we have a lot of information about the array but it still doesn't appear to help the find the amount of '1's.</p>",
+    "TimeStamp": "\/Date(1421150879962)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 43,
+        "CaughtCount": 1028
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://ell.stackexchange.com/questions/46631",
+    "Site": "ell.stackexchange.com",
+    "Title": "look the other way VS. She just looked straight through me",
+    "Body": "<p>look the other way </p>\n\n<p>Fig. to ignore something on purpose. John could have prevented the problem, but he looked the other way. By looking the other way, he actually made the problem worse</p>\n\n<p>............................</p>\n\n<p>She just <strong>looked straight through</strong> me </p>\n\n<p>to behave as if you do not see someone when you look at them, either because you do not notice them or because you are ignoring them</p>\n\n<p>.......</p>\n\n<p>My specific question: I have found those explanations in the dictionary Cmbridge and Oxford.\n Nevertheless, I have just found the following sentence in the book English Grammar in Use.\n Thus, I am wondering if the bold parts mean the same thing and /or interchangeable?\n<strong><em>UPDATED</em></strong>:\n  I saw Sue in town yesterday, but she didn't not see me. She was looking <strong>the other way</strong></p>\n\n<p><a href=\"http://idioms.thefreedictionary.com/look+the+other+way\" rel=\"nofollow\">enter link description here</a></p>\n\n<p>Any help would be appreciated </p>",
+    "TimeStamp": "\/Date(1421150775398)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "enter link description here",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.75,
+        "TPCount": 3,
+        "FPCount": 2,
+        "CaughtCount": 42
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://programmers.stackexchange.com/questions/269924",
+    "Site": "programmers.stackexchange.com",
+    "Title": "Problem in Javafx: Pane actions are mirrored on other panes",
+    "Body": "<p>I've recently been trying to create a small 2D physics sim using javafx. Ive created a new class Entity the extends Pane. After adding all the entities to the game engine, I found that if i tried to store all the entities in a separate List, trying to move an entity moves all entities on screen. Is there any way to hold these references without this happening?</p>",
+    "TimeStamp": "\/Date(1421150770300)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 61,
+        "CaughtCount": 2202
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "programmers.stackexchange.com",
+        "Score": 5.41666651,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://gis.stackexchange.com/a/130061",
+    "Site": "gis.stackexchange.com",
+    "Title": "This script can be further edited but commonly this script should work\n\n...",
+    "Body": "<p>This script can be further edited but commonly this script should work</p>\n\n<pre><code>import arcpy\n\n# Script arguments\nSearch_Distance = arcpy.GetParameterAsText(0)\n\nSelection_type = arcpy.GetParameterAsText(1)\nif Selection_type == '#' or not Selection_type:\n    Selection_type = \"NEW_SELECTION\" # provide a default value if unspecified\n\nSource_Layer = arcpy.GetParameterAsText(2)\n\nRelationship = arcpy.GetParameterAsText(3)\nif Relationship == '#' or not Relationship:\n    Relationship = \"INTERSECT\" # provide a default value if unspecified\n\nTarget_Layers__Select_From_ = arcpy.GetParameterAsText(4)\n\nOutput_Layer_Name = arcpy.GetParameterAsText(5)\n\nOutput_Layer = arcpy.GetParameterAsText(6)\n\nWorkspace_or_Feature_Dataset = arcpy.GetParameterAsText(7)\n\n# Local variables:\n\n# Process: Select Layer By Location\narcpy.SelectLayerByLocation_management(Target_Layers__Select_From_, Relationship, Source_Layer, Search_Distance, Selection_type)\n\n# Process: Make Feature Layer\narcpy.MakeFeatureLayer_management(Output_Layer_Name, Output_Layer, \"\", Workspace_or_Feature_Dataset, \"\")\n</code></pre>\n\n<p>Thanks.</p>",
+    "TimeStamp": "\/Date(1421150684815)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 165,
+        "FPCount": 106,
+        "CaughtCount": 2464
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://unix.stackexchange.com/a/109594",
+    "Site": "unix.stackexchange.com",
+    "Title": "you can update yum with the following command:\n\nyum update yum\n",
+    "Body": "<p>you can update yum with the following command:</p>\n\n<pre><code>yum update yum\n</code></pre>",
+    "TimeStamp": "\/Date(1421150676326)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 4,
+        "FPCount": 0,
+        "CaughtCount": 16
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/questions/27921700",
+    "Site": "stackoverflow.com",
+    "Title": "keep a javascript running if close the browser or tab?",
+    "Body": "<p>i have a javascript code and i what that keeps running if someone close browser or website tab ? can anyone help me and say how can i do this pls? i really need that i will be appreciated please someone help me with that..</p>\n\n<pre><code>    <script language=javascript>\n\n\n function settimer(){\n if ((localStorage.getItem(\"ongoingh1\")) || (localStorage.getItem(\"ongoingm1\")) || (localStorage.getItem(\"ongoings1\")) ){\n\n     h=localStorage.ongoingh1;\n     m=localStorage.ongoingm1;\n     s=localStorage.ongoings1; \n     tm=window.setInterval('disp()',1000);\n\n     document.getElementById('btn').value='Pause';\n\n    } else { \n    var h1,s1,m1;\n\n    }\n     if(h<10) {\n         h2= '0' +h;\n     } else {\n\n         h2= h;\n     }\n     if(m<10) {\n         m2= '0' +m;\n     } else {\n\n         m2= m;\n     }\n     if(s<10) {\n         s2= '0' +s;\n     } else {\n\n         s2= s;\n     }\n\n    str= h2 + ':' + m2 +':' + s2 ;\n    document.getElementById('n1').innerHTML=str;\n    document.getElementById('btn').value='Pause';\n    }\n\nfunction to_start(){\n\nswitch(document.getElementById('btn').value)\n{\ncase 'Pause':\n    window.clearInterval(tm); \n    document.getElementById('2btn').value=str;\n    document.getElementById('btn').value='Start';\nbreak;\ncase 'Start':\n    tm=window.setInterval('disp()',1000);\n    document.getElementById('btn').value='Pause';\nbreak;\n}    }\n\nfunction to_reset(){\n     h=0, s=0, m=0;\n     localStorage.removeItem(\"ongoingh1\");\n     localStorage.removeItem(\"ongoingm1\");\n     localStorage.removeItem(\"ongoings1\");\n     document.getElementById('btn').value='Start';\n        document.getElementById('2btn').value=str;\n}\n\nfunction disp(){\n\nif(s<10) {\n    s1='0' + s;\n} else {\n    s1=s;\n}\n\nif(m<10) {\n    m1='0' + m;\n} else {\n     m1=m;\n}\n\nif(h<10){\n    h1='0' + h;\n} else {\n     h1=h;\n}\n// Display the output //\nstr= h1 + ':' + m1 +':' + s1 ;\ndocument.getElementById('n1').innerHTML=str;\nlocalStorage.ongoingh1 = h;\n\nlocalStorage.ongoingm1 = m;\n\nlocalStorage.ongoings1 = s;\n\nif(s<59){ \n    s++;\n}else{\n    s=0;\n    m++;\nif(m==60){\n    m=0;\n    h++;\n} \n}     \n\n\n}\n    </script>\n<body onload=\"settimer()\">\n    <input type=\"button\" name=\"btn\" id='btn' value=\"Start\" onclick=\"to_start()\";>\n<input type=\"button\" name=\"btn\" id='btn2' value=\"Reset\" onclick=\"to_reset()\";>\n    <br><br>\n    <div id=\"n1\" class='n1' style=\"z-index: 2; position: relative; right: 0px; top: 10px;\n    width: 100px; padding: 10px; color: black; font-size:20px; border: #0000cc 2px dashed; \">00:00:00</div>\n    <br>\n    <br>\n    <br>\n    <input type=\"text\" name=\"2btn\" id='2btn' value=\"\" />\n</code></pre>",
+    "TimeStamp": "\/Date(1421150550179)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "\\bpl[sz]+\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 14.0,
+        "TPCount": 13,
+        "FPCount": 16,
+        "CaughtCount": 204
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://unix.stackexchange.com/a/178889",
+    "Site": "unix.stackexchange.com",
+    "Title": "sed would be enough:\n\nsed -sn 2p file{1..80}.dat  output.dat\n\n\n-s option...",
+    "Body": "<p><code>sed</code> would be enough:</p>\n\n<pre><code>sed -sn 2p file{1..80}.dat > output.dat\n</code></pre>\n\n<p><code>-s</code> option is needed to print 2nd line from each file, otherwise only 2nd line of first file will be printed.</p>",
+    "TimeStamp": "\/Date(1421150490813)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 4,
+        "FPCount": 0,
+        "CaughtCount": 15
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://tex.stackexchange.com/a/222895",
+    "Site": "tex.stackexchange.com",
+    "Title": "\\begin{tikzpicture}\n\n[scale=3,line cap=round,\naxes/.style=,\nimportant li...",
+    "Body": "<pre><code>\\begin{tikzpicture}\n\n[scale=3,line cap=round,\naxes/.style=,\nimportant line/.style={very thick}]\n\n\\draw[help lines, step=0.3cm, color=gray!30] (-1.4,-1.4) grid (1.4,1.4);\n\\begin{scope}[axes]\n\\draw[->, very thick] (-1.5,0) -- (1.5,0) node[right] {$x$} coordinate(x axis);\n\\draw[->, very thick] (0,-1.5) -- (0,1.5) node[above] {$y$} coordinate(y axis);\n\\end{scope}\n\n\\end{tikzpicture}\n</code></pre>",
+    "TimeStamp": "\/Date(1421150338573)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 4,
+        "FPCount": 0,
+        "CaughtCount": 14
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://serverfault.com/a/362291",
+    "Site": "serverfault.com",
+    "Title": "nslookup\n\n    set type=mx\n    domain.com\n\n\nwhen you press enter, the dns...",
+    "Body": "<p>nslookup</p>\n\n<pre><code>    set type=mx\n    domain.com\n</code></pre>\n\n<p>when you press enter, the dns will resolve all the mail type records regarding that specific domain.</p>",
+    "TimeStamp": "\/Date(1421150248178)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 4,
+        "FPCount": 0,
+        "CaughtCount": 13
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27921602",
+    "Site": "stackoverflow.com",
+    "Title": "You can also use AndroMDA - a nice tool if you can get it running.",
+    "Body": "<p>You can also use AndroMDA - a nice tool if you can get it running.</p>",
+    "TimeStamp": "\/Date(1421150229992)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 425,
+        "FPCount": 111,
+        "CaughtCount": 2517
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://chinese.stackexchange.com/questions/12095",
+    "Site": "chinese.stackexchange.com",
+    "Title": "Help to traslate“红烧肉”to a foreigner",
+    "Body": "<p>How to translate \"红烧肉\" to a foreigner。</p>\n\n<p>the braise in soy sauce meat？</p>\n\n<p>Your question couldn't be submitted？</p>",
+    "TimeStamp": "\/Date(1421150118203)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 42,
+        "CaughtCount": 1026
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://superuser.com/a/585742",
+    "Site": "superuser.com",
+    "Title": "somehow a different version of this mstscax.dll is now resident in the s...",
+    "Body": "<p>somehow a different version of this mstscax.dll is now resident in the system32 folder. go to the system32 folder, find the mstscax.dll right click on it go to properties go to previous version, wait for it to finish the search, if you see one, then this is going to replace the existing one. but before you can do that you must take ownership of the mstscax.dll file that's not working in order to rename it to mstscax.old, so you will go the security tab and do whatever it takes to take ownership of the file. once renamed and  you copy and paste the one you found in the previous version tab you will be able to launch rds again.</p>",
+    "TimeStamp": "\/Date(1421150017477)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 4,
+        "FPCount": 0,
+        "CaughtCount": 12
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27921535",
+    "Site": "stackoverflow.com",
+    "Title": "I had bad experience with huge context save. All those recommendations a...",
+    "Body": "<p>I had bad experience with huge context save. All those recommendations about saving in iterations by 100 rows, by 1000 rows, then disposing context or clearing list and detaching objects, assigning null to everything etc etc - it is all bullshit. We had requirements to insert daily millions of rows in many tables. Definitely one should not use entity in these conditions. You will be fighting with memory leaks and decrease in insertion speed when iterations proceed. </p>\n\n<p>Our first improvement was creating stored procedures and adding them to model. It is 100 times faster then <code>Context.SaveChanges()</code>, and there is no leaks, no decrease in speed over time.</p>\n\n<p>But it was not sufficient for us and we decided to use <code>SqlBulkCopy</code>. It is super fast. 1000 times faster then using stored procedures.</p>\n\n<p>So my suggestion will be:\nif you have many rows to insert but count is under something like 50000 rows, use stored procedures, imported in model;\nif you have hundreds of thousands of rows, go and try <code>SqlBulkCopy</code>.</p>\n\n<p>Here is some code:</p>\n\n<pre><code>EntityConnection ec = (EntityConnection)Context.Connection;\nSqlConnection sc = (SqlConnection)ec.StoreConnection;\n\nvar copy = new SqlBulkCopy(sc, SqlBulkCopyOptions.CheckConstraints | SqlBulkCopyOptions.Default , null);\n\ncopy.DestinationTableName = \"TableName\";\ncopy.ColumnMappings.Add(\"SourceColumn\", \"DBColumn\");\ncopy.WriteToServer(dataTable);\ncopy.Close();\n</code></pre>\n\n<p>If you use <code>DbTransaction</code> with context, you can manage to bulk insert using that transaction as well, but it needs some hacks.</p>",
+    "TimeStamp": "\/Date(1421150002376)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)bullshit",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.2105265,
+        "TPCount": 1,
+        "FPCount": 2,
+        "CaughtCount": 10
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://math.stackexchange.com/questions/1102465",
+    "Site": "math.stackexchange.com",
+    "Title": "This could be the stupidest question on matrix inversion",
+    "Body": "<p>Given a matrix $A$ that has full row rank we know that the matrix is invertible. So there is a matrix $B$ such that</p>\n\n<p>$$\nAB=1\n$$</p>\n\n<p>writing this in component notation,</p>\n\n<p>$$\nA_{ij}B_{jk}=\\delta_{ik}\n$$</p>\n\n<p>Now, we tend to write $A^{-1}$ instead of be but let's leave it like that for now.</p>\n\n<p>My question is how can we show that $BA=1$? We mechanically jump to the conclusion that if the inverse exists, $AA^{-1}=A^{-1}A=1$ but how to show that? Equivalently why is the left inverse equal to the right inverse? It seems intuitively obvious!</p>\n\n<p>Thanks a bunch, I appreciate.</p>",
+    "TimeStamp": "\/Date(1421149997145)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)is.*(stupid|jerk)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 1
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://sharepoint.stackexchange.com/a/128334",
+    "Site": "sharepoint.stackexchange.com",
+    "Title": "Looks like no one has ever gotten this error. I've googled it, but haven...",
+    "Body": "<p>Looks like no one has ever gotten this error. I've googled it, but haven't found one alike.</p>\n\n<p>Would really appreciate any help.</p>\n\n<p>Thanks</p>\n\n<p>João</p>",
+    "TimeStamp": "\/Date(1421149775080)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 165,
+        "FPCount": 106,
+        "CaughtCount": 2462
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27921461",
+    "Site": "stackoverflow.com",
+    "Title": "we cannot use where clause in insert....use the conditional statements\n\n...",
+    "Body": "<p>we cannot use <strong>where</strong> clause in <strong>insert</strong>....use the conditional statements</p>\n\n<pre><code>$sql=mysql_fetch_assoc(mysql_query(select * from table_name where)) column_name='\".$post_value\"'\nif($sql['column_value']!=\"\")\n{\n//update query\n}\nelse {\n//insert query\n}\n</code></pre>",
+    "TimeStamp": "\/Date(1421149731561)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 4,
+        "FPCount": 0,
+        "CaughtCount": 11
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://pt.stackoverflow.com/questions/46666",
+    "Site": "pt.stackoverflow.com",
+    "Title": "Retirar um manipulador de eventos apos 3 click",
+    "Body": "<p>Tenho este código, que preciso que o evento click seja removido depois de x tentativas.</p>\n\n<p><strong>Exemplo:</strong> <a href=\"http://jsfiddle.net/welguri/s0x213jL/\" rel=\"nofollow\">http://jsfiddle.net/welguri/s0x213jL/</a></p>\n\n<pre><code>var qtdadeCliques = 0;\nvar eventCon = function(evento){\n    qtdadeCliques++;\n    if (qtdadeCliques >= 3) {\n        alert(\"You clicked the div 'red'!\");\n       $(this).off(evento);\n    }\n};\n$(\"#div3\").on(\"click\", eventCon);\n</code></pre>",
+    "TimeStamp": "\/Date(1421149719723)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0206881,
+        "TPCount": 0,
+        "FPCount": 1,
+        "CaughtCount": 3
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
+        "IsAuto": false,
+        "Site": "pt.stackoverflow.com",
+        "Score": 5.010344,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://webapps.stackexchange.com/questions/72703",
+    "Site": "webapps.stackexchange.com",
+    "Title": "What do the colors of the bars displaying under the unfinished thumbnail of clips you might watch next in YouTube mean?",
+    "Body": "<p>I think the title describes all. The picture following here will describe it better.</p>\n\n<p><img src=\"http://i.stack.imgur.com/trfsI.png\" alt=\"image description\"></p>\n\n<p>I use a userscript named <a href=\"https://github.com/YePpHa/YouTubeCenter/wiki\" rel=\"nofollow\">YouTube Center</a></p>",
+    "TimeStamp": "\/Date(1421149714381)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0206881,
+        "TPCount": 0,
+        "FPCount": 1,
+        "CaughtCount": 2
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://pt.stackoverflow.com/questions/46665",
+    "Site": "pt.stackoverflow.com",
+    "Title": "Google Maps v3 - Não aparece em servidor de produção",
+    "Body": "<p>Utilizando um banco de dados juntamente com o Google Maps e PHP, eu fiz com que os dados fossem colocados como marcadores em várias regiões do país. <strong>Localmente</strong> ele <strong>está</strong> <strong>funcionando</strong> sem nenhum problema, mas quando eu coloco no <strong>servidor de produção</strong> <strong>inicialmente</strong> o mapa <strong>é mostrado</strong>, <strong>depois</strong> de umas <strong>2 horas</strong>, magicamente ele <strong>não</strong> <strong>aparece</strong> mais.</p>\n\n<p>Link para repositório - \n<a href=\"https://bitbucket.org/allanbobs/google-maps-v3-com-php/src\" rel=\"nofollow\">https://bitbucket.org/allanbobs/google-maps-v3-com-php/src</a></p>",
+    "TimeStamp": "\/Date(1421149660921)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0206881,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 1
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://ell.stackexchange.com/a/46617",
+    "Site": "ell.stackexchange.com",
+    "Title": "Foam is usually a mass (noncount; uncountable) noun. \n\nWhile we normally...",
+    "Body": "<p>Foam is usually a mass (noncount; uncountable) noun. </p>\n\n<p>While we normally treat mass nouns as singular, the issue you raise is whether or not to use the indefinite article, <em>a/an</em>. We normally do not use <em>a/an</em> with mass nouns (NOT * a milk), but we do use them when we talk about a particular part or instance of one (a [glass of] milk; a [moment in] time).   </p>\n\n<p>In this particular context, when we look down, we do not see foam in general, but we see perhaps a \"sheet\" of foam. That kind of usage would treat foam as a count or countable noun. Although we can leave out \"sheet\" (or whatever), most writers would choose:</p>\n\n<blockquote>\n  <p>...a faint, almost invisible white foam.</p>\n</blockquote>\n\n<p>(I've revised this answer thanks to oerkelens's comment below.)</p>",
+    "TimeStamp": "\/Date(1421149634995)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 165,
+        "FPCount": 105,
+        "CaughtCount": 2461
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "Url": "http://dba.stackexchange.com/a/89147",
+    "Site": "dba.stackexchange.com",
+    "Title": "wt is science m8ss fvfvgeg fgvredfg",
+    "Body": "<p>wt is science m8ss fvfvgeg fgvredfg</p>",
+    "TimeStamp": "\/Date(1421149479014)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 424,
+        "FPCount": 111,
+        "CaughtCount": 2516
+      },
+      {
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 3,
+        "FPCount": 0,
+        "CaughtCount": 10
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "dba.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "Url": "http://stackoverflow.com/a/27921392",
+    "Site": "stackoverflow.com",
+    "Title": "Please use merge statement. It will do \"If exist UPDATE else INSERT\".",
+    "Body": "<p>Please use merge statement. It will do \"If exist UPDATE else INSERT\".</p>",
+    "TimeStamp": "\/Date(1421149474063)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 424,
+        "FPCount": 111,
+        "CaughtCount": 2515
+      },
+      {
+        "Regex": "^(?=.*?(?i)please).{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 22.3837166,
+        "TPCount": 82,
+        "FPCount": 139,
+        "CaughtCount": 1236
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
     "Url": "http://drupal.stackexchange.com/questions/141933",
     "Site": "drupal.stackexchange.com",
     "Title": "Private files not found 404 error",
