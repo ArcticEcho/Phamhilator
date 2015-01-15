@@ -31,9 +31,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 6,
-    "FPCount": 15,
-    "CaughtCount": 33
+    "TPCount": 9,
+    "FPCount": 16,
+    "CaughtCount": 36
   },
   {
     "Regex": "officialimeiunlock",
@@ -139,18 +139,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
-    "TPCount": 6,
+    "TPCount": 7,
     "FPCount": 0,
-    "CaughtCount": 7
+    "CaughtCount": 8
   },
   {
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 11,
-    "FPCount": 17,
-    "CaughtCount": 39
+    "TPCount": 12,
+    "FPCount": 18,
+    "CaughtCount": 41
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -284,8 +284,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 0,
-    "CaughtCount": 0
+    "FPCount": 1,
+    "CaughtCount": 1
   },
   {
     "Regex": "megamotormadness",
@@ -483,7 +483,7 @@
     "Score": 10.0204086,
     "TPCount": 0,
     "FPCount": 5,
-    "CaughtCount": 12
+    "CaughtCount": 13
   },
   {
     "Regex": "\\sCLICK HERE\\s",
@@ -607,9 +607,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 7,
+    "TPCount": 11,
     "FPCount": 0,
-    "CaughtCount": 10
+    "CaughtCount": 14
   },
   {
     "Regex": "(?-m)</a>$",

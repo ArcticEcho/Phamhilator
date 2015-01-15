@@ -12,7 +12,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 6.545455,
+    "Score": 7.14049625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1749,7 +1749,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 10.0301609,
+    "Score": 11.0301609,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1821,7 +1821,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "spanish.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1875,7 +1875,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "stackapps.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1956,7 +1956,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2019,7 +2019,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 6.545455,
+    "Score": 7.14049625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2082,7 +2082,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2145,7 +2145,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "tex.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2154,7 +2154,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "travel.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2208,7 +2208,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "unix.stackexchange.com",
-    "Score": 6.545455,
+    "Score": 7.14049625,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2217,7 +2217,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "ux.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2271,7 +2271,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "webmasters.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2289,7 +2289,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "wordpress.stackexchange.com",
-    "Score": 10.1054211,
+    "Score": 11.1054211,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2316,7 +2316,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "wordpress.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2497,6 +2497,15 @@
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 8.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i( just)? wan(t|na) to know",
+    "IsAuto": false,
+    "Site": "android.stackexchange.com",
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

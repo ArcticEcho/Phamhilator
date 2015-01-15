@@ -12,7 +12,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 7.14049625,
+    "Score": 7.789632,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1974,7 +1974,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "stats.stackexchange.com",
-    "Score": 6.545455,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2046,7 +2046,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 6.545455,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2235,7 +2235,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "webapps.stackexchange.com",
-    "Score": 6.545455,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2334,7 +2334,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "worldbuilding.stackexchange.com",
-    "Score": 6.545455,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2496,7 +2496,16 @@
     "Regex": "(?i)\\bh[ae]lp\\b",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 8.5,
+    "Score": 8.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i( just)? wan(t|na) to know",
+    "IsAuto": false,
+    "Site": "android.stackexchange.com",
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

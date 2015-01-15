@@ -12,7 +12,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 8.857805,
+    "Score": 9.743586,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -84,7 +84,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 11.1333342,
+    "Score": 10.6962967,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -102,7 +102,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "biology.stackexchange.com",
-    "Score": 8.7846,
+    "Score": 7.986,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -309,7 +309,7 @@
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "fitness.stackexchange.com",
-    "Score": 7.32050037,
+    "Score": 6.655,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1263,6 +1263,15 @@
     "Regex": "(?i)customers? review",
     "IsAuto": false,
     "Site": "stackoverflow.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)nike",
+    "IsAuto": false,
+    "Site": "physics.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

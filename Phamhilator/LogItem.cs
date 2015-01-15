@@ -13,7 +13,7 @@ namespace Phamhilator
         public string Body { get; set; }
         public DateTime TimeStamp { get; set; }
         public PostType ReportType { get; set; }
-        public List<JsonTerm> BlackTerms { get; set; }
-        public List<JsonTerm> WhiteTerms { get; set; }
+        public List<LogTerm> BlackTerms { get; set; }
+        public List<LogTerm> WhiteTerms { get; set; }
     }
 }

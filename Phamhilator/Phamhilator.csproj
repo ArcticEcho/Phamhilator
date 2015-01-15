@@ -92,10 +92,11 @@
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="GlobalInfo.Stats.cs" />
     <Compile Include="LogItem.cs" />
+    <Compile Include="LogTerm.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="ChatAction.cs" />
     <Compile Include="Pham.cs" />
-    <Compile Include="PostRetriever.cs" />
+    <Compile Include="PostFetcher.cs" />
     <Compile Include="QuestionAnalyser.cs" />
     <Compile Include="ReplyMessage.cs" />
     <Compile Include="Spammer.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Term.cs" />
     <Compile Include="TermCreater.cs" />
     <Compile Include="TermReader.cs" />
+    <Compile Include="UnshortifyLink.cs" />
     <Compile Include="UserAccess.cs" />
     <Compile Include="WebDownload.cs">
       <SubType>Component</SubType>

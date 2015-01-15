@@ -1,206 +1,51 @@
 [
   {
-    "Url": "http://stackoverflow.com/a/27922154",
-    "Site": "stackoverflow.com",
-    "Title": "You must download and copy \"postproc-52.dll\" too.",
-    "Body": "<p>You must download and copy \"postproc-52.dll\" too.</p>",
-    "TimeStamp": "\/Date(1421151901929)\/",
+    "Url": "http://drupal.stackexchange.com/a/140820",
+    "Site": "drupal.stackexchange.com",
+    "Title": "simple provide  the block tilte at the the of block configuration .........",
+    "Body": "<p>simple provide  the block tilte at the the of block configuration ...........\nthat will override this title..</p>",
+    "TimeStamp": "\/Date(1421323552834)\/",
     "ReportType": 2,
     "BlackTerms": [
       {
-        "Regex": "^(?i).{0,80}$",
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
         "IsAuto": false,
         "Site": "",
-        "Score": 89.0,
-        "TPCount": 425,
-        "FPCount": 111,
-        "CaughtCount": 2521
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,60}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 5.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://gis.stackexchange.com/questions/130066",
-    "Site": "gis.stackexchange.com",
-    "Title": "A bit of help using Google maps",
-    "Body": "<p>I have 1000 or so points on a map, (I have GPS coordinates. I would like to use google maps to find the shortest distance using roads, between pairs of points. I would like to measure all pairs within a distance of 100km. Is this possible?</p>",
-    "TimeStamp": "\/Date(1421151671723)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\bh[ae]lp\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 16.0,
-        "TPCount": 34,
-        "FPCount": 43,
-        "CaughtCount": 1030
+        "Score": 19.2035675,
+        "TPCount": 18,
+        "FPCount": 1,
+        "CaughtCount": 123
       }
     ],
     "WhiteTerms": []
   },
   {
-    "Url": "http://english.stackexchange.com/a/221174",
-    "Site": "english.stackexchange.com",
-    "Title": "The phrase \"inattentive is ineffective\" might fit.",
-    "Body": "<p>The phrase \"inattentive is ineffective\" might fit.</p>",
-    "TimeStamp": "\/Date(1421151599006)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 425,
-        "FPCount": 111,
-        "CaughtCount": 2520
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,60}$",
-        "IsAuto": false,
-        "Site": "english.stackexchange.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://ux.stackexchange.com/a/71839",
-    "Site": "ux.stackexchange.com",
-    "Title": "Your most common are likely to be:\n\n\n  Full stop at end of address Comma...",
-    "Body": "<p>Your most common are likely to be:</p>\n\n<blockquote>\n  <p>Full stop at end of address Commas instead of full stops Semi-colon or\n  apostrophe instead of @ Spaces in middle or at end of address\n  Bracketed note in field – eg. (office) Double periods.. Some common\n  misspellings:</p>\n  \n  <p>Googlemail – Gogglemail, googlmail, goglemail Hotmail – Hotmial,\n  Hotmal, Hoitmail, Homail, Hotrmail, Hotmil, Hotmaill Ntlworld -\n  Ntlwolrd, ntlword, ntl.world, ntlwrold Tiscali - Tiscale, tiscalli,\n  Tiscally, Tiscaly Btinternet – Btinterent, btinternt Yahoo – Yaho,\n  Uahoo, ayhoo</p>\n</blockquote>\n\n<p><a href=\"http://www.2ndimpression.co.uk/tips/typical-typos-in-email-addresses\" rel=\"nofollow\">Source: Typical Typos in Email Addresses</a></p>\n\n<p>Based on the above information, having a list of common email providers which can check after the @ and before the .com would be a nice feature.</p>\n\n<p>Some other typos I could think of (which I do very often) would be typos in .com, so I would normally type .co or .com, so checking these would be useful as well. There is a nice library which I have linked to below which actually does this for you, so take a look.</p>\n\n<p><a href=\"https://github.com/mailcheck/mailcheck\" rel=\"nofollow\">Mailcheck javascript library</a></p>\n\n<p>In terms of the first part of the email address there may be some of the users personal information in there for example, aimee@internet.com, I could misspell this as amee@internet.com. Although this might be overkill, still worth thinking about.</p>",
-    "TimeStamp": "\/Date(1421151266108)\/",
+    "Url": "http://dba.stackexchange.com/a/72546",
+    "Site": "dba.stackexchange.com",
+    "Title": "Usually you run mysqldump to create a database copy and backups as follo...",
+    "Body": "<p>Usually you run mysqldump to create a database copy and backups as follows:</p>\n\n<pre><code>$ mysqldump -u user -p db-name > db-name.out\n</code></pre>\n\n<p>Copy db-name.out file using sftp/ssh to remote MySQL server:</p>\n\n<pre><code>$ scp db-name.out user@remote.box.com:/backup\n</code></pre>\n\n<p>Restore database at remote server (login over ssh):</p>\n\n<pre><code>$ mysql -u user -p db-name < db-name.out\n</code></pre>\n\n<p>OR</p>\n\n<pre><code>$ mysql -u user -p 'password' db-name < db-name.out\n</code></pre>",
+    "TimeStamp": "\/Date(1421323548660)\/",
     "ReportType": 3,
     "BlackTerms": [
       {
+        "Type": 7,
         "Regex": "[-\\w]{3}@\\w+\\.",
         "IsAuto": false,
         "Site": "",
         "Score": 15.0,
-        "TPCount": 26,
-        "FPCount": 110,
-        "CaughtCount": 424
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://hinduism.stackexchange.com/a/5180",
-    "Site": "hinduism.stackexchange.com",
-    "Title": "Lotus used as an example of divine beauty and purity, Vishnu is often de...",
-    "Body": "<p>Lotus used as an example of divine <strong>beauty and purity</strong>, Vishnu is often described as the \"Lotus-Eyed One\". </p>\n\n<p><code>he lotus blooms uncovering the creator god Brahma in lotus position.Its unfolding petals suggest the expansion of the soul.</code> </p>\n\n<p>The growth of its pure beauty from the mud of its origin holds a benign spiritual promise. Particularly Brahma and Lakshmi, the divinities of potency and wealth, have the lotus symbol associated with them.</p>",
-    "TimeStamp": "\/Date(1421150882339)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 1,
-        "FPCount": 2,
-        "CaughtCount": 6
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://cs.stackexchange.com/questions/37160",
-    "Site": "cs.stackexchange.com",
-    "Title": "Can approximation help find the exact answer?",
-    "Body": "<p>Lets assume we have an array with 100 numbers and we want to find how many '1's there are. Best solution will be reading every numbers and counting. Now we get a hint that there are 50,51 or 52 '1' in the array, can this information help us count the '1's somehow?</p>\n\n<p>What bothering me here is that we have a lot of information about the array but it still doesn't appear to help the find the amount of '1's.</p>",
-    "TimeStamp": "\/Date(1421150879962)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\bh[ae]lp\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 16.0,
-        "TPCount": 34,
-        "FPCount": 43,
-        "CaughtCount": 1028
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://ell.stackexchange.com/questions/46631",
-    "Site": "ell.stackexchange.com",
-    "Title": "look the other way VS. She just looked straight through me",
-    "Body": "<p>look the other way </p>\n\n<p>Fig. to ignore something on purpose. John could have prevented the problem, but he looked the other way. By looking the other way, he actually made the problem worse</p>\n\n<p>............................</p>\n\n<p>She just <strong>looked straight through</strong> me </p>\n\n<p>to behave as if you do not see someone when you look at them, either because you do not notice them or because you are ignoring them</p>\n\n<p>.......</p>\n\n<p>My specific question: I have found those explanations in the dictionary Cmbridge and Oxford.\n Nevertheless, I have just found the following sentence in the book English Grammar in Use.\n Thus, I am wondering if the bold parts mean the same thing and /or interchangeable?\n<strong><em>UPDATED</em></strong>:\n  I saw Sue in town yesterday, but she didn't not see me. She was looking <strong>the other way</strong></p>\n\n<p><a href=\"http://idioms.thefreedictionary.com/look+the+other+way\" rel=\"nofollow\">enter link description here</a></p>\n\n<p>Any help would be appreciated </p>",
-    "TimeStamp": "\/Date(1421150775398)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "enter link description here",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 13.75,
-        "TPCount": 3,
-        "FPCount": 2,
-        "CaughtCount": 42
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://programmers.stackexchange.com/questions/269924",
-    "Site": "programmers.stackexchange.com",
-    "Title": "Problem in Javafx: Pane actions are mirrored on other panes",
-    "Body": "<p>I've recently been trying to create a small 2D physics sim using javafx. Ive created a new class Entity the extends Pane. After adding all the entities to the game engine, I found that if i tried to store all the entities in a separate List, trying to move an entity moves all entities on screen. Is there any way to hold these references without this happening?</p>",
-    "TimeStamp": "\/Date(1421150770300)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)problem(s)?",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 12.0,
-        "TPCount": 1,
-        "FPCount": 61,
-        "CaughtCount": 2202
+        "TPCount": 30,
+        "FPCount": 119,
+        "CaughtCount": 463
       }
     ],
     "WhiteTerms": [
       {
-        "Regex": "(?i)problem(s)?",
+        "Type": 107,
+        "Regex": "[-\\w]{3}@\\w+\\.",
         "IsAuto": false,
-        "Site": "programmers.stackexchange.com",
-        "Score": 5.41666651,
+        "Site": "dba.stackexchange.com",
+        "Score": 7.39736176,
         "TPCount": 0,
         "FPCount": 0,
         "CaughtCount": 0
@@ -208,99 +53,72 @@
     ]
   },
   {
-    "Url": "http://gis.stackexchange.com/a/130061",
-    "Site": "gis.stackexchange.com",
-    "Title": "This script can be further edited but commonly this script should work\n\n...",
-    "Body": "<p>This script can be further edited but commonly this script should work</p>\n\n<pre><code>import arcpy\n\n# Script arguments\nSearch_Distance = arcpy.GetParameterAsText(0)\n\nSelection_type = arcpy.GetParameterAsText(1)\nif Selection_type == '#' or not Selection_type:\n    Selection_type = \"NEW_SELECTION\" # provide a default value if unspecified\n\nSource_Layer = arcpy.GetParameterAsText(2)\n\nRelationship = arcpy.GetParameterAsText(3)\nif Relationship == '#' or not Relationship:\n    Relationship = \"INTERSECT\" # provide a default value if unspecified\n\nTarget_Layers__Select_From_ = arcpy.GetParameterAsText(4)\n\nOutput_Layer_Name = arcpy.GetParameterAsText(5)\n\nOutput_Layer = arcpy.GetParameterAsText(6)\n\nWorkspace_or_Feature_Dataset = arcpy.GetParameterAsText(7)\n\n# Local variables:\n\n# Process: Select Layer By Location\narcpy.SelectLayerByLocation_management(Target_Layers__Select_From_, Relationship, Source_Layer, Search_Distance, Selection_type)\n\n# Process: Make Feature Layer\narcpy.MakeFeatureLayer_management(Output_Layer_Name, Output_Layer, \"\", Workspace_or_Feature_Dataset, \"\")\n</code></pre>\n\n<p>Thanks.</p>",
-    "TimeStamp": "\/Date(1421150684815)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.3837166,
-        "TPCount": 165,
-        "FPCount": 106,
-        "CaughtCount": 2464
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://unix.stackexchange.com/a/109594",
-    "Site": "unix.stackexchange.com",
-    "Title": "you can update yum with the following command:\n\nyum update yum\n",
-    "Body": "<p>you can update yum with the following command:</p>\n\n<pre><code>yum update yum\n</code></pre>",
-    "TimeStamp": "\/Date(1421150676326)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^[^A-Z]*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 4,
-        "FPCount": 0,
-        "CaughtCount": 16
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://stackoverflow.com/questions/27921700",
+    "Url": "http://stackoverflow.com/a/20192159",
     "Site": "stackoverflow.com",
-    "Title": "keep a javascript running if close the browser or tab?",
-    "Body": "<p>i have a javascript code and i what that keeps running if someone close browser or website tab ? can anyone help me and say how can i do this pls? i really need that i will be appreciated please someone help me with that..</p>\n\n<pre><code>    <script language=javascript>\n\n\n function settimer(){\n if ((localStorage.getItem(\"ongoingh1\")) || (localStorage.getItem(\"ongoingm1\")) || (localStorage.getItem(\"ongoings1\")) ){\n\n     h=localStorage.ongoingh1;\n     m=localStorage.ongoingm1;\n     s=localStorage.ongoings1; \n     tm=window.setInterval('disp()',1000);\n\n     document.getElementById('btn').value='Pause';\n\n    } else { \n    var h1,s1,m1;\n\n    }\n     if(h<10) {\n         h2= '0' +h;\n     } else {\n\n         h2= h;\n     }\n     if(m<10) {\n         m2= '0' +m;\n     } else {\n\n         m2= m;\n     }\n     if(s<10) {\n         s2= '0' +s;\n     } else {\n\n         s2= s;\n     }\n\n    str= h2 + ':' + m2 +':' + s2 ;\n    document.getElementById('n1').innerHTML=str;\n    document.getElementById('btn').value='Pause';\n    }\n\nfunction to_start(){\n\nswitch(document.getElementById('btn').value)\n{\ncase 'Pause':\n    window.clearInterval(tm); \n    document.getElementById('2btn').value=str;\n    document.getElementById('btn').value='Start';\nbreak;\ncase 'Start':\n    tm=window.setInterval('disp()',1000);\n    document.getElementById('btn').value='Pause';\nbreak;\n}    }\n\nfunction to_reset(){\n     h=0, s=0, m=0;\n     localStorage.removeItem(\"ongoingh1\");\n     localStorage.removeItem(\"ongoingm1\");\n     localStorage.removeItem(\"ongoings1\");\n     document.getElementById('btn').value='Start';\n        document.getElementById('2btn').value=str;\n}\n\nfunction disp(){\n\nif(s<10) {\n    s1='0' + s;\n} else {\n    s1=s;\n}\n\nif(m<10) {\n    m1='0' + m;\n} else {\n     m1=m;\n}\n\nif(h<10){\n    h1='0' + h;\n} else {\n     h1=h;\n}\n// Display the output //\nstr= h1 + ':' + m1 +':' + s1 ;\ndocument.getElementById('n1').innerHTML=str;\nlocalStorage.ongoingh1 = h;\n\nlocalStorage.ongoingm1 = m;\n\nlocalStorage.ongoings1 = s;\n\nif(s<59){ \n    s++;\n}else{\n    s=0;\n    m++;\nif(m==60){\n    m=0;\n    h++;\n} \n}     \n\n\n}\n    </script>\n<body onload=\"settimer()\">\n    <input type=\"button\" name=\"btn\" id='btn' value=\"Start\" onclick=\"to_start()\";>\n<input type=\"button\" name=\"btn\" id='btn2' value=\"Reset\" onclick=\"to_reset()\";>\n    <br><br>\n    <div id=\"n1\" class='n1' style=\"z-index: 2; position: relative; right: 0px; top: 10px;\n    width: 100px; padding: 10px; color: black; font-size:20px; border: #0000cc 2px dashed; \">00:00:00</div>\n    <br>\n    <br>\n    <br>\n    <input type=\"text\" name=\"2btn\" id='2btn' value=\"\" />\n</code></pre>",
-    "TimeStamp": "\/Date(1421150550179)\/",
+    "Title": "try to do it without '*' at the end of first path\n\n\n  mv /path/subfolder...",
+    "Body": "<p>try to do it without '*' at the end of first path</p>\n\n<blockquote>\n  <p>mv /path/subfolder/ /path/</p>\n</blockquote>",
+    "TimeStamp": "\/Date(1421323522624)\/",
     "ReportType": 2,
     "BlackTerms": [
       {
-        "Regex": "\\bpl[sz]+\\b",
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
         "IsAuto": false,
         "Site": "",
-        "Score": 14.0,
-        "TPCount": 13,
-        "FPCount": 16,
-        "CaughtCount": 204
+        "Score": 19.2035675,
+        "TPCount": 18,
+        "FPCount": 1,
+        "CaughtCount": 122
       }
     ],
     "WhiteTerms": []
   },
   {
-    "Url": "http://unix.stackexchange.com/a/178889",
-    "Site": "unix.stackexchange.com",
-    "Title": "sed would be enough:\n\nsed -sn 2p file{1..80}.dat  output.dat\n\n\n-s option...",
-    "Body": "<p><code>sed</code> would be enough:</p>\n\n<pre><code>sed -sn 2p file{1..80}.dat > output.dat\n</code></pre>\n\n<p><code>-s</code> option is needed to print 2nd line from each file, otherwise only 2nd line of first file will be printed.</p>",
-    "TimeStamp": "\/Date(1421150490813)\/",
+    "Url": "http://workplace.stackexchange.com/questions/40354",
+    "Site": "workplace.stackexchange.com",
+    "Title": "Is it really practically possible to do software assignments without taking anybody's help?",
+    "Body": "<p>I am working as a software developer, and have been assigned a task of improving a current feature. The lead asks me to understand the feature without taking any external help.</p>\n\n<p>The feature is technology-wise pretty new to me and I tried to search for any documents available, but unfortunately none are available. The person who has implemented the feature sits just a couple of cubes away from me but as per my lead's approach, I should refrain from getting into any type of discussion(help) with him.</p>\n\n<p>Having spent a couple of days digging into the code and trying to figure things out by myself, I have a faint feeling that it is not a very practical thing to rely on an approach of absolutely no help from people for certain activities. So my question is, what is the scope of help/knowledge transfer in software type of jobs, and is it really possible to do everything without taking anybody's help?</p>",
+    "TimeStamp": "\/Date(1421323513232)\/",
     "ReportType": 2,
     "BlackTerms": [
       {
-        "Regex": "^[^A-Z]*$",
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
         "IsAuto": false,
         "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 4,
-        "FPCount": 0,
-        "CaughtCount": 15
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1101
+      },
+      {
+        "Type": 1,
+        "Regex": "\\banybody\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.8547888,
+        "TPCount": 1,
+        "FPCount": 1,
+        "CaughtCount": 17
       }
     ],
     "WhiteTerms": []
   },
   {
-    "Url": "http://tex.stackexchange.com/a/222895",
-    "Site": "tex.stackexchange.com",
-    "Title": "\\begin{tikzpicture}\n\n[scale=3,line cap=round,\naxes/.style=,\nimportant li...",
-    "Body": "<pre><code>\\begin{tikzpicture}\n\n[scale=3,line cap=round,\naxes/.style=,\nimportant line/.style={very thick}]\n\n\\draw[help lines, step=0.3cm, color=gray!30] (-1.4,-1.4) grid (1.4,1.4);\n\\begin{scope}[axes]\n\\draw[->, very thick] (-1.5,0) -- (1.5,0) node[right] {$x$} coordinate(x axis);\n\\draw[->, very thick] (0,-1.5) -- (0,1.5) node[above] {$y$} coordinate(y axis);\n\\end{scope}\n\n\\end{tikzpicture}\n</code></pre>",
-    "TimeStamp": "\/Date(1421150338573)\/",
-    "ReportType": 2,
+    "Url": "http://askubuntu.com/questions/574044",
+    "Site": "askubuntu.com",
+    "Title": "Eat healthy and stay away from trans?",
+    "Body": "<p>Eat healthy and stay away from trans and saturated fats. You want the monounsaturated fat in your system. Not all fats and oils are healthy. The <a href=\"http://www.optimalstackfacts.org/before-you-buy-ultimate-muscle-black-edition-read-this-first/\" rel=\"nofollow\">Ultimate Muscle Black Edition</a>  best lower your bad cholesterol levels and do not add to your weight. Stock up on nuts, fish and fruit.</p>\n\n<p>Exercise regularly. Work on strengthening your heart and lungs with cardio. Complement their efforts with weight training to strengthen muscles and <strong>Ultimate Muscle Black Edition</strong>\n bones strong. If you get tired, do not hesitate to rest. Just remember, do not push yourself too hard and not try to accelerate it. With regular exercise, your body can use its own strength. Very soon, you will see that you are better able to withstand longer workouts.</p>\n\n<p><a href=\"http://www.optimalstackfacts.org/before-you-buy-ultimate-muscle-black-edition-read-this-first/\" rel=\"nofollow\">http://www.optimalstackfacts.org/before-you-buy-ultimate-muscle-black-edition-read-this-first/</a></p>",
+    "TimeStamp": "\/Date(1421323400146)\/",
+    "ReportType": 3,
     "BlackTerms": [
       {
-        "Regex": "^[^A-Z]*$",
+        "Type": 4,
+        "Regex": "(?i)optimalstackfacts",
         "IsAuto": false,
         "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 4,
+        "Score": 10.0204086,
+        "TPCount": 10,
         "FPCount": 0,
         "CaughtCount": 14
       }
@@ -308,19 +126,20 @@
     "WhiteTerms": []
   },
   {
-    "Url": "http://serverfault.com/a/362291",
-    "Site": "serverfault.com",
-    "Title": "nslookup\n\n    set type=mx\n    domain.com\n\n\nwhen you press enter, the dns...",
-    "Body": "<p>nslookup</p>\n\n<pre><code>    set type=mx\n    domain.com\n</code></pre>\n\n<p>when you press enter, the dns will resolve all the mail type records regarding that specific domain.</p>",
-    "TimeStamp": "\/Date(1421150248178)\/",
-    "ReportType": 2,
+    "Url": "http://meta.stackexchange.com/questions/247118",
+    "Site": "meta.stackexchange.com",
+    "Title": "A positive attitude",
+    "Body": "<p>A positive attitude. Have fun. Enjoy the creative process as you choose the wellness every day. Here's an example <strong>Ultimate Muscle Black Edition</strong> of someone who is clear about the value that he and his family in the choice to be healthy. Mario is a person I met through my network organization. His own father died in his fifties and never knew his grandchildren, sons of Mario. Wisely, Mario linked to their own food choices and exercising its more important to live a long life, which is to see their grandchildren grow up right. He lost weight around the middle because he learned that central obesity was one of the strongest predictors of diabetes and cardiovascular disease. It started exercising daily and adopted for health eating habits. He discovered the body he wanted to create and attach a higher purpose to have it. For the first time Mario does not have to deprive yourself of the foods that they know <a href=\"http://%20%20http://www.optimalstackfacts.org/before-you-buy-ultimate-muscle-black-edition-read-this-first/\" rel=\"nofollow\">Ultimate Muscle Black Edition</a> are not good for him and he used to eat. By getting in touch with feelings and desires to enjoy their grandchildren throughout his life, as Mario appetite for health kicked in foods naturally. Mario said it was easy compared to the times in the past when he tried to lose weight while focusing on what I could not eat and feel bad about yourself and your body to try to make changes. He changed his whole approach and enjoy the creative process.</p>",
+    "TimeStamp": "\/Date(1421323331597)\/",
+    "ReportType": 3,
     "BlackTerms": [
       {
-        "Regex": "^[^A-Z]*$",
+        "Type": 4,
+        "Regex": "(?i)optimalstackfacts",
         "IsAuto": false,
         "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 4,
+        "Score": 10.0204086,
+        "TPCount": 9,
         "FPCount": 0,
         "CaughtCount": 13
       }
@@ -328,554 +147,43 @@
     "WhiteTerms": []
   },
   {
-    "Url": "http://stackoverflow.com/a/27921602",
+    "Url": "http://stackoverflow.com/a/27962611",
     "Site": "stackoverflow.com",
-    "Title": "You can also use AndroMDA - a nice tool if you can get it running.",
-    "Body": "<p>You can also use AndroMDA - a nice tool if you can get it running.</p>",
-    "TimeStamp": "\/Date(1421150229992)\/",
+    "Title": "HI For 1st and 3th tasks you can use Regular expressions\n\nhttp://php.net...",
+    "Body": "<p>HI For 1st and 3th tasks you can use Regular expressions</p>\n\n<p><a href=\"http://php.net/manual/en/function.preg-match.php\" rel=\"nofollow\">http://php.net/manual/en/function.preg-match.php</a>\n<a href=\"http://www.regular-expressions.info/\" rel=\"nofollow\">http://www.regular-expressions.info/</a></p>\n\n<p>for 2nd task you need exit script after </p>\n\n<pre><code>echo(\"Oops! Password did not match! Try again. \");\n</code></pre>\n\n<p>or you need write like below</p>\n\n<pre><code>if(//username is OK){\n}\nelse if(//password is OK)\nelse if ($_POST['password1']!= $_POST['password2'])\n {\n echo(\"Oops! Password did not match! Try again. \");\n }\nelse{\n//insert in database\n}\n</code></pre>",
+    "TimeStamp": "\/Date(1421323327256)\/",
     "ReportType": 2,
     "BlackTerms": [
       {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 425,
-        "FPCount": 111,
-        "CaughtCount": 2517
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://chinese.stackexchange.com/questions/12095",
-    "Site": "chinese.stackexchange.com",
-    "Title": "Help to traslate“红烧肉”to a foreigner",
-    "Body": "<p>How to translate \"红烧肉\" to a foreigner。</p>\n\n<p>the braise in soy sauce meat？</p>\n\n<p>Your question couldn't be submitted？</p>",
-    "TimeStamp": "\/Date(1421150118203)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\bh[ae]lp\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 16.0,
-        "TPCount": 34,
-        "FPCount": 42,
-        "CaughtCount": 1026
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://superuser.com/a/585742",
-    "Site": "superuser.com",
-    "Title": "somehow a different version of this mstscax.dll is now resident in the s...",
-    "Body": "<p>somehow a different version of this mstscax.dll is now resident in the system32 folder. go to the system32 folder, find the mstscax.dll right click on it go to properties go to previous version, wait for it to finish the search, if you see one, then this is going to replace the existing one. but before you can do that you must take ownership of the mstscax.dll file that's not working in order to rename it to mstscax.old, so you will go the security tab and do whatever it takes to take ownership of the file. once renamed and  you copy and paste the one you found in the previous version tab you will be able to launch rds again.</p>",
-    "TimeStamp": "\/Date(1421150017477)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^[^A-Z]*$",
+        "Type": 8,
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
         "IsAuto": false,
         "Site": "",
         "Score": 19.2035675,
         "TPCount": 4,
-        "FPCount": 0,
-        "CaughtCount": 12
+        "FPCount": 4,
+        "CaughtCount": 32
       }
     ],
     "WhiteTerms": []
   },
   {
-    "Url": "http://stackoverflow.com/a/27921535",
-    "Site": "stackoverflow.com",
-    "Title": "I had bad experience with huge context save. All those recommendations a...",
-    "Body": "<p>I had bad experience with huge context save. All those recommendations about saving in iterations by 100 rows, by 1000 rows, then disposing context or clearing list and detaching objects, assigning null to everything etc etc - it is all bullshit. We had requirements to insert daily millions of rows in many tables. Definitely one should not use entity in these conditions. You will be fighting with memory leaks and decrease in insertion speed when iterations proceed. </p>\n\n<p>Our first improvement was creating stored procedures and adding them to model. It is 100 times faster then <code>Context.SaveChanges()</code>, and there is no leaks, no decrease in speed over time.</p>\n\n<p>But it was not sufficient for us and we decided to use <code>SqlBulkCopy</code>. It is super fast. 1000 times faster then using stored procedures.</p>\n\n<p>So my suggestion will be:\nif you have many rows to insert but count is under something like 50000 rows, use stored procedures, imported in model;\nif you have hundreds of thousands of rows, go and try <code>SqlBulkCopy</code>.</p>\n\n<p>Here is some code:</p>\n\n<pre><code>EntityConnection ec = (EntityConnection)Context.Connection;\nSqlConnection sc = (SqlConnection)ec.StoreConnection;\n\nvar copy = new SqlBulkCopy(sc, SqlBulkCopyOptions.CheckConstraints | SqlBulkCopyOptions.Default , null);\n\ncopy.DestinationTableName = \"TableName\";\ncopy.ColumnMappings.Add(\"SourceColumn\", \"DBColumn\");\ncopy.WriteToServer(dataTable);\ncopy.Close();\n</code></pre>\n\n<p>If you use <code>DbTransaction</code> with context, you can manage to bulk insert using that transaction as well, but it needs some hacks.</p>",
-    "TimeStamp": "\/Date(1421150002376)\/",
-    "ReportType": 4,
+    "Url": "http://gamedev.stackexchange.com/questions/92259",
+    "Site": "gamedev.stackexchange.com",
+    "Title": "YAW not working correctly with XNA",
+    "Body": "<p>I successfully draw the model, and made it move forward and backward, but when I try to make it rotates (yaw) its not working correctly, like its moving too instead of only rotate.\nHere is my camera code:</p>\n\n<pre><code>public class NewCamera\n{\n    float aspectRatio;\n    public NewPlayer player;\n    Matrix viewMatrix;\n    Matrix projectionMatrix;\n    Matrix terrainMatrix;\n\n    public NewCamera(float aspectRatio, NewPlayer player)\n    {\n        this.player = player;\n        this.aspectRatio = aspectRatio;\n    }\n\n    public void Update()\n    {\n        Vector3 campos = new Vector3(0, 0.2f, -0.6f);\n        campos = Vector3.Transform(campos, Matrix.CreateFromQuaternion(player.rotation));\n        campos += player.position;\n\n        Vector3 camup = new Vector3(0, 1, 0);\n        camup = Vector3.Transform(camup, Matrix.CreateFromQuaternion(player.rotation));\n\n        viewMatrix = Matrix.CreateLookAt(campos, player.position, camup);\n        projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, aspectRatio, 0.2f, 500.0f);\n    }\n\n    public void SetEffects(BasicEffect basicEffect)\n    {\n        basicEffect.View = viewMatrix;\n        basicEffect.Projection = projectionMatrix;\n        basicEffect.World = terrainMatrix;\n    }\n\n    public void Draw(Terrain terrain)\n    {\n        terrainMatrix = Matrix.CreateTranslation(terrain.position);\n        SetEffects(terrain.basicEffect);\n        foreach (EffectPass pass in terrain.basicEffect.CurrentTechnique.Passes)\n        {\n            pass.Apply();\n            terrain.Draw();\n        }\n        player.Draw(viewMatrix, projectionMatrix);\n    }\n}\n</code></pre>\n\n<p>And here is my player (character) code:</p>\n\n<pre><code>public class NewPlayer\n{\n    Model model;\n    public Vector3 position = new Vector3(8, 1, -3);\n    public Quaternion rotation = Quaternion.Identity;\n    public Matrix worldMatrix = Matrix.Identity;\n\n    public NewPlayer(Model _model)\n    {\n        model = _model;\n        foreach (ModelBone bone in model.Bones)\n        {\n            bone.Transform *= Matrix.CreateScale(0.01f);\n        }            \n    }\n\n\n    public void RecreateWorld()\n    {\n        worldMatrix = Matrix.CreateRotationY(MathHelper.Pi)\n            * Matrix.CreateFromQuaternion(rotation)\n            * Matrix.CreateTranslation(position);\n    }\n\n    public void Draw(Matrix viewMatrix, Matrix projectionMatrix)\n    {\n        RecreateWorld();\n        Matrix[] transforms = new Matrix[model.Bones.Count];\n        model.CopyAbsoluteBoneTransformsTo(transforms);\n\n        foreach (ModelMesh mesh in model.Meshes)\n        {\n            foreach (BasicEffect effect in mesh.Effects)\n            {\n                effect.EnableDefaultLighting();\n                effect.World = transforms[mesh.ParentBone.Index]\n                    * worldMatrix;\n                effect.View = viewMatrix;\n                effect.Projection = projectionMatrix;\n            }\n            mesh.Draw();\n        }\n    }\n\n    public void MoveForward(float speed)\n    {\n        Vector3 addVector = Vector3.Transform(new Vector3(0, 0, 1), this.rotation);\n        this.position += addVector * speed;\n    }\n\n    public void MoveBackward(float speed)\n    {\n        Vector3 addVector = Vector3.Transform(new Vector3(0, 0, -1), this.rotation);\n        this.position += addVector * speed;\n    }\n\n    public void Yaw(float amount)\n    {\n        this.rotation *= Quaternion.CreateFromYawPitchRoll(MathHelper.ToRadians(amount), 0, 0);\n    }\n}\n</code></pre>\n\n<p>So, whats wrong at the Yaw function??</p>",
+    "TimeStamp": "\/Date(1421323243281)\/",
+    "ReportType": 2,
     "BlackTerms": [
       {
-        "Regex": "(?i)bullshit",
+        "Type": 1,
+        "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
         "IsAuto": false,
         "Site": "",
-        "Score": 10.2105265,
+        "Score": 11.0,
         "TPCount": 1,
-        "FPCount": 2,
-        "CaughtCount": 10
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://math.stackexchange.com/questions/1102465",
-    "Site": "math.stackexchange.com",
-    "Title": "This could be the stupidest question on matrix inversion",
-    "Body": "<p>Given a matrix $A$ that has full row rank we know that the matrix is invertible. So there is a matrix $B$ such that</p>\n\n<p>$$\nAB=1\n$$</p>\n\n<p>writing this in component notation,</p>\n\n<p>$$\nA_{ij}B_{jk}=\\delta_{ik}\n$$</p>\n\n<p>Now, we tend to write $A^{-1}$ instead of be but let's leave it like that for now.</p>\n\n<p>My question is how can we show that $BA=1$? We mechanically jump to the conclusion that if the inverse exists, $AA^{-1}=A^{-1}A=1$ but how to show that? Equivalently why is the left inverse equal to the right inverse? It seems intuitively obvious!</p>\n\n<p>Thanks a bunch, I appreciate.</p>",
-    "TimeStamp": "\/Date(1421149997145)\/",
-    "ReportType": 4,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)is.*(stupid|jerk)",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 1
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://sharepoint.stackexchange.com/a/128334",
-    "Site": "sharepoint.stackexchange.com",
-    "Title": "Looks like no one has ever gotten this error. I've googled it, but haven...",
-    "Body": "<p>Looks like no one has ever gotten this error. I've googled it, but haven't found one alike.</p>\n\n<p>Would really appreciate any help.</p>\n\n<p>Thanks</p>\n\n<p>João</p>",
-    "TimeStamp": "\/Date(1421149775080)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.3837166,
-        "TPCount": 165,
-        "FPCount": 106,
-        "CaughtCount": 2462
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27921461",
-    "Site": "stackoverflow.com",
-    "Title": "we cannot use where clause in insert....use the conditional statements\n\n...",
-    "Body": "<p>we cannot use <strong>where</strong> clause in <strong>insert</strong>....use the conditional statements</p>\n\n<pre><code>$sql=mysql_fetch_assoc(mysql_query(select * from table_name where)) column_name='\".$post_value\"'\nif($sql['column_value']!=\"\")\n{\n//update query\n}\nelse {\n//insert query\n}\n</code></pre>",
-    "TimeStamp": "\/Date(1421149731561)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^[^A-Z]*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 4,
-        "FPCount": 0,
-        "CaughtCount": 11
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://pt.stackoverflow.com/questions/46666",
-    "Site": "pt.stackoverflow.com",
-    "Title": "Retirar um manipulador de eventos apos 3 click",
-    "Body": "<p>Tenho este código, que preciso que o evento click seja removido depois de x tentativas.</p>\n\n<p><strong>Exemplo:</strong> <a href=\"http://jsfiddle.net/welguri/s0x213jL/\" rel=\"nofollow\">http://jsfiddle.net/welguri/s0x213jL/</a></p>\n\n<pre><code>var qtdadeCliques = 0;\nvar eventCon = function(evento){\n    qtdadeCliques++;\n    if (qtdadeCliques >= 3) {\n        alert(\"You clicked the div 'red'!\");\n       $(this).off(evento);\n    }\n};\n$(\"#div3\").on(\"click\", eventCon);\n</code></pre>",
-    "TimeStamp": "\/Date(1421149719723)\/",
-    "ReportType": 3,
-    "BlackTerms": [
-      {
-        "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.0206881,
-        "TPCount": 0,
-        "FPCount": 1,
-        "CaughtCount": 3
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
-        "IsAuto": false,
-        "Site": "pt.stackoverflow.com",
-        "Score": 5.010344,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://webapps.stackexchange.com/questions/72703",
-    "Site": "webapps.stackexchange.com",
-    "Title": "What do the colors of the bars displaying under the unfinished thumbnail of clips you might watch next in YouTube mean?",
-    "Body": "<p>I think the title describes all. The picture following here will describe it better.</p>\n\n<p><img src=\"http://i.stack.imgur.com/trfsI.png\" alt=\"image description\"></p>\n\n<p>I use a userscript named <a href=\"https://github.com/YePpHa/YouTubeCenter/wiki\" rel=\"nofollow\">YouTube Center</a></p>",
-    "TimeStamp": "\/Date(1421149714381)\/",
-    "ReportType": 3,
-    "BlackTerms": [
-      {
-        "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.0206881,
-        "TPCount": 0,
-        "FPCount": 1,
-        "CaughtCount": 2
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://pt.stackoverflow.com/questions/46665",
-    "Site": "pt.stackoverflow.com",
-    "Title": "Google Maps v3 - Não aparece em servidor de produção",
-    "Body": "<p>Utilizando um banco de dados juntamente com o Google Maps e PHP, eu fiz com que os dados fossem colocados como marcadores em várias regiões do país. <strong>Localmente</strong> ele <strong>está</strong> <strong>funcionando</strong> sem nenhum problema, mas quando eu coloco no <strong>servidor de produção</strong> <strong>inicialmente</strong> o mapa <strong>é mostrado</strong>, <strong>depois</strong> de umas <strong>2 horas</strong>, magicamente ele <strong>não</strong> <strong>aparece</strong> mais.</p>\n\n<p>Link para repositório - \n<a href=\"https://bitbucket.org/allanbobs/google-maps-v3-com-php/src\" rel=\"nofollow\">https://bitbucket.org/allanbobs/google-maps-v3-com-php/src</a></p>",
-    "TimeStamp": "\/Date(1421149660921)\/",
-    "ReportType": 3,
-    "BlackTerms": [
-      {
-        "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.0206881,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 1
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://ell.stackexchange.com/a/46617",
-    "Site": "ell.stackexchange.com",
-    "Title": "Foam is usually a mass (noncount; uncountable) noun. \n\nWhile we normally...",
-    "Body": "<p>Foam is usually a mass (noncount; uncountable) noun. </p>\n\n<p>While we normally treat mass nouns as singular, the issue you raise is whether or not to use the indefinite article, <em>a/an</em>. We normally do not use <em>a/an</em> with mass nouns (NOT * a milk), but we do use them when we talk about a particular part or instance of one (a [glass of] milk; a [moment in] time).   </p>\n\n<p>In this particular context, when we look down, we do not see foam in general, but we see perhaps a \"sheet\" of foam. That kind of usage would treat foam as a count or countable noun. Although we can leave out \"sheet\" (or whatever), most writers would choose:</p>\n\n<blockquote>\n  <p>...a faint, almost invisible white foam.</p>\n</blockquote>\n\n<p>(I've revised this answer thanks to oerkelens's comment below.)</p>",
-    "TimeStamp": "\/Date(1421149634995)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.3837166,
-        "TPCount": 165,
-        "FPCount": 105,
-        "CaughtCount": 2461
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://dba.stackexchange.com/a/89147",
-    "Site": "dba.stackexchange.com",
-    "Title": "wt is science m8ss fvfvgeg fgvredfg",
-    "Body": "<p>wt is science m8ss fvfvgeg fgvredfg</p>",
-    "TimeStamp": "\/Date(1421149479014)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 424,
-        "FPCount": 111,
-        "CaughtCount": 2516
-      },
-      {
-        "Regex": "^[^A-Z]*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 3,
-        "FPCount": 0,
-        "CaughtCount": 10
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,60}$",
-        "IsAuto": false,
-        "Site": "dba.stackexchange.com",
-        "Score": 5.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27921392",
-    "Site": "stackoverflow.com",
-    "Title": "Please use merge statement. It will do \"If exist UPDATE else INSERT\".",
-    "Body": "<p>Please use merge statement. It will do \"If exist UPDATE else INSERT\".</p>",
-    "TimeStamp": "\/Date(1421149474063)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 424,
-        "FPCount": 111,
-        "CaughtCount": 2515
-      },
-      {
-        "Regex": "^(?=.*?(?i)please).{0,100}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 22.3837166,
-        "TPCount": 82,
-        "FPCount": 139,
-        "CaughtCount": 1236
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://drupal.stackexchange.com/questions/141933",
-    "Site": "drupal.stackexchange.com",
-    "Title": "Private files not found 404 error",
-    "Body": "<p>My installation is Drupal 7 + Nginx + Varnish cache</p>\n\n<p>My private files path: sites/default/files/private/demo.img\nURL in browser: system/files/demo.img</p>\n\n<p>When I try to open private file: <a href=\"http://domian.com/system/files/demo.img\" rel=\"nofollow\">http://domian.com/system/files/demo.img</a> server throws 404 not found error. So I check all the file system config and directory permissions, everything seems to be fine.</p>\n\n<p>Now I tried to debug Drupal core files, what I have understood is,</p>\n\n<ol>\n<li><p>System.module has defined url \"system/files\" with callback function \"file_download\" using hook_menu()</p></li>\n<li><p>function file_download() is defined in 'includes/file.inc' core file and it is not invoked when I try to access the file: <a href=\"http://domian.com/system/files/demo.img\" rel=\"nofollow\">http://domian.com/system/files/demo.img</a></p></li>\n</ol>\n\n<p>So my private file request is not handled by Drupal, which is wrong? \nIn my local setup though, which has Apache instead of Nginx, private files are normally accessed from Drupal as is expected.</p>\n\n<p>So is my Nginx conf is wrong? Pasting my nginx site configuration:</p>\n\n<pre><code>server {\n    server_name www.demo.com;\n    root /var/www/demo/; ## <-- Your only path reference.\n\nlisten 127.0.0.1:8080;\n\nlocation = /check.php {\n     access_log off;\n     log_not_found off;\n  }\n\n\nlocation /nginx_status {\n       stub_status on;\n       access_log   off;\n       allow 127.0.0.1;\n       deny all;\n}\n\n\nlocation ~ ^/(status|ping)$ {\n        include fastcgi_params;\n        fastcgi_pass 127.0.0.1:9000;\n        fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;\n        allow 127.0.0.1;\n        #allow stats_collector.localdomain;\n        #allow watchdog.localdomain;\n        deny all;\n}\n\n\n# Enable compression, this will help if you have for instance advagg‎ module\n# by serving Gzip versions of the files.\n#gzip_static on;\n\nlocation = /favicon.ico {\n        log_not_found off;\n        access_log off;\n}\n\nlocation = /robots.txt {\n        allow all;\n        log_not_found off;\n        access_log off;\n}\n\n# This matters if you use drush prior to 5.x\n# After 5.x backups are stored outside the Drupal install.\n#location = /backup {\n#        deny all;\n#}\n\n# Very rarely should these ever be accessed outside of your lan\nlocation ~* \\.(txt|log)$ {\n        #allow 192.168.0.0/16;\n        deny all;\n}\n\nlocation ~ \\..*/.*\\.php$ {\n        return 403;\n}\n\n# No no for private\nlocation ~ ^/sites/.*/private/ {\n        internal;\n}\n\n# Block access to \"hidden\" files and directories whose names begin with a\n# period. This includes directories used by version control systems such\n# as Subversion or Git to store control files.\nlocation ~ (^|/)\\. {\n        return 403;\n}\n\nlocation / {\n        # This is cool because no php is touched for static content\n        try_files $uri @rewrite;\n\n location ~* ^(?:.+\\.(?:htaccess|make|txt|engine|inc|info|install|module|profile|po|pot|sh|.*sql|test|theme|tpl(?:\\.php)?|xtmpl)|code-style\\.pl|/Entries.*|/Repository|/Root|/Tag|/Template)$ {\n         return 404;\n }\n\nrewrite ^/(.*)\\.css /$1\\.css\\.gz;\nrewrite ^/(.*)\\.js /$1\\.js\\.gz;\n\n\n}\n\n\nlocation @rewrite {\n        # You have 2 options here\n        # For D7 and above:\n        # Clean URLs are handled in drupal_environment_initialize().\n        rewrite ^ /index.php;\n        # For Drupal 6 and bwlow:\n        # Some modules enforce no slash (/) at the end of the URL\n        # Else this rewrite block wouldn't be needed (GlobalRedirect)\n        #rewrite ^/(.*)$ /index.php?q=$1;\n}\n\nlocation ~ \\.php$ {\n        fastcgi_split_path_info ^(.+\\.php)(/.+)$;\n        #NOTE: You should have \"cgi.fix_pathinfo = 0;\" in php.ini\n        include fastcgi_params;\n        fastcgi_read_timeout 120;\n        fastcgi_param SCRIPT_FILENAME $request_filename;\n        fastcgi_intercept_errors on;\n        fastcgi_pass phpbackend;\n}\n\n# Fighting with Styles? This little gem is amazing.\n# This is for D6\n#location ~ ^/sites/.*/files/imagecache/ {\n# This is for D7 and D8\nlocation ~ ^/sites/.*/files/styles/ {\n        try_files $uri @rewrite;\n}\n\nlocation ~* \\.(js|css|png|jpg|jpeg|gif|ico)$ {\n        expires max;\n        log_not_found off;\n}\n</code></pre>\n\n<p>}</p>\n\n<p><strong>Latest development</strong>: The private file which I am trying to view is webform submission and While I try to view file, the function webform_submission_access() see logged in user as anonymous.</p>",
-    "TimeStamp": "\/Date(1421149258357)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\berror(s)?\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 16.0,
-        "TPCount": 8,
-        "FPCount": 73,
-        "CaughtCount": 4164
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "(?i)\\berror(s)?\\b",
-        "IsAuto": false,
-        "Site": "drupal.stackexchange.com",
-        "Score": 6.8,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://codereview.stackexchange.com/a/77385",
-    "Site": "codereview.stackexchange.com",
-    "Title": "You have selected the right tool (case classes) but are not using it pro...",
-    "Body": "<p>You have selected the right tool (case classes) but are not using it properly.  In functional programming, a tree is an <a href=\"http://en.wikipedia.org/wiki/Algebraic_data_type\" rel=\"nofollow\">Algebraic Data Type</a>.  In Scala, these <em>are</em> constructed with case classes but this is done with a sealed base trait (or abstract class) and a set of case classes which represent the different states/components of the type.  Here is how yours might look:</p>\n\n<pre><code>  sealed abstract class CrockPotTree[+A]\n  case object Empty[A] extends CrockPotTree[Nothing]\n  case class Node[A](value: A, negative: CrockPotTree[A],\n      positive: CrockPotTree[A]) extends CrockPotTree[A]\n</code></pre>\n\n<p>Now all I need do is create functions which can add to, prune or walk the tree.  These will do so recursively, using pattern matching to do the appropriate thing depending on the type of the node.  There is more than one way to do this, but first let me say a few things about the example code above:</p>\n\n<ul>\n<li>I used a sealed abstract as the base.  This class can only be used within this module and not elsewhere.  This means code for walking/fetching/manipulating CrockPotTrees will not fail because somebody extended the class and added something crazy and unpredictable.  It is abstract because only the derivative case classes have meaningful state (Empty, not Empty etc).</li>\n<li>I could have used a trait.  There are still different opinions about this.</li>\n<li>I have made it generic: <strong>CrockPotTree[+A]</strong> rather than <strong>CrockPotTree[String]</strong>, so it can hande all types of objects.  You can use it (once an <strong>apply</strong> method has been added to the companion object) to create a <strong>CrockPotTree[String]</strong> or <strong>CrockPotTree[Int]</strong> or whatever.</li>\n<li>I have made it <a href=\"http://docs.scala-lang.org/tutorials/tour/variances.html\" rel=\"nofollow\">covariant</a>.  This opens the possibility that if you add a <strong>Bear</strong> value to a tree full of <strong>Wolf</strong> objects, you will get back a <strong>CrockPotTree[Animal]</strong> rather than a simple error.</li>\n</ul>\n\n<p>Now, the functions that work should be recursive (or <a href=\"http://en.wikipedia.org/wiki/Fold_(higher-order_function)\" rel=\"nofollow\">fold</a> over a path through the tree, which is a kind of recursion).  Why?  Because this is a <a href=\"http://en.wikipedia.org/wiki/Recursive_data_type\" rel=\"nofollow\">recursive data type</a>.  The first point to consider about this is that your <strong>steps</strong> type in WalkTree is wrong.  It is almost certainly better to have it a list than an array.  That way, each recursive iteration of walkTree can look something like this:</p>\n\n<pre><code>  steps match {\n      Case Nil => // Return this node's value if there is one\n      Case x :: xs => walkTree(walk(x), xs)\n  }\n</code></pre>\n\n<p>This is both faster and simpler than using an array.  That said, the next important question is where to put these functions.  You have 2 basic choices:</p>\n\n<ol>\n<li>In the companion object.  In this case, functions should use pattern matching to decide what is the appropriate option for the particular case class.</li>\n<li>Abstract methods defined in the abstract class (where appropriate) and concrete implementations in the case classes.</li>\n</ol>\n\n<p>(If you use a trait rather than obstract class, you also have the choice of making some functions concrete in the parent trait).</p>\n\n<p>Option 1 is the functional approach as seen in functional languages which don't offer OO.  I've written tree types in Haskell code and that's just how it is done there.  Option 2 is more OO (pattern matching goes away because each case class knows how to deal with itself) while still being good functional code if you do it right.  Option 2 is the way <em>most</em> functions in the Scala collections library are done.</p>\n\n<p>Since I have already given an example of how <strong>walkTree</strong> would look in Option 1 style (which is how your code is done), here's how some simple functions would be done Option 2 stylee:</p>\n\n<pre><code>  sealed abstract class CrockPotTree[+A] {\n    def isEmpty: Boolean\n    def size: Int\n  }\n  case object Empty[A] extends CrockPotTree[Nothing] {\n    def isEmpty = true\n    def size = 0\n  }\n  case class Node[A](value: A, negative: CrockPotTree[A],\n      positive: CrockPotTree[A]) extends CrockPotTree[A] {\n    def isEmpty = false\n    def size = positive.size + negative.size + 1\n    /* This implementation of size is *not* tail recursive \n     * and could create a stack overflow.  There is a better\n     * way to do it but this way is chosen for simplicity here\n     */\n  }\n</code></pre>\n\n<p>Now, <em>despite</em> my warning about the stack overflow risk, look at the <strong>size</strong> function.  It works because an empty tree will return a size of zero.  A non-empty tree will add 1 (for itself) to the combined sizes of its positive and negative trees.  I want to make two points about this:</p>\n\n<ol>\n<li>You should now have enough knowledge to create an Option 2 style walk, if you think hard enough.</li>\n<li><strong>This</strong> is why we seal algebraic data types so they cannot be extended.  My <strong>size</strong> function knows that the answer will always be 0 or more, because there are only two CrockPotTree types and they both return a proper value.  If some idiot added an new case class which returned something else (<strong>null</strong>, for example), things could explode.</li>\n</ol>\n\n<p>My final two observations...</p>\n\n<p>Firstly, you should have an <strong>apply</strong> function in the companion object, so that you could create a CrockPotTree like this</p>\n\n<pre><code>  val cpt = CrockPotTree(values)\n</code></pre>\n\n<p>where values is some collection of booleans and values which CrockPotTree will know how to build into a tree.  the apply function would need to call an append function recursively.  In Option 2 style, Empty and Node classes would both have their own recursive append function.</p>\n\n<p>Secondly, I am not at all sure that Boolean is an appropriate type here.  You might want to create your own binary type (if that really is appropriate for this tree structure).  Guess what?  It would also be an ADT (algebraic data type).</p>\n\n<p>I leave you with some useful links:</p>\n\n<ul>\n<li><a href=\"https://gleichmann.wordpress.com/2011/01/30/functional-scala-algebraic-datatypes-enumerated-types/\" rel=\"nofollow\">https://gleichmann.wordpress.com/2011/01/30/functional-scala-algebraic-datatypes-enumerated-types/</a></li>\n<li><a href=\"https://gist.github.com/mbbx6spp/5548937\" rel=\"nofollow\">https://gist.github.com/mbbx6spp/5548937</a></li>\n<li><a href=\"http://twitter.github.io/effectivescala/#Functional%20programming-Case%20classes%20as%20algebraic%20data%20types\" rel=\"nofollow\">http://twitter.github.io/effectivescala/#Functional%20programming-Case%20classes%20as%20algebraic%20data%20types</a></li>\n</ul>",
-    "TimeStamp": "\/Date(1421149214032)\/",
-    "ReportType": 4,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\bidiot\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.0,
-        "TPCount": 2,
-        "FPCount": 5,
-        "CaughtCount": 17
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://magento.stackexchange.com/questions/52003",
-    "Site": "magento.stackexchange.com",
-    "Title": "Console error on pages with col2-left-layout",
-    "Body": "<p>I am making my mobile site and our navigation is a bar at the top which when you click expands and shows the categories. However on any pages with the layout class col2-left-layout the navigation doesn't expand, i have checked the console and it say there is an error in my script.js saying  Uncaught TypeError: undefined is not a function </p>\n\n<p>and it is referring to this line </p>\n\n<pre><code>if ($('.col-left').length) $('.col-left').masonry({itemSelector : '.block', isResizable:true, isAnimated:true});\n</code></pre>\n\n<p>I dont understand why this is happening on only pages with certain layouts, could anyone shed some light on the situation please?</p>",
-    "TimeStamp": "\/Date(1421149131319)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\berror(s)?\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 16.0,
-        "TPCount": 8,
-        "FPCount": 73,
-        "CaughtCount": 4163
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "(?i)\\berror(s)?\\b",
-        "IsAuto": false,
-        "Site": "magento.stackexchange.com",
-        "Score": 6.568182,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://stackoverflow.com/a/27921289",
-    "Site": "stackoverflow.com",
-    "Title": "is the image in the same folder as the runnable jar?",
-    "Body": "<p>is the image in the same folder as the runnable jar?</p>",
-    "TimeStamp": "\/Date(1421149095529)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 423,
-        "FPCount": 111,
-        "CaughtCount": 2514
-      },
-      {
-        "Regex": "^[^A-Z]*$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.2035675,
-        "TPCount": 2,
-        "FPCount": 0,
-        "CaughtCount": 8
-      }
-    ],
-    "WhiteTerms": [
-      {
-        "Regex": "^(?i).{0,60}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 5.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,200}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      },
-      {
-        "Regex": "^(?i).{0,150}$",
-        "IsAuto": false,
-        "Site": "stackoverflow.com",
-        "Score": 6.0,
-        "TPCount": 0,
-        "FPCount": 0,
-        "CaughtCount": 0
-      }
-    ]
-  },
-  {
-    "Url": "http://meta.stackexchange.com/questions/247027",
-    "Site": "meta.stackexchange.com",
-    "Title": "ill help you get a really great start and",
-    "Body": "<p>The things that we've mentioned here will help you get a really great start and if you wish to get into more depth on this subject, you should definitely take a look at . Obviously you can choose between a variety of approaches and there are many places to get information; another website you can try is .Do not let anyone talk you into believing that you don't have the ability to properly handle Garcinia Cambogia Sensation. There are all sorts of individuals who have been in the predicament in which you find yourself now nevertheless they still were in a position to apply the things we've discussed and to great result. </p>\n\n<p>Read More >>> <a href=\"http://www.tophealthresource.com/slim-body-with-garcinia-cambogia-sensation/\" rel=\"nofollow\">http://www.tophealthresource.com/slim-body-with-garcinia-cambogia-sensation/</a></p>",
-    "TimeStamp": "\/Date(1421149030450)\/",
-    "ReportType": 3,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)\\bhelp(s)? you(r)?\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 10.0,
-        "TPCount": 1,
-        "FPCount": 0,
-        "CaughtCount": 3
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://android.stackexchange.com/a/93824",
-    "Site": "android.stackexchange.com",
-    "Title": "Well its hard to know, Install avast anti-virus from google play and it ...",
-    "Body": "<p>Well its hard to know, Install avast anti-virus from google play and it will show any viruses (if there is any). But that 'Message Box' shouldnt of appeared so that means either facebook was hacked or you were using a fake facebook app/page. Clicking 'No Thanks' on a webpage can't install anything unless your already have a virus on your android. You should be safe if you were using the genuine facebook app/page and that <code>Settings>Security>Unknown Sources</code> was unchecked</p>",
-    "TimeStamp": "\/Date(1421147697628)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "(?i)thank(s| you)",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 19.3837166,
-        "TPCount": 164,
-        "FPCount": 104,
-        "CaughtCount": 2456
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://stackoverflow.com/questions/19494125",
-    "Site": "stackoverflow.com",
-    "Title": "issue in file creation while running topology in remote cluster using storm",
-    "Body": "<p>I have created a topology which should read from a file and write it to a new file. My program is running properly in local cluster but while submitting in remote cluster i am not getting any error but file is not getting created. below is my code to submit topolgy in remote cluster :- </p>\n\n<pre><code>public static void main(String[] args)  {\n        final Logger logger = LoggingService.getLogger(FileToFileTopology.class.getName());\n\n        try{\n        Properties prop =new Properties();\n        prop.load(new FileInputStream(args[0]+\"/connection.properties\"));\n\n        LoggingService.generateAppender(\"storm_etl\",prop, \"\");\n        logger.info(\"inside main method....\" +args.length);\n\n        System.out.println(\"inside main sys out\");\n\n        Config conf= new Config();\n        conf.setDebug(false);\n        conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING,1);\n        TopologyBuilder builder = new TopologyBuilder();\n\n            builder.setSpout(\"file-reader\",new FileReaderSpout(args[1]));\n            builder.setBolt(\"file-writer\",new WriteToFileBolt(args[1]),2).shuffleGrouping(\"file-reader\");\n            logger.info(\"submitting topology\");\n            StormSubmitter.submitTopology(args[0], conf, builder.createTopology());\n\n\n    }\n    catch(Exception e){\n        System.out.println(\"inside catch\");\n        logger.info(\"inside catch\"+e.getMessage());\n        logger.error(\"inside error\", e);\n        e.printStackTrace();\n    }\n    }\n</code></pre>\n\n<p>I have also used log4j to create my own logfile for my topology, log file gets created but no error in my log file. pls help</p>",
-    "TimeStamp": "\/Date(1421147653059)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "\\bpl[sz]+\\b",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 14.0,
-        "TPCount": 13,
-        "FPCount": 15,
-        "CaughtCount": 203
-      }
-    ],
-    "WhiteTerms": []
-  },
-  {
-    "Url": "http://ell.stackexchange.com/a/46519",
-    "Site": "ell.stackexchange.com",
-    "Title": "This would be a road containing many s-bends or hair-pin corners.",
-    "Body": null,
-    "TimeStamp": "\/Date(1421147186941)\/",
-    "ReportType": 2,
-    "BlackTerms": [
-      {
-        "Regex": "^(?i).{0,80}$",
-        "IsAuto": false,
-        "Site": "",
-        "Score": 89.0,
-        "TPCount": 422,
-        "FPCount": 109,
-        "CaughtCount": 2508
+        "FPCount": 25,
+        "CaughtCount": 2718
       }
     ],
     "WhiteTerms": []

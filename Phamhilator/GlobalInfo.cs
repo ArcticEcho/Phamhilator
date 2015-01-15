@@ -57,6 +57,7 @@ namespace Phamhilator
         public readonly static BadTagDefinitions BadTagDefinitions = new BadTagDefinitions();
         public readonly static List<Spammer> Spammers = new List<Spammer>();
         public readonly static ReportLog Log = new ReportLog();
+        public readonly static Pham Core = new Pham();
         public static Room PrimaryRoom;
         public static Client ChatClient;
         public static int PostsCaught;

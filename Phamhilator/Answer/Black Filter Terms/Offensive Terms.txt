@@ -6,7 +6,8 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 1,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\basshole\\b",
@@ -15,7 +16,8 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 3
+    "CaughtCount": 3,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bpiss\\b",
@@ -24,7 +26,8 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 4
+    "CaughtCount": 4,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bpenis\\b",
@@ -33,7 +36,8 @@
     "Score": 11.0,
     "TPCount": 2,
     "FPCount": 3,
-    "CaughtCount": 8
+    "CaughtCount": 8,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bbumhole\\b",
@@ -42,7 +46,8 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 0,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bretard\\b",
@@ -51,7 +56,8 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 6
+    "CaughtCount": 6,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bbastard\\b",
@@ -60,7 +66,8 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 4
+    "CaughtCount": 4,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bbitch\\b",
@@ -69,16 +76,18 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 4,
-    "CaughtCount": 10
+    "CaughtCount": 10,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bcrap\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 11.0,
-    "TPCount": 2,
-    "FPCount": 18,
-    "CaughtCount": 41
+    "TPCount": 3,
+    "FPCount": 20,
+    "CaughtCount": 45,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bfag\\b",
@@ -87,7 +96,8 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bfuck",
@@ -96,7 +106,8 @@
     "Score": 11.0,
     "TPCount": 9,
     "FPCount": 6,
-    "CaughtCount": 27
+    "CaughtCount": 27,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bidiot\\b",
@@ -105,7 +116,8 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 6,
-    "CaughtCount": 17
+    "CaughtCount": 17,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bshit\\b",
@@ -114,7 +126,8 @@
     "Score": 10.0,
     "TPCount": 12,
     "FPCount": 14,
-    "CaughtCount": 50
+    "CaughtCount": 50,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bwhore\\b",
@@ -123,7 +136,8 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 1,
+    "Type": 0
   },
   {
     "Regex": "(?i)fack you",
@@ -132,7 +146,8 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 0,
+    "Type": 0
   },
   {
     "Regex": "(?i)biatch",
@@ -141,7 +156,8 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 0,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\bcock\\b",
@@ -149,8 +165,9 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 3
+    "FPCount": 3,
+    "CaughtCount": 5,
+    "Type": 0
   },
   {
     "Regex": "(?i)bullshit",
@@ -159,7 +176,8 @@
     "Score": 10.2105265,
     "TPCount": 1,
     "FPCount": 3,
-    "CaughtCount": 10
+    "CaughtCount": 11,
+    "Type": 0
   },
   {
     "Regex": "(?i)\\sdick\\s",
@@ -168,7 +186,8 @@
     "Score": 10.2105265,
     "TPCount": 4,
     "FPCount": 2,
-    "CaughtCount": 7
+    "CaughtCount": 7,
+    "Type": 0
   },
   {
     "Regex": "(?i)good luck to stack overflow developers",
@@ -177,7 +196,8 @@
     "Score": 10.1800556,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 0,
+    "Type": 0
   },
   {
     "Regex": "(?i)slowly downvote",
@@ -186,7 +206,8 @@
     "Score": 10.1800556,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 1,
+    "Type": 0
   },
   {
     "Regex": "(?i)I will downvote",
@@ -195,7 +216,8 @@
     "Score": 10.1800556,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 0,
+    "Type": 0
   },
   {
     "Regex": "(?i)downvote you",
@@ -204,6 +226,7 @@
     "Score": 10.1800556,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 0,
+    "Type": 0
   }
 ]

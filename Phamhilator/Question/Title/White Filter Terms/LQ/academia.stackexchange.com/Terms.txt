@@ -12,7 +12,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 7.14049625,
+    "Score": 7.789632,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -2497,6 +2497,15 @@
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 8.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)i( just)? wan(t|na) to know",
+    "IsAuto": false,
+    "Site": "android.stackexchange.com",
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

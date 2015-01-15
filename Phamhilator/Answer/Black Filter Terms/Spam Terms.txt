@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 26,
-    "FPCount": 111,
-    "CaughtCount": 424
+    "TPCount": 30,
+    "FPCount": 120,
+    "CaughtCount": 463
   },
   {
     "Regex": "2348064038119",
@@ -131,8 +131,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 1,
-    "FPCount": 7,
-    "CaughtCount": 19
+    "FPCount": 8,
+    "CaughtCount": 21
   },
   {
     "Regex": "(?i)Join the Illuminati",
@@ -159,7 +159,7 @@
     "Score": 10.8585472,
     "TPCount": 2,
     "FPCount": 8,
-    "CaughtCount": 12
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)geolify",
@@ -266,8 +266,8 @@
     "Site": "",
     "Score": 10.8585472,
     "TPCount": 0,
-    "FPCount": 6,
-    "CaughtCount": 10
+    "FPCount": 7,
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)www\\.\\S{0,30}muscle\\S{0,30}\\.com",
@@ -409,9 +409,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,
-    "TPCount": 1,
+    "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)\\bstart earning\\b",
@@ -451,6 +451,69 @@
   },
   {
     "Regex": "(?i)naturalsmaleenhancement",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)nettyfish\\.com",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)buyfastcontestvote",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)WiseRecovery",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\btiny.cc/\\w",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)toptechking\\.com",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)http://adf.ly/",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)get your love back",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,

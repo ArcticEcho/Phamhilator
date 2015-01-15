@@ -6,9 +6,47 @@ using CsQuery;
 
 namespace Phamhilator
 {
-    public static class Pham
+    public class Pham
     {
-        public static void RegisterFP(Post post, PostAnalysis report)
+        public Pham()
+        {
+            GlobalInfo.Log.EntriesRemovedEvent = items =>
+            {
+                foreach (var item in items)
+                {
+                    var data = new AnswerAnalysis();
+
+                    foreach (var term in item.BlackTerms)
+                    {
+                        data.BlackTermsFound.Add(term.ToTerm(term.Type));
+                    }
+
+                    foreach (var term in item.WhiteTerms)
+                    {
+                        data.WhiteTermsFound.Add(term.ToTerm(term.Type));
+                    }
+
+                    switch (item.ReportType)
+                    {
+                        case PostType.Spam:
+                        {
+                            CheckForSpam(item, data);
+                            break;
+                        }
+
+                        case PostType.LowQuality:
+                        {
+                            CheckForLQ(item, data);
+                            break;
+                        }
+                    }
+                }
+            };
+        }
+
+
+
+        public void RegisterFP(Post post, PostAnalysis report)
         {
             GlobalInfo.Stats.TotalFPCount++;
 
@@ -45,7 +83,7 @@ namespace Phamhilator
             }
         }
 
-        public static void RegisterTP(Post post, PostAnalysis report)
+        public void RegisterTP(Post post, PostAnalysis report)
         {
             GlobalInfo.Stats.TotalTPCount++;
 
@@ -69,16 +107,14 @@ namespace Phamhilator
             }
         }
 
-        public static bool IsAnswerTP(string postUrl)
+        public bool IsAnswerLQ(string postUrl)
         {
-            // "http://" + host + "/posts/ajax-load-realtime/" + id
-
             var html = "";
 
             try
             {
-                var host = PostRetriever.HostParser.Replace(postUrl, "");
-                var id = PostRetriever.PostIDParser.Replace(postUrl, "");
+                var host = PostFetcher.HostParser.Replace(postUrl, "");
+                var id = PostFetcher.PostIDParser.Replace(postUrl, "");
 
                 html = new WebClient().DownloadString("http://" + host + "/posts/ajax-load-realtime/" + id);
             }
@@ -98,7 +134,7 @@ namespace Phamhilator
             return int.Parse(score) <= -5;
         }
 
-        public static bool IsQuestionTP(string postUrl)
+        public bool IsQuestionLQ(string postUrl)
         {
             var html = "";
 
@@ -146,6 +182,99 @@ namespace Phamhilator
             }
 
             return isClosed || int.Parse(score) <= -3;
+        }
+
+        public bool IsAnswerSpam(string postUrl)
+        {
+            try
+            {
+                var host = PostFetcher.HostParser.Replace(postUrl, "");
+                var id = PostFetcher.PostIDParser.Replace(postUrl, "");
+
+                new WebClient().DownloadString("http://" + host + "/posts/ajax-load-realtime/" + id);
+            }
+            catch (WebException ex)
+            {
+                if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.NotFound)
+                {
+                    // The post has been deleted.
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool IsQuestionSpam(string postUrl)
+        {
+            try
+            {
+                new WebClient().DownloadString(postUrl);
+            }
+            catch (WebException ex)
+            {
+                if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.NotFound)
+                {
+                    // The post has been deleted.
+                    return true;
+                }
+            } 
+
+            return false;
+        }
+
+
+
+        private void CheckForSpam(LogItem item, PostAnalysis data)
+        {
+            if (item.Url.Contains(@"/questions/"))
+            {
+                if (IsQuestionSpam(item.Url))
+                {
+                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                }
+                else
+                {
+                    RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                }
+            }
+            else
+            {
+                if (IsAnswerSpam(item.Url))
+                {
+                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                }
+                else
+                {
+                    RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                }
+            }
+        }
+
+        private void CheckForLQ(LogItem item, PostAnalysis data)
+        {
+            if (item.Url.Contains(@"/questions/"))
+            {
+                if (IsQuestionLQ(item.Url))
+                {
+                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                }
+                else
+                {
+                    RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                }
+            }
+            else
+            {
+                if (IsAnswerLQ(item.Url))
+                {
+                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                }
+                else
+                {
+                    RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                }
+            }
         }
     }
 }

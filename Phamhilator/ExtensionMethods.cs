@@ -171,14 +171,38 @@ namespace Phamhilator
 
         public static JsonTerm[] ToJsonTerms(this ICollection<Term> input)
         {
-            var tempTerms = new JsonTerm[input.Count];
+            var jsonTerms = new JsonTerm[input.Count];
 
             for (var i = 0; i < input.Count; i++)
             {
-                tempTerms[i] = input.ElementAt(i).ToJsonTerm();
+                jsonTerms[i] = input.ElementAt(i).ToJsonTerm();
             }
 
-            return tempTerms;
+            return jsonTerms;
+        }
+
+        public static LogTerm[] ToLogTerms(this ICollection<Term> input)
+        {
+            var logTerms = new LogTerm[input.Count];
+
+            for (var i = 0; i < input.Count; i++)
+            {
+                var term = input.ElementAt(i);
+
+                logTerms[i] = new LogTerm
+                {
+                    Regex = term.Regex.ToString(),
+                    Score = term.Score,
+                    Site = term.Site,
+                    IsAuto = term.IsAuto,
+                    FPCount = (int)term.FPCount,
+                    TPCount = (int)term.TPCount,
+                    CaughtCount = (int)term.CaughtCount,
+                    Type = term.Type
+                };
+            }
+
+            return logTerms;
         }
     }
 }

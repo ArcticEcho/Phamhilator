@@ -24,6 +24,8 @@ namespace Phamhilator
             }
         }
 
+        public Action<List<LogItem>> EntriesRemovedEvent { get; set; }
+
 
 
         public ReportLog()
@@ -105,16 +107,24 @@ namespace Phamhilator
                 sw.Reset();
 
                 // Remove week old entries.
+                var entriesRemoved = new List<LogItem>();
+
                 lock (entries)
                 {
                     for (var i = 0; i < entries.Count; i++)
                     {
                         if ((DateTime.UtcNow - entries[i].TimeStamp).TotalDays > 7)
                         {
+                            entriesRemoved.Add(entries[i]);
                             entries.RemoveAt(i);
                             i = 0;
                         }
                     }
+                }
+
+                if (entriesRemoved.Count != 0 && EntriesRemovedEvent != null)
+                {
+                    EntriesRemovedEvent(entriesRemoved);
                 }
 
                 File.WriteAllText(DirectoryTools.GetLogFile(), Newtonsoft.Json.JsonConvert.SerializeObject(entries, Newtonsoft.Json.Formatting.Indented));

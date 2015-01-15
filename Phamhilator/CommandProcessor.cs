@@ -1437,7 +1437,7 @@ namespace Phamhilator
 
                 if (questionReport.IsMatch(room[message.ParentID].Content))
                 {
-                    var p = PostRetriever.GetQuestion(post.Url);
+                    var p = PostFetcher.GetQuestion(post.Url);
                     QuestionAnalysis info;
 
                     var res = QuestionAnalyser.IsLowQuality(p, out info);
@@ -1458,10 +1458,10 @@ namespace Phamhilator
                 }
                 else
                 {
-                    var p = PostRetriever.GetAnswer(post.Url);
+                    var p = PostFetcher.GetAnswer(post.Url);
                     AnswerAnalysis info;
 
-                    var res = AnswerAnalyser.IsLowQuality(p,out info);
+                    var res = AnswerAnalyser.IsLowQuality(p, out info);
 
                     if (res)
                     {
@@ -1479,7 +1479,7 @@ namespace Phamhilator
                 }
             }
 
-            Pham.RegisterFP(post, report);
+            GlobalInfo.Core.RegisterFP(post, report);
 
             return room.EditMessage(message.ParentID, "---" + room[message.ParentID].Content + "---") ? new ReplyMessage("") : new ReplyMessage("`FP acknowledged.`");
         }
@@ -1517,7 +1517,7 @@ namespace Phamhilator
 
             if (report.Type != PostType.BadTagUsed)
             {
-                Pham.RegisterTP(post, report);
+                GlobalInfo.Core.RegisterTP(post, report);
             }
 
             var reportMessage = room[message.ParentID].Content;

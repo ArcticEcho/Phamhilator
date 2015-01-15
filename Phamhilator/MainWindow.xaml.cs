@@ -76,7 +76,7 @@ namespace Phamhilator
 
                     try
                     {
-                        var question = PostRetriever.GetQuestion(message);
+                        var question = PostFetcher.GetQuestion(message);
 
                         if (GlobalInfo.Log.Entries.All(p => p.Url != question.Url))
                         {
@@ -88,7 +88,7 @@ namespace Phamhilator
 
                         if (GlobalInfo.FullScanEnabled)
                         {
-                            var answers = PostRetriever.GetLatestAnswers(question);
+                            var answers = PostFetcher.GetLatestAnswers(question);
 
                             foreach (var a in answers.Where(ans => GlobalInfo.Log.Entries.All(p => p.Url != ans.Url)))
                             {
@@ -296,8 +296,8 @@ namespace Phamhilator
                     Body = p.Body, 
                     TimeStamp = DateTime.UtcNow, 
                     ReportType = info.Type, 
-                    BlackTerms = info.BlackTermsFound.ToJsonTerms().ToList(), 
-                    WhiteTerms = info.WhiteTermsFound.ToJsonTerms().ToList()
+                    BlackTerms = info.BlackTermsFound.ToLogTerms().ToList(), 
+                    WhiteTerms = info.WhiteTermsFound.ToLogTerms().ToList(),
                 });
                 GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 

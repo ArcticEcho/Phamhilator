@@ -54,7 +54,7 @@ namespace Phamhilator
 
                 Body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
                 Score = int.Parse(dom[".vote-count-post"].Html());
-                AuthorRep = PostRetriever.ParseRep(dom[".reputation-score"].Html());
+                AuthorRep = PostFetcher.ParseRep(dom[".reputation-score"].Html());
             }
             catch (Exception)
             {
