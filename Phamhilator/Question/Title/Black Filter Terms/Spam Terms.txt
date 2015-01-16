@@ -193,9 +193,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 2,
+    "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)\\bweight loss\\b",
@@ -302,8 +302,8 @@
     "Site": "",
     "Score": 18.0,
     "TPCount": 19,
-    "FPCount": 47,
-    "CaughtCount": 97
+    "FPCount": 48,
+    "CaughtCount": 98
   },
   {
     "Regex": "(?i)the perfect",
@@ -546,7 +546,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 13,
-    "CaughtCount": 56
+    "CaughtCount": 57
   },
   {
     "Regex": "(?i)^also",
@@ -582,7 +582,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 4
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)health",
@@ -933,7 +933,7 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 30,
-    "CaughtCount": 155
+    "CaughtCount": 157
   },
   {
     "Regex": "\\$\\d+",
@@ -941,8 +941,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 31,
-    "CaughtCount": 437
+    "FPCount": 34,
+    "CaughtCount": 443
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",

@@ -6,8 +6,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -16,8 +15,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)health",
@@ -26,8 +24,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
@@ -36,8 +33,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -46,18 +42,16 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
     "IsAuto": false,
     "Site": "physics.stackexchange.com",
-    "Score": 6.655,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "\\>\\>\\>\\>\\>",
@@ -66,8 +60,7 @@
     "Score": 6.05,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "avoir",
@@ -76,8 +69,7 @@
     "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "\\sCLICK HERE\\s",
@@ -86,8 +78,7 @@
     "Score": 5.01020432,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "\\bavoir\\b",
@@ -96,8 +87,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)call\\s\\d",
@@ -106,8 +96,7 @@
     "Score": 5.01020432,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)do you want to.*http://",
@@ -116,8 +105,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "FREE SHIPPING",
@@ -126,8 +114,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)maidenhead",
@@ -136,18 +123,16 @@
     "Score": 5.01020432,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*(>>|vist|like).{0,10}<a href=\".*\">https?://\\S*$",
     "IsAuto": false,
     "Site": "magento.stackexchange.com",
-    "Score": 5.0,
+    "Score": 5.5,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)neuropathy",
@@ -156,8 +141,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "ketone",
@@ -166,8 +150,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?is)^((?!<code>).)*</a>(<.*>)*$",
@@ -176,7 +159,15 @@
     "Score": 5.010344,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)chaussure",
+    "IsAuto": false,
+    "Site": "french.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
   }
 ]

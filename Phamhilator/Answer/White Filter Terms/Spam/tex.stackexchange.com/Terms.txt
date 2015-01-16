@@ -6,8 +6,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbeautiful(est)?\\b",
@@ -16,8 +15,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -26,8 +24,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bripped\\b",
@@ -36,8 +33,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)get free",
@@ -46,8 +42,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbeautiful(est)?\\b",
@@ -56,8 +51,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -66,8 +60,7 @@
     "Score": 17.4328823,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\byoga|relax(ing)?\\b",
@@ -76,8 +69,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)health",
@@ -86,8 +78,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)slim",
@@ -96,8 +87,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -106,8 +96,7 @@
     "Score": 9.028296,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)health",
@@ -116,8 +105,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbeautiful(est)?\\b",
@@ -126,8 +114,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -136,8 +123,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -146,8 +132,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bgot my\\b",
@@ -156,8 +141,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\btreatment\\b",
@@ -166,8 +150,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)health",
@@ -176,8 +159,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -186,8 +168,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*(>>|vist|like).{0,10}<a href=\".*\">https?://\\S*$",
@@ -196,8 +177,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
@@ -206,8 +186,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)(feel|look|taste|get)(s|ing)? (good|nice|amazing|fabulous)",
@@ -216,8 +195,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
@@ -226,8 +204,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)slim",
@@ -236,8 +213,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
@@ -246,8 +222,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -256,8 +231,7 @@
     "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -266,8 +240,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)^how can we",
@@ -276,8 +249,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)^cheap",
@@ -286,8 +258,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
@@ -296,8 +267,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -306,8 +276,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\byou know\\b",
@@ -316,8 +285,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -326,8 +294,7 @@
     "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bwork out\\b",
@@ -336,8 +303,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bskin\\b",
@@ -346,8 +312,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)losing weight",
@@ -356,8 +321,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\byou know\\b",
@@ -366,8 +330,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -376,8 +339,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -386,18 +348,16 @@
     "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "gaming.stackexchange.com",
-    "Score": 7.39736176,
+    "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)health",
@@ -406,8 +366,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -416,8 +375,7 @@
     "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -426,8 +384,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -436,8 +393,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
@@ -446,8 +402,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)baba",
@@ -456,8 +411,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bfull( movie| film)\\b",
@@ -466,8 +420,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\byou know\\b",
@@ -476,8 +429,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
@@ -486,8 +438,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)it is possible",
@@ -496,8 +447,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bskin\\b",
@@ -506,8 +456,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -516,8 +465,7 @@
     "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)baba",
@@ -526,8 +474,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)^how can we",
@@ -536,8 +483,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbeautiful(est)?\\b",
@@ -546,8 +492,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -556,8 +501,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -566,8 +510,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)^how can we",
@@ -576,8 +519,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -586,8 +528,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\btreatment\\b",
@@ -596,8 +537,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\btreatment\\b",
@@ -606,8 +546,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
@@ -616,8 +555,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -626,8 +564,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\btreatment\\b",
@@ -636,8 +573,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
@@ -646,8 +582,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -656,8 +591,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)it is possible",
@@ -666,8 +600,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -676,8 +609,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)^how can we",
@@ -686,8 +618,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bmover(s)?\\b",
@@ -696,8 +627,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -706,8 +636,7 @@
     "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -716,8 +645,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -726,8 +654,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bwork out\\b",
@@ -736,8 +663,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\byou know\\b",
@@ -746,8 +672,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bheal(ing|thly)?\\b",
@@ -756,8 +681,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -766,18 +690,16 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "serverfault.com",
-    "Score": 10.53529,
+    "Score": 9.468623,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)^how can we",
@@ -786,8 +708,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -796,8 +717,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -806,8 +726,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)rolex",
@@ -816,8 +735,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)^how can we",
@@ -826,8 +744,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)slim",
@@ -836,8 +753,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)you want",
@@ -846,8 +762,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -856,8 +771,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)nike",
@@ -866,8 +780,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)fifa",
@@ -876,8 +789,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)baba",
@@ -886,8 +798,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -896,8 +807,7 @@
     "Score": 13.8084087,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\btreatment\\b",
@@ -906,8 +816,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bcare(ing)?\\b",
@@ -916,8 +825,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
@@ -926,8 +834,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
@@ -936,8 +843,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)natural",
@@ -946,8 +852,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -956,8 +861,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -966,8 +870,7 @@
     "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w](\\.[-\\w]+)?@\\w+\\.",
@@ -976,8 +879,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -986,8 +888,7 @@
     "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)health",
@@ -996,8 +897,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -1006,8 +906,7 @@
     "Score": 7.39736176,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bripped\\b",
@@ -1016,8 +915,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "[-\\w]{3}@\\w+\\.",
@@ -1026,8 +924,7 @@
     "Score": 13.0193567,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -1036,8 +933,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bcare(ing)?\\b",
@@ -1046,8 +942,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bskin\\b",
@@ -1056,8 +951,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "datarecovery",
@@ -1066,8 +960,7 @@
     "Score": 5.313889,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)join (today|now|fast|free|exclusive|us)(\\s|.)*https?://",
@@ -1076,8 +969,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "filerepairforum.com",
@@ -1086,8 +978,7 @@
     "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)filerepairforum\\.com",
@@ -1096,8 +987,7 @@
     "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)filerepairforum",
@@ -1106,8 +996,7 @@
     "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bearn.{0,30}\\d",
@@ -1116,8 +1005,7 @@
     "Score": 5.42927361,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)Make money",
@@ -1126,8 +1014,7 @@
     "Score": 6.42927361,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)(contact|email|phone)(.|\\n){0,75}(\\d{6,}|\\S{4,}\\S{3,}?)",
@@ -1136,8 +1023,7 @@
     "Score": 6.42927361,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bdelhi\\b",
@@ -1146,8 +1032,7 @@
     "Score": 5.42927361,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)writeulearn",
@@ -1156,8 +1041,7 @@
     "Score": 5.42927361,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
@@ -1166,8 +1050,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)\\bbangalore\\b",
@@ -1176,7 +1059,6 @@
     "Score": 5.42927361,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   }
 ]

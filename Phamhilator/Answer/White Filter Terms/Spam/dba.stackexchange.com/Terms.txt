@@ -57,7 +57,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 16.3433266,
+    "Score": 17.4328823,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -93,7 +93,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 8.464028,
+    "Score": 9.028296,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -228,7 +228,7 @@
     "Regex": "[-\\w]{3}@\\w+\\.",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 8.397362,
+    "Score": 7.890519,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

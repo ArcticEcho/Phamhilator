@@ -49,9 +49,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 15.0,
-    "TPCount": 30,
-    "FPCount": 123,
-    "CaughtCount": 469
+    "TPCount": 31,
+    "FPCount": 127,
+    "CaughtCount": 480
   },
   {
     "Regex": "2348064038119",
@@ -514,6 +514,42 @@
   },
   {
     "Regex": "(?i)get your love back",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)get back lost love",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)love spell",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)spiritualtemple",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.8585472,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)spell caster",
     "IsAuto": false,
     "Site": "",
     "Score": 10.8585472,

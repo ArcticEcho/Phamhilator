@@ -24,12 +24,15 @@ namespace Phamhilator
             }
         }
 
+        public Dictionary<string, string> EntryLinks { get; private set; }
+
         public Action<List<LogItem>> EntriesRemovedEvent { get; set; }
 
 
 
         public ReportLog()
         {
+            EntryLinks = new Dictionary<string, string>();
             var data = File.ReadAllText(DirectoryTools.GetLogFile());
 
             if (String.IsNullOrEmpty(data))

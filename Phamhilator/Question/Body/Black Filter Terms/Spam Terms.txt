@@ -22,18 +22,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 1,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 9,
+    "TPCount": 10,
     "FPCount": 18,
-    "CaughtCount": 38
+    "CaughtCount": 39
   },
   {
     "Regex": "officialimeiunlock",
@@ -139,18 +139,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
-    "TPCount": 7,
+    "TPCount": 8,
     "FPCount": 0,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 12,
-    "FPCount": 19,
-    "CaughtCount": 42
+    "TPCount": 13,
+    "FPCount": 21,
+    "CaughtCount": 45
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -589,9 +589,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 4,
+    "TPCount": 5,
     "FPCount": 0,
-    "CaughtCount": 6
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)skin-care-review",
@@ -760,9 +760,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)Penomet",
@@ -784,6 +784,24 @@
   },
   {
     "Regex": "(?i)Technical Support Phone Number",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)greendetoxpatch",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)my\\-unbiased\\-(re)?view",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,

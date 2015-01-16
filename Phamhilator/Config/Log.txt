@@ -1,5 +1,2869 @@
 [
   {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916826",
+    "PostUrl": "http://stackoverflow.com/questions/27988600",
+    "Site": "stackoverflow.com",
+    "Title": "How to use ST_GeomFromText('Point($1 $2)', 4326) inside pg_query_params call",
+    "Body": "<p>I am new to postgresql/postgis and would like to insert a geometry point type into my database with a pg_query_param call. I tried the following:</p>\n\n<pre><code>$query = \"INSERT INTO userloc (email, latitude, longitude, the_geom) VALUES($1, $2, $3, ST_GeomFromText('POINT($3 $2)', 4326))\";\n$rs = pg_query_params($con, $query, array('aajnielsen@gmail.com', 0, 0));\n</code></pre>\n\n<p>but this yields an error:</p>\n\n<pre><code>Warning: pg_query_params(): Query failed: ERROR: parse error - invalid geometry HINT: \"POINT($3\" <-- parse error at position 8 within geometry in /var/www/html/signup.php on line 26\n</code></pre>\n\n<p>I tried removing the single parens from around point, but that gives this error:</p>\n\n<pre><code>Warning: pg_query_params(): Query failed: ERROR: syntax error at or near \"$2\" LINE 1: ...geom) VALUES($1, $2, $3, ST_GeomFromText(POINT($3 $2), 4326)... ^ in /var/www/html/signup.php on line 26\n</code></pre>\n\n<p>I realize I can simply insert the latitude and longitude and then separately use these columns to generate the_geom column, but there must be a way to do this in one command while still benefiting from using this params function rather than the usual pg_query. Any recommendations are appreciated. Thanks.</p>",
+    "TimeStamp": "\/Date(1421426354895)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "\\$\\d+",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 3,
+        "FPCount": 33,
+        "CaughtCount": 443
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916809",
+    "PostUrl": "http://meta.stackexchange.com/questions/247185",
+    "Site": "meta.stackexchange.com",
+    "Title": "best sensor to detect change in position",
+    "Body": "<p>I need to know which sensor is best for this idea.</p>\n\n<p>I need to develop a device for travel bags, which will trigger an alarm when an attempt is made to steal the unattended bag. the alarm will be triggered when device detects change in its position. I cant use GPS because if the scenario is in train, the bag appears to be in motion, but is infact stationary with respect to train. so gps wont help me here.</p>\n\n<p>my other option was using mouse optical detector. but here the difficulty arrives that device have to certainly aligned towards the ground. which in fact doesn't ensure that the device would be so.</p>\n\n<p>so, pls suggest any other sensor which serve best for this purpose.</p>",
+    "TimeStamp": "\/Date(1421426265562)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 5,
+        "Regex": "\\bpl[sz]+\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 14.0,
+        "TPCount": 16,
+        "FPCount": 16,
+        "CaughtCount": 217
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916800",
+    "PostUrl": "http://stackoverflow.com/a/27988550",
+    "Site": "stackoverflow.com",
+    "Title": "EUREKA !!!  PRESS ENTER while on the \"i agree\" screen!!!\n\n-Uncheck the \"...",
+    "Body": "<p>EUREKA !!!  PRESS ENTER while on the \"i agree\" screen!!!</p>\n\n<p>-Uncheck the \"I Agree\" button, and then press \"Enter Key\" on your keyboard. It will NOT install the Norton Crap... or any other software - adware.</p>",
+    "TimeStamp": "\/Date(1421426159490)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Type": 9,
+        "Regex": "(?i)\\bcrap\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 3,
+        "FPCount": 20,
+        "CaughtCount": 49
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916792",
+    "PostUrl": "http://economics.stackexchange.com/questions/3035",
+    "Site": "economics.stackexchange.com",
+    "Title": "What is the justification for it being a problem if loans are not paid back?",
+    "Body": "<p>As far as I could understand, the loan system applied by banks which is based on a fractional reserve system works as follows:</p>\n\n<p><strong>Assumptions</strong>:</p>\n\n<ol>\n<li>The bank has initially 1000$. </li>\n<li>The fractional reserve is currently 10%. </li>\n<li>For simplicity, we assume that all deposits are made only on this bank, instead of having multiple banks. It has been argued in many places that, for the overall view of the money system, that this is a justfied assumption.</li>\n</ol>\n\n<p>The following happens now:</p>\n\n<p><strong>1)</strong> Guy A makes a loan for 900\\$. The bank keeps 100\\$ (more than 10%, thus ok).</p>\n\n<pre><code>Total loans owned by bank: 900$\nTotal deposits owned by bank: 100$\n</code></pre>\n\n<p><strong>2)</strong> Guy A pays guy A', which deposits the money on the bank again.</p>\n\n<pre><code>Total loans owned by bank: 900$\nTotal deposits owned by bank: 1000$\n</code></pre>\n\n<p><strong>3)</strong> Guy B makes a loan for 800\\$. The bank keeps 100$ as a new reserve (more than 10%, thus ok).</p>\n\n<pre><code>Total loans owned by bank: 1700$\nTotal deposits owned by bank: 200$\n</code></pre>\n\n<p><strong>4)</strong> Guy B pays guy B', which deposits the money on the bank again.</p>\n\n<pre><code>Total loans owned by bank: 1700$\nTotal deposits owned by bank: 1000$\n</code></pre>\n\n<hr>\n\n<p>This repeats itself a couple of times, until we arrive at:</p>\n\n<pre><code>Total loans owned by bank: 5000$\nTotal deposits owned by bank: 1000$\n</code></pre>\n\n<p>From the deposits, 500\\$ are reserves of the bank, which belong to the bank, and 500\\$ are money which is owned by the last guy that got money from another guy.</p>\n\n<hr>\n\n<p>Ok, so this is, as far as I understood, the beginning of the \"loan process with a fractional reserve system\", with a couple of loans. The bank has still enough reserves, so it did everything ok.</p>\n\n<hr>\n\n<p>Now let's assume that Guy A comes to the bank and says \"Hi, I'm sorry, I can't give you the money back, I'm broke\".</p>\n\n<hr>\n\n<p>Currently, the following thing happens: The bank says \"ok, so you must give us your security to cover our loss\" (for example the car).</p>\n\n<hr>\n\n<p><strong>Question</strong>: Why does this happen, what is the <strong>justification</strong> for taking the car from Guy A? Since the bank never lost anything...?</p>",
+    "TimeStamp": "\/Date(1421426109650)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 65,
+        "CaughtCount": 2398
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916786",
+    "PostUrl": "http://apple.stackexchange.com/a/167641",
+    "Site": "apple.stackexchange.com",
+    "Title": "I just unsuccessfully did 28 for an event here in Denver.",
+    "Body": "<p>I just unsuccessfully did 28 for an event here in Denver.</p>",
+    "TimeStamp": "\/Date(1421426081776)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2745
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916780",
+    "PostUrl": "http://stackoverflow.com/a/9592955",
+    "Site": "stackoverflow.com",
+    "Title": "I found it... It is here: android.os.Build.MODEL",
+    "Body": "<p>I found it... It is here: android.os.Build.MODEL</p>",
+    "TimeStamp": "\/Date(1421426035812)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2744
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916749",
+    "PostUrl": "http://scifi.stackexchange.com/a/79360",
+    "Site": "scifi.stackexchange.com",
+    "Title": "Sounds like Iria: Zeiram the Animation",
+    "Body": "<p>Sounds like Iria: Zeiram the Animation</p>",
+    "TimeStamp": "\/Date(1421425812656)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2743
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916712",
+    "PostUrl": "http://stackoverflow.com/a/27974763",
+    "Site": "stackoverflow.com",
+    "Title": "A std::vector copies or moves the inserted elements, so as long as you h...",
+    "Body": "<p>A <code>std::vector</code> copies or moves the inserted elements, so as long as you have the default copy constructor or as long as you do not change this dirty <em>a texture per element</em>-style, (the elements just need to have one common texture object to actually point to, so you waste much much memory) the pointer that the <code>sf::Sprite</code> object holds to the texture gets invalid. To see why we need to think whats happens on insertion:</p>\n\n<p>You setup a nice <code>Pickup</code>ish object and add it to the vector which calls the copy-constructor. Lets say your nice object that you wanted to add is object <code>A</code> and the now added/copied object is <code>B</code>. Both have a sprite <code>S</code> and a texture <code>T</code>. Both textures are valid, but the problem is this: <code>A</code>'s <code>S</code> points to <code>A</code>'s <code>T</code>, so after copying it to <code>B</code> <code>B</code>'s <code>S</code> points also to <code>A</code>'s <code>T</code>! As I assume <code>A</code> is just temporary so it gets destructed, together with its texture, and there you have it, a nice white box.</p>\n\n<p>You can solve this in some other dirty ways like making your own copy-constructor in <code>Pickup</code> like this:</p>\n\n<pre><code>Pickup::Pickup(const Pickup& other)\n: position(other.position), texture(other.texture), sprite(other.sprite)\n{ sprite.setTexture(texture); }\n</code></pre>\n\n<p>or by storing <code>std::unique_ptr<Pickups::Health></code>'s and not just <code>Pickups::Health</code>'s.</p>\n\n<p>However a much better way you should use is some kind of <code>Resourcemanager</code>, which just stores all relevant textures, ideally one, a big tileset, because loading once but big is faster than loading multiple but small textures. You can write your own very simple manager or use some other e.g. the one from the great <a href=\"http://www.bromeon.ch/libraries/thor/index.html\" rel=\"nofollow\"><code>Thor</code></a> library. To set a specific tile as texture for a Sprite just call <a href=\"http://www.sfml-dev.org/documentation/2.0/classsf_1_1Sprite.php#a3fefec419a4e6a90c0fd54c793d82ec2\" rel=\"nofollow\"><code>sf::Sprite::setTextureRect</code></a>.</p>\n\n<hr>\n\n<p>I want to mention some additional improvements to your design. Let <code>Pickup</code> derive from <code>sf::Drawable</code> and define its pure virtual <code>draw</code> function, which you can make <em>private</em>. Thus your from <code>Pickup</code> deriving object doesn't need to know from any <code>sf::RenderTarget</code> and you can just do <code>target.draw(myPickupObject)</code>.</p>\n\n<p>There is no need to store the position, just let <code>Pickup</code> derive from <code>sf::Transformable</code>, too. You don't have to implement any functions, the only thing you need to do is applying the matrix to the <code>sf::RenderStates</code> object thats passed to <code>draw</code>.</p>\n\n<p>Overall your <code>draw</code> function might look like this: </p>\n\n<pre><code>void Pickup::draw(sf::RenderTarget& target, sf::RenderStates states) const\n{\n    //'applying' transformation-matrix\n    states.transform *= getTransform();\n\n    target.draw(sprite, states);\n}\n</code></pre>\n\n<p>So your <code>Pickup</code> has now only <code>sf::Sprite</code> as member and overall your header just needs to include <code>SFML/Graphics/Sprite.hpp</code>.</p>",
+    "TimeStamp": "\/Date(1421425575433)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?is)^<.*>\\s*i want",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 2,
+        "FPCount": 0,
+        "CaughtCount": 18
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916706",
+    "PostUrl": "http://electronics.stackexchange.com/a/149483",
+    "Site": "electronics.stackexchange.com",
+    "Title": "I agree with Olin on the better transistor configuration, but having don...",
+    "Body": "<p>I agree with Olin on the better transistor configuration, but having done exactly what you've done so many times, I'd encourage you to consider a MOSFET circuit instead this time, unless the BJT is an absolute requirement. Honestly, I've used BJTs for everything switch related forever out of simplicity, familiarity, and having a huge surplus of them. But I've come to see that MOSFETs are often a much better choice, (partly thanks to @OlinLathrop ) and they are usually dirt cheap too. Look at this example, which is similar to what you're doing.</p>\n\n<p><img src=\"http://i.stack.imgur.com/5n2wg.jpg\" alt=\"simple Mosfet Switch\"> </p>\n\n<p>The reason I would do it with a MOSFET now is because like you, I wanted to put the BJT transistor into deep saturation to get it to maximally behave like a switch, to minimize dissipation. But the fact is, the transistor in this case is still going to have to drop dissipate at least 1/2 watt or more all tolled, and that assumes your square wave duty cycle is 50%. If heat or efficiency are of any concern to you, a MOSFET will be a much better choice. Here's a little N-channel MOSFET (actually called a hexfet) at mouser.com, an IRLML6246. It may be overkill for your app, but just consider how this little 50¢ device can switch up to 4 amps for you, with such low \"on resistance\" that it would dissipate only 28 milliwatts in your application. </p>\n\n<p><a href=\"http://www.mouser.com/ProductDetail/International-Rectifier/IRLML6246TRPBF/?qs=%2Fha2pyFadujeyBzDqaIaJwpT%2F3PWA0CdPXrbUTV1pv4%3D\" rel=\"nofollow\">Mouser Listing of IRLML6246</a></p>\n\n<p>The other consideration, I don't see that you mentioned the drive frequency, which will be a consideration regardless of whether you use a FET or a BJT, and whether you care how harmonics beyond the fundamental frequency. For that particular FET I mentioned, the turn on delay time is about 4nS, and the turn off is 11nS. Adding those and taking the recipricol, that should make this FET good to at least 60kHz. (you might speed the off time with a lower resistance from gate-source).</p>\n\n<p>Honestly, I have used transistors </p>",
+    "TimeStamp": "\/Date(1421425502077)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2733
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916702",
+    "PostUrl": "http://drupal.stackexchange.com/questions/144461",
+    "Site": "drupal.stackexchange.com",
+    "Title": "Vagrant Error 443",
+    "Body": "<p>I've been trying to work with vagrant and virtual box, from day 1 I've been having issues with it. I've followed these steps <a href=\"https://docs.vagrantup.com/v2/getting-started/index.html\" rel=\"nofollow\">https://docs.vagrantup.com/v2/getting-started/index.html</a>\nand found this tutorial on youtube \n<a href=\"http://youtu.be/ZGUEjZckijA?list=PLYpR8ZtoHMLLWJahRYNiJRYld2uDY8Vik\" rel=\"nofollow\">http://youtu.be/ZGUEjZckijA?list=PLYpR8ZtoHMLLWJahRYNiJRYld2uDY8Vik</a></p>\n\n<p>I now seem to be getting this message in the command line: Failed to connect to www.dropbox.com:443; No error</p>\n\n<p>Does anyone have experience in fixing this issue, I work in environment with a firewall. </p>\n\n<p>Please can you assist? </p>",
+    "TimeStamp": "\/Date(1421425476285)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4588
+      },
+      {
+        "Type": 1,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 6,
+        "FPCount": 43,
+        "CaughtCount": 2011
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "drupal.stackexchange.com",
+        "Score": 6.8,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "drupal.stackexchange.com",
+        "Score": 6.49135971,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916693",
+    "PostUrl": "http://dba.stackexchange.com/questions/89476",
+    "Site": "dba.stackexchange.com",
+    "Title": "SSIS Multicast performance question",
+    "Body": "<p>I'm wondering how multicast actually works. So here is my setup. I have one source flat file(csv) of about 100k rows, maybe about 250-300 columns, and I'm multicasting that file into 7 one-to-one tables. Only the primary key column is duplicated among these tables. This setup seemed to work fine, but now it seems we're maybe running into memory issues. I'm wondering if multicasting that data to 7 destinations is too much or not. Any thoughts on performance?  Also, I don't really care how fast this runs.</p>\n\n<p>One alternative I was thinking of was maybe just creating 7 different connection managers for the same file, and running everything sequentially. Would that be better? Thanks!</p>",
+    "TimeStamp": "\/Date(1421425416038)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)question",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 5,
+        "FPCount": 22,
+        "CaughtCount": 1478
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916689",
+    "PostUrl": "http://puzzling.stackexchange.com/questions/7921",
+    "Site": "puzzling.stackexchange.com",
+    "Title": "MARKER AND THE CUBE",
+    "Body": "<p>if a marker is located in one of the corners of a square cube and we begin to draw  according to the following conditions,  from how many edges of the cube can we cross ?</p>\n\n<p>A) you can cross from each edge  only once.\nB) marker is not separated from the cube.\nC) The marker can only cross the corners and edges of the cube .</p>\n\n<p><img src=\"http://i.stack.imgur.com/Hm4DD.jpg\" alt=\"here is the image\"></p>",
+    "TimeStamp": "\/Date(1421425378006)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "^[^a-z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 12,
+        "FPCount": 6,
+        "CaughtCount": 138
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916672",
+    "PostUrl": "http://rpg.stackexchange.com/questions/55493",
+    "Site": "rpg.stackexchange.com",
+    "Title": "Healer/Fighter help?",
+    "Body": "<p>Alright so I've been planning this huge quest for about a month now. And I am planning on using a character I create as a guiding tool. Only problem is, I know all my friends who are going to join are going to be either rangers or some type of fighter. So I've been looking for a character class that has some healing and fighting in D&D 3.5. So is there anyone that can offer advice. (we've only ever played 2.0)</p>",
+    "TimeStamp": "\/Date(1421425299880)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1141
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916660",
+    "PostUrl": "http://matheducators.stackexchange.com/questions/7237",
+    "Site": "matheducators.stackexchange.com",
+    "Title": "Rationale for not dividing both sides of an equation by $x$ (ex: $6x^2 = 12x$)",
+    "Body": "<p>this came up in class yesterday and I feel like my explanation could have been more clear/rigorous.  The students were given the task of finding the zeros of the following equation $$6x^2 = 12x$$ and one of the students did $$\\frac{6x^2}{6x}=\\frac{12x}{6x}$$ $$x = 2$$ which is a valid solution but this method eliminates the other solution of $$ x = 0$$  When the student brought it up, I explained to the student that if $x = 0, 2$ and we divide by $6x$ there is a possibility that we would be dividing by 0 which is undefined.  The student, very reasonably, responded \"Well, obviously I didn't know that zero was an answer when I was doing the problem\".  The student understands why we can't divide by 0 but is still struggling with how that connects to dividing by $x$.  I went on to explain that by dividing by $x$ you are \"dropping a solution\" because the problem, which was quadratic, is now linear.  Again, this didn't seem to click with the student.  Does anyone have maybe an axiom/law/theorem that I can show the student to give a rigorous reason as to why you can't just divide by $x$?</p>",
+    "TimeStamp": "\/Date(1421425251309)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "\\$\\d+",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 3,
+        "FPCount": 32,
+        "CaughtCount": 442
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916657",
+    "PostUrl": "http://android.stackexchange.com/a/96038",
+    "Site": "android.stackexchange.com",
+    "Title": "my too if you have some answer pls hit me back mesmul14@gmail.com",
+    "Body": "<p>my too if you have some answer pls hit me back mesmul14@gmail.com</p>",
+    "TimeStamp": "\/Date(1421425234077)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 7,
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 31,
+        "FPCount": 126,
+        "CaughtCount": 480
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916649",
+    "PostUrl": "http://stackoverflow.com/a/27988267",
+    "Site": "stackoverflow.com",
+    "Title": "Alternatively:\n\n$(selectElt).filter(\":first\").text()\n",
+    "Body": "<p>Alternatively:</p>\n\n<pre><code>$(selectElt).filter(\":first\").text()\n</code></pre>",
+    "TimeStamp": "\/Date(1421425183990)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^ ]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.8727264,
+        "TPCount": 33,
+        "FPCount": 3,
+        "CaughtCount": 76
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916625",
+    "PostUrl": "http://english.stackexchange.com/a/221955",
+    "Site": "english.stackexchange.com",
+    "Title": "The phrase \"useful idiot\" is often used to describe someone who is unwit...",
+    "Body": "<p>The phrase \"useful idiot\" is often used to describe someone who is unwittingly doing something that benefits a third party, who would prefer not to pay the price of the action in question.</p>",
+    "TimeStamp": "\/Date(1421424998070)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Type": 9,
+        "Regex": "(?i)\\bidiot\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 2,
+        "FPCount": 6,
+        "CaughtCount": 19
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 109,
+        "Regex": "(?i)\\bidiot\\b",
+        "IsAuto": false,
+        "Site": "english.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916588",
+    "PostUrl": "http://apple.stackexchange.com/a/167639",
+    "Site": "apple.stackexchange.com",
+    "Title": "So can I simply use any Apple cord and plug it onto my adapter?",
+    "Body": "<p>So can I simply use any Apple cord and plug it onto my adapter?</p>",
+    "TimeStamp": "\/Date(1421424836658)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 455,
+        "FPCount": 116,
+        "CaughtCount": 2741
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916561",
+    "PostUrl": "http://math.stackexchange.com/a/1106806",
+    "Site": "math.stackexchange.com",
+    "Title": "I might have come up with something, I'm asking for your opinion on this...",
+    "Body": "<p>I might have come up with something, I'm asking for your opinion on this.</p>\n\n<p>Given the working hypotheses, $\\sum_k p_k a_k$ can be seen as the expected value of $a_k$ w.r.t. the probability law $p$ of $k$. If I recall correctly, Cauchy internality should hold, by which</p>\n\n<p>$E_p[a_k] \\in [\\inf(a_k),\\sup(a_k)]$</p>\n\n<p>thus leading to $\\inf(a_k)=a_1$, since $a_k$ is a strictly increasing function of $k$ on $k=1,2,...$, and this should hold whatever the $p_k$s... </p>\n\n<p>Moreover, the sequence of $p_k$ that yields exactly that lower bound is the one that concentrates mass 1 on $k=1$, i.e. $p_1=1, p_k=0, k>1$, so this should be (one of?) the 'worst possible scenario'..</p>\n\n<p>What do you guys think?</p>\n\n<p>Thanks again!</p>",
+    "TimeStamp": "\/Date(1421424728090)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2729
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916536",
+    "PostUrl": "http://askubuntu.com/a/574462",
+    "Site": "askubuntu.com",
+    "Title": "Hi it looks to me that your eth0 does not get an IP address. Are you sur...",
+    "Body": "<p>Hi it looks to me that your eth0 does not get an IP address. Are you sure that a DHCP server is running on that cable?\nThe second OS is it connected to the same networkcable or does it use wifi?</p>",
+    "TimeStamp": "\/Date(1421424615170)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 6,
+        "FPCount": 4,
+        "CaughtCount": 45
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916533",
+    "PostUrl": "http://stackoverflow.com/questions/27975485",
+    "Site": "stackoverflow.com",
+    "Title": "Back again, need help fixing JS game",
+    "Body": "<p>To be clear, this is a standalone javascript game to help me get more involved with the syntax. </p>\n\n<p>At this moment I am trying to figure out a way to add a <code>list</code> function to list all of the things added in an array from that session(I am still learning how to implement this to be used with cookies and HTML).</p>\n\n<pre><code>//We name the functions.\nfunction Person(name, personAge) {\n    this.name = name;\n    this.personAge = personAge;\n}\n\nfunction Animal(animalName, species, breed) {\n    this.animalName = animalName;\n    this.species = species;\n    this.breed = breed;\n}\n\nfunction CreateYourOwn(creativeName, species2, power, customAge) {\n    this.creativeName = creativeName;\n    this.species2 = name;\n    this.power = power;\n    this.customAge = customAge;\n}\n\n//We list the arrays.\nvar Persons = [\n\n\n];\n\nvar Animals = [\n\n\n\n];\n\nvar Customs = [\n\n\n];\n\nfunction creator() {\n    //I start the prompt to ask the user which one.\n    var personPrompt = prompt(\"Welcome to virtual reality! Put in 'person' for person creator, 'animal' for animal creator, and 'custom' for custom creator! Or, if you want to list your creations, type in 'list'! NOTE: All creations will be deleted upon reload.\").toLowerCase();\n\n\n    //And this is where I am right now.\n    switch (personPrompt) {\n        case 'person':\n            var name = prompt(\"Name:\").replace(/['\"]/g, '');\n            var age = prompt(\"Age:\").replace(/['\"]/g, '');\n            var person = new Person(name, age);\n            Persons.push(person);\n            break;\n        case 'animal':\n            var animalName = prompt(\"What is the name of your animal?\");\n            var species = prompt(\"What species is it?\");\n            var breed = prompt(\"What breed is it?\");\n            var animal = new Animal(animalName, species, breed);\n            Animals.push(animal);\n            break;\n        case 'custom':\n            var creativeName = prompt(\"What do you call this thing?\");\n            var species2 = prompt(\"What do you describe as the species as a whole?\");\n            var power = prompt(\"What can this thing do?(ex. shoot lasers, change eye color, etc)\");\n            var customAge = prompt(\"How old is this thing?\");\n            var custom = new CreateYourOwn(creativeName, species2, power, customAge);\n            break;\n        case 'list':\n            var list_var = prompt(\"Which list would you like to view?\").capitalize;\n            switch (list_var) {\n                case 'Persons':\n                    for (var i = 0; i < Persons.length; i++) {\n                        console.log(Persons[i]);\n                    }\n                    break;\n                case 'Animals':\n                    for (var m = 0; i < Animals.length; i++) {\n                        console.log(Animals[i]);\n                    }\n                    break;\n                case 'Customs':\n                    for (var j = 0; i < Customs.length; i++) {\n                        console.log(Customs[i]);\n            }\n\n    }\n}\n}\n\nwhile (confirm(\"Would you like to make another creature ? (If you haven 't already, just click OK.)\") === true) {\n    creator();\n}\n</code></pre>",
+    "TimeStamp": "\/Date(1421424610783)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)(need|some)( halp| help| answer)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 7,
+        "FPCount": 9,
+        "CaughtCount": 216
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i:need help|help me)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 24,
+        "FPCount": 14,
+        "CaughtCount": 395
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1138
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\b(help|halp)\\b",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 9.253393,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916531",
+    "PostUrl": "http://gaming.stackexchange.com/a/202013",
+    "Site": "gaming.stackexchange.com",
+    "Title": "Try switching to surface mode on the nav ball. ",
+    "Body": "<p>Try switching to surface mode on the nav ball. </p>",
+    "TimeStamp": "\/Date(1421424604247)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 455,
+        "FPCount": 116,
+        "CaughtCount": 2740
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916034",
+    "PostUrl": "http://english.stackexchange.com/questions/221937",
+    "Site": "english.stackexchange.com",
+    "Title": "Is there any English/American equivalent for “beating the nettle with someone else's penis”?",
+    "Body": "<p>I am trying to translate this comically vulgar Hungarian phrase,  often (but not exclusively) used in  political context. It means to make someone else carry out one's rash or risky ideas, usually for the person's own benefit. So, for instance, when the issue of how US economic sanctions on Russia hurt local economy or jeopardize local gas supplies emerges, Hungarians may say sg like \"Uncle Sam has chosen to beat the nettle with someone else's penis/dick\". It is also used as an interjection: \"Don't beat it with mine...!\", or euphemised. Can you think of any matching idiom or vague equivalent? Thanks in advance. </p>",
+    "TimeStamp": "\/Date(1421418763002)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Type": 2,
+        "Regex": "(?i)\\bpenis\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 1
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916033",
+    "PostUrl": "http://drupal.stackexchange.com/questions/144444",
+    "Site": "drupal.stackexchange.com",
+    "Title": "Help with Commerce Kickstart Theming (OMEGA3)",
+    "Body": "<p>Is there any good resources / documentation / step by step video's out there to help with OMEGA3 theming for Commerce Kickstart 2.</p>\n\n<p>I have created the sub-theme, struggled through creating new regions, zones and sections.  Now I need to apply my CSS and layout; style the site.  At the moment it is all trial and error, and this could take years.</p>\n\n<p>Please note OMEGA3 - so the YouTube tutorial on OMEGA is not going to work.</p>",
+    "TimeStamp": "\/Date(1421418761026)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1137
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\b(help|halp)\\b",
+        "IsAuto": false,
+        "Site": "drupal.stackexchange.com",
+        "Score": 9.936099,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916021",
+    "PostUrl": "http://superuser.com/a/865583",
+    "Site": "superuser.com",
+    "Title": "Make a cron for that command\n\nlsof -i4TCP@xx.xxx.xxx.xxx:31337 -sTCP:EST...",
+    "Body": "<p>Make a <em>cron</em> for that command</p>\n\n<pre><code>lsof -i4TCP@xx.xxx.xxx.xxx:31337 -sTCP:ESTABLISHED,LISTEN >/dev/null 2>&1 || /etc/init.d/reverseshell restart\n</code></pre>\n\n<p><strong>PS</strong>: don't be evil :-)</p>",
+    "TimeStamp": "\/Date(1421418632437)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 7,
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 31,
+        "FPCount": 125,
+        "CaughtCount": 479
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 107,
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "superuser.com",
+        "Score": 7.39736176,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916019",
+    "PostUrl": "http://gaming.stackexchange.com/a/201997",
+    "Site": "gaming.stackexchange.com",
+    "Title": "I had once a game with a music cd. Was it maybe Killer Instinct?",
+    "Body": "<p>I had once a game with a music cd. Was it maybe Killer Instinct?</p>",
+    "TimeStamp": "\/Date(1421418588021)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 455,
+        "FPCount": 116,
+        "CaughtCount": 2739
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916017",
+    "PostUrl": "http://tor.stackexchange.com/questions/6023",
+    "Site": "tor.stackexchange.com",
+    "Title": "Can I import safely actual bookmaks from Firefox 35.0 to Tor browser?",
+    "Body": "<p>Simple question, but I am just joining the project !</p>",
+    "TimeStamp": "\/Date(1421418564336)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 5,
+        "Regex": "(?s-m)^.{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.3197279,
+        "TPCount": 12,
+        "FPCount": 28,
+        "CaughtCount": 696
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916009",
+    "PostUrl": "http://webmasters.stackexchange.com/a/76160",
+    "Site": "webmasters.stackexchange.com",
+    "Title": "Just remove that crap from .htaccess. These lines are meant to be used i...",
+    "Body": "<p>Just remove that crap from .htaccess. These lines are meant to be used in a completely different setup than yours.</p>\n\n<p>Obviously, you have Apache's mod_php5 already installed, and it is used for your PHP files automatically. That's perfectly fine!</p>\n\n<p>However, if you really don't want to use mod_php, you should uninstall <code>libapache2-mod-php5</code> before further debugging. (BTW, this is the reason a different <code>php.ini</code> is used.)</p>\n\n<p>Also, you should describe the exact behaviour instead merely saying that it \"doesn't work\". Does it show an Apache error? Does it show the PHP source? What's happening, exactly?</p>",
+    "TimeStamp": "\/Date(1421418445083)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Type": 9,
+        "Regex": "(?i)\\bcrap\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 3,
+        "FPCount": 20,
+        "CaughtCount": 48
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915984",
+    "PostUrl": "http://math.stackexchange.com/a/1106738",
+    "Site": "math.stackexchange.com",
+    "Title": "More specifically, $2^{2^{2012}}=2^{2^{2011}\\times2}=(2^{2^{2011}})^{2}$",
+    "Body": "<p>More specifically, $2^{2^{2012}}=2^{2^{2011}\\times2}=(2^{2^{2011}})^{2}$</p>",
+    "TimeStamp": "\/Date(1421418279903)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 455,
+        "FPCount": 116,
+        "CaughtCount": 2738
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "math.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "math.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^.{0,150}$",
+        "IsAuto": false,
+        "Site": "math.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915946",
+    "PostUrl": "http://stackoverflow.com/a/27985938",
+    "Site": "stackoverflow.com",
+    "Title": "striptags should be used here instead of raw\n\nobject.content|striptags|s...",
+    "Body": "<p><code>striptags</code> should be used here instead of <code>raw</code></p>\n\n<pre><code>object.content|striptags|slice(0, 50)\n</code></pre>",
+    "TimeStamp": "\/Date(1421417920066)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 182
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915932",
+    "PostUrl": "http://physics.stackexchange.com/a/159753",
+    "Site": "physics.stackexchange.com",
+    "Title": "higgs field causing electroweak transition. before higgs field w,z boson...",
+    "Body": "<p>higgs field causing electroweak transition. before higgs field w,z boson photon all are massless. but higgs field gives masses to them and symmetry spontaneously break. because if particles having masses then su(2)u(1) symmetry break. all gauge symmetry break if we give mass to the particles.so transition must have to have below 125.6 gev that is the mass of higgs boson.</p>\n\n<p>peoples are thinking about there may be another background field which causes strong and electroweak seperation.so that field can break the underlying symmetry.</p>",
+    "TimeStamp": "\/Date(1421417833815)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 181
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915923",
+    "PostUrl": "http://money.stackexchange.com/a/43340",
+    "Site": "money.stackexchange.com",
+    "Title": "Typical useless reply from Michael - fcking btch",
+    "Body": "<p>Typical useless reply from Michael - f<em>cking b</em>tch</p>",
+    "TimeStamp": "\/Date(1421417730920)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2736
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915922",
+    "PostUrl": "http://money.stackexchange.com/a/3190",
+    "Site": "money.stackexchange.com",
+    "Title": "Why don't you just phone them and ask?",
+    "Body": "<p>Why don't you just phone them and ask?</p>",
+    "TimeStamp": "\/Date(1421417730589)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2735
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915919",
+    "PostUrl": "http://craftcms.stackexchange.com/questions/6623",
+    "Site": "craftcms.stackexchange.com",
+    "Title": "Best practices in debugging an 'Unknown error'",
+    "Body": "<p>How can i debug an 'Unknown error' message that I get with every request in Craft?\nLogging sais:</p>\n\n<hr>\n\n<p>2015/01/16 14:03:36 [error] [exception.Craft\\HttpException.503] exception 'Craft\\HttpException' in /storage/www/imagecenter/acceptance/craft/app/etc/web/WebApp.php:873\nStack trace:</p>\n\n<h1>0 /storage/www/imagecenter/acceptance/craft/app/etc/web/WebApp.php(218): Craft\\WebApp->_processUpdateLogic()</h1>\n\n<h1>1 /storage/www/imagecenter/acceptance/craft/app/framework/base/CApplication.php(180): Craft\\WebApp->processRequest()</h1>\n\n<h1>2 /storage/www/imagecenter/acceptance/craft/app/index.php(62): CApplication->run()</h1>\n\n<h1>3 /storage/www/imagecenter/acceptance/htdocs/index.php(16): require_once('/storage/www/im...')</h1>\n\n<h1>4 {main}</h1>\n\n<p>REQUEST_URI=/index.php?p=admin/actions/users/getAuthTimeout&dontExtendSession=1</p>\n\n<h2>HTTP_REFERER=<a href=\"http://acceptance.imagecenter.blinkdev.nl/index.php?p=admin/entries\" rel=\"nofollow\">http://acceptance.imagecenter.blinkdev.nl/index.php?p=admin/entries</a></h2>\n\n<p>2015/01/16 14:03:36 [error] [application]</p>\n\n<hr>",
+    "TimeStamp": "\/Date(1421417688085)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4580
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915916",
+    "PostUrl": "http://stackoverflow.com/a/27985836",
+    "Site": "stackoverflow.com",
+    "Title": "there is no way, it will delete number of autonumber column anyway.\nuse ...",
+    "Body": "<p>there is no way, it will delete number of autonumber column anyway.\nuse ordinary number field instead and insert/update your numbers in it manually.</p>",
+    "TimeStamp": "\/Date(1421417578590)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 180
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915892",
+    "PostUrl": "http://gamedev.stackexchange.com/questions/92376",
+    "Site": "gamedev.stackexchange.com",
+    "Title": "HTML5 Websockets",
+    "Body": "<p>I am making a very simple game.\nRight now I am using a site called scribble.ws as a server.\nIts script based, and all I have made it do right now is send a message with game information to other people on the server, here is the script:</p>\n\n<pre><code>function init ( ) \n\nend\n\nfunction onBeat ( )\n\nend\n\nfunction onMessage ( uid, msg )\n  broadcast( uid, msg )\n  return \"\"\nend\n\nfunction onConnect ( uid )\n  return \"\"\nend\n\nfunction onDisconnect ( uid )\n  return \"\"\nend\n</code></pre>\n\n<p>The only problem with this is that it is very slow. I have little to no knowledge of HTML websockets, so I have no idea how to achieve my goal.</p>\n\n<p><strong>What I basically need is a index.html to host on my website, which simply broadcasts any messages received to everyone except the sender.</strong></p>",
+    "TimeStamp": "\/Date(1421417424063)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 6,
+        "FPCount": 43,
+        "CaughtCount": 2008
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915854",
+    "PostUrl": "http://meta.stackexchange.com/questions/247180",
+    "Site": "meta.stackexchange.com",
+    "Title": "The Effects Of High Blood Pressure",
+    "Body": "<p>are the newest, and most overpriced type of Crones disease discourse. \"These Crones disease treatments <a href=\"http://www.healthcaresup.com/brain-ammo/\" rel=\"nofollow\">Neuroflexyn</a> are old to address small to plain cases that shelter't responded to new treatments. They can be victimized for initial direction and then to confirm remittal. Life therapies are mighty drugs and they do soul opinion effects. Because they restrain the transmitter activity, biologic therapies can leave you at danger for infections. There is few inform that they process the chance of conditions equal execution infections, tuberculosis, and lymphoma. Visit it!  to get more information >>>>>> <a href=\"http://www.healthcaresup.com/brain-ammo/\" rel=\"nofollow\">http://www.healthcaresup.com/brain-ammo/</a></p>",
+    "TimeStamp": "\/Date(1421417180893)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 4,
+        "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*(>>|vist|like).{0,10}<a href=\".*\">https?://\\S*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 1,
+        "FPCount": 1,
+        "CaughtCount": 3
+      },
+      {
+        "Type": 4,
+        "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 9,
+        "FPCount": 18,
+        "CaughtCount": 39
+      },
+      {
+        "Type": 4,
+        "Regex": "(?i)neuroflex[iy]n",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0206881,
+        "TPCount": 7,
+        "FPCount": 0,
+        "CaughtCount": 9
+      },
+      {
+        "Type": 4,
+        "Regex": "\\>\\>\\>\\>\\>",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 12,
+        "FPCount": 21,
+        "CaughtCount": 45
+      },
+      {
+        "Type": 4,
+        "Regex": "(?i)healthcaresup",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0206881,
+        "TPCount": 1,
+        "FPCount": 0,
+        "CaughtCount": 2
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915836",
+    "PostUrl": "http://english.stackexchange.com/a/221933",
+    "Site": "english.stackexchange.com",
+    "Title": "In the text I have it reads: \n\n\n  for I bought him cheap off a man that ...",
+    "Body": "<p>In the text I have it reads: </p>\n\n<blockquote>\n  <p>for I bought him cheap <strong><em>off</em></strong> a man that was 'bliged to sell out</p>\n</blockquote>\n\n<p>Also, in the dialect of the southern United States, obliged is a synonym for grateful.\n(e.g., \"Much obliged\" is equivalent to thank you.)</p>\n\n<p>So, a loose translation would be: \n\"I bought him cheap off a man, who was grateful to sell him.\"</p>",
+    "TimeStamp": "\/Date(1421417079478)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2725
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915831",
+    "PostUrl": "http://apple.stackexchange.com/a/167626",
+    "Site": "apple.stackexchange.com",
+    "Title": "turn it off when u go to sleep and plug it before sleeping and in the mo...",
+    "Body": "<p>turn it off when u go to sleep and plug it before sleeping and in the morning it will be charged</p>",
+    "TimeStamp": "\/Date(1421417003677)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 179
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915825",
+    "PostUrl": "http://apple.stackexchange.com/a/167624",
+    "Site": "apple.stackexchange.com",
+    "Title": "Nobody there to answer this question?",
+    "Body": "<p>Nobody there to answer this question?</p>",
+    "TimeStamp": "\/Date(1421416911297)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2734
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915821",
+    "PostUrl": "http://parenting.stackexchange.com/a/18334",
+    "Site": "parenting.stackexchange.com",
+    "Title": "I am from USA, I have been married to my husband for 9 years with 2 kids...",
+    "Body": "<p>I am from USA, I have been married to my husband for 9 years with 2 kids, just of recent my husband started seeing another lady outside our marriage, he started coming home late and each time i confronted him, he treathened to divorce me and  he finally moved out of the house to stay with his mistress abandoning me and my kids, I tried all i could to get him back but all was to no avail until i saw a post in a love forum about a spell caster who helps people get back lost love through love spells, at first i doubted if it was real but decided to give it a try, when i contacted this love spell caster through his email, he helped me cast a re-union spell and my husband called me within 72hours apologising, he is back home again and we are happy together again as one happy family. Contact this Great spell caster for your marriage or relationship problems via his email ikedispiritualtemple@gmail.com Goodluck</p>",
+    "TimeStamp": "\/Date(1421416879715)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 7,
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 30,
+        "FPCount": 125,
+        "CaughtCount": 478
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915820",
+    "PostUrl": "http://parenting.stackexchange.com/a/10740",
+    "Site": "parenting.stackexchange.com",
+    "Title": "This answer is ment to confront you. It will give you an unpleasent feel...",
+    "Body": "<p>This answer is ment to confront you. It will give you an unpleasent feeling. But hey, unpleasent feelings are there to indicate that something must change. If you do not wish to read a confronting answer, if you do not wish to feel uncomfortable for the sake of your child, then simply don't read it.</p>\n\n<p>I only base this on the following quote (which seems to be removed from the initial question).</p>\n\n<blockquote>\n  <p>however my husband frequently yells at him or hits him when he gets angry with my son. He pushes our buttons often. I get angry with him and sometimes yell, but don't get physical unless I am really pushed to the limit.</p>\n</blockquote>\n\n<p>This can be kept very short: You need to love your child unconditally. Oh, you say you love your child unconditionally, no matter what? WRONG!!! How is being angry, yelling and hitting a form of love? Do you think your child needs to <em>earn</em> your love? WRONG!!!! That is totally not the concept of unconditionally. </p>\n\n<p>You are part of the problem and you need to work on yourselves (that is, you and your husband need NOT to work on your behaviour, but on how you are). You will do that for your child? Look at the bright side, if you are part of the problem you are logically a part of a possible solution as well. Doesn't that feel empowerin, that you are actually able to do anthing about it?</p>\n\n<p>You need to love your child unconditionally. Getting angry with him is the first sign that you don't, the second sign is yelling and the third worst sign of all is physically hurting him, which results in mental scars that last way longer than the bruces he might obtain by it.</p>\n\n<p>And what if your child is traumatized by something horrible as a child molester which made him the way he is, and you totally are not the root cause of the problem? Then being angry with him, yelling at him and hitting him excludes you directly from being anywhere close to being part of the healing process of this trauma, or anything that is related to guide him towards better behavior. So stop searching for external factors (school, friends, his intellectual intelligence or absense of emotional intellegence, whatever...) and become a part of the solution.</p>\n\n<p>Contemplate the meaning of unconditional love, and just try it out for a week. Its hard work hard to do so in the beginning I am sure (it requires you to get over your ego and conquer your fears), it gets more natural as you go, but its your duty as a parent do so.</p>\n\n<p>No, no, no, no, no.... The child won't abuse you, he won't abuse you for your goodness... Loving unconditionally doesn't mean accepting whatever he does and say and be ok with it. This is your fear and ego talking... Get rid of those, you do not need them.</p>\n\n<p>Now start loving.</p>\n\n<p>P.S. Of course I can elaborate on this more, and of course I want to help you any further with more kindly phrased guidance. But you needed the <em>slap in the face</em> to wake up. If you do not like what I say or want other resources? Just Google around with keywords like \"unconditional parenting\"</p>\n\n<p>P.S. I got children of my own. I experienced the effects of loving unconditionally. He says \"thank you\" when I give him something, I never taught him that. He comes at me spontaneously, giving me a kiss once a while, or a hug, I do not need to ask for that. Of course he messes around with his food, chases the cat sometimes, takes away a toy from his younger brother, of course he lays screaming on the ground when he doesn't want to put on his coat... Well, that's just part of his learning path, of his path growing up. I understand his behavior, I tell/show him whats right, I do no get emotionally upset when he screams and runs around the house not willing to put his shoes on. I do not get personally involved in that. It isn't personal either. We just continue with what he needs, the learning experience. I do not teach him behavior, I allow him and guide him to have experience to develop himself to become a loving being.</p>\n\n<p>What matters in the end? A loving home? Or ...</p>",
+    "TimeStamp": "\/Date(1421416877075)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2724
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915754",
+    "PostUrl": "http://stackoverflow.com/a/27985198",
+    "Site": "stackoverflow.com",
+    "Title": "Yes, I have tried this thing on oracle and it works fine.",
+    "Body": "<p>Yes, I have tried this thing on oracle and it works fine.</p>",
+    "TimeStamp": "\/Date(1421415450301)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2732
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915749",
+    "PostUrl": "http://pt.stackoverflow.com/questions/47177",
+    "Site": "pt.stackoverflow.com",
+    "Title": "Erro apache = get overlap result error",
+    "Body": "<p>Estou com um erro do apache que não consigo corrigir, no log do php nenhum erro é reportado somente no apache.</p>\n\n<p>Alguém ja identificou algo assim?\nAbaixo o log do apache:</p>\n\n<p>[Mon Jan 05 10:20:26 2015] [warn] [client 127.0.0.1] (OS 109)O pipe foi finalizado. : mod_fcgid: get overlap result error\n[Thu Jan 15 16:51:06 2015] [error] [client 127.0.0.1] Premature end of script headers: processarNotas.php</p>",
+    "TimeStamp": "\/Date(1421415426679)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4573
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "pt.stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915732",
+    "PostUrl": "http://stackoverflow.com/a/27985098",
+    "Site": "stackoverflow.com",
+    "Title": "you can wrap your all three div with an another div like this\n\n \n    \n  ...",
+    "Body": "<p>you can wrap your all three div with an another div like this</p>\n\n<pre><code> <div id=\"wrapper\">\n    <div id=\"first_col\">\n      <p>hello</p>\n\n    </div>\n\n    <div id=\"second_col\">\n\n      <p>post here</p>\n\n    </div>\n\n    <div id=\"third_col\">\n\n      <p>friends</p>\n\n    </div>\n</div>\n</code></pre>\n\n<p>then you can set height of width of wrapper div manually as you required.</p>",
+    "TimeStamp": "\/Date(1421415143338)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 6,
+        "FPCount": 4,
+        "CaughtCount": 44
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 176
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915730",
+    "PostUrl": "http://superuser.com/questions/865569",
+    "Site": "superuser.com",
+    "Title": "I need help moving info from one column into another column in Excel",
+    "Body": "<p>0071    3/4-1</p>\n\n<p>0072    1.5-3</p>\n\n<p>0072    1-3</p>\n\n<p>0072    1.5-1</p>\n\n<p>0072    1-1</p>\n\n<p>Above are part numbers located in Column A and Column B of an Excel spreadsheet.  I am trying to combine the columns.  Basically, the entire part number of row 1 is actually 0071 3/4-1.  Unfortunately, it was entered into two columns instead of 1 so that 0071 is in Column A and 3/4-1 is in Column B.  This is the case for several hundred part numbers on this spreadsheet.  As stated, I want to move the info in Column B over to Column A.  Furthermore, I need a single space between the numbers.  00713/4-1 won't work.  It has to be 0071 3/4-1.  Any suggestions?</p>\n\n<p>Thanks,</p>\n\n<p>Noah</p>",
+    "TimeStamp": "\/Date(1421415135613)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)(need|some)( halp| help| answer)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 7,
+        "FPCount": 9,
+        "CaughtCount": 215
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)i need.*help",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 4,
+        "FPCount": 1,
+        "CaughtCount": 50
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i:need help|help me)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 24,
+        "FPCount": 14,
+        "CaughtCount": 394
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1136
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)i need.{0,15}(help|advice)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.5106382,
+        "TPCount": 4,
+        "FPCount": 2,
+        "CaughtCount": 51
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,200}$",
+        "IsAuto": false,
+        "Site": "superuser.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "superuser.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915728",
+    "PostUrl": "http://stackoverflow.com/a/27940442",
+    "Site": "stackoverflow.com",
+    "Title": "this is not a json string, you have to use unserialize function\n\nhttp://...",
+    "Body": "<p>this is not a json string, you have to use unserialize function</p>\n\n<p><a href=\"http://php.net/manual/en/function.unserialize.php\" rel=\"nofollow\">http://php.net/manual/en/function.unserialize.php</a></p>",
+    "TimeStamp": "\/Date(1421415105378)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 175
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915724",
+    "PostUrl": "http://diy.stackexchange.com/a/57921",
+    "Site": "diy.stackexchange.com",
+    "Title": "Thank you so much for the ideas.  I thought it might be the refrigerant ...",
+    "Body": "<p>Thank you so much for the ideas.  I thought it might be the refrigerant but I am afraid to replace it.  I am disabled and lie on a fixed income.  Thank you again.  cclower2@gail.com.</p>",
+    "TimeStamp": "\/Date(1421415044559)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 7,
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 30,
+        "FPCount": 124,
+        "CaughtCount": 477
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915718",
+    "PostUrl": "http://stackoverflow.com/a/27985031",
+    "Site": "stackoverflow.com",
+    "Title": "remove the margin-left on #second_col and #third_col",
+    "Body": "<p>remove the margin-left on #second_col and #third_col</p>",
+    "TimeStamp": "\/Date(1421414938891)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2731
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 174
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915709",
+    "PostUrl": "http://askubuntu.com/a/574423",
+    "Site": "askubuntu.com",
+    "Title": "I have the exact same issue, but no solution in sight.\nThanks.",
+    "Body": "<p>I have the exact same issue, but no solution in sight.\nThanks.</p>",
+    "TimeStamp": "\/Date(1421414748589)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2720
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915699",
+    "PostUrl": "http://stackoverflow.com/a/27364796",
+    "Site": "stackoverflow.com",
+    "Title": "I wanted to look at the past 24 hours of data and count things in hourly...",
+    "Body": "<p>I wanted to look at the past 24 hours of data and count things in hourly increments.  I started Cat Recall's solution, which is pretty slick.  It's bound to the data, though, rather than just what's happened in the past 24H.  So I refactored and ended up with something pretty close to Julian's solution, but with more CTE.  So it's sort of the marriage of the 2 answers.</p>\n\n<pre><code>WITH interval_query AS (\n    SELECT (ts ||' hour')::INTERVAL AS hour_interval\n    FROM generate_series(0,23) AS ts\n), time_series AS (\n    SELECT date_trunc('hour', now()) + INTERVAL '60 min' * ROUND(date_part('minute', now()) / 60.0) - interval_query.hour_interval AS start_time\n    FROM interval_query\n), time_intervals AS (\n    SELECT start_time, start_time + '1 hour'::INTERVAL AS end_time\n    FROM time_series ORDER BY start_time\n), reading_counts AS (\n    SELECT f.start_time, f.end_time, br.minor, count(br.id) readings\n    FROM beacon_readings br\n    RIGHT JOIN time_intervals f\n                    ON br.reading_timestamp >= f.start_time AND br.reading_timestamp < f.end_time AND br.major = 4\n    GROUP BY f.start_time, f.end_time, br.minor\n    ORDER BY f.start_time, br.minor\n)\nSELECT * FROM reading_counts\n</code></pre>\n\n<p>Note that any additional limiting I wanted in the final query needed to be done in the <code>RIGHT JOIN</code>. I'm not suggesting this is necessarily the best (or even a good approach), but it is something I'm running with (at least at the moment) in a dashboard.</p>",
+    "TimeStamp": "\/Date(1421414666370)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?is)^<.*>\\s*i want",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 2,
+        "FPCount": 0,
+        "CaughtCount": 16
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915692",
+    "PostUrl": "http://salesforce.stackexchange.com/a/63602",
+    "Site": "salesforce.stackexchange.com",
+    "Title": "So, I'm pretty sure the key to my issue is a failing test from another c...",
+    "Body": "<p>So, I'm pretty sure the key to my issue is a failing test from another class method in production.  The clue to all of this was from crop1645 </p>\n\n<p>\"aha -- any deployment to PROD will rerun all apex testmethods, including ones for existing, already deployed classes. So, sort the problem out in PROD first to figure out which classes are failing before you do any deployment –\"</p>\n\n<p>I found an issue with a class in production.  That's my path to peruse now.\nThanks everyone for the tips.</p>\n\n<p>Kevin</p>",
+    "TimeStamp": "\/Date(1421414610349)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2719
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915672",
+    "PostUrl": "http://webmasters.stackexchange.com/questions/76156",
+    "Site": "webmasters.stackexchange.com",
+    "Title": "What are the best hosting for big websites/forums?",
+    "Body": "<p>I bought a Deluxe hosting plan at Godaddy years ago to host my websites. Recently I decided to move one of the websites to a new host, so I have bought a new Deluxe plan for that website (which is a big forum). But since the migration, the website has been much slower than before, and I have received warnings that the resources for my account have been limited. </p>\n\n<p>I realised that on these new Deluxe plans (which they call \"with cPanel\"), the CPU and Memory (and other) resources are limited (1 CPU core and 512 MB of memory), things never happened with the old Deluxe plans (which they call \"Web classic\"). (I have never had any resource problems with the other older account, even though I have used it for hosting many websites). </p>\n\n<p>I'm considering cancel the order and move the website to yet another host.</p>\n\n<p>Could you suggest me a hosting service (that you are using or have already used) with good amount of CPU & Memory resources at a reasonable/comparable price? </p>\n\n<p>Thank you in advance for any suggestions!</p>",
+    "TimeStamp": "\/Date(1421414169726)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)wh(at|ich).*best",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 8,
+        "FPCount": 16,
+        "CaughtCount": 258
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "webmasters.stackexchange.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915637",
+    "PostUrl": "http://superuser.com/questions/865564",
+    "Site": "superuser.com",
+    "Title": "What Are The Most Effective Bodybuilding Workouts?",
+    "Body": "<p>Remember that Greek yogurt's whole-fat type is hefty in fat (16 grams of saturated fat in mere 7 ounces</p>\n\n<p><a href=\"http://greendetoxpatch.net/my-unbiased-view-on-anabol-x1/\" rel=\"nofollow\">http://greendetoxpatch.net/my-unbiased-view-on-anabol-x1/</a></p>",
+    "TimeStamp": "\/Date(1421413505592)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)\\bbody( building|builder(s)?| builder(s)?|building)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 2,
+        "FPCount": 0,
+        "CaughtCount": 5
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915636",
+    "PostUrl": "http://stackoverflow.com/a/27984592",
+    "Site": "stackoverflow.com",
+    "Title": "lat = u'50.41688620000001'\n\n\nprint(float(lat.encode(\"ascii\",\"ignore\")))",
+    "Body": "<pre><code>lat = u'50.41688620000001'\n</code></pre>\n\n<p>print(float(lat.encode(\"ascii\",\"ignore\")))</p>",
+    "TimeStamp": "\/Date(1421413452582)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 172
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915635",
+    "PostUrl": "http://apple.stackexchange.com/a/167619",
+    "Site": "apple.stackexchange.com",
+    "Title": "Thank you for your answer. My contacts are stored in Exchange Global Add...",
+    "Body": "<p>Thank you for your answer. My contacts are stored in Exchange Global Address book and is available om other devices (iPad, macbook pro). My Exchange account is also enabled on my iPhone with the same address book. But nothing happens - it does not download the contacts from Exchange so my contacts are completely empty.</p>",
+    "TimeStamp": "\/Date(1421413442081)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2712
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915602",
+    "PostUrl": "http://philosophy.stackexchange.com/questions/21250",
+    "Site": "philosophy.stackexchange.com",
+    "Title": "nietzsche and race",
+    "Body": "<p>Does Nietzsche have any writings abut African-Americans Africans, or black people in particular ? If we assume that there are intelligent people which is something that is true , then it would seem that Nietzsche would agree with my statement regarding blacks.</p>",
+    "TimeStamp": "\/Date(1421413000477)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 6,
+        "FPCount": 43,
+        "CaughtCount": 2002
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915597",
+    "PostUrl": "http://stackoverflow.com/questions/27984465",
+    "Site": "stackoverflow.com",
+    "Title": "I want to add custom ads in my android app",
+    "Body": "<p>Can anyone help me adding custom ads in my android application? It will be better with examples. Also I want to change the ads regularly.</p>",
+    "TimeStamp": "\/Date(1421412978340)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)i want to",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 15,
+        "FPCount": 13,
+        "CaughtCount": 198
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)^I want",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.5906382,
+        "TPCount": 15,
+        "FPCount": 11,
+        "CaughtCount": 155
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915567",
+    "PostUrl": "http://askubuntu.com/a/574411",
+    "Site": "askubuntu.com",
+    "Title": "It's embarrassing but I finally figured out what has happened:\nThe notif...",
+    "Body": "<p>It's embarrassing but I finally figured out what has happened:\nThe notification was caused by an automatic security update which was released in the last days: <a href=\"https://launchpad.net/ubuntu/+source/coreutils/8.21-1ubuntu5.1\" rel=\"nofollow\">https://launchpad.net/ubuntu/+source/coreutils/8.21-1ubuntu5.1</a></p>\n\n<p>It was mentioned in <code>/var/log/dpkg.log</code> but I did look for an incorrect date.</p>\n\n<p>Shame on me and thanks to muru for pointing this out.</p>",
+    "TimeStamp": "\/Date(1421412674548)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2711
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915566",
+    "PostUrl": "http://english.stackexchange.com/questions/221925",
+    "Site": "english.stackexchange.com",
+    "Title": "ANSWER PLEASE THIS QUESTION",
+    "Body": "<p>the woman who----- apples also ------- oranges\nA sells/sells\nB sell/sells\nC sells/sell\nD sell/sell</p>",
+    "TimeStamp": "\/Date(1421412672349)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)question",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 4,
+        "FPCount": 22,
+        "CaughtCount": 1471
+      },
+      {
+        "Type": 1,
+        "Regex": "^[^a-z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 11,
+        "FPCount": 6,
+        "CaughtCount": 137
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)question",
+        "IsAuto": false,
+        "Site": "english.stackexchange.com",
+        "Score": 7.090909,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915532",
+    "PostUrl": "http://gaming.stackexchange.com/a/201987",
+    "Site": "gaming.stackexchange.com",
+    "Title": "Butts Butts Butts ThunderButts: Move out!",
+    "Body": "<p>Butts Butts Butts ThunderButts: Move out!</p>",
+    "TimeStamp": "\/Date(1421412520330)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2725
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915461",
+    "PostUrl": "http://stackoverflow.com/a/27984203",
+    "Site": "stackoverflow.com",
+    "Title": "use to insert content\n\n$('#htmlcode').val(\"something\");\n\n\nuse to add atr...",
+    "Body": "<p>use to insert content</p>\n\n<pre><code>$('#htmlcode').val(\"something\");\n</code></pre>\n\n<p>use to add atribute. ex:</p>\n\n<pre><code>$('#htmlcode').attr(\"disabled\",\"disabled\");\n</code></pre>\n\n<p>use to add or modify css</p>\n\n<pre><code>$('#htmlcode').css(\"width\",\"500px\");\n</code></pre>",
+    "TimeStamp": "\/Date(1421412075828)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 171
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915442",
+    "PostUrl": "http://webapps.stackexchange.com/a/53790",
+    "Site": "webapps.stackexchange.com",
+    "Title": "I checked your blog, comment numbers are showing instead of real comment...",
+    "Body": "<p>I checked your blog, comment numbers are showing instead of real comments on the blog post.\nYou can recover all your comments by following these steps:</p>\n\n<ol>\n<li>First of all backup or restore your Blogger Template</li>\n<li>Go to Blogger Dashboard > Template > Edit HTML</li>\n<li>Click on \"Revert widget templates to default\" button, appears in right mid.</li>\n<li>A window will open, check the box of \"Blog1\"</li>\n<li>Now click on \"Revert Selected Widget\" appears in orange color.</li>\n</ol>\n\n<p>That's it. Now you can see all your comments are showing.\nHope, it will help you. \nThanks</p>",
+    "TimeStamp": "\/Date(1421411839931)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2707
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915440",
+    "PostUrl": "http://superuser.com/questions/488933",
+    "Site": "superuser.com",
+    "Title": "mmc could not create the snap-in. CLSID: FX:{18ea3f92-d6aa-41d9-a205-2023400c8fbb} error",
+    "Body": "<p>MMC Snap-in will not load most processes and throws an error on Windows 2008R2 x64. It gives the error:</p>\n\n<blockquote>\n  <p>mmc could not create the snap-in. CLSID: FX:{18ea3f92-d6aa-41d9-a205-2023400c8fbb} when opening server manager. </p>\n</blockquote>\n\n<p>It also gives similar errors opening the event viewer, etc. I think that the .NET Framework is messed up but I can't narrow down the exact cause. Has anyone else seen this issue? I have a dmp file of mmc.exe but haven't been able to get anything meaningful out of it.</p>",
+    "TimeStamp": "\/Date(1421411838126)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 18.0,
+        "TPCount": 19,
+        "FPCount": 47,
+        "CaughtCount": 98
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 100,
+        "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+        "IsAuto": false,
+        "Site": "superuser.com",
+        "Score": 8.184616,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915437",
+    "PostUrl": "http://sharepoint.stackexchange.com/a/128734",
+    "Site": "sharepoint.stackexchange.com",
+    "Title": "When i am trying to add a new document in sharepoint 2010 library, that ...",
+    "Body": "<p>When i am trying to add a new document in sharepoint 2010 library, that document is saving in local machine instead of in sharepoint document library.</p>\n\n<p>I tried all ways like starting web client in services.\ni added in trusted site.</p>\n\n<p>Please help me solving this problem.</p>\n\n<p>Thanks\nBunny</p>",
+    "TimeStamp": "\/Date(1421411795956)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)pl(ease|s|z) help",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 17.0,
+        "TPCount": 20,
+        "FPCount": 2,
+        "CaughtCount": 112
+      },
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2706
+      },
+      {
+        "Type": 8,
+        "Regex": "(?i)help me",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 2,
+        "FPCount": 0,
+        "CaughtCount": 11
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915432",
+    "PostUrl": "http://serverfault.com/questions/659984",
+    "Site": "serverfault.com",
+    "Title": "Nginx Load Balancer having two load balanced nginx+php-fpm (Primary script unknown) error",
+    "Body": "<p>We have two web servers with nginx+php-fpm ( 10.0.0.10 and 10.0.0.20 ), which is load balanced behind another nginx server ( just nginx ), when we try to browse we get file not found error, with error logs listed at the bottom.</p>\n\n<p>Load Balancer (10.0.0.1)</p>\n\n<p>nginx.conf</p>\n\n<pre><code>upstream test_rack {\nserver 10.0.0.10:80;\nserver 10.0.0.20:80;\n}\n\nserver {\nlocation / {\n   proxy_pass http://test_rack;\n }\n }}\n</code></pre>\n\n<p>Upstream Server (10.0.0.20)</p>\n\n<p>subdomains.conf</p>\n\n<pre><code>server {\nlisten       80;\nserver_name ~^(?<sub>.+)\\.example\\.com$;\n\nroot /data/vhost/$sub.example.com/htdocs;\n\nlocation / { \ntry_files $uri /index.php;\n}\n\n\nlocation ~ \\.php$ {\nfastcgi_pass   unix:/var/run/php5-fpm.sock;\nfastcgi_index  index.php;\nfastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;\ninclude        fastcgi_params;\n}}     \n</code></pre>\n\n<p>Error on webserver (10.0.0.10 and 10.0.0.20)</p>\n\n<pre><code>*1 FastCGI sent in stderr: \"Primary script unknown\" while reading response header from upstream, client: 10.0.0.1, server: ~^(?<sub>.+)\\.example\\.com$, request: \"GET / HTTP/1.0\", upstream: \"fastcgi://unix:/var/run/php5-fpm.sock:\", host: \"test_rack\"\n</code></pre>\n\n<p>Solutions tried :</p>\n\n<pre><code>fastcgi_param  SCRIPT_FILENAME   /data/vhost/$sub.example.com/htdocs/$fastcgi_script_name;\n</code></pre>",
+    "TimeStamp": "\/Date(1421411772275)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4559
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "serverfault.com",
+        "Score": 10.0301609,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915420",
+    "PostUrl": "http://pt.stackoverflow.com/a/47162",
+    "Site": "pt.stackoverflow.com",
+    "Title": "Simples, coloque ob_start(); na linha 0 do seu arquivo.",
+    "Body": "<p>Simples, coloque <strong>ob_start();</strong> na linha 0 do seu arquivo.</p>",
+    "TimeStamp": "\/Date(1421411594655)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2724
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915408",
+    "PostUrl": "http://expressionengine.stackexchange.com/questions/18249",
+    "Site": "expressionengine.stackexchange.com",
+    "Title": "MoreEvents Not Saving Events, Dev Log Error",
+    "Body": "<p>I have been using MoreEvents for event registrations and now it will no longer save event information (specifically, the Registration cut-off date and ability to open Global Memberships to registration). Because of this, registration functionality no longer works. I noticed in developer log that it was throwing an error: </p>\n\n<blockquote>\n  <p>Deprecated function set_variable() called in\n  system/expressionengine/third_party/moreevents/mcp.moreevents.php on\n  line 114. Deprecated since 2.6. Use view-> = ; instead.</p>\n</blockquote>\n\n<p>Since the add-on is no longer supported, I wanted to find out if this is something that could be fixed? Or, if anyone else has found a fix? </p>\n\n<p>There is a thread over at devot-ee (<a href=\"http://devot-ee.com/add-ons/support/moreevents/viewthread/10239\" rel=\"nofollow\">http://devot-ee.com/add-ons/support/moreevents/viewthread/10239</a>) that references this but the solution that is provided didn't work for me.</p>\n\n<p>Any help or direction would be appreciated.</p>",
+    "TimeStamp": "\/Date(1421411486815)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4558
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "expressionengine.stackexchange.com",
+        "Score": 6.568182,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915407",
+    "PostUrl": "http://serverfault.com/a/660049",
+    "Site": "serverfault.com",
+    "Title": "You can do it with a script using curl.",
+    "Body": "<p>You can do it with a script using curl.</p>",
+    "TimeStamp": "\/Date(1421411466759)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2723
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915405",
+    "PostUrl": "http://stackoverflow.com/a/27540584",
+    "Site": "stackoverflow.com",
+    "Title": "Word uses the  XML element for line breaks. ",
+    "Body": "<p>Word uses the <code><w:br/></code> XML element for line breaks. </p>",
+    "TimeStamp": "\/Date(1421411437599)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2722
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915400",
+    "PostUrl": "http://graphicdesign.stackexchange.com/a/45908",
+    "Site": "graphicdesign.stackexchange.com",
+    "Title": "Use the Shift key plus the numeric keys.",
+    "Body": "<p>Use the Shift key plus the numeric keys.</p>",
+    "TimeStamp": "\/Date(1421411343061)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2721
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915394",
+    "PostUrl": "http://askubuntu.com/questions/574401",
+    "Site": "askubuntu.com",
+    "Title": "Most people want to know how to treat",
+    "Body": "<p>Most people want to know how to treat stuffy nose without leaving home. The good news is that there are plenty of resources that are intended to help individuals to control or get rid of your stuffy nose naturally at home. Normally, when an infection  <a href=\"http://www.x4facts.com/must-read-it-before-buying-ultimate-muscle-black-edition/\" rel=\"nofollow\">Ultimate Muscle Black Edition</a> occurs in the sinuses, nasal congestion you will have problems and sometimes sinus headaches may accompany the problem. Sinusitis is the name given to the clinical condition of the sinus infection. This infection occurs in such a way that attacks the nasal cavities and causing inflammation and hence the patient feels discomfort or agony. In today's world most sinus infections may not necessarily be due to infection but can sometimes be caused by allergies, autoimmune and viral Maters problems. \n<a href=\"http://www.x4facts.com/must-read-it-before-buying-ultimate-muscle-black-edition/\" rel=\"nofollow\">http://www.x4facts.com/must-read-it-before-buying-ultimate-muscle-black-edition/</a></p>",
+    "TimeStamp": "\/Date(1421411281459)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 4,
+        "Regex": "(?i)x4facts",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0204086,
+        "TPCount": 4,
+        "FPCount": 0,
+        "CaughtCount": 7
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915391",
+    "PostUrl": "http://worldbuilding.stackexchange.com/questions/8805",
+    "Site": "worldbuilding.stackexchange.com",
+    "Title": "Question Package: Weapon Technology and Tech Level",
+    "Body": "<p>Another follow-up question package coming :</p>\n\n<p><strong>Situation:</strong><br>\nHumans are in space, space combat is close-combat (miles), FTL is not a technology but exists (basically not understood), enemies are other human fractions and some alien species (the most influential beeing boarding and melee focused melee fighters, heavily armored and with redundant organs). Primary combat tactics involve killing their uber-armored ships before they can board, the have massive amounts of flares etc. and use swarm tactics.\nHumans have exosceleton, but melee combat should be very lopsided to the aliens favor, so the humans have basically no chance fighting straight.</p>\n\n<p>Ship combat is fought with drones (with railguns, shooting at ~75 % c) for the newest generations of weapons\nOlder generations of weapon include tungsten plasma shotguns (as described in another question I asked) as ship-vs-ship combat weapons for close encounters (>3 miles or something) and even older generations of railguns (slugs moving at ~ 0.05 c).</p>\n\n<p>By the way, those c numbers are just made up, what would be appropriate, given advance armor technology etc? The new railguns have to significantly more powerful.</p>\n\n<p>One more thing, humans have succeded in creating energy cells with massive energy density which can also be used as charges.</p>\n\n<p><strong>Questions:</strong></p>\n\n<ul>\n<li>How would the human handheld weaponry develop, what could be used? I want them to be quite underpowered in relation to the ship weapons, but somehow similar tech-level. [UPDATE]: Ive read some debates about the merits of energy-weapons vs current handheld weapons (chemical propellants). Would it be feasible to just use them? How would they improve, given enough time?</li>\n<li>How could the enemies be armoured, that even particle/energy based weapons have a hard time getting through (I want them to be unstoppable melee berserkers basically) without using shield technology?</li>\n<li>What would be the ultimate weaponry for my mighty AI faction (powerful bystander), which could conquer all other factions easily, without using antimatter or gravity(shear force) based weapons or leech-kind of weapons? They operate in massive ships (1/2 moon size) and have powerful shield technology.</li>\n</ul>\n\n<p>Bonus points for human ranged weapons, that spend ammunition (like prepared plasma charges etc) because I feel comfortable with similar-to-now-only-more-powerful combat scenes.</p>\n\n<p>My new disclaimer for clarification:\n<em>Narrative >>>>> Physics :)\nI dont care about hard-sci-fi, but since I want to reach sci-fi-fans, who do care about plausibility (as everybody, but may be more savvy technologically), I need to make sure I have at least plausible explanations :) Thanks a lot!</em></p>",
+    "TimeStamp": "\/Date(1421411197469)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 4,
+        "Regex": "\\>\\>\\>\\>\\>",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 12,
+        "FPCount": 20,
+        "CaughtCount": 44
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915373",
+    "PostUrl": "http://christianity.stackexchange.com/a/36445",
+    "Site": "christianity.stackexchange.com",
+    "Title": "Just one week back I encountered the same question in my personal medita...",
+    "Body": "<p>Just one week back I encountered the same question in my personal meditation.</p>\n\n<p>I think the key is in understanding the term <em>Saviour</em>.</p>\n\n<p>Saviour to all men: Originally all men ought to have been destroyed in Adam when he sinned. The Bible says,</p>\n\n<blockquote>\n  <p>And all that dwell upon the earth shall worship him, whose names are not written in the book of life of the Lamb slain from the foundation of the world. Revelation 13:8</p>\n</blockquote>\n\n<p>So the reason why this world was allowed to continue was because of the fact that the Jesus took it upon Himself to save the human race. I Peter 1:18-21 clarifies it further.</p>\n\n<blockquote>\n  <p>Forasmuch as ye know that ye were not redeemed with corruptible things, as silver and gold, from your vain conversation received by tradition from your fathers; But with the precious blood of Christ, as of a lamb without blemish and without spot: Who verily was foreordained before the foundation of the world, but was manifest in these last times for you, Who by him do believe in God, that raised him up from the dead, and gave him glory; that your faith and hope might be in God. I Peter 1:18-21</p>\n</blockquote>\n\n<p>So the fact that the world is continuing, that food is growing, that animals are living is all thanks to Christ. So God in Christ is the saviour to all men in giving them a probationary time to choose what they want.</p>\n\n<p>Especially of those that believe: This refers to people who have made the choice to stand in the side of Christ, to accept Christ as the Son of God, believing on His name thereby becoming Sons and Daughters of God themselves:</p>\n\n<blockquote>\n  <p>But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name: John 1:12 </p>\n</blockquote>",
+    "TimeStamp": "\/Date(1421410910557)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2703
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915364",
+    "PostUrl": "http://superuser.com/a/865551",
+    "Site": "superuser.com",
+    "Title": "Try to add | tac at the end of your line.",
+    "Body": "<p>Try to add <code>| tac</code> at the end of your line.</p>",
+    "TimeStamp": "\/Date(1421410797031)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2720
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915354",
+    "PostUrl": "http://security.stackexchange.com/a/79322",
+    "Site": "security.stackexchange.com",
+    "Title": "I received the same email about my domain name and suppose I should have...",
+    "Body": "<p>I received the same email about my domain name and suppose I should have checked it out via the internet sooner. It definitely got my attention as someone trying to claim connection to my graphic design company, however, the wording is word for word, the same as above:</p>\n\n<p>From: Frank Liu </p>\n\n<p>(Please forward this to your CEO, because this is urgent. Thanks)</p>\n\n<p>We are a Network Service Company which is the domain name registration center in Shanghai, China. On Jan 15, 2015, we received an application from Huabao Ltd requested \"mkdesignhaus\" as their internet keyword and China (CN) domain names. But after checking it, we find this name conflict with your company name or trademark. In order to deal with this matter better, it's necessary to send email to you and confirm whether this company is your distributor or business partner in China?</p>\n\n<p>Kind regards</p>\n\n<p>Frank Liu\nGeneral Manager\nChina Registry (Headquarters)\n3002, Nanhai Building, No. 854 Nandan Road, \nXuhui District, Shanghai 200030, China\nTel: +86 21 6191 8696\nMobile: +86 138 1642 8671\nFax: +86 21 6191 8697\nWeb: www.chinaregistry.com.cn</p>\n\n<p>When I responded, I received an email from a hotmail account from a Gareth Cui</p>\n\n<p>From: garethcui@hotmail.com</p>\n\n<p>To whom it concerns,\nWe will register the \"mkdesignhaus\" as internet keyword and China domain names .cn, .com.cn, .net.cn, .org.cn and have submitted our application. We are waiting for Mr. Frank Liu's approval and think these CN domains and internet keyword are very important for our business. Even though Mr. Frank Liu advises us to change another name, we will persist in this name.\nBest regards\nGareth Cui  </p>",
+    "TimeStamp": "\/Date(1421410668725)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 7,
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 30,
+        "FPCount": 123,
+        "CaughtCount": 470
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915343",
+    "PostUrl": "http://english.stackexchange.com/a/72640",
+    "Site": "english.stackexchange.com",
+    "Title": "how about the word \"bete noire\" .... it means hatred/fear/dislike ",
+    "Body": "<p>how about the word \"bete noire\" .... it means hatred/fear/dislike </p>",
+    "TimeStamp": "\/Date(1421410606754)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2719
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 170
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915342",
+    "PostUrl": "http://english.stackexchange.com/a/72450",
+    "Site": "english.stackexchange.com",
+    "Title": "Possible answers to your question are Divergence, Deviation, Liberation ...",
+    "Body": "<p>Possible answers to your question are <strong>Divergence</strong>, <strong>Deviation</strong>, <strong>Liberation</strong> and <strong>Aversion</strong>.</p>\n\n<p>De-addiction is more of the process of getting off an addiction rather than the antonymous noun form of addiction.</p>\n\n<p>Divergence and Deviation are synonymous in the sense that they both mean to move away from something.</p>\n\n<p>Since Addiction can be thought of as a form of enslavement, Liberation seems to go well, as in <em>His liberation from alcohol was largely in thanks to Alcoholics Anonymous</em>.</p>\n\n<p>Some people claim Aversion as an answer, but I do not wholly agree as it denotes dislike towards something rather, and the antonym of aversion is attraction, but I guess it can be used in a certain sense.</p>",
+    "TimeStamp": "\/Date(1421410606410)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2701
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915340",
+    "PostUrl": "http://stackoverflow.com/a/27983758",
+    "Site": "stackoverflow.com",
+    "Title": "You can do it using MPDF library.",
+    "Body": "<p>You can do it using MPDF library.</p>",
+    "TimeStamp": "\/Date(1421410592022)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2718
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915339",
+    "PostUrl": "http://mathematica.stackexchange.com/a/71856",
+    "Site": "mathematica.stackexchange.com",
+    "Title": "l = {10000, 10004} - {2, 2, 637};\n# - l[[2]] & /@ l[[1]]\n(* {10000 - {2,...",
+    "Body": "<pre><code>l = {10000, 10004} -> {2, 2, 637};\n# -> l[[2]] & /@ l[[1]]\n(* {10000 -> {2, 2, 637}, 10004 -> {2, 2, 637}} *)\n</code></pre>",
+    "TimeStamp": "\/Date(1421410576634)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 24,
+        "FPCount": 2,
+        "CaughtCount": 169
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915334",
+    "PostUrl": "http://stackoverflow.com/a/27983734",
+    "Site": "stackoverflow.com",
+    "Title": "YOu are missing the icefaces-compat lib.",
+    "Body": "<p>YOu are missing the icefaces-compat lib.</p>",
+    "TimeStamp": "\/Date(1421410502046)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2717
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915327",
+    "PostUrl": "http://mathematica.stackexchange.com/questions/71855",
+    "Site": "mathematica.stackexchange.com",
+    "Title": "I want to cut off secondary approximate parts",
+    "Body": "<p>When I input to Mathematica as follows,</p>\n\n<p>G = {\n  { -1, 0, 0, 0 },\n  {  0, 1, 0, 0 },\n  {  0, 0, 1, 0 },\n  {  0, 0, 0, 1 } }\nh = {\n  { -h00/2, h01, h02, h03 },\n  {      0,   0,   0,   0 },\n  {      0,   0,   0,   0 },\n  {      0,   0,   0,   0 } }\nL = G + h\nLt = Transpose[L]\nG2raw = Lt . G. L\nG2 = Expand[ G2raw ]</p>\n\n<p>The value of G2 will be as follows.</p>\n\n<p>{ {-1 - h00 - h00^2/4, h01 + (h00 h01)/2, h02 + (h00 h02)/2, h03 + (h00 h03)/2},\n  {h01 + (h00 h01)/2, 1 - h01^2, -h01 h02, -h01 h03},\n  {h02 + (h00 h02)/2, -h01 h02, 1 - h02^2, -h02 h03},\n  {h03 + (h00 h03)/2, -h01 h03, -h02 h03, 1 - h03^2} }</p>\n\n<p>If [h00,h01,h02,h03] are very small values,\nI cut off secondary approximate parts and leave first approximate parts,\nand I'd like to obtain the following output.</p>\n\n<p>{ {-1 - h00, h01, h02, h03},\n  {h01, 1, 0, 0},\n  {h02, 0, 1, 0},\n  {h03, 0, 0, 1} }</p>\n\n<p>What kind of input should be added to Mathematica\nto obtain the above expected output ?</p>\n\n<p>Thank you.</p>",
+    "TimeStamp": "\/Date(1421410420093)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)i want to",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 15,
+        "FPCount": 13,
+        "CaughtCount": 197
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)^I want",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.5906382,
+        "TPCount": 15,
+        "FPCount": 11,
+        "CaughtCount": 154
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915326",
+    "PostUrl": "http://mathoverflow.net/questions/193974",
+    "Site": "mathoverflow.net",
+    "Title": "For which rational values of $c$ and $d$ are the numbers $\\sin{(\\pi\\cdot c)},\\sin{(\\pi\\cdot d)}$ and $1$ linearly dependent over $Q$",
+    "Body": "<p>A year ago, I posted this problem on [MSE]. After a number of edits, I have arrived at the following more general problem (suggested by Hjalmar Rosengren; see the comments below). </p>\n\n<blockquote>\n  <p>For which rational values of $c$ and $d$ are the numbers\n  $\\sin{(\\pi\\cdot c)},\\sin{(\\pi\\cdot d)}$ and $1$ linearly dependent over $\\mathbb{Q}$? </p>\n</blockquote>\n\n<p>Notes: </p>\n\n<p>(1) The original question I had asked boiled down to understanding a very special case: </p>\n\n<p><strong>Question 1:</strong> \nIf $d=\\dfrac{1}{18}$ and $0 < c < \\frac1{2}$, do we have such a linear dependence only if $c=\\dfrac{1}{18}$ or $c = 1/6$? </p>\n\n<p>(2) <a href=\"http://mathworld.wolfram.com/NivensTheorem.html\" rel=\"nofollow\">Niven's theorem</a> states that if $0 \\leq c \\leq 1/2$, then $\\sin (\\pi \\cdot c)$ is rational only if $c \\in \\{0, 1/6, 1/2\\}$. So in some sense I am asking about a generalization of Niven's theorem: </p>\n\n<p><strong>Question 2</strong> \nIf we restrict to rational values $0 < c, d < 1/2$ and demand $c, d \\neq 1/6$, do we achieve such a rational dependence only if $c = d$? </p>",
+    "TimeStamp": "\/Date(1421410400061)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "\\$\\d+",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 3,
+        "FPCount": 31,
+        "CaughtCount": 438
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915325",
+    "PostUrl": "http://politics.stackexchange.com/a/7640",
+    "Site": "politics.stackexchange.com",
+    "Title": "Chod chod chod chod chod chod chod chod chod c",
+    "Body": "<p>Chod chod chod chod chod chod chod chod chod c</p>",
+    "TimeStamp": "\/Date(1421410358761)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2716
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915305",
+    "PostUrl": "http://stackoverflow.com/questions/27982825",
+    "Site": "stackoverflow.com",
+    "Title": "Java XOR Custom Objects",
+    "Body": "<p>I have a custom class and I want to perform the XOR operation on its object.</p>\n\n<p>Only way I can think of is to serialize object into String and then converting string into bytes array and then doing xor operation on each of its elements. Then, deserializing it when needed.</p>\n\n<p>for example take simple case of List-></p>\n\n<pre><code>class ListNode {\n   int val;\n   ListNode next;\n   ListNode(int val) {this.val = val;}\n}\n\nListNode l1 = new ListNode(2);\nListNode l1 = new ListNode(3);\n\n// ListNode x = l1 ^ l2; \n</code></pre>\n\n<p>I want to perform l1 XOR l2 for some efficient implementation but can't find a cleaner way to do it in Java.</p>\n\n<p>Any suggestions?</p>\n\n<p><strong>Edit</strong>\nIn one algorithm I have only 1 pointer but by using XOR representation I can use that to store 2 addresses.</p>\n\n<p>Say, for example my list is 5->4->3->2->>>>>...\ninstead of storing next pointer of 5's node = 4; what I am trying to do is to store previousPointer XOR nextNodePointer in the next field of node.</p>\n\n<p>So </p>\n\n<pre><code>5's next pointer = NULL XOR 4\n4's next pointer = 5 XOR 3..........\n</code></pre>\n\n<p>So, in this case result of XOR should be saved.\nOne can now traverse like this we know null comes before head.\nTo access head's (5's) next node that is 4, we can perform null XOR nextPointer, so essentially we will do that for each node</p>\n\n<pre><code>5 next pointer = null XOR 4 as above/\nto acess 4 do null XOR (null XOR 4) = 4\nnow to access 3 do 5 XOR (5 XOR 3) = 5...\n</code></pre>\n\n<p>So, I want to save this XOR information somewhere but I can't create one new list node to save it. \nCan this be done on address level somehow so that the results are consistent like in above operations.</p>",
+    "TimeStamp": "\/Date(1421409942009)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 4,
+        "Regex": "\\>\\>\\>\\>\\>",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 12,
+        "FPCount": 19,
+        "CaughtCount": 43
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 104,
+        "Regex": "\\>\\>\\>\\>\\>",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.05,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915302",
+    "PostUrl": "http://stackoverflow.com/a/27983591",
+    "Site": "stackoverflow.com",
+    "Title": "I have the same issue with android backup service. I use SharedPreferenc...",
+    "Body": "<p>I have the same issue with android backup service. I use SharedPreferencesBackupHelper to backup app data. However, the onRestore() method isn't called after reinstalling the app. The methods dataChanged() & requestRestore() from Backup Manager don't seems to be functioning as mentioned in the Android Docs.</p>",
+    "TimeStamp": "\/Date(1421409920812)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 18.0,
+        "TPCount": 44,
+        "FPCount": 6,
+        "CaughtCount": 341
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915292",
+    "PostUrl": "http://stackoverflow.com/a/27983551",
+    "Site": "stackoverflow.com",
+    "Title": "i think you should check id of dropdownlist. \nplease visit this site.\nht...",
+    "Body": "<p>i think you should check id of dropdownlist. \nplease visit this site.\n<a href=\"http://kemstack.org/wordpress/zabielski/2014/12/18/kendoui-grid-popup-edit-template-validation-not-picking-up-model-validation-rules/\" rel=\"nofollow\">http://kemstack.org/wordpress/zabielski/2014/12/18/kendoui-grid-popup-edit-template-validation-not-picking-up-model-validation-rules/</a></p>",
+    "TimeStamp": "\/Date(1421409821859)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 23,
+        "FPCount": 2,
+        "CaughtCount": 168
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915279",
+    "PostUrl": "http://physics.stackexchange.com/a/159727",
+    "Site": "physics.stackexchange.com",
+    "Title": "My paper also participated in RSC competition [Mpemba Effect]: http://my...",
+    "Body": "<p>My paper also participated in RSC competition [Mpemba Effect]: <a href=\"http://my.rsc.org/files/6984\" rel=\"nofollow\">http://my.rsc.org/files/6984</a>  I give you the abstract: Water molecules are dipoles positioned and oriented joined by hydrogen bonds.When water is heated this structure collapses (increasing entropy).If after the water is recooled to a lower temperature the structure is not reconstructed immediately but needed some time.This time is <strong>not always</strong> available inside a freezer because the cooling process is fast.The entropy reduction curves function of temperature S=f(T) appear retardation (lagging) relative to entropy growth curves.So,the water after was heated and recooled at the starting temperature,has more entropy than before it was heated.This means that molecules have now the same kinetic energy,but thermal motion before heating was more oriented by the structure mentioned above.So,after recooling random collisions are more possible leading to faster temperature’s reduction.The rate of temperature decrease is proportional to\ntemperature. </p>",
+    "TimeStamp": "\/Date(1421409734028)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Type": 9,
+        "Regex": "retar(d|ed)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.1800556,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 1
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915272",
+    "PostUrl": "http://stackoverflow.com/a/27983479",
+    "Site": "stackoverflow.com",
+    "Title": "Please explain the problem linear partition algorithm,",
+    "Body": "<p>Please explain the problem linear partition algorithm,</p>",
+    "TimeStamp": "\/Date(1421409554618)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2715
+      },
+      {
+        "Type": 8,
+        "Regex": "^(?=.*?(?i)please).{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 22.3837166,
+        "TPCount": 83,
+        "FPCount": 139,
+        "CaughtCount": 1241
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915261",
+    "PostUrl": "http://robotics.stackexchange.com/a/6350",
+    "Site": "robotics.stackexchange.com",
+    "Title": "Thanks for everyone for answers, i find quite cheap and good camera from...",
+    "Body": "<p>Thanks for everyone for answers, i find quite cheap and good camera from XIMEA.</p>\n\n<p>Thay have a very nice support for libraries like opencv/matlab etc, so for newbie like is perfect.</p>",
+    "TimeStamp": "\/Date(1421409413158)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2698
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915252",
+    "PostUrl": "http://apple.stackexchange.com/a/167612",
+    "Site": "apple.stackexchange.com",
+    "Title": "Resseting the iPad worked for me. Thanks. ",
+    "Body": "<p>Resseting the iPad worked for me. Thanks. </p>",
+    "TimeStamp": "\/Date(1421409313071)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2714
+      },
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2697
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915251",
+    "PostUrl": "http://apple.stackexchange.com/a/7922",
+    "Site": "apple.stackexchange.com",
+    "Title": "we called Apple they said we need to re-set the iPad",
+    "Body": "<p>we called Apple they said we need to re-set the iPad</p>",
+    "TimeStamp": "\/Date(1421409312739)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2713
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915248",
+    "PostUrl": "http://movies.stackexchange.com/a/30095",
+    "Site": "movies.stackexchange.com",
+    "Title": "It could be MY LITTLE EYE with Brad Cooper",
+    "Body": "<p>It could be MY LITTLE EYE with Brad Cooper</p>",
+    "TimeStamp": "\/Date(1421409277014)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2712
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "movies.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^.{0,150}$",
+        "IsAuto": false,
+        "Site": "movies.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915247",
+    "PostUrl": "http://serverfault.com/questions/660043",
+    "Site": "serverfault.com",
+    "Title": "Oracle 11g MTS install fails with error: OUI - 10150: Error: A runtime exception occurred while setting s_dlgCfgNamingLabelSIDnull",
+    "Body": "<p>Is there a workaround in the Oracle 11g Universal Installer for the following error?</p>\n\n<p><code>OUI - 10150: Error: A runtime exception occurred while setting s_dlgCfgNamingLabelSIDnull in component oracle Database 11g 11.2.0.1.0. installation cannot continue for this component</code></p>\n\n<p>It occurs when I run the Universal Installer after installing the core database components.</p>\n\n<p>I'm trying to install MTS support using the 'Custom' option which only seems to be available post install.</p>",
+    "TimeStamp": "\/Date(1421409259795)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4546
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "serverfault.com",
+        "Score": 10.0301609,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915241",
+    "PostUrl": "http://scifi.stackexchange.com/a/79338",
+    "Site": "scifi.stackexchange.com",
+    "Title": "Jedis and Sith are also underground hip hop masters.",
+    "Body": "<p>Jedis and Sith are also underground hip hop masters.</p>",
+    "TimeStamp": "\/Date(1421409117366)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2711
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915239",
+    "PostUrl": "http://serverfault.com/questions/359634",
+    "Site": "serverfault.com",
+    "Title": "mod_jk logs errors but users report none",
+    "Body": "<p>We have an apache server load balancing requests for downloads to two different servers. The mod_jk error log is filled with the following kind of errors</p>\n\n<pre><code>[Mon Feb 13 16:59:02.948 2012] [19453:139726932305664] [error] ajp_process_callback::jk_ajp_common.c (1800): ajp_unmarshal_response failed\n[Mon Feb 13 16:59:02.948 2012] [19453:139726932305664] [info] ajp_service::jk_ajp_common.c (2540): (mrxdf3) sending request to tomcat failed (recoverable), because of server error (attempt=1)\n[Mon Feb 13 16:59:03.048 2012] [19453:139726932305664] [info] ajp_send_request::jk_ajp_common.c (1490): (mrxdf3) did not receive END_RESPONSE, closing socket -1\n[Mon Feb 13 16:59:03.054 2012] [19453:139726932305664] [error] ajp_unmarshal_response::jk_ajp_common.c (646): NULL status\n[Mon Feb 13 16:59:03.054 2012] [19453:139726932305664] [error] ajp_process_callback::jk_ajp_common.c (1800): ajp_unmarshal_response failed\n[Mon Feb 13 16:59:03.054 2012] [19453:139726932305664] [info] ajp_service::jk_ajp_common.c (2540): (mrxdf3) sending request to tomcat failed (recoverable), because of server error (attempt=2)\n[Mon Feb 13 16:59:03.054 2012] [19453:139726932305664] [error] ajp_service::jk_ajp_common.c (2559): (mrxdf3) connecting to tomcat failed.\n[Mon Feb 13 16:59:03.054 2012] [19453:139726932305664] [info] service::jk_lb_worker.c (1388): service failed, worker mrxdf3 is in error state\n[Mon Feb 13 16:59:03.159 2012] [19453:139726932305664] [error] ajp_unmarshal_response::jk_ajp_common.c (646): NULL status\n[Mon Feb 13 16:59:03.159 2012] [19453:139726932305664] [error] ajp_process_callback::jk_ajp_common.c (1800): ajp_unmarshal_response failed\n[Mon Feb 13 16:59:03.159 2012] [19453:139726932305664] [info] ajp_service::jk_ajp_common.c (2540): (mrxdf2) sending request to tomcat failed (recoverable), because of server error (attempt=1)\n[Mon Feb 13 16:59:03.259 2012] [19453:139726932305664] [info] ajp_send_request::jk_ajp_common.c (1490): (mrxdf2) did not receive END_RESPONSE, closing socket -1\n[Mon Feb 13 16:59:03.263 2012] [19453:139726932305664] [error] ajp_unmarshal_response::jk_ajp_common.c (646): NULL status\n[Mon Feb 13 16:59:03.264 2012] [19453:139726932305664] [error] ajp_process_callback::jk_ajp_common.c (1800): ajp_unmarshal_response failed\n[Mon Feb 13 16:59:03.264 2012] [19453:139726932305664] [info] ajp_service::jk_ajp_common.c (2540): (mrxdf2) sending request to tomcat failed (recoverable), because of server error (attempt=2)\n[Mon Feb 13 16:59:03.264 2012] [19453:139726932305664] [error] ajp_service::jk_ajp_common.c (2559): (mrxdf2) connecting to tomcat failed.\n[Mon Feb 13 16:59:03.264 2012] [19453:139726932305664] [info] service::jk_lb_worker.c (1388): service failed, worker mrxdf2 is in local error state\n[Mon Feb 13 16:59:03.264 2012] [19453:139726932305664] [info] service::jk_lb_worker.c (1457): All tomcat instances failed, no more workers left (attempt=1, retry=1)\n[Mon Feb 13 16:59:03.264 2012] [19453:139726932305664] [info] service::jk_lb_worker.c (1468): All tomcat instances are busy or in error state\n[Mon Feb 13 16:59:03.264 2012] [19453:139726932305664] [error] service::jk_lb_worker.c (1473): All tomcat instances failed, no more workers left\n[Mon Feb 13 16:59:03.264 2012] [19453:139726932305664] [info] jk_handler::mod_jk.c (2618): Service error=0 for worker=lb_df_ajp13\n</code></pre>\n\n<p>We monitor the status and get a bit worried about the various servers switching from ok to error to ok to error.....</p>\n\n<p>The thing is the only indication we have of an error is this. There are no reports that actual errors are happening. Users do not report broken downloads or not being able to reach the servers.</p>\n\n<p>this is the mod_jk conf</p>\n\n<pre><code># Minimal jk configuration\nJkWorkerProperty worker.list=ajp13,api_ajp13,app_ajp13,status_ajp13,lb_df_ajp13\n\n# web server\nJkWorkerProperty worker.ajp13.type=ajp13\nJkWorkerProperty worker.ajp13.host=web0.live.mbuyu.nl\nJkWorkerProperty worker.ajp13.port=8009\n\n# app\nJkWorkerProperty worker.app_ajp13.type=ajp13\nJkWorkerProperty worker.app_ajp13.host=app0.live.mbuyu.nl\nJkWorkerProperty worker.app_ajp13.port=8009\n\n# api server\nJkWorkerProperty worker.api_ajp13.type=ajp13\nJkWorkerProperty worker.api_ajp13.host=api0.live.mbuyu.nl\nJkWorkerProperty worker.api_ajp13.port=8009\n\n# DF Node0\nJkWorkerProperty worker.mrxdf2.type=ajp13\nJkWorkerProperty worker.mrxdf2.host=df2.live.mbuyu.nl\nJkWorkerProperty worker.mrxdf2.port=8009\nJkWorkerProperty worker.mrxdf2.lbfactor=1\n# DF Node1\nJkWorkerProperty worker.mrxdf3.type=ajp13\nJkWorkerProperty worker.mrxdf3.host=df3.live.mbuyu.nl\nJkWorkerProperty worker.mrxdf3.port=8009\nJkWorkerProperty worker.mrxdf3.lbfactor=1\n\n# JK Status worker\nJkWorkerProperty worker.status_ajp13.type=status\n\n# Load-balancer\nJkWorkerProperty worker.lb_df_ajp13.type=lb\nJkWorkerProperty worker.lb_df_ajp13.balanced_workers=mrxdf2,mrxdf3\nJkWorkerProperty worker.lb_df_ajp13.sticky_session=1\nJkWorkerProperty worker.lb_df_ajp13.local_worker_only=1\n</code></pre>\n\n<p>Should we be worried? Can we get rid of this? </p>\n\n<p>mod_jk version = 1.2.30\napache 2.2.16\nThe download servers run JBoss 6.1.</p>\n\n<p>btw, I'm actually a developer not a sysadmin but I get asked for help on that side occasionally. In this case the sysadmin wants to know what's wrong with the application of course. All I can say is nothing I can find either internally or externally. We are now in the very negative situation of ignoring an error warning because we think nothing is actually going wrong.</p>",
+    "TimeStamp": "\/Date(1421409037457)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4544
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "serverfault.com",
+        "Score": 10.0301609,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915235",
+    "PostUrl": "http://scifi.stackexchange.com/a/79313",
+    "Site": "scifi.stackexchange.com",
+    "Title": "He certainly killed before. Harry specifically reminded Dumbledore that ...",
+    "Body": "<p>He certainly killed before. Harry specifically reminded Dumbledore that he never killed UNLESS he had to. If that was wrong, Dumbledore would have corrected him. So yes, Dumbledore has killed beforeHe does not need to use the Unforgiveables, though. I am sure he can cause pain, control, and death by other means.</p>\n\n<p>I hated the way Rowling portrayed the Unforgiveables in the book, as if no decent wizard would use them under ANY circumstances. To shore up this rubbish, she pathetically have Molly kill Bellatrix with an \"overcharged\" stunning spell. And what a cop it was when she made Voldemort's death a result of his own curse that a disarming charm shot back at him. In some ways, Voldemort had a more dignifying death than Sirius and other great characters. I'm a Kingsley and Barty Crouch kinda girl: good yes, but when faced with life-threatening battles and Death-Eaters as deadly as Voldemort, then yes, I'll cruciate and Avada Kedavra the hell out of you.</p>\n\n<p>It's a wonder she made Harry and Minerva eventually use them.</p>",
+    "TimeStamp": "\/Date(1421408967113)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 6,
+        "FPCount": 4,
+        "CaughtCount": 43
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915233",
+    "PostUrl": "http://english.stackexchange.com/a/221915",
+    "Site": "english.stackexchange.com",
+    "Title": "The common use is minutes, but you often hear people talking of a \"minut...",
+    "Body": "<p>The common use <em>is</em> minutes, but you often hear people talking of a \"minute\" in the context of discussing the \"minutes\".</p>\n\n<p>e.g.</p>\n\n<p>\"Here are the minutes of yesterday's meeting\"\n\"Oh, thanks - let me just have a quick look....ah, yes, I see in minute XYZ that you reached agreement on blah-blah-blah....\"</p>",
+    "TimeStamp": "\/Date(1421408916489)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2696
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915232",
+    "PostUrl": "http://stackoverflow.com/a/27983321",
+    "Site": "stackoverflow.com",
+    "Title": "Stack is essentially an interface, the underlying type can be changed.",
+    "Body": "<p>Stack is essentially an interface, the underlying type can be changed.</p>",
+    "TimeStamp": "\/Date(1421408907519)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 454,
+        "FPCount": 116,
+        "CaughtCount": 2710
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
     "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2915212",
     "PostUrl": "http://stackoverflow.com/a/16812978",
     "Site": "stackoverflow.com",

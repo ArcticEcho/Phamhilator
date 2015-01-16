@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
+using Microsoft.VisualBasic.Devices;
+using Newtonsoft.Json;
 
 
 
@@ -56,7 +61,7 @@ namespace Phamhilator
 
             new ChatCommand(new Regex("(?i)^(help list|list help|commands)$", cmdRegexOptions), command => new[]
             {
-                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status & env.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
+                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status, env & log.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
             }, CommandAccessLevel.NormalUser),
 
             new ChatCommand(new Regex("(?i)^stats$", cmdRegexOptions), command => new []
@@ -71,12 +76,52 @@ namespace Phamhilator
 
             new ChatCommand(new Regex("(?i)^env$", cmdRegexOptions), command =>
             {
-                var totalMem = Math.Round(new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory / 1024f / 1024f / 1024f, 1);
+                var totalMem = Math.Round(new ComputerInfo().TotalPhysicalMemory / 1024f / 1024f / 1024f, 1);
 
                 return new[]
                 {
                     new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Cores (logical): " + Environment.ProcessorCount + "\n    Total RAM: " +  totalMem + "GB\n    OS: " + Environment.OSVersion.VersionString + "\n    64-bit: " + Environment.Is64BitOperatingSystem + "\n    CLR version: " + Environment.Version, false)
                 };
+            }, CommandAccessLevel.NormalUser),
+
+            new ChatCommand(new Regex(@"(?i)^log \d+$", cmdRegexOptions), command =>
+            {
+                var entryID = Regex.Replace(command, @"\D", "");
+                var logEntry = GlobalInfo.Log.Entries.FirstOrDefault(i => Regex.Replace(i.ReportLink, @"\D", "") == entryID);
+
+                if (logEntry == null)
+                {
+                    return new[] { new ReplyMessage("`Unable to find log entry for that ID.`") };
+                }
+
+                string link;
+
+                if (GlobalInfo.Log.EntryLinks.ContainsKey(entryID))
+                {
+                    link = GlobalInfo.Log.EntryLinks[entryID];
+                }
+                else
+                {
+                    var request = (HttpWebRequest)WebRequest.Create("http://hastebin.com/documents");
+                    var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(logEntry, Formatting.Indented));
+
+                    request.Method = "POST";
+                    request.ContentType = "application/x-www-form-urlencoded";
+                    request.ContentLength = data.Length;
+
+                    using (var stream = request.GetRequestStream())
+                    {
+                        stream.Write(data, 0, data.Length);
+                    }
+
+                    var response = (HttpWebResponse)request.GetResponse();
+                    dynamic resJson = JsonConvert.DeserializeObject(new StreamReader(response.GetResponseStream()).ReadToEnd());
+
+                    link = "http://hastebin.com/" + (string)resJson["key"] + ".hs";
+                    GlobalInfo.Log.EntryLinks.Add(entryID, link);
+                }
+
+                return new[] { new ReplyMessage("`Log entry found. See` [`here`](" + link + ") `for details.`") };
             }, CommandAccessLevel.NormalUser),
 
             #region Toys.
