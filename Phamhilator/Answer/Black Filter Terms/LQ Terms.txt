@@ -42,7 +42,7 @@
     "Score": 12.0,
     "TPCount": 7,
     "FPCount": 1,
-    "CaughtCount": 52
+    "CaughtCount": 55
   },
   {
     "Regex": "(?i)did you find",
@@ -51,16 +51,16 @@
     "Score": 12.0,
     "TPCount": 3,
     "FPCount": 0,
-    "CaughtCount": 32
+    "CaughtCount": 34
   },
   {
     "Regex": "(?i)pl(ease|s|z) help",
     "IsAuto": false,
     "Site": "",
     "Score": 17.0,
-    "TPCount": 18,
+    "TPCount": 20,
     "FPCount": 2,
-    "CaughtCount": 105
+    "CaughtCount": 111
   },
   {
     "Regex": "^\\<p\\>[^a-z]*\\<\\/p\\>$",
@@ -76,18 +76,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 18.0,
-    "TPCount": 43,
+    "TPCount": 44,
     "FPCount": 6,
-    "CaughtCount": 333
+    "CaughtCount": 340
   },
   {
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "",
     "Score": 89.0,
-    "TPCount": 446,
-    "FPCount": 113,
-    "CaughtCount": 2649
+    "TPCount": 454,
+    "FPCount": 116,
+    "CaughtCount": 2709
   },
   {
     "Regex": "(?i)^please",
@@ -103,9 +103,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 16.8727264,
-    "TPCount": 32,
+    "TPCount": 33,
     "FPCount": 3,
-    "CaughtCount": 74
+    "CaughtCount": 75
   },
   {
     "Regex": "(?i)have question",
@@ -121,9 +121,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 19.3837166,
-    "TPCount": 179,
+    "TPCount": 183,
     "FPCount": 107,
-    "CaughtCount": 2634
+    "CaughtCount": 2695
   },
   {
     "Regex": "^(?=.*?(?i)please).{0,100}$",
@@ -132,7 +132,7 @@
     "Score": 22.3837166,
     "TPCount": 83,
     "FPCount": 139,
-    "CaughtCount": 1239
+    "CaughtCount": 1240
   },
   {
     "Regex": "(?i)need (an )?answer",
@@ -148,18 +148,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 19.6851864,
-    "TPCount": 20,
+    "TPCount": 21,
     "FPCount": 0,
-    "CaughtCount": 44
+    "CaughtCount": 45
   },
   {
     "Regex": "(?i)(have|did) you (solve|fix|find|found)",
     "IsAuto": false,
     "Site": "",
     "Score": 19.2035675,
-    "TPCount": 10,
+    "TPCount": 11,
     "FPCount": 0,
-    "CaughtCount": 69
+    "CaughtCount": 73
   },
   {
     "Regex": "(?i)same here",
@@ -168,34 +168,34 @@
     "Score": 19.2035675,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 19.2035675,
-    "TPCount": 4,
+    "TPCount": 6,
     "FPCount": 4,
-    "CaughtCount": 32
+    "CaughtCount": 42
   },
   {
     "Regex": "^[^A-Z]*$",
     "IsAuto": false,
     "Site": "",
     "Score": 19.2035675,
-    "TPCount": 18,
-    "FPCount": 1,
-    "CaughtCount": 124
+    "TPCount": 23,
+    "FPCount": 2,
+    "CaughtCount": 166
   },
   {
     "Regex": "(?is)^<.*>\\s*i want",
     "IsAuto": false,
     "Site": "",
     "Score": 19.2035675,
-    "TPCount": 0,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 10
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)is there a way",
@@ -204,15 +204,15 @@
     "Score": 19.2035675,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 6
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)help me",
     "IsAuto": false,
     "Site": "",
     "Score": 19.2035675,
-    "TPCount": 0,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 9
   }
 ]

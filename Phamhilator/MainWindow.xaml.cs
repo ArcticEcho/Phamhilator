@@ -78,7 +78,7 @@ namespace Phamhilator
                     {
                         var question = PostFetcher.GetQuestion(message);
 
-                        if (GlobalInfo.Log.Entries.All(p => p.Url != question.Url))
+                        if (GlobalInfo.Log.Entries.All(p => p.PostUrl != question.Url))
                         {
                             var qResults = PostAnalyser.AnalyseQuestion(question);
                             var qMessage = MessageGenerator.GetQReport(qResults, question);
@@ -90,7 +90,7 @@ namespace Phamhilator
                         {
                             var answers = PostFetcher.GetLatestAnswers(question);
 
-                            foreach (var a in answers.Where(ans => GlobalInfo.Log.Entries.All(p => p.Url != ans.Url)))
+                            foreach (var a in answers.Where(ans => GlobalInfo.Log.Entries.All(p => p.PostUrl != ans.Url)))
                             {
                                 var aResults = PostAnalyser.AnalyseAnswer(a);
                                 var aMessage = MessageGenerator.GetAReport(aResults, a);
@@ -290,14 +290,15 @@ namespace Phamhilator
             {
                 GlobalInfo.Log.AddEntry(new LogItem
                 {
-                    Url = p.Url, 
-                    Site = p.Site, 
-                    Title = p.Title, 
-                    Body = p.Body, 
-                    TimeStamp = DateTime.UtcNow, 
-                    ReportType = info.Type, 
-                    BlackTerms = info.BlackTermsFound.ToLogTerms().ToList(), 
-                    WhiteTerms = info.WhiteTermsFound.ToLogTerms().ToList(),
+                    ReportLink = "http://chat." + message.Host + "/transcript/message/" + message.ID,
+                    PostUrl = p.Url,
+                    Site = p.Site,
+                    Title = p.Title,
+                    Body = p.Body,
+                    TimeStamp = DateTime.UtcNow,
+                    ReportType = info.Type,
+                    BlackTerms = info.BlackTermsFound.ToLogTerms().ToList(),
+                    WhiteTerms = info.WhiteTermsFound.ToLogTerms().ToList()
                 });
                 GlobalInfo.PostedReports.Add(message.ID, chatMessage);
 
@@ -372,7 +373,7 @@ namespace Phamhilator
             {
                 try
                 {
-                    GlobalInfo.ChatClient = new Client("Pham", user, pass); //TODO: Change the first arg ("Pham") to whatever your account's username is.
+                    GlobalInfo.ChatClient = new Client(user, pass); //TODO: Change the first arg ("Pham") to whatever your account's username is.
                 }
                 catch (Exception ex)
                 {

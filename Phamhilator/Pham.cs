@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
 using CsQuery;
 
 
@@ -12,35 +14,40 @@ namespace Phamhilator
         {
             GlobalInfo.Log.EntriesRemovedEvent = items =>
             {
+                var results = new Dictionary<LogItem, bool>();
+
                 foreach (var item in items)
                 {
-                    var data = new AnswerAnalysis();
-
-                    foreach (var term in item.BlackTerms)
-                    {
-                        data.BlackTermsFound.Add(term.ToTerm(term.Type));
-                    }
-
-                    foreach (var term in item.WhiteTerms)
-                    {
-                        data.WhiteTermsFound.Add(term.ToTerm(term.Type));
-                    }
+                    var data = GetDataFromLog(item);
+                    var wasTPd = false;
 
                     switch (item.ReportType)
                     {
                         case PostType.Spam:
                         {
-                            CheckForSpam(item, data);
+                            wasTPd = CheckForClass1Report(item, data);
+                            break;
+                        }
+
+                        case PostType.Offensive:
+                        {
+                            wasTPd = CheckForClass1Report(item, data);
                             break;
                         }
 
                         case PostType.LowQuality:
                         {
-                            CheckForLQ(item, data);
+                            wasTPd = CheckForClass2Report(item, data);
                             break;
                         }
                     }
+
+                    results.Add(item, wasTPd);
                 }
+
+                if (results.Count == 0) { return; }
+
+                GlobalInfo.PrimaryRoom.PostMessage("Auto-review Results\n\nReports TPd:" + FormatTPdReports(results) + "\n\nReports FPd:" + FormatFPdReports(results));
             };
         }
 
@@ -107,7 +114,75 @@ namespace Phamhilator
             }
         }
 
-        public bool IsAnswerLQ(string postUrl)
+
+
+        private PostAnalysis GetDataFromLog(LogItem entry)
+        {
+            var data = new AnswerAnalysis();
+
+            foreach (var term in entry.BlackTerms)
+            {
+                data.BlackTermsFound.Add(term.ToTerm(term.Type));
+
+                if (!data.FiltersUsed.Contains(term.Type))
+                {
+                    data.FiltersUsed.Add(term.Type);
+                }
+            }
+
+            foreach (var term in entry.WhiteTerms)
+            {
+                data.WhiteTermsFound.Add(term.ToTerm(term.Type));
+
+                if (!data.FiltersUsed.Contains(term.Type))
+                {
+                    data.FiltersUsed.Add(term.Type);
+                }
+            }
+
+            return data;
+        }
+
+        private bool IsAnswerClass1(string postUrl)
+        {
+            try
+            {
+                var host = PostFetcher.HostParser.Replace(postUrl, "");
+                var id = PostFetcher.PostIDParser.Replace(postUrl, "");
+
+                new WebClient().DownloadString("http://" + host + "/posts/ajax-load-realtime/" + id);
+            }
+            catch (WebException ex)
+            {
+                if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.NotFound)
+                {
+                    // The post has been deleted.
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsQuestionClass1(string postUrl)
+        {
+            try
+            {
+                new WebClient().DownloadString(postUrl);
+            }
+            catch (WebException ex)
+            {
+                if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.NotFound)
+                {
+                    // The post has been deleted.
+                    return true;
+                }
+            } 
+
+            return false;
+        }
+
+        private bool IsAnswerClass2(string postUrl)
         {
             var html = "";
 
@@ -134,7 +209,7 @@ namespace Phamhilator
             return int.Parse(score) <= -5;
         }
 
-        public bool IsQuestionLQ(string postUrl)
+        private bool IsQuestionClass2(string postUrl)
         {
             var html = "";
 
@@ -184,97 +259,84 @@ namespace Phamhilator
             return isClosed || int.Parse(score) <= -3;
         }
 
-        public bool IsAnswerSpam(string postUrl)
+        private bool CheckForClass1Report(LogItem item, PostAnalysis data)
         {
-            try
+            if (item.PostUrl.Contains(@"/questions/"))
             {
-                var host = PostFetcher.HostParser.Replace(postUrl, "");
-                var id = PostFetcher.PostIDParser.Replace(postUrl, "");
-
-                new WebClient().DownloadString("http://" + host + "/posts/ajax-load-realtime/" + id);
-            }
-            catch (WebException ex)
-            {
-                if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.NotFound)
+                if (IsQuestionClass1(item.PostUrl))
                 {
-                    // The post has been deleted.
+                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+
                     return true;
                 }
+
+                RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+
+                return false;
             }
+
+            if (IsAnswerClass1(item.PostUrl))
+            {
+                RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+
+                return true;
+            }
+
+            RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
 
             return false;
         }
 
-        public bool IsQuestionSpam(string postUrl)
+        private bool CheckForClass2Report(LogItem item, PostAnalysis data)
         {
-            try
+            if (item.PostUrl.Contains(@"/questions/"))
             {
-                new WebClient().DownloadString(postUrl);
-            }
-            catch (WebException ex)
-            {
-                if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.NotFound)
+                if (IsQuestionClass2(item.PostUrl))
                 {
-                    // The post has been deleted.
+                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+
                     return true;
                 }
-            } 
+
+                RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+
+                return false;
+            }
+
+            if (IsAnswerClass2(item.PostUrl))
+            {
+                RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+
+                return true;
+            }
+
+            RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
 
             return false;
         }
 
-
-
-        private void CheckForSpam(LogItem item, PostAnalysis data)
+        private string FormatTPdReports(Dictionary<LogItem, bool> results)
         {
-            if (item.Url.Contains(@"/questions/"))
+            var message = new StringBuilder();
+
+            foreach (var result in results.Where(r => r.Value))
             {
-                if (IsQuestionSpam(item.Url))
-                {
-                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
-                }
-                else
-                {
-                    RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
-                }
+                message.Append("\n" + result.Key.ReportLink);
             }
-            else
-            {
-                if (IsAnswerSpam(item.Url))
-                {
-                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
-                }
-                else
-                {
-                    RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
-                }
-            }
+
+            return message.ToString();
         }
 
-        private void CheckForLQ(LogItem item, PostAnalysis data)
+        private string FormatFPdReports(Dictionary<LogItem, bool> results)
         {
-            if (item.Url.Contains(@"/questions/"))
+            var message = new StringBuilder();
+
+            foreach (var result in results.Where(r => !r.Value))
             {
-                if (IsQuestionLQ(item.Url))
-                {
-                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
-                }
-                else
-                {
-                    RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
-                }
+                message.Append("\n" + result.Key.ReportLink);
             }
-            else
-            {
-                if (IsAnswerLQ(item.Url))
-                {
-                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
-                }
-                else
-                {
-                    RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
-                }
-            }
+
+            return message.ToString();
         }
     }
 }

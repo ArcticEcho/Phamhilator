@@ -6,8 +6,7 @@
     "Score": 118.030365,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,200}$",
@@ -16,8 +15,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)problem(s)?",
@@ -26,8 +24,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -36,8 +33,7 @@
     "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -46,8 +42,7 @@
     "Score": 30.322691,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)pl(z|s|ease)",
@@ -56,8 +51,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -66,8 +60,7 @@
     "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -76,8 +69,7 @@
     "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -86,8 +78,7 @@
     "Score": 39.6402168,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?i)problem(s)?",
@@ -96,8 +87,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^(?i).{0,200}$",
@@ -106,8 +96,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^.{0,150}$",
@@ -116,8 +105,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -126,8 +114,7 @@
     "Score": 46.85898,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^(?i).{0,200}$",
@@ -136,8 +123,7 @@
     "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^(?i).{0,18}$",
@@ -146,8 +132,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,200}$",
@@ -156,8 +141,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -166,8 +150,7 @@
     "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -176,8 +159,7 @@
     "Score": 33.6362724,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^(?i).{0,200}$",
@@ -186,8 +168,7 @@
     "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^.{0,150}$",
@@ -196,8 +177,7 @@
     "Score": 7.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -206,8 +186,7 @@
     "Score": 9.178701,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,200}$",
@@ -216,8 +195,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -226,8 +204,7 @@
     "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "\\bpl[sz]+\\b",
@@ -236,8 +213,7 @@
     "Score": 8.931905,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "^(?i).{0,200}$",
@@ -246,8 +222,7 @@
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -256,8 +231,7 @@
     "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -266,8 +240,7 @@
     "Score": 28.68089,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -276,8 +249,7 @@
     "Score": 35.2154236,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,150}$",
@@ -286,18 +258,16 @@
     "Score": 28.9441738,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "(?s-m)^.{0,100}$",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 14.7672243,
+    "Score": 15.8758974,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   },
   {
     "Regex": "enter link description here",
@@ -306,7 +276,6 @@
     "Score": 6.875,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0,
-    "Type": 0
+    "CaughtCount": 0
   }
 ]

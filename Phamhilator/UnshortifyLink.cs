@@ -7,7 +7,7 @@ namespace Phamhilator
 {
     public static class UnshortifyLink
     {
-        private static readonly Regex shortLink = new Regex(@"(?is)^https?://(goo.gl|bit.ly|tinyurl.com|ow.ly|tiny.cc|bit.do|po.st|bigly.us|t.co|r.im|cli.gs|short.ie|kl.am|idek.net|i.gd|hex.io)/\w*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex shortLink = new Regex(@"(?is)^https?://(goo\.gl|bit\.ly|tinyurl\.com|ow\.ly|tiny\.cc|bit\.do|po\.st|bigly\.us|t\.co|r\.im|cli\.gs|short\.ie|kl\.am|idek\.net|i\.gd|hex\.io)/\w*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
 
 

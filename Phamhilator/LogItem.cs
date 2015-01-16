@@ -7,7 +7,8 @@ namespace Phamhilator
 {
     public class LogItem
     {
-        public string Url { get; set; }
+        public string ReportLink { get; set; }
+        public string PostUrl { get; set; }
         public string Site { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }

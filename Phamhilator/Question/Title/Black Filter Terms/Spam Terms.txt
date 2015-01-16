@@ -176,8 +176,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 2,
-    "FPCount": 0,
-    "CaughtCount": 3
+    "FPCount": 1,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)\\bwork out\\b",
@@ -213,7 +213,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 6,
-    "CaughtCount": 28
+    "CaughtCount": 29
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -248,8 +248,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 8
+    "FPCount": 7,
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)\\bcare(ing)?\\b",
@@ -301,9 +301,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 18.0,
-    "TPCount": 18,
+    "TPCount": 19,
     "FPCount": 47,
-    "CaughtCount": 96
+    "CaughtCount": 97
   },
   {
     "Regex": "(?i)the perfect",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 7,
     "FPCount": 9,
-    "CaughtCount": 61
+    "CaughtCount": 64
   },
   {
     "Regex": "(?i)vashikaran",
@@ -816,7 +816,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 2,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)wow gold",
@@ -932,8 +932,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 27,
-    "CaughtCount": 150
+    "FPCount": 30,
+    "CaughtCount": 155
   },
   {
     "Regex": "\\$\\d+",
@@ -941,8 +941,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 30,
-    "CaughtCount": 427
+    "FPCount": 31,
+    "CaughtCount": 437
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -951,7 +951,7 @@
     "Score": 10.0,
     "TPCount": 16,
     "FPCount": 3,
-    "CaughtCount": 49
+    "CaughtCount": 50
   },
   {
     "Regex": "(?i)high quality",
@@ -996,7 +996,7 @@
     "Score": 10.22015,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)gmail support phone number",
@@ -1012,9 +1012,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.22015,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "0800\\-014\\-8189",

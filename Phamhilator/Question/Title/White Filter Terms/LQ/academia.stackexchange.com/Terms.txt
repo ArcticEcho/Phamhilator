@@ -30,7 +30,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 8.49778,
+    "Score": 9.270306,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1443,7 +1443,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "photo.stackexchange.com",
-    "Score": 6.568182,
+    "Score": 7.568182,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

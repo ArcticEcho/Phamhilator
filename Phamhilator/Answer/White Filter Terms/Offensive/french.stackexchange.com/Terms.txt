@@ -237,7 +237,7 @@
     "Regex": "(?i)\\bfuck",
     "IsAuto": false,
     "Site": "french.stackexchange.com",
-    "Score": 6.545455,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

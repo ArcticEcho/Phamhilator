@@ -74,7 +74,7 @@ namespace Phamhilator
         {
             lock (entries)
             {
-                if (entries.Any(i => i.Url == item.Url)) { return; }
+                if (entries.Any(i => i.ReportLink == item.ReportLink)) { return; }
 
                 if (entries.Count == 0)
                 {

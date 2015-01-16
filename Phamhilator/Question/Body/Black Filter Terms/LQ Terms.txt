@@ -13,27 +13,27 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 1,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 7
+    "CaughtCount": 9
   },
   {
     "Regex": "(?s-m)^.{0,100}$",
     "IsAuto": false,
     "Site": "",
     "Score": 13.3197279,
-    "TPCount": 11,
+    "TPCount": 12,
     "FPCount": 28,
-    "CaughtCount": 657
+    "CaughtCount": 687
   },
   {
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 14.0,
-    "TPCount": 15,
+    "TPCount": 16,
     "FPCount": 16,
-    "CaughtCount": 212
+    "CaughtCount": 216
   },
   {
     "Regex": "enter link description here",

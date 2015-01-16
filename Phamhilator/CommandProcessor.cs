@@ -71,7 +71,7 @@ namespace Phamhilator
 
             new ChatCommand(new Regex("(?i)^env$", cmdRegexOptions), command =>
             {
-                var totalMem = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory / 1024f / 1024 / 1024;
+                var totalMem = Math.Round(new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory / 1024f / 1024f / 1024f, 1);
 
                 return new[]
                 {

@@ -30,7 +30,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "academia.stackexchange.com",
-    "Score": 8.49778,
+    "Score": 9.270306,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -84,7 +84,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "android.stackexchange.com",
-    "Score": 5.4545455,
+    "Score": 5.950413,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -120,7 +120,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 7.14049625,
+    "Score": 7.789632,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -183,7 +183,7 @@
     "Regex": "(?i)question",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 6.545455,
+    "Score": 6.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -237,7 +237,7 @@
     "Regex": "^(?i).{0,18}$",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 5.950413,
+    "Score": 6.49135971,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1443,7 +1443,7 @@
     "Regex": "(?i)\\berror(s)?\\b",
     "IsAuto": false,
     "Site": "photo.stackexchange.com",
-    "Score": 6.568182,
+    "Score": 7.568182,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

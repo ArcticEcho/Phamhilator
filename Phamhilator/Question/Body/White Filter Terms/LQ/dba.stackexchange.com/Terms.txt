@@ -264,7 +264,7 @@
     "Regex": "(?s-m)^.{0,100}$",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 14.7672243,
+    "Score": 15.8758974,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
