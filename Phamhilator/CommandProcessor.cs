@@ -61,7 +61,7 @@ namespace Phamhilator
 
             new ChatCommand(new Regex("(?i)^(help list|list help|commands)$", cmdRegexOptions), command => new[]
             {
-                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status, env & log.\n    Supported replies: (fp/tp/tpa), why, ask, clean & del.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
+                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status, env & log.\n    Supported replies: (fp/tp/tpa), why, ask, clean, del & log.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
             }, CommandAccessLevel.NormalUser),
 
             new ChatCommand(new Regex("(?i)^stats$", cmdRegexOptions), command => new []
@@ -84,14 +84,23 @@ namespace Phamhilator
                 };
             }, CommandAccessLevel.NormalUser),
 
-            new ChatCommand(new Regex(@"(?i)^log \d+$", cmdRegexOptions), command =>
+            new ChatCommand(new Regex(@"(?i)^log( \d+)?$", cmdRegexOptions), command =>
             {
                 var entryID = Regex.Replace(command, @"\D", "");
+
+                if (String.IsNullOrEmpty(entryID))
+                {
+                    var messageID = message.ParentID;
+                    var messageReport = GlobalInfo.PostedReports[messageID];
+
+                    entryID = GlobalInfo.PostedReports.Values.First(i => i.Post.Url == messageReport.Post.Url && i.Message.RoomID == GlobalInfo.PrimaryRoom.ID).Message.ID.ToString(CultureInfo.InvariantCulture);
+                }
+
                 var logEntry = GlobalInfo.Log.Entries.FirstOrDefault(i => Regex.Replace(i.ReportLink, @"\D", "") == entryID);
 
                 if (logEntry == null)
                 {
-                    return new[] { new ReplyMessage("`Unable to find log entry for that ID.`") };
+                    return new[] { new ReplyMessage("`Unable to find log entry with that ID.`") };
                 }
 
                 string link;

@@ -39,7 +39,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "apple.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -120,7 +120,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "buddhism.stackexchange.com",
-    "Score": 5.38461542,
+    "Score": 5.79881668,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -156,7 +156,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -165,7 +165,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "diy.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -210,7 +210,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "ell.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -237,7 +237,7 @@
     "Regex": "(?i)health",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.5,
+    "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -246,7 +246,7 @@
     "Regex": "(?i)\\bcare(ing)?\\b",
     "IsAuto": false,
     "Site": "english.stackexchange.com",
-    "Score": 5.38461542,
+    "Score": 5.79881668,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1272,6 +1272,15 @@
     "Regex": "(?i)nike",
     "IsAuto": false,
     "Site": "physics.stackexchange.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bhelp(s)? you(r)?\\b",
+    "IsAuto": false,
+    "Site": "academia.stackexchange.com",
     "Score": 5.0,
     "TPCount": 0,
     "FPCount": 0,

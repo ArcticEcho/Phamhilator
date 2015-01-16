@@ -1,5 +1,1196 @@
 [
   {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917699",
+    "PostUrl": "http://crypto.stackexchange.com/questions/22451",
+    "Site": "crypto.stackexchange.com",
+    "Title": "Help converting sha256 to 32-bit stream",
+    "Body": "<p>I need some help with hash value calculation.\n I am a bit confused by this statement that I found on w3 website on calculation of a DigestValue for xmldsig ( <a href=\"http://www.w3.org/TR/2002/REC-xmlenc-core-20021210/Overview.html#sha256\" rel=\"nofollow\">http://www.w3.org/TR/2002/REC-xmlenc-core-20021210/Overview.html#sha256</a> ):</p>\n\n<blockquote>\n  <p>A SHA-256 digest is a 256-bit string. The content of the DigestValue\n  element shall be the base64 encoding of this bit string viewed as a\n  32-octet octet stream.</p>\n</blockquote>\n\n<p>Does that mean that the sha256 hash value has to be converted to a 32-bit string before encoding it to base64?\nIf yes, could someone please tell me how this can be done? I'm a kind of a n00b, but I haven't found info on how to do that on the internet.</p>",
+    "TimeStamp": "\/Date(1421431688353)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1149
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917698",
+    "PostUrl": "http://stackoverflow.com/questions/27990120",
+    "Site": "stackoverflow.com",
+    "Title": "Need help in SQL join",
+    "Body": "<p>I have two tables and records in it as below:</p>\n\n<pre><code>            User\n   ---------------------\n         ID     UserId\n   ---------------------\n          1      User1\n          2      User2\n\n          Department_User\n   ------------------------------\n         ID DEPT_ID       USER_ID\n   ------------------------------\n          1  1              1\n          2  2              1\n          3  1              2\n</code></pre>\n\n<p>Now I want a oracle query which will return only those users who are serving in both the departments(1 & 2), in this example it will be 1</p>",
+    "TimeStamp": "\/Date(1421431686304)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)(need|some)( halp| help| answer)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 7,
+        "FPCount": 9,
+        "CaughtCount": 218
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i:need help|help me)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 24,
+        "FPCount": 14,
+        "CaughtCount": 398
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1148
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)^need",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.5906382,
+        "TPCount": 4,
+        "FPCount": 12,
+        "CaughtCount": 409
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\b(help|halp)\\b",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 9.253393,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917667",
+    "PostUrl": "http://wordpress.stackexchange.com/questions/175113",
+    "Site": "wordpress.stackexchange.com",
+    "Title": "How to pass error message from plugin function to admin_notices",
+    "Body": "<p>up vote 0 down vote favorite</p>\n\n<p>I am creating a Wordpress plugin that uses the save_posts action hook, and need to output any error messages to the screen (I am using the admin_notices hook). The setup is like this:</p>\n\n<pre><code>function my_function() {\n$response = doing_some_stuff();\nif ( is_wp_error( $response ) ) {\n$error = $response->get_error_message();\n}\n}\n\nfunction my_notice() {\necho $error;\n}\n\nadd_action( 'save_post', 'my_function' );\nadd_action( 'admin_notices', 'my_notice' );\n</code></pre>\n\n<p>Hope I didn't oversimplify this, but I guess that's what it boils down to. Unfortunately, I cannot output $error from my_function() directly due to the way Wordpress handles post_save.</p>\n\n<p>So what is the best method to pass $error to the my_notice() function so I can output it on the screen?</p>",
+    "TimeStamp": "\/Date(1421431430575)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 5,
+        "Regex": "down vote favorite",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.75,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 9
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917661",
+    "PostUrl": "http://softwarerecs.stackexchange.com/a/16340",
+    "Site": "softwarerecs.stackexchange.com",
+    "Title": "Very helpful! I use DuplicateFilesDeleter but this works too!",
+    "Body": "<p>Very helpful! I use DuplicateFilesDeleter but this works too!</p>",
+    "TimeStamp": "\/Date(1421431334989)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2759
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917647",
+    "PostUrl": "http://sharepoint.stackexchange.com/a/128786",
+    "Site": "sharepoint.stackexchange.com",
+    "Title": "Did you resolve this issue or how did it work out?",
+    "Body": "<p>Did you resolve this issue or how did it work out?</p>",
+    "TimeStamp": "\/Date(1421431180952)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2758
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917645",
+    "PostUrl": "http://buddhism.stackexchange.com/questions/7219",
+    "Site": "buddhism.stackexchange.com",
+    "Title": "Atman in Mahayana",
+    "Body": "<p>Does any Mahayana school teach that I am atman, the Self of buddha nature?</p>\n\n<p>Assuming a resounding \"no\", may I please ask, if atman is <a href=\"http://www.iep.utm.edu/qualia/\" rel=\"nofollow\">\"like\"</a> anything, or is it more like the eventual non existence, annihilation, of the empirical self, like death is for philosophically enlightened atheists?</p>\n\n<p>Perhaps that question is unanswerable, because I can't see any alternative to those possibilities !</p>",
+    "TimeStamp": "\/Date(1421431161146)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 6,
+        "FPCount": 43,
+        "CaughtCount": 2021
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917636",
+    "PostUrl": "http://askubuntu.com/a/574496",
+    "Site": "askubuntu.com",
+    "Title": "As a workaround I can set the From: header manually and drop the -- -f t...",
+    "Body": "<p>As a workaround I can set the <code>From:</code> header manually and drop the <code>-- -f</code> thing:</p>\n\n<pre><code>echo \"some body\" | mailx -s \"some subject\" recipient@example.de -a \"From: sender@example.de\"\n</code></pre>",
+    "TimeStamp": "\/Date(1421430983333)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 7,
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 31,
+        "FPCount": 127,
+        "CaughtCount": 481
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 107,
+        "Regex": "[-\\w]{3}@\\w+\\.",
+        "IsAuto": false,
+        "Site": "askubuntu.com",
+        "Score": 8.464028,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917631",
+    "PostUrl": "http://magento.stackexchange.com/questions/52404",
+    "Site": "magento.stackexchange.com",
+    "Title": "Getting error when trying to update Product Prices index in Magento",
+    "Body": "<p>I'm getting the following error after attempting to index Product Prices in Magento: <strong>Invalid backend model specified: catalog/product_attribute_backend_startdate_specialprice</strong></p>\n\n<p>Screenshot here: <a href=\"http://grab.by/DRzK\" rel=\"nofollow\">http://grab.by/DRzK</a></p>\n\n<p>Any advise what the issue is and how to resolve?</p>",
+    "TimeStamp": "\/Date(1421430897522)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4600
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "magento.stackexchange.com",
+        "Score": 6.568182,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917630",
+    "PostUrl": "http://money.stackexchange.com/questions/43352",
+    "Site": "money.stackexchange.com",
+    "Title": "Quick Accounting Question",
+    "Body": "<p>If you were to take out a 3 year bank loan, would net assets decrease or remain the same? \nBecause you get cash from the loan but debt too, so would they cancel out?\nOr does interest make net assets go down?\nOr something else..</p>\n\n<p>Thanks</p>",
+    "TimeStamp": "\/Date(1421430879192)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)question",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 5,
+        "FPCount": 22,
+        "CaughtCount": 1483
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917629",
+    "PostUrl": "http://security.stackexchange.com/questions/79299",
+    "Site": "security.stackexchange.com",
+    "Title": "How to reduce the risk of sudo vim -Z (sudo rvim)",
+    "Body": "<p>(I asked the same question on <a href=\"http://superuser.com/\">http://superuser.com/</a> One person recommended me to use this website instead of super user. I hope this question is quite apporopriate here and I can get more detailed information.)</p>\n\n<p>I learned about the way to prevent risks caused by these configurations:</p>\n\n<pre><code>user_name ALL=(ALL) /usr/bin/vim /etc/httpd/confs/httpd.conf\n</code></pre>\n\n<p>or</p>\n\n<pre><code>%group_name ALL=(ALL) /usr/bin/vim /etc/httpd/confs/httpd.conf\n</code></pre>\n\n<p>If I write these scripts in /etc/sudoers, serious damage to the server can happen. I have obtained one opinion which recommended I use vim -Z.</p>\n\n<p>I googled vim -Z and found some facts.\nIt is similar to (the same as?) rvim.\nHowever, vim -Z still allows us to use some commands.\nIn order to prevent normal users from executing commands, we have to add several scripts in .vimrc.</p>\n\n<p>To be honest, I do not understand fully what commands we cannot use in restricted mode. I found this website, but this only mentions vim although its title is rvim...\n<a href=\"http://linux.about.com/library/cmd/blcmdl1_rvim.htm\" rel=\"nofollow\">http://linux.about.com/library/cmd/blcmdl1_rvim.htm</a></p>\n\n<p>Could you tell me what settings are necessay to enable normal users to use sudo vim -Z (or sudo rvim) securely. </p>",
+    "TimeStamp": "\/Date(1421430876098)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)how to (feel|look|reduce|buy|increase)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 1,
+        "FPCount": 13,
+        "CaughtCount": 58
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917616",
+    "PostUrl": "http://stackoverflow.com/a/27989860",
+    "Site": "stackoverflow.com",
+    "Title": "In the end I went for SSH Keys which mitigated the problem I was having. ",
+    "Body": "<p>In the end I went for SSH Keys which mitigated the problem I was having. </p>",
+    "TimeStamp": "\/Date(1421430707820)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2757
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917599",
+    "PostUrl": "http://serverfault.com/a/556504",
+    "Site": "serverfault.com",
+    "Title": "I solved the issue by running smbpasswd -w MyLiteralPassword ",
+    "Body": "<p>I solved the issue by running smbpasswd -w MyLiteralPassword </p>",
+    "TimeStamp": "\/Date(1421430627082)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2756
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917598",
+    "PostUrl": "http://stackoverflow.com/a/27989837",
+    "Site": "stackoverflow.com",
+    "Title": "double quote is the fix.\n\n\"mysite.com\" gives the right results.",
+    "Body": "<p>double quote is the fix.</p>\n\n<p>\"mysite.com\" gives the right results.</p>",
+    "TimeStamp": "\/Date(1421430617107)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 195
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917581",
+    "PostUrl": "http://apple.stackexchange.com/a/167656",
+    "Site": "apple.stackexchange.com",
+    "Title": "I have the same problem and it solved after Quit BetterTouchTool",
+    "Body": "<p>I have the same problem and it solved after Quit BetterTouchTool</p>",
+    "TimeStamp": "\/Date(1421430542034)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 18.0,
+        "TPCount": 44,
+        "FPCount": 6,
+        "CaughtCount": 342
+      },
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2755
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "apple.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917579",
+    "PostUrl": "http://dsp.stackexchange.com/questions/19997",
+    "Site": "dsp.stackexchange.com",
+    "Title": "Help in blind deconvolution by MLE of 1 D signal",
+    "Body": "<p>[Paper - </p>\n\n<pre><code>A computationally fast approach to maximum-likelihood deconvolution by\n\n    Chong-Yung Chi,\n    Jerry M. Mendel and\n    Dan Hampson\n</code></pre>\n\n<p><a href=\"http://geophysics.geoscienceworld.org/content/49/5/550.short\" rel=\"nofollow\">link</a>\npresents an approach for MLE deconvolution of the model $z(k) = \\sum_{j=1}^k\\mu(j)V(k-j) + n(k) $ or</p>\n\n<p>$z(k)= y(k) + n(k) $</p>\n\n<p>where $\\mu(k)$ is a zero mean Bernoulli Gaussian sequence and $n(k)$ is the white Gaussian process noise of unknown variance $R$. </p>\n\n<p>$\\mu(k)$ is expressed as the product model $\\mu(k) = r(k)q(k)$ where $q(k)$ is 0/1 Bernoulli sequence and $r(k)$ is white Gaussian of known variance $C$.\nProbability, $Pr[q(r)] = 1 - \\lambda$ for $q(k) = 0$ otherwise $Pr[q(r)] = \\lambda$.</p>\n\n<p>The set of estimates are = $R,q,\\lambda,\\mu$ likelihood expression (Eq(28)) is given as</p>\n\n<p>$\\ell(\\theta | z) =  {(\\frac{1}{\\sqrt(2 \\pi R)})}^N \\exp ({\\frac{ \\sum_{R=1}^N {(z(k)-y(k))}^2}{2R}}) \\times \\prod_{k=1}^N \\frac{1}{\\sqrt(2 \\pi C)} \\exp{\\frac{-r^2(k)}{2C}} \\times \\lambda ^{m_q}(1- \\lambda)^{N-m_q}$. </p>\n\n<p>Following the above approach, </p>\n\n<p>How do I formulate the MLE for the following case and What will be the likelihood expression for this model?</p>\n\n<p>$z(k) = h^T \\mathbf{y(k)} + n(k)$ is an FIR model where $\\mathbf{y(k)} = [y(k),\\ldots,y(k - p+1)]$ is the input which has a Bernoulli distribution and $\\mathbf{h} = [h_1,\\ldots,h_p]$ is the set of unknown coefficients. The objective is to estimate $\\mathbf{h},\\lambda,R$ from the observations $z$ which is now a combination of Bernoulli and Gaussian. </p>\n\n<p>Do I need to consider the product model $\\mu(k)$ and hence $r(k)$ for the following case. \n Thank you for help.</p>",
+    "TimeStamp": "\/Date(1421430535480)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1147
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917569",
+    "PostUrl": "http://askubuntu.com/a/574495",
+    "Site": "askubuntu.com",
+    "Title": "modprobe -r iwl3945\nmodprobe iwl3945\n\nhope it helps.",
+    "Body": "<p>modprobe -r iwl3945\nmodprobe iwl3945</p>\n\n<p>hope it helps.</p>",
+    "TimeStamp": "\/Date(1421430494621)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 194
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917552",
+    "PostUrl": "http://magento.stackexchange.com/questions/52384",
+    "Site": "magento.stackexchange.com",
+    "Title": "Migration Error - Exception: SQLSTATE[HY000] [2002]",
+    "Body": "<p>I've upload .zip file and database, and changed database info in local.xml. </p>\n\n<p>Yet, my website is not working. </p>\n\n<p><strong>Error</strong></p>\n\n<blockquote>\n  <p>There has been an error processing your request Exception printing is\n  disabled by default for security reasons.</p>\n  \n  <p>Error log record number: 291391725209</p>\n</blockquote>\n\n<p><strong>var/report</strong></p>\n\n<pre><code>a:4:{i:0;s:105:\"SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)\";i:1;s:2973:\"#0 /hsphere/local/home/claudiasousa/domain.com/lib/Zend/Db/Adapter/Pdo/Mysql.php(109): Zend_Db_Adapter_Pdo_Abstract->_connect()\n#1 /hsphere/local/home/claudiasousa/domain.com/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()\n#2 /hsphere/local/home/claudiasousa/domain.com/lib/Zend/Db/Adapter/Abstract.php(460): Varien_Db_Adapter_Pdo_Mysql->_connect()\n#3 /hsphere/local/home/claudiasousa/domain.com/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)\n#4 /hsphere/local/home/claudiasousa/domain.com/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)\n#5 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter_Pdo_Mysql->query('SET NAMES utf8')\n#6 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Resource.php(110): Mage_Core_Model_Resource->_newConnection('pdo_mysql', Object(Mage_Core_Model_Config_Element))\n#7 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Resource/Db/Abstract.php(320): Mage_Core_Model_Resource->getConnection('core_write')\n#8 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Resource/Db/Abstract.php(350): Mage_Core_Model_Resource_Db_Abstract->_getConnection('write')\n#9 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Resource/Db/Abstract.php(335): Mage_Core_Model_Resource_Db_Abstract->_getWriteAdapter()\n#10 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Resource/Cache.php(53): Mage_Core_Model_Resource_Db_Abstract->_getReadAdapter()\n#11 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Cache.php(478): Mage_Core_Model_Resource_Cache->getAllOptions()\n#12 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Cache.php(520): Mage_Core_Model_Cache->_initOptions()\n#13 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/App.php(1183): Mage_Core_Model_Cache->canUse('config')\n#14 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Config.php(414): Mage_Core_Model_App->useCache('config')\n#15 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/Config.php(294): Mage_Core_Model_Config->_canUseCacheForInit()\n#16 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/App.php(413): Mage_Core_Model_Config->loadModulesCache()\n#17 /hsphere/local/home/claudiasousa/domain.com/app/code/core/Mage/Core/Model/App.php(343): Mage_Core_Model_App->_initModules()\n#18 /hsphere/local/home/claudiasousa/domain.com/app/Mage.php(684): Mage_Core_Model_App->run(Array)\n#19 /hsphere/local/home/claudiasousa/domain.com/index.php(87): Mage::run('', 'store')\n#20 {main}\";s:3:\"url\";s:1:\"/\";s:11:\"script_name\";s:10:\"/index.php\";}\n</code></pre>",
+    "TimeStamp": "\/Date(1421430418689)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 78,
+        "CaughtCount": 4598
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "magento.stackexchange.com",
+        "Score": 6.568182,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917540",
+    "PostUrl": "http://crypto.stackexchange.com/a/22456",
+    "Site": "crypto.stackexchange.com",
+    "Title": "\"you actually solved my riddle good job you win\"",
+    "Body": "<p>\"you actually solved my riddle good job you win\"</p>",
+    "TimeStamp": "\/Date(1421430326103)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2754
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 193
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917539",
+    "PostUrl": "http://gaming.stackexchange.com/a/202021",
+    "Site": "gaming.stackexchange.com",
+    "Title": "mp_tournament 1; mp_tournament_restart",
+    "Body": "<p>mp_tournament 1; mp_tournament_restart</p>",
+    "TimeStamp": "\/Date(1421430321435)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2753
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 192
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917518",
+    "PostUrl": "http://askubuntu.com/a/574493",
+    "Site": "askubuntu.com",
+    "Title": "try to disable secure boot in bios config ",
+    "Body": "<p>try to disable secure boot in bios config </p>",
+    "TimeStamp": "\/Date(1421430205971)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2752
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 191
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "askubuntu.com",
+        "Score": 7.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917483",
+    "PostUrl": "http://stackoverflow.com/a/27989671",
+    "Site": "stackoverflow.com",
+    "Title": "If nothing helps, try rebuild your project :). It helped in my scenario.",
+    "Body": "<p>If nothing helps, try rebuild your project :). It helped in my scenario.</p>",
+    "TimeStamp": "\/Date(1421430017342)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2751
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917467",
+    "PostUrl": "http://unix.stackexchange.com/a/33442",
+    "Site": "unix.stackexchange.com",
+    "Title": "Do no use 'DE' .. just write DE,CA,UK, like this, without quotes",
+    "Body": "<p>Do no use 'DE' .. just write DE,CA,UK, like this, without quotes</p>",
+    "TimeStamp": "\/Date(1421429975175)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2750
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917466",
+    "PostUrl": "http://gaming.stackexchange.com/a/202019",
+    "Site": "gaming.stackexchange.com",
+    "Title": "that is absolutely stupid. my first ps3 went kaput and will not read blu...",
+    "Body": "<p>that is absolutely stupid. my first ps3 went kaput and will not read bluray discs anymore so i had to get a new ps3. i was hoping i could transfer my game saves and trophies and everything to the new one but surprise surprise. i cant play my old characters anymore. there is literally no way. i am extremely pissed off.</p>",
+    "TimeStamp": "\/Date(1421429973156)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 190
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917438",
+    "PostUrl": "http://stackoverflow.com/questions/27989630",
+    "Site": "stackoverflow.com",
+    "Title": "Need help to refactor this scala method in functional programming style?",
+    "Body": "<p>I have this scala method that build a Map from some parameters:</p>\n\n<pre><code>def foo(name: Option[String], age: Option[Int], hasChilds: Option[Boolean], childs: Option[List[Map[String, Any]]]): Map[String,Any] = {\n    var m = Map[String, Any]()\n\n    if (!name.isEmpty) m += (\"name\" -> name.get)\n    if (!age.isEmpty) m += (\"age\" -> age.get)\n    if (!hasChilds.isEmpty) m += (\"hasChilds\" -> hasChilds.get)\n    if (!childs.isEmpty) m += (\"childs\" -> childs.get)\n\n    m\n}\n</code></pre>\n\n<p>I wonder if there is a way to refactor the code in more functional style? </p>\n\n<p>Is it possible to eleminate the using of <code>var</code> in this case?</p>",
+    "TimeStamp": "\/Date(1421429855416)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)(need|some)( halp| help| answer)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 7,
+        "FPCount": 9,
+        "CaughtCount": 217
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i:need help|help me)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 24,
+        "FPCount": 14,
+        "CaughtCount": 397
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1145
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)^need",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.5906382,
+        "TPCount": 4,
+        "FPCount": 12,
+        "CaughtCount": 408
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\b(help|halp)\\b",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 9.253393,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917428",
+    "PostUrl": "http://math.stackexchange.com/questions/1106951",
+    "Site": "math.stackexchange.com",
+    "Title": "I use this skin care formula properly",
+    "Body": "<p>I use this skin care formula properly and continually follow its directions properly so I may get varied skin beauties simply through such safe method. Whole skin formula of Absolute Derma having ability to soak up into skin layers and will reach to the face properly through such safe method surprisingly. its powerful peptides begin commutation all skin damages properly and makes skin lovely by nutritive skin cells surprisingly and it absolutely was quit unimaginable on behalf of me as a result of all its cells becomes lovely and become gorgeous overall gently.</p>\n\n<p><a href=\"http://patch.com/california/unioncity/free-absolute-derma-trial-only-here-must-read\" rel=\"nofollow\">http://patch.com/california/unioncity/free-absolute-derma-trial-only-here-must-read</a></p>",
+    "TimeStamp": "\/Date(1421429787994)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)\\bcare(ing)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 2,
+        "FPCount": 11,
+        "CaughtCount": 17
+      },
+      {
+        "Type": 0,
+        "Regex": "(?i)skin care",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 2,
+        "FPCount": 0,
+        "CaughtCount": 3
+      },
+      {
+        "Type": 0,
+        "Regex": "(?i)\\bskin\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 7,
+        "FPCount": 12,
+        "CaughtCount": 29
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917416",
+    "PostUrl": "http://crypto.stackexchange.com/a/22454",
+    "Site": "crypto.stackexchange.com",
+    "Title": "Sorry, can't comment, but what have you tried? Vigenere maybe?",
+    "Body": "<p>Sorry, can't comment, but what have you tried? Vigenere maybe?</p>",
+    "TimeStamp": "\/Date(1421429673535)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2749
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917415",
+    "PostUrl": "http://crypto.stackexchange.com/questions/22453",
+    "Site": "crypto.stackexchange.com",
+    "Title": "I have a keyword and cipher text but cannot decode it please help!",
+    "Body": "<p>coded text:  ij gj hnev xudmyx hn igim umif obaxidyw kxzq si</p>\n\n<p>the key is JULIET, but i cannot figure out how it is used. Any help would be awesome!</p>",
+    "TimeStamp": "\/Date(1421429673181)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1144
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917411",
+    "PostUrl": "http://programmers.stackexchange.com/questions/270330",
+    "Site": "programmers.stackexchange.com",
+    "Title": "Help with static checking of signed longs and Java 8 “pseudo-unsigned” longs",
+    "Body": "<p>How can I use the pseudo-unsigned longs in Java 8 without all the bugs I've been having to hunt down?</p>\n\n<p>I know of the Long.divideUnsigned()/compareUnsigned() functions (and use them -- this is part of the problem), but does anybody know of anything that might help codify them a bit more statically and do some type checking on them?</p>\n\n<p>Such as an annotation system (the JSR for unsigned functions says this is possible) or static Lint-like checker that can help me out a little with some warnings?</p>\n\n<p>My two big issues right now are comparisons involving mixed types (such as a -1 comparing greater than a positive number) and unwanted sign extensions (\"long masklow = 0xFFFFFFFF\" does not do what you would like it to).</p>\n\n<p>(I was told on StackOverflow that questions about tools and libraries are inappropriate there, so I'm trying here, although I think this probably should be there, and if not there or here, then can somebody please direct me to the proper place?)</p>",
+    "TimeStamp": "\/Date(1421429638748)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1143
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917408",
+    "PostUrl": "http://stackoverflow.com/a/27989552",
+    "Site": "stackoverflow.com",
+    "Title": "Try using positive look-ahead: /#(?=([^#]+))/g",
+    "Body": "<p>Try using positive look-ahead: <code>/#(?=([^#]+))/g</code></p>",
+    "TimeStamp": "\/Date(1421429614719)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2748
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917379",
+    "PostUrl": "http://english.stackexchange.com/a/221980",
+    "Site": "english.stackexchange.com",
+    "Title": "Campeón, sin duda \"it has to be them\". ",
+    "Body": "<p>Campeón, sin duda \"it has to be them\". </p>",
+    "TimeStamp": "\/Date(1421429462158)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2747
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "english.stackexchange.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917369",
+    "PostUrl": "http://worldbuilding.stackexchange.com/a/8828",
+    "Site": "worldbuilding.stackexchange.com",
+    "Title": "This reminded me of an xkcd what-if. \n\nhttps://what-if.xkcd.com/20/\n\nlot...",
+    "Body": "<p>This reminded me of an xkcd what-if. </p>\n\n<p><a href=\"https://what-if.xkcd.com/20/\" rel=\"nofollow\">https://what-if.xkcd.com/20/</a></p>\n\n<p>lots of people here saying that it's impossible but that's not strictly true, an asteroid going close enough to the speed of light could absolutely do something bad to the sun. </p>\n\n<p>It may have to be going at 99.9999999[keep adding 9's until you get enough] % of the speed of light but eventually you hit a point where the energy it hits the sun with is enough to cause something catastrophic... or the asteroid turns into a black hole thanks to it's own increase in energy as it approaches light speed and I'm pretty sure that even as a black hole it would do something nasty to the sun.  </p>\n\n<p>unfortunately the speeds/energy involved would have to be so insanely huge that it would be almost impossible to come up with something even vaguely plausible that could get the asteroid moving fast enough.</p>",
+    "TimeStamp": "\/Date(1421429324869)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 107,
+        "CaughtCount": 2737
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917366",
+    "PostUrl": "http://stackoverflow.com/a/17702839",
+    "Site": "stackoverflow.com",
+    "Title": "as i understood it so you won't think the value in memory is changed.\nin...",
+    "Body": "<p>as i understood it so you won't think the value in memory is changed.\nin c when you do x++ the value of x in memory changes.\nbut in python all numbers are immutable hence the address that x pointed as still has x not x+1. when you write x++ you would think that x change what really happens is that x refrence is changed to a location in memory where x+1 is stored or recreate this location if doe's not exists.  </p>",
+    "TimeStamp": "\/Date(1421429274094)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 189
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917358",
+    "PostUrl": "http://french.stackexchange.com/a/12565",
+    "Site": "french.stackexchange.com",
+    "Title": "Les dessins animés Disney (ou autre) sont parfaits je pense :)",
+    "Body": "<p>Les dessins animés Disney (ou autre) sont parfaits je pense :)</p>",
+    "TimeStamp": "\/Date(1421429186617)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 456,
+        "FPCount": 116,
+        "CaughtCount": 2746
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917355",
+    "PostUrl": "http://stackoverflow.com/questions/27989435",
+    "Site": "stackoverflow.com",
+    "Title": "D3 Natural Earth Maps: Error 6 Cannot GeoJSON driver cannot overwrite existing files",
+    "Body": "<p>I am trying to make a world map using this tutorial: <a href=\"http://www.tnoda.com/blog/2013-12-07\" rel=\"nofollow\">http://www.tnoda.com/blog/2013-12-07</a></p>\n\n<p>However, I run into problems of overwriting in step 3: excluding antarctica as well as simplifying the files in step 4.</p>\n\n<p>kahtee:ne_50m_admin_0_countries catharinereed$ ogr2ogr -f GeoJSON -simplify 0.2 countries.json ne_50m_admin_0_countries.shp\nERROR 6: The GeoJSON driver does not overwrite existing files.\nGeoJSON driver failed to create countries.json</p>\n\n<p>Any help would be greatly appreciated :) Thank you.</p>",
+    "TimeStamp": "\/Date(1421429156453)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)natural",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 3,
+        "FPCount": 30,
+        "CaughtCount": 158
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917309",
+    "PostUrl": "http://stackoverflow.com/a/10326965",
+    "Site": "stackoverflow.com",
+    "Title": "I hope this helps\n\n$(\"body\").css('cursor','wait');\n   //or\n   $(\"body\")....",
+    "Body": "<p>I hope this helps</p>\n\n<pre><code>$(\"body\").css('cursor','wait');\n   //or\n   $(\"body\").css('cursor','progress');\n</code></pre>\n\n<p>greetings</p>",
+    "TimeStamp": "\/Date(1421428945856)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 6,
+        "FPCount": 4,
+        "CaughtCount": 46
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917298",
+    "PostUrl": "http://stackoverflow.com/a/27989351",
+    "Site": "stackoverflow.com",
+    "Title": "var a = $(\".jstree-icon\").next().children().children().attr(\"id\");\nif(a ...",
+    "Body": "<pre><code>var a = $(\".jstree-icon\").next().children().children().attr(\"id\");\nif(a === \"unit\") {\n //do something\n }\n</code></pre>",
+    "TimeStamp": "\/Date(1421428875580)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 188
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917297",
+    "PostUrl": "http://stackoverflow.com/a/27989008",
+    "Site": "stackoverflow.com",
+    "Title": "try: \n\n$(this).find(\".jstree-leaf\").each(function () { console.log($(thi...",
+    "Body": "<p>try: </p>\n\n<pre><code>$(this).find(\".jstree-leaf\").each(function () { console.log($(this).attr('id'))});\n</code></pre>",
+    "TimeStamp": "\/Date(1421428875136)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 187
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917249",
+    "PostUrl": "http://gis.stackexchange.com/questions/130575",
+    "Site": "gis.stackexchange.com",
+    "Title": "What's your geographic information systems question? Be specific",
+    "Body": "<p>I am trying to orthorectify satellite imagery with a DEM in ArcMap. I have already georeferenced the raster.</p>\n\n<p>The imagery came with an RPC TXT file, but when I change the name of the RPC file to match the new, georeferenced raster image (by adding a \"1\"), the tile is completely shifted and partly clipped when I use the \"Create Ortho Corrected Raster Dataset\" tool.</p>\n\n<p>Original file name: *******0004.tif\nNew file name:      *******00041.tif (I added the \"1\" to RPC file to match this).</p>\n\n<p>Do I have bad RPC data? </p>\n\n<p>Thank you for your help</p>",
+    "TimeStamp": "\/Date(1421428573825)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)question",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 5,
+        "FPCount": 22,
+        "CaughtCount": 1479
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917241",
+    "PostUrl": "http://sound.stackexchange.com/a/19885",
+    "Site": "sound.stackexchange.com",
+    "Title": "chances are it does work since its a top of the line device\n\ni have been...",
+    "Body": "<p>chances are it does work since its a top of the line device</p>\n\n<p>i have been looking into using microphones with android, i was able to plug in a guitar straight in through the headphone jack and record it as well as use a microphone to record using several patch cables so you really dont even need a usb soundcard</p>",
+    "TimeStamp": "\/Date(1421428498072)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 25,
+        "FPCount": 2,
+        "CaughtCount": 186
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2917240",
+    "PostUrl": "http://sound.stackexchange.com/questions/17814",
+    "Site": "sound.stackexchange.com",
+    "Title": "Field recording with android phone and external preamp/help testing",
+    "Body": "<p>So i will be upgrading my phone soon(galaxy s3), and yesterday i found this app <a href=\"https://play.google.com/store/apps/details?id=com.extreamsd.usbaudiorecorderpro&hl=lt\" rel=\"nofollow\">https://play.google.com/store/apps/details?id=com.extreamsd.usbaudiorecorderpro&hl=lt</a>\nand to my surprise in compatibility list(http://www.extreamsd.com/USBAudioRecorderPRO/) i found that sound devices mixpre-d works with this app, the problem is they don't tell what phone they used to test this...maybe someone that has s3 and mixpre-d can download trial version of the app, and confirm if it works or not? :)</p>",
+    "TimeStamp": "\/Date(1421428495924)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1142
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
     "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2916826",
     "PostUrl": "http://stackoverflow.com/questions/27988600",
     "Site": "stackoverflow.com",
