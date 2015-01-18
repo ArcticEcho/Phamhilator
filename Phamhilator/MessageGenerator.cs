@@ -13,10 +13,11 @@ namespace Phamhilator
             if (info == null || post == null) { return null; }
 
             var name = PostFetcher.EscapeString(post.AuthorName, "");
-            var author = String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + ")";
+            var author = String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink;
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.EscapeString(post.Title, "");
             var accuracy = "";
             var fullScanFailed = "";
+            var postScore = "";
 
             if (info.Accuracy == 0 && post.PopulateExtraDataFailed)
             {
@@ -34,16 +35,27 @@ namespace Phamhilator
                 fullScanFailed = " FSF)";
             }
 
+            if (!post.PopulateExtraDataFailed)
+            {
+                author += " \"Rep: " + post.AuthorRep + "\")";
+                postScore = " \"Score: " + post.Score + "\")";
+            }
+            else
+            {
+                author += ")";
+                postScore = ")";
+            }
+
             switch (info.Type)
             {
                 case PostType.BadTagUsed:
                 {
-                    return ": " + FormatTags(info.BadTags) + "| [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
+                    return ": " + FormatTags(info.BadTags) + "| [" + title + "](" + post.Url + postScore + ", by " + author + ", on `" + post.Site + "`.";
                 }
 
                 default:
                 {
-                    return " **Q**" + accuracy + fullScanFailed + ": [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
+                    return " **Q**" + accuracy + fullScanFailed + ": [" + title + "](" + post.Url + postScore + ", by " + author + ", on `" + post.Site + "`.";
                 }
             }
         }
@@ -53,11 +65,11 @@ namespace Phamhilator
             if (info == null || post == null) { return null; }
 
             var name = PostFetcher.EscapeString(post.AuthorName, "");
-            var author = String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + ")";
+            var author = String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + " \"Rep: " + post.AuthorRep + "\")";
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.EscapeString(post.Title, " ");
             var accuracy = info.Accuracy == 0 ? "" : " (" + Math.Round(info.Accuracy, 1) + "%)";
 
-            return " **A**" + accuracy + ": [" + title + "](" + post.Url + "), by " + author + ", on `" + post.Site + "`.";
+            return " **A**" + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.";
         }
 
 

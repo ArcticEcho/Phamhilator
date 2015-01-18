@@ -8,7 +8,7 @@ namespace Phamhilator
     {
         public static bool IsSpam(Answer post, out AnswerAnalysis info)
         {
-            var filtersUsed = 0;
+            var termsFound = 0;
             info = new AnswerAnalysis();
 
             // Loop over blacklist.
@@ -23,13 +23,13 @@ namespace Phamhilator
                     info.BlackTermsFound.Add(blackTerm);
 
                     blackTerm.CaughtCount++;
-                    filtersUsed++;
+                    termsFound++;
                 }
             }
 
             // Otherwise, if no black listed terms were found, assume the post is clean.
 
-            if (filtersUsed == 0) { return false; }
+            if (termsFound == 0) { return false; }
 
             // Loop over whitelist.
 
@@ -41,13 +41,13 @@ namespace Phamhilator
                     info.WhiteTermsFound.Add(whiteTerm);
                     info.FiltersUsed.Add(FilterType.AnswerWhiteSpam);
 
-                    filtersUsed++;
+                    termsFound++;
                 }
             }
 
             info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
             info.FiltersUsed.Add(FilterType.AnswerBlackSpam);
-            info.Accuracy /= filtersUsed;
+            info.Accuracy /= termsFound;
             info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackSpam].HighestScore;
             info.Accuracy *= 100;
             info.Type = PostType.Spam;
@@ -57,7 +57,7 @@ namespace Phamhilator
 
         public static bool IsLowQuality(Answer post, out AnswerAnalysis info)
         {
-            var filtersUsed = 0;
+            var termsFound = 0;
             info = new AnswerAnalysis();
 
             // Loop over blacklist.
@@ -72,13 +72,13 @@ namespace Phamhilator
                     info.BlackTermsFound.Add(blackTerm);
 
                     blackTerm.CaughtCount++;
-                    filtersUsed++;
+                    termsFound++;
                 }
             }
 
             // Otherwise, if no blacklist terms were found, assume the post is clean.
 
-            if (filtersUsed == 0) { return false; }
+            if (termsFound == 0) { return false; }
 
             // Loop over whitelist.
 
@@ -90,13 +90,13 @@ namespace Phamhilator
                     info.WhiteTermsFound.Add(whiteTerm);
                     info.FiltersUsed.Add(FilterType.AnswerWhiteLQ);
 
-                    filtersUsed++;
+                    termsFound++;
                 }
             }
 
             info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
             info.FiltersUsed.Add(FilterType.AnswerBlackLQ);
-            info.Accuracy /= filtersUsed;
+            info.Accuracy /= termsFound;
             info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackLQ].HighestScore;
             info.Accuracy *= 100;
             info.Type = PostType.LowQuality;
@@ -106,7 +106,7 @@ namespace Phamhilator
 
         public static bool IsOffensive(Answer post, out AnswerAnalysis info)
         {
-            var filtersUsed = 0;
+            var termsFound = 0;
             info = new AnswerAnalysis();
 
             // Loop over blacklist.
@@ -121,13 +121,13 @@ namespace Phamhilator
                     info.BlackTermsFound.Add(blackTerm);
 
                     blackTerm.CaughtCount++;
-                    filtersUsed++;
+                    termsFound++;
                 }
             }
 
             // Otherwise, if no blacklist terms were found, assume the post is clean.
 
-            if (filtersUsed == 0) { return false; }
+            if (termsFound == 0) { return false; }
 
             // Loop over whitelist.
 
@@ -139,13 +139,13 @@ namespace Phamhilator
                     info.WhiteTermsFound.Add(whiteTerm);
                     info.FiltersUsed.Add(FilterType.AnswerWhiteOff);
 
-                    filtersUsed++;
+                    termsFound++;
                 }
             }
 
             info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
             info.FiltersUsed.Add(FilterType.AnswerBlackOff);
-            info.Accuracy /= filtersUsed;
+            info.Accuracy /= termsFound;
             info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackOff].HighestScore;
             info.Accuracy *= 100;
             info.Type = PostType.Offensive;
@@ -155,7 +155,7 @@ namespace Phamhilator
 
         public static bool IsBadUsername(Answer post, out AnswerAnalysis info)
         {
-            var filtersUsed = 0;
+            var termsFound = 0;
             info = new AnswerAnalysis();
 
             // Loop over blacklist.
@@ -170,13 +170,13 @@ namespace Phamhilator
                     info.BlackTermsFound.Add(blackTerm);
 
                     blackTerm.CaughtCount++;
-                    filtersUsed++;
+                    termsFound++;
                 }
             }
 
             // Otherwise, if no blacklist terms were found, assume the post is clean.
 
-            if (filtersUsed == 0) { return false; }
+            if (termsFound == 0) { return false; }
 
             // Loop over whitelist.
 
@@ -188,13 +188,13 @@ namespace Phamhilator
                     info.WhiteTermsFound.Add(whiteTerm);
                     info.FiltersUsed.Add(FilterType.AnswerWhiteName);
 
-                    filtersUsed++;
+                    termsFound++;
                 }
             }
 
             info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
             info.FiltersUsed.Add(FilterType.AnswerBlackName);
-            info.Accuracy /= filtersUsed;
+            info.Accuracy /= termsFound;
             info.Accuracy /= GlobalInfo.BlackFilters[FilterType.AnswerBlackName].HighestScore;
             info.Accuracy *= 100;
             info.Type = PostType.BadUsername;

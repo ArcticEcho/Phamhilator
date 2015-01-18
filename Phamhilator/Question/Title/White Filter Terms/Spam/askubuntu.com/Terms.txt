@@ -84,7 +84,7 @@
     "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
     "IsAuto": false,
     "Site": "askubuntu.com",
-    "Score": 10.6962967,
+    "Score": 11.1333342,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

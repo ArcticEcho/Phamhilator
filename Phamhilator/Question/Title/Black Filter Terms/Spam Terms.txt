@@ -6,7 +6,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 2,
-    "CaughtCount": 12
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)\\bbeautiful(est)?\\b",
@@ -15,7 +15,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 7,
-    "CaughtCount": 12
+    "CaughtCount": 13
   },
   {
     "Regex": "(?i)\\bwe lost\\b",
@@ -131,8 +131,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 6,
-    "CaughtCount": 19
+    "FPCount": 8,
+    "CaughtCount": 21
   },
   {
     "Regex": "(?i)\\bget your\\b",
@@ -213,7 +213,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 6,
-    "CaughtCount": 29
+    "CaughtCount": 30
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -301,9 +301,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 18.0,
-    "TPCount": 19,
-    "FPCount": 48,
-    "CaughtCount": 98
+    "TPCount": 20,
+    "FPCount": 52,
+    "CaughtCount": 104
   },
   {
     "Regex": "(?i)the perfect",
@@ -420,7 +420,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 9
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)royalty free",
@@ -500,8 +500,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 2
+    "FPCount": 2,
+    "CaughtCount": 3
   },
   {
     "Regex": "(?i)h( *)?o( *)?w( *)?t( *)?o( *)?w( *)?a( *)?t( *)?c( *)?h",
@@ -546,7 +546,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 14,
-    "CaughtCount": 58
+    "CaughtCount": 59
   },
   {
     "Regex": "(?i)^also",
@@ -563,8 +563,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 2,
-    "CaughtCount": 7
+    "FPCount": 3,
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)lose weight",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 7,
     "FPCount": 9,
-    "CaughtCount": 64
+    "CaughtCount": 68
   },
   {
     "Regex": "(?i)vashikaran",
@@ -734,8 +734,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 12,
-    "CaughtCount": 18
+    "FPCount": 14,
+    "CaughtCount": 20
   },
   {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
@@ -915,7 +915,7 @@
     "Score": 10.0,
     "TPCount": 9,
     "FPCount": 0,
-    "CaughtCount": 10
+    "CaughtCount": 11
   },
   {
     "Regex": "2348064038119",
@@ -932,8 +932,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 31,
-    "CaughtCount": 158
+    "FPCount": 33,
+    "CaughtCount": 167
   },
   {
     "Regex": "\\$\\d+",
@@ -941,8 +941,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 3,
-    "FPCount": 34,
-    "CaughtCount": 444
+    "FPCount": 35,
+    "CaughtCount": 465
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
@@ -951,7 +951,7 @@
     "Score": 10.0,
     "TPCount": 16,
     "FPCount": 3,
-    "CaughtCount": 50
+    "CaughtCount": 53
   },
   {
     "Regex": "(?i)high quality",

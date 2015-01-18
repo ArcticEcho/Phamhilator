@@ -33,47 +33,38 @@ namespace Phamhilator
             {
                 new ReplyMessage(String.Concat("`", GlobalInfo.Status, "`." /*" @ ", GlobalInfo.CommitFormatted, "(https://github.com/ArcticEcho/Phamhilator/commit/", GlobalInfo.CommitHash, ").")*/))
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex("(?i)^(info(rmation)?|about)$", cmdRegexOptions), command => new[]
             {
                 new ReplyMessage("[`Phamhilator`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + GlobalInfo.OwnerNames + ".`")
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex("(?i)^help$", cmdRegexOptions), command => new[]
             {
                 new ReplyMessage("`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands) `for a full list of commands.`")
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex("(?i)^(help (add|del)|(add|del) help)$", cmdRegexOptions), command => new[]
             {
                 new ReplyMessage("`To add or delete a term, use \">>(add/del)-(b/w)-(a/qt/qb)-(lq/spam/off/name) (if w, term's site name) {regex-term}\". To add or delete a tag, use \">>(add/remove) {site-name} {tag-name} {link}\".`")
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex("(?i)^(help edit|edit help)$", cmdRegexOptions), command => new[]
             {
                 new ReplyMessage("`To edit a term, use \">>edit-(b/w)-(a/qt/qb)-(lq/spam/off/name) (if w, term's site name) {old-term}¬¬¬{new-term}\".`")
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex("(?i)^(help auto|auto help)$", cmdRegexOptions), command => new[]
             {
                 new ReplyMessage("`To add an automatic term, use \">>auto-b-(a/qt/qb)-(lq/spam/off/name)(-p) {regex-term}\". Use \"-p\" if the change should persist past the bot's restart.`")
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex("(?i)^(help list|list help|commands)$", cmdRegexOptions), command => new[]
             {
                 new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status, env & log.\n    Supported replies: (fp/tp/tpa), why, ask, clean, del & log.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex("(?i)^stats$", cmdRegexOptions), command => new []
             {
                 new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Posts caught (last 7 days): " + GlobalInfo.PostsCaught + ".\n    Terms: " + GlobalInfo.TermCount + ".\n    Posts checked: " + GlobalInfo.Stats.TotalCheckedPosts + ".\n    TPs acknowledged: " + GlobalInfo.Stats.TotalTPCount + ".\n    FPs acknowledged: " + GlobalInfo.Stats.TotalFPCount + ".\n    Uptime: " + (DateTime.UtcNow - GlobalInfo.UpTime) + ".", false)
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex(@"(?i)^(terms|why)\b", cmdRegexOptions), command => new[]
             {
                 GetTerms()
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex("(?i)^env$", cmdRegexOptions), command =>
             {
                 var totalMem = Math.Round(new ComputerInfo().TotalPhysicalMemory / 1024f / 1024f / 1024f, 1);
@@ -83,7 +74,6 @@ namespace Phamhilator
                     new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Cores (logical): " + Environment.ProcessorCount + "\n    Total RAM: " +  totalMem + "GB\n    OS: " + Environment.OSVersion.VersionString + "\n    64-bit: " + Environment.Is64BitOperatingSystem + "\n    CLR version: " + Environment.Version, false)
                 };
             }, CommandAccessLevel.NormalUser),
-
             new ChatCommand(new Regex(@"(?i)^log( \d+)?$", cmdRegexOptions), command =>
             {
                 var entryID = Regex.Replace(command, @"\D", "");

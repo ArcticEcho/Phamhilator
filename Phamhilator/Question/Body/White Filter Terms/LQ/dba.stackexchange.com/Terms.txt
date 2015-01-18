@@ -210,7 +210,7 @@
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 8.336444,
+    "Score": 8.931905,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -264,7 +264,7 @@
     "Regex": "(?s-m)^.{0,100}$",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 15.8758974,
+    "Score": 17.0678043,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
