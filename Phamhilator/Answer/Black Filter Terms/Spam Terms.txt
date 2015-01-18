@@ -555,6 +555,6 @@
     "Score": 10.8585472,
     "TPCount": 0,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   }
 ]

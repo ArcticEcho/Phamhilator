@@ -1,5 +1,1916 @@
 [
   {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923198",
+    "PostUrl": "http://stackoverflow.com/questions/28015295",
+    "Site": "stackoverflow.com",
+    "Title": "Need help returning data from a QSqlTabelModel in a QTableView",
+    "Body": "<p>I am creating a Program using PyQt and SQL which a user is presented with two tables. One shows a table of products, the other shows the products in the current order. The Product Table and Order Table are  SQL Tables created in a .db file.At the moment, The Product Table is populated and the Order Table is not. Currently the User can select an entire row in the Product Table and when the user clicks a button, I want the row in which the user selected to be put into the Order Table. I need help in getting the values inside the row selected (This is easily done using a <code>QTableWidget</code>but im not sure how to do it using a <code>QSqlTabelModel</code> inside a <code>QTableView</code>. Here is an example of the code:</p>\n\n<pre><code>self.main_layout = QVBoxLayout()\n\nself.ProductTable = QTableView()\n\nself.OrderTable = QTableView()\n\nself.model = QSqlTableModel()\n\nself.AddButton = QPushButton(\"Add Product To Order\")\nself.AddButton.clicked.connect(self.add_product_to_order)\n\nself.model.setTable(\"Product\")\nself.model.select()\nself.ProductTable.setmodel(self.model)\n\nself.model.setTable(\"Order\")\nself.model.select()`\nself.OrderTable.setModel(self.model)\n\nself.main_layout.addWidget(self.ProductTable)\nself.main_layout.addWidget(self.AddButton)\nself.main_layout.addWidget(self.OrderTable)\n\ndef add_product_to_order(self):\n    pass\n</code></pre>",
+    "TimeStamp": "\/Date(1421618432922)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)(need|some)( halp| help| answer)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 7,
+        "FPCount": 9,
+        "CaughtCount": 226
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i:need help|help me)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 24,
+        "FPCount": 14,
+        "CaughtCount": 413
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1196
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)^need",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.5906382,
+        "TPCount": 4,
+        "FPCount": 12,
+        "CaughtCount": 420
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\b(help|halp)\\b",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 9.253393,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 8.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923196",
+    "PostUrl": "http://electronics.stackexchange.com/questions/149800",
+    "Site": "electronics.stackexchange.com",
+    "Title": "Gizduino(Arduino clone) Vin pin Not working",
+    "Body": "<p>I have a gizduino(arduino clone) used on my project. I use an adaptor that is rated 9V 2A as my source going directly to the Vin pin and GND. I have tested my circuit on the few last weeks without problem and testing if I can receive serial message from the device which needs both Vin and USB port working and it also works without problem. But when I have tested it today, the Vin pin wont work and wont power my board. But when I use USB, it is powering. I think something shorted my Vin pin and GND while I am plugging it. Below is the schematic provided by the seller of the board. Can i do something to revive my board and use the Vin pin again? </p>\n\n<p><img src=\"http://i.stack.imgur.com/QK38s.png\" alt=\"enter image description here\">\n<img src=\"http://i.stack.imgur.com/TrRs3.png\" alt=\"enter image description here\"></p>",
+    "TimeStamp": "\/Date(1421618044172)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 1,
+        "FPCount": 26,
+        "CaughtCount": 2898
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923171",
+    "PostUrl": "http://superuser.com/a/866412",
+    "Site": "superuser.com",
+    "Title": "it is because atheros ar9285 network adapter is a piece of shit",
+    "Body": "<p>it is because atheros ar9285 network adapter is a piece of shit</p>",
+    "TimeStamp": "\/Date(1421617753485)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2872
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 259
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923154",
+    "PostUrl": "http://askubuntu.com/a/575194",
+    "Site": "askubuntu.com",
+    "Title": "using \nhttp://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-manageme...",
+    "Body": "<p>using \n<a href=\"http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html\" rel=\"nofollow\">http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html</a>\nfor power management\nconfig in /etc/defaults/tlp</p>",
+    "TimeStamp": "\/Date(1421617517333)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 258
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923143",
+    "PostUrl": "http://askubuntu.com/questions/575192",
+    "Site": "askubuntu.com",
+    "Title": "Connecting to archive.canonical.com (91.189.92.191)",
+    "Body": "<p>When i do</p>\n\n<pre><code>sudo apt-get update\n</code></pre>\n\n<p>i get stuck on 100% </p>\n\n<pre><code>[Connecting to archive.canonical.com (91.189.92.191)]\n</code></pre>\n\n<p>what is the problem?﻿</p>\n\n<p>Ubuntu 14.04 </p>",
+    "TimeStamp": "\/Date(1421617002896)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 18.0,
+        "TPCount": 20,
+        "FPCount": 52,
+        "CaughtCount": 105
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 100,
+        "Regex": "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+        "IsAuto": false,
+        "Site": "askubuntu.com",
+        "Score": 10.1333342,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923140",
+    "PostUrl": "http://ell.stackexchange.com/questions/47128",
+    "Site": "ell.stackexchange.com",
+    "Title": "it's all muscle and no fluff — what does that really mean?",
+    "Body": "<p>Example with a context:</p>\n\n<blockquote>\n  <p>You're beyond the basics, so dive right in and customize, automate and extend Access—using Visual Basic for Applications (VBA). This supremely organized reference is packed with hundreds of timesaving solutions, troubleshooting tips and workarounds. <strong>It's all muscle and no fluff.</strong> Discover how the experts use VBA to exploit the power of Access and challenge yourself to new levels of mastery.</p>\n</blockquote>\n\n<p>What do they really mean by that?</p>",
+    "TimeStamp": "\/Date(1421616880539)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)\\bmuscle(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 16,
+        "FPCount": 3,
+        "CaughtCount": 54
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923138",
+    "PostUrl": "http://german.stackexchange.com/questions/20166",
+    "Site": "german.stackexchange.com",
+    "Title": "Colloquial expression for penis",
+    "Body": "<p>What's the best way to refer to a penis in a casual, but not necessarily overtly sexual, way, akin to saying 'dick' in English?</p>\n\n<p>Here is an example. \"[...] I had a catheter up my dick and I just lay there [...] with my whole shit exposed.\" I feel confidant that no one would expect Ice-T to <a href=\"https://books.google.cl/books?id=mxxRFFNnDpcC&pg=PA81&dq=%22my+dick%22+pain&hl=en&sa=X&ei=IQm4VLjXIMulyAScq4HgBw&ved=0CCAQ6AEwATgy#v=onepage&q&f=false\" rel=\"nofollow\">refer to his male member</a> as a penis while recounting his \"gangster life,\" especial when the phrase \"fucked up\" follows shortly afterwards. I would also not expect anyone to imagine he has it's sexual function in the forefront of his mind (he may be concerned for it on a sexual level, but a body in pain is first of all a body in pain, and not an apparatus in pain). </p>",
+    "TimeStamp": "\/Date(1421616695835)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Type": 2,
+        "Regex": "(?i)\\bpenis\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 0,
+        "FPCount": 1,
+        "CaughtCount": 2
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923137",
+    "PostUrl": "http://stackoverflow.com/a/28015011",
+    "Site": "stackoverflow.com",
+    "Title": "Problem solved by upgrading the Cinnamon desktop",
+    "Body": "<p>Problem solved by upgrading the Cinnamon desktop</p>",
+    "TimeStamp": "\/Date(1421616449221)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2868
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923135",
+    "PostUrl": "http://askubuntu.com/a/575188",
+    "Site": "askubuntu.com",
+    "Title": "Format it as ntfs maybe? if it doesnt work look the code up.",
+    "Body": "<p>Format it as ntfs maybe? if it doesnt work look the code up.</p>",
+    "TimeStamp": "\/Date(1421615788087)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2867
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923134",
+    "PostUrl": "http://cooking.stackexchange.com/a/37503",
+    "Site": "cooking.stackexchange.com",
+    "Title": "You can soak it up with slices of Bread. I just did it.",
+    "Body": "<p>You can soak it up with slices of Bread. I just did it.</p>",
+    "TimeStamp": "\/Date(1421615772376)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2866
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923133",
+    "PostUrl": "http://gaming.stackexchange.com/a/202257",
+    "Site": "gaming.stackexchange.com",
+    "Title": "You must beat your highscore to get him.",
+    "Body": "<p>You must beat your highscore to get him.</p>",
+    "TimeStamp": "\/Date(1421615728335)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2865
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923132",
+    "PostUrl": "http://outdoors.stackexchange.com/questions/7614",
+    "Site": "outdoors.stackexchange.com",
+    "Title": "Salomon BBR 10.0 for Beginner",
+    "Body": "<p>I have only skied couple times and with the lesson plan I am getting ski pass next weekend!</p>\n\n<p>I obviously don't want to rent Ski equipment all the time so I am looking to own one. </p>\n\n<p>After doing some research, I don't feel like getting completely beginner skis as most likely I will have to upgrade next year. </p>\n\n<p>Eventually, I feel like I might want to do little bit of everything and Salomon BBR 10.0 really caught my eyes. I was thinking of Salomon BBR 8.9 first, but 10.0 seems just better than 8.9. </p>\n\n<p>I know I might have to struggle first couple times as I am only beginner and this skis is made for intermediate - advanced skiers. </p>\n\n<p>What do you guys think? Any suggestions and recommendations will be highly appreciated :) </p>",
+    "TimeStamp": "\/Date(1421615532407)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i:noob|beginner)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 2,
+        "FPCount": 3,
+        "CaughtCount": 102
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923131",
+    "PostUrl": "http://apple.stackexchange.com/a/130919",
+    "Site": "apple.stackexchange.com",
+    "Title": "Go to Settings and click iCloud and turn on Calendars",
+    "Body": "<p>Go to Settings and click iCloud and turn on Calendars</p>",
+    "TimeStamp": "\/Date(1421615495720)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2864
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923122",
+    "PostUrl": "http://opendata.stackexchange.com/questions/4339",
+    "Site": "opendata.stackexchange.com",
+    "Title": "What forums / boards do you use to answer open data questions?",
+    "Body": "<p>In NYC, we're wondering what forums and web boards do open data professionals use to answer questions around open data?</p>\n\n<p>CartoDB promotes the <a href=\"http://opendata.stackexchange.com/search?q=nyc\">GIS Stack Exchange</a>.\nBetaNYC has a <a href=\"https://docs.google.com/a/beta.nyc/spreadsheets/d/1R7O_FZLNB8VV5eoPDNATb-f0njjUsJwmz22cT_OB3fw/edit#gid=1589783907\" rel=\"nofollow\">spreadsheet listing NYC related email lists and websites</a>. </p>",
+    "TimeStamp": "\/Date(1421614781046)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)question",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 5,
+        "FPCount": 22,
+        "CaughtCount": 1541
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923112",
+    "PostUrl": "http://apple.stackexchange.com/questions/167950",
+    "Site": "apple.stackexchange.com",
+    "Title": "Tap titans help",
+    "Body": "<p>My phone recently broke and I got a new one, but my tap Titans game will not transfer. I had it on Game Center, which shows the stage that I was on and my achievements, but it is forcing me to start a new game. I've tried uninstalling and reinstalling but so far nothing has worked. Is there any way for me to recover my game?</p>",
+    "TimeStamp": "\/Date(1421614270587)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1195
+      },
+      {
+        "Type": 1,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 6,
+        "FPCount": 44,
+        "CaughtCount": 2105
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "apple.stackexchange.com",
+        "Score": 7.789632,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923111",
+    "PostUrl": "http://rpg.stackexchange.com/a/55579",
+    "Site": "rpg.stackexchange.com",
+    "Title": "The DMG has a great example of how to change classes into something enti...",
+    "Body": "<p>The DMG has a great example of how to change classes into something entirely new without actually destroying the game balance. It says one of the easier ways of \"making a new class\" is to change the spell list. In that way, the power level of the class isn't altered but it does feel different (it exemplifies the use of a Paladin to make a guardian, using arcane magic to protect a powerful sorcerer instead of divine magic to keep his Oath).</p>\n\n<p>So, here is my suggestion of how you're supposed to do it:</p>\n\n<h2>First Suggestion: Changing the traits of a Wizard and turning it into a Invoker:</h2>\n\n<ol>\n<li><p><strong>Use the wizard as baseline.</strong></p>\n\n<p>If your DM finds it's necessary, change the spellcasting ability to WIS as it was in D&D4e. What you will need to do is to take the Wizard Spell List and change it to make it feel the closest you can get to your old Invoker. Get every destructive spell that reminds you of your encounter and daily powers and eliminate things your invoker certainly wouldn't do (as raising undead).</p></li>\n<li><p><strong>Intuitive Magic</strong></p>\n\n<p>Change the trait of spells know. The Invoker is sort of a divine sorcerer. Therefore, it should feel that much as a wizard. I believe this class shouldn't be able to prepare spells and have potentially ilimited number of spells known, but it should work just like the sorcerer, having a number of spells to use according to the sorcerer's spell-list. You'll be sacrificing all the wizard's malleability for one extra cantrip and certainty that you'll always get new spells when you level up.</p></li>\n<li><p><strong>Change the spell foci</strong></p>\n\n<p>Just do it the same way it was with your Invoker Implements. Wizards use wands and crystal balls (I believe), you invoker though, will go for Rods and Staffs only, just like in 4e.</p></li>\n<li><p><strong>Choose the school of magic</strong></p>\n\n<p>As a DM, I'd limit it into something that would make it feel like you're using divine intuitive magic. Abjuration, evocation and divination are the ones I'd recommend for that matter.</p></li>\n<li><p><strong>Ritual caster feature</strong></p>\n\n<p>Invokers are supposed to be ritual casters. You already lost you ability to prepare magic. I'd rule that you'd start with one ritual known and everytime you learn new spells, you get to choose a new ritual. You still know less spells than the wizard that way and you get to keep a cool feature.</p></li>\n</ol>\n\n<p>I'm pretty sure those changes won't affect the power of your class and it's all made according to the DMG suggestions of how to change a class. If you change a few features and keep all the rest as suggested, it won't feel as a wizard nor as a sorcerer. Specially with your unique spell list.</p>\n\n<p>If you dislike it, there's a second simpler option that I dislike but it can work for you. </p>\n\n<h2>Reskin the sorcerer.</h2>\n\n<p>This is quite simple. Just change the description of your character. Sorcerers have great mechanics now that makes them feel like intuitive spell casters (sorcery points).</p>\n\n<p>And if you choose draconic magic, you can always say it's not draconic at all. If you get your dragon wings, you can describe it as angelical wings or wings of light. In the end it's a game about imagining it all anyways.</p>\n\n<p>I hope it was helpful.</p>",
+    "TimeStamp": "\/Date(1421614017266)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 7,
+        "Regex": "(?i)spell caster",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.8585472,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 1
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923109",
+    "PostUrl": "http://english.stackexchange.com/a/222341",
+    "Site": "english.stackexchange.com",
+    "Title": "What about Ustamerican? It doesn't sound bad at all. ",
+    "Body": "<p>What about Ustamerican? It doesn't sound bad at all. </p>",
+    "TimeStamp": "\/Date(1421613437833)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2863
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "english.stackexchange.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923108",
+    "PostUrl": "http://superuser.com/a/866393",
+    "Site": "superuser.com",
+    "Title": "When I convert with ImageMagick\n\n\"convert foo.NEF foo.jpg\"\n\nI get always...",
+    "Body": "<p>When I convert with ImageMagick</p>\n\n<p>\"convert foo.NEF foo.jpg\"</p>\n\n<p>I get always a picture with only 320x213 pixels instead of 4288x2848 pixels.</p>\n\n<p>Some idea, thanks.</p>",
+    "TimeStamp": "\/Date(1421613414064)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2826
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923106",
+    "PostUrl": "http://cs.stackexchange.com/a/37369",
+    "Site": "cs.stackexchange.com",
+    "Title": "All of us here know that we just love computer science! Without our pass...",
+    "Body": "<p>All of us here know that we just love computer science! Without our passion for it, we would never even have been bothered to adapt to its logical nature in the first place.</p>\n\n<p>As we continue to explore all the wonderful things we can accomplish with programming, we usually find ourselves intrigued in certain areas of it.</p>\n\n<p>Some may like front-end design because of their artistical nature. Some may like back-end computation because they love scalability for the masses. He or she may be working with some beautiful parallax design in web development. Or messing around with sockets in server design.</p>\n\n<p>Find a project that you'd like to start whether big or small. It's one of the best ways to gain mastery not only in a certain programming language, but, computer science itself.</p>\n\n<p>Screw the academic programming. One may learn about data structures, but he or she has never imagined a useful implementation for them. What can set you apart from \"those that just learn the basics\" is how you apply your knowledge. </p>\n\n<p>Instead of counting the words in a book, how about we count the occurrences of words in a collection of customer reviews about a certain product? Then maybe we can tell the inventors that their product was called \"shit\" and \"horrible\" numerous times!</p>\n\n<p>View some save files with a Hex Editor from a game you're playing, then turn that calculator you made in Java into something that lets people manipulate (read/write, the basics) desired values in his or her save file.</p>\n\n<p>The possibilities are endless when they are seen more than just pointless. Keep pursuing computer science and you'll soon reek of brilliance and won't even know it!</p>",
+    "TimeStamp": "\/Date(1421613314618)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Type": 9,
+        "Regex": "(?i)\\bshit\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 12,
+        "FPCount": 14,
+        "CaughtCount": 53
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923105",
+    "PostUrl": "http://anime.stackexchange.com/questions/18636",
+    "Site": "anime.stackexchange.com",
+    "Title": "Wat is this anime",
+    "Body": "<p>Ok i saw it as a gif but nonody knows what it is. Its shows girls surround this guy on a exam table it looks like and hes completly naked or so it looks like. Blond hair girl with brown eyes falls with her mouth open and looks like his penis went into her mouth bc he blushes and makes a sound. She comes up and licks her lips thts all i got. Please help i want to know what it is. THANK YOU!!</p>",
+    "TimeStamp": "\/Date(1421613218474)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 6,
+        "FPCount": 44,
+        "CaughtCount": 2104
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923104",
+    "PostUrl": "http://sharepoint.stackexchange.com/questions/8894",
+    "Site": "sharepoint.stackexchange.com",
+    "Title": "Using SyntaxHighlighter in SharePoint Wiki?",
+    "Body": "<p>Has anyone been able to get a package like SyntaxHighlighter to work with SharePoint wikis?</p>",
+    "TimeStamp": "\/Date(1421613081507)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 5,
+        "Regex": "(?s-m)^.{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.3197279,
+        "TPCount": 13,
+        "FPCount": 29,
+        "CaughtCount": 736
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923089",
+    "PostUrl": "http://askubuntu.com/a/575174",
+    "Site": "askubuntu.com",
+    "Title": "just edit the kernel parameter when booting by pressing e in the grub me...",
+    "Body": "<p>just edit the kernel parameter when booting by pressing <code>e</code> in the grub menu.</p>\n\n<p>then edit the line to the following from \"<code>quiet splash</code>\" to \"<code>noapic quiet splash</code>\"</p>\n\n<p>then you should add it to your grub file after installation.</p>",
+    "TimeStamp": "\/Date(1421612425506)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 255
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923085",
+    "PostUrl": "http://askubuntu.com/a/575172",
+    "Site": "askubuntu.com",
+    "Title": "I have exactly the same issue, with my Lenovo Yoga 2 (not pro)",
+    "Body": "<p>I have exactly the same issue, with my Lenovo Yoga 2 (not pro)</p>",
+    "TimeStamp": "\/Date(1421612250452)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2862
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923084",
+    "PostUrl": "http://diy.stackexchange.com/questions/26272",
+    "Site": "diy.stackexchange.com",
+    "Title": "What's the difference between Husky brand and HDX brand?",
+    "Body": "<p>At Home Depot I have noticed the advertising of HDX products lately that are really low price items including tools and other household things.  </p>\n\n<p>As far as I knew Home Depot already had their own products marketed under the \"Husky\" name.  From what I can tell the Husky tools seems to be made much better than the HDX tools, but is there really any difference between them?  And what's Home Depot's reasoning for starting another line of products rather than promoting the line they already have?</p>",
+    "TimeStamp": "\/Date(1421612202336)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)\\bbrand\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 1,
+        "FPCount": 6,
+        "CaughtCount": 31
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923083",
+    "PostUrl": "http://arduino.stackexchange.com/questions/8079",
+    "Site": "arduino.stackexchange.com",
+    "Title": "Multiple upload/ Synchronization problem",
+    "Body": "<p>I am trying to do an experiment with Arduino Uno r3 board plus a 2-channel relay shield. What I need to do is to alternatively turn on and off the relay shields. So, it requires multiple compile and upload of the program to assign values to corresponding pins. What I have seen by now is that uploading the program to Arduino is a kind of painful process and it requires nothing to be connected to pins 0 and 1 to prevent synchronization errors. So, I was wondering how I can do my experiment without having to mount/unmount relay shield each time I want to upload a new program into it.</p>\n\n<p>Thanks in advance </p>",
+    "TimeStamp": "\/Date(1421612181344)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 65,
+        "CaughtCount": 2494
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923081",
+    "PostUrl": "http://chemistry.stackexchange.com/questions/23908",
+    "Site": "chemistry.stackexchange.com",
+    "Title": "How to make Skin Color",
+    "Body": "<p>I am drawing a person, and I don't have skin color.<br>\nI have red, yellow, pink, purple, brown, orange, green, blue, grey, and black.<br>\nI'm using water markers.<br>\nHow can I mix my colors to make skin color?</p>",
+    "TimeStamp": "\/Date(1421612109987)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)\\bskin\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 8,
+        "FPCount": 12,
+        "CaughtCount": 30
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923080",
+    "PostUrl": "http://drupal.stackexchange.com/questions/144603",
+    "Site": "drupal.stackexchange.com",
+    "Title": "Change Domain — Getting 500 Server Error on Login",
+    "Body": "<p>I've been developing my drupal site in a subdirectory of my main site (www.mysite.com/newsite). I finally bought a URL and set it up (newsite.social). And it appears to have worked, when I go to my new .social domain, it loads the landing page, but whenever I try to log in or load another page, it gives me chrome's 500 Server Error. I can still log-in and use the site normally at the old www.mysite.com/newsite, but only load the landing page at the new domain.</p>\n\n<p>I've flushed the caches--no help. I've been trying to use what I've found from google searching (change the $base_url in the settings.php), but that doesn't work.</p>\n\n<p>Any help would be greatly appreciated. Thanks!</p>",
+    "TimeStamp": "\/Date(1421612047256)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 79,
+        "CaughtCount": 4746
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "drupal.stackexchange.com",
+        "Score": 6.8,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923068",
+    "PostUrl": "http://emacs.stackexchange.com/questions/7443",
+    "Site": "emacs.stackexchange.com",
+    "Title": "Mouse problem in org-mode export window",
+    "Body": "<p>When in <code>org-mode</code>, running the <code>export</code> command will open a windows with all the export options. However, my mouse scroll behaves erratically and I am not able to scroll down or move at all, not even by clicking on the scroll bars. (The problem is recurrent in both Linux and OS X, using latest <code>org-mode</code> version and GNU Emacs 24.4.1.)</p>\n\n<p>See screen capture here:</p>\n\n<p><img src=\"http://i.stack.imgur.com/MuJRW.gif\" alt=\"animated screencast\"></p>\n\n<p>How can I fix this problem?</p>",
+    "TimeStamp": "\/Date(1421611495224)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 65,
+        "CaughtCount": 2493
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923066",
+    "PostUrl": "http://cs.stackexchange.com/questions/37368",
+    "Site": "cs.stackexchange.com",
+    "Title": "Reduction from a further constrained problem",
+    "Body": "<p>If I find an NP Hard problem that is equivalent to my problem with an additional constraint, can I still prove that my problem is NP Hard?</p>\n\n<p>Generally, this is probably not the case. For example, the NP Hard TSP is just a further constrained version of the shortest path problem.</p>\n\n<p>Specifically, I have the problem:</p>\n\n<blockquote>\n  <p>Given a universe $\\mathcal{U}$ and a family $\\mathcal{S}$ of subsets of $\\mathcal{U}$, Select $k$ sets from $\\mathcal{S}$  such that the sum of the number of repeated times that each element is covered is maximized.\n  Number of repeats are defined as one less than the number of instances.</p>\n</blockquote>\n\n<p>If the number of repeated times for each element has an upper bound at 2, this is equivalent the densest k-subgraph problem (edges are elements and nodes are sets),</p>\n\n<blockquote>\n  <p>Given a graph $G$ and an integer $k$, find a subgraph of $G$ on $k$ nodes with maximum number of edges.</p>\n</blockquote>\n\n<p>Since the densest k-subgraph problem is strongly NP Hard, can I prove that my problem is also NP Hard?</p>",
+    "TimeStamp": "\/Date(1421611460725)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 65,
+        "CaughtCount": 2492
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "cs.stackexchange.com",
+        "Score": 5.41666651,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923063",
+    "PostUrl": "http://movies.stackexchange.com/a/30146",
+    "Site": "movies.stackexchange.com",
+    "Title": "It sounds a lot like the pilot episode of Supernatural. Not a movie thou...",
+    "Body": "<p>It sounds a lot like the pilot episode of Supernatural. Not a movie though.</p>\n\n<ul>\n<li>There was this ghost woman/girl who wore all white - <strong>check</strong></li>\n<li>This young guy was driving in a highway at the night and crashed into the ghost - <strong>he was driving, saw the ghost and slammed on the brakes - he either went through her or she disappeared</strong></li>\n<li>When he got out to see who it was, he didn't see anything - <strong>check</strong></li>\n<li>The next day the police found his body dead (I believe his body was chopped in\ndifferent parts, I don't remember.) - <strong>honestly can't remember if this was exactly the case but there was definitely at least one death</strong></li>\n<li>looks around 2006 or 2007 idk - <strong>aired 2005</strong></li>\n</ul>",
+    "TimeStamp": "\/Date(1421611223336)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 6,
+        "FPCount": 4,
+        "CaughtCount": 65
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923062",
+    "PostUrl": "http://tor.stackexchange.com/questions/6036",
+    "Site": "tor.stackexchange.com",
+    "Title": "How to solve this Linear Algebra problem involving a system of linear equations?",
+    "Body": "<p><img src=\"http://s6.postimg.org/elumoca2p/Questions.png\" alt=\"Question 1\"></p>\n\n<p>The following is what I have so far. </p>\n\n<p><img src=\"http://s6.postimg.org/3njd65lhc/Work.jpg\" alt=\"Work\"></p>\n\n<p>I'm not sure how to use my echelon matrix to find out which values for the variables can provide an answer to the question or how to prove it. I was thinking of plugging in arbitrary numbers in for x_3, y_1, y_2 but not sure if this is the way to approach this.</p>",
+    "TimeStamp": "\/Date(1421611215143)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 65,
+        "CaughtCount": 2491
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923061",
+    "PostUrl": "http://japanese.stackexchange.com/questions/21357",
+    "Site": "japanese.stackexchange.com",
+    "Title": "How can I learn Japanese Language?",
+    "Body": "<p>I am going to learn Japanese language, How can I learn it?</p>",
+    "TimeStamp": "\/Date(1421611170344)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 5,
+        "Regex": "(?s-m)^.{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.3197279,
+        "TPCount": 13,
+        "FPCount": 29,
+        "CaughtCount": 734
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923055",
+    "PostUrl": "http://math.stackexchange.com/a/1109533",
+    "Site": "math.stackexchange.com",
+    "Title": "For example, y = pi (3.14...) is a solution as are others like it.",
+    "Body": "<p>For example, y = pi (3.14...) is a solution as are others like it.</p>",
+    "TimeStamp": "\/Date(1421611032712)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2861
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "math.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "math.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^.{0,150}$",
+        "IsAuto": false,
+        "Site": "math.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923054",
+    "PostUrl": "http://serverfault.com/a/660465",
+    "Site": "serverfault.com",
+    "Title": "Try harder, there are even better ways of doing useless things.",
+    "Body": "<p>Try harder, there are even better ways of doing useless things.</p>",
+    "TimeStamp": "\/Date(1421610853938)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2860
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923052",
+    "PostUrl": "http://askubuntu.com/a/575162",
+    "Site": "askubuntu.com",
+    "Title": "I'm having same issue with ubuntu 14.04. It shows,but no internet.",
+    "Body": "<p>I'm having same issue with ubuntu 14.04. It shows,but no internet.</p>",
+    "TimeStamp": "\/Date(1421610593034)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2859
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923051",
+    "PostUrl": "http://unix.stackexchange.com/a/179585",
+    "Site": "unix.stackexchange.com",
+    "Title": "Yes, it's possible.\n\n\n  It is even possible to nest a function within an...",
+    "Body": "<p>Yes, it's possible.</p>\n\n<blockquote>\n  <p>It is even possible to nest a function within another function, although this is not very useful.</p>\n</blockquote>\n\n<pre><code>f1 ()\n{\n\n  f2 () # nested\n  {\n    echo \"Function \\\"f2\\\", inside \\\"f1\\\".\"\n  }\n\n}  \n\nf2  #  Gives an error message.\n    #  Even a preceding \"declare -f f2\" wouldn't help.\n\necho    \n\nf1  #  Does nothing, since calling \"f1\" does not automatically call \"f2\".\nf2  #  Now, it's all right to call \"f2\",\n    #+ since its definition has been made visible by calling \"f1\".\n\n    # Thanks, S.C.\n</code></pre>\n\n<p>Source: <a href=\"http://www.tldp.org/LDP/abs/html/functions.html\" rel=\"nofollow\">The Linux Documentation Project</a></p>",
+    "TimeStamp": "\/Date(1421610530123)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2822
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923049",
+    "PostUrl": "http://serverfault.com/questions/660459",
+    "Site": "serverfault.com",
+    "Title": "How to remove MySQL from Ubuntu 14.04? - [SOLVED]",
+    "Body": "<p>I tried to move my datadir on a working MySql install, which apparently I messed up. </p>\n\n<p>I have tried to uninstall / reinstall numerous times, only to get the same errors on reinstall. </p>\n\n<p>The mysql/error.log is giving me this:</p>\n\n<pre><code>150118 11:54:44 [Note] Plugin 'FEDERATED' is disabled.\n150118 11:54:44 InnoDB: The InnoDB memory heap is disabled\n150118 11:54:44 InnoDB: Mutexes and rw_locks use GCC atomic builtins\n150118 11:54:44 InnoDB: Compressed tables use zlib 1.2.8\n150118 11:54:44 InnoDB: Using Linux native AIO\n150118 11:54:44 InnoDB: Initializing buffer pool, size = 128.0M\n150118 11:54:44 InnoDB: Completed initialization of buffer pool\n150118 11:54:44  InnoDB: Operating system error number 13 in a file operation.\nInnoDB: The error means mysqld does not have the access rights to\nInnoDB: the directory.\nInnoDB: File name ./ibdata1\nInnoDB: File operation call: 'create'.\nInnoDB: Cannot continue operation.\n</code></pre>\n\n<p>I have chowned and chmodded until I am blue in the face, I get the same errors regardless. I have also followed many threads on how to uninstall MySQL, only to have the same result on reinstall. </p>\n\n<p>After an install attempt I get this error:</p>\n\n<pre><code>Setting up mysql-server-5.5 (5.5.40-0ubuntu0.14.04.1) ...\n150118 11:58:01 [Warning] Can't create test file /var/lib/mysql/yosemite.lower-test\n150118 11:58:01 [Warning] Can't create test file /var/lib/mysql/yosemite.lower-test\nstart: Job failed to start\ninvoke-rc.d: initscript mysql, action \"start\" failed.\ndpkg: error processing package mysql-server-5.5 (--configure):\n  subprocess installed post-installation script returned error exit status 1\ndpkg: dependency problems prevent configuration of mysql-server:\n mysql-server depends on mysql-server-5.5; however:\n  Package mysql-server-5.5 is not configured yet.\n\ndpkg: error processing package mysql-server (--configure):\n dependency problems - leaving unconfigured\nErrors were encountered while processing:\n mysql-server-5.5\n mysql-server\nE: Sub-process /usr/bin/dpkg returned an error code (1)\n</code></pre>\n\n<p>MySQL is the owner of /var/lib/mysql/, and the file permissions should allow writing. </p>\n\n<p>I don't need to preserve any databases, I just need to kill this thing and get it reinstalled and working! </p>\n\n<p>Any help will be most appreciated, thanks in advance!</p>\n\n<p>rw</p>",
+    "TimeStamp": "\/Date(1421610500242)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 1,
+        "FPCount": 0,
+        "CaughtCount": 29
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923045",
+    "PostUrl": "http://english.stackexchange.com/questions/222338",
+    "Site": "english.stackexchange.com",
+    "Title": "Please correct the grammer",
+    "Body": "<p>Please correct the grammar of the statement \"what are the further improvements required? \" </p>",
+    "TimeStamp": "\/Date(1421610387542)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 5,
+        "Regex": "(?s-m)^.{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.3197279,
+        "TPCount": 13,
+        "FPCount": 29,
+        "CaughtCount": 733
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923044",
+    "PostUrl": "http://askubuntu.com/a/324057",
+    "Site": "askubuntu.com",
+    "Title": "open terminal then type sudo apt-get install  like sudo apt-get install ...",
+    "Body": "<p>open terminal then type <code>sudo apt-get install <package-name></code> like <code>sudo apt-get install vlc</code> to install vlc player. </p>",
+    "TimeStamp": "\/Date(1421610354971)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 253
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923040",
+    "PostUrl": "http://english.stackexchange.com/questions/222337",
+    "Site": "english.stackexchange.com",
+    "Title": "(looked into )or(looked at) what is the difference?",
+    "Body": "<p>(she looked into the car)\nCould I use( at) instead of into?\nwhat is the difference?</p>",
+    "TimeStamp": "\/Date(1421610253306)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 5,
+        "Regex": "(?s-m)^.{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.3197279,
+        "TPCount": 13,
+        "FPCount": 29,
+        "CaughtCount": 732
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923034",
+    "PostUrl": "http://gis.stackexchange.com/a/72517",
+    "Site": "gis.stackexchange.com",
+    "Title": "You may want to change the wfs_srs in your mapfile to 32232",
+    "Body": "<p>You may want to change the wfs_srs in your mapfile to 32232</p>",
+    "TimeStamp": "\/Date(1421610085674)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2858
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923031",
+    "PostUrl": "http://english.stackexchange.com/a/208785",
+    "Site": "english.stackexchange.com",
+    "Title": "I don't really even know if I should wrote this as an answer,  but it's ...",
+    "Body": "<p>I don't really even know if I should wrote this as an answer,  but it's something I've actually thought about before reading your question so I had to take the opportunity to say it since it's likely the only time I'll run across people getting deep about this (admittedly not-so-deep) song. </p>\n\n<p>WWhen I first heard the song, it of course opened with her saying the phrase in question. Having heard nothing of the rest of the song yet, I initally took it musically. It is a common thing for people to say they are \"all about that bass\", to where the phrase is almost like a sample, except there's no actual recording where someone said it that everybody knows and uses. So, I thought nothing much more about it than just the appreciation of a familiar sample used well. Until she's like \"no treble\". People dont really say they're not about treble,  just that they're all about bass. I initally took it as her just saying that in an extension of being all about bass, while attempting to be witty/cute. To myself, I thought,  \"no treble? That's stupid and makes no sense if you think bout it, since there's not much bass in the song really anyways\"\nOnce I heard the rest of the song, I realized that she probably meant her butt, but then \"no treble\" made absolutely no sense. I never even thought about breasts or the upper body, I was just like, \"what the heck is she talking about; treble?\"\nI started to feel like she was just simply guilty of just saying \"no treble\" because of how shes all about bass and treble is erroneously thought of as being the counter or opposite to bass,( like how capitalism is errobeously considered the opposite, or counter, of socialism),  and that pissed me off a bit to where I'm thinking \"whats wrong with treble? Im all about bass, but treble has its place.\" Hahaha.\nUpon deeper and more thourough analysis, I have come to the conclusion that she perhaps thought of it originally as a knee-jerk response to saying she's \"all about that bass\" (while writing the song i mean. FYI, her and some other guy wrote this song together somewhat quickly, starting from something she had previously wrote or some idea she had had. Yes, i actually spent time researching this...) She might have been thinking of bass in terms of meaning booty at first, but once she said \"no treble\" and liked it, bass as booty leaves the meaning of treble somewhat unclear. So, whether that is how it happened or not, I believe she has decided that bass and treble refer to large and skinny body sizes, respectively. When she says she is \"all about that bass; no treble\" she is referring to herself and speaking as if to a potential \"love interest\" and saying something like, \"I'm a big girl; you ain't gonna find no skinny bitches here.\"</p>\n\n<p>The song plays around with \"hating\" on skinny chicks, calling them bitches then saying she was just kidding, then starting to talk \"shit\" by starting with \"I know you think you're fat\" and even though she just did it,  you don't think she's joking again and dont expect her reassurances of how it is a given that \"every inch of u is perfect\"</p>\n\n<p>But yeah. She means bass to mean big, large, etc and treble to mean thin, skinny, etc. But she also thinks of it as referring to booty, specifically a substantial booty. In this regard, she is not thinking of a treblethat  refers to the body part which is the counter or opposite of a butt, whatever that would be. </p>",
+    "TimeStamp": "\/Date(1421609761917)\/",
+    "ReportType": 4,
+    "BlackTerms": [
+      {
+        "Type": 9,
+        "Regex": "(?i)\\bshit\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 12,
+        "FPCount": 14,
+        "CaughtCount": 52
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923029",
+    "PostUrl": "http://serverfault.com/a/507817",
+    "Site": "serverfault.com",
+    "Title": "I installed today's updates and rebooted and it now appears to be workin...",
+    "Body": "<p>I installed today's updates and rebooted and it now appears to be working. Something must have just been in a strange state. Thanks for the replies.</p>",
+    "TimeStamp": "\/Date(1421609555901)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2820
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923028",
+    "PostUrl": "http://bicycles.stackexchange.com/a/28587",
+    "Site": "bicycles.stackexchange.com",
+    "Title": "Thank you for all the replies.  I live in Massachusetts, USA so I am not...",
+    "Body": "<p>Thank you for all the replies.  I live in Massachusetts, USA so I am not sure what the brake laws are but I am sure the local bike shop will know and I now know what kind of bike I will be looking for.  </p>",
+    "TimeStamp": "\/Date(1421609408928)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2819
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923027",
+    "PostUrl": "http://apple.stackexchange.com/a/167935",
+    "Site": "apple.stackexchange.com",
+    "Title": "or alternatively, the best way to do it is to use the Keychain Access app",
+    "Body": "<p>or alternatively, the best way to do it is to use the Keychain Access app</p>",
+    "TimeStamp": "\/Date(1421609243310)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2857
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923026",
+    "PostUrl": "http://academia.stackexchange.com/a/37036",
+    "Site": "academia.stackexchange.com",
+    "Title": "unless you're interview is for a job as a magician, a surprise will not ...",
+    "Body": "<p>unless you're interview is for a job as a magician, a surprise will not be a welcome addition to the interview. </p>",
+    "TimeStamp": "\/Date(1421609141442)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 249
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923025",
+    "PostUrl": "http://askubuntu.com/questions/575158",
+    "Site": "askubuntu.com",
+    "Title": "I need help with A2DP in HP 6910p",
+    "Body": "<p>I am a Linux n00b and I have been trying to use my Sony ST27a as A2DP source with this old HP 6910p. The phone streams music in Win7 with a different system.\nI have tried some suggestions from old threads in this community and other pages but they have slightly different approaches and I always reach a dead end, probably because of n00bness...\nPhone pairs right off a clean Ubuntu 14.04 installation but just for file transfer and Blueman cannot configure it as Audio Source, it says \"connection failed: Stream setup failed\" ???  I have also installed Bluez and PulseAudio.\n\"Enable=Source\" was added at the end of /etc/bluetooth/audio.conf but still PulseAudio does not recognize phone as audio source.\nThis is all mixed up for me because of the different programs and I still do not have a clear picture of which does what. I hope any one here helps me with step by step instructions.\nThanks!!!</p>",
+    "TimeStamp": "\/Date(1421609032103)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)(need|some)( halp| help| answer)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.0,
+        "TPCount": 7,
+        "FPCount": 9,
+        "CaughtCount": 225
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)i need.*help",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 4,
+        "FPCount": 1,
+        "CaughtCount": 54
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i:need help|help me)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 15.0,
+        "TPCount": 24,
+        "FPCount": 14,
+        "CaughtCount": 412
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1193
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)i need.{0,15}(help|advice)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.5106382,
+        "TPCount": 4,
+        "FPCount": 2,
+        "CaughtCount": 55
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,200}$",
+        "IsAuto": false,
+        "Site": "askubuntu.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?s-m)^.{0,150}$",
+        "IsAuto": false,
+        "Site": "askubuntu.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 101,
+        "Regex": "(?i)\\b(help|halp)\\b",
+        "IsAuto": false,
+        "Site": "askubuntu.com",
+        "Score": 10.9985991,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923024",
+    "PostUrl": "http://codegolf.stackexchange.com/a/44673",
+    "Site": "codegolf.stackexchange.com",
+    "Title": "OK thanks everyone for your help. I have achieved full marks using the f...",
+    "Body": "<p>OK thanks everyone for your help. I have achieved full marks using the following code:</p>\n\n<pre><code>public static bool CheckEquality(int[] a, int[] b) \n{\n    Array.Sort(a);\n    Array.Sort(b);\n    return Enumerable.SequenceEqual(a, b);\n}\n</code></pre>\n\n<p>As noted by @rolfl earlier less code does not necessarily mean better code. :P</p>",
+    "TimeStamp": "\/Date(1421608941101)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2818
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923023",
+    "PostUrl": "http://apple.stackexchange.com/a/110553",
+    "Site": "apple.stackexchange.com",
+    "Title": "I think I was doing something wrong.\nIt is necessary to hold on the comm...",
+    "Body": "<p>I think I was doing something wrong.\nIt is necessary to hold on the command key before dragging the app to the Finder toolbar.\nThanks for the help.</p>",
+    "TimeStamp": "\/Date(1421608903328)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2817
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923022",
+    "PostUrl": "http://codereview.stackexchange.com/a/77908",
+    "Site": "codereview.stackexchange.com",
+    "Title": "OK thanks everyone for your help. I have achieved full marks using the f...",
+    "Body": "<p>OK thanks everyone for your help. I have achieved full marks using the following code:</p>\n\n<pre><code>public static bool CheckEquality(int[] a, int[] b) \n{\n    Array.Sort(a);\n    Array.Sort(b);\n    return Enumerable.SequenceEqual(a, b);\n}\n</code></pre>\n\n<p>As noted by @rolfl earlier less code does not necessarily mean better code. :P</p>",
+    "TimeStamp": "\/Date(1421608876697)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2816
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923021",
+    "PostUrl": "http://bricks.stackexchange.com/a/5951",
+    "Site": "bricks.stackexchange.com",
+    "Title": "thank you for you answers it helps a lot",
+    "Body": "<p>thank you for you answers it helps a lot</p>",
+    "TimeStamp": "\/Date(1421608689702)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2856
+      },
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2815
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 248
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923020",
+    "PostUrl": "http://magento.stackexchange.com/questions/52499",
+    "Site": "magento.stackexchange.com",
+    "Title": "how to change rwd blue color on the homepage???please help!",
+    "Body": "<p><img src=\"http://i.stack.imgur.com/mgfm6.jpg\" alt=\"enter image description here\">\nhow to change this color, i already in style.css changed all color, but edit item and remove item color still dont work ~_~</p>\n\n<p>On the home page index.php is the blue color.\nBut when going to another page will change style.css colors...why????\n<img src=\"http://i.stack.imgur.com/SHM9g.jpg\" alt=\"enter image description here\"></p>",
+    "TimeStamp": "\/Date(1421608654790)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1192
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)pl(z|s|ease)",
+        "IsAuto": false,
+        "Site": "magento.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923019",
+    "PostUrl": "http://physics.stackexchange.com/a/160110",
+    "Site": "physics.stackexchange.com",
+    "Title": "think of it like a swing.  when is the best time to push?",
+    "Body": "<p>think of it like a swing.  when is the best time to push?</p>",
+    "TimeStamp": "\/Date(1421608544034)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2855
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 247
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "physics.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923018",
+    "PostUrl": "http://magento.stackexchange.com/questions/52498",
+    "Site": "magento.stackexchange.com",
+    "Title": "Googled and Tried a lot. Custom Shipping Module not showing in front end",
+    "Body": "<p>I googled a lot for this. but no usable solution. its taking me days please help.</p>\n\n<p>C:\\wamp\\www\\magento1\\app\\code\\local\\Inchoo\\Shipping\\etc\\config.xml</p>\n\n\n\n    \n        \n            0.1.0\n        \n    \n    \n        \n            \n                Inchoo_Shipping_Model\n            \n        \n        \n            \n                Inchoo_Shipping_Helper\n            \n        \n\n    \n\n      \n\n        \n\n          Inchoo_Shipping\n        \n\n        \n\n          core_setup\n        \n      \n    \n    \n    \n        \n            \n                1\n                0\n                inchoo_shipping/carrier\n                Inchoo Standard Shipping Charges\n                10.00\n                Inchoo Shipping Carrier\n                I\n                This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.\n                F\n                10\n                3\n            \n        \n    \n\n\nC:\\wamp\\www\\magento1\\app\\code\\local\\Inchoo\\Shipping\\etc\\system.xml\n\n\n\n    \n        \n            \n                \n                    Inchoo Shipping Carrier\n                    text\n                    13\n                    1\n                    1\n                    1\n                    \n                        \n                            Enabled\n                            select\n                            adminhtml/system_config_source_yesno\n                            1\n                            1\n                            1\n                            1\n                        \n                        \n                            Carrier title\n                            text\n                            2\n                            1\n                            1\n                            1\n                        \n                        \n                            Price\n                            text\n                            validate-number validate-zero-or-greater\n                            3\n                            1\n                            1\n                            1\n                        \n                        \n                            Calculate Handling Fee\n                            select\n                            shipping/source_handlingType\n                            10\n                            1\n                            1\n                            0\n                        \n                         \n                            Handling Applied\n                            select\n                            shipping/source_handlingAction\n                            11\n                            1\n                            1\n                            0\n                        \n                        \n                            Handling Fee\n                            text\n                            validate-number validate-zero-or-greater\n                            12\n                            1\n                            1\n                            1\n                                        \n                        \n                            Type\n                            select\n                            adminhtml/system_config_source_shipping_flatrate\n                            6\n                            1\n                            1\n                            1\n                                             \n                        \n                            Available for specific countries only\n                            select\n                            shipping-applicable-country\n                            adminhtml/system_config_source_shipping_allspecificcountries\n                            90\n                            1\n                            1\n                            1\n                        \n                        \n                            Ship to Specific Countries\n                            multiselect\n                            91\n                            adminhtml/system_config_source_country\n                            1\n                            1\n                            1\n1\n -->                        \n                        \n                            Max product weight\n                            Maximum weight of single product for express rate\n                            text\n                            9\n                            1\n                            1\n                            1\n                        \n                    \n                \n            \n        \n    \n\n\nC:\\wamp\\www\\magento1\\app\\code\\local\\Inchoo\\Shipping\\Helper\\Data.php\n\ngetExpressMaxWeight();\n\n        $expressAvailable = true;\n        foreach ($request->getAllItems() as $item) {\n            if ($item->getWeight() > $expressMaxWeight) {\n                $expressAvailable = false;\n            }\n        }\n\n        if ($expressAvailable) {\n            $result->append($this->_getExpressRate());\n        }\n        $result->append($this->_getStandardRate());\n/*  excellent magento blog */\n        $error = Mage::getModel('shipping/rate_result_error');\n$error->setCarrier($this->_code);\n$error->setCarrierTitle($this->getConfigData('name'));\n$error->setErrorMessage($this->getConfigData('specificerrmsg'));\n$result->append($error);\n/*  excellent magento blog */\n\n        return $result;\n    }\n\n    /**\n     * Returns Allowed shipping methods\n     *\n     * @return array\n     */\n    public function getAllowedMethods()\n    {\n        return array(\n            'standard'    =>  'Standard delivery',\n            'express'     =>  'Express delivery',\n        );\n    }\n\n    /**\n     * Get Standard rate object\n     *\n     * @return Mage_Shipping_Model_Rate_Result_Method\n     */\n    protected function _getStandardRate()\n    {\n        /** @var Mage_Shipping_Model_Rate_Result_Method $rate */\n        $rate = Mage::getModel('shipping/rate_result_method');\n\n        $rate->setCarrier($this->_code);\n        $rate->setCarrierTitle($this->getConfigData('title'));\n        $rate->setMethod('large');\n        $rate->setMethodTitle('name');\n        $rate->setPrice($this->getConfigData('price'));\n        $rate->setCost($this->getConfigData('price'));\n\n        return $rate;\n    }\n\n    /**\n     * Get Express rate object\n     *\n     * @return Mage_Shipping_Model_Rate_Result_Method\n     */\n    protected function _getExpressRate()\n    {\n        /** @var Mage_Shipping_Model_Rate_Result_Method $rate */\n        $rate = Mage::getModel('shipping/rate_result_method');\n\n        $rate->setCarrier($this->_code);\n        $rate->setCarrierTitle($this->getConfigData('title'));\n        $rate->setMethod($this->_code);\n        $rate->setMethodTitle($this->getConfigData('name'));\n        $rate->setPrice($this->getConfigData('price'));\n        $rate->setCost($this->getConfigData('price'));\n\n        return $rate;\n    }\n}\n\nC:\\wamp\\www\\magento1\\app\\code\\local\\Inchoo\\Shipping\\Model\\Carrier\\ShippingMethod.php\n\n_code.'/active')) {\n        return false;\n    }\n\n    /**\n     * here we are retrieving shipping rates from external service\n     * or using internal logic to calculate the rate from $request\n     * you can see an example in Mage_Usa_Model_Shipping_Carrier_Ups::setRequest()\n     */\n\n    // get necessary configuration values\n    $handling = Mage::getStoreConfig('carriers/'.$this->_code.'/handling');\n\n    // this object will be returned as result of this method\n    // containing all the shipping rates of this method\n    $result = Mage::getModel('shipping/rate_result');\n\n    // $response is an array that we have\n    foreach ($response as $rMethod) {\n      // create new instance of method rate\n      $method = Mage::getModel('shipping/rate_result_method');\n\n      // record carrier information\n      $method->setCarrier($this->_code);\n      $method->setCarrierTitle(Mage::getStoreConfig('carriers/'.$this->_code.'/title'));\n\n      // record method information\n      $method->setMethod($rMethod['code']);\n      $method->setMethodTitle($rMethod['title']);\n\n      // rate cost is optional property to record how much it costs to vendor to ship\n      $method->setCost($rMethod['amount']);\n\n      // in our example handling is fixed amount that is added to cost\n      // to receive price the customer will pay for shipping method.\n      // it could be as well percentage:\n      /// $method->setPrice($rMethod['amount']*$handling/100);\n      $method->setPrice($rMethod['amount']+$handling);\n\n      // add this rate to the result\n      $result->append($method);\n    }\n\n    return $result;\n  }\n\n  /**\n   * This method is used when viewing / listing Shipping Methods with Codes programmatically\n   */\n  public function getAllowedMethods() {\n    return array($this->_code => $this->getConfigData('name'));\n  }\n}\n?>\n\n<p>C:\\wamp\\www\\magento1\\app\\etc\\modules\\Inchoo_Shipping.xml</p>",
+    "TimeStamp": "\/Date(1421608505396)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)tried",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 1,
+        "FPCount": 1,
+        "CaughtCount": 55
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923016",
+    "PostUrl": "http://expressionengine.stackexchange.com/a/21276",
+    "Site": "expressionengine.stackexchange.com",
+    "Title": "I've started a thread in the EE forums:\nhttp://ellislab.com/forums/viewt...",
+    "Body": "<p>I've started a thread in the EE forums:\n<a href=\"http://ellislab.com/forums/viewthread/244991/\" rel=\"nofollow\">http://ellislab.com/forums/viewthread/244991/</a></p>\n\n<p>There has been one solution posted, but it requires a hack to the native EE text fieldtype code (/system/expressionengine/fieldtypes/text/ft.text.php) from</p>\n\n<pre><code> $field = array(\n   'name'  => $this->field_name,\n   'value'  => $this->_format_number($data, $type),\n   'dir'  => $this->settings['field_text_direction'],\n   'field_content_type' => $type\n  );  \n</code></pre>\n\n<p>to </p>\n\n<pre><code> $field = array(\n   'id'  => $this->field_name,\n   'name'  => $this->field_name,\n   'value'  => $this->_format_number($data, $type),\n   'dir'  => $this->settings['field_text_direction'],\n   'field_content_type' => $type\n  );  \n</code></pre>\n\n<p>But I don't know what impact that would have to the system. I've posted the question to the developer, and will update the thread if there are any other solutions suggested.</p>\n\n<p>Thanks Derek for jumping in on this. I don't have enough reputation points to add a comment to your answer, so I'll just edit my entry.</p>\n\n<p>The hack was required in addition to the function change suggested by the developer log to make the add-on fully functional.</p>\n\n<p>Updating the function name as you suggested does allow the fieldtype to install successfully, but it still doesn't work right. The fieldtype loads in the entry, but when you put in any address information and hit \"Geocode Entry\" it yields no results. That's why it was suggested to hack the fieldtype code. Like you, I do not recommend a system hack ever, so I am trying to find the portion of the add-on that EE 2.7+ does not like.</p>\n\n<p>I've never built an add-on, so I am at a loss for where to go from here.</p>",
+    "TimeStamp": "\/Date(1421608346075)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2813
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923015",
+    "PostUrl": "http://expressionengine.stackexchange.com/questions/19775",
+    "Site": "expressionengine.stackexchange.com",
+    "Title": "Geotagger 2.6 support (EE fieldtype error in developer log)",
+    "Body": "<p>Found an error caused by Mighty Big Robot's Geotagger in the EE developer's log. It seems that this issue might have existed since 2.6. </p>\n\n<p>Here's my error:</p>\n\n<p>Deprecated function EE_Fieldtype() called in system/expressionengine/third_party/geotagger/ft.geotagger.php on line 47.\nDeprecated since 2.6. Use EE_Fieldtype::__construct() instead.</p>\n\n<p>Does anyone know anything about their update or if its easy to change the code to work to the 2.6 fieldtype? </p>\n\n<p>Thanks! </p>",
+    "TimeStamp": "\/Date(1421608343370)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 9,
+        "FPCount": 79,
+        "CaughtCount": 4733
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)\\berror(s)?\\b",
+        "IsAuto": false,
+        "Site": "expressionengine.stackexchange.com",
+        "Score": 6.568182,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923014",
+    "PostUrl": "http://windowsphone.stackexchange.com/questions/2517",
+    "Site": "windowsphone.stackexchange.com",
+    "Title": "Having problems syncing files from my computer to my nokia lumia 610. Can anyone help?",
+    "Body": "<p>IV connected my Nokia lumia 610 to my laptop, iv installed Zune etc. IV dragged the files I wanted to the phone symbol like instructed. But when I sync my phone for then to transfer its started syncing all of the files on my computer even though I didn't want them to. Also when I disconnect my phone to check if they transferred they don't show up. I'm really confused and new to the software, can anyone help?? \nMuch appreciated :) x</p>",
+    "TimeStamp": "\/Date(1421608332265)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 65,
+        "CaughtCount": 2482
+      },
+      {
+        "Type": 1,
+        "Regex": "(?i)\\bh[ae]lp\\b",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 16.0,
+        "TPCount": 34,
+        "FPCount": 44,
+        "CaughtCount": 1191
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923013",
+    "PostUrl": "http://apple.stackexchange.com/a/118077",
+    "Site": "apple.stackexchange.com",
+    "Title": "I would change the batteries in the mouse and see if that fixes anything.",
+    "Body": "<p>I would change the batteries in the mouse and see if that fixes anything.</p>",
+    "TimeStamp": "\/Date(1421608297206)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 466,
+        "FPCount": 118,
+        "CaughtCount": 2853
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923012",
+    "PostUrl": "http://unix.stackexchange.com/a/127034",
+    "Site": "unix.stackexchange.com",
+    "Title": "Apparently I needed to use /dev/cu.usbmodem1234 instead of dev/tty.usbmo...",
+    "Body": "<p>Apparently I needed to use <code>/dev/cu.usbmodem1234</code> instead of <code>dev/tty.usbmodem1234</code>.  Thanks for <a href=\"http://ubld.it/forums/topic/truerng-on-mac-osx-10-9/#post-718\" rel=\"nofollow\">the solution</a> to the company that manufactures this device.</p>",
+    "TimeStamp": "\/Date(1421608295096)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2812
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923011",
+    "PostUrl": "http://electronics.stackexchange.com/questions/149779",
+    "Site": "electronics.stackexchange.com",
+    "Title": "how can i decrease the voltage of an AC-DC adapter without decreasing current (mAmpire)",
+    "Body": "<p>i have an AC-DC adapter with 5volt 350mA (actually an old cellphone charger). i need to decrease it's voltage to 3volt. i tried adding a resistor in series & it worked, but it also decreased the output current very much. how can i decrease the voltage of without decreasing the current (mA)?</p>",
+    "TimeStamp": "\/Date(1421608020401)\/",
+    "ReportType": 3,
+    "BlackTerms": [
+      {
+        "Type": 0,
+        "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 10.0,
+        "TPCount": 0,
+        "FPCount": 24,
+        "CaughtCount": 38
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923010",
+    "PostUrl": "http://stackoverflow.com/a/27737817",
+    "Site": "stackoverflow.com",
+    "Title": " $database-select(\"system_logs\", array(\n    \"date\",\n    \"category\",\n    ...",
+    "Body": "<pre><code> $database->select(\"system_logs\", array(\n    \"date\",\n    \"category\",\n    \"description\",\n    \"class\"\n), array(\n    \"date[>]\" => strtotime(\"-7 days\")\n));\n</code></pre>",
+    "TimeStamp": "\/Date(1421608002443)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 245
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923009",
+    "PostUrl": "http://islam.stackexchange.com/questions/21491",
+    "Site": "islam.stackexchange.com",
+    "Title": "Does the Quran have The sentence: “An Eye for An Eye”?",
+    "Body": "<p>Does the Quran have The sentence: \"An Eye for An Eye\" ?</p>",
+    "TimeStamp": "\/Date(1421607996913)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 5,
+        "Regex": "(?s-m)^.{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 13.3197279,
+        "TPCount": 13,
+        "FPCount": 29,
+        "CaughtCount": 731
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923008",
+    "PostUrl": "http://stackoverflow.com/a/5962855",
+    "Site": "stackoverflow.com",
+    "Title": "make sure that the header function is called before any response is outp...",
+    "Body": "<p>make sure that the header function is called before any response is outputted, e.g. header() function must be called before any echo functions or print_r, try removing the spaces before the <?php opening tag.</p>",
+    "TimeStamp": "\/Date(1421607991288)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 244
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923004",
+    "PostUrl": "http://tex.stackexchange.com/a/223192",
+    "Site": "tex.stackexchange.com",
+    "Title": "I did the answer with the link controlling pgfplots axis labels (thank y...",
+    "Body": "<p>I did the answer with the link <a href=\"http://tex.stackexchange.com/questions/215989/controlling-pgfplots-axis-labels\">controlling pgfplots axis labels</a> (thank you Pier for the link) :</p>\n\n<p>I post the corrected ECM for the forum :</p>\n\n<pre><code>            \\documentclass[10pt]{article}\n\n                        \\usepackage{pgfplots}\n                        \\usepackage{subcaption}\n                        \\pgfplotsset{compat=1.10}\n\n                        \\begin{document}\n\n\n            \\begin{figure}[p]\n            \\centering\n                \\begin{tikzpicture}\n                    \\tikzstyle{every node}=[font=\\small]\n                    \\begin{axis}[height=0.8\\textwidth,width=0.8\\textwidth,\n            xlabel={$x_1$},\n            ylabel={y},\n            color=black,\n            scale only axis,\n            xmin=0,xmax=10,\n            x axis line style={black},\n            xtick style={black},\n            xticklabel style={black},\n            xtick={0,2,4,6,8,10},\n            xticklabels={0,2,4,6,8,10},\n            ymin=0,ymax=10,\n            ytick={0,2,4,6,8,10},\n            yticklabels={0,2,4,6,8,10},\n            axis x line*=bottom,\n            axis y line*=left,    \n            tick align = outside]\n            \\addplot[draw=black,mark=o,line width=1.5pt] coordinates{(0,0)(2,2)(5,5)(8,8)(10,10)};\n            \\end{axis}\n\n            \\begin{axis}[height=0.8\\textwidth,width=0.8\\textwidth,\n            xlabel={$x_2$},\n            ylabel={y},\n            color=red,\n            scale only axis,\n            xmin=0,xmax=30,\n            x axis line style={red},\n            xtick style={red},\n            xticklabel style={red},\n            xtick={0,5,10,15,20,25,30},\n            xticklabels={0,5,10,15,20,25,30},\n            ymin=0,ymax=10,\n            ytick={0,2,4,6,8,10},\n            yticklabels={0,2,4,6,8,10},\n            hide y axis,\n            axis x line*=bottom,\n            axis y line*=none,    \n            tick align = outside]\n            \\pgfplotsset{every outer x axis line/.style={yshift=-1.5cm}, every tick/.style={yshift=-1.5cm}, every x tick label/.style={yshift=-1.5cm} }\n            \\addplot[,draw=red,mark=star,line width=1.5pt] coordinates{(0,0)(5,3)(10,4)(20,7)(30,10)};\n            \\end{axis}\n\n\n            \\begin{axis}[height=0.8\\textwidth,width=0.8\\textwidth,\n            xlabel={$x_3$},\n            ylabel={y},\n            color=blue,\n            scale only axis,\n            xmin=0,xmax=70,\n            x axis line style={blue},\n            xtick style={blue},\n            xticklabel style={blue},\n            xtick={0,20,40,60,80},\n            xticklabels={0,20,40,60,80},\n            ymin=0,ymax=10,\n            ytick={0,2,4,6,8,10},\n            yticklabels={0,2,4,6,8,10},\n            hide y axis,\n            axis x line*=bottom,\n            axis y line*=none,    \n            tick align = outside]\n            \\pgfplotsset{every outer x axis line/.style={yshift=-3cm}, every tick/.style={yshift=-3cm}, every x tick label/.style={yshift=-3cm} }\n            \\addplot[draw=blue,mark=square,line width=1.5pt] coordinates{(0,10)(10,6)(30,5)(60,3)(70,2)};\n            \\end{axis}\n\n\n            \\begin{axis}[height=0.8\\textwidth,width=0.8\\textwidth,\n            xlabel={$x_4$},\n            ylabel={y},\n            color=green,\n            scale only axis,\n            xmin=0,xmax=100,\n            x axis line style={green},\n            xtick style={green},\n            xticklabel style={green},\n            xtick={0,20,40,60,80,100},\n            ymin=0,ymax=10,\n            ytick={0,2,4,6,8,10},\n            hide y axis,\n            axis x line*=bottom,\n            axis y line*=none,    \n            tick align = outside]\n            \\pgfplotsset{every outer x axis line/.style={yshift=-4.5cm}, every tick/.style={yshift=-4.5cm}, every x tick label/.style={yshift=-4.5cm}}\n            \\addplot[draw=green,mark=triangle,line width=1.5pt] coordinates{(0,7)(15,10)(30,7)(100,0)};\n                        \\end{axis} \n\n            \\end{tikzpicture}\n            \\end{figure}\n\n            \\end{document}\n</code></pre>\n\n<p><img src=\"http://i.stack.imgur.com/LfYJx.png\" alt=\"enter image description here\"></p>",
+    "TimeStamp": "\/Date(1421607486653)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "(?i)thank(s| you)",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.3837166,
+        "TPCount": 183,
+        "FPCount": 108,
+        "CaughtCount": 2811
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923002",
+    "PostUrl": "http://stackoverflow.com/a/28013441",
+    "Site": "stackoverflow.com",
+    "Title": "use \"==\" not \"=\" in if statment",
+    "Body": "<p>use \"==\" not \"=\" in if statment</p>",
+    "TimeStamp": "\/Date(1421607447549)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 465,
+        "FPCount": 118,
+        "CaughtCount": 2853
+      },
+      {
+        "Type": 8,
+        "Regex": "^[^A-Z]*$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 19.2035675,
+        "TPCount": 30,
+        "FPCount": 3,
+        "CaughtCount": 243
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,60}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,200}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      },
+      {
+        "Type": 108,
+        "Regex": "^(?i).{0,150}$",
+        "IsAuto": false,
+        "Site": "stackoverflow.com",
+        "Score": 6.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923001",
+    "PostUrl": "http://drupal.stackexchange.com/a/144598",
+    "Site": "drupal.stackexchange.com",
+    "Title": "Doesn't work for me! Any other solution? Please... its so annoying.",
+    "Body": "<p>Doesn't work for me! Any other solution? Please... its so annoying.</p>",
+    "TimeStamp": "\/Date(1421607396325)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 8,
+        "Regex": "^(?i).{0,80}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 89.0,
+        "TPCount": 465,
+        "FPCount": 118,
+        "CaughtCount": 2852
+      },
+      {
+        "Type": 8,
+        "Regex": "^(?=.*?(?i)please).{0,100}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 22.3837166,
+        "TPCount": 84,
+        "FPCount": 139,
+        "CaughtCount": 1254
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 108,
+        "Regex": "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
+        "IsAuto": false,
+        "Site": "drupal.stackexchange.com",
+        "Score": 5.0,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2923000",
+    "PostUrl": "http://mathoverflow.net/questions/194217",
+    "Site": "mathoverflow.net",
+    "Title": "Two quadratic programming problems always same answer?",
+    "Body": "<p>Was exploring quadratic programming optimization and for two types of problems the answers seemed to always equal. </p>\n\n<p>Problem 1:</p>\n\n<ul>\n<li>Minimize $\\tfrac{1}{2} \\mathbf{x}^T Q\\mathbf{x}$</li>\n<li>Subject to $ A \\mathbf{x} = \\mathbf{b} $ and $\\mathbf{x}>0$</li>\n<li>$ Q = n \\mathbf{I}_{(n,n)} - \\mathbf{1}_{(n,n)}$</li>\n<li>Call the solution $\\widehat{\\mathbf{x}}$</li>\n</ul>\n\n<p>Problem 2:</p>\n\n<ul>\n<li>Define $ S_R = R \\mathbf{I}_{(n,n)} - \\mathbf{1}_{(n,n)}$ for scalar $0<R<n$</li>\n<li>Maximum R such that there exist a solution $\\mathbf{x}$ such that  $\\tfrac{1}{2} \\mathbf{x}^T S_R\\mathbf{x}=0$ </li>\n<li>Subject to $ A \\mathbf{x} = \\mathbf{b} $ and $\\mathbf{x}>0$  (same as Problem 1)</li>\n<li>Call the solution of $\\mathbf{x}$ for the maximum R to be $\\widetilde{\\mathbf{x}}$</li>\n</ul>\n\n<p>Is it always true that $\\widehat{\\mathbf{x}}$ = $\\widetilde{\\mathbf{x}}$</p>",
+    "TimeStamp": "\/Date(1421607350005)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 12.0,
+        "TPCount": 1,
+        "FPCount": 65,
+        "CaughtCount": 2481
+      }
+    ],
+    "WhiteTerms": [
+      {
+        "Type": 101,
+        "Regex": "(?i)problem(s)?",
+        "IsAuto": false,
+        "Site": "mathoverflow.net",
+        "Score": 5.41666651,
+        "TPCount": 0,
+        "FPCount": 0,
+        "CaughtCount": 0
+      }
+    ]
+  },
+  {
+    "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2922999",
+    "PostUrl": "http://ham.stackexchange.com/questions/3523",
+    "Site": "ham.stackexchange.com",
+    "Title": "grounding issues",
+    "Body": "<p>I have a question/ problem. My shack is on a second story, really far away from the house ground. To run a ground from my equipment to the outside/ ground is a run of at least 60-75 feet. The antenna is at least 100 feet away as well. How do i ground this system? I cannot reach the house ground. I can ground the antenna at its base, can i run a ground from the shack to the outside to a rod? Do I tie all my equipment to one point and bring this ground wire to the outside? What wire should I use? I am new to this hobby and I am totally confused on tnis matter, any help would be welcomed!!!!</p>",
+    "TimeStamp": "\/Date(1421607239249)\/",
+    "ReportType": 2,
+    "BlackTerms": [
+      {
+        "Type": 1,
+        "Regex": "^(?i).{0,18}$",
+        "IsAuto": false,
+        "Site": "",
+        "Score": 11.0,
+        "TPCount": 6,
+        "FPCount": 44,
+        "CaughtCount": 2093
+      }
+    ],
+    "WhiteTerms": []
+  },
+  {
     "ReportLink": "http://chat.meta.stackexchange.com/transcript/message/2922983",
     "PostUrl": "http://stackoverflow.com/questions/28013385",
     "Site": "stackoverflow.com",

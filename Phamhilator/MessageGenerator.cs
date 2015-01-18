@@ -19,31 +19,26 @@ namespace Phamhilator
             var fullScanFailed = "";
             var postScore = "";
 
-            if (info.Accuracy == 0 && post.PopulateExtraDataFailed)
+            if (post.PopulateExtraDataFailed)
             {
-                fullScanFailed = " (FSF)";
-            }
+                if (info.Accuracy == 0)
+                {
+                    fullScanFailed = " (FSF)";
+                }
+                else
+                {
+                    accuracy = " (" + Math.Round(info.Accuracy, 1) + "%";
+                    fullScanFailed = " FSF)";
+                }
 
-            if (info.Accuracy != 0 && !post.PopulateExtraDataFailed)
-            {
-                accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
-            }
-
-            if (info.Accuracy != 0 && post.PopulateExtraDataFailed)
-            {
-                accuracy = " (" + Math.Round(info.Accuracy, 1) + "%";
-                fullScanFailed = " FSF)";
-            }
-
-            if (!post.PopulateExtraDataFailed)
-            {
-                author += " \"Rep: " + post.AuthorRep + "\")";
-                postScore = " \"Score: " + post.Score + "\")";
+                author += ")";
+                postScore = ")";
             }
             else
             {
-                author += ")";
-                postScore = ")";
+                accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
+                author += " \"Rep: " + post.AuthorRep + "\")";
+                postScore = " \"Score: " + post.Score + "\")";
             }
 
             switch (info.Type)
@@ -67,7 +62,7 @@ namespace Phamhilator
             var name = PostFetcher.EscapeString(post.AuthorName, "");
             var author = String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + " \"Rep: " + post.AuthorRep + "\")";
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.EscapeString(post.Title, " ");
-            var accuracy = info.Accuracy == 0 ? "" : " (" + Math.Round(info.Accuracy, 1) + "%)";
+            var accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
 
             return " **A**" + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.";
         }

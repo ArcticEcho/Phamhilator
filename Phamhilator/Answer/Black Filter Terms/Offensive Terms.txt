@@ -114,7 +114,7 @@
     "Score": 10.0,
     "TPCount": 12,
     "FPCount": 14,
-    "CaughtCount": 51
+    "CaughtCount": 53
   },
   {
     "Regex": "(?i)\\bwhore\\b",
