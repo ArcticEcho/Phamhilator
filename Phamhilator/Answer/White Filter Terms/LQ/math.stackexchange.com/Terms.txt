@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 48.25446,
+    "Score": 51.027,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 20.6111317,
+    "Score": 22.7926331,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1254,7 +1254,7 @@
     "Regex": "^[^A-Z]*$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 13.69856,
+    "Score": 15.1623735,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

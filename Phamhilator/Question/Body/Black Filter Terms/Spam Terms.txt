@@ -4,9 +4,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 2,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 2
   },
   {
     "Regex": "rankedia",
@@ -22,18 +22,18 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 2,
+    "TPCount": 4,
     "FPCount": 1,
-    "CaughtCount": 3
+    "CaughtCount": 5
   },
   {
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 10,
+    "TPCount": 16,
     "FPCount": 18,
-    "CaughtCount": 39
+    "CaughtCount": 45
   },
   {
     "Regex": "officialimeiunlock",
@@ -85,9 +85,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)FIFA 15 Coin",
@@ -148,9 +148,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 13,
-    "FPCount": 22,
-    "CaughtCount": 46
+    "TPCount": 16,
+    "FPCount": 24,
+    "CaughtCount": 51
   },
   {
     "Regex": "(?i)ComplexiDerm",
@@ -177,7 +177,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 10
+    "CaughtCount": 12
   },
   {
     "Regex": "(?i)BeautyLabs",
@@ -482,8 +482,8 @@
     "Site": "",
     "Score": 10.0204086,
     "TPCount": 0,
-    "FPCount": 5,
-    "CaughtCount": 13
+    "FPCount": 6,
+    "CaughtCount": 14
   },
   {
     "Regex": "\\sCLICK HERE\\s",
@@ -607,9 +607,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 13,
+    "TPCount": 15,
     "FPCount": 0,
-    "CaughtCount": 16
+    "CaughtCount": 18
   },
   {
     "Regex": "(?-m)</a>$",
@@ -661,9 +661,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0204086,
-    "TPCount": 3,
+    "TPCount": 5,
     "FPCount": 0,
-    "CaughtCount": 6
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)alphafuelxreview",
@@ -760,9 +760,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0206881,
-    "TPCount": 2,
+    "TPCount": 5,
     "FPCount": 0,
-    "CaughtCount": 2
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)Penomet",
@@ -817,5 +817,59 @@
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)yourmumux\\.polldaddy",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)musclegainhelp",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)viarexlabsblog",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)another[-| ]scam",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 1,
+    "FPCount": 0,
+    "CaughtCount": 1
+  },
+  {
+    "Regex": "(?i)gojixtremesitebrazil",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)maletestosteronebooster",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.0206881,
+    "TPCount": 1,
+    "FPCount": 0,
+    "CaughtCount": 1
   }
 ]

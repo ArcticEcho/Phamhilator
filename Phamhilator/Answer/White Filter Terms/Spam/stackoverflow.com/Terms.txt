@@ -957,7 +957,7 @@
     "Regex": "datarecovery",
     "IsAuto": false,
     "Site": "raspberrypi.stackexchange.com",
-    "Score": 5.313889,
+    "Score": 5.813889,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1065,7 +1065,25 @@
     "Regex": "(?i)(make|earn){0,30}\\d+",
     "IsAuto": false,
     "Site": "stackoverflow.com",
+    "Score": 6.42927361,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(make|earn){0,30}\\d+",
+    "IsAuto": false,
+    "Site": "programmers.stackexchange.com",
     "Score": 5.42927361,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?!.*?<code>).*?[-\\w]{3}@\\w+\\.",
+    "IsAuto": false,
+    "Site": "unix.stackexchange.com",
+    "Score": 7.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

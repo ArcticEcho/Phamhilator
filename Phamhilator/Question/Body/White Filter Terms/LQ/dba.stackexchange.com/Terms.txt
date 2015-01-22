@@ -210,7 +210,7 @@
     "Regex": "\\bpl[sz]+\\b",
     "IsAuto": false,
     "Site": "superuser.com",
-    "Score": 8.931905,
+    "Score": 8.336444,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -264,7 +264,7 @@
     "Regex": "(?s-m)^.{0,100}$",
     "IsAuto": false,
     "Site": "dba.stackexchange.com",
-    "Score": 17.0678043,
+    "Score": 19.7267914,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -274,6 +274,15 @@
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 6.875,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\b([0-9]|-|_){10,13}\\b",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 6.659864,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

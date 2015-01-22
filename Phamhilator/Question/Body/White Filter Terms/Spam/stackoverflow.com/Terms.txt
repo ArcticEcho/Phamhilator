@@ -48,7 +48,7 @@
     "Regex": "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
     "IsAuto": false,
     "Site": "physics.stackexchange.com",
-    "Score": 5.5,
+    "Score": 6.655,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -57,7 +57,7 @@
     "Regex": "\\>\\>\\>\\>\\>",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 6.655,
+    "Score": 7.75500059,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

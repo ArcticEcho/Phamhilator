@@ -192,7 +192,7 @@
     "Regex": "^(?i).{0,80}$",
     "IsAuto": false,
     "Site": "codegolf.stackexchange.com",
-    "Score": 46.66378,
+    "Score": 49.89936,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1191,7 +1191,7 @@
     "Regex": "(?i)thank(s| you)",
     "IsAuto": false,
     "Site": "stackoverflow.com",
-    "Score": 21.6744537,
+    "Score": 23.9684982,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1245,7 +1245,7 @@
     "Regex": "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
     "IsAuto": false,
     "Site": "electronics.stackexchange.com",
-    "Score": 10.627821,
+    "Score": 11.18125,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1254,7 +1254,7 @@
     "Regex": "^[^A-Z]*$",
     "IsAuto": false,
     "Site": "math.stackexchange.com",
-    "Score": 11.7634983,
+    "Score": 15.1623735,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

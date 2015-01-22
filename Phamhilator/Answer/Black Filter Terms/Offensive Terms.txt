@@ -6,7 +6,7 @@
     "Score": 10.0,
     "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 1
+    "CaughtCount": 2
   },
   {
     "Regex": "(?i)\\basshole\\b",
@@ -78,7 +78,7 @@
     "Score": 11.0,
     "TPCount": 3,
     "FPCount": 21,
-    "CaughtCount": 49
+    "CaughtCount": 53
   },
   {
     "Regex": "(?i)\\bfag\\b",
@@ -105,16 +105,16 @@
     "Score": 10.0,
     "TPCount": 2,
     "FPCount": 6,
-    "CaughtCount": 20
+    "CaughtCount": 21
   },
   {
     "Regex": "(?i)\\bshit\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 12,
+    "TPCount": 13,
     "FPCount": 14,
-    "CaughtCount": 53
+    "CaughtCount": 55
   },
   {
     "Regex": "(?i)\\bwhore\\b",
@@ -168,7 +168,7 @@
     "Score": 10.2105265,
     "TPCount": 4,
     "FPCount": 2,
-    "CaughtCount": 7
+    "CaughtCount": 8
   },
   {
     "Regex": "(?i)good luck to stack overflow developers",
@@ -217,6 +217,24 @@
   },
   {
     "Regex": "(?i)fcking btch",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.1800556,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)my balls",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.1800556,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)testicle",
     "IsAuto": false,
     "Site": "",
     "Score": 10.1800556,

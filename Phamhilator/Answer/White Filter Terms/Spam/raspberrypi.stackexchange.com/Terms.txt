@@ -957,7 +957,7 @@
     "Regex": "datarecovery",
     "IsAuto": false,
     "Site": "raspberrypi.stackexchange.com",
-    "Score": 6.36093569,
+    "Score": 5.813889,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
@@ -1039,6 +1039,51 @@
     "IsAuto": false,
     "Site": "stackoverflow.com",
     "Score": 5.42927361,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "WWW\\.[^a-z]*\\.[^a-z]{2,3}(\\.[^a-z]{2,3})?",
+    "IsAuto": false,
+    "Site": "askubuntu.com",
+    "Score": 5.0,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bbangalore\\b",
+    "IsAuto": false,
+    "Site": "diy.stackexchange.com",
+    "Score": 5.42927361,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(make|earn){0,30}\\d+",
+    "IsAuto": false,
+    "Site": "stackoverflow.com",
+    "Score": 5.42927361,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)(make|earn){0,30}\\d+",
+    "IsAuto": false,
+    "Site": "programmers.stackexchange.com",
+    "Score": 5.42927361,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "^(?!.*?<code>).*?[-\\w]{3}@\\w+\\.",
+    "IsAuto": false,
+    "Site": "unix.stackexchange.com",
+    "Score": 7.5,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0

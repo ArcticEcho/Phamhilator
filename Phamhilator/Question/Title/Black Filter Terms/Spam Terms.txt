@@ -5,8 +5,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 2,
-    "CaughtCount": 14
+    "FPCount": 3,
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)\\bbeautiful(est)?\\b",
@@ -132,7 +132,7 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 8,
-    "CaughtCount": 21
+    "CaughtCount": 23
   },
   {
     "Regex": "(?i)\\bget your\\b",
@@ -185,26 +185,26 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 6
+    "FPCount": 4,
+    "CaughtCount": 7
   },
   {
     "Regex": "(?i)\\bbody( building|builder(s)?| builder(s)?|building)\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 0,
-    "CaughtCount": 5
+    "CaughtCount": 6
   },
   {
     "Regex": "(?i)\\bweight loss\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 10,
+    "TPCount": 12,
     "FPCount": 0,
-    "CaughtCount": 13
+    "CaughtCount": 15
   },
   {
     "Regex": "(?i)\\bbrand\\b",
@@ -213,7 +213,7 @@
     "Score": 11.0,
     "TPCount": 1,
     "FPCount": 7,
-    "CaughtCount": 31
+    "CaughtCount": 34
   },
   {
     "Regex": "(?i)\\bsuper herbal\\b",
@@ -257,8 +257,8 @@
     "Site": "",
     "Score": 13.0,
     "TPCount": 3,
-    "FPCount": 11,
-    "CaughtCount": 17
+    "FPCount": 13,
+    "CaughtCount": 19
   },
   {
     "Regex": "(?i)\\bnurish(es|ing)?\\b",
@@ -301,9 +301,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 18.0,
-    "TPCount": 20,
-    "FPCount": 52,
-    "CaughtCount": 105
+    "TPCount": 21,
+    "FPCount": 54,
+    "CaughtCount": 108
   },
   {
     "Regex": "(?i)the perfect",
@@ -311,8 +311,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 2,
-    "CaughtCount": 4
+    "FPCount": 3,
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)good slim",
@@ -409,9 +409,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 12.0,
-    "TPCount": 8,
-    "FPCount": 13,
-    "CaughtCount": 30
+    "TPCount": 9,
+    "FPCount": 14,
+    "CaughtCount": 32
   },
   {
     "Regex": "(?i)\\bexclusive\\b",
@@ -419,8 +419,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 3,
-    "CaughtCount": 10
+    "FPCount": 4,
+    "CaughtCount": 11
   },
   {
     "Regex": "(?i)royalty free",
@@ -518,8 +518,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 1,
-    "CaughtCount": 3
+    "FPCount": 2,
+    "CaughtCount": 4
   },
   {
     "Regex": "(?i)online job",
@@ -545,8 +545,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 1,
-    "FPCount": 14,
-    "CaughtCount": 59
+    "FPCount": 15,
+    "CaughtCount": 66
   },
   {
     "Regex": "(?i)^also",
@@ -564,16 +564,16 @@
     "Score": 10.0,
     "TPCount": 0,
     "FPCount": 3,
-    "CaughtCount": 8
+    "CaughtCount": 9
   },
   {
     "Regex": "(?i)lose weight",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 0,
+    "TPCount": 1,
     "FPCount": 0,
-    "CaughtCount": 0
+    "CaughtCount": 1
   },
   {
     "Regex": "(?i)fifa",
@@ -591,7 +591,7 @@
     "Score": 10.0,
     "TPCount": 7,
     "FPCount": 9,
-    "CaughtCount": 69
+    "CaughtCount": 70
   },
   {
     "Regex": "(?i)vashikaran",
@@ -635,8 +635,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 1,
-    "CaughtCount": 4
+    "FPCount": 2,
+    "CaughtCount": 5
   },
   {
     "Regex": "(?i)body weight",
@@ -689,8 +689,8 @@
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 28,
-    "CaughtCount": 71
+    "FPCount": 30,
+    "CaughtCount": 73
   },
   {
     "Regex": "(?i)i don'?t use",
@@ -729,22 +729,13 @@
     "CaughtCount": 1
   },
   {
-    "Regex": "(?i)\\bslim\\b",
-    "IsAuto": false,
-    "Site": "",
-    "Score": 10.0,
-    "TPCount": 3,
-    "FPCount": 14,
-    "CaughtCount": 20
-  },
-  {
     "Regex": "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
     "TPCount": 0,
-    "FPCount": 24,
-    "CaughtCount": 38
+    "FPCount": 25,
+    "CaughtCount": 39
   },
   {
     "Regex": "(?i)^no hassle",
@@ -913,9 +904,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 9,
+    "TPCount": 11,
     "FPCount": 0,
-    "CaughtCount": 11
+    "CaughtCount": 13
   },
   {
     "Regex": "2348064038119",
@@ -931,9 +922,9 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 3,
+    "TPCount": 4,
     "FPCount": 33,
-    "CaughtCount": 169
+    "CaughtCount": 171
   },
   {
     "Regex": "\\$\\d+",
@@ -942,16 +933,16 @@
     "Score": 10.0,
     "TPCount": 3,
     "FPCount": 35,
-    "CaughtCount": 471
+    "CaughtCount": 494
   },
   {
     "Regex": "(?i)\\bmuscle(s)?\\b",
     "IsAuto": false,
     "Site": "",
     "Score": 10.0,
-    "TPCount": 16,
+    "TPCount": 17,
     "FPCount": 3,
-    "CaughtCount": 54
+    "CaughtCount": 56
   },
   {
     "Regex": "(?i)high quality",
@@ -960,7 +951,7 @@
     "Score": 10.1574078,
     "TPCount": 1,
     "FPCount": 4,
-    "CaughtCount": 9
+    "CaughtCount": 10
   },
   {
     "Regex": "(?i)^buy\\s",
@@ -1057,6 +1048,24 @@
     "IsAuto": false,
     "Site": "",
     "Score": 10.2220812,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "(?i)\\bfat loss\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.2258778,
+    "TPCount": 0,
+    "FPCount": 0,
+    "CaughtCount": 0
+  },
+  {
+    "Regex": "\\b[\\d_-]{4}\\d[\\d_-]{5,8}\\b",
+    "IsAuto": false,
+    "Site": "",
+    "Score": 10.2258778,
     "TPCount": 0,
     "FPCount": 0,
     "CaughtCount": 0
