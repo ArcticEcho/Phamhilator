@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using JsonFx.Json;
+using JsonFx.Serialization;
 
 
 
@@ -41,7 +43,7 @@ namespace Phamhilator
             }
             else
             {
-                entries = Newtonsoft.Json.JsonConvert.DeserializeObject<List<LogItem>>(data);
+                entries = new JsonReader().Read<List<LogItem>>(data);
             }
 
             GlobalInfo.PostsCaught += entries.Count;
@@ -65,7 +67,7 @@ namespace Phamhilator
 
             dispose = true;
 
-            while (writer.IsAlive)
+            while (writer != null && writer.IsAlive)
             {
                 Thread.Sleep(100);
             }
@@ -130,7 +132,7 @@ namespace Phamhilator
                     EntriesRemovedEvent(entriesRemoved);
                 }
 
-                File.WriteAllText(DirectoryTools.GetLogFile(), Newtonsoft.Json.JsonConvert.SerializeObject(entries, Newtonsoft.Json.Formatting.Indented));
+                File.WriteAllText(DirectoryTools.GetLogFile(), new JsonWriter(new DataWriterSettings { PrettyPrint = true } ).Write(entries));
             }
         }
     }

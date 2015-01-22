@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using JsonFx.Json;
 
 
 
@@ -31,7 +31,7 @@ namespace Phamhilator
 
             var t = new Term(filter, term, newScore, site);
             
-            File.WriteAllText(file, JsonConvert.SerializeObject(t.ToJsonTerm(), Formatting.Indented));
+            File.WriteAllText(file, new JsonWriter().Write(t.ToJsonTerm()));
         }
     }
 }

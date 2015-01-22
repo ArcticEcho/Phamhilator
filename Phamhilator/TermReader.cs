@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
+using JsonFx.Json;
 
 
 
@@ -16,7 +16,7 @@ namespace Phamhilator
 
             try
             {
-                data = JsonConvert.DeserializeObject<List<JsonTerm>>(File.ReadAllText(filePath));
+                data = new JsonReader().Read<List<JsonTerm>>(File.ReadAllText(filePath));
             }
             catch (Exception ex)
             {

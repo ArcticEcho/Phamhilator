@@ -6,8 +6,9 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using CsQuery;
-using Newtonsoft.Json.Linq;
 using WebSocketSharp;
+using JsonFx.Json;
+using Microsoft.CSharp.RuntimeBinder;
 
 
 
@@ -26,17 +27,23 @@ namespace Phamhilator
 
         public static Question GetQuestion(MessageEventArgs message)
         {
-            var data = JToken.Parse(JObject.Parse(message.Data)["data"].ToString());
+            var data = (dynamic)new JsonReader().Read(((dynamic)new JsonReader().Read(message.Data)).data);
 
-            var url = TrimUrl((string)data["url"]);
+            var url = TrimUrl((string)data.url);
 
-            var host = (string)data["siteBaseHostAddress"];
-            var title = WebUtility.HtmlDecode((string)data["titleEncodedFancy"]);
-            var authorName = WebUtility.HtmlDecode((string)data["ownerDisplayName"]);
-            var authorLink = TrimUrl((string)data["ownerUrl"]);
+            var host = (string)data.siteBaseHostAddress;
+            var title = WebUtility.HtmlDecode((string)data.titleEncodedFancy);
+            var authorName = WebUtility.HtmlDecode((string)data.ownerDisplayName);
             var tags = new List<string>();
+            string authorLink;
 
-            foreach (var tag in JArray.Parse(data["tags"].ToString()))
+            try
+            {
+                authorLink = TrimUrl((string)data.ownerUrl);
+            }
+            catch (RuntimeBinderException ex) { }
+
+            foreach (var tag in data.tags)
             {
                 tags.Add((string)tag);
             }

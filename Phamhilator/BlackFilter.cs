@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
+using JsonFx.Json;
 
 
 
@@ -45,7 +45,7 @@ namespace Phamhilator
 
             try
             {
-                data = JsonConvert.DeserializeObject<List<JsonTerm>>(File.ReadAllText(path));
+                data = new JsonReader().Read<List<JsonTerm>>(File.ReadAllText(path));
             }
             catch (Exception ex)
             {

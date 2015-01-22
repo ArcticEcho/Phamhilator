@@ -8,8 +8,9 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
+using JsonFx.Json;
+using JsonFx.Serialization;
 using Microsoft.VisualBasic.Devices;
-using Newtonsoft.Json;
 
 
 
@@ -102,7 +103,7 @@ namespace Phamhilator
                 else
                 {
                     var request = (HttpWebRequest)WebRequest.Create("http://hastebin.com/documents");
-                    var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(logEntry, Formatting.Indented));
+                    var data = Encoding.UTF8.GetBytes(new JsonWriter(new DataWriterSettings { PrettyPrint = true } ).Write(logEntry));
 
                     request.Method = "POST";
                     request.ContentType = "application/x-www-form-urlencoded";
@@ -114,7 +115,7 @@ namespace Phamhilator
                     }
 
                     var response = (HttpWebResponse)request.GetResponse();
-                    dynamic resJson = JsonConvert.DeserializeObject(new StreamReader(response.GetResponseStream()).ReadToEnd());
+                    dynamic resJson = new JsonReader().Read(new StreamReader(response.GetResponseStream()).ReadToEnd());
 
                     link = "http://hastebin.com/" + (string)resJson["key"] + ".hs";
                     GlobalInfo.Log.EntryLinks.Add(entryID, link);
@@ -314,7 +315,7 @@ namespace Phamhilator
             {
                 CleanMessage()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^del\b", cmdRegexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^(del|gone|clear|hide)\b", cmdRegexOptions), command => new[]
             {
                 DeleteMessage()
             }, CommandAccessLevel.PrivilegedUser),

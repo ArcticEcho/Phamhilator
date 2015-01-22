@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
+using JsonFx.Json;
 
 
 
@@ -63,7 +63,7 @@ namespace Phamhilator
                 terms.Add(new Term(filter, newTerm, realTerm.Score, realTerm.Site, realTerm.IsAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
             }
 
-            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms(), Formatting.Indented));
+            File.WriteAllText(file, new JsonWriter().Write(terms.ToJsonTerms()));
         }
 
         public static void WriteScore(this HashSet<Term> terms, FilterType filter, Regex term, float newScore, string site = "")
@@ -86,7 +86,7 @@ namespace Phamhilator
             terms.Remove(realTerm);
             terms.Add(new Term(filter, realTerm.Regex, newScore, realTerm.Site, realTerm.IsAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 
-            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms(), Formatting.Indented));
+            File.WriteAllText(file, new JsonWriter().Write(terms.ToJsonTerms()));
         }
 
         public static void WriteAuto(this HashSet<Term> terms, FilterType filter, Regex term, bool isAuto, string site = "")
@@ -99,7 +99,7 @@ namespace Phamhilator
             terms.Remove(realTerm);
             terms.Add(new Term(filter, realTerm.Regex, realTerm.Score, realTerm.Site, isAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 
-            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms(), Formatting.Indented));
+            File.WriteAllText(file, new JsonWriter().Write(terms.ToJsonTerms()));
         }
 
         public static Term GetRealTerm(this HashSet<Term> terms, Regex term, string site = "")

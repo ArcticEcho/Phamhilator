@@ -373,7 +373,7 @@ namespace Phamhilator
             {
                 try
                 {
-                    GlobalInfo.ChatClient = new Client(user, pass); //TODO: Change the first arg ("Pham") to whatever your account's username is.
+                    GlobalInfo.ChatClient = new Client(user, pass);
                 }
                 catch (Exception ex)
                 {
@@ -384,45 +384,61 @@ namespace Phamhilator
                         emailTB.IsEnabled = true;
                         passwordTB.IsEnabled = true;
                         remCredsCB.IsEnabled = true;
-                        statusL.Content = "Could Not Login";
+                        loginTitleL.Content = "Could Not Login";
                         Clipboard.SetText(ex.ToString());
                     });
 
                     return;
                 }
 
-                if (remCreds)
+                try
                 {
-                    File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass);
+                    if (remCreds)
+                    {
+                        File.WriteAllText(DirectoryTools.GetCredsFile(), user + "¬" + pass);
+                    }
+                    else
+                    {
+                        File.WriteAllText(DirectoryTools.GetCredsFile(), "");
+                    }
+
+                    GlobalInfo.PrimaryRoom = GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+                    GlobalInfo.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;
+                    GlobalInfo.PrimaryRoom.MessageEdited += (oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage);
+                    GlobalInfo.PrimaryRoom.IgnoreOwnEvents = false;
+
+                    GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta"); ;//("http://chat.meta.stackexchange.com/rooms/651")
+
+                    for (var i = 0; i < GlobalInfo.ChatClient.Rooms.Count; i++)
+                    {
+                        if (GlobalInfo.ChatClient.Rooms[i].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
+
+                        GlobalInfo.ChatClient.Rooms[i].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms.First(r => r.ID == message.RoomID), message);
+                        GlobalInfo.ChatClient.Rooms[i].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms.First(r => r.ID == newMessage.RoomID), newMessage);
+
+                        GlobalInfo.ChatClient.Rooms[i].IgnoreOwnEvents = false;
+                    }
+
+                    Dispatcher.Invoke(() =>
+                    {
+                        transContentC.Content = operationC;
+
+                        progressBar.IsIndeterminate = false;
+                    });
                 }
-                else
+                catch (Exception ex)
                 {
-                    File.WriteAllText(DirectoryTools.GetCredsFile(), "");
+                    Dispatcher.Invoke(() =>
+                    {
+                        progressBar.IsIndeterminate = false;
+                        ((Button)sender).IsEnabled = true;
+                        emailTB.IsEnabled = true;
+                        passwordTB.IsEnabled = true;
+                        remCredsCB.IsEnabled = true;
+                        loginTitleL.Content = "An Error Occoured (See Clipboard for Details)";
+                        Clipboard.SetText(ex.ToString());
+                    });
                 }
-
-                GlobalInfo.PrimaryRoom = GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
-                GlobalInfo.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;
-                GlobalInfo.PrimaryRoom.MessageEdited += (oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage);
-                GlobalInfo.PrimaryRoom.IgnoreOwnEvents = false;
-
-                GlobalInfo.ChatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta");;//("http://chat.meta.stackexchange.com/rooms/651")
-
-                for (var i = 0; i < GlobalInfo.ChatClient.Rooms.Count; i++)
-                {
-                    if (GlobalInfo.ChatClient.Rooms[i].ID == GlobalInfo.PrimaryRoom.ID) { continue; }
-
-                    GlobalInfo.ChatClient.Rooms[i].NewMessage += message => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms.First(r => r.ID == message.RoomID), message);
-                    GlobalInfo.ChatClient.Rooms[i].MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(GlobalInfo.ChatClient.Rooms.First(r => r.ID == newMessage.RoomID), newMessage);
-
-                    GlobalInfo.ChatClient.Rooms[i].IgnoreOwnEvents = false;
-                }
-
-                Dispatcher.Invoke(() =>
-                {
-                    transContentC.Content = operationC;
-
-                    progressBar.IsIndeterminate = false;
-                });
             });
         }
 
