@@ -60,7 +60,7 @@
 		"Score" : 17,
 		"TPCount" : 20,
 		"FPCount" : 2,
-		"CaughtCount" : 125
+		"CaughtCount" : 126
 	},
 	{
 		"Regex" : "^\\<p\\>[^a-z]*\\<\\/p\\>$",
@@ -78,7 +78,7 @@
 		"Score" : 18,
 		"TPCount" : 45,
 		"FPCount" : 6,
-		"CaughtCount" : 369
+		"CaughtCount" : 371
 	},
 	{
 		"Regex" : "^(?i).{0,80}$",
@@ -87,7 +87,7 @@
 		"Score" : 89,
 		"TPCount" : 488,
 		"FPCount" : 118,
-		"CaughtCount" : 3028
+		"CaughtCount" : 3032
 	},
 	{
 		"Regex" : "(?i)^please",
@@ -123,7 +123,7 @@
 		"Score" : 19.3837166,
 		"TPCount" : 190,
 		"FPCount" : 109,
-		"CaughtCount" : 2987
+		"CaughtCount" : 2995
 	},
 	{
 		"Regex" : "^(?=.*?(?i)please).{0,100}$",
@@ -177,7 +177,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 8,
 		"FPCount" : 5,
-		"CaughtCount" : 85
+		"CaughtCount" : 87
 	},
 	{
 		"Regex" : "^[^A-Z]*$",
@@ -186,7 +186,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 43,
 		"FPCount" : 3,
-		"CaughtCount" : 382
+		"CaughtCount" : 388
 	},
 	{
 		"Regex" : "(?is)^<.*>\\s*i want",
@@ -195,7 +195,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 4,
 		"FPCount" : 0,
-		"CaughtCount" : 34
+		"CaughtCount" : 37
 	},
 	{
 		"Regex" : "(?i)is there a way",
@@ -213,7 +213,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 4,
 		"FPCount" : 0,
-		"CaughtCount" : 36
+		"CaughtCount" : 37
 	},
 	{
 		"Regex" : "(?i)how about",
@@ -222,7 +222,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 0,
 		"FPCount" : 0,
-		"CaughtCount" : 6
+		"CaughtCount" : 7
 	},
 	{
 		"Regex" : "(?i)recommend jquery",

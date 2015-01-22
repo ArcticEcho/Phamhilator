@@ -78,7 +78,7 @@
 		"Score" : 11,
 		"TPCount" : 3,
 		"FPCount" : 21,
-		"CaughtCount" : 54
+		"CaughtCount" : 56
 	},
 	{
 		"Regex" : "(?i)\\bfag\\b",

@@ -132,7 +132,7 @@
 		"Score" : 10,
 		"TPCount" : 0,
 		"FPCount" : 9,
-		"CaughtCount" : 24
+		"CaughtCount" : 25
 	},
 	{
 		"Regex" : "(?i)\\bget your\\b",
@@ -303,7 +303,7 @@
 		"Score" : 18,
 		"TPCount" : 21,
 		"FPCount" : 54,
-		"CaughtCount" : 108
+		"CaughtCount" : 110
 	},
 	{
 		"Regex" : "(?i)the perfect",
@@ -690,7 +690,7 @@
 		"Score" : 10,
 		"TPCount" : 0,
 		"FPCount" : 30,
-		"CaughtCount" : 73
+		"CaughtCount" : 74
 	},
 	{
 		"Regex" : "(?i)i don'?t use",
@@ -924,7 +924,7 @@
 		"Score" : 10,
 		"TPCount" : 4,
 		"FPCount" : 33,
-		"CaughtCount" : 171
+		"CaughtCount" : 173
 	},
 	{
 		"Regex" : "\\$\\d+",
@@ -933,7 +933,7 @@
 		"Score" : 10,
 		"TPCount" : 3,
 		"FPCount" : 35,
-		"CaughtCount" : 496
+		"CaughtCount" : 499
 	},
 	{
 		"Regex" : "(?i)\\bmuscle(s)?\\b",

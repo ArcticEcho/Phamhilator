@@ -25,6 +25,7 @@ namespace Phamhilator
             Terms = new HashSet<Term>();
 
             var sites = Directory.EnumerateDirectories(DirectoryTools.GetFilterFile(filter)).ToArray();
+            var reader = new JsonReader();
 
             for (var i = 0; i < sites.Length; i++)
             {
@@ -38,7 +39,7 @@ namespace Phamhilator
 
                 try
                 {
-                    data = new JsonReader().Read<List<JsonTerm>>(File.ReadAllText(path));
+                    data = reader.Read<List<JsonTerm>>(File.ReadAllText(path));
                 }
                 catch (Exception ex)
                 {

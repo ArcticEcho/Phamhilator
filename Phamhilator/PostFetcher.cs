@@ -35,13 +35,13 @@ namespace Phamhilator
             var title = WebUtility.HtmlDecode((string)data.titleEncodedFancy);
             var authorName = WebUtility.HtmlDecode((string)data.ownerDisplayName);
             var tags = new List<string>();
-            string authorLink;
+            var authorLink = "";
 
             try
             {
                 authorLink = TrimUrl((string)data.ownerUrl);
             }
-            catch (RuntimeBinderException ex) { }
+            catch (RuntimeBinderException) { }
 
             foreach (var tag in data.tags)
             {

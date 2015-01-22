@@ -42,7 +42,7 @@
 		"Score" : 11,
 		"TPCount" : 5,
 		"FPCount" : 23,
-		"CaughtCount" : 1620
+		"CaughtCount" : 1624
 	},
 	{
 		"Regex" : "(?i)tried",
@@ -105,7 +105,7 @@
 		"Score" : 10,
 		"TPCount" : 2,
 		"FPCount" : 2,
-		"CaughtCount" : 54
+		"CaughtCount" : 55
 	},
 	{
 		"Regex" : "(?i)\\bgreeting(s)?\\b",
@@ -123,7 +123,7 @@
 		"Score" : 12,
 		"TPCount" : 1,
 		"FPCount" : 67,
-		"CaughtCount" : 2663
+		"CaughtCount" : 2672
 	},
 	{
 		"Regex" : "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -186,7 +186,7 @@
 		"Score" : 13,
 		"TPCount" : 7,
 		"FPCount" : 9,
-		"CaughtCount" : 232
+		"CaughtCount" : 233
 	},
 	{
 		"Regex" : "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
@@ -195,7 +195,7 @@
 		"Score" : 11,
 		"TPCount" : 1,
 		"FPCount" : 26,
-		"CaughtCount" : 3039
+		"CaughtCount" : 3051
 	},
 	{
 		"Regex" : "^[^a-z]*$",
@@ -231,7 +231,7 @@
 		"Score" : 12,
 		"TPCount" : 17,
 		"FPCount" : 13,
-		"CaughtCount" : 211
+		"CaughtCount" : 212
 	},
 	{
 		"Regex" : "(?i)plz help me!",
@@ -276,7 +276,7 @@
 		"Score" : 13,
 		"TPCount" : 9,
 		"FPCount" : 16,
-		"CaughtCount" : 285
+		"CaughtCount" : 288
 	},
 	{
 		"Regex" : "(?i)credit.card",
@@ -285,7 +285,7 @@
 		"Score" : 10,
 		"TPCount" : 0,
 		"FPCount" : 0,
-		"CaughtCount" : 41
+		"CaughtCount" : 44
 	},
 	{
 		"Regex" : "(?i)^(?=.*?which)(?=.*?(?:choose|best|quality))",
@@ -357,7 +357,7 @@
 		"Score" : 16,
 		"TPCount" : 9,
 		"FPCount" : 79,
-		"CaughtCount" : 5022
+		"CaughtCount" : 5033
 	},
 	{
 		"Regex" : "(?i:need help|help me)",
@@ -366,7 +366,7 @@
 		"Score" : 15,
 		"TPCount" : 25,
 		"FPCount" : 14,
-		"CaughtCount" : 433
+		"CaughtCount" : 434
 	},
 	{
 		"Regex" : "(?i)\\bh[ae]lp\\b",
@@ -375,7 +375,7 @@
 		"Score" : 16,
 		"TPCount" : 37,
 		"FPCount" : 44,
-		"CaughtCount" : 1242
+		"CaughtCount" : 1247
 	},
 	{
 		"Regex" : "for\\sfree",
@@ -402,7 +402,7 @@
 		"Score" : 11,
 		"TPCount" : 6,
 		"FPCount" : 44,
-		"CaughtCount" : 2230
+		"CaughtCount" : 2236
 	},
 	{
 		"Regex" : "(?i)i need.{0,15}(help|advice)",
@@ -447,7 +447,7 @@
 		"Score" : 11.5906382,
 		"TPCount" : 4,
 		"FPCount" : 12,
-		"CaughtCount" : 433
+		"CaughtCount" : 434
 	},
 	{
 		"Regex" : "(?i)^I want",

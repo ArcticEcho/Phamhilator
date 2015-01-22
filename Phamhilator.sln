@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator", "Phamhilator\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLP", "NLP\NLP.csproj", "{FF9060CA-0692-4170-A98B-C01BB03E726A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghamhilator", "Ghamhilator\Ghamhilator.csproj", "{993E523C-48D4-44D7-AFD2-272F35564BCA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FF9060CA-0692-4170-A98B-C01BB03E726A} = {FF9060CA-0692-4170-A98B-C01BB03E726A}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,10 @@ Global
 		{FF9060CA-0692-4170-A98B-C01BB03E726A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF9060CA-0692-4170-A98B-C01BB03E726A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF9060CA-0692-4170-A98B-C01BB03E726A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993E523C-48D4-44D7-AFD2-272F35564BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993E523C-48D4-44D7-AFD2-272F35564BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993E523C-48D4-44D7-AFD2-272F35564BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993E523C-48D4-44D7-AFD2-272F35564BCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

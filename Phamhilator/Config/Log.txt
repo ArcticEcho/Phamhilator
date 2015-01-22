@@ -1,5 +1,1010 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2947020",
+		"PostUrl" : "http://sports.stackexchange.com/a/8586",
+		"Site" : "sports.stackexchange.com",
+		"Title" : "OK Mo'ne Davis is a horrible example.  Chances are she doesn't grow at a...",
+		"Body" : "<p>OK Mo'ne Davis is a horrible example.  Chances are she doesn't grow at all and her fastball hits 75 mph max.  Many 13 year old girls are fully grown, height-wise.  I have personally been around 2 very athletic girls that were very similar to her - one as an umpire and another I personally coached.  The girls at 13 are just more mature than boys of that age psychologically and developmentally.  Boys hit their growing spurt around 14-15.  So girls have two years in school that they might be faster or more talented in the strength/speed sports.  [Actually 4 years ago one of my boys played against a 12 year old girl in football that was laying kids out.  She is talented and will probably have multiple big-time college offers for 2-3 sports but you would laugh if she had football pads on now.  She's 5-8 120 pounds... almost the same size as when she played football]</p>\n\n<p>I want a disclaimer to my answer in that I am pretty strict what I consider a sport.  Auto racing, board games, and strategy games are not sports to me.  I personally feel that bowling is not a sport (but a great game) and golf is right on the lowest fringe of sport.</p>\n\n<p>Do women have a chance?  Well not anytime soon.  They just don't have the physical attributes that will help them, unless they start altering their physical attributes.  I remember my college (large D1 school) having the WNBA players stay in the dorms over the summer.  I was on the basketball practice team.  Was probably at the level of a DIII starter but nothing great.  We would play the WNBA girls daily.  My team would include 1-2 guys from practice squade and 2-3 \"good\" pickup players. </p>\n\n<p>In their three weeks there the WNBA players never won a game.  They scratched, clawed, brought out their 6-7 big, it didn't matter.  They couldn't stop our first step or the power drive.   Number don't lie.  We won probably close to 100 games.  Most of these girls were stars at big D1 programs.  We didn't hold back at all (mainly because they started playing dirty in game one) but we weren't also \"great\" players.  I believe all of the girls we played were better basketball players than us - fundamentals, shooting, tactic, positioning, whatever - but the athletic disadvantage was too much to make up.</p>\n\n<p>What sport are women closest to catching men?  I would think it would be the marathon.  Running that distance requires using your body's existing fat reserves.  Women have an advantage here.  They can possibly be lean and in race shape with more fat in their body.  </p>",
+		"TimeStamp" : "2015-01-22T22:04:55.559Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?is)^<.*>\\s*i want",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 4,
+				"FPCount" : 0,
+				"CaughtCount" : 37
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946997",
+		"PostUrl" : "http://graphicdesign.stackexchange.com/questions/46194",
+		"Site" : "graphicdesign.stackexchange.com",
+		"Title" : "Need help with Adobe Illustrator CC Layers Panel",
+		"Body" : "<p>Sorry if this is a dumb question, but I've never encountered this before. In Illustrator, my Layers Panel seems to be showing a description of the file, but none of the actual layers. Resetting the workspace didn't change the panel. If anyone knows how to get that layer information back, it would be great!</p>\n\n<p><img src=\"http://i.stack.imgur.com/4bx7C.png\" alt=\"enter image description here\"></p>",
+		"TimeStamp" : "2015-01-22T22:03:08.971Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)(need|some)( halp| help| answer)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13,
+				"TPCount" : 7,
+				"FPCount" : 9,
+				"CaughtCount" : 233
+			},
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i:need help|help me)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 15,
+				"TPCount" : 25,
+				"FPCount" : 14,
+				"CaughtCount" : 434
+			},
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)\\bh[ae]lp\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 16,
+				"TPCount" : 37,
+				"FPCount" : 44,
+				"CaughtCount" : 1247
+			},
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)^need",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11.5906382,
+				"TPCount" : 4,
+				"FPCount" : 12,
+				"CaughtCount" : 434
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946990",
+		"PostUrl" : "http://stackoverflow.com/questions/28099010",
+		"Site" : "stackoverflow.com",
+		"Title" : "I have a datagrid view which saves data in the database but the delete and update not working",
+		"Body" : "<p>I have a form with datagrid view and three buttons, AddNew, Save, Remove</p>\n\n<p>When i click on the AddNew Button a new row gets added, the code used for that is:</p>\n\n<pre><code> this.netWeightMasterDataBindingSource.AddNew();\n</code></pre>\n\n<p>When i click the Save Button the new row gets saved in the datagrid and sqlserver table the code used for that is:</p>\n\n<pre><code>  this.Validate();\n  this.netWeightMasterDataBindingSource.EndEdit();\n  this.tableAdapterManager.UpdateAll(this.corsicanaNetWeightDataSet);\n</code></pre>\n\n<p>But when i click Remove the data gets removed from the data grid but not from sql server, the code i am using to remove data is:</p>\n\n<pre><code> this.netWeightMasterDataBindingSource.RemoveCurrent();\n</code></pre>\n\n<p>also i would like to know how i can Update my data grid because that is the only feature i dont have, the save acts as a Insert, the remove acts as a Delete but i  am not sure how to get the update working, plz help!!!!</p>\n\n<p>I created a dataset and used that as a datasource for my datagridview and the only code that generated for me is:</p>\n\n<pre><code>this.net_Weight_Master_DataTableAdapter.Fill(this.corsicanaNetWeightDataSet.Net_Weight_Master_Data);\n</code></pre>\n\n<p>Edit more code\nso turn out that the datatableadapter has properties that does the delete, insert and update so i decided to go that route: </p>\n\n<p>Insert Button </p>\n\n<pre><code>this.net_Weight_Master_DataTableAdapter.Insert(this.corsicanaNetWeightDataSet.Net_Weight_Master_Data);\n                net_Weight_Master_DataDataGridView.Refresh();\nMessageBox.Show(\"Record Inserted\");\n</code></pre>\n\n<p>Delete Button </p>\n\n<pre><code>   //Update button update dataset after insertion,upadtion or deletion\n            DialogResult dr = MessageBox.Show(\"Are you sure to delete the record\", \"Message\", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);\n            if (dr == DialogResult.Yes)\n            {\n                this.net_Weight_Master_DataTableAdapter.Delete(this.corsicanaNetWeightDataSet.Net_Weight_Master_Data);\n                net_Weight_Master_DataDataGridView.Refresh();\n                MessageBox.Show(\"Record Deleted\");\n            }\n            if (dr == DialogResult.No)\n            {\n                Close();\n            }\n</code></pre>\n\n<p>Update Button </p>\n\n<pre><code> //Update button update dataset after insertion,upadtion or deletion\n         DialogResult dr = MessageBox.Show(\"Are you sure to save Changes\", \"Message\", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);\n         if (dr == DialogResult.Yes)\n        {\n            this.net_Weight_Master_DataTableAdapter.Update(this.corsicanaNetWeightDataSet.Net_Weight_Master_Data);\n            net_Weight_Master_DataDataGridView.Refresh();\n            MessageBox.Show(\"Record Updated\");\n        }  \n</code></pre>",
+		"TimeStamp" : "2015-01-22T22:02:44.620Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyBlackLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 16,
+				"CaughtCount" : 237
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946982",
+		"PostUrl" : "http://superuser.com/questions/868252",
+		"Site" : "superuser.com",
+		"Title" : "Use Chrome device inspector with or without chrome 39.0.2171.59 +",
+		"Body" : "<p>I used to be able to inspect devices with Chrome Canary ? Since today.</p>\n\n<h2>Device inspector prompt that should install <strong>Chrome 39.0.2171xx</strong>:</h2>\n\n<p>The two suggested versions number are exactly the chrome mobile versions I have installed on the two respective devices I try to test with.</p>\n\n<p><img src=\"http://i.stack.imgur.com/usxh3.png\" alt=\"enter image description here\"></p>\n\n<h2>Canary says it's up to date at version 38.0.2120.0</h2>\n\n<p><img src=\"http://i.stack.imgur.com/nNr2l.png\" alt=\"enter image description here\"></p>\n\n<h2>So What should I do to be able to use Chrome device inspector again ?</h2>\n\n<p>xx</p>",
+		"TimeStamp" : "2015-01-22T22:02:07.032Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackSpam",
+				"Regex" : "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 21,
+				"FPCount" : 54,
+				"CaughtCount" : 110
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "QuestionTitleWhiteSpam",
+				"Regex" : "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+				"IsAuto" : false,
+				"Site" : "superuser.com",
+				"Score" : 8.184616,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946975",
+		"PostUrl" : "http://magento.stackexchange.com/a/48690",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "How about this? - https://stackoverflow.com/questions/4668656/magento-ge...",
+		"Body" : "<p>How about this? -> <a href=\"https://stackoverflow.com/questions/4668656/magento-get-a-static-block-as-html-in-a-phtml-file\">https://stackoverflow.com/questions/4668656/magento-get-a-static-block-as-html-in-a-phtml-file</a></p>\n\n<p>Now you create the blocks in current layout and I'm not sure how they would act. Maybe you should try something like this (in your modules app/design/frontend/default/base/your_company/your_module.xml - or whatever xml file name you defined in config.xml):</p>\n\n<pre><code><layout>\n    <default> <!-- or your store / theme handle -->\n        <reference name=\"content\">\n            <block type=\"cms/block\" name=\"movie\" as=\"movie\">\n                <action method=\"setBlockId\">\n                    <block_id>movie</block_id>\n                </action>\n            </block>\n            <block type=\"cms/block\" name=\"music\" as=\"music\">\n                <action method=\"setBlockId\">\n                    <block_id>music</block_id>\n                </action>\n            </block>\n        </reference>\n    </default>\n</layout>\n</code></pre>\n\n<p>And then in your code:</p>\n\n<pre><code>$appliedFilters = Mage::getSingleton('catalog/layer')->getState()->getFilters();\nforeach ($appliedFilters as $item) {\n    if ($item->getFilter()->getRequestVar() == 'my_attribute1') {\n        echo $this->getChildHtml('movie');\n    }\n    else if ($item->getFilter()->getRequestVar() == 'my_attribute2') {\n        echo $this->getChildHtml('music');\n    }\n}\n</code></pre>",
+		"TimeStamp" : "2015-01-22T22:01:38.002Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)how about",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 7
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946968",
+		"PostUrl" : "http://scicomp.stackexchange.com/questions/18717",
+		"Site" : "scicomp.stackexchange.com",
+		"Title" : "Initial Value Problem using Finite Element",
+		"Body" : "<p>I am trying to implement a FEM solver for the following initial value problem\n\\begin{align}\n\\frac{\\partial u}{\\partial t} - \\nabla^2 u &= f\\quad \\text{ in } \\Omega\\times (0,T)\\\\\nu &= g\\quad \\text{ on }\\partial\\Omega\\times(0,T)\\\\\nu(x,y,0) &= u_0(x,y)\n\\end{align}\nwhere $\\Omega\\subset\\mathbb{R}^2$ is just a rectangular domain. The functions $f$ and $g$ can vary with time. I have discretized this IVP into\n$$\\mathbf{B}\\frac{\\partial}{\\partial t}\\mathbf{u} + \\mathbf{A}\\mathbf{u} = \\mathbf{l} $$\nwhere\n\\begin{align}\n\\text{B}_{ij} &= \\int_\\Omega \\phi_i\\phi_j\\\\\n\\text{A}_{ij} &= \\int_\\Omega \\nabla\\phi_i\\nabla\\phi_j\\\\\nl_i &= \\int_\\Omega \\phi_i f\n\\end{align}\nand I can assemble these matrices and vector. I have also discretized time to get the time-stepping scheme\n$$(\\mathbf{B}+k\\theta\\mathbf{A})\\mathbf{u}^{n+1} = (\\mathbf{B}-k(1-\\theta)\\mathbf{A})\\mathbf{u}^n + k(\\theta \\mathbf{l}^n + (1-\\theta)\\mathbf{l}^{n+1}), $$\nwhere $\\theta\\in[0,1]$ and $k$ is the time-step.</p>\n\n<p>Here comes my problem. How exactly do I impose the boundary and initial condition, implementation-wise? What changes should I make to the matrices $\\mathbf{A},\\mathbf{B}$, etc? Should I do anything at each time-step? I feel like it shouldn't be too hard, however when the time is introduced it suddenly confuses me.</p>\n\n<p>Thanks</p>",
+		"TimeStamp" : "2015-01-22T22:01:20.998Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)problem(s)?",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 12,
+				"TPCount" : 1,
+				"FPCount" : 67,
+				"CaughtCount" : 2671
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946967",
+		"PostUrl" : "http://cs.stackexchange.com/questions/33430",
+		"Site" : "cs.stackexchange.com",
+		"Title" : "Natural language query processing",
+		"Body" : "<p>I am trying to implement a natural language query preprocessing module which would, given a query formulated in natural language, extract the keywords from that query and submit it to an IR (information retrieval system) system.</p>\n\n<p>At first, I thought about using some training set to compute TF-IDF values of terms and use these values for estimating the importance of single words. But on second thought, this does not make any sense in this scenario - I only have a training collection but I dont have access to index the indexed IR data. Would it be reasonable to only use the IDF value for such estimation (is IDF enough to establish weight of a term in general)? Or maybe another weighting approach?</p>\n\n<p>Could you suggest how to tackle this problem? Usually, the articles about NLP processing that I read talks about training and test data sets. But what if I only have the query and training data?</p>",
+		"TimeStamp" : "2015-01-22T22:01:17.969Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackSpam",
+				"Regex" : "(?i)natural",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 4,
+				"FPCount" : 33,
+				"CaughtCount" : 173
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946966",
+		"PostUrl" : "http://webapps.stackexchange.com/a/73052",
+		"Site" : "webapps.stackexchange.com",
+		"Title" : "How long did it take? I'm in the same position",
+		"Body" : "<p>How long did it take? I'm in the same position</p>",
+		"TimeStamp" : "2015-01-22T22:01:17.050Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 118,
+				"CaughtCount" : 3032
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946962",
+		"PostUrl" : "http://serverfault.com/questions/605215",
+		"Site" : "serverfault.com",
+		"Title" : "NGINX SSL Connection Error",
+		"Body" : "<p>I've added an SSL certificate to my server. (Nginx running passenger & Rails).</p>\n\n<p>I created a CSR, uploaded to GoDaddy, downloaded the keys. Inside /srv/ssl I have</p>\n\n<pre><code>www.mydomain.com.crt\nwww.mydomain.com.key\n</code></pre>\n\n<p>My nginx Version:</p>\n\n<pre><code>nginx -V\nnginx version: nginx/1.2.6\nbuilt by gcc 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5)\nTLS SNI support enabled\nconfigure arguments: --prefix=/usr/local/nginx --with-http_ssl_module --with-http_gzip_static_module --with-cc-opt=-Wno-error --with-pcre=/tmp/root-passenger-27798/pcre-8.31 --add-module=/home/deploy/.rvm/gems/ruby-1.9.3-p392/gems/passenger-3.0.19/ext/nginx\n</code></pre>\n\n<p>I added this to my nginx.conf file:</p>\n\n<pre><code>server {\n    listen       443;\n    server_name  localhost;\n\n    ssl_certificate    /srv/ssl/www.mydomain.com.crt;\n    ssl_certificate_key  /srv/ssl/www.mydomain.com.key;\n\n    location / {\n        root   html;\n        index  index.html index.htm;\n    }\n\n    error_page   500 502 503 504  /50x.html;\n    location = /50x.html {\n        root   html;\n    }\n}\n</code></pre>\n\n<p>Besides the two ssl lines and the port being on 443 instead of 80, the server block is identical to the one above it which serves the regular http.</p>\n\n<p>When I use</p>\n\n<p>listen 443 ssl;\nand uncomment this:</p>\n\n<p>#    ssl_session_timeout  5m;</p>\n\n<pre><code>#    ssl_protocols  SSLv2 SSLv3 TLSv1;\n#    ssl_ciphers  HIGH:!aNULL:!MD5;\n#    ssl_prefer_server_ciphers   on;\n</code></pre>\n\n<p>Then I get an SSL expired warning.</p>\n\n<p>When I re-comment those and just use</p>\n\n<pre><code>listen 443 ssl;\n</code></pre>\n\n<p>Then I get an error but, when I visit</p>\n\n<p><a href=\"https://www.mydomain.com/login\" rel=\"nofollow\">https://www.mydomain.com/login</a> with a www, I get a green lock in Chrome but a 404. Does this mean I have SSL configured for \"www\" but not the non-www?</p>",
+		"TimeStamp" : "2015-01-22T22:00:38.975Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)\\berror(s)?\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 16,
+				"TPCount" : 9,
+				"FPCount" : 79,
+				"CaughtCount" : 5030
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "QuestionTitleWhiteLQ",
+				"Regex" : "(?i)\\berror(s)?\\b",
+				"IsAuto" : false,
+				"Site" : "serverfault.com",
+				"Score" : 10.0301609,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946951",
+		"PostUrl" : "http://webapps.stackexchange.com/a/73051",
+		"Site" : "webapps.stackexchange.com",
+		"Title" : "https://picasaweb.google.com/lh/myphotos?noredirect=1 works for me! Than...",
+		"Body" : "<p><a href=\"https://picasaweb.google.com/lh/myphotos?noredirect=1\" rel=\"nofollow\">https://picasaweb.google.com/lh/myphotos?noredirect=1</a> works for me! Thanks this really helped for my site while still using Google+!</p>",
+		"TimeStamp" : "2015-01-22T21:58:16.908Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 190,
+				"FPCount" : 109,
+				"CaughtCount" : 2994
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946931",
+		"PostUrl" : "http://sports.stackexchange.com/a/8608",
+		"Site" : "sports.stackexchange.com",
+		"Title" : "I wanted to add a blog post I wrote on this topic on my blog Dear Sports...",
+		"Body" : "<p>I wanted to add a blog post I wrote on this topic on my blog Dear Sports Fan: <a href=\"http://wp.me/p1A2WF-ND\" rel=\"nofollow\">http://wp.me/p1A2WF-ND</a>.</p>\n\n<p>If you're in a tl/dr mood, I would just say that in order to define what a catch is, the NFL had to create some dividing line between not a catch and a catch. They chose to define it as a player who establishes control of the ball, lands on the field, and then holds it for long enough to do something else. This something else is commonly referred to as a football move. </p>\n\n<p>This seems like a reasonable enough line to draw because if a player has the time and wherewithal to do something else, he's probably done catching the ball. If he doesn't, he's probably still in the process of catching the ball.</p>\n\n<p>Thanks,\nEzra</p>",
+		"TimeStamp" : "2015-01-22T21:54:01.215Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 190,
+				"FPCount" : 109,
+				"CaughtCount" : 2993
+			},
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?is)^<.*>\\s*i want",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 4,
+				"FPCount" : 0,
+				"CaughtCount" : 36
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946923",
+		"PostUrl" : "http://askubuntu.com/a/576704",
+		"Site" : "askubuntu.com",
+		"Title" : "make sure you have DX9 installed.",
+		"Body" : "<p>make sure you have DX9 installed.</p>",
+		"TimeStamp" : "2015-01-22T21:53:11.980Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 118,
+				"CaughtCount" : 3031
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerWhiteLQ",
+				"Regex" : "^(?i).{0,60}$",
+				"IsAuto" : false,
+				"Site" : "askubuntu.com",
+				"Score" : 7,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946913",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/38907",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "I'm trying to implement this but my theme follows a different format.\n\n$...",
+		"Body" : "<p>I'm trying to implement this but my theme follows a different format.</p>\n\n<pre><code>$category[0]->cat_name;    \n$default_thumb = $bloginfo.'/images/'.'$category->category_nicename'.'jpg';\n</code></pre>\n\n<p>I'm getting an error. The actual code for the above was:</p>\n\n<pre><code>$default_thumb = $bloginfo.'/images/post_thumb.jpg';\n</code></pre>\n\n<p>EDIT - Managed to get it to work.</p>\n\n<p>$cat was already declared earlier. So I had to change the code to</p>\n\n<pre><code>$default_thumb = $bloginfo.'/images/'.$cats.'.png';\n</code></pre>\n\n<p>If someone could take a look at this and let me if this is the right way to code, i'd appreciate it.</p>\n\n<p>Thanks.</p>",
+		"TimeStamp" : "2015-01-22T21:51:49.226Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 190,
+				"FPCount" : 109,
+				"CaughtCount" : 2992
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946912",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/56451",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "\n\n\n\n\n\n/your image directory name in theme folder/cat_name; ?.jpg\" / \n\n\n",
+		"Body" : "<pre><code><?php if (  (function_exists('has_post_thumbnail')) && (has_post_thumbnail())) : ?>\n\n<?php the_post_thumbnail('thumbnail'); ?>\n\n<?php else :?>\n\n<img src=\"<?php bloginfo('template_directory'); ?>/your image directory name in theme folder/<?php $category = get_the_category(); echo $category[0]->cat_name; ?>.jpg\" /> \n\n<?php endif;?>\n</code></pre>",
+		"TimeStamp" : "2015-01-22T21:51:47.506Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 3,
+				"CaughtCount" : 387
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946910",
+		"PostUrl" : "http://anime.stackexchange.com/a/18747",
+		"Site" : "anime.stackexchange.com",
+		"Title" : "when ukitake states \"have you fallen in the process aizen?\"\naizen replie...",
+		"Body" : "<p>when ukitake states \"have you fallen in the process aizen?\"\naizen replies \"no one starts on top of the world. not you not me not even gods\"</p>",
+		"TimeStamp" : "2015-01-22T21:51:31.660Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 3,
+				"CaughtCount" : 386
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946888",
+		"PostUrl" : "http://craftcms.stackexchange.com/questions/6762",
+		"Site" : "craftcms.stackexchange.com",
+		"Title" : "How can I output a list of categories that are not empty?",
+		"Body" : "<p>In other words, categories must have at least one enabled entry assigned to them.</p>",
+		"TimeStamp" : "2015-01-22T21:49:46.544Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyBlackLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 804
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946846",
+		"PostUrl" : "http://anime.stackexchange.com/questions/18756",
+		"Site" : "anime.stackexchange.com",
+		"Title" : "do you know the nsme of this shoujo manga?",
+		"Body" : "<p>This manga is about a high school girl who loves doing her sisters hair in the mornings but thinks they won't suit her. One day in school she cuts a guys hair in the middle of class, later she fixes it and then the story progresses.that's all I can remember thank you</p>",
+		"TimeStamp" : "2015-01-22T21:44:09.048Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackSpam",
+				"Regex" : "(?i)\\byou know\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 0,
+				"FPCount" : 9,
+				"CaughtCount" : 25
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946828",
+		"PostUrl" : "http://superuser.com/a/868244",
+		"Site" : "superuser.com",
+		"Title" : "I have the same problem and I tried all the solutions suggested. However...",
+		"Body" : "<p>I have the same problem and I tried all the solutions suggested. However, when installing the various drivers, they still do not find the Broadcom Bluetooth built in device! But it is there and works very well! Anybody has an idea? </p>",
+		"TimeStamp" : "2015-01-22T21:41:49.152Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 45,
+				"FPCount" : 6,
+				"CaughtCount" : 371
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946827",
+		"PostUrl" : "http://movies.stackexchange.com/a/30268",
+		"Site" : "movies.stackexchange.com",
+		"Title" : "When Cooper Senior Left on his journey, there were no Space Stations orb...",
+		"Body" : "<p>When Cooper Senior Left on his journey, there were no Space Stations orbiting Saturn, with grass and houses in them.</p>\n\n<p>When it's announced as a space station orbiting Saturn, the camera shows a green biosphere with houses curved with inverse gravity. </p>\n\n<p>This has the purpose of placing the spectator in wonder. A space station orbiting Saturn would be a fun destination for you and me, wonderful indeed.</p>\n\n<p>It has the purpose of revealing to the watcher that humans have built space stations with weird gravity and biospheres, thanks to coopers message about gravity's quantum laws, and so make him seem heroic, which is a positive turn for the movie.</p>\n\n<p>Nolan could have also chosen Jupiter, Pluto, Neptune, The wormhole's distance from the sun isn't precisely given, so it's assumed that the space station is a Living space rather than a traveling craft on it's way to outer space. </p>\n\n<p>As the positions of planets change, you can use any of them to sling shot your way into deep space. however sling shot use of planets is not necessary if you have control of gravity, because gravity control enables faster acceleration than sling shot around planets.</p>\n\n<p>They are inviting his daughter to Saturn, which contradicts that they had no intention of voyaging soon to a wormhole with the cooper space station.</p>",
+		"TimeStamp" : "2015-01-22T21:41:40.735Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 190,
+				"FPCount" : 109,
+				"CaughtCount" : 2991
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946813",
+		"PostUrl" : "http://superuser.com/a/868243",
+		"Site" : "superuser.com",
+		"Title" : "Excel only recognizes 15 digits per cell after that it will turn any add...",
+		"Body" : "<p>Excel only recognizes 15 digits per cell after that it will turn any additional digits to a zero.</p>\n\n<p>Sorry if I wasted anyone's time.</p>\n\n<p>Thank you,</p>",
+		"TimeStamp" : "2015-01-22T21:39:20.274Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 190,
+				"FPCount" : 109,
+				"CaughtCount" : 2990
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946802",
+		"PostUrl" : "http://ux.stackexchange.com/questions/72428",
+		"Site" : "ux.stackexchange.com",
+		"Title" : "What's the best way to choose between twisty and plus/minus icon?",
+		"Body" : "<p>When designing collapse and expandable rows, are there certain ways to choose between using a twisty icon vs a plus/minus icon?</p>\n\n<p>Below are examples I've taken from google search ---</p>\n\n<p><strong>With a twisty icon:</strong>\n<img src=\"http://i.stack.imgur.com/gmTtu.png\" alt=\"enter image description here\"></p>\n\n<p><strong>With plus/minus icon:</strong>\n<img src=\"http://i.stack.imgur.com/S3s7N.gif\" alt=\"enter image description here\"></p>",
+		"TimeStamp" : "2015-01-22T21:37:52.432Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)wh(at|ich).*best",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13,
+				"TPCount" : 9,
+				"FPCount" : 16,
+				"CaughtCount" : 286
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946781",
+		"PostUrl" : "http://gaming.stackexchange.com/a/114831",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "There is no way. It might be moddable on PC but I'm not sure about that.",
+		"Body" : "<p>There is no way. It might be moddable on PC but I'm not sure about that.</p>",
+		"TimeStamp" : "2015-01-22T21:34:33.851Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 118,
+				"CaughtCount" : 3030
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946776",
+		"PostUrl" : "http://emacs.stackexchange.com/questions/7642",
+		"Site" : "emacs.stackexchange.com",
+		"Title" : "ERT with Emacs23",
+		"Body" : "<p>I'd like to use ERT with Emacs23. ERT is bundled with Emacs24. Latest version of ERT does not work with Emacs23 because of lack of <code>define-error</code>.</p>\n\n<p>Is there an offical way of using ERT with Emacs23?</p>",
+		"TimeStamp" : "2015-01-22T21:33:19.368Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "^(?i).{0,18}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11,
+				"TPCount" : 6,
+				"FPCount" : 44,
+				"CaughtCount" : 2235
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946774",
+		"PostUrl" : "http://pets.stackexchange.com/a/7387",
+		"Site" : "pets.stackexchange.com",
+		"Title" : "Have you tried the find it game? For my dog I often hide food caches (a ...",
+		"Body" : "<p>Have you tried the find it game? For my dog I often hide food caches (a small collection of kibble, or a medium sized treat) around the apartment for her to find. It's a fun 'puzzle' and since you decide where to hide the rewards, the difficulty level is adjustable. As my dog has gotten better at finding the hidden treats I've had to come up with more advanced places to hide them (inside old shoe boxes, underneath her dog bed...etc.) If you try this technique and your dog is already a bit destructive you might want to be extra mindful of where you hide the treats (so you're not encouraging your dog to destroy or mess up anything else)</p>\n\n<p>For a more high tech solution there are weird robot toys that play with your dog while you're away...something like this:  <a href=\"http://goifetch.com/\" rel=\"nofollow\">http://goifetch.com/</a></p>\n\n<p>I want to add that one of the best ways to make your dog less restless while your away is to tire your dog out while you are around. A tired dog is more likely to want to lie around the house while you're away.\nGood luck :)</p>",
+		"TimeStamp" : "2015-01-22T21:33:07.565Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?is)^<.*>\\s*i want",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 4,
+				"FPCount" : 0,
+				"CaughtCount" : 35
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946770",
+		"PostUrl" : "http://dba.stackexchange.com/a/69493",
+		"Site" : "dba.stackexchange.com",
+		"Title" : "I know it's been a while, but I have the same issue trying to manage mul...",
+		"Body" : "<p>I know it's been a while, but I have the same issue trying to manage multiple domains. (Avoid using the same server name in more than one domain.)  The Multi-server feature seems to be very limited, but it could be so much better with a little effort.  I figure it will be removed from the product one of these years, fixed, and then added back as a great \"new\" feature in the ENT edition.  </p>\n\n<p>I think the limitation is in the extended procs such as xp_msx_enlist code.  They determine the name of the local instance.  If it was T-SQL code, it might have been easier to fix.  As far as I can tell, the only place the target name is stored is in msdb.dbo.systargetservers table on the master server.  If the targets could be tricked into requesting a sync for the FSDN, then the table could have be updated (hacked) directly to use the FQDN.  </p>\n\n<p>If it was open source, it would have been fixed years ago.  It would have had more features by now too.  </p>",
+		"TimeStamp" : "2015-01-22T21:32:10.779Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 45,
+				"FPCount" : 6,
+				"CaughtCount" : 370
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946769",
+		"PostUrl" : "http://graphicdesign.stackexchange.com/a/42607",
+		"Site" : "graphicdesign.stackexchange.com",
+		"Title" : "you just use free transform and put the corners where you want. use guid...",
+		"Body" : "<p>you just use free transform and put the corners where you want. use guides to make a proper rectangle and the free transform will snap to them when you move it near.</p>",
+		"TimeStamp" : "2015-01-22T21:32:09.575Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 3,
+				"CaughtCount" : 385
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946756",
+		"PostUrl" : "http://stackoverflow.com/a/28080750",
+		"Site" : "stackoverflow.com",
+		"Title" : "He was not asking about auto completion.  Although that is a problem in ...",
+		"Body" : "<p>He was not asking about auto completion.  Although that is a problem in of itself.  The answers on this page solved neither problem for me.  He is referring to the execute command.  When you execute your code it doesn't always use the version of python described in the preferences or that you want for it to use.  Check the top of your .py file.  See where there is a shebang command</p>\n\n<pre><code>#!/usr/bin/python\n</code></pre>\n\n<p>change that to</p>\n\n<pre><code>#!/usr/bin/python3\n</code></pre>\n\n<p>or whatever path is the path to your interpreter of choice.</p>\n\n<p>if this doesn't exist, place it at the top of your .py file and I can almost fully guarantee that it will fix your problem.</p>\n\n<p>I hope this response comes not too late and that it can still help out the lost and confused somewhere out there.</p>\n\n<p>It solved the problem for me.  It took me a whole day of research and I finally figured this out by reading through the python manual at <a href=\"https://docs.python.org\" rel=\"nofollow\">https://docs.python.org</a></p>\n\n<p>Tons of great information in those documents, check em out!</p>\n\n<p>Please let me know if this solved your problem as well.</p>",
+		"TimeStamp" : "2015-01-22T21:30:20.963Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 5,
+				"CaughtCount" : 87
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946755",
+		"PostUrl" : "http://stackoverflow.com/questions/28099055",
+		"Site" : "stackoverflow.com",
+		"Title" : "Hi Friends I am having a trouble in my website I am new and I want to see Emoticons on my chat screen when I write the symbol \u201C:)\u201D . Please",
+		"Body" : "<p>Hello guys I am building a chat system and I already put the emoticons but I want to see in the place that I type :) appearing the image of emoticon when I finish put the symbol \":)\". Can someone help me to undestand it? Please and sorry about my english and thank you for your attention (Web design). I want to see in my input screen the emoticon of :) I just need a clear exemplo.</p>",
+		"TimeStamp" : "2015-01-22T21:30:13.149Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)\\bh(i|ello)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 2,
+				"FPCount" : 2,
+				"CaughtCount" : 55
+			},
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)i want to",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 12,
+				"TPCount" : 17,
+				"FPCount" : 13,
+				"CaughtCount" : 212
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "QuestionTitleWhiteLQ",
+				"Regex" : "(?s-m)^.{0,150}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 8,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946746",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/175687",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "i use pre_get_posts. example:\n\nadd_action('pre_get_posts','search_filter...",
+		"Body" : "<p>i use <code>pre_get_posts</code>. example:</p>\n\n<pre><code>add_action('pre_get_posts','search_filterr');function search_filterr($query) {\n    if ( !is_admin() && $query->is_main_query() )   {\n        if ( $query->is_search ) { //$query->is_category or etc...except is_page()\n            $arrs[]='post';\n            $arrs[]='page';\n            $arrs[]='my_carss';\n            $query->set('post_type',  $arrs );\n        }\n    }\n}\n</code></pre>",
+		"TimeStamp" : "2015-01-22T21:29:19.560Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 3,
+				"CaughtCount" : 384
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946740",
+		"PostUrl" : "http://sharepoint.stackexchange.com/questions/129423",
+		"Site" : "sharepoint.stackexchange.com",
+		"Title" : "How do you add a hover-over box to survey questions?",
+		"Body" : "<p>I have created a survey to help capture results from a departmental initiative.  I would like to add hover-over boxes to some of the questions to provide a more detailed explanation of the question being asked; however, I have been unable to do so.  My access no longer includes the SharePoint Designer Tool.</p>",
+		"TimeStamp" : "2015-01-22T21:28:35.970Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackLQ",
+				"Regex" : "(?i)question",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11,
+				"TPCount" : 5,
+				"FPCount" : 23,
+				"CaughtCount" : 1622
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946435",
+		"PostUrl" : "http://gaming.stackexchange.com/a/118357",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "I am currently playing through Borderlands 2 for the fourth time and hav...",
+		"Body" : "<p>I am currently playing through Borderlands 2 for the fourth time and have yet to see The Warrior drop the first legendary anything.  I farmed him literally 6-8 hours a day for over 2 weeks, at the time it took roughly 10 minutes to kill him and he never dropped a legendary unless it went into the lava.  As far as Terramorphous goes, the only legendary anything it has dropped has been slayer of terramorphous mods.....never anything else.  I have literally had better luck buying legendary weapons in vending machines than getting either of those to drop one.  I have seen chubby varkids drop a crappy launcher, chubby spiderants drop a shield that wasn't worth picking up..other than that, the only items I have seen drop have been slayer of terramorphous and that's all....gearbox really needs to do something about the shoddy drop rates.  I don't mean they should drop some legendary every time, but they should at least have a 5% chance of dropping SOMETHING besides crap items.  And by the way, I cannot play online so getting someone to \"dupe\" anything for me is out of the question...wouldn't want that anyway, no point in having it if I didn't get it myself</p>",
+		"TimeStamp" : "2015-01-22T20:42:43.577Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackOff",
+				"Regex" : "(?i)\\bcrap\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11,
+				"TPCount" : 3,
+				"FPCount" : 21,
+				"CaughtCount" : 56
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerWhiteOff",
+				"Regex" : "(?i)\\bcrap\\b",
+				"IsAuto" : false,
+				"Site" : "gaming.stackexchange.com",
+				"Score" : 5,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946394",
+		"PostUrl" : "http://magento.stackexchange.com/a/53020",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "We have the exact same situation re drop ship vs in-house products. We h...",
+		"Body" : "<p>We have the exact same situation re drop ship vs in-house products. We handle things a bit differently as some of our inventory numbers must be real and accurate, but others are always available even if they are momentarily out of stock with our supplier.</p>\n\n<p>This isn't really elegant, but you could: </p>\n\n<ul>\n<li>add 5000 to the actual inventory count for each product.</li>\n<li>set Notify for Quantity Below to 5001, 5005, whatever suits you. (Admin->Inventory(under catalog))</li>\n<li>Leave Qty for Item's Status to Become Out of Stock set to 0.</li>\n</ul>\n\n<p>That would keep everything appearing to be in-stock, and you would be able to easily see your real stock levels by subtracting the \"hard deck\" of 5000. (Thanks Top Gun)</p>\n\n<p>I think that would work for you, but if I have misinterpreted your need post again with more info.</p>\n\n<p>Good luck!</p>",
+		"TimeStamp" : "2015-01-22T20:39:36.505Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 190,
+				"FPCount" : 109,
+				"CaughtCount" : 2989
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946332",
+		"PostUrl" : "http://gis.stackexchange.com/a/131408",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "HI I'am a french GIS guy, so sorry for this english but perhaps i have a...",
+		"Body" : "<p>HI I'am a french GIS guy, so sorry for this english but perhaps i have a solution to you\nCan you control your python key registre and at this registre path  like this\n\"HKEY_LOCAL_MACHINE\\SOFTWARE\\Python\\PythonCore\\2.7\\PythonPath\"\nyou control if you have this registre key string\n\"C:\\Python27\\Lib;C:\\Python27\\DLLs;C:\\Python27\\Lib\\lib-tk\"</p>\n\n<p>you must have this string value in your regitre. So if it don't exist you must to create new one with the same caract\u00E9ristique key string. </p>\n\n<p>Test this if you want and it's for nothing goodluck \nbye bye</p>",
+		"TimeStamp" : "2015-01-22T20:34:24.402Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 5,
+				"CaughtCount" : 86
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946311",
+		"PostUrl" : "http://superuser.com/a/868214",
+		"Site" : "superuser.com",
+		"Title" : "Simple Answer. Restart the PC. Yes, its that simple.",
+		"Body" : "<p>Simple Answer. Restart the PC. Yes, its that simple.</p>",
+		"TimeStamp" : "2015-01-22T20:31:16.184Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 118,
+				"CaughtCount" : 3029
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946300",
+		"PostUrl" : "http://android.stackexchange.com/a/96630",
+		"Site" : "android.stackexchange.com",
+		"Title" : "my phone has a problem everytime i want to update something or download ...",
+		"Body" : "<p>my phone has a problem everytime i want to update something or download example i cant download my  whatsapp now on my playstore it says error retreving information  from server [rpe-s aec 0.plz help me i</p>",
+		"TimeStamp" : "2015-01-22T20:28:48.169Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)pl(ease|s|z) help",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 17,
+				"TPCount" : 20,
+				"FPCount" : 2,
+				"CaughtCount" : 126
+			},
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 3,
+				"CaughtCount" : 383
+			},
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "(?i)help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 4,
+				"FPCount" : 0,
+				"CaughtCount" : 37
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946299",
+		"PostUrl" : "http://android.stackexchange.com/a/53481",
+		"Site" : "android.stackexchange.com",
+		"Title" : "If that application which sends that message is a trustworthy anti-virus...",
+		"Body" : "<p>If that application which sends that message is a trustworthy anti-virus you personally choose and installed, then you can trust the message.</p>\n\n<p>Otherwise I recommend to ignore that message and uninstall the application which sends that message.</p>\n\n<p>Internet is full of such false \"free antivirus check\"s, which push you to click on install their crap - but actually, this programs will install a backdoor, spyware or other crap. This exist on PC, now you met it on your android.  </p>",
+		"TimeStamp" : "2015-01-22T20:28:45.534Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackOff",
+				"Regex" : "(?i)\\bcrap\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11,
+				"TPCount" : 3,
+				"FPCount" : 21,
+				"CaughtCount" : 55
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerWhiteOff",
+				"Regex" : "(?i)\\bcrap\\b",
+				"IsAuto" : false,
+				"Site" : "android.stackexchange.com",
+				"Score" : 6.60000038,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946287",
+		"PostUrl" : "http://patents.stackexchange.com/questions/11980",
+		"Site" : "patents.stackexchange.com",
+		"Title" : "We need to know more about patnet WO2006112733 A1",
+		"Body" : "<p>We want to know if this an active patent or simply just an application, not a granted patent.</p>",
+		"TimeStamp" : "2015-01-22T20:27:20.221Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionTitleBlackSpam",
+				"Regex" : "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 21,
+				"FPCount" : 54,
+				"CaughtCount" : 109
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "QuestionTitleWhiteSpam",
+				"Regex" : "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
+				"IsAuto" : false,
+				"Site" : "patents.stackexchange.com",
+				"Score" : 9.321368,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946266",
+		"PostUrl" : "http://stackoverflow.com/a/6463033",
+		"Site" : "stackoverflow.com",
+		"Title" : "\n# -*- coding: utf-8 -*-\n\"\"\"\n@author: neo\n\"\"\"\ndef bin(x):\n    result = '...",
+		"Body" : "<pre>\n# -*- coding: utf-8 -*-\n\"\"\"\n@author: neo\n\"\"\"\ndef bin(x):\n    result = ''\n    x = int(x)\n    while x > 0:\n        mod = x % 2\n        x /= 2\n        result = str(mod) + result\n    return result\nprint sum(i for i in xrange(1,1000001)\\\n    if str(i)==str(i)[::-1] and str(bin(i))==str(bin(i))[::-1])\n</pre>",
+		"TimeStamp" : "2015-01-22T20:25:35.328Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerBlackLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 3,
+				"CaughtCount" : 382
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946263",
+		"PostUrl" : "http://english.stackexchange.com/questions/223161",
+		"Site" : "english.stackexchange.com",
+		"Title" : "\u201CI'm curious as to how to\u2026\u201D",
+		"Body" : "<p>Is that worded properly? I'm not sure if it's off. Thank you for any help you give. </p>",
+		"TimeStamp" : "2015-01-22T20:25:28.098Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyBlackLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 802
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2946254",
 		"PostUrl" : "http://sqa.stackexchange.com/a/11903",
 		"Site" : "sqa.stackexchange.com",

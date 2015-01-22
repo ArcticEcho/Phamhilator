@@ -35,7 +35,9 @@ namespace Phamhilator
         public ReportLog()
         {
             EntryLinks = new Dictionary<string, string>();
+
             var data = File.ReadAllText(DirectoryTools.GetLogFile());
+            var reader = new JsonReader();
 
             if (String.IsNullOrEmpty(data))
             {
@@ -43,7 +45,7 @@ namespace Phamhilator
             }
             else
             {
-                entries = new JsonReader().Read<List<LogItem>>(data);
+                entries = reader.Read<List<LogItem>>(data);
             }
 
             GlobalInfo.PostsCaught += entries.Count;
