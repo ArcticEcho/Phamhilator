@@ -48,6 +48,8 @@ namespace Phamhilator
 
                 foreach (var t in data)
                 {
+                    t.Site = site;
+
                     Terms.Add(t.ToTerm(FilterType));
                 }
             }
