@@ -23,8 +23,8 @@
 		"Site" : "",
 		"Score" : 10,
 		"TPCount" : 4,
-		"FPCount" : 1,
-		"CaughtCount" : 5
+		"FPCount" : 2,
+		"CaughtCount" : 6
 	},
 	{
 		"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
@@ -32,8 +32,8 @@
 		"Site" : "",
 		"Score" : 10,
 		"TPCount" : 16,
-		"FPCount" : 18,
-		"CaughtCount" : 45
+		"FPCount" : 19,
+		"CaughtCount" : 46
 	},
 	{
 		"Regex" : "officialimeiunlock",
@@ -58,9 +58,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 0,
+		"TPCount" : 1,
 		"FPCount" : 0,
-		"CaughtCount" : 0
+		"CaughtCount" : 1
 	},
 	{
 		"Regex" : "(?i)neuro\\s?3x",
@@ -148,9 +148,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 16,
-		"FPCount" : 24,
-		"CaughtCount" : 52
+		"TPCount" : 17,
+		"FPCount" : 25,
+		"CaughtCount" : 54
 	},
 	{
 		"Regex" : "(?i)ComplexiDerm",
@@ -482,8 +482,8 @@
 		"Site" : "",
 		"Score" : 10.0204086,
 		"TPCount" : 0,
-		"FPCount" : 6,
-		"CaughtCount" : 14
+		"FPCount" : 7,
+		"CaughtCount" : 15
 	},
 	{
 		"Regex" : "\\sCLICK HERE\\s",
@@ -634,9 +634,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0204086,
-		"TPCount" : 1,
+		"TPCount" : 2,
 		"FPCount" : 0,
-		"CaughtCount" : 2
+		"CaughtCount" : 3
 	},
 	{
 		"Regex" : "Bio Testosterone",
@@ -688,9 +688,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0206881,
-		"TPCount" : 0,
+		"TPCount" : 1,
 		"FPCount" : 0,
-		"CaughtCount" : 0
+		"CaughtCount" : 1
 	},
 	{
 		"Regex" : "(?i)droz\\-garciniacambogia",
@@ -871,5 +871,77 @@
 		"TPCount" : 1,
 		"FPCount" : 0,
 		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)lavishskincarehelp\\.com",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)blackdiamondskinserumsite",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)^<p>.*</p?>\\n\\n?<p><a.*></p>$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 7,
+		"FPCount" : 2,
+		"CaughtCount" : 6
+	},
+	{
+		"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 1,
+		"FPCount" : 1,
+		"CaughtCount" : 2
+	},
+	{
+		"Regex" : "(?i)muscle[- ]rev[- ]e?xtreme",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)supertestoboostsfacts",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)the ?healthy ?advi[cs]er?",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)muscle[- ]pro",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
 	}
 ]

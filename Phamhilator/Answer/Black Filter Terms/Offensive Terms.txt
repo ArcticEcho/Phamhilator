@@ -58,9 +58,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 0,
+		"TPCount" : 1,
 		"FPCount" : 2,
-		"CaughtCount" : 5
+		"CaughtCount" : 6
 	},
 	{
 		"Regex" : "(?i)\\bbitch\\b",
@@ -78,7 +78,7 @@
 		"Score" : 11,
 		"TPCount" : 3,
 		"FPCount" : 21,
-		"CaughtCount" : 56
+		"CaughtCount" : 57
 	},
 	{
 		"Regex" : "(?i)\\bfag\\b",
@@ -167,8 +167,8 @@
 		"Site" : "",
 		"Score" : 10.2105265,
 		"TPCount" : 4,
-		"FPCount" : 2,
-		"CaughtCount" : 8
+		"FPCount" : 3,
+		"CaughtCount" : 9
 	},
 	{
 		"Regex" : "(?i)good luck to stack overflow developers",

@@ -103,7 +103,7 @@ namespace Phamhilator
                 else
                 {
                     var request = (HttpWebRequest)WebRequest.Create("http://hastebin.com/documents");
-                    var data = Encoding.UTF8.GetBytes(new JsonWriter(new DataWriterSettings { PrettyPrint = true } ).Write(logEntry));
+                    var data = Encoding.UTF8.GetBytes(new JsonWriter(new DataWriterSettings { PrettyPrint = true, Tab = "    " } ).Write(logEntry));
 
                     request.Method = "POST";
                     request.ContentType = "application/x-www-form-urlencoded";
@@ -117,7 +117,7 @@ namespace Phamhilator
                     var response = (HttpWebResponse)request.GetResponse();
                     dynamic resJson = new JsonReader().Read(new StreamReader(response.GetResponseStream()).ReadToEnd());
 
-                    link = "http://hastebin.com/" + (string)resJson["key"] + ".hs";
+                    link = "http://hastebin.com/" + (string)resJson.key + ".hs";
                     GlobalInfo.Log.EntryLinks.Add(entryID, link);
                 }
 

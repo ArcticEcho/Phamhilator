@@ -147,21 +147,23 @@ namespace Phamhilator
         {
             if (String.IsNullOrEmpty(rep))  {  return 1; }
 
-            if (rep.ToLowerInvariant().Contains("k"))
+            var trimmed = rep.Trim();
+
+            if (trimmed.ToLowerInvariant().Contains("k"))
             {
-                if (rep.Contains("."))
+                if (trimmed.Contains("."))
                 {
-                    var charsAfterPeriod = rep.Substring(0, rep.IndexOf(".", StringComparison.Ordinal) + 1).Length;
-                    var e = float.Parse(rep.Replace("k", ""));
+                    var charsAfterPeriod = trimmed.Substring(0, trimmed.IndexOf(".", StringComparison.Ordinal) + 1).Length;
+                    var e = float.Parse(trimmed.Replace("k", ""));
                     var p = Math.Pow(10, charsAfterPeriod);
 
                     return (int)Math.Round(e * p);
                 }
 
-                return (int)float.Parse(rep.ToLowerInvariant().Replace("k", "000"));
+                return (int)float.Parse(trimmed.ToLowerInvariant().Replace("k", "000"));
             }
 
-            return (int)float.Parse(rep);
+            return (int)float.Parse(trimmed);
         }
 
         public static string EscapeString(string input, string newlineReplace)
@@ -189,33 +191,31 @@ namespace Phamhilator
             var score = int.Parse(dom[aDom + ".vote-count-post"][0].InnerHTML);
             var body = UnshortifyLinks(WebUtility.HtmlDecode(dom[aDom + ".post-text"][0].InnerHTML.Trim()));
             var url = "http://" + host + "/a/" + id;
-            string authorName;
-            string authorLink;
-            int authorRep;
+            var authorName = "";
+            var authorLink = "";
+            var authorRep = 0;
 
-            if (dom[aDom + ".reputation-score"][0] != null)
+            var authorE = dom[".user-details"].Last()[0];
+
+            if (authorE.InnerHTML.Contains("<a href=\"/users/"))
             {
-                // Normal answer.
-                authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details a"][0].InnerHTML));
-                authorLink = TrimUrl("http://" + host + dom[aDom + ".user-details a"][0].Attributes["href"]);
-                authorRep = ParseRep(dom[aDom + ".reputation-score"][0].InnerHTML);
+                authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details a"].Last()[0].InnerHTML).Trim());
+                authorLink = TrimUrl("http://" + host + dom[".user-details a"].Last()[0].Attributes["href"].Trim());
+
+                if (authorE.InnerHTML.Contains("class=\"reputation-score\""))
+                {
+                    authorRep = ParseRep(dom[".reputation-score"].Last()[0].InnerHTML.Trim());
+                }
             }
             else
             {
-                if (dom[aDom + ".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
+                if (Regex.IsMatch(authorE.InnerHTML, "(?s)^\\s*<a.*?/revisions\".*?>.*</a>\\s*$", RegexOptions.CultureInvariant))
                 {
-                    // Community wiki.
-                    authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details a"][1].InnerHTML));
-                    authorLink = TrimUrl("http://" + host + dom[aDom + ".user-details a"][1].Attributes["href"]);
-                    authorRep = 1;
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details a"].Last()[0].InnerHTML).Trim());
                 }
                 else
                 {
-                    // Dead account owner.
-                    authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details"][0].InnerHTML));
-                    authorName = authorName.Remove(authorName.Length - 4);
-                    authorLink = null;
-                    authorRep = 1;
+                    authorName = WebUtility.HtmlDecode(StripTags(authorE.InnerHTML).Trim());
                 }
             }
 
@@ -248,7 +248,7 @@ namespace Phamhilator
                 trimmed += url[i];
             }
 
-            return trimmed;
+            return trimmed.Trim();
         }
 
         private static void GetPostInfo(string postUrl, out string host, out int id)
