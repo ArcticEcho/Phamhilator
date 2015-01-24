@@ -1,122 +1,98 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FAC3EC10-A91D-4E01-A53A-49AB139CE1C9}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{6217E96F-4C87-4961-8EC2-EBDAD05122DD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Phamhilator</RootNamespace>
     <AssemblyName>Phamhilator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>.\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>none</DebugType>
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>.\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <Prefer32Bit>false</Prefer32Bit>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ChatExchange.Net">
       <HintPath>..\..\ChatExchange.Net\ChatExchange.Net\bin\Debug\ChatExchange.Net.dll</HintPath>
     </Reference>
-    <Reference Include="CsQuery, Version=1.3.3.249, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ChatExchange.Net\ChatExchange.Net\bin\Debug\CsQuery.dll</HintPath>
+    <Reference Include="CsQuery">
+      <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
     </Reference>
     <Reference Include="JsonFx">
       <HintPath>..\packages\JsonFx.2.0.1209.2802\lib\net40\JsonFx.dll</HintPath>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MahApps.Metro.1.0.0.0\lib\net45\MahApps.Metro.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.0.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp, Version=1.0.2.41663, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebSocketSharp.1.0.3-rc6\lib\websocket-sharp.dll</HintPath>
     </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>..\..\..\Visual Studio 2012\Projects\C Sharp Console SandBox\C Sharp Console SandBox\bin\Debug\websocket-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="Answer.cs" />
     <Compile Include="AnswerAnalyser.cs" />
     <Compile Include="AnswerAnalysis.cs" />
     <Compile Include="BadTagDefinitions.cs" />
     <Compile Include="BannedUsers.cs" />
+    <Compile Include="BlackFilter.cs" />
+    <Compile Include="ChatAction.cs" />
     <Compile Include="ChatCommand.cs" />
     <Compile Include="CommandAccessLevel.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DirectoryTools.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FilterType.cs" />
+    <Compile Include="GlobalInfo.cs" />
     <Compile Include="GlobalInfo.Stats.cs" />
+    <Compile Include="JsonTerm.cs" />
     <Compile Include="LogItem.cs" />
     <Compile Include="LogTerm.cs" />
+    <Compile Include="MessageGenerator.cs" />
     <Compile Include="MessageHandler.cs" />
-    <Compile Include="ChatAction.cs" />
+    <Compile Include="MessageInfo.cs" />
     <Compile Include="Pham.cs" />
+    <Compile Include="Post.cs" />
+    <Compile Include="PostAnalyser.cs" />
+    <Compile Include="PostAnalysis.cs" />
     <Compile Include="PostFetcher.cs" />
+    <Compile Include="PostType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QAAnalysis.cs" />
+    <Compile Include="Question.cs" />
     <Compile Include="QuestionAnalyser.cs" />
+    <Compile Include="QuestionAnalysis.cs" />
     <Compile Include="ReplyMessage.cs" />
+    <Compile Include="ReportCleaner.cs" />
+    <Compile Include="ReportLog.cs" />
     <Compile Include="Spammer.cs" />
     <Compile Include="StringDownloader.cs" />
-    <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="BlackFilter.cs" />
-    <Compile Include="FilterType.cs" />
-    <Compile Include="MessageGenerator.cs" />
-    <Compile Include="Post.cs" />
-    <Compile Include="ReportCleaner.cs" />
-    <Compile Include="QAAnalysis.cs" />
-    <Compile Include="QuestionAnalysis.cs" />
-    <Compile Include="MessageInfo.cs" />
-    <Compile Include="PostAnalyser.cs" />
-    <Compile Include="ReportLog.cs" />
-    <Compile Include="GlobalInfo.cs" />
-    <Compile Include="JsonTerm.cs" />
     <Compile Include="Term.cs" />
     <Compile Include="TermCreater.cs" />
     <Compile Include="TermReader.cs" />
@@ -126,51 +102,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WhiteFilter.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Question.cs" />
-    <Compile Include="PostType.cs" />
-    <Compile Include="PostAnalysis.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
