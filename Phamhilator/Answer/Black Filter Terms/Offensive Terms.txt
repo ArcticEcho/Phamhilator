@@ -33,7 +33,7 @@
 		"Score" : 11,
 		"TPCount" : 2,
 		"FPCount" : 3,
-		"CaughtCount" : 9
+		"CaughtCount" : 10
 	},
 	{
 		"Regex" : "(?i)\\bbumhole\\b",
@@ -94,9 +94,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 11,
-		"TPCount" : 10,
+		"TPCount" : 12,
 		"FPCount" : 6,
-		"CaughtCount" : 28
+		"CaughtCount" : 29
 	},
 	{
 		"Regex" : "(?i)\\bidiot\\b",
@@ -105,7 +105,7 @@
 		"Score" : 10,
 		"TPCount" : 2,
 		"FPCount" : 7,
-		"CaughtCount" : 22
+		"CaughtCount" : 23
 	},
 	{
 		"Regex" : "(?i)\\bshit\\b",
@@ -213,7 +213,7 @@
 		"Score" : 10.1800556,
 		"TPCount" : 0,
 		"FPCount" : 2,
-		"CaughtCount" : 3
+		"CaughtCount" : 5
 	},
 	{
 		"Regex" : "(?i)fcking btch",

@@ -60,7 +60,7 @@
 		"Score" : 17,
 		"TPCount" : 21,
 		"FPCount" : 2,
-		"CaughtCount" : 132
+		"CaughtCount" : 133
 	},
 	{
 		"Regex" : "^\\<p\\>[^a-z]*\\<\\/p\\>$",
@@ -69,25 +69,25 @@
 		"Score" : 10,
 		"TPCount" : 4,
 		"FPCount" : 2,
-		"CaughtCount" : 57
+		"CaughtCount" : 58
 	},
 	{
 		"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 18,
-		"TPCount" : 45,
+		"TPCount" : 46,
 		"FPCount" : 6,
-		"CaughtCount" : 378
+		"CaughtCount" : 383
 	},
 	{
 		"Regex" : "^(?i).{0,80}$",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 89,
-		"TPCount" : 500,
+		"TPCount" : 503,
 		"FPCount" : 120,
-		"CaughtCount" : 3162
+		"CaughtCount" : 3198
 	},
 	{
 		"Regex" : "(?i)^please",
@@ -103,9 +103,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 16.8727264,
-		"TPCount" : 35,
+		"TPCount" : 36,
 		"FPCount" : 3,
-		"CaughtCount" : 86
+		"CaughtCount" : 89
 	},
 	{
 		"Regex" : "(?i)have question",
@@ -121,9 +121,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 19.3837166,
-		"TPCount" : 196,
+		"TPCount" : 198,
 		"FPCount" : 109,
-		"CaughtCount" : 3114
+		"CaughtCount" : 3157
 	},
 	{
 		"Regex" : "^(?=.*?(?i)please).{0,100}$",
@@ -148,9 +148,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 19.6851864,
-		"TPCount" : 22,
+		"TPCount" : 23,
 		"FPCount" : 0,
-		"CaughtCount" : 50
+		"CaughtCount" : 51
 	},
 	{
 		"Regex" : "(?i)(have|did) you (solve|fix|find|found)",
@@ -175,18 +175,18 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 19.2035675,
-		"TPCount" : 9,
+		"TPCount" : 11,
 		"FPCount" : 6,
-		"CaughtCount" : 120
+		"CaughtCount" : 129
 	},
 	{
 		"Regex" : "^[^A-Z]*$",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 19.2035675,
-		"TPCount" : 50,
+		"TPCount" : 54,
 		"FPCount" : 3,
-		"CaughtCount" : 488
+		"CaughtCount" : 517
 	},
 	{
 		"Regex" : "(?is)^<.*>\\s*i want",
@@ -195,7 +195,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 4,
 		"FPCount" : 0,
-		"CaughtCount" : 43
+		"CaughtCount" : 44
 	},
 	{
 		"Regex" : "(?i)is there a way",
@@ -204,16 +204,16 @@
 		"Score" : 19.2035675,
 		"TPCount" : 0,
 		"FPCount" : 0,
-		"CaughtCount" : 15
+		"CaughtCount" : 16
 	},
 	{
 		"Regex" : "(?i)help me",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 19.2035675,
-		"TPCount" : 5,
+		"TPCount" : 6,
 		"FPCount" : 0,
-		"CaughtCount" : 55
+		"CaughtCount" : 58
 	},
 	{
 		"Regex" : "(?i)how about",
@@ -222,7 +222,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 0,
 		"FPCount" : 0,
-		"CaughtCount" : 18
+		"CaughtCount" : 25
 	},
 	{
 		"Regex" : "(?i)recommend jquery",
@@ -259,5 +259,86 @@
 		"TPCount" : 0,
 		"FPCount" : 0,
 		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)(please )?help me",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 1,
+		"FPCount" : 0,
+		"CaughtCount" : 3
+	},
+	{
+		"Regex" : "(?i)(please )?any ?one suggest",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)same (problem|issue) here",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)is there a",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 4
+	},
+	{
+		"Regex" : "(?i)how can (you do|i)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 2
+	},
+	{
+		"Regex" : "(?i)\\bi want to\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 1,
+		"FPCount" : 0,
+		"CaughtCount" : 9
+	},
+	{
+		"Regex" : "(?i)please share the solution",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)Thanks in advance",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 1,
+		"FPCount" : 0,
+		"CaughtCount" : 4
+	},
+	{
+		"Regex" : "(?i)i (have|got) the same (problem|issue)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 1,
+		"FPCount" : 0,
+		"CaughtCount" : 5
 	}
 ]

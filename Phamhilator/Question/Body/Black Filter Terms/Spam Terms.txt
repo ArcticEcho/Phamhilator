@@ -22,18 +22,18 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 4,
+		"TPCount" : 5,
 		"FPCount" : 2,
-		"CaughtCount" : 6
+		"CaughtCount" : 7
 	},
 	{
 		"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 16,
+		"TPCount" : 17,
 		"FPCount" : 20,
-		"CaughtCount" : 47
+		"CaughtCount" : 49
 	},
 	{
 		"Regex" : "officialimeiunlock",
@@ -148,9 +148,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 17,
+		"TPCount" : 18,
 		"FPCount" : 25,
-		"CaughtCount" : 55
+		"CaughtCount" : 56
 	},
 	{
 		"Regex" : "(?i)ComplexiDerm",
@@ -483,7 +483,7 @@
 		"Score" : 10.0204086,
 		"TPCount" : 0,
 		"FPCount" : 9,
-		"CaughtCount" : 18
+		"CaughtCount" : 19
 	},
 	{
 		"Regex" : "\\sCLICK HERE\\s",
@@ -895,18 +895,18 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0206881,
-		"TPCount" : 7,
-		"FPCount" : 3,
-		"CaughtCount" : 9
+		"TPCount" : 8,
+		"FPCount" : 6,
+		"CaughtCount" : 16
 	},
 	{
 		"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0206881,
-		"TPCount" : 1,
+		"TPCount" : 2,
 		"FPCount" : 1,
-		"CaughtCount" : 2
+		"CaughtCount" : 4
 	},
 	{
 		"Regex" : "(?i)muscle[- ]rev[- ]e?xtreme",
@@ -922,9 +922,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0206881,
-		"TPCount" : 0,
+		"TPCount" : 2,
 		"FPCount" : 0,
-		"CaughtCount" : 0
+		"CaughtCount" : 2
 	},
 	{
 		"Regex" : "(?i)the ?healthy ?advi[cs]er?",
@@ -937,6 +937,15 @@
 	},
 	{
 		"Regex" : "(?i)muscle[- ]pro",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.0206881,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)amazinggarciniacambogiaidea",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0206881,

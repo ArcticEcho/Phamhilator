@@ -23,7 +23,7 @@ namespace Ghamhilator
                 var username = Console.ReadLine();
 
                 Console.WriteLine("Password: ");
-                var passowrd = Console.ReadLine();
+                var password = Console.ReadLine();
 
                 try
                 {

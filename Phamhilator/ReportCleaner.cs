@@ -8,7 +8,7 @@ namespace Phamhilator
     {
         public static string GetCleanReport(int messageID)
         {
-            var oldTitle = GlobalInfo.PostedReports[messageID].Post.Title;
+            var oldTitle = PostFetcher.EscapeString(GlobalInfo.PostedReports[messageID].Post.Title, " ");
             var newTitle = CensorString(GlobalInfo.PostedReports[messageID].Post.Title);
 
             var oldName = GlobalInfo.PostedReports[messageID].Post.AuthorName;

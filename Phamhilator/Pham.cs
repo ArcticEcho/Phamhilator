@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using CsQuery;
 
 
@@ -14,9 +15,11 @@ namespace Phamhilator
         {
             GlobalInfo.Log.EntriesRemovedEvent = items =>
             {
+                var vaildEntries = items.Where(i => i.ReportType == PostType.Spam || i.ReportType == PostType.Offensive || i.ReportType == PostType.LowQuality).Take(30);
+
                 var results = new Dictionary<LogItem, bool>();
 
-                foreach (var item in items)
+                foreach (var item in vaildEntries)
                 {
                     var data = GetDataFromLog(item);
                     var wasTPd = false;
@@ -43,6 +46,7 @@ namespace Phamhilator
                     }
 
                     results.Add(item, wasTPd);
+                    Thread.Sleep(8000); // 8 secs. Try to avoid getting throttled.
                 }
 
                 if (results.Count == 0) { return; }

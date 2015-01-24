@@ -432,7 +432,7 @@ namespace Phamhilator
                         {
                             return new[]
                             {
-                                new ReplyMessage("`Access denied.`")
+                                new ReplyMessage("`Access denied (this incident will be reported).`")
                             };
                         }
 
@@ -445,7 +445,7 @@ namespace Phamhilator
                         {
                             return new[]
                             {
-                                new ReplyMessage("`Access denied.`")
+                                new ReplyMessage("`Access denied (this incident will be reported).`")
                             };
                         }
 
@@ -1739,15 +1739,16 @@ namespace Phamhilator
 
         private static ReplyMessage AddTag(string command)
         {
-            var tagCommand = command.Remove(0, command.IndexOf("tag", StringComparison.Ordinal) + 4);
+            var tagCommand = command.Remove(0, 8);
+            var spaceCount = tagCommand.Count(c => c == ' ');
 
-            if (tagCommand.Count(c => c == ' ') != 1 && tagCommand.Count(c => c == ' ') != 3) { return new ReplyMessage("`Command not recognised.`"); }
+            if (spaceCount != 1 && spaceCount != 2) { return new ReplyMessage("`Command not recognised.`"); }
 
             var site = tagCommand.Substring(0, tagCommand.IndexOf(" ", StringComparison.Ordinal));
             var metaPost = "";
             string tag;
 
-            if (tagCommand.Count(c => c == ' ') == 3)
+            if (spaceCount == 2)
             {
                 tag = tagCommand.Substring(site.Length + 1, tagCommand.IndexOf(" ", site.Length + 1, StringComparison.Ordinal) - 1 - site.Length);
 
@@ -1767,7 +1768,7 @@ namespace Phamhilator
 
         private static ReplyMessage RemoveTag(string command)
         {
-            var tagCommand = command.Remove(0, command.IndexOf("tag", StringComparison.Ordinal) + 4);
+            var tagCommand = command.Remove(0, 8);
 
             if (tagCommand.Count(c => c == ' ') != 1) { return new ReplyMessage("`Command not recognised.`"); }
 
@@ -1846,7 +1847,7 @@ namespace Phamhilator
 
         private static ReplyMessage AddUser(string command)
         {
-            var id = int.Parse(command.Replace("add user", "").Trim());
+            var id = int.Parse(command.Replace("add-user", "").Trim());
 
             if (UserAccess.CommandAccessUsers.Contains(id)) { return new ReplyMessage("`User already has command access.`"); }
 
@@ -1857,7 +1858,7 @@ namespace Phamhilator
 
         private static ReplyMessage BanUser(string command)
         {
-            var id = command.Replace("ban user", "").Trim();
+            var id = command.Replace("ban-user", "").Trim();
 
             if (BannedUsers.IsUserBanned(id)) { return new ReplyMessage("`User is already banned.`"); }
 
