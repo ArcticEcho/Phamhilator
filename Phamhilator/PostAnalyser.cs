@@ -90,14 +90,14 @@ namespace Phamhilator
                 {
                     info.Accuracy -= whiteTerm.Score;
                     info.WhiteTermsFound.Add(whiteTerm);
-                    info.FiltersUsed.Add(filterType, FilterType.White);
+                    info.FiltersUsed.Add(new FilterConfig(filterType, FilterType.White));
 
                     termsFound++;
                 }
             }
 
             info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
-            info.FiltersUsed.Add(filterType, FilterType.Black);
+            info.FiltersUsed.Add(new FilterConfig(filterType, FilterType.Black));
             info.Accuracy /= termsFound;
             info.Accuracy /= blackTerms.HighestScore;
             info.Accuracy *= 100;

@@ -80,8 +80,7 @@ namespace Phamhilator
 
                 if (String.IsNullOrEmpty(entryID))
                 {
-                    var messageID = message.ParentID;
-                    var messageReport = Stats.PostedReports[messageID];
+                    var messageReport = Stats.PostedReports.First(r => r.Message.ID == message.ParentID);
 
                     entryID = Stats.PostedReports.First(i => i.Post.Url == messageReport.Post.Url && i.Message.RoomID == Config.PrimaryRoom.ID).Message.ID.ToString(CultureInfo.InvariantCulture);
                 }
@@ -101,22 +100,7 @@ namespace Phamhilator
                 }
                 else
                 {
-                    var request = (HttpWebRequest)WebRequest.Create("http://hastebin.com/documents");
-                    var data = Encoding.UTF8.GetBytes(new JsonWriter(new DataWriterSettings { PrettyPrint = true, Tab = "    " } ).Write(logEntry));
-
-                    request.Method = "POST";
-                    request.ContentType = "application/x-www-form-urlencoded";
-                    request.ContentLength = data.Length;
-
-                    using (var stream = request.GetRequestStream())
-                    {
-                        stream.Write(data, 0, data.Length);
-                    }
-
-                    var response = (HttpWebResponse)request.GetResponse();
-                    dynamic resJson = new JsonReader().Read(new StreamReader(response.GetResponseStream()).ReadToEnd());
-
-                    link = "http://hastebin.com/" + (string)resJson.key + ".hs";
+                    link = Hastebin.PostDocument(new JsonWriter(new DataWriterSettings { PrettyPrint = true, Tab = "    " }).Write(logEntry));
                     Config.Log.EntryLinks.Add(entryID, link);
                 }
 

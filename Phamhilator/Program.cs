@@ -38,6 +38,7 @@ namespace Phamhilator
         {
             Console.Title = "Phamhilator";
             AppDomain.CurrentDomain.UnhandledException += GlobalExceptionHandler;
+            AppDomain.CurrentDomain.DomainUnload += (o, oo) => Close();
 
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
@@ -232,7 +233,7 @@ namespace Phamhilator
 
         private static void JoinRooms()
         {
-            Console.Write("Joining primary room: " + roomsToJoin.PrimaryRoomUrl + " ...");
+            Console.Write("Joining primary room: " + roomsToJoin.PrimaryRoomUrl + "...");
 
             Config.PrimaryRoom = chatClient.JoinRoom(roomsToJoin.PrimaryRoomUrl);
             Config.PrimaryRoom.IgnoreOwnEvents = false;
@@ -245,7 +246,7 @@ namespace Phamhilator
 
             foreach (var roomUrl in roomsToJoin.SecondaryRoomUrls)
             {
-                Console.Write("Room: " + roomUrl + " ...");
+                Console.Write("Room: " + roomUrl + "...");
 
                 var secRoom = chatClient.JoinRoom(roomUrl);
                 secRoom.IgnoreOwnEvents = false;
@@ -533,9 +534,9 @@ namespace Phamhilator
             }
         }
 
-        private void Close()
+        private static void Close()
         {
-
+            Config.PrimaryRoom.PostMessage("`Phamhilator™ stopped.`");
         }
 
         # region UI Events

@@ -132,7 +132,7 @@
 		"Score" : 10.8585472,
 		"TPCount" : 1,
 		"FPCount" : 10,
-		"CaughtCount" : 23
+		"CaughtCount" : 24
 	},
 	{
 		"Regex" : "(?i)Join the Illuminati",

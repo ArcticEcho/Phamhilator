@@ -75,6 +75,7 @@
     <Compile Include="FilterConfig.cs" />
     <Compile Include="FilterType.cs" />
     <Compile Include="GlobalInfo.cs" />
+    <Compile Include="Hastebin.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1,5 +1,1907 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971479",
+		"PostUrl" : "http://stackoverflow.com/a/28202053",
+		"Site" : "stackoverflow.com",
+		"Title" : "Answered by Gord Thompson in comment suggestions.",
+		"Body" : "<p>Answered by Gord Thompson in comment suggestions.</p>",
+		"TimeStamp" : "2015-01-28T20:44:00.258Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 120,
+				"CaughtCount" : 3035
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971468",
+		"PostUrl" : "http://cogsci.stackexchange.com/a/9168",
+		"Site" : "cogsci.stackexchange.com",
+		"Title" : "yeah... not a question. Plus a survey. Not cool.",
+		"Body" : "<p>yeah... not a question. Plus a survey. Not cool.</p>",
+		"TimeStamp" : "2015-01-28T20:42:47.575Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 120,
+				"CaughtCount" : 3034
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971458",
+		"PostUrl" : "http://math.stackexchange.com/questions/1124010",
+		"Site" : "math.stackexchange.com",
+		"Title" : "prove that p^2-1 is divisible by 24 if p is a prime greater than 3",
+		"Body" : "<p>How to prove that p^2-1 is divisible by 24 if  p is a prime number greater than 3?</p>",
+		"TimeStamp" : "2015-01-28T20:41:45.764Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 804
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971456",
+		"PostUrl" : "http://money.stackexchange.com/a/43699",
+		"Site" : "money.stackexchange.com",
+		"Title" : "No they do not. From form 1040 (http://www.irs.gov/pub/irs-pdf/i1040gi.p...",
+		"Body" : "<p>No they do not. From form 1040 (<a href=\"http://www.irs.gov/pub/irs-pdf/i1040gi.pdf\" rel=\"nofollow\">http://www.irs.gov/pub/irs-pdf/i1040gi.pdf</a>), a single non-blind dependent under age 65 must file if the following are true:</p>\n\n<p>You must file a return if any of the following apply. Your unearned income was over $1,000.\nYour earned income was over $6,200.\nYour gross income was more than the larger of\u2014\n$1,000, or\nYour earned income (up to $5,850) plus $350.</p>\n\n<p>There is no return required for receipt of a gift.</p>",
+		"TimeStamp" : "2015-01-28T20:40:24.850Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "(?i)\\bearn.{0,30}\\d",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.8585472,
+				"TPCount" : 1,
+				"FPCount" : 10,
+				"CaughtCount" : 24
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971452",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203323",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "If i buy a season pass on xbox one will it a peer on both of the users?",
+		"Body" : "<p>If i buy a season pass on xbox one will it a peer on both of the users?</p>",
+		"TimeStamp" : "2015-01-28T20:38:27.420Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 120,
+				"CaughtCount" : 3033
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971237",
+		"PostUrl" : "http://christianity.stackexchange.com/a/36847",
+		"Site" : "christianity.stackexchange.com",
+		"Title" : "The answer Dick Harfield provided is also echoed in paragraph 841 of the...",
+		"Body" : "<p>The answer Dick Harfield provided is also echoed in <a href=\"http://www.vatican.va/archive/ccc_css/archive/catechism/p123a9p3.htm\" rel=\"nofollow\">paragraph 841</a> of the Catechism of the Catholic Church.</p>\n\n<p>Also from <a href=\"http://www.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_decl_19651028_nostra-aetate_en.html\" rel=\"nofollow\">Nostra Aetate</a></p>\n\n<blockquote>\n  <p>The Church regards with esteem also the Moslems. They adore the one\n  God, living and subsisting in Himself; merciful and all- powerful, the\n  Creator of heaven and earth,(5) who has spoken to men; they take pains\n  to submit wholeheartedly to even His inscrutable decrees, just as\n  Abraham, with whom the faith of Islam takes pleasure in linking\n  itself, submitted to God. Though they do not acknowledge Jesus as God,\n  they revere Him as a prophet. They also honor Mary, His virgin Mother;\n  at times they even call on her with devotion. In addition, they await\n  the day of judgment when God will render their deserts to all those\n  who have been raised up from the dead. Finally, they value the moral\n  life and worship God especially through prayer, almsgiving and\n  fasting.</p>\n</blockquote>",
+		"TimeStamp" : "2015-01-28T19:55:29.080Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\sdick\\s",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.2105265,
+				"TPCount" : 4,
+				"FPCount" : 3,
+				"CaughtCount" : 10
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971234",
+		"PostUrl" : "http://stackoverflow.com/a/28201213",
+		"Site" : "stackoverflow.com",
+		"Title" : "We are experiencing the same issue with a number of our sites as well.",
+		"Body" : "<p>We are experiencing the same issue with a number of our sites as well.</p>",
+		"TimeStamp" : "2015-01-28T19:55:21.886Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 120,
+				"CaughtCount" : 3032
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971226",
+		"PostUrl" : "http://stackoverflow.com/a/28201197",
+		"Site" : "stackoverflow.com",
+		"Title" : "Apparently I had to bundle update activeadmin to make it work.",
+		"Body" : "<p>Apparently I had to bundle update activeadmin to make it work.</p>",
+		"TimeStamp" : "2015-01-28T19:54:34.205Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 120,
+				"CaughtCount" : 3031
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971192",
+		"PostUrl" : "http://stackoverflow.com/a/28201136",
+		"Site" : "stackoverflow.com",
+		"Title" : "did you find any answer for this. Am using metronic theme bootstrap summ...",
+		"Body" : "<p>did you find any answer for this. Am using metronic theme bootstrap summernote wysiwyg editor and i want to add custom style like Headin 1 etc. to the whyswhg menu. Is it really possible? Regards. </p>",
+		"TimeStamp" : "2015-01-28T19:51:04.465Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(did|have) you f(in|oun)d",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 12,
+				"TPCount" : 7,
+				"FPCount" : 1,
+				"CaughtCount" : 68
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)did you find",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 12,
+				"TPCount" : 3,
+				"FPCount" : 0,
+				"CaughtCount" : 42
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(have|did) you (solve|fix|find|found)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 11,
+				"FPCount" : 0,
+				"CaughtCount" : 87
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 36
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971186",
+		"PostUrl" : "http://raspberrypi.stackexchange.com/a/27164",
+		"Site" : "raspberrypi.stackexchange.com",
+		"Title" : "In /boot/cmdline.txt, add rw just before rootwait",
+		"Body" : "<p>In /boot/cmdline.txt, add rw just before rootwait</p>",
+		"TimeStamp" : "2015-01-28T19:50:19.463Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3030
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971180",
+		"PostUrl" : "http://security.stackexchange.com/a/80308",
+		"Site" : "security.stackexchange.com",
+		"Title" : "I'm not familiar with HAProxy, but I don't think it could be configured ...",
+		"Body" : "<p>I'm not familiar with HAProxy, but I don't think it could be configured to do your authentication logic, meaning accepting just some of certificates with same CA, during certification verification process.</p>\n\n<blockquote>\n  <p>Is there a way to do this with HAProxy? If not, I guess the only way forward would be to make self-signed client certificates for both sides and exchange them (or rather, certificate signing requests, and have the other party sign them).</p>\n</blockquote>\n\n<p>You can build you CA on top of <code>openssl</code> with not much work.  You probably need to authorize clients too, so you can provide some information in clients' certificate subject and check them in application layer.</p>",
+		"TimeStamp" : "2015-01-28T19:50:03.632Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a way",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 14
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 14
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971162",
+		"PostUrl" : "http://startups.stackexchange.com/a/3226",
+		"Site" : "startups.stackexchange.com",
+		"Title" : "My mentor once went on a CEO level job interview even though his minimum...",
+		"Body" : "<p>My mentor once went on a CEO level job interview even though his minimum acceptable salary was considerably higher than the job was offering.  At the end of the interview, having marketed his talents effectively, it came time to discuss money.  The employer asked what he was needed to make and as expected was shocked by the honest reply.  The interview was over and no common ground had been found.  As they were parting ways, my mentor offered the card he had been holding until just that moment.</p>\n\n<p>\"How about this?  I will work for you for one month at the rate you've offered.  Then, if you don't choose to raise my pay to the level I require, I will quit.  If you can afford to let me go at that time, then I don't deserve what I'm asking.\"</p>\n\n<p>For almost a decade following that interview, my mentor ran that company.</p>\n\n<p>A parallel approach in your industry would involve your offering a trial month at a price competitive with the Barney Fife's.  That gives you a month to get your foot in the door and prove to the owners that your service is worth the premium you charge.</p>",
+		"TimeStamp" : "2015-01-28T19:46:29.750Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how about",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 4
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971160",
+		"PostUrl" : "http://apple.stackexchange.com/a/169451",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "since I updated my OS X to 10.10.2 (the server.app is 4.0.3)\nI have the ...",
+		"Body" : "<p>since I updated my OS X to 10.10.2 (the server.app is 4.0.3)\nI have the same issue no webDAV at all. As well when I try to open the Website I become\nno connection. \nIt looks like the last Update (10.10.2) has a bug... using webDAV </p>",
+		"TimeStamp" : "2015-01-28T19:46:26.271Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 395
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 14
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971141",
+		"PostUrl" : "http://stackoverflow.com/a/28201003",
+		"Site" : "stackoverflow.com",
+		"Title" : "ALTER TABLE tbl AUTO_INCREMENT = 1;",
+		"Body" : "<p>ALTER TABLE tbl AUTO_INCREMENT = 1;</p>",
+		"TimeStamp" : "2015-01-28T19:44:02.401Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3029
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970873",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203320",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "bits are how maqny bites you take in a reeses cup :D jk",
+		"Body" : "<p>bits are how maqny bites you take in a reeses cup :D jk</p>",
+		"TimeStamp" : "2015-01-28T19:08:06.624Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3028
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970865",
+		"PostUrl" : "http://boardgames.stackexchange.com/a/22563",
+		"Site" : "boardgames.stackexchange.com",
+		"Title" : "A complete list of what is in each packet can be found in this Word doc ...",
+		"Body" : "<p><strong>A complete list of what is in each packet can be found in this <a href=\"https://onedrive.live.com/redir?resid=723A28155692C47F!1695&authkey=!AKcbX4oH4g-ITxw&ithint=file%2Cdocx\" rel=\"nofollow\">Word doc</a> I have made publicly available.</strong> </p>\n\n<p>I wasn't able to find any one distinct source, however by reconstructing the starting powers with the help of this question <a href=\"http://boardgames.stackexchange.com/questions/5943/which-faction-power-will-result-in-the-greatest-bonus-troops-and-or-fewest-troop\">Which Faction Power will result in the greatest bonus troops and/or fewest troop losses?</a> and reading a series of blogposts giving a breakdown of a campaign on <a href=\"http://boardgamegeek.com/blogger/1567/stephen-rochelle\" rel=\"nofollow\">BoardgameGeek</a> I was able to come up with a comprehensive list to help me and my friends play a new campaign with our existing map. </p>",
+		"TimeStamp" : "2015-01-28T19:06:04.226Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 5,
+				"FPCount" : 1,
+				"CaughtCount" : 33
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(please )?help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 14
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970862",
+		"PostUrl" : "http://stackoverflow.com/a/28200364",
+		"Site" : "stackoverflow.com",
+		"Title" : "I ultimately just fixed the AndiDog plugins to work on iOS8.",
+		"Body" : "<p>I ultimately just fixed the AndiDog plugins to work on iOS8.</p>",
+		"TimeStamp" : "2015-01-28T19:05:35.424Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3027
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970853",
+		"PostUrl" : "http://askubuntu.com/a/578959",
+		"Site" : "askubuntu.com",
+		"Title" : "this fixed it for me...\n\nsudo apt-get install indicator-applet-complete",
+		"Body" : "<p>this fixed it for me...</p>\n\n<p>sudo apt-get install indicator-applet-complete</p>",
+		"TimeStamp" : "2015-01-28T19:03:53.974Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 376
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970850",
+		"PostUrl" : "http://judaism.stackexchange.com/questions/53196",
+		"Site" : "judaism.stackexchange.com",
+		"Title" : "child from the relations Yael had with Sisra",
+		"Body" : "<p>Did Yael bear a son from the relations she had with Sisra? If so, was he a prophet?</p>",
+		"TimeStamp" : "2015-01-28T19:03:32.267Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 803
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970848",
+		"PostUrl" : "http://english.stackexchange.com/a/224285",
+		"Site" : "english.stackexchange.com",
+		"Title" : "Yes! Pronouns can always be used for generalization. ",
+		"Body" : "<p>Yes! Pronouns can always be used for generalization. </p>",
+		"TimeStamp" : "2015-01-28T19:03:29.640Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3026
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "english.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970832",
+		"PostUrl" : "http://superuser.com/a/870759",
+		"Site" : "superuser.com",
+		"Title" : "my aunt has the same problem with half grey pictures, the support in the...",
+		"Body" : "<p>my aunt has the same problem with half grey pictures, the support in the shop said she should save all importent data to another computer and reset the ipad back to factory state... a total reset.</p>",
+		"TimeStamp" : "2015-01-28T19:01:16.557Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 375
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970831",
+		"PostUrl" : "http://askubuntu.com/a/578955",
+		"Site" : "askubuntu.com",
+		"Title" : "piece of garbage is not working.",
+		"Body" : "<p>piece of garbage is not working.</p>",
+		"TimeStamp" : "2015-01-28T19:01:07.116Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3025
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 374
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970830",
+		"PostUrl" : "http://askubuntu.com/a/150207",
+		"Site" : "askubuntu.com",
+		"Title" : "If you are asking how to restore the password to your account and/or add...",
+		"Body" : "<p>If you are asking how to restore the password to your account and/or add that account to the <code>sudo</code> user group, the answers to these other (duplicate?) questions may help.</p>\n\n<p><a href=\"http://askubuntu.com/q/136495/52923\">I deleted my original user account. The new account has no password. How can I enable it?</a></p>\n\n<p><a href=\"http://askubuntu.com/q/70442/52923\">How do I add myself back as a sudo user?</a></p>",
+		"TimeStamp" : "2015-01-28T19:01:06.800Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 11
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970797",
+		"PostUrl" : "http://stackoverflow.com/a/27938693",
+		"Site" : "stackoverflow.com",
+		"Title" : "None of the answers including the marked answer worked for me. I believe...",
+		"Body" : "<p>None of the answers including the marked answer worked for me. I believe my solution solves your problem as well and I'd share my use-case as well for future readers' reference.</p>\n\n<p><strong>Issue with using the route controller method:</strong>\nWhen the controller is loaded the routing already have accessed the History API states for me (I use HTML5 mode, not sure whether this affects non-HTML5 mode). </p>\n\n<p>As a result, even though I can forward people to the correct page using \n    window.location.replace('/');, \nif the user then clicks Back on their browser, it goes to invalid state.</p>\n\n<p><strong>Scenario:</strong> We implement multi-page model and I have my admin page module separate from my homepage (non-admin) modules. I have a $location.path('/') somewhere in one of my admin controller, but since homepage isn't packaged into the admin page module, I want to force full page reload when I detect the '/' route.</p>\n\n<p><strong>Solution:</strong> \nWe have to intercept at the $routeChangeStart before ngRoute accesses any of the state info. This way we can even specify external href by passing url to redirectTo param in the $route</p>\n\n<pre><code>angular.module('app',['ngRoute'])\n.config(['$routeProvider', function($routeProvider) {\n  $routeProvider\n  .when('/admin/default', {template: somePageTemplate})\n  /*\n   *  More admin-related routes here...\n   */\n  .when('/',{redirectTo:'/homepage'})  // <-- We want to intercept this\n  .otherwise({redirectTo: '/admin/default'}); \n}])\n.controller('MainCtrl',[ // <- Use this controller outside of the ng-view!\n  '$rootScope','$window',\n  function($rootScope,$window){\n    $rootScope.$on(\"$routeChangeStart\", function (event, next, current) {\n      // next <- might not be set when first load\n      // next.$$route <- might not be set when routed through 'otherwise'\n      // You can use regex to match if you have more complexed path...\n      if (next && next.$$route && next.$$route.originalPath === '/') {\n        // Stops the ngRoute to proceed\n        event.preventDefault();\n        // We have to do it async so that the route callback \n        // can be cleanly completed first, so $timeout works too\n        $rootScope.$evalAsync(function() {\n          // next.$$route.redirectTo would equal be '/homepage'\n          $window.location.href = next.$$route.redirectTo;\n        });\n      }\n    });\n  }\n]);\n</code></pre>\n\n<p>Please provide any feedback as I will be using this code myself.\nCheers</p>\n\n<p><strong>Reference:</strong>\n<a href=\"https://github.com/angular/angular.js/issues/9607\" rel=\"nofollow\">https://github.com/angular/angular.js/issues/9607</a></p>",
+		"TimeStamp" : "2015-01-28T18:57:40.711Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 35
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970796",
+		"PostUrl" : "http://salesforce.stackexchange.com/a/64598",
+		"Site" : "salesforce.stackexchange.com",
+		"Title" : "I got the same issue in our partial data sandbox.\nSo, raised a case to s...",
+		"Body" : "<p>I got the same issue in our partial data sandbox.\nSo, raised a case to salesforce to check the issue and they said that this was expected behavior for some records as only they are required fields or master detailed.</p>\n\n<p>This was a huge product limitation. I cannot clear these lookup fields as validation is blocking blocking the update to clear the lookup field</p>",
+		"TimeStamp" : "2015-01-28T18:57:36.072Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 394
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 13
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970794",
+		"PostUrl" : "http://stackoverflow.com/a/28200124",
+		"Site" : "stackoverflow.com",
+		"Title" : "Agree with duffymo and jigar.. ",
+		"Body" : "<p>Agree with duffymo and jigar.. </p>",
+		"TimeStamp" : "2015-01-28T18:57:33.067Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3024
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970786",
+		"PostUrl" : "http://physics.stackexchange.com/a/162096",
+		"Site" : "physics.stackexchange.com",
+		"Title" : "experiments plate capacitance of the lab in physics ",
+		"Body" : "<p>experiments plate capacitance of the lab in physics </p>",
+		"TimeStamp" : "2015-01-28T18:56:43.253Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3023
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 373
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970777",
+		"PostUrl" : "http://meta.stackexchange.com/a/247716",
+		"Site" : "meta.stackexchange.com",
+		"Title" : "I'm having the same problem...",
+		"Body" : "<p>I'm having the same problem...</p>",
+		"TimeStamp" : "2015-01-28T18:55:33.095Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3022
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970775",
+		"PostUrl" : "http://stats.stackexchange.com/questions/135372",
+		"Site" : "stats.stackexchange.com",
+		"Title" : "Bayesian Time Series Analysis Source",
+		"Body" : "<p>Is anyone able to recommend a source that covers Bayesian time series analysis in Winbugs?</p>",
+		"TimeStamp" : "2015-01-28T18:55:30.098Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 802
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970766",
+		"PostUrl" : "http://physics.stackexchange.com/a/162091",
+		"Site" : "physics.stackexchange.com",
+		"Title" : "yes it is possible for even more particle   ..one such experiment  was d...",
+		"Body" : "<p>yes it is possible for even more particle   ..one such experiment  was done to aprove entanglement, which was done using three entangled photon. you can google about that if you are interested in more detail. for any further help you can also ask me</p>",
+		"TimeStamp" : "2015-01-28T18:54:29.587Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 372
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970762",
+		"PostUrl" : "http://tex.stackexchange.com/a/225396",
+		"Site" : "tex.stackexchange.com",
+		"Title" : "How i can add arabic lettr not a numbers",
+		"Body" : "<p>How i can add arabic lettr not a numbers</p>",
+		"TimeStamp" : "2015-01-28T18:54:17.963Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3021
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970760",
+		"PostUrl" : "http://apple.stackexchange.com/a/169440",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "reenabling Finder icons solved this for me",
+		"Body" : "<p>reenabling Finder icons solved this for me</p>",
+		"TimeStamp" : "2015-01-28T18:54:10.247Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3020
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970753",
+		"PostUrl" : "http://physics.stackexchange.com/a/162093",
+		"Site" : "physics.stackexchange.com",
+		"Title" : "\n  And what is mean kinetic energy???\n\n\nIn statistical mechanics Tempera...",
+		"Body" : "<blockquote>\n  <p>And what is mean kinetic energy???</p>\n</blockquote>\n\n<p>In <a href=\"http://en.wikipedia.org/wiki/Statistical_mechanics\" rel=\"nofollow\">statistical mechanics</a> Temperature is <a href=\"http://en.wikipedia.org/wiki/Temperature#Kinetic_theory_of_gases\" rel=\"nofollow\">identified as</a></p>\n\n<p><img src=\"http://i.stack.imgur.com/nG0pc.png\" alt=\"kenetic temperature\"></p>\n\n<p>for gases , so it is called the average kinetic energy identified by the root mean square of the velocity.</p>\n\n<blockquote>\n  <p>There must be inevitably deviation from their mean kinetic energy due to collisions; how can then there be same temperature at each & every point of the system? Plz help. </p>\n</blockquote>\n\n<p>The kinetic energy is a distribution and will be continually changing in a gas by collisions. The reason one can do thermodynamics with statistical mechanics is because of the large value of the Avogadro  number ,  6.02214129(27)\u00D710^23 mol^\u22121 . This allows to treat any volume of air as continuous , the size of atoms is so small and becomes irrelevant except in average effects.</p>",
+		"TimeStamp" : "2015-01-28T18:52:46.124Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)pl(ease|s|z) help",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 17,
+				"TPCount" : 20,
+				"FPCount" : 3,
+				"CaughtCount" : 121
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970749",
+		"PostUrl" : "http://music.stackexchange.com/a/29213",
+		"Site" : "music.stackexchange.com",
+		"Title" : "Its all about the shape if it doesn't look cool it won't sound cool",
+		"Body" : "<p>Its all about the shape if it doesn't look cool it won't sound cool</p>",
+		"TimeStamp" : "2015-01-28T18:52:07.730Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3019
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970738",
+		"PostUrl" : "http://superuser.com/a/870752",
+		"Site" : "superuser.com",
+		"Title" : "thanks to Sasha Pachev for the nice hack above.\n\nvpnagentd also messes w...",
+		"Body" : "<p>thanks to <a href=\"http://superuser.com/users/195546/sasha-pachev\">Sasha Pachev</a> for the nice hack above.</p>\n\n<p><code>vpnagentd</code> also messes with the resolver by overwriting the changes made to <code>/etc/resolv.conf</code>. I solved it by eventually winning the race against it:</p>\n\n<pre><code>#!/bin/bash\n\ndnsfix() {\n    [ -f /etc/resolv.conf.vpnbackup ] || echo \"Not connected?\" >&2 || return 0 # do nothing in case of failure\n    while ! diff -q /etc/resolv.conf /etc/resolv.conf.vpnbackup #>/dev/null\n    do\n         cat /etc/resolv.conf.vpnbackup >/etc/resolv.conf\n    done\n    chattr +i /etc/resolv.conf\n    diff -q /etc/resolv.conf /etc/resolv.conf.vpnbackup >/dev/null \n}\n\nwhile ! dnsfix\ndo\n    echo \"Retrying...\"\n    chattr -i /etc/resolv.conf\ndone\n</code></pre>\n\n<p>Don't forget to <code>chattr -i /etc/resolv.conf</code> when disconnecting.</p>\n\n<p>I'm trying to solve it by intercepting the callback, like for the routes method above, but can't yet find the corresponding callback or method to intercept.</p>",
+		"TimeStamp" : "2015-01-28T18:51:16.273Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2962
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970732",
+		"PostUrl" : "http://judaism.stackexchange.com/a/53197",
+		"Site" : "judaism.stackexchange.com",
+		"Title" : "Hi I have heard the name what sounds like Meeyaahdah in prayer several t...",
+		"Body" : "<p>Hi I have heard the name what sounds like Meeyaahdah in prayer several times. My birth name is Melissa. I feel this other name means something so   I keep searching for meaning of it.</p>",
+		"TimeStamp" : "2015-01-28T18:50:59.288Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 85
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970712",
+		"PostUrl" : "http://ell.stackexchange.com/questions/48199",
+		"Site" : "ell.stackexchange.com",
+		"Title" : "The differences between \u201Cmake a living\u201D and \u201Cearn a living\u201D",
+		"Body" : "<p>Who can say the differences between them?</p>",
+		"TimeStamp" : "2015-01-28T18:50:07.626Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 801
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970676",
+		"PostUrl" : "http://superuser.com/questions/870751",
+		"Site" : "superuser.com",
+		"Title" : "How sdram recognize requested data width?",
+		"Body" : "<p>I mean how sdram recognize the read request is for one byte or one word?(or double word)</p>",
+		"TimeStamp" : "2015-01-28T18:48:04.968Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 800
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970664",
+		"PostUrl" : "http://boardgames.stackexchange.com/a/18810",
+		"Site" : "boardgames.stackexchange.com",
+		"Title" : "I am somewhat new to this game, but from my experience, I have found tha...",
+		"Body" : "<p>I am somewhat new to this game, but from my experience, I have found that if the UK buys only infantry the first round, it prevents any possibility from Germany invading UK second turn.  Russia is a tough country to take when a good strategy is implemented, however, if Germany takes most of it quick enough, the allies could be too late.  Keep slowly retreating with the Germans paying for every territory heavily.  Buy only infantry, and mass expensive units in Moscow, counterattacking when the Nazis get to close to the capital.  Try to not let the Germans take ANY of your factories, because then they have to continue producing ONLY out of Germany and West Germany if they don't build any factories along the borders.  If the US can be landing in Africa by turn 3, then landing in Italy turn 5 or 6, the UK can then probably start liberating France.  Once the other allies have started landing units in Europe, start pushing back against the Germans.  Do not try to liberate your territories before the allies have made landings in Europe.  There is no winter in this game, so your Germans will not be destroyed by weather.  The Soviets are not strong enough to push the Germans out of Russia without the Nazis having divert some of their now damaged income to the west.  That's all I got.  Thanks!  I hope this helps! </p>",
+		"TimeStamp" : "2015-01-28T18:46:55.411Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2960
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970657",
+		"PostUrl" : "http://german.stackexchange.com/questions/20483",
+		"Site" : "german.stackexchange.com",
+		"Title" : "Was ist \u201CSmeck\u201D? Ist das eine Abk\u00FCrzung von etwas? Ich kann es nicht im W\u00F6rterbuch finden",
+		"Body" : "<p>\"ein Hort fur Smeck und Nissen\nmein gutes altes Kissen\"</p>\n\n<p>Wes\u00DF jemand was Smeck ist?</p>",
+		"TimeStamp" : "2015-01-28T18:46:38.884Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 799
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970644",
+		"PostUrl" : "http://math.stackexchange.com/a/1123795",
+		"Site" : "math.stackexchange.com",
+		"Title" : "Simply means the greatest slope in P, is the l2",
+		"Body" : "<p>Simply means the greatest slope in P, is the l2</p>",
+		"TimeStamp" : "2015-01-28T18:45:39.171Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3017
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970598",
+		"PostUrl" : "http://android.stackexchange.com/a/54127",
+		"Site" : "android.stackexchange.com",
+		"Title" : "Why not use a USB cable to connect the laptop with the phone?",
+		"Body" : "<p>Why not use a USB cable to connect the laptop with the phone?</p>",
+		"TimeStamp" : "2015-01-28T18:41:43.991Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3016
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "android.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970582",
+		"PostUrl" : "http://spanish.stackexchange.com/a/11906",
+		"Site" : "spanish.stackexchange.com",
+		"Title" : "sollado al definirlo criollamente en am\u00E9rica, es estar con los huevos o ...",
+		"Body" : "<p>sollado al definirlo criollamente en am\u00E9rica, es estar con los huevos o test\u00EDculos irritados o pelados con un dolor insoportable que no se aguanta cuando caminas y los escrotos se te rozan con el movimiento de las piernas.</p>\n\n<p>sucede mucho al ponerse ropas apretadas, como cuando te queda la marca roja undida en la carne por culpa del calzoncillo apretado.</p>\n\n<p>tambi\u00E9n sucede la afecci\u00F3n cuando guindan y rebenquean mucho los huevos en el \u00F3rgano femenino de la mujer al momento del chiqui chiqui. por eso mismo esa misma expresi\u00F3n y los mismo s\u00EDntomas que el ejemplo anterior.</p>\n\n<p>tambi\u00E9n otro ejemplo cuando estas con una chica encima sentada, y te pones erecto por debajo de la ropa y de estar en esa fricci\u00F3n puede ocasionarse el efecto de estar sollado.\ntambi\u00E9n se ha visto cuando las mujeres hacen ejercicios con licras muy pegados, el cuero de los labios vaginas se irritan.</p>\n\n<p>no crean que solamente da en casos de sexo. , tambi\u00E9n los trabajadores de construcci\u00F3n han sufrido del problema.</p>\n\n<p>bueno que mas puedo explicar si lo dije todo. chau saludos.</p>",
+		"TimeStamp" : "2015-01-28T18:40:08.267Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 371
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970565",
+		"PostUrl" : "http://stackoverflow.com/a/28199836",
+		"Site" : "stackoverflow.com",
+		"Title" : "The code in question generated a plot like that:\n\nhttp://imagizer.images...",
+		"Body" : "<p>The code in question generated a plot like that:</p>\n\n<p><a href=\"http://imagizer.imageshack.us/a/img912/4306/4hsxcy.png\" rel=\"nofollow\">http://imagizer.imageshack.us/a/img912/4306/4hsxcy.png</a></p>\n\n<p>What I wanted was that:</p>\n\n<p><a href=\"http://imagizer.imageshack.us/a/img633/9446/mseC3f.png\" rel=\"nofollow\">http://imagizer.imageshack.us/a/img633/9446/mseC3f.png</a></p>\n\n<p>Black bars - flat, red bars - short position, green bars - long position, blue - change position.</p>\n\n<p>The code below works, however it seems complicated. Is there any way to simplify it?</p>\n\n<p>The code right now is:</p>\n\n<pre><code>flat_range = [1:size(price_data, 1)];\ntmp = [long_range short_range];\nflat_range = setdiff(flat_range, tmp); % find all rows that are not either long or short\n\nlong_H = H;\nlong_L = L;\nlong_C = C;\nlong_O = O;\n\nshort_H = H;\nshort_L = L;\nshort_C = C;\nshort_O = O;\n\nboth_H = H;\nboth_L = L;\nboth_C = C;\nboth_O = O;\n\nflat_H = H;\nflat_L = L;\nflat_C = C;\nflat_O = O;\n\ntmp(intersect(short_range, long_range)) = 1;\nboth_H(tmp ~= 1) = NaN;\nboth_L(tmp ~= 1) = NaN;\nboth_C(tmp ~= 1) = NaN;\nboth_O(tmp ~= 1) = NaN;\n\nlong_H([short_range flat_range]) = NaN;   \nlong_L([short_range flat_range]) = NaN;\nlong_C([short_range flat_range]) = NaN;\nlong_O([short_range flat_range]) = NaN;\n\nshort_H([long_range flat_range]) = NaN;\nshort_L([long_range flat_range]) = NaN;\nshort_C([long_range flat_range]) = NaN;\nshort_O([long_range flat_range]) = NaN;\n\nflat_H([long_range short_range]) = NaN;\nflat_L([long_range short_range]) = NaN;\nflat_C([long_range short_range]) = NaN;\nflat_O([long_range short_range]) = NaN;\n\nhold on\n\ncandle( long_H, long_L, long_C, long_O, 'g');\ncandle( short_H, short_L, short_C, short_O, 'r');\ncandle( flat_H, flat_L, flat_C, flat_O, 'k');\ncandle( both_H, both_L, both_C, both_O, 'b');\n</code></pre>",
+		"TimeStamp" : "2015-01-28T18:35:58.334Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 13
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970563",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/176323",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "Yes, $wpdb-update is sufficient protection. You should not escape or pre...",
+		"Body" : "<p>Yes, $wpdb->update is sufficient protection. You should not escape or prepare the data.</p>\n\n<p>From the <a href=\"http://codex.wordpress.org/Class_Reference/wpdb#UPDATE_rows\" rel=\"nofollow\">documentation of wpdb</a>:</p>\n\n<blockquote>\n  <p><strong>data  (array)</strong> Data to update (in column => value pairs). Both $data\n  columns and $data values should be \"raw\" (neither should be SQL\n  escaped). This means that if you are using GET or POST data you may\n  need to use stripslashes() to avoid slashes ending up in the database.</p>\n</blockquote>\n\n<p>As a side note, you can help wordpress better understand the content to prepare for the database by including format and where_format in your update call.</p>\n\n<pre><code>$uptable = $mydb->update(\n    'table',\n    $updatevalues,\n    $where_data,\n    $data_format, // '%d' for numbers, '%s' for strings, can be an array\n    $where_format // Same here\n);\n</code></pre>",
+		"TimeStamp" : "2015-01-28T18:35:04.179Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)same here",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 8
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970483",
+		"PostUrl" : "http://security.stackexchange.com/a/80292",
+		"Site" : "security.stackexchange.com",
+		"Title" : "I have the same issue.  I could get on the website one day and then the ...",
+		"Body" : "<p>I have the same issue.  I could get on the website one day and then the next day I could not.  I called the admin of the site, but they could get on it, but I still couldn't.  I do not have a router so this is not the issue.  Any other ideas.  It is 2 days later and I still cannot get on the site.  I have not changed anything on my settings or installed any new software within this one day period.</p>",
+		"TimeStamp" : "2015-01-28T18:20:48.730Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 393
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 12
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970481",
+		"PostUrl" : "http://academia.stackexchange.com/questions/37753",
+		"Site" : "academia.stackexchange.com",
+		"Title" : "Free Microsoft Visio for Education - Mac User",
+		"Body" : "<p>I need a Microsoft Visio-like tool that works on a Mac and is free for educational users.</p>",
+		"TimeStamp" : "2015-01-28T18:20:14.588Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 798
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970464",
+		"PostUrl" : "http://photo.stackexchange.com/a/57855",
+		"Site" : "photo.stackexchange.com",
+		"Title" : "LR 5.7, at least, notes Print and Export events in each photo's history....",
+		"Body" : "<p>LR 5.7, at least, notes Print and Export events in each photo's history.</p>\n\n<p>However I use several other practices in my workflow to keep track of what I've printed:</p>\n\n<ol>\n<li><p>I export a copy of everything sent to a printer to a separate folder.</p></li>\n<li><p>I use a color label to indicate that a photo has been printed (and if I want to see exactly what I can either check the photo's history or check the image of the same name in my \"Printed\" folder.)</p></li>\n</ol>\n\n<p>If my workflow didn't leave color labels free for this purpose I would use a Keyword Tag like \"Printed\" for this purpose.</p>",
+		"TimeStamp" : "2015-01-28T18:18:35.881Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 34
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970459",
+		"PostUrl" : "http://askubuntu.com/a/578935",
+		"Site" : "askubuntu.com",
+		"Title" : "If you have a secondary program it does not matter. To remove it simply ...",
+		"Body" : "<p>If you have a secondary program it does not matter. To remove it simply Press CTRL+ALT+T this will open the console. In there run this command:</p>\n\n<pre><code>sudo apt-get remove --purge evince\n</code></pre>\n\n<p>Thanks, hope this helps.</p>",
+		"TimeStamp" : "2015-01-28T18:17:50.489Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2959
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970454",
+		"PostUrl" : "http://tex.stackexchange.com/a/225384",
+		"Site" : "tex.stackexchange.com",
+		"Title" : "here a short example of a code to like i would make a bar chart with min...",
+		"Body" : "<p>here a short example of a code to like i would make a bar chart with minus and plus numbers. with a 2 axis environment:</p>\n\n<pre><code>enter code here  \\begin{tikzpicture}\n\\begin{axis}[\n  symbolic x coords={test1,test2},\n  xtick=data,\n  x tick label style={rotate=-45,anchor=west},\n  xticklabel shift={.5cm},\n  ybar stacked,\n  bar width=6mm,\n  ymin=-50,\n  ymax=120,\n  legend style={\n  at={(1,0.5)},\n  anchor=north west,draw=none },\n  restrict y to domain*=:0, % negative values\n  y=1pt,  % important workaround!\n   axis x line*=middle,\n   axis y line=left,\n    axis on top=false,\n    enlarge x limits=0.2,\n    nodes near coords,     \n    ybar legend,\n  ]\n  \\addplot coordinates {(test1,-11)}; \n  \\addplot coordinates {(test1,80)};       \n \\legend{blue, red}\n\\end{axis}\n\\begin{axis}[\n  symbolic x coords={test1,test2},\n  xtick=data,\n  x tick label style={rotate=-45,anchor=west},\n  xticklabel shift={.5cm},\n  ybar stacked,\n  bar width=6mm,\n  ymin=-50,\n  ymax=120,\n  legend style={\n  at={(1,0.5)},anchor=north west,draw=none },\n  restrict y to domain*=0:, % positive values\n  y=1pt,  % important workaround!\n   axis x line*=middle,\n   axis y line=left,\n   axis on top=false,\n    enlarge x limits=0.2,\n    nodes near coords,        \n    ybar legend,\n  ]\n  \\addplot coordinates {(test1,-11)}; \n  \\addplot coordinates {(test1,80)};   \n  \\legend{blue, red}\n\\end{axis}\n</code></pre>\n\n<p>\\end{tikzpicture}</p>",
+		"TimeStamp" : "2015-01-28T18:16:56.544Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 369
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970449",
+		"PostUrl" : "http://apple.stackexchange.com/a/169432",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "Removing the systemconfig folder fixed my problem. Thank you!!\nT",
+		"Body" : "<p>Removing the systemconfig folder fixed my problem. Thank you!!\nT</p>",
+		"TimeStamp" : "2015-01-28T18:16:16.947Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2957
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970437",
+		"PostUrl" : "http://android.stackexchange.com/questions/97151",
+		"Site" : "android.stackexchange.com",
+		"Title" : "Does Xolo 8X 1000 support otg ??? if not will it support plz reply how",
+		"Body" : "<p>Please reply i want to know whether xolo 8x 1000 supports usb otg feature \nif not plz tell me will it support by any software or anythng else </p>",
+		"TimeStamp" : "2015-01-28T18:14:07.029Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 237
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970426",
+		"PostUrl" : "http://expressionengine.stackexchange.com/a/28702",
+		"Site" : "expressionengine.stackexchange.com",
+		"Title" : "Any update on this? \nOmnipay now includes Realex Payments in their listi...",
+		"Body" : "<p>Any update on this? \n<strong>Omnipay</strong> now includes Realex Payments in their listings: <a href=\"https://github.com/thephpleague/omnipay\" rel=\"nofollow\">https://github.com/thephpleague/omnipay</a></p>\n\n<p>Thanks</p>",
+		"TimeStamp" : "2015-01-28T18:12:55.801Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2956
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970420",
+		"PostUrl" : "http://superuser.com/a/760838",
+		"Site" : "superuser.com",
+		"Title" : "yum's --enablerepo=localrpmrepo is the option you are after. so\n\nyum --e...",
+		"Body" : "<p>yum's --enablerepo=localrpmrepo is the option you are after. so</p>\n\n<pre><code>yum --enablerepo=localrpmrepo clean metadata\n</code></pre>\n\n<p>replace localrpmrepo with your repos name</p>",
+		"TimeStamp" : "2015-01-28T18:10:23.320Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 368
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970419",
+		"PostUrl" : "http://superuser.com/a/537153",
+		"Site" : "superuser.com",
+		"Title" : "yum clean metadata cleans up just the cached names and such, after which...",
+		"Body" : "<p><code>yum clean metadata</code> cleans up just the cached names and such, after which yum reloads its idea of what is available.</p>",
+		"TimeStamp" : "2015-01-28T18:10:22.984Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 367
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970418",
+		"PostUrl" : "http://travel.stackexchange.com/questions/42612",
+		"Site" : "travel.stackexchange.com",
+		"Title" : "my passaport it is damaged",
+		"Body" : "<p>Hi there my passaport its just a little damaged by my dog that he eat it just a little piece  outside if , i will send to you the photos , the problem it is that i have ty fly to the netherlands for e few days and i dont want to take the risk ...pls send me a asnwer ???enter image description here this is my passaport <img src=\"http://i.stack.imgur.com/HfQGp.jpg,\" alt=\"enter image description here\"></p>\n\n<p><a href=\"http://i.stack.imgur.com/HfQGp.jpg,\" rel=\"nofollow\">1</a>: <a href=\"http://i.stack.imgur.com/adBLa.jpg\" rel=\"nofollow\">http://i.stack.imgur.com/adBLa.jpg</a> , <img src=\"http://i.stack.imgur.com/HfQGp.jpg,\" alt=\"enter image description here\"></p>\n\n<p><img src=\"http://i.stack.imgur.com/lGUyQ.jpg\" alt=\"enter image description here\"></p>",
+		"TimeStamp" : "2015-01-28T18:10:17.698Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 235
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970252",
+		"PostUrl" : "http://math.stackexchange.com/questions/1123752",
+		"Site" : "math.stackexchange.com",
+		"Title" : "Ring of Integers adjoin Square Root of Prime",
+		"Body" : "<p>How does one show that $\\mathbb{Q}(\\sqrt{p})=\\mathbb{Z}[\\zeta_p]$ for odd $p$?</p>",
+		"TimeStamp" : "2015-01-28T17:40:53.724Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 797
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970249",
+		"PostUrl" : "http://math.stackexchange.com/questions/1123751",
+		"Site" : "math.stackexchange.com",
+		"Title" : "I really need help with math",
+		"Body" : "<p>I don't understand and I very need help a lot</p>",
+		"TimeStamp" : "2015-01-28T17:40:44.819Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 796
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970247",
+		"PostUrl" : "http://stackoverflow.com/a/4845526",
+		"Site" : "stackoverflow.com",
+		"Title" : "One way to do this is by defining an interface with Android's AIDL and m...",
+		"Body" : "<p>One way to do this is by defining an interface with <a href=\"http://developer.android.com/guide/components/aidl.html\" rel=\"nofollow\">Android's AIDL</a> and making use of the <code>Binder</code> subsystem to perform IPC.  There is a great set of instructions at the link I posted.  I'd start there and then post here if you have questions.  Despite being a pretty complex topic (IPC) Android and the <code>Binder</code> do a really good job of making it pretty dead simple (at least to get started, I'm sure you could make it complicated if you wanted to ;-) )</p>\n\n<p><strong>Edit</strong> As pointed out in the comments, this is unnecessary if the <code>Service</code> and the client are running in the same process.  Unless you specify otherwise, this is the default.  However, it still works regardless, it just adds a bit more complexity.</p>",
+		"TimeStamp" : "2015-01-28T17:40:27.920Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)have question",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18.0265732,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 14
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970234",
+		"PostUrl" : "http://askubuntu.com/a/578915",
+		"Site" : "askubuntu.com",
+		"Title" : "Thanks for the info, gave me the info I needed!",
+		"Body" : "<p>Thanks for the info, gave me the info I needed!</p>",
+		"TimeStamp" : "2015-01-28T17:38:07.962Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3011
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2955
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970223",
+		"PostUrl" : "http://math.stackexchange.com/a/1123742",
+		"Site" : "math.stackexchange.com",
+		"Title" : "If $\\alpha_1||y_1||\\alpha_2||y_2||$, then $x=-y_1$.",
+		"Body" : "<p>If $\\alpha_1||y_1||>\\alpha_2||y_2||$, then $x=-y_1$.</p>",
+		"TimeStamp" : "2015-01-28T17:34:00.918Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3010
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970219",
+		"PostUrl" : "http://sports.stackexchange.com/a/8634",
+		"Site" : "sports.stackexchange.com",
+		"Title" : "He is making a generalization about the power I offense.  Generally he i...",
+		"Body" : "<p>He is making a generalization about the power I offense.  Generally he is right.  </p>\n\n<p>You basically have three pass to run out of this formation for both the fullback and the halfback.  You have a basic side screen, you have variations of an out, and you have up and outs.  I am not going to write a chapter on each of these but can cover the basics:</p>\n\n<ul>\n<li><p>side screen.  Against a deep zone this will work but you still have at least 2 DBs lurking in space.  Mainly this would be ran against an undisciplined line crashing upfield too hard.  Against man coverage this would get snuffed out with a good disciplined LB.  Against a Cover 2 or shallow sink variety defense it is low reward because you could have DBs attacking the screen zone.  The biggest problem with the side screen though is the fullback.  Basically you are putting one guy on the field that probably serves no purpose and for most purposes the defensive coach will say ignore (remember that your fast pass catching fullbacks are 1 out of 20).  The extra defender on the field will be a LB with nothing to do.  So he is watching flats and short zones or maybe blitzing.  The example in the other answer talks about Tomlinson/Chargers running the screen game out of the I.  They did a phenomenal job.  But most of the screens were off of play action and they worked because defenses were worried about one of the best runningbacks to play the game.  The screens also worked because LT was arguably a top 10 receiving RB of all time.  He could do anything in any formation.</p></li>\n<li><p>variations of the out.  Really this is probably the most common route out of the I currently.  It gives QB a safety valve.  Often a defense has their LBs read the fullback and runningback on plays.  When LB X is assigned to the FB he reads FB.  When FB represents staying in to block LB blitzes.  When FB goes out for pass, LB X mirrors him.  In almost all cases LB X is more athletic than the FB.  LB Z mirroring the RB might not have a matchup advantage but in most cases he will not be in the negative either.  Again this works well with deep zones.  Man and Cover 2... your RB/FB will get jacked up.</p></li>\n<li><p>up and out.  FB/RB travels straight upfield and then option route (most of the time running an out but sometimes sitting down).  This is a great route.  You are taking away the LBs ability to mirror your RB.  They must attack the pass route with the same finesse and discipline of a DB.  The linebacker is at a big big disadvantage.  This route was the staple route of the greatest show on turf (Rams circa 99-02).  It took a full two years before NFL teams could scheme on how to beat it.  Not only was its design great but they again had a dominant pass catching threat at RB - Marshall Faulk.  They forced teams to zone shallow which puts them in some variation of a Cover 2 and then you have Bruce and Holt running 20 yard ins all day.  But this is a high reward high risk route.  It often takes so much time to develop that the RB never makes it out of the break.  Remember that if he is running the route he isn't pass protecting.  Also this is given that the RB can clear the line.  D-lineman are much more disciplined now at holding the RB (legal or not) as they try to sprint through the line.  This is probably the biggest reason you don't see teams with shifty backs running this variation 10 times a game.</p></li>\n</ul>\n\n<p>So given the limited route tree, the putting the FB on the field that adds another defender but little threat, and the better disciplined LBs/DL are now (they are just a lot more used to passing where in the 80s power I passing caught them by surprise more) really limits what you can do out of the I.  If you have a tactical I advantage for the run though you can still pass out of the I and some of those might go to your FB/RB but that doesn't mean it was an optimal play.  Really the only way for a team to schematically beat another team with I FB/RB threats is to either have a hall of fame type RB or to have a 1 out of 20 shifty FB.  This is why you have seen so many teams in recent years get rid of FB position or to line up a TE (Miami is an example) and sometimes another RB at FB so that the receiving threat is always there.</p>",
+		"TimeStamp" : "2015-01-28T17:32:12.356Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 84
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970210",
+		"PostUrl" : "http://bitcoin.stackexchange.com/a/11744",
+		"Site" : "bitcoin.stackexchange.com",
+		"Title" : "i have come back to post up all the information i can for you.\n\nthrough ...",
+		"Body" : "<p>i have come back to post up all the information i can for you.</p>\n\n<p>through the last few months of working with Stratum-mining i have come to some conclusions: you need to know python well to get this working on anything but bitcoin... That being said, its possible to install stratum over a current custom pushpool installation through a project I released and am working on. (Currently it is for freicoin but there are two trivial changes you can make to get my implementation to work on litecoin). There is also another implementation of stratum-mining that you can use that was last updated on Jun 6 2013 (i would suggest using this versus my code if you are installing from scratch or using MMCFE currently. my version of the code is designed to be more friendly to version 2 getblocktemplate, where as litecoin only supports getblocktemplate version 1 at this time).</p>\n\n<p>In the future it may be extremely useful to diff these two implementations as they have different database schemas...</p>\n\n<p>In the mean time,\nHere's how to install stratum-mining-litecoion a NEW system OR a system with MMCFE</p>\n\n<p>step 1) back up your database\nstep 2) back up your database\nstep 3) back up your database</p>\n\n<p>From <a href=\"https://github.com/Neozonz/stratum-mining-litecoin/blob/master/INSTALL\" rel=\"nofollow\">https://github.com/Neozonz/stratum-mining-litecoin/blob/master/INSTALL</a></p>\n\n<p>\"</p>\n\n<pre><code>> Installation Instructions\n> =========================\n> \n> Step 0. Install litecoind     NOTE: Litecoind currently only supports\n> getblocktemplate version 1. This code was changed to support version\n> 1.    Set it up and start it!     Downloading the blockchain can take a few hours to a couple days!\n> \n> Step 1. Install the stratum core  git pull\n> https://github.com/slush0/stratum.git     sudo easy_install stratum    \n> (or if using alternate python: sudo /usr/local/bin/easy_install\n> stratum)\n> \n> Step 2. Pull a copy of the miner  git pull\n> https://github.com/moopless/stratum-mining-litecoin.git\n> \n> Step 3. Configure the Miner   cp conf/config_sample.py conf/config.py\n>   make your changes to conf/config.py     Make sure you set the values in\n> BASIC SETTINGS! These are how to connect to litecoind       and where\n> your money goes!\n> \n> Step 4. Run the pool  twistd -ny launcher.tac -l -    OR - using\n> alternate python  /usr/local/bin/twistd -ny launcher.tac -l -\n> \n> You can now set the URL on your stratum proxy (or miner that supports\n> stratum) to: http://YOURHOSTNAME:3333\n> \n> Database Setup\n> ========================= Table Creation: Tables are auto-created if they don't exist (I will be adding a schema file later)\n> \n> None: Well, this doesn't do anything, so there is nothing to set up\n> \n> Sqlite: THIS IS THE DEFAULT! Just set the file path in the config file\n> (or keep the default.) Support for sqlite3 is built into recent python\n> versions. A couple notes for Sqlite:\n>   - Sqlite and threading/concurancy just doesn't work right for that reason it is disabled.\n>   - Since threading is disabled, The server will \"pause\" when archiving happens, this will affect         your miners. However this will not happen\n> often (24 hours after finding a share)\n> \n> Postgresql:\n> 1. Set up your parameters in the config file.\n> 2. Install the postgresql libraries in your os:   Redhat and the like:        yum install postgresql-libs postgresql-devel    Ubuntu and the like:\n>       apt-get install postgresql postgresql-devel\n> 3. Install the python bindings    easy_install psycopg2\n> \n> Mysql:\n> 1. Set up your parameters in the config file.\n> 2. Install the mysql libraries in your os:    Redhat and the like:        yum install mysql mysql-devel   Ubuntu and the like:        apt-get install\n> mysql mysql-devel\n> 3. Install the python bindings    easy_install mysql-python\n> 4. Create a database and user.\n> \n> Problems????\n> =========================\n> \n> Is your firewall off? Is litecoin running?\n> \n> TODO: are there other problems?\n\n\"\n</code></pre>\n\n<p>If you are already using pushpool and a custom frontend and don't want to write over your system, i have a working (but a bit buggy with MBPM due to the nature of my project) \"install over\" version of stratum mining for freicoin available here <a href=\"https://bitbucket.org/joeswhite/joes-stratum-mining-freicoin/src/8eec8a0b11c6?at=master\" rel=\"nofollow\">https://bitbucket.org/joeswhite/joes-stratum-mining-freicoin/src/8eec8a0b11c6?at=master</a></p>\n\n<p>this is how to install my version (DO NOT INSTALL THIS VERSION UNLESS YOU HAVE EXPERIENCE CODING!), there is an added step for the litecoin implementation but it is not yet tested by me.</p>\n\n<pre><code>\"\n\n> stratum-mining Basic implementation of bitcoin mining pool using\n> Stratum mining protocol. This fork includes a database implementation\n> for: None Sqlite Mysql Postgresql Basic worker stats are provided (and\n> updated) See the INSTALL file for install instructions. For more info\n> on Stratum: http://mining.bitcoin.cz/stratum-mining. Original version\n> by Slush Updated version by GeneralFault (Tips Welcome:\n> 15Zk7DoFYJ7hESpZzmix1WLkomTMGW81c2 ) This version by Joe White\n> http://pool.cr.rs (freicoin mining pool) Joe's Stratum Mining Freicoin\n> Implementation of generalfault's\n> https://github.com/generalfault/stratum-mining that works with Mark\n> Friedenbach's https://github.com/freicoin/stratum-mining This\n> installation can be put directly over top of your current pushpoold\n> Known bugs: Does not handle subscriptions properly upon connection,\n> but properly pushes block template and everything submits without\n> issue To do: add Joe's Pool front end in to implementation\n> (simplebtc's implementation heavily modified) add firewalls, security\n> services, add google authenticator, add other things like tripwire.\n> how to: Easy: download vmware image go to town make sure to set up any\n> and all firewalls, security measures, and other information. manual:\n> first download freicoin from freico.in/downloads install freicoin edit\n> your freicoin.conf file change the rpc port for security (i like to\n> mix it up on each server i use) nano .freicoin/freicoin.conf something\n> like this works (freicoin.conf file): server=1\n> rpcuser=changethisusername rpcpassword=changethispassword rpcport=4252\n> rpcallowip=127.0.0.1 test to make sure freicoind works once you are\n> sure of that, then get the git package git clone make the stratum log\n> directories mkdir /stratum mkdir /stratum/log/ touch\n> /stratum/log/stratum.log recurse in to the directory and edit\n> conf/config.py MAKE SURE TO READ AND CONFIGURE ALL SETTINGS!!!! I HAVE\n> DISABLED PLUG AND PLAY FOR YOUR SAFETY/SECURITY nano conf/config.py\n> ALWAYS BACK UP BEFORE STARTING ANYTHING!!! YOUR DATABASE COULD GET\n> SCREWED! I CAN NOT BE HELD LIABLE FOR ANYTHING, ESP THAT! import the\n> database if you are starting from scratch (it is not standard and is\n> not optimized, you could opt to make your own database and edit\n> DB_Mysql.py (or corresponding database) and edit anything that is a\n> sql execution (anything that has \"select * from, or any other sql\n> statements can be easily updated without changing most or anythign on\n> the server side schema.sql <- THIS IS THE SCHEMA FOR THIS\n> IMPLEMENTATION OF joe's THIS SCHEMA IS NOT OPTIMIZED AT ALL! ALWAYS\n> BACK UP BEFORE STARTING ANYTHING!!! YOUR DATABASE COULD GET SCREWED! I\n> CAN NOT BE HELD LIABLE FOR ANYTHING, ESP THAT! start a new screen so\n> you don't log out and stratum crashes (this is helpful for logging\n> too) screen\n\n\"\n\n*litecoin specific step\nAt this point you need to go back and write over (at very least) the halfnode.py block_template.py and coinbasetx.py files with the files provided in stratum-mining-litecoion. most likely you will need to write over all of them. (This is the untested part i was talking about).\n\n\n\"\n\n> ./startjoes.sh it should load up and work, you will see one error on\n> submission at this time it is okay this error does not affect any pool\n> performance, it is tested working. please update this as there are\n> many probable errors. I have included the sql architecture for this\n> implementation as it is not standard and can plug-and-play over an\n> existing pushpool implementation ALWAYS BACK UP BEFORE STARTING\n> ANYTHING!!! YOUR DATABASE COULD GET SCREWED! I CAN NOT BE HELD LIABLE\n> FOR ANYTHING, ESP THAT!\n\n\"\n</code></pre>\n\n<p>I am trying to get an implementation up today or tomorrow and can report back any changes i need to make then.</p>\n\n<p>Please let me know if this was a satisfactory answer, if not. I will update this until it is. Thanks for not bashing me ;)</p>",
+		"TimeStamp" : "2015-01-28T17:29:14.786Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2954
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970207",
+		"PostUrl" : "http://math.stackexchange.com/a/1123733",
+		"Site" : "math.stackexchange.com",
+		"Title" : "how does the order of operation plays a roll in this functions. a - (b v...",
+		"Body" : "<p>how does the order of operation plays a roll in this functions. a -> (b v ~c).should't you write what is inside the parenthesis first since parenthesis is more superior to implementation sign. ?  </p>",
+		"TimeStamp" : "2015-01-28T17:27:27.229Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 366
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970199",
+		"PostUrl" : "http://stackoverflow.com/a/17169887",
+		"Site" : "stackoverflow.com",
+		"Title" : "The answer marked as answer does not take into account that you can have...",
+		"Body" : "<p>The answer marked as answer does not take into account that you can have overlays over the element, like dialogs, popovers, datepickers etc. Clicks in these should not hide element.</p>\n\n<p>I have made a own version that does take this into account, its created as a Knockout binding, but can easily be converted to JQuery only</p>\n\n<p>It works by first query for all elements with either z-index or absolute position that are visible. It then hit tests those elements against the element I want to hide if click outside. If its a hit I calculate a new bound rectangle which takes into account the overlay bounds.</p>\n\n<pre><code>ko.bindingHandlers.clickedIn = (function () {\n    function getBounds(element) {\n        var pos = element.offset();\n        return {\n            x: pos.left,\n            x2: pos.left + element.outerWidth(),\n            y: pos.top,\n            y2: pos.top + element.outerHeight()\n        };\n    }\n\n    function hitTest(o, l) {\n        function getOffset(o) {\n            for (var r = { l: o.offsetLeft, t: o.offsetTop, r: o.offsetWidth, b: o.offsetHeight };\n                o = o.offsetParent; r.l += o.offsetLeft, r.t += o.offsetTop);\n            return r.r += r.l, r.b += r.t, r;\n        }\n\n        for (var b, s, r = [], a = getOffset(o), j = isNaN(l.length), i = (j ? l = [l] : l).length; i;\n            b = getOffset(l[--i]), (a.l == b.l || (a.l > b.l ? a.l <= b.r : b.l <= a.r))\n                && (a.t == b.t || (a.t > b.t ? a.t <= b.b : b.t <= a.b)) && (r[r.length] = l[i]));\n        return j ? !!r.length : r;\n    }\n\n    return {\n        init: function (element, valueAccessor) {\n            var target = valueAccessor();\n            $(document).click(function (e) {\n                if (element._clickedInElementShowing === false && target()) {\n                    var $element = $(element);\n                    var bounds = getBounds($element);\n\n                    var possibleOverlays = $(\"[style*=z-index],[style*=absolute]\").not(\":hidden\");\n                    $.each(possibleOverlays, function () {\n                        if (hitTest(element, this)) {\n                            var b = getBounds($(this));\n                            bounds.x = Math.min(bounds.x, b.x);\n                            bounds.x2 = Math.max(bounds.x2, b.x2);\n                            bounds.y = Math.min(bounds.y, b.y);\n                            bounds.y2 = Math.max(bounds.y2, b.y2);\n                        }\n                    });\n\n\n                    if (e.clientX < bounds.x || e.clientX > bounds.x2 ||\n                        e.clientY < bounds.y || e.clientY > bounds.y2) {\n\n\n                        target(false);\n\n                    }\n                }\n                element._clickedInElementShowing = false;\n            });\n\n            $(element).click(function (e) {\n                e.stopPropagation();\n            });\n        },\n        update: function (element, valueAccessor) {\n            var showing = ko.utils.unwrapObservable(valueAccessor());\n            if (showing) {\n                element._clickedInElementShowing = true;\n            }\n        }\n    };\n})();\n</code></pre>",
+		"TimeStamp" : "2015-01-28T17:24:22.657Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 33
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970188",
+		"PostUrl" : "http://stackoverflow.com/questions/28198490",
+		"Site" : "stackoverflow.com",
+		"Title" : "Can Javascript be used to format HTML",
+		"Body" : "<p>I was just wondering if it is possible to format HTML using Javascript. Thanks a lot!</p>",
+		"TimeStamp" : "2015-01-28T17:23:02.297Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 795
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970187",
+		"PostUrl" : "http://stackoverflow.com/a/4353475",
+		"Site" : "stackoverflow.com",
+		"Title" : "I took advantage of rails associations, and came up with a new method: \n...",
+		"Body" : "<p>I took advantage of rails associations, and came up with a new method: </p>\n\n<pre><code>def agree_list\n  o = Opinion.find(params[:id])\n  @agree_list = o.opinion_ratings(:conditions => {:agree => true}, :order => 'created_at DESC').paginate :page => params[:page]\nrescue ActiveRecord::RecordNotFound\n  redirect_to(profile_opinion_path(session[:user]))\nend\n</code></pre>\n\n<p>In my view I looked up the profile like so: </p>\n\n<pre><code><% @agree_list.each do |rating| %>\n  <% user = Profile.find(rating.profile_id) %>\n<% end %>\n</code></pre>\n\n<p>Please post up if there's a better way to do this. I tried to use the named_scope helper in the OpinionRating model with no luck. Here's an example of what I tried, but doesn't work:</p>\n\n<pre><code>named_scope :with_profile, lambda {|id| { :joins => [:profile], :conditions => ['profile_id = ?', id] } }\n</code></pre>\n\n<p>That seemed like the same as using the find method though.</p>\n\n<p>Thanks for all the help.</p>",
+		"TimeStamp" : "2015-01-28T17:23:00.314Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2953
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970182",
+		"PostUrl" : "http://chinese.stackexchange.com/questions/12225",
+		"Site" : "chinese.stackexchange.com",
+		"Title" : "Greeting in an Email Autoresponse: \u60A8\u597D\uFF0C \u4EB2\u7231\u7684 or something else?",
+		"Body" : "<p>It's a pretty specific situation, so I hope you can help me. </p>",
+		"TimeStamp" : "2015-01-28T17:22:06.553Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 794
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970181",
+		"PostUrl" : "http://workplace.stackexchange.com/a/40860",
+		"Site" : "workplace.stackexchange.com",
+		"Title" : "This is a guest blog post by Lisa Rangel.\nYou, as a job seeker, are cont...",
+		"Body" : "<p>This is a guest blog post by Lisa Rangel.\nYou, as a job seeker, are continually appalled at the lack of follow-through on the part of potential employers throughout your job search after you have interviewed a number of times.\nYou are reasonable in that you do not expect a \u201Cno thanks\u201D response when sending a resume through an impersonal job posting. However, after going through several rounds of interviews only to receive an eerie silence with no subsequent follow-up, I imagine it leaves you feeling outraged and frustrated. I can\u2019t say I blame you.\nI am a former search firm recruiter and I can tell you that it always makes me sad to hear this. As I 3rd party recruiter, I did experience it, also. I would have candidates going through the process and then the corporate recruiter would go silent.\nAs a former recruiter for 13 years, I wanted to shed some light on what really is happening behind the scenes when a recruiter drops the ball throughout the recruitment and interview process. While it has become a daunting task for employers to manage the communication process, there isn\u2019t an excuse to fail to keep a candidate in progress informed.\nNone of these explanations are to say this behavior is ok\u2026please know that is not my intent. But if you can have an inkling as to what goes on inside these processes, you can realize it is not personal and recruiters are not being sneaky. In most cases, it is just human nature, incompetence, overwhelm or lack of information that is the cause of the lack of response. I find knowing it is not personal can ease the frustration.\nThrough my recruiting experience, this is what I came to realize:\nCorporate HR people and search firm recruiters are middlemen (I know since I was one of them)\nMost are well-intentioned and want to move candidates through the process to get the open job off their desk. To keep the candidate hopeful, the recruiter says things like \u201CI will let you know by Friday\u201D or \u201CI am expecting the manager to get back to ASAP\u201D with full intent on making that happen. Then the manager does not get back to the recruiter, leaving the recruiter in an awkward and frustrated position.\nSome recruiters (corporate and search firm recruiters) can simply manage the process poorly\nThey tend to react to what job process is moving forward and forget about the ones that are stagnant. These recruiters tend to hold all the reigns of communication and, as indicated in the earlier point, set up unrealistic expectations that they will get back with everyone with updates. Many recruiters do not have systems to ensure communication is consistent.\nThe bottom line is most middlemen have little to no control in the process and often make promises they cannot keep. I dealt with this by saying to my candidates when it was applicable, \u201CI hope to hear by Friday, but you have to know I have no control over when they will tell me. If you have not heard from me by Monday or Tuesday the latest, please feel free to check in with me. But know that if I hear anything, I will let you know.\u201D I was honest about what I had control over and did not have control over. Not a perfect solution, I know, but I tried my best. I hated candidates not knowing what was going on.\nHiring managers (or line managers) that are responsible for pulling the trigger typically have no idea that a communication deadline was made to the candidate by a recruiter.\nAnd there are hiring managers that know this, but just frankly do not care. They often do not get back to the corporate recruiters or the third party recruiter that might be in between in a timely fashion.\nLastly, but certainly not least, I have come to learn many people have a hard time:\n1. Giving bad news (the manager chose someone else)\n2. Saying they were wrong (I am sorry that I said I would have any answer for you by tomorrow and now that tomorrow is here and I do not have an answer)\n3. Saying they have no clue what is going on \u201CI must admit the manager said this was a priority, so that is why I communicated urgency to you. I have no idea why they are now not responding on the next step).\nAs a result, I find, with any of these scenarios, many people choose to just avoid it and never make the phone call or send the email and focus on other priority jobs.\nI always suggest to my job search clients to not hold on to the results of the actions they take, to the best of their ability. Just take the actions to move forward during this job search transition (send emails, do follow-up, go to interviews, apply for the job, network, etc) and try not to tie expectations to each result.  When an expectation is tied to a result and that anticipated result not realized, that is where we get frustrated. I do this in my business and in my personal life as much as I can.\nIt is not easy and some days I am not very successful at it. But I find that when I can let go of expectations, I am not often disappointed and I am leaving myself open for other wonderful things to come into my life that I did not even imagine could happen.</p>\n\n<p>this is from <a href=\"http://www.timsstrategy.com/blog/what-really-happens-when-hr-recruiters-dont-follow-up-with-you/\" rel=\"nofollow\">http://www.timsstrategy.com/blog/what-really-happens-when-hr-recruiters-dont-follow-up-with-you/</a></p>",
+		"TimeStamp" : "2015-01-28T17:21:53.733Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2952
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970174",
+		"PostUrl" : "http://android.stackexchange.com/a/97148",
+		"Site" : "android.stackexchange.com",
+		"Title" : "Thank you so much for your help. My Samsung Galaxy Ace had a message in ...",
+		"Body" : "<p>Thank you so much for your help. My Samsung Galaxy Ace had a message in the outbox that was stuck for weeks. I forwarded another email to the same email address - and the original stuck message was sent the same time- leaving my Outbox empty.</p>",
+		"TimeStamp" : "2015-01-28T17:20:52.932Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2951
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970140",
+		"PostUrl" : "http://english.stackexchange.com/a/224252",
+		"Site" : "english.stackexchange.com",
+		"Title" : "Trendsetter\nInnovator\nVisionary",
+		"Body" : "<p>Trendsetter\nInnovator\nVisionary</p>",
+		"TimeStamp" : "2015-01-28T17:16:32.222Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^ ]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 16.8727264,
+				"TPCount" : 34,
+				"FPCount" : 3,
+				"CaughtCount" : 81
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970123",
+		"PostUrl" : "http://gamedev.stackexchange.com/questions/93041",
+		"Site" : "gamedev.stackexchange.com",
+		"Title" : "o whant to make unity laser 2d",
+		"Body" : "<p>hi i am new in unity and i whant to creat a 2d laser light and i whant to make it move like this vid\u00E9o </p>\n\n<p>exemple :laser exemple</p>\n\n<p><a href=\"https://www.youtube.com/watch?v=d2EI10mCEMo\" rel=\"nofollow\">https://www.youtube.com/watch?v=d2EI10mCEMo</a></p>\n\n<p>i have try sow many code but nothing happen and o get a simple render when i hit play button </p>\n\n<p>any help pls !!!!!!!!!!</p>",
+		"TimeStamp" : "2015-01-28T17:15:25.314Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 232
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970084",
+		"PostUrl" : "http://stackoverflow.com/a/11303940",
+		"Site" : "stackoverflow.com",
+		"Title" : "I added export PATH=${PATH}:/Users/mishrapranjal/android-sdks/platform-t...",
+		"Body" : "<p>I added <code>export PATH=${PATH}:/Users/mishrapranjal/android-sdks/platform-tools/</code> into both places <code>.bash_profile</code> and <code>.profile</code> to make sure it works. Still it wasn't working and then I looked at <a href=\"http://stackoverflow.com/a/5526493/1446834\">sarnold's tip </a>about restarting terminal and it worked like a charm.\nIt saved my time of adding every time this into the <code>PATH</code> whenever I had to run <code>adb</code>.\nThank you guys.</p>",
+		"TimeStamp" : "2015-01-28T17:11:35.153Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 111,
+				"CaughtCount" : 2950
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970082",
+		"PostUrl" : "http://superuser.com/a/870708",
+		"Site" : "superuser.com",
+		"Title" : "What if the cell you want to get the name from is on another sheet?",
+		"Body" : "<p>What if the cell you want to get the name from is on another sheet?</p>",
+		"TimeStamp" : "2015-01-28T17:11:17.289Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3009
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970058",
+		"PostUrl" : "http://worldbuilding.stackexchange.com/a/9387",
+		"Site" : "worldbuilding.stackexchange.com",
+		"Title" : "I want to recommend a book that is helping me a lot in this process (and...",
+		"Body" : "<p>I want to recommend a book that is helping me a lot in this process (and also giving me a \nlot of inspiration). The name is World Builder's Guidebook by Richard Baker. Although it was originally made for Advanced Dungeons & Dragons the contents are dedicated for Story Writers\nmaking a fantasy world (you don't need to known anything about D&D or RPGs to read it).\nHere is a image showing the book index: <a href=\"http://prntscr.com/5y63kd\" rel=\"nofollow\">http://prntscr.com/5y63kd</a>\nThe book is kind old, but you can find it in pdf format on the internet. But I didn't told you this! ;)</p>",
+		"TimeStamp" : "2015-01-28T17:07:40.206Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*i want",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 3,
+				"FPCount" : 0,
+				"CaughtCount" : 31
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 32
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970057",
+		"PostUrl" : "http://askubuntu.com/questions/578904",
+		"Site" : "askubuntu.com",
+		"Title" : "Network card wifi not working",
+		"Body" : "<p>My wifi is not working and I have a Compaq Presario C500 and my network card is a Realtek RTL8139/810x family fast Ethernet and Broadcom 802.11b/g WLAN plz help :)</p>",
+		"TimeStamp" : "2015-01-28T17:07:38.669Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 231
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2970014",
+		"PostUrl" : "http://electronics.stackexchange.com/a/151366",
+		"Site" : "electronics.stackexchange.com",
+		"Title" : "All the MagLev projects I have found use a Hall effect sensor for distan...",
+		"Body" : "<p>All the MagLev projects I have found use a Hall effect sensor for distance calculations. How does one separate the magnetic field generated by the electromagnet from that generated by the permanent magnet? And how can I relate the measured magnetic field to the position of the levitating permanent magnet? Will a linear model suffice?</p>",
+		"TimeStamp" : "2015-01-28T17:03:17.017Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 10
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2969994",
 		"PostUrl" : "http://stackoverflow.com/a/28198045",
 		"Site" : "stackoverflow.com",
