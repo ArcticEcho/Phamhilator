@@ -24,7 +24,7 @@ namespace Phamhilator
             AuthorLink = authorLink;
             Tags = tags;
 
-            if (GlobalInfo.FullScanEnabled)
+            if (Config.FullScanEnabled)
             {
                 PopulateExtraData();
             }

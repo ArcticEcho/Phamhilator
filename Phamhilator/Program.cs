@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -8,7 +7,8 @@ using System.Diagnostics;
 using System.Globalization;
 using System.ComponentModel;
 using System.Threading.Tasks;
-//using System.Windows.Controls;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
 using WebSocketSharp;
 
@@ -18,49 +18,247 @@ namespace Phamhilator
 {
     public class Program
     {
-        private Thread postCatcherThread;
-        private DateTime requestedDieTime;
-        private MessageHandler messageHandler;
+        private static Thread postCatcherThread;
+        private static DateTime requestedDieTime;
+        private static MessageHandler messageHandler;
+        //private static ReportLog log;
+        //private static UserAccess userAccess;
+        //private static BannedUsers bannedUsers;
+        private static Client chatClient;
+        private static ActiveRooms roomsToJoin;
+        //private static Room primaryRoom;
+        //private static List<Room> secondaryRooms;
+        //private static Dictionary<FilterConfig, BlackFilter> blackFilters;
+        //private static Dictionary<FilterConfig, WhiteFilter> whiteFilters;
+        //private static BadTags badTags;
 
 
 
         static void Main(string[] args)
         {
-            try
+            Console.Title = "Phamhilator";
+            AppDomain.CurrentDomain.UnhandledException += GlobalExceptionHandler;
+
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
+            InitialiseCore();
+
+            var credMan = new CredManager();
+            var success = false;
+
+            //if (String.IsNullOrEmpty(credMan.Email) || String.IsNullOrEmpty(credMan.Password))
+            //{
+                success = TryManualLogin(credMan);
+            //}
+            //else
+            //{
+            //    success = TryAutoLogin(credMan);
+            //}
+
+            if (!success)
             {
-                //AppDomain.CurrentDomain.UnhandledException += GlobalExceptionHandler;
-
-                CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-                CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
-
-                var data = File.ReadAllText(DirectoryTools.GetCredsFile());
-
-                if (!String.IsNullOrEmpty(data))
-                {
-                    //emailTB.Text = data.Remove(data.IndexOf("¬", StringComparison.InvariantCulture));
-                    //passwordTB.Text = data.Substring(data.IndexOf("¬", StringComparison.InvariantCulture) + 1);
-                }
-
-                //loginC.Children.Remove(operationC);
+                Console.WriteLine("\n\nPress any key to close Yam...");
+                Console.ReadKey(true);
+                return;
             }
-            catch (Exception ex)
-            {
-                if (ex is TypeInitializationException && ex.InnerException != null)
-                {
-                    ex = ex.InnerException;
-                }
 
-                //Clipboard.SetText(ex.ToString());
+            JoinRooms();
 
-                //MessageBox.Show(ex + Environment.NewLine + Environment.NewLine + "The above error details have be copied to your clipboard. Now closing Pham...");
+            Config.IsRunning = true;
+            Stats.UpTime = DateTime.UtcNow;
 
-                Environment.Exit(Environment.ExitCode);
-            }
+            Config.PrimaryRoom.PostMessage("`Phamhilator™ started.`");
+
+            InitialiseSocket();
         }
 
 
 
-        private void InitialiseSocket()
+        # region Private static auth/initialisation methods.
+
+        private static void InitialiseCore()
+        {
+            Console.Write("Loading log...");
+
+            Config.Log = new ReportLog();
+
+            Console.Write("done.\nLoading config data...");
+
+            Config.Core = new Pham();
+            roomsToJoin = new ActiveRooms();
+            Config.UserAccess = new UserAccess("meta.stackexchange.com", 773);
+            Config.BannedUsers = new BannedUsers(Config.UserAccess);
+            Stats.PostedReports = new List<Report>();
+            messageHandler = new MessageHandler();
+
+            Console.Write("done.\nLoading bad tag definitions...");
+
+            Config.BadTags = new BadTags();
+
+            Console.Write("done.\nLoading black terms...");
+
+            Config.BlackFilters = new Dictionary<FilterConfig, BlackFilter>()
+            {
+                { new FilterConfig(FilterClass.QuestionTitleName, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleName) },
+                { new FilterConfig(FilterClass.QuestionTitleOff, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleOff) },
+                { new FilterConfig(FilterClass.QuestionTitleSpam, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleSpam) },
+                { new FilterConfig(FilterClass.QuestionTitleLQ, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleLQ) },
+
+                { new FilterConfig(FilterClass.QuestionBodySpam, FilterType.Black), new BlackFilter(FilterClass.QuestionBodySpam) },
+                { new FilterConfig(FilterClass.QuestionBodyLQ, FilterType.Black), new BlackFilter(FilterClass.QuestionBodyLQ) },
+                { new FilterConfig(FilterClass.QuestionBodyOff, FilterType.Black), new BlackFilter(FilterClass.QuestionBodyOff) },
+
+                { new FilterConfig(FilterClass.AnswerSpam, FilterType.Black), new BlackFilter(FilterClass.AnswerSpam) },
+                { new FilterConfig(FilterClass.AnswerLQ, FilterType.Black), new BlackFilter(FilterClass.AnswerLQ) },
+                { new FilterConfig(FilterClass.AnswerOff, FilterType.Black), new BlackFilter(FilterClass.AnswerOff) },
+                { new FilterConfig(FilterClass.AnswerName, FilterType.Black), new BlackFilter(FilterClass.AnswerName) }
+            };
+
+            Console.Write("done.\nLoading white terms...");
+
+            Config.WhiteFilters = new Dictionary<FilterConfig, WhiteFilter>()
+            {
+                { new FilterConfig(FilterClass.QuestionTitleName, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleName) },
+                { new FilterConfig(FilterClass.QuestionTitleOff, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleOff) },
+                { new FilterConfig(FilterClass.QuestionTitleSpam, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleSpam) },
+                { new FilterConfig(FilterClass.QuestionTitleLQ, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleLQ) },
+
+                { new FilterConfig(FilterClass.QuestionBodySpam, FilterType.White), new WhiteFilter(FilterClass.QuestionBodySpam) },
+                { new FilterConfig(FilterClass.QuestionBodyLQ, FilterType.White), new WhiteFilter(FilterClass.QuestionBodyLQ) },
+                { new FilterConfig(FilterClass.QuestionBodyOff, FilterType.White), new WhiteFilter(FilterClass.QuestionBodyOff) },
+
+                { new FilterConfig(FilterClass.AnswerSpam, FilterType.White), new WhiteFilter(FilterClass.AnswerSpam) },
+                { new FilterConfig(FilterClass.AnswerLQ, FilterType.White), new WhiteFilter(FilterClass.AnswerLQ) },
+                { new FilterConfig(FilterClass.AnswerOff, FilterType.White), new WhiteFilter(FilterClass.AnswerOff) },
+                { new FilterConfig(FilterClass.AnswerName, FilterType.White), new WhiteFilter(FilterClass.AnswerName) }
+            };
+
+            Console.WriteLine("done.\n");
+        }
+
+        private static bool TryManualLogin(CredManager credMan)
+        {
+            Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
+
+            while (true)
+            {
+                Console.Write("Email: ");
+                var email = Console.ReadLine();
+
+                Console.Write("Password: ");
+                var password = Console.ReadLine();
+
+                try
+                {
+                    Console.Write("\nAuthenticating...");
+
+                    chatClient = new Client(email, password);
+
+                    Console.Write("login successful!\nShall I remember your creds? ");
+
+                    try
+                    {
+                        var remCreds = Console.ReadLine();
+
+                        if (Regex.IsMatch(remCreds, @"(?i)^y(e[sp]|up|)?\s*$"))
+                        {
+                            credMan.Email = email;
+                            credMan.Password = password;
+
+                            Console.WriteLine("Creds successfully remembered!");
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        credMan.Email = "";
+                        credMan.Password = "";
+
+                        Console.WriteLine("Failed to save your creds (creds not remembered).");
+                    }
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("failed to login.");
+
+                    return false;
+                }
+            }
+        }
+
+        private static bool TryAutoLogin(CredManager credMan)
+        {
+            Console.WriteLine("Email: " + credMan.Email);
+            Console.WriteLine("Password: " + credMan.Password);
+            Console.WriteLine("\nPress the enter key to login...");
+            Console.Read();
+
+            try
+            {
+                Console.Write("Authenticating...");
+
+                chatClient = new Client(credMan.Email, credMan.Password);
+
+                Console.Write("login successful!\nShall I forget your creds?");
+
+                try
+                {
+                    var clrCreds = Console.ReadLine();
+
+                    if (Regex.IsMatch(clrCreds, @"(?i)^y(e[sp]|up|)?\s*$"))
+                    {
+                        credMan.Email = "";
+                        credMan.Password = "";
+
+                        Console.WriteLine("Creds successfully forgotten!");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Failed to forget your creds.");
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("failed to login.");
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private static void JoinRooms()
+        {
+            Console.Write("Joining primary room: " + roomsToJoin.PrimaryRoomUrl + " ...");
+
+            Config.PrimaryRoom = chatClient.JoinRoom(roomsToJoin.PrimaryRoomUrl);
+            Config.PrimaryRoom.IgnoreOwnEvents = false;
+            Config.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;
+            Config.PrimaryRoom.MessageEdited += (oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage);
+
+            Console.WriteLine("done.\nJoining secondary room(s):");
+
+            Config.SecondaryRooms = new List<Room>();
+
+            foreach (var roomUrl in roomsToJoin.SecondaryRoomUrls)
+            {
+                Console.Write("Room: " + roomUrl + " ...");
+
+                var secRoom = chatClient.JoinRoom(roomUrl);
+                secRoom.IgnoreOwnEvents = false;
+                secRoom.NewMessage += message => HandleSecondaryNewMessage(secRoom, message);
+                secRoom.MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(secRoom, newMessage);
+
+                Config.SecondaryRooms.Add(secRoom);
+
+                Console.WriteLine("done.");
+            }
+        }
+
+        private static void InitialiseSocket()
         {
             postCatcherThread = new Thread(() =>
             {
@@ -70,13 +268,13 @@ namespace Phamhilator
 
                 socket.OnMessage += (o, message) =>
                 {
-                    if (!GlobalInfo.BotRunning) { return; }
+                    if (!Config.IsRunning) { return; }
 
                     try
                     {
                         var question = PostFetcher.GetQuestion(message);
 
-                        if (GlobalInfo.Log.Entries.All(p => p.PostUrl != question.Url))
+                        if (Config.Log.Entries.All(p => p.PostUrl != question.Url))
                         {
                             var qResults = PostAnalyser.AnalyseQuestion(question);
                             var qMessage = MessageGenerator.GetQReport(qResults, question);
@@ -84,14 +282,14 @@ namespace Phamhilator
                             CheckSendReport(question, qMessage, qResults);
                         }
 
-                        if (GlobalInfo.FullScanEnabled)
+                        if (Config.FullScanEnabled)
                         {
                             var answers = PostFetcher.GetLatestAnswers(question);
 
-                            foreach (var a in answers.Where(ans => GlobalInfo.Log.Entries.All(p => p.PostUrl != ans.Url)))
+                            foreach (var a in answers.Where(ans => Config.Log.Entries.All(p => p.PostUrl != ans.Url)))
                             {
                                 var aResults = PostAnalyser.AnalyseAnswer(a);
-                                var aMessage = MessageGenerator.GetAReport(aResults, a);
+                                var aMessage = MessageGenerator.GetPostReport(aResults, a);
 
                                 CheckSendReport(a, aMessage, aResults);
                             }
@@ -99,15 +297,15 @@ namespace Phamhilator
                     }
                     catch (Exception ex)
                     {
-                        GlobalInfo.PrimaryRoom.PostMessage("Error:\n" + ex + "\n\nReceived message:\n" + message.Data);
+                        Config.PrimaryRoom.PostMessage("Error:\n" + ex + "\n\nReceived message:\n" + message.Data);
                     }
                 };
 
                 socket.OnClose += (o, oo) =>
                 {
-                    if (GlobalInfo.Shutdown) { return; }
+                    if (Config.Shutdown) { return; }
 
-                    GlobalInfo.PrimaryRoom.PostMessage("`Warning: global post websocket has died. Attempting to restart...`");
+                    Config.PrimaryRoom.PostMessage("`Warning: global post websocket has died. Attempting to restart...`");
 
                     InitialiseSocket();
                 };
@@ -118,11 +316,13 @@ namespace Phamhilator
             postCatcherThread.Start();
         }
 
-        private void KillBot()
-        {
-            //Dispatcher.Invoke(() => statusL.Content = "Shutting Down...");
+        # endregion
 
-            GlobalInfo.Shutdown = true;
+        private static void KillBot()
+        {
+            Console.WriteLine("Kill command issued, closing Pham...");
+
+            Config.Shutdown = true;
             requestedDieTime = DateTime.UtcNow;
 
             var warningMessagePosted = false;
@@ -133,7 +333,7 @@ namespace Phamhilator
 
                 if ((DateTime.UtcNow - requestedDieTime).TotalSeconds > 10 && !warningMessagePosted)
                 {
-                    GlobalInfo.PrimaryRoom.PostMessage("`Warning: 10 seconds have past since the kill command was issued and the post catcher thread is still alive. Now forcing thread death...`");
+                    Config.PrimaryRoom.PostMessage("`Warning: 10 seconds have past since the kill command was issued and the post catcher thread is still alive. Now forcing thread death...`");
 
                     warningMessagePosted = true;
 
@@ -145,14 +345,15 @@ namespace Phamhilator
 
             Thread.Sleep(5000);
 
-            GlobalInfo.PrimaryRoom.PostMessage("`All threads have died. Kill successful!`");
+            Config.Log.Dispose();
+            Config.PrimaryRoom.PostMessage("`All threads have died. Kill successful!`");
 
             Thread.Sleep(5000);
 
-            //Dispatcher.Invoke(() => Environment.Exit(0));
+            Environment.Exit(Environment.ExitCode);
         }
 
-        private void HandlePrimaryNewMessage(Message message)
+        private static void HandlePrimaryNewMessage(Message message)
         {
             Task.Factory.StartNew(() =>
             {
@@ -160,24 +361,24 @@ namespace Phamhilator
                 {
                     ChatAction m;
 
-                    if (GlobalInfo.Owners.Any(user => user.ID == message.AuthorID))
+                    if (Config.UserAccess.Owners.Any(user => user.ID == message.AuthorID))
                     {
-                        m = new ChatAction(GlobalInfo.PrimaryRoom, () =>
+                        m = new ChatAction(Config.PrimaryRoom, () =>
                         {
-                            GlobalInfo.PrimaryRoom.PostReply(message, "`Killing...`");
+                            Config.PrimaryRoom.PostReply(message, "`Killing...`");
                             KillBot();
                         });
                     }
                     else
                     {
-                        m = new ChatAction(GlobalInfo.PrimaryRoom, () => GlobalInfo.PrimaryRoom.PostReply(message, "`Access denied.`"));
+                        m = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostReply(message, "`Access denied.`"));
                     }
 
                     messageHandler.QueueItem(m);
                 }
                 else
                 {
-                    var messages = CommandProcessor.ExacuteCommand(GlobalInfo.PrimaryRoom, message);
+                    var messages = CommandProcessor.ExacuteCommand(Config.PrimaryRoom, message);
 
                     if (messages == null || messages.Length == 0) { return; }
 
@@ -187,11 +388,11 @@ namespace Phamhilator
 
                         if (m.IsReply)
                         {
-                            action = new ChatAction(GlobalInfo.PrimaryRoom, () => GlobalInfo.PrimaryRoom.PostReply(message, m.Content));
+                            action = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostReply(message, m.Content));
                         }
                         else
                         {
-                            action = new ChatAction(GlobalInfo.PrimaryRoom, () => GlobalInfo.PrimaryRoom.PostMessage(m.Content));
+                            action = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostMessage(m.Content));
                         }
 
                         messageHandler.QueueItem(action);
@@ -200,7 +401,7 @@ namespace Phamhilator
             });
         }
 
-        private void HandleSecondaryNewMessage(Room room, Message message)
+        private static void HandleSecondaryNewMessage(Room room, Message message)
         {
             Task.Factory.StartNew(() =>
             {
@@ -228,65 +429,67 @@ namespace Phamhilator
             });
         }
 
-        private void CheckSendReport(Post p, string messageBody, PostAnalysis info)
+        private static void CheckSendReport(Post p, string messageBody, PostAnalysis info)
         {
+            Stats.TotalCheckedPosts++;
+
             if (p == null || String.IsNullOrEmpty(messageBody) || info == null) { return; }
 
             Message message = null;
-            MessageInfo chatMessage = null;
+            Report chatMessage = null;
 
-            if (GlobalInfo.Spammers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
+            if (Stats.Spammers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
             {
-                message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
-                chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                message = Config.PrimaryRoom.PostMessage("**Spam**" + messageBody);
+                chatMessage = new Report { Message = message, Post = p, Analysis = info };
             }
 
             switch (info.Type)
             {
                 case PostType.Offensive:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = Config.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
+                    chatMessage = new Report { Message = message, Post = p, Analysis = info };
 
-                        break;
-                    }
+                    break;
+                }
 
                 case PostType.BadUsername:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = Config.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
+                    chatMessage = new Report { Message = message, Post = p, Analysis = info };
 
-                        break;
-                    }
+                    break;
+                }
 
                 case PostType.BadTagUsed:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Bad Tag(s) Used**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = Config.PrimaryRoom.PostMessage("**Bad Tag(s) Used**" + messageBody);
+                    chatMessage = new Report { Message = message, Post = p, Analysis = info };
 
-                        break;
-                    }
+                    break;
+                }
 
                 case PostType.LowQuality:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = Config.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
+                    chatMessage = new Report { Message = message, Post = p, Analysis = info };
 
-                        break;
-                    }
+                    break;
+                }
 
                 case PostType.Spam:
-                    {
-                        message = GlobalInfo.PrimaryRoom.PostMessage("**Spam**" + messageBody);
-                        chatMessage = new MessageInfo { Message = message, Post = p, Report = info };
+                {
+                    message = Config.PrimaryRoom.PostMessage("**Spam**" + messageBody);
+                    chatMessage = new Report { Message = message, Post = p, Analysis = info };
 
-                        break;
-                    }
+                    break;
+                }
             }
 
             if (message != null && chatMessage != null)
             {
-                GlobalInfo.Log.AddEntry(new LogItem
+                Config.Log.AddEntry(new LogItem
                 {
                     ReportLink = "http://chat." + message.Host + "/transcript/message/" + message.ID,
                     PostUrl = p.Url,
@@ -298,25 +501,25 @@ namespace Phamhilator
                     BlackTerms = info.BlackTermsFound.ToLogTerms().ToList(),
                     WhiteTerms = info.WhiteTermsFound.ToLogTerms().ToList()
                 });
-                GlobalInfo.PostedReports.Add(message.ID, chatMessage);
+                Stats.PostedReports.Add(chatMessage);
 
                 if (info.AutoTermsFound)
                 {
-                    foreach (var room in GlobalInfo.ChatClient.Rooms.Where(r => r.ID != GlobalInfo.PrimaryRoom.ID))
+                    foreach (var room in Config.SecondaryRooms)
                     {
                         room.PostMessage(chatMessage.Message.Content);
                     }
                 }
             }
 
-            GlobalInfo.Stats.TotalCheckedPosts++;
+            Stats.PostsCaught++;
         }
 
-        private void GlobalExceptionHandler(object o, UnhandledExceptionEventArgs args)
+        private static void GlobalExceptionHandler(object o, UnhandledExceptionEventArgs args)
         {
             //Clipboard.SetText(args.ExceptionObject.ToString());
 
-            GlobalInfo.PrimaryRoom.PostMessage(args.ExceptionObject.ToString());
+            Config.PrimaryRoom.PostMessage(args.ExceptionObject.ToString());
 
             if (args.IsTerminating)
             {
@@ -328,6 +531,11 @@ namespace Phamhilator
 
                 //if (res == MessageBoxResult.No) { Environment.Exit(Environment.ExitCode); }
             }
+        }
+
+        private void Close()
+        {
+
         }
 
         # region UI Events

@@ -9,11 +9,12 @@ using System.Security.Cryptography;
 
 namespace Phamhilator
 {
-    public static class BannedUsers
+    public class BannedUsers
     {
-        private static readonly Random r = new Random();
+        private readonly Random r = new Random();
+        private readonly UserAccess userAccess;
 
-        public static bool SystemIsClear
+        public bool SystemIsClear
         {
             get
             {
@@ -22,10 +23,16 @@ namespace Phamhilator
         }
 
 
-
-        public static bool AddUser(string ID)
+        public BannedUsers(UserAccess userAccess)
         {
-            if (!SystemIsClear || !ID.All(Char.IsDigit) || GlobalInfo.Owners.Any(user => user.ID == int.Parse(ID))) { return false; }
+            this.userAccess = userAccess;
+        }
+
+
+
+        public bool AddUser(string ID)
+        {
+            if (!SystemIsClear || !ID.All(Char.IsDigit) || userAccess.Owners.Any(user => user.ID == int.Parse(ID))) { return false; }
 
             var ii = r.Next(1001);
 
@@ -49,7 +56,7 @@ namespace Phamhilator
             return true;
         }
 
-        public static bool IsUserBanned(string ID)
+        public bool IsUserBanned(string ID)
         {
             if (!SystemIsClear || !ID.All(Char.IsDigit)) { return true; }
 
@@ -73,7 +80,7 @@ namespace Phamhilator
 
 
 
-        private static byte[] HashID(string ID)
+        private byte[] HashID(string ID)
         {
             using (var sha = new SHA512Managed())
             {
@@ -83,7 +90,7 @@ namespace Phamhilator
             }
         }
 
-        private static byte[] GetRandomBytes()
+        private byte[] GetRandomBytes()
         {
             var bytes = new byte[r.Next(1025)];
 
@@ -92,7 +99,7 @@ namespace Phamhilator
             return bytes;
         }
 
-        private static bool HashIsMatch(byte[] a, byte[] b)
+        private bool HashIsMatch(byte[] a, byte[] b)
         {
             if (a.Length != b.Length) { return false; }
 
@@ -104,7 +111,7 @@ namespace Phamhilator
             return true;
         }
 
-        private static byte[] GetPepper()
+        private byte[] GetPepper()
         {
             return Encoding.UTF8.GetBytes("Phamhilator");
         }

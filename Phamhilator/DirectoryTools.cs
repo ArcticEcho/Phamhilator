@@ -8,174 +8,42 @@ namespace Phamhilator
     public static class DirectoryTools
     {
         private static readonly string root = Path.GetDirectoryName(new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath);
-        private static readonly string QTBFilterTermsPath = Path.Combine(root, "Question", "Title", "Black Filter Terms");
-        private static readonly string QTWFilterTermsPath = Path.Combine(root, "Question", "Title", "White Filter Terms");
-        private static readonly string QBBFilterTermsPath = Path.Combine(root, "Question", "Body", "Black Filter Terms");
-        private static readonly string QBWFilterTermsPath = Path.Combine(root, "Question", "Body", "White Filter Terms");
-        private static readonly string ABFilterTermsPath = Path.Combine(root, "Answer", "Black Filter Terms");
-        private static readonly string AWFilterTermsPath = Path.Combine(root, "Answer", "White Filter Terms");
         private static readonly string configPath = Path.Combine(root, "Config");
 
 
 
-        public static string GetFilterFile(FilterType filter)
+        public static string GetFilterFile(FilterConfig filter)
         {
-            var path = "";
+            var path = root;
 
-            switch (filter)
+            if (filter.Class.IsQuestion())
             {
-                case FilterType.AnswerBlackLQ:
-                {
-                    path = Path.Combine(ABFilterTermsPath, "LQ Terms.txt");
+                path = Path.Combine(path, "Question");
 
-                    break;
+                if (filter.Class.IsQuestionTitle())
+                {
+                    path = Path.Combine(path, "Title");
+                    path = AddFilterType(path, filter.Type);
                 }
-                case FilterType.AnswerBlackName:
+                else
                 {
-                    path = Path.Combine(ABFilterTermsPath, "Bad Username Terms.txt");
-
-                    break;
-                }
-                case FilterType.AnswerBlackOff:
-                {
-                    path = Path.Combine(ABFilterTermsPath, "Offensive Terms.txt");
-
-                    break;
-                }
-                case FilterType.AnswerBlackSpam:
-                {
-                    path = Path.Combine(ABFilterTermsPath, "Spam Terms.txt");
-
-                    break;
-                }
-                case FilterType.AnswerWhiteLQ:
-                {
-                    path = Path.Combine(AWFilterTermsPath, "LQ");
-
-                    break;
-                }
-                case FilterType.AnswerWhiteName:
-                {
-                    path = Path.Combine(AWFilterTermsPath, "Bad Username");
-
-                    break;
-                }
-                case FilterType.AnswerWhiteOff:
-                {
-                    path = Path.Combine(AWFilterTermsPath, "Offensive");
-
-                    break;
-                }
-                case FilterType.AnswerWhiteSpam:
-                {
-                    path = Path.Combine(AWFilterTermsPath, "Spam");
-
-                    break;
-                }
-                case FilterType.QuestionBodyBlackLQ:
-                {
-                    path = Path.Combine(QBBFilterTermsPath, "LQ Terms.txt");
-
-                    break;
-                }
-                case FilterType.QuestionBodyBlackOff:
-                {
-                    path = Path.Combine(QBBFilterTermsPath, "Offensive Terms.txt");
-
-                    break;
-                }
-                case FilterType.QuestionBodyBlackSpam:
-                {
-                    path = Path.Combine(QBBFilterTermsPath, "Spam Terms.txt");
-
-                    break;
-                }
-                case FilterType.QuestionBodyWhiteLQ:
-                {
-                    path = Path.Combine(QBWFilterTermsPath, "LQ");
-
-                    break;
-                }
-                case FilterType.QuestionBodyWhiteOff:
-                {
-                    path = Path.Combine(QBWFilterTermsPath, "Offensive");
-
-                    break;
-                }
-                case FilterType.QuestionBodyWhiteSpam:
-                {
-                    path = Path.Combine(QBWFilterTermsPath, "Spam");
-
-                    break;
-                }
-                case FilterType.QuestionTitleBlackLQ:
-                {
-                    path = Path.Combine(QTBFilterTermsPath, "LQ Terms.txt");
-
-                    break;
-                }
-                case FilterType.QuestionTitleBlackName:
-                {
-                    path = Path.Combine(QTBFilterTermsPath, "Bad Username Terms.txt");
-
-                    break;
-                }
-                case FilterType.QuestionTitleBlackOff:
-                {
-                    path = Path.Combine(QTBFilterTermsPath, "Offensive Terms.txt");
-
-                    break;
-                }
-                case FilterType.QuestionTitleBlackSpam:
-                {
-                    path = Path.Combine(QTBFilterTermsPath, "Spam Terms.txt");
-
-                    break;
-                }
-                case FilterType.QuestionTitleWhiteLQ:
-                {
-                    path = Path.Combine(QTWFilterTermsPath, "LQ");
-
-                    break;
-                }
-                case FilterType.QuestionTitleWhiteName:
-                {
-                    path = Path.Combine(QTWFilterTermsPath, "Bad Username");
-
-                    break;
-                }
-                case FilterType.QuestionTitleWhiteOff:
-                {
-                    path = Path.Combine(QTWFilterTermsPath, "Offensive");
-
-                    break;
-                }
-                case FilterType.QuestionTitleWhiteSpam:
-                {
-                    path = Path.Combine(QTWFilterTermsPath, "Spam");
-
-                    break;
-                }
-            }
-
-            if (filter.IsBlackFilter())
-            {
-                if (!Directory.Exists(Directory.GetParent(path).FullName))
-                {
-                    Directory.CreateDirectory(Directory.GetParent(path).FullName);
-                }
-
-                if (!File.Exists(path))
-                {
-                    File.Create(path).Dispose();
+                    path = Path.Combine(path, "Body");
+                    path = AddFilterType(path, filter.Type);
                 }
             }
             else
             {
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
+                path = Path.Combine(path, "Answer");
+                path = AddFilterType(path, filter.Type);
+            }
+
+            if (filter.Type == FilterType.Black)
+            {
+                path = AddBlackFilterSubclass(path, filter.Class);
+            }
+            else
+            {
+                path = AddWhiteFilterSubclass(path, filter.Class);
             }
 
             return path;
@@ -183,9 +51,9 @@ namespace Phamhilator
 
         # region Misc files
 
-        public static string GetBTDFolder()
+        public static string GetBadTagsFolder()
         {
-            var path = Path.Combine(root, "Bad Tag Definitions");
+            var path = Path.Combine(root, "Bad Tags");
 
             if (!Directory.Exists(path))
             {
@@ -207,9 +75,9 @@ namespace Phamhilator
             return path;
         }
 
-        public static string GetCommandAccessUsersFile()
+        public static string GetPrivUsersFile()
         {
-            var path = Path.Combine(configPath, "Command Access Users.txt");
+            var path = Path.Combine(configPath, "Priv Users.txt");
 
             if (!File.Exists(path))
             {
@@ -231,9 +99,9 @@ namespace Phamhilator
             return path;
         }
 
-        public static string GetEnableFullScanFile()
+        public static string GetFullScanFile()
         {
-            var path = Path.Combine(configPath, "Enable Full Scan.txt");
+            var path = Path.Combine(configPath, "Full Scan.txt");
 
             if (!File.Exists(path))
             {
@@ -323,18 +191,72 @@ namespace Phamhilator
             return path;
         }
 
-        public static string GetFlaggingCredsFile()
+        # endregion
+
+
+
+        private static string AddFilterType(string path, FilterType type)
         {
-            var path = Path.Combine(configPath, "Flag Creds.txt");
-
-            if (!File.Exists(path))
+            if (type == FilterType.Black)
             {
-                File.Create(path).Dispose();
+                return Path.Combine(path, "Black Filter Terms");
             }
-
-            return path;
+            
+            return Path.Combine(path, "White Filter Terms");
         }
 
-        # endregion
+        private static string AddBlackFilterSubclass(string path, FilterClass classification)
+        {
+            switch (classification.ToPostType())
+            {
+                case PostType.LowQuality:
+                {
+                    return Path.Combine(path, "LQ Terms.txt");
+                }
+                case PostType.BadUsername:
+                {
+                    return Path.Combine(path, "Bad Username Terms.txt");
+                }
+                case PostType.Offensive:
+                {
+                    return Path.Combine(path, "Offensive Terms.txt");
+                }
+                case PostType.Spam:
+                {
+                    return Path.Combine(path, "Spam Terms.txt");
+                }
+                default:
+                {
+                    throw new NotSupportedException();
+                }
+            }
+        }
+
+        private static string AddWhiteFilterSubclass(string path, FilterClass classification)
+        {
+            switch (classification.ToPostType())
+            {
+                case PostType.LowQuality:
+                {
+                    return Path.Combine(path, "LQ");
+                }
+                case PostType.BadUsername:
+                {
+                    return Path.Combine(path, "Bad Username");
+                }
+                case PostType.Offensive:
+                {
+                    return Path.Combine(path, "Offensive");
+                }
+                case PostType.Spam:
+                {
+                    return Path.Combine(path, "Spam");
+                }
+                default:
+                {
+                    throw new NotSupportedException();
+                }
+            }
+        }
     }
 }

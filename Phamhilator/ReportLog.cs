@@ -48,7 +48,7 @@ namespace Phamhilator
                 entries = reader.Read<List<LogItem>>(data);
             }
 
-            GlobalInfo.PostsCaught += entries.Count;
+            Stats.PostsCaught += entries.Count;
 
             writer = new Thread(UpdateLog);
             writer.Start();
@@ -92,8 +92,6 @@ namespace Phamhilator
                     entries.Insert(0, item);
                 }
             }
-
-            GlobalInfo.PostsCaught++;
         }
 
 
@@ -104,6 +102,11 @@ namespace Phamhilator
 
             while (!dispose)
             {
+                while (!Config.IsRunning)
+                {
+                    Thread.Sleep(500);
+                }
+
                 sw.Start();
 
                 while (sw.Elapsed.TotalMinutes < 5 && !dispose)

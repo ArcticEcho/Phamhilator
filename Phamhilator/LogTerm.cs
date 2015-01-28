@@ -2,6 +2,6 @@
 {
     public class LogTerm : JsonTerm
     {
-        public FilterType Type { get; set; }
+        public FilterClass Type { get; set; }
     }
 }

@@ -33,12 +33,15 @@ namespace Yhamhilator
             if (!success)
             {
                 Console.WriteLine("\n\n Press any key to close Yam...");
+                Console.ReadKey(true);
                 return;
             }
 
             Console.Write("Joining room(s)...");
 
             var primaryRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+
+            Console.Write("done.");
 
             primaryRoom.PostMessage("`Yamhilator started.`");
         }

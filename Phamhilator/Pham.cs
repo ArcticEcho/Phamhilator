@@ -13,7 +13,7 @@ namespace Phamhilator
     {
         public Pham()
         {
-            GlobalInfo.Log.EntriesRemovedEvent = items =>
+            Config.Log.EntriesRemovedEvent = items =>
             {
                 var vaildEntries = items.Where(i => i.ReportType == PostType.Spam || i.ReportType == PostType.Offensive || i.ReportType == PostType.LowQuality).Take(30);
 
@@ -51,7 +51,7 @@ namespace Phamhilator
 
                 if (results.Count == 0) { return; }
 
-                GlobalInfo.PrimaryRoom.PostMessage("Auto-review Results\n\nReports TPd:" + FormatTPdReports(results) + "\n\nReports FPd:" + FormatFPdReports(results));
+                Config.PrimaryRoom.PostMessage("Auto-review Results\n\nReports TPd:" + FormatTPdReports(results) + "\n\nReports FPd:" + FormatFPdReports(results));
             };
         }
 
@@ -59,35 +59,33 @@ namespace Phamhilator
 
         public void RegisterFP(Post post, PostAnalysis report)
         {
-            GlobalInfo.Stats.TotalFPCount++;
+            Stats.TotalFPCount++;
 
             var newWhiteTermScore = report.BlackTermsFound.Select(t => t.Score).Max() / 2;
 
             foreach (var filter in report.FiltersUsed)
             {
-                if ((int)filter > 99) // White filter
-                {
-                    for (var i = 0; i < report.WhiteTermsFound.Count; i++)
-                    {
-                        var term = report.WhiteTermsFound.ElementAt(i);
+                var filterConfig = new FilterConfig(filter.Key, filter.Value);
+                var whiteFilterConfig = new FilterConfig(filter.Key, FilterType.White);
 
-                        if (term.Site == post.Site)
-                        {
-                            GlobalInfo.WhiteFilters[filter].SetScore(term, term.Score + 1);
-                        }
+                if (filter.Value == FilterType.White)
+                {
+                    // Increment the score of each found white term.
+                    foreach (var whiteTerm in report.WhiteTermsFound.Where(term => term.Site == post.Site))
+                    {
+                        Config.WhiteFilters[whiteFilterConfig].SetScore(whiteTerm, whiteTerm.Score + 1);
                     }
                 }
-                else // Black filter
+                else
                 {
-                    foreach (var term in report.BlackTermsFound)
+                    // Add all black terms to white filter (if they don't already exist).
+                    foreach (var blackTerm in report.BlackTermsFound)
                     {
-                        term.FPCount++;
+                        blackTerm.FPCount++;
 
-                        var corFilter = filter.GetCorrespondingWhiteFilter();
-
-                        if (GlobalInfo.WhiteFilters[corFilter].Terms.All(tt => tt.Site != term.Site && tt.Regex.ToString() != term.Regex.ToString()))
+                        if (Config.WhiteFilters[whiteFilterConfig].Terms.All(term => term.Site != blackTerm.Site && term.Regex.ToString() != blackTerm.Regex.ToString()))
                         {
-                            GlobalInfo.WhiteFilters[corFilter].AddTerm(new Term(corFilter, term.Regex, newWhiteTermScore, post.Site));
+                            Config.WhiteFilters[whiteFilterConfig].AddTerm(new Term(filterConfig, blackTerm.Regex, newWhiteTermScore, post.Site));
                         }
                     }
                 }
@@ -96,24 +94,31 @@ namespace Phamhilator
 
         public void RegisterTP(Post post, PostAnalysis report)
         {
-            GlobalInfo.Stats.TotalTPCount++;
+            Stats.TotalTPCount++;
 
-            foreach (var filter in report.FiltersUsed.Where(filter => (int)filter < 100)) // Make sure we only get black filters.
-            foreach (var blackTerm in report.BlackTermsFound.Where(blackTerm => GlobalInfo.BlackFilters[filter].Terms.Contains(blackTerm)))
+            foreach (var filter in report.FiltersUsed.Where(filter => filter.Value == FilterType.Black))
             {
-                GlobalInfo.BlackFilters[filter].SetScore(blackTerm, blackTerm.Score + 1);
+                var filterConfig = new FilterConfig(filter.Key, filter.Value);
+                var whiteFilter = new FilterConfig(filter.Key, FilterType.White);
 
-                blackTerm.TPCount++;
-
-                for (var i = 0; i < GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms.Count; i++) 
+                // Increment the score of each found black term.
+                for (var i = 0; i < report.BlackTermsFound.Count; i++)
                 {
-                    var whiteTerm = GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].Terms.ElementAt(i);
+                    var blackTerm = Config.BlackFilters[filterConfig].Terms.ElementAt(i);
+                    Config.BlackFilters[filterConfig].SetScore(blackTerm, blackTerm.Score + 1);
+                    blackTerm.TPCount++;
 
-                    if (whiteTerm.Regex.ToString() != blackTerm.Regex.ToString() || whiteTerm.Site == post.Site) { continue; }
+                    // Increase score of each white term (matching the found black term) not found on this site.
+                    for (var ii = 0; i < Config.WhiteFilters[whiteFilter].Terms.Count; ii++)
+                    {
+                        var whiteTerm = Config.WhiteFilters[whiteFilter].Terms.ElementAt(i);
 
-                    var x = whiteTerm.Score / blackTerm.Score;
+                        if (whiteTerm.Regex.ToString() != blackTerm.Regex.ToString() || whiteTerm.Site == post.Site) { continue; }
 
-                    GlobalInfo.WhiteFilters[filter.GetCorrespondingWhiteFilter()].SetScore(whiteTerm, x * (blackTerm.Score + 1));
+                        var x = whiteTerm.Score / blackTerm.Score;
+
+                        Config.WhiteFilters[whiteFilter].SetScore(whiteTerm, x * (blackTerm.Score + 1));
+                    }
                 }
             }
         }
@@ -126,21 +131,21 @@ namespace Phamhilator
 
             foreach (var term in entry.BlackTerms)
             {
-                data.BlackTermsFound.Add(term.ToTerm(term.Type));
+                data.BlackTermsFound.Add(term.ToTerm(new FilterConfig(term.Type, FilterType.Black)));
 
-                if (!data.FiltersUsed.Contains(term.Type))
+                if (!data.FiltersUsed.ContainsKey(term.Type))
                 {
-                    data.FiltersUsed.Add(term.Type);
+                    data.FiltersUsed.Add(term.Type, FilterType.Black);
                 }
             }
 
             foreach (var term in entry.WhiteTerms)
             {
-                data.WhiteTermsFound.Add(term.ToTerm(term.Type));
+                data.WhiteTermsFound.Add(term.ToTerm(new FilterConfig(term.Type, FilterType.White)));
 
-                if (!data.FiltersUsed.Contains(term.Type))
+                if (!data.FiltersUsed.ContainsKey(term.Type))
                 {
-                    data.FiltersUsed.Add(term.Type);
+                    data.FiltersUsed.Add(term.Type, FilterType.White);
                 }
             }
 

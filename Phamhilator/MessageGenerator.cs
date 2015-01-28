@@ -55,7 +55,7 @@ namespace Phamhilator
             }
         }
 
-        public static string GetAReport(AnswerAnalysis info, Answer post)
+        public static string GetPostReport(PostAnalysis info, Post post, bool isQuestion = false)
         {
             if (info == null || post == null) { return null; }
 
@@ -64,7 +64,7 @@ namespace Phamhilator
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.EscapeString(post.Title, " ");
             var accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
 
-            return " **A**" + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.";
+            return (isQuestion ? " **Q**" : " **A**") + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.";
         }
 
 

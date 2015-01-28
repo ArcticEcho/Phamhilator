@@ -4,10 +4,10 @@
 
 namespace Phamhilator
 {
-    public class MessageInfo
+    public class Report
     {
         public bool IsCleaned;
-        public PostAnalysis Report;
+        public PostAnalysis Analysis;
         public Post Post;
         public Message Message;
     }

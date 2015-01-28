@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveRooms.cs" />
     <Compile Include="Answer.cs" />
     <Compile Include="AnswerAnalyser.cs" />
     <Compile Include="AnswerAnalysis.cs" />
@@ -64,18 +65,28 @@
     <Compile Include="ChatAction.cs" />
     <Compile Include="ChatCommand.cs" />
     <Compile Include="CommandAccessLevel.cs" />
+    <Compile Include="CommandParser.cs" />
     <Compile Include="CommandProcessor.cs" />
+    <Compile Include="CredManager.cs" />
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FilePaths.cs" />
+    <Compile Include="FilterClass.cs" />
+    <Compile Include="FilterConfig.cs" />
     <Compile Include="FilterType.cs" />
     <Compile Include="GlobalInfo.cs" />
-    <Compile Include="GlobalInfo.Stats.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Stats.cs" />
     <Compile Include="JsonTerm.cs" />
     <Compile Include="LogItem.cs" />
     <Compile Include="LogTerm.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="MessageHandler.cs" />
-    <Compile Include="MessageInfo.cs" />
+    <Compile Include="Report.cs" />
     <Compile Include="Pham.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostAnalyser.cs" />
@@ -92,6 +103,7 @@
     <Compile Include="ReportCleaner.cs" />
     <Compile Include="ReportLog.cs" />
     <Compile Include="Spammer.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="StringDownloader.cs" />
     <Compile Include="Term.cs" />
     <Compile Include="TermCreater.cs" />
@@ -106,6 +118,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

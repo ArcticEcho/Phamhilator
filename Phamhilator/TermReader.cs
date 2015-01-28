@@ -9,7 +9,7 @@ namespace Phamhilator
 {
     public static class TermReader
     {
-        public static List<Term> ReadTerms(string filePath, FilterType filterType)
+        public static List<Term> ReadTerms(string filePath, FilterConfig filterType)
         {
             List<JsonTerm> data;
             var terms = new List<Term>();

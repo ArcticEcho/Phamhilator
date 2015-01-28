@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 
 
-namespace Yhamhilator
+namespace Phamhilator
 {
     internal class CredManager
     {
-        private static readonly string rootConfig = Path.Combine(Path.GetDirectoryName(new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath), "Config");
-        private readonly string emailPath = Path.Combine(rootConfig, "credE");
-        private readonly string passwordPath = Path.Combine(rootConfig, "credP");
+        private readonly string emailPath = Path.Combine(FilePaths.ConfigDir, "credE");
+        private readonly string passwordPath = Path.Combine(FilePaths.ConfigDir, "credP");
 
 
         internal string Email

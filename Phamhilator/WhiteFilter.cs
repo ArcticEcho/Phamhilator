@@ -13,18 +13,18 @@ namespace Phamhilator
     {
         public HashSet<Term> Terms { get; private set; }
 
-        public FilterType FilterType { get; private set; }
+        public FilterConfig Config { get; private set; }
 
 
 
-        public WhiteFilter(FilterType filter)
+        public WhiteFilter(FilterClass filter)
         {
-            if ((int)filter < 100) { throw new ArgumentException("Must be a white filter.", "filter"); }
+            //if ((int)filter < 100) { throw new ArgumentException("Must be a white filter.", "filter"); }
 
-            FilterType = filter;
+            Config = new FilterConfig(filter, Phamhilator.FilterType.White);
             Terms = new HashSet<Term>();
 
-            var sites = Directory.EnumerateDirectories(DirectoryTools.GetFilterFile(filter)).ToArray();
+            var sites = Directory.EnumerateDirectories(DirectoryTools.GetFilterFile(Config)).ToArray();
             var reader = new JsonReader();
 
             for (var i = 0; i < sites.Length; i++)
@@ -34,7 +34,7 @@ namespace Phamhilator
 
             foreach (var site in sites)
             {
-                var path = Path.Combine(DirectoryTools.GetFilterFile(filter), site, "Terms.txt");
+                var path = Path.Combine(DirectoryTools.GetFilterFile(Config), site, "Terms.txt");
                 List<JsonTerm> data;
 
                 try
@@ -50,7 +50,7 @@ namespace Phamhilator
                 {
                     t.Site = site;
 
-                    Terms.Add(t.ToTerm(FilterType));
+                    Terms.Add(t.ToTerm(Config));
                 }
             }
         }
@@ -59,30 +59,30 @@ namespace Phamhilator
 
         public void AddTerm(Term term)
         {
-            if (Terms.Contains(term.Regex, term.Site)) { return; } // Gasp! Silent failure!
+            if (Terms.Contains(term.Regex, term.Site)) { return; }
 
-            Terms.WriteTerm(FilterType, new Regex(""), term.Regex, term.Site, term.Score);
+            Terms.WriteTerm(Config, new Regex(""), term.Regex, term.Site, term.Score);
         }
 
-        public void RemoveTerm(Term term)
+        public void RemoveTerm(Regex term, string site)
         {
-            if (!Terms.Contains(term.Regex, term.Site)) { return; }
+            if (!Terms.Contains(term, site)) { return; }
 
-            Terms.WriteTerm(FilterType, term.Regex, new Regex(""), term.Site);
+            Terms.WriteTerm(Config, term, new Regex(""), site);
         }
 
         public void EditTerm(Regex oldTerm, Regex newTerm, string site)
         {
             if (!Terms.Contains(oldTerm, site)) { return; }
 
-            Terms.WriteTerm(FilterType, oldTerm, newTerm, site);
+            Terms.WriteTerm(Config, oldTerm, newTerm, site);
         }
 
         public void SetScore(Term term, float newScore)
         {
             if (!Terms.Contains(term.Regex, term.Site)) { return; }
 
-            Terms.WriteScore(FilterType, term.Regex, newScore, term.Site);
+            Terms.WriteScore(Config, term.Regex, newScore, term.Site);
         }
 
         public void SetAuto(Regex term, bool isAuto, string site, bool persistence = false)
@@ -91,7 +91,7 @@ namespace Phamhilator
 
             if (persistence)
             {
-                Terms.WriteAuto(FilterType, term, isAuto, site);
+                Terms.WriteAuto(Config, term, isAuto, site);
             }
             else
             {
@@ -99,7 +99,7 @@ namespace Phamhilator
 
                 Terms.Remove(t);
 
-                Terms.Add(new Term(FilterType, t.Regex, t.Score, t.Site, isAuto));
+                Terms.Add(new Term(Config, t.Regex, t.Score, t.Site, isAuto));
             }
         }
     }

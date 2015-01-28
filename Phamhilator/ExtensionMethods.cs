@@ -11,27 +11,79 @@ namespace Phamhilator
 {
     public static class ExtensionMethods
     {
-        public static FilterType GetCorrespondingWhiteFilter(this FilterType input)
+        //public static FilterType GetCorrespondingWhiteFilter(this FilterType input)
+        //{
+        //    return (FilterType)Enum.Parse(typeof(FilterType), input.ToString().Replace("Black", "White"));
+        //}
+
+        //public static FilterType GetCorrespondingBlackFilter(this FilterType input)
+        //{
+        //    return (FilterType)Enum.Parse(typeof(FilterType), input.ToString().Replace("White", "Black"));
+        //}
+
+        public static bool IsQuestion(this FilterClass classification)
         {
-            return (FilterType)Enum.Parse(typeof(FilterType), input.ToString().Replace("Black", "White"));
+            return classification.ToString().StartsWith("Question");
         }
 
-        public static FilterType GetCorrespondingBlackFilter(this FilterType input)
+        public static bool IsQuestionTitle(this FilterClass classification)
         {
-            return (FilterType)Enum.Parse(typeof(FilterType), input.ToString().Replace("White", "Black"));
+            return classification.ToString().StartsWith("QuestionTitle");
         }
 
-        public static bool IsBlackFilter(this FilterType input)
+        public static QuestionAnalysis ToQuestionAnalysis(this PostAnalysis input)
         {
-            return (int)input < 99;
+            return input == null ? null : new QuestionAnalysis 
+            { 
+                Accuracy = input.Accuracy, 
+                AutoTermsFound = input.AutoTermsFound, 
+                BlackTermsFound = input.BlackTermsFound,
+                FiltersUsed = input.FiltersUsed,
+                Type = input.Type,
+                WhiteTermsFound = input.WhiteTermsFound 
+            };
         }
+
+        public static PostType ToPostType(this FilterClass input)
+        {
+            var trimmed = input.ToString().Replace("Answer", "").Replace("QuestionTitle", "").Replace("QuestionBody", "");
+
+            switch (trimmed)
+            {
+                case "LQ":
+                {
+                    return PostType.LowQuality;
+                }
+                case "Off":
+                {
+                    return PostType.Offensive;
+                }
+                case "Spam":
+                {
+                    return PostType.Spam;
+                }
+                case "Name":
+                {
+                    return PostType.BadUsername;
+                }
+                default:
+                {
+                    throw new NotSupportedException();
+                }
+            }
+        }
+
+        //public static bool IsBlackFilter(this FilterType input)
+        //{
+        //    return (int)input < 99;
+        //}
 
         public static bool Contains(this HashSet<Term> input, Regex term, string site = "")
         {
-            return input.Count != 0 && input.Contains(new Term(FilterType.AnswerBlackLQ, term, 0, site));
+            return input.Count != 0 && input.Any(t => t.Regex.ToString() == term.ToString() && (String.IsNullOrEmpty(site) ? true : t.Site == site));
         }
 
-        public static void WriteTerm(this HashSet<Term> terms, FilterType filter, Regex oldTerm, Regex newTerm, string site = "", float newScore = 0)
+        public static void WriteTerm(this HashSet<Term> terms, FilterConfig filter, Regex oldTerm, Regex newTerm, string site = "", float newScore = 0)
         {
             if (String.IsNullOrEmpty(oldTerm.ToString()) && String.IsNullOrEmpty(newTerm.ToString())) { throw new Exception("oldTerm and newTerm can not both be empty."); }
 
@@ -66,7 +118,7 @@ namespace Phamhilator
             File.WriteAllText(file, new JsonWriter().Write(terms.ToJsonTerms()));
         }
 
-        public static void WriteScore(this HashSet<Term> terms, FilterType filter, Regex term, float newScore, string site = "")
+        public static void WriteScore(this HashSet<Term> terms, FilterConfig filter, Regex term, float newScore, string site = "")
         {
             if (String.IsNullOrEmpty(term.ToString())) { throw new ArgumentException("Can not be empty.", "term"); }
 
@@ -89,7 +141,7 @@ namespace Phamhilator
             File.WriteAllText(file, new JsonWriter().Write(terms.ToJsonTerms()));
         }
 
-        public static void WriteAuto(this HashSet<Term> terms, FilterType filter, Regex term, bool isAuto, string site = "")
+        public static void WriteAuto(this HashSet<Term> terms, FilterConfig filter, Regex term, bool isAuto, string site = "")
         {
             if (String.IsNullOrEmpty(term.ToString())) { throw new ArgumentException("Can not be empty.", "term"); }
 
@@ -134,13 +186,14 @@ namespace Phamhilator
             {
                 var r = new Regex(regex.ToString(), RegexOptions.Compiled, TimeSpan.FromMilliseconds(20));
 
-                //r.IsMatch(Properties.Resources.NewRegexPayloadAlphaNumSpec);
-                //r.IsMatch(Properties.Resources.NewRegexPayloadAlphaNum);
-                //r.IsMatch(Properties.Resources.NewRegexPayloadAlphaSpec);
-                //r.IsMatch(Properties.Resources.NewRegexPayloadNumSpec);
-                //r.IsMatch(Properties.Resources.NewRegexPayloadAlpha);
-                //r.IsMatch(Properties.Resources.NewRegexPayloadNum);
-                //r.IsMatch(Properties.Resources.NewRegexPayloadSpec);
+                r.IsMatch(Properties.Resources.NewRegexPayloadAlphaNumSpec);
+                r.IsMatch(Properties.Resources.NewRegexPayloadAlphaNum);
+                r.IsMatch(Properties.Resources.NewRegexPayloadAlphaSpec);
+                r.IsMatch(Properties.Resources.NewRegexPayloadNumSpec);
+                r.IsMatch(Properties.Resources.NewRegexPayloadAlpha);
+                r.IsMatch(Properties.Resources.NewRegexPayloadNum);
+                r.IsMatch(Properties.Resources.NewRegexPayloadSpec);
+                r.IsMatch(Properties.Resources.NewRegexPayloadRealData);
             }
             catch (Exception)
             {
@@ -150,7 +203,7 @@ namespace Phamhilator
             return false;
         }
 
-        public static Term ToTerm(this JsonTerm input, FilterType filter)
+        public static Term ToTerm(this JsonTerm input, FilterConfig filter)
         {
             return new Term(filter, new Regex(input.Regex, RegexOptions.Compiled), input.Score, input.Site, input.IsAuto, input.TPCount, input.FPCount, input.CaughtCount);
         }
@@ -198,7 +251,7 @@ namespace Phamhilator
                     FPCount = (int)term.FPCount,
                     TPCount = (int)term.TPCount,
                     CaughtCount = (int)term.CaughtCount,
-                    Type = term.Type
+                    Type = term.FilterConfig.Class
                 };
             }
 

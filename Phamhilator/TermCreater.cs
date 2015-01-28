@@ -13,7 +13,7 @@ namespace Phamhilator
 {
     public static class TermCreater
     {
-        public static void CreateTerm(FilterType filter, Regex term, string site = "", float newScore = 0)
+        public static void CreateTerm(FilterConfig filter, Regex term, string site = "", float newScore = 0)
         {
             if (term == null || String.IsNullOrEmpty(term.ToString())) { throw new ArgumentException("term can not be null or empty.", "term"); }
 

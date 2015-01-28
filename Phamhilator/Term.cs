@@ -12,12 +12,11 @@ namespace Phamhilator
     {
         private readonly DataWriterSettings settings = new DataWriterSettings { PrettyPrint = true };
         private readonly string file;
-        private readonly bool isBlack;
         private float tpCount;
         private float fpCount;
         private float caughtCount;
 
-        public FilterType Type { get; private set; }
+        public FilterConfig FilterConfig { get; private set; }
         public Regex Regex { get; private set; }
         public bool IsAuto { get; private set; }
         public string Site { get; private set; }
@@ -34,23 +33,23 @@ namespace Phamhilator
             {
                 string json;
 
-                if (isBlack)
+                if (FilterConfig.Type == FilterType.Black)
                 {
-                    if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
+                    if (!Config.BlackFilters[FilterConfig].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
 
-                    GlobalInfo.BlackFilters[Type].Terms.Remove(this);
-                    GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
+                    Config.BlackFilters[FilterConfig].Terms.Remove(this);
+                    Config.BlackFilters[FilterConfig].Terms.Add(new Term(FilterConfig, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
 
-                    json = new JsonWriter(settings).Write(GlobalInfo.BlackFilters[Type].Terms.ToJsonTerms());
+                    json = new JsonWriter(settings).Write(Config.BlackFilters[FilterConfig].Terms.ToJsonTerms());
                 }
                 else
                 {
-                    if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
+                    if (!Config.WhiteFilters[FilterConfig].Terms.Contains(this)) { throw new Exception("Can only set TPCount if this Term is within the specified filter."); }
 
-                    GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
-                    GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
+                    Config.WhiteFilters[FilterConfig].Terms.Remove(this);
+                    Config.WhiteFilters[FilterConfig].Terms.Add(new Term(FilterConfig, Regex, Score, Site, IsAuto, value, FPCount, CaughtCount));
 
-                    json = new JsonWriter(settings).Write(GlobalInfo.WhiteFilters[Type].Terms.ToJsonTerms());
+                    json = new JsonWriter(settings).Write(Config.WhiteFilters[FilterConfig].Terms.ToJsonTerms());
                 }
 
                 tpCount = value;
@@ -70,23 +69,23 @@ namespace Phamhilator
             {
                 string json;
 
-                if (isBlack)
+                if (FilterConfig.Type == FilterType.Black)
                 {
-                    if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
+                    if (!Config.BlackFilters[FilterConfig].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
 
-                    GlobalInfo.BlackFilters[Type].Terms.Remove(this);
-                    GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
+                    Config.BlackFilters[FilterConfig].Terms.Remove(this);
+                    Config.BlackFilters[FilterConfig].Terms.Add(new Term(FilterConfig, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
 
-                    json = new JsonWriter(settings).Write(GlobalInfo.BlackFilters[Type].Terms.ToJsonTerms());
+                    json = new JsonWriter(settings).Write(Config.BlackFilters[FilterConfig].Terms.ToJsonTerms());
                 }
                 else
                 {
-                    if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
+                    if (!Config.WhiteFilters[FilterConfig].Terms.Contains(this)) { throw new Exception("Can only set FPCount if this Term is within the specified filter."); }
 
-                    GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
-                    GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
+                    Config.WhiteFilters[FilterConfig].Terms.Remove(this);
+                    Config.WhiteFilters[FilterConfig].Terms.Add(new Term(FilterConfig, Regex, Score, Site, IsAuto, TPCount, value, CaughtCount));
 
-                    json = new JsonWriter(settings).Write(GlobalInfo.WhiteFilters[Type].Terms.ToJsonTerms());
+                    json = new JsonWriter(settings).Write(Config.WhiteFilters[FilterConfig].Terms.ToJsonTerms());
                 } 
                 
                 fpCount = value;
@@ -106,23 +105,23 @@ namespace Phamhilator
             {
                 string json;
 
-                if (isBlack)
+                if (FilterConfig.Type == FilterType.Black)
                 {
-                    if (!GlobalInfo.BlackFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
+                    if (!Config.BlackFilters[FilterConfig].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
 
-                    GlobalInfo.BlackFilters[Type].Terms.Remove(this);
-                    GlobalInfo.BlackFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
+                    Config.BlackFilters[FilterConfig].Terms.Remove(this);
+                    Config.BlackFilters[FilterConfig].Terms.Add(new Term(FilterConfig, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
 
-                    json = new JsonWriter(settings).Write(GlobalInfo.BlackFilters[Type].Terms.ToJsonTerms());
+                    json = new JsonWriter(settings).Write(Config.BlackFilters[FilterConfig].Terms.ToJsonTerms());
                 }
                 else
                 {
-                    if (!GlobalInfo.WhiteFilters[Type].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
+                    if (!Config.WhiteFilters[FilterConfig].Terms.Contains(this)) { throw new Exception("Can only set CaughtCount if this Term is within the specified filter."); }
 
-                    GlobalInfo.WhiteFilters[Type].Terms.Remove(this);
-                    GlobalInfo.WhiteFilters[Type].Terms.Add(new Term(Type, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
+                    Config.WhiteFilters[FilterConfig].Terms.Remove(this);
+                    Config.WhiteFilters[FilterConfig].Terms.Add(new Term(FilterConfig, Regex, Score, Site, IsAuto, TPCount, FPCount, value));
 
-                    json = new JsonWriter(settings).Write(GlobalInfo.WhiteFilters[Type].Terms.ToJsonTerms());
+                    json = new JsonWriter(settings).Write(Config.WhiteFilters[FilterConfig].Terms.ToJsonTerms());
                 }
 
                 caughtCount = value;
@@ -147,7 +146,7 @@ namespace Phamhilator
             {
                 // Loving formulated by Jan Dvorak (http://stackoverflow.com/users/499214/jan-dvorak).
 
-                return (TPCount * CaughtCount / (FPCount + TPCount)) / (GlobalInfo.Stats.TotalCheckedPosts - GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));			
+                return (TPCount * CaughtCount / (FPCount + TPCount)) / (Stats.TotalCheckedPosts - Stats.TotalTPCount * Stats.TotalCheckedPosts / (Stats.TotalTPCount + Stats.TotalFPCount));
             }
         }
 
@@ -157,20 +156,19 @@ namespace Phamhilator
             {
                 // Loving formulated by Jan Dvorak (http://stackoverflow.com/users/499214/jan-dvorak).
 
-                return 1 - (FPCount * CaughtCount / (TPCount + FPCount)) / (GlobalInfo.Stats.TotalCheckedPosts - GlobalInfo.Stats.TotalTPCount * GlobalInfo.Stats.TotalCheckedPosts / (GlobalInfo.Stats.TotalTPCount + GlobalInfo.Stats.TotalFPCount));
+                return 1 - (FPCount * CaughtCount / (TPCount + FPCount)) / (Stats.TotalCheckedPosts - Stats.TotalTPCount * Stats.TotalCheckedPosts / (Stats.TotalTPCount + Stats.TotalFPCount));
             }
         }
 
 
 
-        public Term(FilterType type, Regex regex, float score, string site = "", bool isAuto = false, float tpCount = 0, float fpCount = 0, float caughtCount = 0)
+        public Term(FilterConfig filterConfig, Regex regex, float score, string site = "", bool isAuto = false, float tpCount = 0, float fpCount = 0, float caughtCount = 0)
         {
             if (regex == null) { throw new ArgumentNullException("regex"); }
 
-            file = String.IsNullOrEmpty(site) ? DirectoryTools.GetFilterFile(type) : Path.Combine(DirectoryTools.GetFilterFile(type), site, "Terms.txt");
-            isBlack = (int)type < 100;
+            file = String.IsNullOrEmpty(site) ? DirectoryTools.GetFilterFile(filterConfig) : Path.Combine(DirectoryTools.GetFilterFile(filterConfig), site, "Terms.txt");
 
-            Type = type;
+            FilterConfig = filterConfig;
             Regex = regex;
             Score = score;
             Site = site ?? "";
