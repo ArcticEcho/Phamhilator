@@ -1,0 +1,245 @@
+[
+	{
+		"Regex" : "(?i)\\bnigg(a|er)\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 1,
+		"FPCount" : 0,
+		"CaughtCount" : 2
+	},
+	{
+		"Regex" : "(?i)\\basshole\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 3,
+		"FPCount" : 0,
+		"CaughtCount" : 3
+	},
+	{
+		"Regex" : "(?i)\\bpiss\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 2,
+		"CaughtCount" : 4
+	},
+	{
+		"Regex" : "(?i)\\bpenis\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 11,
+		"TPCount" : 2,
+		"FPCount" : 3,
+		"CaughtCount" : 10
+	},
+	{
+		"Regex" : "(?i)\\bbumhole\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)\\bretard\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 3,
+		"CaughtCount" : 6
+	},
+	{
+		"Regex" : "(?i)\\bbastard\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 1,
+		"FPCount" : 2,
+		"CaughtCount" : 6
+	},
+	{
+		"Regex" : "(?i)\\bbitch\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 2,
+		"FPCount" : 4,
+		"CaughtCount" : 10
+	},
+	{
+		"Regex" : "(?i)\\bcrap\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 11,
+		"TPCount" : 3,
+		"FPCount" : 21,
+		"CaughtCount" : 58
+	},
+	{
+		"Regex" : "(?i)\\bfag\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 2
+	},
+	{
+		"Regex" : "(?i)\\bfuck",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 11,
+		"TPCount" : 12,
+		"FPCount" : 6,
+		"CaughtCount" : 29
+	},
+	{
+		"Regex" : "(?i)\\bidiot\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 2,
+		"FPCount" : 7,
+		"CaughtCount" : 23
+	},
+	{
+		"Regex" : "(?i)\\bshit\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 12,
+		"FPCount" : 15,
+		"CaughtCount" : 53
+	},
+	{
+		"Regex" : "(?i)\\bwhore\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)fack you",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)biatch",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)\\bcock\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 1,
+		"FPCount" : 3,
+		"CaughtCount" : 7
+	},
+	{
+		"Regex" : "(?i)bullshit",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.2105265,
+		"TPCount" : 1,
+		"FPCount" : 3,
+		"CaughtCount" : 12
+	},
+	{
+		"Regex" : "(?i)\\sdick\\s",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.2105265,
+		"TPCount" : 4,
+		"FPCount" : 3,
+		"CaughtCount" : 9
+	},
+	{
+		"Regex" : "(?i)good luck to stack overflow developers",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.1800556,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)slowly downvote",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.1800556,
+		"TPCount" : 1,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)I will downvote",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.1800556,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)downvote you",
+		"IsAuto" : true,
+		"Site" : "",
+		"Score" : 10.1800556,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "retar(d|ed)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.1800556,
+		"TPCount" : 0,
+		"FPCount" : 2,
+		"CaughtCount" : 6
+	},
+	{
+		"Regex" : "(?i)fcking btch",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.1800556,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)my balls",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.1800556,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)testicle",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10.1800556,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 2
+	}
+]

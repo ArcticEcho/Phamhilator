@@ -1,0 +1,2 @@
+install
+server http://meta.unix.stackexchange.com/q/3066

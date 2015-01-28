@@ -1,0 +1,344 @@
+[
+	{
+		"Regex" : "^[^a-z]*$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 13,
+		"FPCount" : 0,
+		"CaughtCount" : 2
+	},
+	{
+		"Regex" : "^(?is)(?=.{0,75}$)(?:can you|what|how)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 5,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "^(?=.{0,75}$)\\?$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)^same here",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)(did|have) you f(in|oun)d",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 12,
+		"TPCount" : 7,
+		"FPCount" : 1,
+		"CaughtCount" : 67
+	},
+	{
+		"Regex" : "(?i)did you find",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 12,
+		"TPCount" : 3,
+		"FPCount" : 0,
+		"CaughtCount" : 41
+	},
+	{
+		"Regex" : "(?i)pl(ease|s|z) help",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 17,
+		"TPCount" : 20,
+		"FPCount" : 3,
+		"CaughtCount" : 120
+	},
+	{
+		"Regex" : "^\\<p\\>[^a-z]*\\<\\/p\\>$",
+		"IsAuto" : true,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 4,
+		"FPCount" : 2,
+		"CaughtCount" : 58
+	},
+	{
+		"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 18,
+		"TPCount" : 46,
+		"FPCount" : 7,
+		"CaughtCount" : 392
+	},
+	{
+		"Regex" : "^(?i).{0,80}$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 89,
+		"TPCount" : 486,
+		"FPCount" : 119,
+		"CaughtCount" : 3008
+	},
+	{
+		"Regex" : "(?i)^please",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 13.6,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "^[^ ]*$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 16.8727264,
+		"TPCount" : 34,
+		"FPCount" : 3,
+		"CaughtCount" : 80
+	},
+	{
+		"Regex" : "(?i)have question",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 18.0265732,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 13
+	},
+	{
+		"Regex" : "(?i)thank(s| you)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.3837166,
+		"TPCount" : 187,
+		"FPCount" : 111,
+		"CaughtCount" : 2949
+	},
+	{
+		"Regex" : "^(?=.*?(?i)please).{0,100}$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 22.3837166,
+		"TPCount" : 84,
+		"FPCount" : 139,
+		"CaughtCount" : 1254
+	},
+	{
+		"Regex" : "(?i)need (an )?answer",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 18.5087166,
+		"TPCount" : 1,
+		"FPCount" : 1,
+		"CaughtCount" : 9
+	},
+	{
+		"Regex" : "^\\S*$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.6851864,
+		"TPCount" : 23,
+		"FPCount" : 0,
+		"CaughtCount" : 54
+	},
+	{
+		"Regex" : "(?i)(have|did) you (solve|fix|find|found)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 11,
+		"FPCount" : 0,
+		"CaughtCount" : 86
+	},
+	{
+		"Regex" : "(?i)same here",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 7
+	},
+	{
+		"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 8,
+		"FPCount" : 7,
+		"CaughtCount" : 83
+	},
+	{
+		"Regex" : "^[^A-Z]*$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 43,
+		"FPCount" : 4,
+		"CaughtCount" : 365
+	},
+	{
+		"Regex" : "(?is)^<.*>\\s*i want",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 3,
+		"FPCount" : 0,
+		"CaughtCount" : 30
+	},
+	{
+		"Regex" : "(?i)is there a way",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 1,
+		"CaughtCount" : 13
+	},
+	{
+		"Regex" : "(?i)help me",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 5,
+		"FPCount" : 1,
+		"CaughtCount" : 32
+	},
+	{
+		"Regex" : "(?i)how about",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 1,
+		"CaughtCount" : 3
+	},
+	{
+		"Regex" : "(?i)recommend jquery",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)also face?ing",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)(did|have) you (found|fix|resolve)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)i am (also )? waiting",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)(please )?help me",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 2,
+		"FPCount" : 0,
+		"CaughtCount" : 13
+	},
+	{
+		"Regex" : "(?i)(please )?any ?one suggest",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)same (problem|issue) here",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)is there a",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 12
+	},
+	{
+		"Regex" : "(?i)how can (you do|i)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 10
+	},
+	{
+		"Regex" : "(?i)\\bi want to\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 1,
+		"FPCount" : 1,
+		"CaughtCount" : 31
+	},
+	{
+		"Regex" : "(?i)please share the solution",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)Thanks in advance",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 1,
+		"FPCount" : 0,
+		"CaughtCount" : 5
+	},
+	{
+		"Regex" : "(?i)i (have|got) the same (problem|issue)",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 19.2035675,
+		"TPCount" : 1,
+		"FPCount" : 1,
+		"CaughtCount" : 11
+	}
+]

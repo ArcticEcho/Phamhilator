@@ -1,0 +1,74 @@
+[
+	{
+		"Regex" : "^(?=[^A-Z]+[A-Z])[^a-z]*$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "^\\<p\\>[^a-z]*\\<\\/p\\>$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 2,
+		"FPCount" : 0,
+		"CaughtCount" : 12
+	},
+	{
+		"Regex" : "(?s-m)^.{0,100}$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 13.3197279,
+		"TPCount" : 15,
+		"FPCount" : 31,
+		"CaughtCount" : 793
+	},
+	{
+		"Regex" : "\\bpl[sz]+\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 14,
+		"TPCount" : 18,
+		"FPCount" : 17,
+		"CaughtCount" : 230
+	},
+	{
+		"Regex" : "enter link description here",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 13.75,
+		"TPCount" : 3,
+		"FPCount" : 4,
+		"CaughtCount" : 52
+	},
+	{
+		"Regex" : "down vote favorite",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 13.75,
+		"TPCount" : 0,
+		"FPCount" : 1,
+		"CaughtCount" : 12
+	},
+	{
+		"Regex" : "^[^ ]*$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 15.083333,
+		"TPCount" : 1,
+		"FPCount" : 0,
+		"CaughtCount" : 8
+	},
+	{
+		"Regex" : "^<([bi])>.*</\\1>$",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 16.6547623,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	}
+]

@@ -1,0 +1,191 @@
+[
+	{
+		"Regex" : "(?i)sumer",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)kolcak",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)s\u00FCmer",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)kol\u00E7ak",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)asshole",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)piss",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 1
+	},
+	{
+		"Regex" : "(?i)penis",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)bumhole",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)bastard",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)bitch",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 2
+	},
+	{
+		"Regex" : "(?i)fuck",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)whore",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "MTS789",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)\\bshit\\b",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "kimismith",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "RodeoSkillful",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "(?i)officialimeiunlock",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "\\.com",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 2,
+		"CaughtCount" : 30
+	},
+	{
+		"Regex" : "\\\\.com",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "councilxvb32",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	},
+	{
+		"Regex" : "AvivahcCiccone",
+		"IsAuto" : false,
+		"Site" : "",
+		"Score" : 10,
+		"TPCount" : 0,
+		"FPCount" : 0,
+		"CaughtCount" : 0
+	}
+]

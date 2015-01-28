@@ -1,0 +1,1 @@
+[{"Regex":"(?i)\\berror(s)?\\b","IsAuto":false,"Site":"stats.stackexchange.com","Score":8,"TPCount":0,"FPCount":0,"CaughtCount":0}]
