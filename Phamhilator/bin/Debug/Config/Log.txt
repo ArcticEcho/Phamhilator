@@ -1,5 +1,2365 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977242",
+		"PostUrl" : "http://stackoverflow.com/questions/28221615",
+		"Site" : "stackoverflow.com",
+		"Title" : "NAN Issue while multiplying two variables in php while in alert m geting number only",
+		"Body" : "<p>NAN Issue while multiplying two variables in php while in alert m geting number only</p>\n\n<pre><code> var qty=0;                                                      var total_amt=0;                     \nvar value=0;                             \nTotal quantity\nqty=qty+parseInt(data[i][0]['quantity']); \n  var value=(parseInt(data[i][0]['quantity'],\"10\") * parseInt(data[i][0]['order_rate'],\"10\"));\n\nalert(60000);\n but again when trying to append  $('.values1').html(value); in div \n<div class=\"pend_head2_col brdright values1\"></div> plz help me out\n</code></pre>",
+		"TimeStamp" : "2015-01-29T18:08:37.214Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 239
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 7,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977235",
+		"PostUrl" : "http://gaming.stackexchange.com/a/166235",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "Run a lot, and just turn around for 1 hit, then keep dodging, runnning. ...",
+		"Body" : "<p>Run a lot, and just turn around for 1 hit, then keep dodging, runnning. Once he gets a hold of you, he'll follow you. Just run and shoot once you got some space between you and him.</p>\n\n<p>He won't dissapear until he's dead or you are if I remember correctly, so just run and shoot (Bows work pretty well)</p>",
+		"TimeStamp" : "2015-01-29T18:07:10.062Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 105
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977230",
+		"PostUrl" : "http://math.stackexchange.com/a/1125325",
+		"Site" : "math.stackexchange.com",
+		"Title" : "$$x=\\sqrt{1+24n}\\iff x^2=1+24n\\iff x\\text{ is an odd number not divisibl...",
+		"Body" : "<p>$$x=\\sqrt{1+24n}\\iff x^2=1+24n\\iff x\\text{ is an odd number not divisible by }3$$</p>",
+		"TimeStamp" : "2015-01-29T18:06:32.234Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 418
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977215",
+		"PostUrl" : "http://bicycles.stackexchange.com/a/28763",
+		"Site" : "bicycles.stackexchange.com",
+		"Title" : "Thanks for your help guys. I'm not able to validate or comment on your a...",
+		"Body" : "<p><em>Thanks for your help guys. I'm not able to validate or comment on your answers since I didn't use an \"offical\" account to post the question and I need 50 rep to add a comment to a post.</em></p>\n\n<p><strong>So here is how I solved my issue.</strong> I followed more or less what @Michael said, namely use a set of needle-nose pliers, put it between the cleat and the inside of the pedal, and \"open\" the pliers to act as lever.</p>\n\n<p>Now I've learned the lesson: always tighten the cleat to the shoe before engaging in the pedal.</p>",
+		"TimeStamp" : "2015-01-29T18:04:34.988Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3050
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977186",
+		"PostUrl" : "http://webapps.stackexchange.com/questions/73316",
+		"Site" : "webapps.stackexchange.com",
+		"Title" : "KAPAYAPAAN ANG HANGAD NG LAHAT NG PILIPINO",
+		"Body" : "<p><a href=\"https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10440973_736555279713911_7532535461900204225_n.jpg?oh=43341bc01dd8570af67045962fc07eb7&oe=555DA1C9&__gda__=1432643136_623aaf14d6cec69421fa891ed44fb26e\" rel=\"nofollow\">https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10440973_736555279713911_7532535461900204225_n.jpg?oh=43341bc01dd8570af67045962fc07eb7&oe=555DA1C9&<strong>gda</strong>=1432643136_623aaf14d6cec69421fa891ed44fb26e</a></p>",
+		"TimeStamp" : "2015-01-29T18:01:32.018Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 20,
+				"FPCount" : 20,
+				"CaughtCount" : 56
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977183",
+		"PostUrl" : "http://gis.stackexchange.com/a/132345",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "I use in my project MapfishPrint to print map in pdf or image. ",
+		"Body" : "<p>I use in my project MapfishPrint to print map in pdf or image. </p>",
+		"TimeStamp" : "2015-01-29T18:01:18.321Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3085
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977160",
+		"PostUrl" : "http://programmers.stackexchange.com/a/271553",
+		"Site" : "programmers.stackexchange.com",
+		"Title" : "Use of reflection is often harmful in OO languages if not used with grea...",
+		"Body" : "<p>Use of reflection is often harmful in OO languages if not used with great awareness.</p>\n\n<p>I have lost count of how many bad questions I have seen on StackExchange sites where </p>\n\n<ol>\n<li>The language in use is OO</li>\n<li>The author wants to find out which type of object has been passed in and then call one of its methods</li>\n<li>The author refuses to accept that reflection is the wrong technique and accuses anybody who points this out as \"not knowing how to help me\"</li>\n</ol>\n\n<p><a href=\"http://stackoverflow.com/questions/18624638/scala-how-to-view-subclass-methods-with-a-generic-instantiation/18636447#18636447\">Here</a> is a typical example.</p>\n\n<p>Most of the point of OO is that</p>\n\n<ol>\n<li>You group functions which know how to manipulate a structure/concept with the thing itself.</li>\n<li>In any point of your code you should know enough about an object's type to know what relevant functions it has and ask it to call its particular version of those functions.</li>\n<li>You ensure the truth of the previous point by specifying the correct input type for every function and having each function know no more (and do no more) than is relevant.</li>\n</ol>\n\n<p>If at any point in your code, point 2 is not valid for an object you have been passed then one or more of these is true</p>\n\n<ol>\n<li>The wrong input is being fed in</li>\n<li>Your code is poorly structured</li>\n<li>You have no idea what the hell you are doing.</li>\n</ol>\n\n<p>Poorly skilled developers simply do not get this and believe that they can be passed anything in any part of their code and do what they want from a (hard-coded) set of possibilities.  These idiots use reflection <em>a lot</em>.</p>\n\n<p>For OO languages, reflection should only be needed in meta activity (class loaders, dependency injection etc).  In almost any other situation, if you are reaching for reflection then you are doing something wrong and you need to ask yourself <em>why</em> this piece of code does not know enough about the object that has been passed to it.</p>",
+		"TimeStamp" : "2015-01-29T17:59:16.473Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 5,
+				"FPCount" : 1,
+				"CaughtCount" : 42
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(please )?help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 23
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977156",
+		"PostUrl" : "http://movies.stackexchange.com/a/11413",
+		"Site" : "movies.stackexchange.com",
+		"Title" : "He's angry because he's conflicted and he's conflicted because he lives ...",
+		"Body" : "<p>He's angry because he's conflicted and he's conflicted because he lives in a \"Cursed City\" on a \"Cursed Earth,\" festering with savages and animals and he is tasked with judging and sentencing them all, which he does to the T, even for minor infractions like placing a vagrant in an iso-cube for 3 weeks (even though he never gets around to doing it). Deep down, he senses the lopsidedness of the Law, yet he adheres to it anyway at an almost unbelievable level of dedication. But the cost is a fierce internal struggle.  It's like he's also fighting a war within himself. </p>\n\n<p>Like Nobby said, Anderson senses the conflict.</p>\n\n<p>Or maybe he just needs to get laid.  </p>",
+		"TimeStamp" : "2015-01-29T17:58:50.479Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 104
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977155",
+		"PostUrl" : "http://movies.stackexchange.com/a/15909",
+		"Site" : "movies.stackexchange.com",
+		"Title" : "Wouldn't say it was his doubt about the system, not at that point of the...",
+		"Body" : "<p>Wouldn't say it was his doubt about the system, not at that point of the movie, at least.</p>\n\n<p>From the interview about the comic-book sequel to the movie: \"[This Dredd] is younger, a little more enthusiastic about his job as the years have ground him down less. <strong>He doesn't have any of the creeping doubts about the system that may have crept in.</strong>\"</p>\n\n<p>Source: <a href=\"http://www.comicbookresources.com/?page=article&id=47971\" rel=\"nofollow\">http://www.comicbookresources.com/?page=article&id=47971</a></p>\n\n<p>I guess that's the canon (sounds about right). So whatever Anderson sensed behind the control.. well, it was probably something else.</p>",
+		"TimeStamp" : "2015-01-29T17:58:50.163Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 103
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977135",
+		"PostUrl" : "http://math.stackexchange.com/a/1125307",
+		"Site" : "math.stackexchange.com",
+		"Title" : "thanks.... I did something wrong but I get it now ! : )",
+		"Body" : "<p>thanks.... I did something wrong but I get it now ! : )</p>",
+		"TimeStamp" : "2015-01-29T17:56:41.807Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3084
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3049
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977127",
+		"PostUrl" : "http://programmers.stackexchange.com/a/271551",
+		"Site" : "programmers.stackexchange.com",
+		"Title" : "I want to try to give a general answer. Because recursion is in fact usi...",
+		"Body" : "<p>I want to try to give a general answer. Because recursion <strong>is</strong> in fact using a stack (the call stack), any recursive function can be converted to one using a stack in a straight-forward way. You can just simulate the call stack:</p>\n\n<p>The call stack contains:</p>\n\n<ul>\n<li>the arguments</li>\n<li>the return address</li>\n<li>and the local variables.</li>\n</ul>\n\n<p>Create a struct for these:</p>\n\n<pre><code>struct StackEntry {\n    Arguments args;\n    LocalVars lvars;\n    ExecutionState state;\n}\n</code></pre>\n\n<p><code>Arguments</code> and <code>LocalVars</code> are easy: The arguments are set to the values of the arguments for the recursive call, and the local variables can be initialized at the beginning of the function.</p>\n\n<p>The tricky part is the \"return address\" or as I called it here the <code>ExecutionState</code>. It should keep track of where the call was made, to resume execution after the \"recursive call\" returns.</p>\n\n<p>In your example, there are 3 possible states:</p>\n\n<ul>\n<li>beginning</li>\n<li>returned from first call</li>\n<li>returned from second call</li>\n</ul>\n\n<p>Based on this state you do:</p>\n\n<ul>\n<li>start \"normally\", initialize LocalVars, make the call (1 or 2)</li>\n<li>compute <code>result = result && childresult;</code></li>\n<li>compute <code>result = result || childresult;</code></li>\n</ul>\n\n<p>I'll try to improve this later, but now I have to go.</p>",
+		"TimeStamp" : "2015-01-29T17:55:34.598Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*i want",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 4,
+				"FPCount" : 1,
+				"CaughtCount" : 37
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 55
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977124",
+		"PostUrl" : "http://bicycles.stackexchange.com/a/28762",
+		"Site" : "bicycles.stackexchange.com",
+		"Title" : "I use a sort of wave, raising my hand but with no movement in it (so not...",
+		"Body" : "<p>I use a sort of wave, raising my hand but with no movement in it (so not a 'Hey buddy' or 'I need help' side to side movement).... it works on my bicycle, on my motorcycle, and while driving a vehicle. It's got somewhat of a dual purpose: acknowledgement that I did something wrong, and/or 'thanks for letting me in' gratitude gesture.</p>\n\n<p>This is the same gesture I seem to get from many other people. There's no side/side or waving motion (would be more like \"Hi!\"), just a hand up, fingers together, \"Thanks/Sorry\".</p>",
+		"TimeStamp" : "2015-01-29T17:53:56.851Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3048
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977083",
+		"PostUrl" : "http://stackoverflow.com/questions/28221260",
+		"Site" : "stackoverflow.com",
+		"Title" : "Log4Net Log using PST Timezone",
+		"Body" : "<p>I read this stackoverflow topic about logging in the UTC timezone format by formatting with %utcdate but I was wondering if there is a PST option?</p>\n\n<p><a href=\"http://stackoverflow.com/questions/10012083/log4net-log-with-utc-times\">Log4Net: Log with UTC times</a></p>",
+		"TimeStamp" : "2015-01-29T17:48:50.694Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)^<p>.*</p?>\\n\\n?<p><a.*></p>$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 26
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977036",
+		"PostUrl" : "http://scifi.stackexchange.com/a/80494",
+		"Site" : "scifi.stackexchange.com",
+		"Title" : "He never get out because the Pandorica and the Doctor never existed.\nWhe...",
+		"Body" : "<p>He never get out because the Pandorica and the Doctor never existed.\nWhen he restart the universe, he was left behind, erased from time and space, like falling into a Space-Time Crack: he make the Universe a re-start leaving him behindl leaving him as a story in Amy's subconscius.</p>",
+		"TimeStamp" : "2015-01-29T17:40:39.007Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 101
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2977007",
+		"PostUrl" : "http://serverfault.com/a/663482",
+		"Site" : "serverfault.com",
+		"Title" : "Try to use xcopy instead and see if that works.",
+		"Body" : "<p>Try to use xcopy instead and see if that works.</p>",
+		"TimeStamp" : "2015-01-29T17:37:39.155Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3082
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "serverfault.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976987",
+		"PostUrl" : "http://android.stackexchange.com/a/97258",
+		"Site" : "android.stackexchange.com",
+		"Title" : "Thanks for the info ..had a similar issue with data connectivity ..Now i...",
+		"Body" : "<p>Thanks for the info ..had a similar issue with data connectivity ..Now it's working ..</p>",
+		"TimeStamp" : "2015-01-29T17:35:46.480Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3047
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976960",
+		"PostUrl" : "http://stackoverflow.com/a/27025220",
+		"Site" : "stackoverflow.com",
+		"Title" : "2015-01-08 Edit\n\nMike, I understand your question as: \"I have an AppleSc...",
+		"Body" : "<p><strong>2015-01-08 Edit</strong></p>\n\n<p>Mike, I understand your question as: \"I have an AppleScript with a <code>do shell script</code> that asks for an admin password, but I have to click on the password dialog before I can type in it. How can I ensure the dialog has focus, saving me the nuisance of clicking it?\"</p>\n\n<p>My response to you is: \"What if your AppleScript never asked for a password in the first place?  Wouldn't you be happier?\"</p>\n\n<p>If so, then <a href=\"http://stackoverflow.com/questions/14598849\">here's a solution</a>.  That question demonstrates how you can bypass the dialog by supplying a <code>password</code> parameter along with the <code>with administrator privileges</code> parameter.</p>",
+		"TimeStamp" : "2015-01-29T17:33:12.556Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 18
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976926",
+		"PostUrl" : "http://gaming.stackexchange.com/a/66063",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "I guess you could give your heir more counties, maybe a duchy. That way ...",
+		"Body" : "<p>I guess you could give your heir more counties, maybe a duchy. That way he'll have more troops to raise. Or, send him gifts of money, so he can decide to hire some mercenaries.  But again, I'd just let them do what they want.  I never used assassinations in my games, I find them too 'cheaty'</p>",
+		"TimeStamp" : "2015-01-29T17:30:31.240Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "(?i)\\bgift'?s\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.8585472,
+				"TPCount" : 1,
+				"FPCount" : 3,
+				"CaughtCount" : 11
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976921",
+		"PostUrl" : "http://dba.stackexchange.com/a/52614",
+		"Site" : "dba.stackexchange.com",
+		"Title" : "Some things I would look at:\n\n\nIs there any performance difference betwe...",
+		"Body" : "<p>Some things I would look at:</p>\n\n<ul>\n<li>Is there any performance difference between CURSOR_SHARING=EXACT and CURSOR_SHARING=FORCE.</li>\n<li><p>Look at the wait events for this SQL_ID.</p>\n\n<pre><code>select\n    event,\n    time_waited \"time_waited(s)\",\n    case when time_waited = 0 then \n        0\n    else\n        round(time_waited*100 / sum(time_waited) Over(), 2)\n    end \"percentage\"\nfrom\n    (\n        select event, sum(time_waited) time_waited\n        from v$active_session_history\n        where sql_id = 'SQL_ID'\n        group by event\n    )\norder by\n    time_waited desc;\n</code></pre></li>\n</ul>",
+		"TimeStamp" : "2015-01-29T17:29:29.596Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 22
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976920",
+		"PostUrl" : "http://money.stackexchange.com/a/41750",
+		"Site" : "money.stackexchange.com",
+		"Title" : "If you get money other than through employment, you should register as s...",
+		"Body" : "<p>If you get money other than through employment, you should register as self-employed. </p>\n\n<p>Usually, the money counts as income when you send a bill (and it's a bit complicated if the bill doesn't get paid). But in this kind of situation, I don't think anyone cares too much if the amount of money isn't too much, and counting in when you get the money should be fine. It's only of any importance to decide in which year you pay the tax - say you send a bill on March 30th and get the money end of April, you'd have to pay tax in the previous tax year. </p>\n\n<p>I doubt that vouchers would count as cash, until you exchange them for cash. </p>\n\n<p>Worst case, if you call the tax office and ask them \"I made \u00A32,000, how can I pay tax for it\" instead of just putting the money in your pocket, they will be happy to get your money and be just helpful and forgive all your sins. </p>\n\n<p>You should have a look at www.hmrc.gov.uk for all details; it's quite easy to understand. Keep all the papers related to your income and especially any papers related to expenses that you want to deduct in a safe place. And then you just have a few additional forms in your annual self assessment. </p>",
+		"TimeStamp" : "2015-01-29T17:29:03.982Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 17
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976871",
+		"PostUrl" : "http://gamedev.stackexchange.com/a/92962",
+		"Site" : "gamedev.stackexchange.com",
+		"Title" : "I want you to think about a refactoring of your code. Since you already ...",
+		"Body" : "<p>I want you to think about a refactoring of your code. Since you already have a vector structure (Vector3f - I guess its from lwjgl) why not use it?</p>\n\n<pre><code>// Calculate the vector pointing from the mob toward the position with\n// a length of their distance.\n// This is equal to: wayTowardPlayer = playerPosition - mobPosition\nVector3f wayTowardPlayer = new Vector3f();\nVector3f.sub(player.getPosition(), this.position, wayTowardPlayer);\n\n// Check if both are not at the same position, yet.\nif (wayTowardPlayer.lengthSquared() > 0) {\n\n    // Here you also could:\n    // - Clamp your vector to let the mob not walk more than some pixels,\n    //    regardless of its distance to the player.\n    // - Scale it by e.g. 0.5 let the mob walk only half the way toward player.\n    // - Clamp it to [-1,0,+1] so it reflects the direction you want to move\n    //   and then multiply it with a velocity and passed time since last update\n    //   to let it move smoothly toward the player over time without jumping.\n\n    // Add the calculated vector to the mobs postion.\n    // If you didn't manipulate it as described before it's position then\n    // is that of the player.\n    // This is equal to: mobPosition = playerPosition + wayTowardPlayer\n    add(this.position, wayTowardPlayer, this.position);\n}\n</code></pre>\n\n<p>I also recommend you to quit with using lwjgl <code>Vector3f</code> since it only has static members for addition and substraction. What about using those classes from <a href=\"http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Vector3.html\" rel=\"nofollow\">libgdx</a>? Libgdx uses LWJGL for desktop rendering as well and has a lot of tools integrated that makes programming easier. It also allows to easy build portable apps for different plattforms, e.g. Android. In my games I always seperate game logic from graphics.</p>\n\n<p>With libgdx the last addition is simply that:</p>\n\n<pre><code>this.position.add(wayTowardPlayer);\n</code></pre>",
+		"TimeStamp" : "2015-01-29T17:24:12.704Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*i want",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 4,
+				"FPCount" : 1,
+				"CaughtCount" : 36
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976838",
+		"PostUrl" : "http://android.stackexchange.com/a/97254",
+		"Site" : "android.stackexchange.com",
+		"Title" : "I have the same issue. Actually, I purchased a new Samsung Galaxy Tab 4 ...",
+		"Body" : "<p>I have the same issue. Actually, I purchased a new Samsung Galaxy Tab 4 (Android 4.4), and Google Earth never worked with it. Issues start during initial (default) Google Earth training - fingertip controls don't work. Later, you do not see earth image. E-mailing screens mail blank (black) screens. </p>\n\n<p>I original installed on Jan. 25th. 2015, tried uninstall and re-install (followed by complete power off/on) 5 times, cleared cache memory via app settings etc., but nothing worked. I brought it back to store, they tested and tried different things, it never worked.</p>\n\n<p>I am trying to return this Samsung Galaxy Tab 4 to Radio Shack for replacement, no luck so far after 1st week of purchase.</p>",
+		"TimeStamp" : "2015-01-29T17:21:07.289Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 406
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 23
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976824",
+		"PostUrl" : "http://askubuntu.com/a/579342",
+		"Site" : "askubuntu.com",
+		"Title" : "i have a same issue and after replace the microusb with new fresh one th...",
+		"Body" : "<p>i have a same issue and after replace the microusb with new fresh one the problem solved althoug channging the cable may solve it easier</p>",
+		"TimeStamp" : "2015-01-29T17:19:51.569Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 416
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976790",
+		"PostUrl" : "http://webmasters.stackexchange.com/questions/76656",
+		"Site" : "webmasters.stackexchange.com",
+		"Title" : "Are domains with gTLD's (.ninja, .guru, .museum, etc..) bad for SEO?",
+		"Body" : "<p>Would using one of the newer gTLD's have any adverse effect on SEO?</p>",
+		"TimeStamp" : "2015-01-29T17:16:16.198Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 32,
+				"CaughtCount" : 834
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976776",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203422",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "boas e legais\ncualque coisa pode ir para super fise",
+		"Body" : "<p>boas e legais\ncualque coisa pode ir para super fise</p>",
+		"TimeStamp" : "2015-01-29T17:15:19.807Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 413
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976772",
+		"PostUrl" : "http://serverfault.com/a/663474",
+		"Site" : "serverfault.com",
+		"Title" : "You can query INNODB_LOCK_WAITS and INNODB_LOCKS tables.",
+		"Body" : "<p>You can query INNODB_LOCK_WAITS and INNODB_LOCKS tables.</p>",
+		"TimeStamp" : "2015-01-29T17:15:05.710Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3081
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "serverfault.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976769",
+		"PostUrl" : "http://gis.stackexchange.com/a/132339",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "I found GeoDa very easy to use gave me the output I was looking for.",
+		"Body" : "<p>I found GeoDa very easy to use gave me the output I was looking for.</p>",
+		"TimeStamp" : "2015-01-29T17:14:49.960Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3080
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976739",
+		"PostUrl" : "http://drupal.stackexchange.com/a/145844",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "Having the exact same issue. Working on it, please provide info if you s...",
+		"Body" : "<p>Having the exact same issue. Working on it, please provide info if you solved it.</p>",
+		"TimeStamp" : "2015-01-29T17:12:00.264Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?=.*?(?i)please).{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 22.3837166,
+				"TPCount" : 84,
+				"FPCount" : 139,
+				"CaughtCount" : 1258
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976718",
+		"PostUrl" : "http://android.stackexchange.com/a/97253",
+		"Site" : "android.stackexchange.com",
+		"Title" : "Lollipop is too slow in my phn Wht shld I do????",
+		"Body" : "<p>Lollipop is too slow in my phn Wht shld I do????</p>",
+		"TimeStamp" : "2015-01-29T17:10:36.277Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3079
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "android.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976715",
+		"PostUrl" : "http://german.stackexchange.com/a/20528",
+		"Site" : "german.stackexchange.com",
+		"Title" : "To my knowledge it is exactly the same. So they are just synonymous.",
+		"Body" : "<p>To my knowledge it is exactly the same. So they are just synonymous.</p>",
+		"TimeStamp" : "2015-01-29T17:10:29.501Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3078
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976707",
+		"PostUrl" : "http://tex.stackexchange.com/a/225561",
+		"Site" : "tex.stackexchange.com",
+		"Title" : "The solution I now found (using the code provided by Wolfgang Schuster) ...",
+		"Body" : "<p>The solution I now found (using the code provided by Wolfgang Schuster) looks like this, which is almost ok. </p>\n\n<p>\\startuseMPgraphic{accolade}\nz1  = (-233,0) ;\nz2  = (-220,22) ;\nz3  = (-155,211) ;\nz4  = (-200,690) ;\nz5  = (-142,1033) ;\nz6  = (-97,1106) ;\nz7  = (-71,1125) ;\nz8  = (-61,1104) ;\nz9  = (-80,1077) ;\nz10 = (-108,1002) ;\nz11 = (-129,666) ;\nz12 = (-117,207) ;\nz13 = (-197,19) ;\nz14 = (-208,0) ;\nz15 = (-197,-19) ;\nz16 = (-117,-207) ;\nz17 = (-129,-666) ;\nz18 = (-108,-1026) ;\nz19 = (-80,-1077) ;\nz20 = (-61,-1104) ;\nz21 = (-71,-1125) ;\nz22 = (-97,-1106) ;\nz23 = (-143,-1031) ;\nz24 = (-199,-673) ;\nz25 = (-155,-211) ;\nz26 = (-220,-22) ;\nfill z1 for i=2 upto 14: .. z[i] endfor & z14 for j=15 upto 26: .. z[j] \nendfor .. z1 & cycle ;\n\\stopuseMPgraphic</p>\n\n<p>\\defineoverlay[rlbrace] [\\rightaligned{\\scale[height=\\overlayheight]{\\useMPgraphic{accolade}}}]</p>\n\n<p>\\starttext</p>\n\n<p>\\setupTABLE[frame=off,offset=1ex]\n\\setupTABLE[row][each][align={middle,lohi}]\n\\setupTABLE[c][1][width=.31\\textwidth]\n\\setupTABLE[c][2][width=.21\\textwidth]\n\\setupTABLE[c][3][width=.21\\textwidth]\n\\setupTABLE[c][4][width=.27\\textwidth]\n\\bTABLE\n\\bTR\n\\bTD[nr=6,background=rlbrace]  Totaal\\ maatschappelijk\\ product\\ 90\n\\eTD\n\\bTD[nr=5,background=rlbrace] Nationaal\\ inkomen\\ 30 \n\\eTD\n\\bTD[background=rlbrace] Variabel\\ kapitaal\\ 10\n\\eTD\n\\bTD Arbeidsloon v/d\\ productie-arbeiders\\ 10\n\\eTD \n\\eTR\n\\bTR\n\\bTD[nr=4,background=rlbrace] Meerwaarde\\ 20\n\\eTD\n\\bTD Winst van de\\ industri\u00EBle kapitalist\\ 10 \n\\eTD \n\\eTR\n\\bTR\n\\bTD Commerci\u00EBle\\ winst\\ 3\n\\eTD \n\\eTR\n\\bTR\n\\bTD Rente\\ 2 \n\\eTD \n\\eTR\n\\bTR\n\\bTD Grondrente\\ 5\n\\eTD \n\\eTR\n\\bTR\n\\bTD Vervanging \\ v/h verbruikte \\ constante\\ kapitaal\\ 60 \n\\eTD\n\\bTD[nc=2]\n\\eTD\n\\eTR\n\\eTABLE</p>\n\n<p>\\stoptext</p>\n\n<p>The only thing I want is that the braces do not fill the whole height, but some percentage of it (say: 90%), while keeping the table dimensions the same (not affecting the height of the rows), so that the braces do not teach each other when one is above another. How can I do that? \nA) changing the code for the layout? \nor\nB) changing something to the table layout having the effect that there is a little space between the rows?</p>\n\n<p>And a third opion (but probably ugly hack) is to add extra blank rows.</p>",
+		"TimeStamp" : "2015-01-29T17:10:05.415Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 16
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976688",
+		"PostUrl" : "http://movies.stackexchange.com/a/30519",
+		"Site" : "movies.stackexchange.com",
+		"Title" : "what ever happened to all 3 of the children",
+		"Body" : "<p>what ever happened to all 3 of the children</p>",
+		"TimeStamp" : "2015-01-29T17:08:41.131Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3077
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 412
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976649",
+		"PostUrl" : "http://stackoverflow.com/a/28220445",
+		"Site" : "stackoverflow.com",
+		"Title" : "It ultimately goes back to the fact that double[] cannot be cast to Doub...",
+		"Body" : "<p>It ultimately goes back to the fact that double[] cannot be cast to Double[], and the same goes for Matcher to Matcher.</p>\n\n<p>If you can change all your uses of primitive double[] to Double[], then your approach works fine. Otherwise, you'll need to write your own custom matcher. I've included below a custom Matcher that builds on your code. </p>\n\n<p>This is essentially a duplicate of this:\n<a href=\"http://stackoverflow.com/questions/10623458/how-can-i-use-hamcrest-to-check-if-each-element-in-an-array-of-doubles-is-close\">How can I use Hamcrest to check if each element in an array of doubles is \"close\" to each element in another array?</a></p>\n\n<pre><code>@SuppressWarnings({\"rawtypes\", \"unchecked\"})\npublic static Matcher<double[]> isArrayCloseTo(final double[] expected) {\n    final double DELTA = 1e-10;\n    List<Matcher<Double>> matchers = new ArrayList<>();\n    for (double d : expected)\n        matchers.add(new IsCloseTo(d, DELTA));\n\n    return new CustomTypeSafeMatcher<double[]>(\"array that is close to\") {\n        @Override\n        protected boolean matchesSafely(double[] actual) {\n            return new IsArray<Double>(matchers.toArray(new Matcher[matchers.size()]))\n                    .matchesSafely(Arrays.stream(actual).boxed().toArray(Double[]::new));\n        }\n    };\n}\n</code></pre>",
+		"TimeStamp" : "2015-01-29T17:05:16.422Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 15
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976632",
+		"PostUrl" : "http://gaming.stackexchange.com/a/194630",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "Actually, there is. To have this happen another animatronic has to come ...",
+		"Body" : "<p>Actually, there is. To have this happen another animatronic has to come into the room (Golden Freddy, Old Bonnie, etc.).</p>\n\n<p>For Example: Let's say that Toy Bonnie was about to attack you as you put the monitor up. However, Toy Freddy comes into the room. He would force Toy Bonnie to stop attacking you and effectively save your life (never thought I'd be saying this, but thank you, Toy Freddy!)</p>\n\n<p>Basically, yes, you can avoid Toy Bonnie, but you would have to have another animatronic attack you at the same time.</p>",
+		"TimeStamp" : "2015-01-29T17:03:42.225Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3043
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976630",
+		"PostUrl" : "http://askubuntu.com/a/579337",
+		"Site" : "askubuntu.com",
+		"Title" : "I have the same problem -- any solutions? Is it an accessibility feature...",
+		"Body" : "<p>I have the same problem -- any solutions? Is it an accessibility feature that gets activity via some key combination that I am accidentally pressing?</p>",
+		"TimeStamp" : "2015-01-29T17:03:35.253Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 405
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 22
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976602",
+		"PostUrl" : "http://serverfault.com/a/35200",
+		"Site" : "serverfault.com",
+		"Title" : "look at your event viewer and if there was a bsod you can check your dum...",
+		"Body" : "<p>look at your event viewer and if there was a bsod you can check your dump file.</p>\n\n<p>you should enable no restart option on systems or servers if you want to see the error message posted on the bsod. this is under control pane> system> advanced tab> startup recovery options.</p>\n\n<p>you can use utilities from technet to read your dump file and it will usually show you if any drivers or which ones caused the issue. then you can reference the event id as mentioned to find out any solution.s</p>",
+		"TimeStamp" : "2015-01-29T17:01:13.454Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 411
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976592",
+		"PostUrl" : "http://askubuntu.com/a/579335",
+		"Site" : "askubuntu.com",
+		"Title" : "I have installed Ubuntu 14.04, now it woks perfectly.\nI have followed th...",
+		"Body" : "<p>I have installed Ubuntu 14.04, now it woks perfectly.\nI have followed this guide </p>\n\n<p><a href=\"http://wiki.ubuntu-it.org/Hardware/AbilitareDriverProprietari\" rel=\"nofollow\">http://wiki.ubuntu-it.org/Hardware/AbilitareDriverProprietari</a></p>\n\n<p>and have installed nvdia driver 331.</p>\n\n<p>THANKS!!!</p>",
+		"TimeStamp" : "2015-01-29T17:00:44.236Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3042
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976574",
+		"PostUrl" : "http://chemistry.stackexchange.com/a/24343",
+		"Site" : "chemistry.stackexchange.com",
+		"Title" : "yes they have been determined.",
+		"Body" : "<p>yes they have been determined.</p>",
+		"TimeStamp" : "2015-01-29T16:59:05.768Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3076
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 410
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976551",
+		"PostUrl" : "http://gis.stackexchange.com/a/132336",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "Thanks Pragnesh, that worked for me too!",
+		"Body" : "<p>Thanks Pragnesh, that worked for me too!</p>",
+		"TimeStamp" : "2015-01-29T16:56:45.884Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3075
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3041
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976527",
+		"PostUrl" : "http://startups.stackexchange.com/a/3239",
+		"Site" : "startups.stackexchange.com",
+		"Title" : "Adding on to Daniels answer, if you go the route of splitting your servi...",
+		"Body" : "<p>Adding on to Daniels answer, if you go the route of splitting your service into different tiers, you can grandfather your existing users into one of the tiers for free. This would help keep your existing customers happy and would allow you to make money off of new users. It would only work if you're expecting to grow and providing service for your existing users isn't too expensive. </p>",
+		"TimeStamp" : "2015-01-29T16:53:41.278Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "(?i)Make money",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.8585472,
+				"TPCount" : 2,
+				"FPCount" : 9,
+				"CaughtCount" : 16
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976514",
+		"PostUrl" : "http://math.stackexchange.com/questions/1125198",
+		"Site" : "math.stackexchange.com",
+		"Title" : "a lorry is loaded with 3 layers of 17 crates. Each crate contains 231 bananas. How many bananas are there in total?",
+		"Body" : "<p>I need help on a question I can't simply get my head round! Please help!</p>",
+		"TimeStamp" : "2015-01-29T16:52:23.402Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 32,
+				"CaughtCount" : 833
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976490",
+		"PostUrl" : "http://history.stackexchange.com/a/19163",
+		"Site" : "history.stackexchange.com",
+		"Title" : "what dog did was hup my dog annnddddddddddddddddddd theyyyyyyyyyyyyyyyyy...",
+		"Body" : "<p>what dog did was hup my dog annnddddddddddddddddddd theyyyyyyyyyyyyyyyyyyyy didddddddd was killlllllll pep skngjsngbsghjsibghsmgi</p>",
+		"TimeStamp" : "2015-01-29T16:50:21.099Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 409
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976480",
+		"PostUrl" : "http://history.stackexchange.com/a/19162",
+		"Site" : "history.stackexchange.com",
+		"Title" : "mmdhfshvsvsvuhsvbsvjsbvskvksjbvjsvbekhfieighidjvgdijguegheyvdvbebfheygfu...",
+		"Body" : "<p>mmdhfshvsvsvuhsvbsvjsbvskvksjbvjsvbekhfieighidjvgdijguegheyvdvbebfheygfuhdgfuehgfhfuehfugfhfuvbubefbevbevhehfuhfjifbishfsfbehfusfieuhrughyuhvrhvsbehbfehbvhvehvsulgiheuhiohgirhfuiwifhsbfeh'gs;jfsuheghjfhsgjsusbgshghbgghsbghbgubsggngngngnngnggnnnsjejfuefeighguejejgjehugjbjnsrijgisivmghshgrugsuhfui;se;feiou398u8whfulssuir44ih3iwr84i</p>",
+		"TimeStamp" : "2015-01-29T16:48:10.270Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^ ]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 16.8727264,
+				"TPCount" : 34,
+				"FPCount" : 3,
+				"CaughtCount" : 84
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.6851864,
+				"TPCount" : 23,
+				"FPCount" : 0,
+				"CaughtCount" : 56
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 408
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976475",
+		"PostUrl" : "http://magento.stackexchange.com/a/53817",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "Thanks for the help and suggestions.\n\nUpon researching the methods furth...",
+		"Body" : "<p>Thanks for the help and suggestions.</p>\n\n<p>Upon researching the methods further, I ended-up just adding conditionals to my custom phtml files that the local.xml file reference like so:</p>\n\n<pre><code>    <?php $category = Mage::getModel('catalog/layer')->getCurrentCategory();?>\n<?php if($category->getId()==15): ?>\n\n<h3>Show content for Category ID15</h3>\n\n<?php else: ?>\n\n<h3>Show content for other categories</h3>\n<p>consectetuer adipiscing elit. </p>\n\n<?php endif; ?>\n</code></pre>",
+		"TimeStamp" : "2015-01-29T16:47:58.277Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3040
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976469",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203419",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "Mehrune's Razor might insta-kill him. Try it.",
+		"Body" : "<p>Mehrune's Razor might insta-kill him. Try it.</p>",
+		"TimeStamp" : "2015-01-29T16:47:10.160Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3074
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976468",
+		"PostUrl" : "http://gaming.stackexchange.com/a/37254",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "He's fighting that skeleton sorcerer right before entering the portal, I...",
+		"Body" : "<p>He's fighting that skeleton sorcerer right before entering the portal, I found 2 ways of dealing with him MY way I ran up the stairs an killed him before he even got the staff lvl 36 the easiest way put difficulty on novice its a noobish thing to do but it will greatly improve your chances if you aren't strong enough, I play on adept myself :P</p>",
+		"TimeStamp" : "2015-01-29T16:47:09.844Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 100
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976438",
+		"PostUrl" : "http://physics.stackexchange.com/a/162245",
+		"Site" : "physics.stackexchange.com",
+		"Title" : "Celcius x 1.8 + 32 = Fahrenheit",
+		"Body" : "<p>Celcius x 1.8 + 32 = Fahrenheit</p>",
+		"TimeStamp" : "2015-01-29T16:43:49.501Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3073
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976429",
+		"PostUrl" : "http://serverfault.com/a/663462",
+		"Site" : "serverfault.com",
+		"Title" : "ANTRID is being re-released soon as a free tool. facebook.com/antridtool",
+		"Body" : "<p>ANTRID is being re-released soon as a free tool. facebook.com/antridtool</p>",
+		"TimeStamp" : "2015-01-29T16:42:55.620Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3072
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "serverfault.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976427",
+		"PostUrl" : "http://wordpress.stackexchange.com/questions/95286",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "br tags on backend not showing up on frontend",
+		"Body" : "<p>I was really searching here for a solution for this but I couldn't find anything.</p>\n\n<p><strong>Problem:</strong>\nbr and/or br / tags which I put into my content on the backend were just not showing up on the frontend. No matter what I did - enter+shift in the visual or insert the tags manually in the html editor - I tried several things but nothing worked. Interesting fact: on the page I am working have already been a few br's which are working without any problems, so I looked through the code if there was something but I still couldn't find anything.</p>\n\n<p>I found an <strong>acceptable solution</strong> for this: Simple Breaks. This plugin gives me the possibility to insert br tags by writing the shortcode \"[br]\". I'm kinda fine with that.</p>\n\n<p>Still I truely want to ask you if you have similiar problems or if there is any solution to this! It is known that WP has it's problems with br's and p's so I guess the users just have to go with it.</p>\n\n<p>Greetings from germany and pls don't be too hard on my bad english :)</p>\n\n<p><strong>More information:</strong></p>\n\n<ul>\n<li>I already unchecked \"WordPress should correct invalidly nested XHTML automatically\" in Admin > Settings > Writing. (thanks to PoseLab)</li>\n<li>I installed TinyMCE Advanced and checked \"Stop removing the <p> and <br> tags when saving and show them in the HTML editor\"</p></li>\n</ul>",
+		"TimeStamp" : "2015-01-29T16:42:50.772Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 238
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976419",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203418",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "is the complex level the one where you are on mario and you have to get ...",
+		"Body" : "<p>is the complex level the one where you are on mario and you have to get all the purple coins because if thats the case it was also very hard for me but i came up with a strategy you try not to run into the cosmic marios and at the same time try to step on as few platforms as possible while collecting as many coins as you can using marios tricks flip and lunges. also you want to start by going rightward on the platform the up and finally to the left then back down. try not to get rid of to many platforms though youll need them to get back to where you started which is where the star ends up. </p>",
+		"TimeStamp" : "2015-01-29T16:41:41.485Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 407
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976373",
+		"PostUrl" : "http://serverfault.com/a/374823",
+		"Site" : "serverfault.com",
+		"Title" : "How about set_time_limit(3600);\n\nIn the beginning of your script? Would ...",
+		"Body" : "<p>How about set_time_limit(3600);</p>\n\n<p>In the beginning of your script? Would that work? </p>",
+		"TimeStamp" : "2015-01-29T16:35:40.447Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how about",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 2,
+				"CaughtCount" : 12
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976366",
+		"PostUrl" : "http://meta.stackexchange.com/questions/247780",
+		"Site" : "meta.stackexchange.com",
+		"Title" : "How much rep have I lost/given away due to bounties?",
+		"Body" : "<p>Is there a stackexchange query for how much bounty I have given away due to bounties?</p>",
+		"TimeStamp" : "2015-01-29T16:34:28.191Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 32,
+				"CaughtCount" : 832
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976359",
+		"PostUrl" : "http://matheducators.stackexchange.com/a/7310",
+		"Site" : "matheducators.stackexchange.com",
+		"Title" : "Thank you for the great suggestion @RoryDaulton !  Below is the project ...",
+		"Body" : "<p>Thank you for the great suggestion @RoryDaulton !  Below is the project description that i decided upon for this project.  The students can pick from one of the below options for their project, or have the opportunity to come up with their own idea.  Figured I would post this for anyone who would like to get ideas for similar project ideas.</p>\n\n<p><strong>Family Tree</strong>\nA Square provides very detailed descriptions of the social ladder in Flatland and how Flatlanders proceed are able to slowly climb from generation to generation (Ch. 3, Ch. 7, Ch. 11).  For this project, you will construct a family tree, starting from an isosceles triangle all the way to a circle.  Here are the requirements for this project:\nInclude at least 7 family members from distinct generations, including the very first isosceles triangle and the final circle</p>\n\n<p>-For each family member provide a picture, basic measurements, and a paragraph of biographical information, making sure to include what generation they are in and who their parents and children are.  Be as creative as you would like!</p>\n\n<p>-Provide your \u201Crules\u201D for your family tree.  A Square, while thorough, does not provide us with actual numbers, likely because every family is slightly different.  For your family, I would like to know the starting angles on the original isosceles triangle, how much that angle increases from generation to generation, at what generation it is considered an equilateral triangle, how the side numbers increase from generation to generation, how many sides constitute a circle, and how many total generations it took to make it to a circle (This list is not exhaustive. Make sure to provide ALL information that is needed to understand your family tree)</p>\n\n<p><strong>Worldbuilder</strong>\nIn Chapter 11, \u201CConcerning Our Priests\u201D, A Square begins the chapter by apologizing to the readers that he will not be able to explain the entirety of Flatland, including such topics as \u201Cour method of propelling and stopping ourselves,...the means in which we give fixity to structures of wood, stone, or brick...our Alphabet and method of writing, \u201D  Your job for this project is to pick three aspects of Flatland that A Square does not provide an explanation for and come up with (they do not have to be the ones that he says in Ch. 11) a description of how you think they would work for Flatlanders.</p>\n\n<p>-Provide a brief background to each topic and why Flatlanders cannot perform the task or experience the phenomenon in the same way that we Spacelanders can</p>\n\n<p>-For each topic give a complete description as to how the topic is handled in Flatland.  Each topic must be at least a page in length, with a title and date</p>\n\n<p>-You can be as creative as you would like, providing your description is consistent with A Square\u2019s own description (You can\u2019t say \u201CThe Flatlanders just pick it up with their hands\u201D because polygons do not have hands, at least as we know them.  If you would like to give your Flatlanders hands then you need to describe exactly what you mean by \u201Chands\u201D and how it fits into Abbott\u2019s Flatland)</p>\n\n<p>-Creatively frame your topics by introducing yourself as a citizen of Flatland and your motivation for writing the three passages, just like Abbott did with A Square</p>\n\n<p><strong>Phlatland: A Derivative Work</strong>\nFor this project, you will use Flatland as an inspiration for your own creative work.  Your project does not necessarily need to be a piece of fiction, it can be a movie, a song, an epic poem or any creative mode of expressing a mathematical story.  It does not necessarily need to be structured the way Flatland is, however, if you decide to tell your story in a different world or universe you need to provide some level of explanation so that the reader/listener/watcher knows what is going on.  </p>\n\n<p>-A creative work of sufficient length that ties together storytelling and mathematics</p>\n\n<p>-You may produce a recreation of Flatland in a different media than written fiction (comic, short film, song) provided it is consistent with the universe and story of Flatland</p>\n\n<p>-It must somehow reference Flatland or an aspect of Flatland as laid out by A Square</p>\n\n<p><strong>Other Ideas</strong></p>\n\n<p>-A Map of Flatland:  Create a map of an entire Flatland city including exact measurements and a brief history of the city and its context within Flatland</p>\n\n<p>-Flatlander Profiles:  Detail the lives of a handful of various Flatlanders, including detailed biographical information, sketches, and different possible cross sections</p>\n\n<p>-Flatland Infographic:  Create an \u201CEverything Flatland\u201D infographic that explains all of the details of the Flatland Universe and A Square\u2019s journey</p>",
+		"TimeStamp" : "2015-01-29T16:33:23.746Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3039
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976340",
+		"PostUrl" : "http://drupal.stackexchange.com/a/134210",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "You can do it programmatically. \n\nInclude this code into the hook_form_a...",
+		"Body" : "<p>You can do it programmatically. </p>\n\n<p>Include this code into the hook_form_alter function of your module:</p>\n\n<pre><code>drupal_add_js(\n  'jQuery().ready(\n    function() {\n      jQuery(\".ckeditor_links\").hide();\n    }\n  );',\n  'inline'\n);\n</code></pre>\n\n<p>Greetings</p>",
+		"TimeStamp" : "2015-01-29T16:29:41.917Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 99
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976333",
+		"PostUrl" : "http://gis.stackexchange.com/a/77471",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "Try to change file extension from kml to xml",
+		"Body" : "<p>Try to change file extension from kml to xml</p>",
+		"TimeStamp" : "2015-01-29T16:28:57.856Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3070
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976332",
+		"PostUrl" : "http://german.stackexchange.com/a/20526",
+		"Site" : "german.stackexchange.com",
+		"Title" : "Wow, das ist fantastisch! Ich kann's fast nicht glauben!",
+		"Body" : "<p>Wow, das ist fantastisch! Ich kann's fast nicht glauben!</p>",
+		"TimeStamp" : "2015-01-29T16:28:55.914Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3069
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976330",
+		"PostUrl" : "http://codegolf.stackexchange.com/a/45135",
+		"Site" : "codegolf.stackexchange.com",
+		"Title" : "PHP, 1742 1795\n\nI've been messing about with PHP on this.\nThe trick is d...",
+		"Body" : "<h1>PHP, <strike>1742</strike> 1795</h1>\n\n<p>I've been messing about with PHP on this.\nThe trick is definitely culling the list to the around 20k that are actually valid, and just throwing the rest away. My program does this iteratively (some words it throws away in the first iteration mean others are no longer valid) at the start.</p>\n\n<pre><code>eye eyesores restraint intercom complaint interwove overprint interloper per perseveres respires restructures restores resound underscores resins insures restrains insectivores resides desires rescind indentures respired redound underground underpins inspires restored redskins ins insecticides desired rediscovered red redundant antitoxins insides despaired redolent entertains inspired redeployment entomological caliper perspires restructured redevelopment entered redcap caper perjures resistant antipodes descant anthropological calliper pertains insured redden denatures resonant antithetical calipered rediscover vertical calendared redeemer meres restaurant antipasto stove overtures resultant antlered redouble blent entrant antiperspirant antidepressant ant antipasti stint interferes resilient entertainment entrenchment entitlement entombment entrapment enticement enthronement entanglement enthrall allures resentment enter terrapins instant antecedent entrapped pedicures resent enthusiast astound underclassman mantra trapper persuades descendant antigen genres resplendent entwine inelegant antiparticle clergyman mangrove overrides despondent entombed bedsores resurgent entrap rap rapper pervades descent enterprising ingrains insouciant antiwar war wares respondent enticing ingredient entrapping ingesting ingratiating ingest estrangement entrusting ingraining ingratiates testament entrancing ingrates testicle clergywoman manufactures resident entitling ingestion ionospheres restatement entombing ingrown own owning ingress essaying ingratiatingly glycogen gentleman manicures researcher herbivores resolver vermin mint interludes descendent entwining ingresses sesames mescal callipered redoubtable bleacher hereabout outmanoeuvres resin sinecures resuscitator tortures resistor tortured redeemable blend endures resonator torrent entering ingenuous ouster terrains insignificant anther heroins installment entailing inglorious ousting ingenious ousted tedious ousters ersatzes zest establishment enthusing ingenuousness essences cession ionizing ingeniously sly slyest estrogen gentlewoman manures respirator torment entrenching ingested tediousness essayist isthmus musical call alludes descriptor torpor pores resend endured redeemed medical calligrapher herdsman mandarins insufficient entangling ingenuously slyness essay say saying ingot got gotten tenures responsible blender dermis misprint intrudes despair airfares respectable bleeder derri\u00E8res resemble bleeped pedagogical calmer merchantman manikins insentient enthused sediment ententes testable blest estimator tormentor tor tormenter terminological calibrator torrider derides descend endeared redskin kin kingpins insolvent entourages gestures resister termagant anteater terser serviceman mannequins instalment entitles lesser servicewoman mannikins insolent entangles lessen sent enthusiastic tickles lessee see seethe the theatres resumed mediocre creeper peroxides describable bleariest estimable bleakest ester terrapin pinpoint intercedes destructible blessed sedater terminator torque questionnaires restart artiste steeper periodical calculator torridest esteemed media diaper perspired redder derangement entryway way waysides despicable blended deductible bleach ache checkpoint interpret retires reshuffle flea lea leaden dentures rest estates tester terminable bleaches hesitant antimatter terrible blemishes hesitates testiest estimates test esthetes testes testates testy stylus lustre treasures restfullest estranges gestured redeveloped pedicured redbreast astrological calculable blenches hesitation ionization ion ionosphere ere erection ionizer zeros rostra transpires resumes mescaline inefficient enthuse use user serenades desirable bleat eat eaten tenpins insistent entice icebound undersides deserter termed mediator torrid rid rides describes besides descender derailment entertainer nerdiest esthetic tic ticker keratin tin tint interfered redefine inexpedient entrenches hes hesitatingly glycerine inequitable bleached hedges gesticulates testicles lessor sores restful fulcra craftsman mandolins instrument enticed cedes destine inexpressible blemished hedgerow rowel weltered reddens ensnares resentful fulfilment entranced cedillas lass assures respectful fulfillment entangle gleamed medicine inexplicable blenched hedonistic tickled led ledger gerund underclass assassins insurgent entreat eatable bleaker kerosine inescapable bled ledges gestates testosterone ones nest estimation ions onset set settlement entrances cessation ionizes zestful fulfil filibustered reddest establishes hesitations onshore ore ores resourceful fulfill illogical callable blesses sesame amendment entrenched hedgehog hog hogan gangster terabit bit bitten tenderloins install allegorical calmed medieval valiant antique queered redressed sedan dander derivable blew lewder derogates testis tissue sue suede edema emancipator tortillas laser sergeant antihistamine inexhaustible bleeps epsilon longshoreman man mankind indentured redrew rewires reside ides described bedsides despot pot pottered redesign ignores resign ignored redounded deductibles lessens ensures responded deduced cedar dares resounded deduces cesarians answered redraft aft aftertaste stevedores resubmit mitered redoubles lesson songwriter termini inimical calfskin kinswoman manifesto storekeeper perjured redevelop lop lopped pedant anthill illustrator tornado ado adores resembles lesbians answer werewolves vesper persevered reduced cedilla llamas massacres resolves vestment entourage age agent entry try tryout outbound underpass assemblyman maniacal calcine inexact act actuator torus rusty sty styptic ticket kettledrum rumored redid did didactic tickle kleptomania niacin cinctures restoratives vesicle clerical calamine inexperienced cedars arsenic niche cheaper persistent entail ail ailment enthrone one oneself elf elfin fin fingerprint interbred redraw raw rawhide identical calicos cosmological callused seducer cervical calloused sedatives vessel sellout out outsides desktop top topsides desperado adored redistribute utensil silicon con constraint interred redcoat oat oaten tendered redeploys oyster termite iterator torn ornament entertainingly glycerin rind indignant antigens enslavement entomb ombudsman manservant antelope open penguins insulin lint intolerant anthropocentric ricksha sharper percent entirety etymological calliope operator tort orthopaedic dictator torturer reruns unsound undulant anthem hem hemispheres reset setter terrace acerbic bicycle clement entrepreneur euros rosins instructor torpedos dosages gesture urea reappoint intoxicant antelopes pesticides descry cry cryptographer herbicides design ignorant antebellum lumberman management entreaty atypical calendar dart artisan sandpiper persimmon monoxides deserves vestiges gesundheit either heretical caloric richer herbal ballpoint interurban ban banister terrific fiche checkout outruns unsheathe thereabout outclass assemblywoman mantel telegrapher her hereafter terrifyingly glycerol role oleander derringer germicides desideratum tumbrel reliant antiaircraft after term ermine inertia tiaras rascal calif lifespan pan pant antechamber beret retrains instigator tornados dos dosage agendas dash ashcan canasta standpoint intenser servant anthracite item temper perusal salamis misadventures resort orthopedic dickey keyboarder deride ideological calliopes pesky sky skydove overruns unshaven ventures resurface acetylene enemas masquerades despoil oil oilskin kinsman manacle cleanser sermon monarchical calisthenic nicknamed mediaeval valet lethal hallucinogen genealogical calculus lusher herdsmen mendicant anticlimax maximal malignant anthropomorphic hiccuped pedigree reeve eve everglades destitute uterus russet settee tee teethe theatrical callus lustful fulcrum ruminant antennas nasal salesman maneuver vertebra brassieres result ultra transfigures restorer reran rancor cores respell elliptical callow low lowbrow row rowboat oath atherosclerosis sisal saleswoman mandolin linchpins insulator toreador dormant antipastos tossup sup super performer merman manipulator torpid pidgins inspector tortilla llama amass ass assistant antipathy thy thymus muscat cat catkins inscribes bestridden den denser server verbal ball allegro groove overpass assassin sins insofar far fares resold old olden dentin tinctures restore oregano anoint interwoven ventricle clever verbatim timekeeper perpetrator torture urethras rasher heraldic dictum tumor moribund underwritten tenon noncom compound undersea sea seaman manhunt untamed medic dictatorship hipper pericardia diarrhea headwind inductee teemed medullas last astronomical caliber bereave aver vernacular larkspur purloins instill illegal gal gall allergen gentlemen menopausal salmon mongrel relabel bellyache chessman manikin kindergarten ten tentacle cleaver versus sustains inscribed bedpan panache chemical calabash ashamed meddlesome omen menhaden dens ensign ignoramus mustache cheapen pennon nonhuman mannikin kingfisher hereupon pontifical calligraphy physiological calico icon conjoint intend endorser servicewomen mend endow downfall all allover verbena enamor morass assumed medulla llanos nosedove overeaten tenser servicemen men menswear earache chessmen menthol holdout outmaneuver vertebras rasped pederast astrakhan handicapper perturbed bedridden denizens enslave avenger geriatric rickshas has haste steins instal talisman mandrill ill illicit citadel deliver verdigris riser serum rumor morphological calk alkali alit lit litchi chi chipper perfumes mes mesdames messenger gerbil billow lowdown ownership hippos postman manatee teepee pee peeper periscope opens ensnare are area reaper periodic dice icecap captains instrumental tall allergenic nicknames mesas sass assemblywomen mental tallyhos hos hostel telescoped pedestal talon longhair airman mantillas lash ashram ram rampart article clergymen menopause useful fulsome omegas gas gastronomical calendars arson sonar narwhal halogen gentlewomen menace ace acetaminophen henchman manger germicide idea deacon confound underpin pint interleukin kingpin pins insular larval valor lord ordains insecticide ideogram ramp amp amphitheatre trespass assessor sorrel relieve ever verandas dashikis kismet met metaphysical calm almanac nacre cretins inside ideas eastbound undercover vertex text extra trains insane anew new newsprint intagli glint intercessor sorghum hum human manic nicer cerebra brains inset setups upstart art artificer cerebrum rumbas basins insult ultrasound underachiever verbenas nasty styes yes yesteryear ear earlobes bestowal wallpaper periodontal tallow lowland and androgen genital talc alcove overwritten tenpin pinball allay lay layout outran rancher herpes pesetas taste stereotypical calf alfresco scout outwear eardrum rummer merganser serfdom domains insurer rerun run runaround underwear earldom dominos nostrum rumple plectra tradesman manager germane anemic micra crass assault ultrasonic nickname amebas baseman manor nor northbound undeveloped pediatric rice ice icebox boxcar car carryout outsmart artifice iceberg erg ergonomic microfiche cheeped pedlar larvas vassal saltpetre tremor moreover verandah dahlia liaison sonatas tassel selectman mandarin ringside ideograph aphasic sic sickbed bedlam lam lamebrains insipid pidgin gin gins insole oleo leotard ardor dorsal salespeople plea leather heros rosin sin sinew newspaper perpendicular largos gossamer mercuric rickshaw haw hawser serapes peso esoteric ricochet heterodoxy oxygen genera eraser sera era eras rasp asp aspirins instep tepee peekaboo bookkeeper person son sonnet net nether hermit mitten tend end endear earshot hot hotel telecast astronaut author horsewoman mane anecdotal talk alkalis listen tensor sorbet bet betcha chairman mantras raspy spy spyglass assort orthography physique queasy asylum lumbar barman mangos gossiped pedagogue guesser seraphic hickey key keystrokes kestrel relic licensee seeped pedagog goggle glen lend endemic microbes bestow tow townsman many any anyway waylay layman mangle glee lee leech echo chopper peritonea near earwig wigwag wag wagon gonorrhea headache cherub rub rubicund undisturbed bed bedevil villas lassie siesta stakeout outwit wit without outlast astronomer meringue guerilla llano anon non nonpartisan sandpaper periwig wig wigwam wampum pumas massacre crewman manifestos tossups ups upshot hotbed bedbug bugaboo boo boobs obstacle clear earthenware arena enamel melanomas mas masher herald alderwoman manifold oldie die diesel seldom domino inopportune uneaten tenor normal mall allegros rostrum rum rumpus pus pussycat catsup supper perturb urban bandana anathemas mast astronomic microscopic pickerel relay layoff off offal falcon context extinguisher heraldry dry drywall allot lot lotus tussle sleeper perplex lexicon concur cur cursor sort orthodoxy oxymora orangutan tandem demon monsignori origin ginseng engulfed fed fedora orangutang angina inane anemia miasmas mascot cot cotton ton tonsil silencer ceramic microchip hippopotamus muscatel telescopic picayune uneven venom nomad mad madcap cap capstan tantamount untidy idyllic licit citizenship hip hippopotami amid mid midpoint interplay laypeople pleas east astir tiros rosebud bud budgerigar garret retrodden denim nimbus bus bushel helmet metatarsal salt altar tarpaulin lintel telethon honcho choicer cervix vixen xenon nonverbal ballyhoo hoopla playground underarm arm armor mortar tartar tar tart arthropod pod podia diadem democrat rat rattan tan tang angry gryphon honeybee bee beechnut nut nutmeg meg megalopolis lissom sombre brethren renewal walkout outstrip rip riposte stem tempos posthaste sternum numb umbel belabor borsch schwas was washout outgrew rewound underdog dog dogtrot rot rotund undergrad radio diocesan sandbar bar barb arbor bordellos loser seraph aphid hid hidebound underbid bid bidet detach achoo hoodoo doormat mat matt attar tartan tangos gospel pellagra grammar mar mariachi chimp imp improve overran ran ransom somersault ultimatum tumid midair air airstrip ripen pen penicillin linchpin pin pinstripe ipecac cache cherubim bimbos bosuns unsnap nap naphtha than handcar carousal salami amigos gossip sip siphon honeydew dew dewlap lap lapel pelican can cancan candelabra bra bravado adobes bestir tiro ironclad lad ladybug bug bugbear earwax wax waxen xenophobia biathlon lonesome omelet let letterbox box boxer xerographic hiccup cup cupolas lasagna gnash ash ashen hen henchmen menu enures resell ell ellipsis sis sister terraced ceded deducible blenching ingratiated tediously\n</code></pre>",
+		"TimeStamp" : "2015-01-29T16:28:49.638Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)testicle",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.1800556,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 3
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976298",
+		"PostUrl" : "http://serverfault.com/a/663448",
+		"Site" : "serverfault.com",
+		"Title" : "You can audit the Local GPO set on a system using a tool provided by som...",
+		"Body" : "<p>You can audit the Local GPO set on a system using a tool provided by someone from Microsoft called \"LGPO_Utilities\"</p>\n\n<p>Read more here:  <a href=\"http://blogs.technet.com/b/fdcc/archive/2008/05/07/lgpo-utilities.aspx\" rel=\"nofollow\">http://blogs.technet.com/b/fdcc/archive/2008/05/07/lgpo-utilities.aspx</a></p>\n\n<p>This tool can be used to set Local GPO, but it can also be used to export all current Local GPOs to a text file.</p>\n\n<p>I use this tool to set Local GPO for many things that either require the settings to be set through Local GPO, or settings I want to enforce on users using Local GPO, but deployed through BigFix / IBM Endpoint Manager.</p>\n\n<p>See this example:  <a href=\"http://bigfix.me/fixlet/details/3827\" rel=\"nofollow\">http://bigfix.me/fixlet/details/3827</a></p>\n\n<p>I have a few other examples as well posted to BigFix.me</p>\n\n<p>This question gives me the idea of creating a task that would be set to run every few days that would export all Local GPO settings so that they can be audited with a BigFix analysis.</p>",
+		"TimeStamp" : "2015-01-29T16:24:54.362Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 54
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976282",
+		"PostUrl" : "http://askubuntu.com/a/579317",
+		"Site" : "askubuntu.com",
+		"Title" : "How about\n\nawk -F, 'NR==FNR {a[$1]=$0;next}; $1 in a {print a[$1]; print...",
+		"Body" : "<p>How about</p>\n\n<pre><code>awk -F, 'NR==FNR {a[$1]=$0;next}; $1 in a {print a[$1]; print}' file1 file2\n</code></pre>",
+		"TimeStamp" : "2015-01-29T16:24:03.247Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how about",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 11
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976267",
+		"PostUrl" : "http://crypto.stackexchange.com/a/22663",
+		"Site" : "crypto.stackexchange.com",
+		"Title" : "Yes, he is full of crap.\n\nIf you go to KeyLength, you can compare key le...",
+		"Body" : "<p>Yes, he is full of crap.</p>\n\n<p>If you go to <a href=\"http://www.keylength.com/en/compare/\" rel=\"nofollow\">KeyLength</a>, you can compare key lengths for different cryptosystems and see how long they're expected to be secure for.</p>\n\n<p>It's just a performance vs security tradeoff that implementers make.  Most people don't see the point in schlepping around megabytes of key material for cryptosystems that are expected to be secure against quantum attacks and more advanced cryptanalysis, so they certainly don't see the point in schlepping around <em>hundreds</em> of megabytes of key material for a cryptosystem that we expect to see die in our lifetimes.</p>",
+		"TimeStamp" : "2015-01-29T16:22:59.164Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\bcrap\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11,
+				"TPCount" : 3,
+				"FPCount" : 21,
+				"CaughtCount" : 61
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976256",
+		"PostUrl" : "http://physics.stackexchange.com/a/162241",
+		"Site" : "physics.stackexchange.com",
+		"Title" : "when @Martin is so powerful, why didn`t he just answer the question???",
+		"Body" : "<p>when @Martin is so powerful, why didn`t he just answer the question???</p>",
+		"TimeStamp" : "2015-01-29T16:22:01.961Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3068
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976251",
+		"PostUrl" : "http://hinduism.stackexchange.com/a/5292",
+		"Site" : "hinduism.stackexchange.com",
+		"Title" : "What is the Purpose of Own Antyesthi (Cremation) before taking Sanyasa?\n...",
+		"Body" : "<h1>What is the Purpose of Own Antyesthi (Cremation) before taking Sanyasa?</h1>\n\n<p>It is because the rites are performed when the body dies. Similarly when one takes up Sannyasa, it is symbolic that His body attachment is now dead. That is one has cut off all ties with His physical body. Therefore the cremation rites are performed.</p>\n\n<p>Paramahansa Yogananda describes this in Autobiography of a Yogi, Chapter 24:</p>\n\n<blockquote>\n  <p>The bibidisa or elaborate initiation into swamiship includes a fire ceremony, during which symbolical funeral rites are performed. The physical body of the disciple is represented as dead, cremated in the flame of wisdom. The newly-made swami is then given a chant, such as: \"This atma is Brahma\" or \"Thou art That\" or \"I am He.\"</p>\n</blockquote>\n\n<p>However this is not necessary for all initiation. For example, Paramahansa Yogananda did not do this ceremony, because Sri Yukteshwarji (His Guru) did not feel it was needed at all, doing away with all rituals.</p>\n\n<p>Paramahansa Yogananda describes this in Autobiography of a Yogi, Chapter 24:</p>\n\n<blockquote>\n  <p>Sri Yukteswar, however, with his love of simplicity, dispensed with all formal rites and merely asked me to select a new name.</p>\n</blockquote>\n\n<p>I think that also would answer your other question:</p>\n\n<h1>On which Basis(Spiritual Qualities) does Guru gives a new name to Sanyasi or Shishya(Disciple)?</h1>\n\n<p>There is no rule for this. The Guru simply follows His Intuition or inner Guidance or Dharma. Whatever you call it. For example, Paramhansa Yogananda was asked to choose His own spiritual Title:</p>\n\n<p>Paramahansa Yogananda describes this in Autobiography of a Yogi, Chapter 24:</p>\n\n<blockquote>\n  <p>\"I will give you the privilege of choosing it yourself,\" he said, smiling.\n  \"Yogananda,\" I replied, after a moment's thought. The name literally means \"Bliss (ananda) through divine union (yoga).\"\n  \"Be it so. Forsaking your family name of Mukunda Lal Ghosh, henceforth you shall be called Yogananda of the Giri branch of the Swami Order.\"</p>\n</blockquote>\n\n<h1>Is there any Co-relation of above two:</h1>\n\n<p>The only correlation is that only the One who has give up all ties to body and physical differences can take up the name of Swami. Thus the two are actually correlated in the sense one is a pre-requisite for the other.</p>\n\n<p>Paramhansa Yogananda describes the qualities of Sannyasis:</p>\n\n<blockquote>\n  <p>The ideal of selfless service to all mankind, and of renunciation of personal ties and ambitions, leads the majority of swamis to engage actively in humanitarian and educational work in India, or occasionally in foreign lands.</p>\n  \n  <p>Imbuing his waking and sleeping consciousness with the thought, \"I am He,\" he roams contentedly, in the world but not of it. Thus only may he justify his title of swami one who seeks to achieve union with the Swa or Self.</p>\n  \n  <p>It is needless to add that not all formally titled swamis are equally successful in reaching their high goal.</p>\n</blockquote>\n\n<h1>How about Swami Vivekananda?</h1>\n\n<p>Swami Vivekananda, after Sri Ramakrishna Paramahamsa's Mahasamadhi, took up Sannyaas with eight other disciples, and thus took the title of Sri Swami Vivekananda which means the Bliss of Viveka (or Discrimination).[ <a href=\"http://en.wikipedia.org/wiki/Swami_Vivekananda#cite_note-FOOTNOTEBhuyan200310-63\" rel=\"nofollow\">Reference</a>: Wikipedia (Not sure how accurate this is though)]</p>\n\n<p>Thus in summary, these names are not necessarily given by Guru, also these titles are given as per intuition or spiritual guidance, not many prescribed rules exist for naming.</p>",
+		"TimeStamp" : "2015-01-29T16:21:18.450Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how about",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 10
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 21
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976247",
+		"PostUrl" : "http://gis.stackexchange.com/a/132331",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "Hi there i had a similar issue as this before , so i had given it some t...",
+		"Body" : "<p>Hi there i had a similar issue as this before , so i had given it some though , never got another started with , it but just on the thoery side i was thinking </p>\n\n<p>INPUT SHAPE</p>\n\n<p><img src=\"http://i.stack.imgur.com/Prg4Q.jpg\" alt=\"Input shape\"></p>\n\n<p>i was thinking you could create a fishnet on the input shape </p>\n\n<p><img src=\"http://i.stack.imgur.com/BdnKn.jpg\" alt=\"fishnet\">\nfishnet with an intersect of you input shape would then </p>\n\n<p><img src=\"http://i.stack.imgur.com/bC8ch.jpg\" alt=\"input into area\"></p>\n\n<p>You can then calculate the area of these parcels inside the newly processed polygon</p>\n\n<p>At the start of your script the area input polygon / nth amount of equal sizes wanted</p>\n\n<p>You would then need a way of relating the parcels so they aware of the ones that are bordered. </p>\n\n<p>Then you could go through a row cursor of summing up the parcels</p>\n\n<p>Rules being </p>\n\n<p>*It shares a border to the last one summer \n*It has not been summed \n*Once it goes over the value calculated as the equal area, it would step back and this would be a group\n* Process would start over again \n* last group could be the sum of the parcels left over </p>\n\n<p>i think establishing the relationship bewteen the parcels might be the tricky thing but once this is done i think it could be possible to automise it </p>",
+		"TimeStamp" : "2015-01-29T16:20:51.968Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 98
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976242",
+		"PostUrl" : "http://sharepoint.stackexchange.com/a/130151",
+		"Site" : "sharepoint.stackexchange.com",
+		"Title" : "I have same issue gridview display as \"id;#value\". However I don't have ...",
+		"Body" : "<p>I have same issue gridview display as \"id;#value\". However I don't have VS2010.  Can you help alternative to remove that.</p>\n\n<p>thanks</p>",
+		"TimeStamp" : "2015-01-29T16:20:20.995Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 403
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3037
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976224",
+		"PostUrl" : "http://salesforce.stackexchange.com/a/64701",
+		"Site" : "salesforce.stackexchange.com",
+		"Title" : "Oddly, the problem seems to have gone away on its own, I was able to del...",
+		"Body" : "<p>Oddly, the problem seems to have gone away on its own, I was able to delete the class with no issues.  Thanks for the help everyone.</p>",
+		"TimeStamp" : "2015-01-29T16:17:34.280Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3036
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976214",
+		"PostUrl" : "http://askubuntu.com/a/579321",
+		"Site" : "askubuntu.com",
+		"Title" : "Thanks for reply, Just solved it about 10 minutes ago.  Hard drive hadn'...",
+		"Body" : "<p>Thanks for reply, Just solved it about 10 minutes ago.  Hard drive hadn't failed as I could access it OK. from Ubuntu\nAfter trying every different combinations of leads and drives including a second window 7 hard drive I hit upon an idea that I didn't really think would work but it has (so far)\nI couldn't boot from DVD's but this was because it wouldn't boot anything windows based, so I booted from an Ubuntu installation disk that I had and did a reinstall of Ubuntu (I have backups) when I did this it seemed to re jig the boot order and restore the dual boot options and also now shows Bios screen at start up again. Not sure what caused the original problem it was possibly a baddly connected lead or perhaps video card on the blink (but then why work with Ubuntu) anyway hope my tribulations help someone else and thanks again for taking time to try and help</p>",
+		"TimeStamp" : "2015-01-29T16:16:32.719Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3035
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976213",
+		"PostUrl" : "http://superuser.com/a/871172",
+		"Site" : "superuser.com",
+		"Title" : "What I do:\n\n1) Arrow up hey to return previous command\n2) Home key to re...",
+		"Body" : "<p>What I do:</p>\n\n<p>1) <code>Arrow up</code> hey to return previous command<br>\n2) <code>Home</code> key to return to beginning<br>\n3) Modify command as needed.    </p>\n\n<p>Idiot-proof and especially useful for multi-line commands.</p>",
+		"TimeStamp" : "2015-01-29T16:16:01.845Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\bidiot\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 2,
+				"FPCount" : 7,
+				"CaughtCount" : 23
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976211",
+		"PostUrl" : "http://superuser.com/a/870983",
+		"Site" : "superuser.com",
+		"Title" : "Most terminal programs support...\n\n\nPress  as needed to redisplay one of...",
+		"Body" : "<p>Most terminal programs support...</p>\n\n<ul>\n<li>Press <code><Up-Arrow></code> as needed to redisplay one of the previous command lines from history.\n<ul>\n<li>Press <code><Down-Arrow></code> as necessary to move forward through history list.</li>\n</ul></li>\n<li>Press <code><Left-Arrow></code> as needed to move cursor to end of second word.</li>\n<li>Press <code><Backspace></code> as needed to erase second word.</li>\n<li>Type in replacement second word.\n<ul>\n<li>Press <code><Right-Arrow></code> / <code><Left-Arrow></code> as necessary to reposition for more changes.</li>\n</ul></li>\n<li>Hit <code><RETURN></code> to execute the command</li>\n</ul>\n\n<p>If the command line you want was not recent, do a reverse-i-search with <code><Ctrl-r></code> as described in question ...<br>\n<a href=\"http://superuser.com/questions/384051/is-there-a-way-of-using-ctrl-r-after-typing-part-of-command-in-bash?rq=1\">Is there a way of using ctrl-r after typing part of command in bash?</a><br>\nThen edit via the arrow keys as needed.</p>",
+		"TimeStamp" : "2015-01-29T16:15:59.216Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a way",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 16
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 20
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976210",
+		"PostUrl" : "http://chess.stackexchange.com/a/8467",
+		"Site" : "chess.stackexchange.com",
+		"Title" : "I would suggest The Caro-Kann: Move by Move. The author, Cyrus Lakdawala...",
+		"Body" : "<p>I would suggest <a href=\"http://www.amazon.co.uk/Caro-Kann-Move-Cyrus-Lakdawala/dp/1857446879/ref=sr_1_1?s=books&ie=UTF8&qid=1422547631&sr=1-1&keywords=caro-kann\" rel=\"nofollow\">The Caro-Kann: Move by Move</a>. The author, Cyrus Lakdawala, is very lucid & seems to play in the style that appeals to you. Specifically:</p>\n\n<ul>\n<li>He advocates same side castling in the classical variation</li>\n<li>He gives an alternative to the ...c5 break in th advance variations, namely the ...f6 break</li>\n<li>He advocates ...e6 in the Panov</li>\n</ul>\n\n<p>The move by move series goes through top level games with question and answer format. Many of the games covered were played by Karpov, so if you like his style of play, then you'll like the book. Smyslov, the endgame virtuoso, has a significant number of games too, seeing as the first few chapters cover the Smyslov variation of the classical lines.</p>\n\n<p>PS. I have no affiliation with the author - I'm recommending the book because I'm a Caro-Kann player who likes the book.</p>",
+		"TimeStamp" : "2015-01-29T16:15:57.935Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 97
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976189",
+		"PostUrl" : "http://worldbuilding.stackexchange.com/a/9424",
+		"Site" : "worldbuilding.stackexchange.com",
+		"Title" : "you need to contrast gravity anyway. two ideas come to mind:  \n\na \"belt\"...",
+		"Body" : "<p>you need to contrast gravity anyway. two ideas come to mind:  </p>\n\n<p>a \"belt\" made of thrusters, used to both lower weight and keep balance,</p>\n\n<p>or some sort of huge antigravity core roaring inside the titan's chest, a technological heart that keeps it standing (how poetic)</p>",
+		"TimeStamp" : "2015-01-29T16:12:17.611Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 402
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976144",
+		"PostUrl" : "http://ux.stackexchange.com/a/72808",
+		"Site" : "ux.stackexchange.com",
+		"Title" : "The fact is it really depends on your users.  I think it's become more a...",
+		"Body" : "<p>The fact is it really depends on your users.  I think it's become more and more common that users know to do that but that is generalizing a bit.  Best thing to is user test it.  From a purely usability stand point, the ideal case is definitely to include it however there's often design and space considerations.  I would look to see if you can trim down on your nav items before removing the home button if you must.  </p>\n\n<p>Other considerations I have when including or not including the home button is to ask the following questions: </p>\n\n<ol>\n<li><p>Is there a need for the user to go back to the homepage often during a session? \nSometimes the home page is just an intro to the site and rarely does the user go back in one session. This means even if they don't figure out that the logo brings them back to home, they can probably use the back button or some other means to figure out how to get back there. </p></li>\n<li><p>Is it expected that the user will land on your home page?\nIf this is an existing site you can check analytics.  Otherwise it'll be a bit of a guess.  Not all sites have their home page as a \"front door\".  Blogs for example will get a lot of entries from an article page.  The ability to navigate back to the home page in that case is very important.  </p></li>\n</ol>",
+		"TimeStamp" : "2015-01-29T16:05:13.719Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 19
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976137",
+		"PostUrl" : "http://apple.stackexchange.com/a/169574",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "I am having the exact same issue!  Looking for a solution.",
+		"Body" : "<p>I am having the exact same issue!  Looking for a solution.</p>",
+		"TimeStamp" : "2015-01-29T16:03:29.540Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3066
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976133",
+		"PostUrl" : "http://superuser.com/a/871169",
+		"Site" : "superuser.com",
+		"Title" : "I have the feeling I'm close, but I really can't get it to work. I have ...",
+		"Body" : "<p>I have the feeling I'm close, but I really can't get it to work. I have copied date + time cells from a .csv in the format 22/01/2015 10:03:51. Excel sees it as a General field, so I want to convert it to a Date field (including the time). How do I convert this? (my head is spinning from all the options I tried so far...)</p>",
+		"TimeStamp" : "2015-01-29T16:02:48.752Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 53
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976073",
+		"PostUrl" : "http://apple.stackexchange.com/a/169573",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "I have the same problem with pathfinder 7.1.1 (1672).\nEvery time I turn ...",
+		"Body" : "<p>I have the same problem with pathfinder 7.1.1 (1672).\nEvery time I turn it on my distnoted uses 70 ti 100% CPU and it stops when I quit the app.</p>\n\n<p>Any idea ?</p>",
+		"TimeStamp" : "2015-01-29T15:54:14.941Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 402
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 20
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976072",
+		"PostUrl" : "http://apple.stackexchange.com/a/167335",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "Whatever you do, DO NOT move distnoted as ConorR mentioned (and later co...",
+		"Body" : "<p>Whatever you do, DO NOT move <code>distnoted</code> as ConorR mentioned (and later corrected, thanks!), it's required to boot OSX (10.9.5 in my case).</p>",
+		"TimeStamp" : "2015-01-29T15:54:12.313Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3032
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976071",
+		"PostUrl" : "http://apple.stackexchange.com/a/133165",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "This happens to me to, a few times a day.  I can't narrow it down to one...",
+		"Body" : "<p>This happens to me to, a few times a day.  I can't narrow it down to one specific app that makes it happen.  My theory is that some sort of IPC is happening between distnoted and something else.  I can see distnoted is processing incoming XML messages when it gets busy.  I want to know what process is sending it messages when that happens.  Is there any way to trace \ninter-process-communication in Mac OS X?</p>\n\n<p>I have also created do_dnserver_log, but I'm not seeing any messages to the system log.  Possibly it's wrapping, is there a log size limit that causes older messages to be purged?</p>\n\n<p>Update: This seems to be fixed for me in MacOS 10.9.4.  It was still happening in 10.9.3. </p>",
+		"TimeStamp" : "2015-01-29T15:54:12.000Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 18
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 52
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976066",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203415",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "iam playing in counter strike games in online  beause iam very intrestin...",
+		"Body" : "<p>iam playing in counter strike games in online  beause iam very intresting in counter strike games</p>",
+		"TimeStamp" : "2015-01-29T15:53:39.464Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 401
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976060",
+		"PostUrl" : "http://stackoverflow.com/a/28218915",
+		"Site" : "stackoverflow.com",
+		"Title" : "same issue .... really annoying please help.\n\nI am getting this from Mic...",
+		"Body" : "<p>same issue .... really annoying please help.</p>\n\n<p>I am getting this from Microsoft SQL Server Management Studio </p>",
+		"TimeStamp" : "2015-01-29T15:52:10.120Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)pl(ease|s|z) help",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 17,
+				"TPCount" : 20,
+				"FPCount" : 3,
+				"CaughtCount" : 127
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2976016",
+		"PostUrl" : "http://stackoverflow.com/a/28218760",
+		"Site" : "stackoverflow.com",
+		"Title" : "You can get parameters from function's stack.",
+		"Body" : "<p>You can get parameters from function's stack.</p>",
+		"TimeStamp" : "2015-01-29T15:46:32.222Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3064
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975979",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/176479",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "thanks for responses,\n\nAllowed me to find correct answer which I've post...",
+		"Body" : "<p>thanks for responses,</p>\n\n<p>Allowed me to find correct answer which I've posted below  -</p>\n\n<pre><code>$tickets_for_user = get_posts(array(\n                                        'post_type' => 'ticket',\n                                        'orderby' => 'meta_value_num',\n                                        'meta_key' => 'event_date',\n                                        'order' => 'ASC',\n                                        'posts_per_page' => 1,\n                                        'meta_query' => array(\n                                                              'relation' => 'AND',\n                                                              array(\n                                                                    'key' => 'event_date',\n                                                                    'value' => array($today,'20991231'),\n                                                                    'compare' => 'BETWEEN',\n                                                                    'type' => 'DATE',\n                                                                    ),\n                                                              array(\n                                                                    'key' => 'member',\n                                                                    'value' => $user_id\n                                                                    ),\n                                                              array(\n                                                                    'key' => 'state',\n                                                                    'value' => 'complete'\n                                                                    ),\n                                                              )\n                                        ));\n\n    $tickets = array();\n    foreach($tickets_for_user as $ticket) {\n</code></pre>\n\n<p><strong>Important note from the Codex:</strong></p>\n\n<blockquote>\n  <p>The 'type' DATE works with the 'compare' value BETWEEN only if the date is stored at the format YYYYMMDD and tested with this format.</p>\n</blockquote>\n\n<p>You will also have to put the dates in order, with the earliest coming first in the array.</p>",
+		"TimeStamp" : "2015-01-29T15:42:32.967Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3030
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975963",
+		"PostUrl" : "http://stackoverflow.com/a/28218652",
+		"Site" : "stackoverflow.com",
+		"Title" : "Your code works for me without any issues.",
+		"Body" : "<p>Your code works for me without any issues.</p>",
+		"TimeStamp" : "2015-01-29T15:40:33.392Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3063
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975957",
+		"PostUrl" : "http://graphicdesign.stackexchange.com/a/46547",
+		"Site" : "graphicdesign.stackexchange.com",
+		"Title" : "thanks, thanks, thanks a lot. You helped me so much :D",
+		"Body" : "<p>thanks, thanks, thanks a lot. You helped me so much :D</p>",
+		"TimeStamp" : "2015-01-29T15:40:07.473Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3062
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3029
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975950",
+		"PostUrl" : "http://stackoverflow.com/a/1348763",
+		"Site" : "stackoverflow.com",
+		"Title" : "Have you tried changing the Content-type header to text/xml? ",
+		"Body" : "<p>Have you tried changing the Content-type header to text/xml? </p>",
+		"TimeStamp" : "2015-01-29T15:39:23.145Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3061
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975934",
+		"PostUrl" : "http://ux.stackexchange.com/a/72802",
+		"Site" : "ux.stackexchange.com",
+		"Title" : "Simply: \"Click the button:\" or \"Click next button\"",
+		"Body" : "<p>Simply: \"Click the button:\" or \"Click next button\"</p>",
+		"TimeStamp" : "2015-01-29T15:35:35.055Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3060
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975929",
+		"PostUrl" : "http://meta.stackexchange.com/a/247592",
+		"Site" : "meta.stackexchange.com",
+		"Title" : "Movies & TV once had a Topic of the Week a looong time ago until it wore...",
+		"Body" : "<p><a href=\"http://movies.stackexchange.com/\"><strong>Movies & TV</strong></a> once had a <a href=\"http://meta.movies.stackexchange.com/q/479/49\">Topic of the Week</a> a looong time ago until it wore off after some months. But inspired by your excellent meta question, there was then a rather inofficial <a href=\"http://meta.movies.stackexchange.com/q/1441/49\">Biweekly Topic Challenge for <em>Interstellar</em></a> proposed by a single user as a kind of proof of concept and it did very well with 31 asked questions (though, it's unclear if that was due to the challenge or just a natural consequence of a new release).</p>\n\n<p>After that we started an official <a href=\"http://meta.movies.stackexchange.com/q/1464/49\">Topic Challenge asking for ideas</a> whithout much imposition on the particular start day or the length of the challenge. We already did some of the proposed topics, more or less tied to current releases:</p>\n\n<ul>\n<li><a href=\"http://meta.movies.stackexchange.com/q/1470/49\">Topic Challenge: The Hobbit & The Lord of the Rings</a> [Completed]</li>\n<li><a href=\"http://meta.movies.stackexchange.com/q/1514/49\">Topic Challenge: Michael Mann and his films</a> [Completed]</li>\n<li><a href=\"http://meta.movies.stackexchange.com/q/1520/49\">Topic Challenge: Johnny Depp and his films</a></li>\n</ul>\n\n<p>They don't go too well, though. While questions per day is ~10, meta activity and site commitment aren't particularly high at the moment and we're also slightly season-dependent with currently being a bit of a meh-period in the cinemas. That being said we'll not give up on topic challenges and I have a bit more hopes for the planned Oscar-accompanying challenges following. Afterall thank you very much for this inspiring meta discussion.</p>",
+		"TimeStamp" : "2015-01-29T15:34:17.643Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3028
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975924",
+		"PostUrl" : "http://stackoverflow.com/a/28218440",
+		"Site" : "stackoverflow.com",
+		"Title" : "You can try PHP fsockopen() - it might be allowed by your provider.",
+		"Body" : "<p>You can try PHP fsockopen() - it might be allowed by your provider.</p>",
+		"TimeStamp" : "2015-01-29T15:31:35.912Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3059
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975921",
+		"PostUrl" : "http://judaism.stackexchange.com/a/53236",
+		"Site" : "judaism.stackexchange.com",
+		"Title" : "Depends what part of her you eat...",
+		"Body" : "<p>Depends what part of her you eat...</p>",
+		"TimeStamp" : "2015-01-29T15:31:14.435Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3058
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975905",
+		"PostUrl" : "http://sharepoint.stackexchange.com/a/47243",
+		"Site" : "sharepoint.stackexchange.com",
+		"Title" : "I finally found the answer, and it doesnt have anything to do with the e...",
+		"Body" : "<p>I finally found the answer, and it doesnt have anything to do with the error message I was getting.  My farm account was configured in AD to only logon to my first WFE machine, and not the one I was trying to add.  An accurate error message would have been nice!  Thanks Microsoft!</p>",
+		"TimeStamp" : "2015-01-29T15:29:37.390Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3027
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975903",
+		"PostUrl" : "http://movies.stackexchange.com/a/30518",
+		"Site" : "movies.stackexchange.com",
+		"Title" : "Baseline StudioSystem has the most accurate data",
+		"Body" : "<p>Baseline StudioSystem has the most accurate data</p>",
+		"TimeStamp" : "2015-01-29T15:29:18.651Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3057
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975902",
+		"PostUrl" : "http://stackoverflow.com/a/28218387",
+		"Site" : "stackoverflow.com",
+		"Title" : "You have to set the field as multiValued=true in schema.xml",
+		"Body" : "<p>You have to set the field as multiValued=true in schema.xml</p>",
+		"TimeStamp" : "2015-01-29T15:29:16.143Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3056
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975899",
+		"PostUrl" : "http://askubuntu.com/a/175669",
+		"Site" : "askubuntu.com",
+		"Title" : "I also got the problem like you and this is the way that I followed to f...",
+		"Body" : "<p>I also got the problem like you and this is the way that I followed to fix it.</p>\n\n<p><a href=\"http://milindapro.blogspot.com/2012/01/revert-ubuntu-boot-loader-after.html\" rel=\"nofollow\">http://milindapro.blogspot.com/2012/01/revert-ubuntu-boot-loader-after.html</a></p>\n\n<p>The simple answer is just re-install the grub loader. It will add all the operating systems on your system to boot menu.</p>\n\n<p>Thanks</p>",
+		"TimeStamp" : "2015-01-29T15:28:55.447Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3026
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975892",
+		"PostUrl" : "http://gaming.stackexchange.com/a/147446",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "I'm assuming you are doing the building in survival mode, and don't have...",
+		"Body" : "<p>I'm assuming you are doing the building in survival mode, and don't have access to creative mode flight...</p>\n\n<blockquote>\n  <p>How can I effectively accomplish the task without running, climbing etc. around a lot, trying to get up to a wall in order to reach somewhere etc.?</p>\n</blockquote>\n\n<p><strong>Ender pearls!</strong> They take some time to get used to, and some practice using them properly, but once you have used them for a while, you will wonder how you survived without them. All you do is right-click with an Ender-pearl in your hand, and you will be instantly teleported to where the pearl landed, which is great for getting up to the second floor of a building or similar without needing to build a temporary stair-case to get up there.</p>\n\n<p>Ender pearls are quite rare in the overworld, so I would recommend getting to The End and setting up at least <a href=\"http://www.youtube.com/watch?v=MlW4aI6KGQM\" rel=\"nofollow\">a small, simple Enderman farm there</a>.</p>\n\n<p><strong>Sand Pillars!</strong> When that is not an option, and you need to pillar up to high places, I would recommend towering up using <em>sand</em>. Then, when you no longer need your temporary tower, you quickly replace the bottom block with a torch (<a href=\"http://www.youtube.com/watch?v=oF9G2WlVcrE\" rel=\"nofollow\">or use something like this</a>), and the entire sand tower is removed without you needing to waste time and tool durability mining/digging away the temporary tower.</p>",
+		"TimeStamp" : "2015-01-29T15:27:44.791Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 14
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975764",
+		"PostUrl" : "http://tex.stackexchange.com/questions/225509",
+		"Site" : "tex.stackexchange.com",
+		"Title" : "an other ! LaTeX Error: Float(s) lost",
+		"Body" : "<p>I am writing a big LaTeX document (doctoral thesis). And I've adopted a \"complex\" structure with <code>\\include{}</code> and <code>\\input{}</code> and I have obviously :</p>\n\n<pre><code>! LaTeX Error: Float(s) lost.\n\nSee the LaTeX manual or LaTeX Companion for explanation.\nType  H <return>  for immediate help.\n ...                                              \n\nl.20 \\chapter\n             {Des mod\u00E8les th\u00E9oriques aux mod\u00E8les op\u00E9ratifs, l'espace com...\n</code></pre>\n\n<p>EDIT : a \"small\" exemple </p>\n\n<pre><code>  \\documentclass[10pt,a4paper]{book}\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{amsfonts}\n\\usepackage[french]{babel}\n\\usepackage{calc}\n\\usepackage[babel=true]{csquotes} % csquotes va utiliser la langue d\u00E9finie dans babel\n\\usepackage{etex} %pour repousser le nombre packages utilisable\n\\usepackage{euscript}\n\\usepackage{eurosym} %pour avoir le symbole euro\n\\usepackage{footnote} %pour pouvoir avoir des footnot dans le tableau\n\\usepackage{floatflt}\n\\usepackage{fancyhdr}\n\\usepackage{fancybox}%%pour faire les encadr\u00E9 dans la partie 2 par exemple\n\\usepackage[T1]{fontenc}\n\\usepackage{graphicx}\n\\usepackage[utf8]{inputenc}\n\\usepackage{latexsym}\n\\usepackage{longtable}\n\\usepackage{multirow}\n\\usepackage{multicol}\n\\usepackage[maxfloats=35]{morefloats}%une solution pour pas se taper l'erreur page 205\n\\usepackage{pstricks}\n\\usepackage{pst-plot}\n\\usepackage{psfrag}\n\\usepackage{todonotes}%pour pouvoir mettre des annotations et commentaires dans les marges\n\\usepackage{subfigure}\n\\usepackage{setspace}\n\\usepackage{wrapfig}%figure int\u00E9grer dans le texte de mani\u00E8re flotante\n\\usepackage{newunicodechar} %pour les caract\u00E8res speciaux dans les biblio par exemple!\n\\usepackage[\n  %refsegment=chapter,\n  %refsegment=part,\n  %uniquelist=false, %pour utiliser la m\u00EAme balise qu'on ait une ou plusieurs ref biblio dans la balise\n  maxcitenames=2,\n  maxbibnames=99,\n  %style=authoryear-comp,\n  %style=authoryear-icomp,\n  style=authoryear-ibid,\n  backend=biber,  \n  sorting=nyt, %appel biblio par name year title ... fonctionne pas trop\n  doi=true, \n  url=false, \n  eprint=false, \n  hyperref=true,\n  firstinits=true,\n  uniquename=init\n]{biblatex}\n\n\\begin{document}\n\n\\section{Le mod\u00E8le LAME : la montagne, un espace de s\u00E9gr\u00E9gation, un espace de valorisation}\\label{chap:LAME}\n\n\n    \\subsection*{Introduction}\n\n\n    \\subsection{Quelles sont les sources de dynamiques des surfaces viticoles?}\\label{part:sources_dyn_viticole}\n\n\n\n        \\subsubsection{O\u00F9 est la viticulture}\\label{part:ou_est_la_viticulture}\n        Sur l'AOC du Cru Banyuls comme dans le contexte du val di Cembra\\todo{compl\u00E9ter les analyse avec les donn\u00E9es de Cembra}, les possibilit\u00E9s offertes par la m\u00E9canisation sont rapidement limit\u00E9es. De mani\u00E8re empirique, on constate que la viticulture a eu tendance \u00E0 s'installer sur les versant (fig. \\ref{fig:viticulture_moutain} et \\ref{fig:vine_localisation}), abandonnant les zones plus plates \u00E0 l'urbanisation (pour sur Banyuls) ou a des cultures plus exigentes (vall\u00E9e de l'Adige (Trentino-Italie)). Ces observations sont corrobor\u00E9es par une serie d'analyse statistique et spatiales \\footnote{Toutes ces analyses ont \u00E9t\u00E9 r\u00E9alis\u00E9es avec le logiciel R \\autocite{r_development_core_team_r:_2014}, \u00E0 l'aide des packages rgdal \\autocite{bivand_rgdal:_2013} pour le traitement des donn\u00E9es spatiales, et ggplot2 \\autocite{wickham_ggplot2:_2009} pour les sorties graphiques}.\n        \\begin{figure}\n            \\centering\n                \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/banyuls_agouilles_small}\\label{fig:slope_banyuls}}\n                \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/cembra_montagne_small}\\label{fig:cembra_slope_montagne}}\n                \\caption{Photos des vignobles de Banyuls-sur-Mer (Pyr\u00E9n\u00E9es-Orientales, France) fig. \\subref{fig:slope_banyuls}, et cembra (Trentino, Italie) fig. \\subref{fig:cembra_slope_montagne}}.\n                \\label{fig:viticulture_moutain}\n        \\end{figure}\n\n        \\begin{figure}\n            \\centering\n                \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/localisation_vine}\n                \\caption{Localisation des parcelles viticoles (en violet) sur l'AOC cru Banyuls (2013)}\n                \\label{fig:vine_localisation}\n        \\end{figure}\n\n\n\n        \\begin{table}\n            \\centering\n                \\begin{tabular}{l c c c c c}    \n                    \\hline\n                    & Sommes des carr\u00E9s & dl & Somme moy des carr\u00E9s & F & p\\\\\n                    \\hline\n                    Intergroupe & 22.0 & 1 & 21.97 & 127.95 & p<0.001\\\\\n                    R\u00E9sidus & 3623.8 & 21107 & 0.1717 & &\\\\\n                    Total & 3654 & 210108 & & &\\\\\n                    \\hline\n                \\end{tabular}\n                \\caption{Analyse de variance (ANOVA) sur la relation entre les parcelles viticoles et la pente moyenne de celles-ci (c.f. fig. \\ref{fig:density_slope_cadastre})}\\label{table:anova_slope_cadastre}\n        \\end{table}\n\n        \\begin{figure}\n            \\centering\n                \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/cadastre_VS_viticulture}\n                \\caption{Estimation par noyau de la pente des populations de parcelles viticoles et non viticoles}\n                \\label{fig:density_slope_cadastre}\n        \\end{figure}\n\n\n        \\subsubsection{Des \u00E9changes foncier : lieu d'interactions ?}\n\n        \\begin{table}\n            \\centering\n                \\begin{tabular}{l c c c c c}    \n                    \\hline\n                    & Sommes des carr\u00E9s & dl & Somme moy des carr\u00E9s & F & p\\\\\n                    \\hline\n                    Intergroupe & 1573 & 1 & 1572.96 & 10.591 & p<0.01\\\\\n                    R\u00E9sidus & 676966 & 4558 & 148.5 & &\\\\\n                    Total & 678539 & 4559 & & &\\\\\n                    \\hline\n                \\end{tabular}\n                \\caption{Analyse de variance (ANOVA) sur la relation entre les parcelles \u00E9chang\u00E9e et parcelles conserv\u00E9es vis-\u00E0-vis de leurs valeurs de pente moyennes (c.f. fig. \\ref{fig:rup_density_plots_echange})}\\label{table:anova_slope}\n        \\end{table}\n\n        \\begin{figure} %script R analyse_stat_parcelles_slope.R\n            \\centering\n                \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/density_plot_2011_2013}\\label{fig:rup_density_plots_echange}}\n                \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/density_plot_failed}\\label{fig:rup_density_plot_failed}}\\\\\n                \\caption{Estimation par noyau de la pente des populations de parcelles viticoles (fig. \\subref{fig:rup_density_plots_echange}, pour les parcelles \u00E9chang\u00E9es entre 2011 et 2013) (fig. \\subref{fig:rup_density_plot_failed}, pour les parcelles abandonn\u00E9es entre 2011 et 2013) sur l'AOC cru Banyuls}.\n                \\label{fig:density_ggplot_failed_changed}\n        \\end{figure}\n\n        \\subsubsection{Lieu d'extension ou de contraction du vignoble ?}\\label{part:contraction_paysagere}\n\n\n        \\begin{table} %%% script R scrupt_parcelles_colonis\u00E9_abandonner_R\n            \\centering\n                \\begin{tabular}{l c c c c c}    \n                    \\hline\n                    & Sommes des carr\u00E9s & dl & Somme moy des carr\u00E9s & F & p\\\\\n                    \\hline\n                    Intergroupe & 337 & 1 & 336.73 & 2.207 & ns\\\\\n                    R\u00E9sidus & 748241 & 4904 & 152.58 & &\\\\\n                    Total & 748578 & 4905 & & &\\\\\n                    \\hline\n                \\end{tabular}\n                \\caption{Analyse de variance (ANOVA) sur la relation entre les parcelles abandonn\u00E9es et celles encore cultiv\u00E9es en 2013 et la pente moyenne de celles-ci \\small{(r\u00E9sultats non significatifs \\textit{ns})}, c.f. fig. \\ref{fig:rup_density_plot_failed}}\\label{table:anova_slope_failed}\n        \\end{table}\n\n        \\begin{table}%%% script R scrupt_parcelles_colonis\u00E9_abandonner_R\n            \\centering\n                \\begin{tabular}{l c c c c c}    \n                    \\hline\n                    & Sommes des carr\u00E9s & dl & Somme moy des carr\u00E9s & F & p\\\\\n                    \\hline\n                    Intergroupe & 2 & 1 & 2.428 & 0.0164 & ns\\\\\n                    R\u00E9sidus & 693671 & 4684 & 148.094 & &\\\\\n                    Total & 693673 & 4685 & & &\\\\\n                    \\hline\n                \\end{tabular}\n                \\caption{Analyse de variance (ANOVA) sur la relation entre les parcelles colonis\u00E9es entre 2011 et 2013 et les parcelles qui sont rest\u00E9es entretenues et la pente moyenne de celles-ci \\small{(r\u00E9sultats non significatifs \\textit{ns})}}\\label{table:anova_colonized}\n        \\end{table}\n\n\n        \\begin{figure} %% cre\u00E9 par le script script_localisation_map.R\n            \\centering\n                \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/isochrone.png}\n                \\caption{cartographie des temps de parcours sur l'AOC du cru Banyuls}\n                \\label{fig:isochrone_AOC_banyuls}\n        \\end{figure}                \n\n\n        \\begin{table}\n            \\centering\n                \\begin{tabular}{l c c c c c}    \n                    \\hline\n                    & Sommes des carr\u00E9s & dl & Somme moy des carr\u00E9s & F & p\\\\\n                    \\hline\n                    Intergroupe & 205 & 1 & 205.309 & 9.897 & p<0.001\\\\\n                    R\u00E9sidus & 52195 & 2516 & 20.745 & &\\\\\n                    Total & 52400 & 2517 & & &\\\\\n                    \\hline\n                \\end{tabular}\n                \\caption{Analyse de variance (ANOVA) sur la relation entre les parcelles abandonn\u00E9es et cultiv\u00E9es vis-\u00E0-vis leur accessibilit\u00E9 \\small{(r\u00E9sultats significatifs)}, c.f. fig. \\ref{fig:lup_density_acces_failed} }\\label{table:anova_acces_failed}\n        \\end{table}\n\n\n        \\begin{table}\n            \\centering\n                \\begin{tabular}{l c c c c c}    \n                    \\hline\n                    & Sommes des carr\u00E9s & dl & Somme moy des carr\u00E9s & F & p\\\\\n                    \\hline\n                    Intergroupe & 9 & 1 & 9.1235 & 0.4503 & ns\\\\\n                    R\u00E9sidus & 52195 & 44107 & 20.2603 & &\\\\\n                    Total & 52204 & 44108 & & &\\\\\n                    \\hline\n                \\end{tabular}\n                \\caption{Analyse de variance (ANOVA) sur la relation entre les parcelles colonis\u00E9e par rapport \u00E0 celles h\u00E9rit\u00E9es vis-\u00E0-vis de leur accessibilit\u00E9 \\small{(r\u00E9sultats non significatifs \\textit{ns})}, c.f. fig. \\ref{fig:rup_density_plot_colonized_acces}}\\label{table:anova_acces_colonized}\n        \\end{table}             \n\n        \\begin{figure} %figures construite avec le scripts script/analyse_stat_parcelles_acces.R\n            \\centering\n                \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/density_plot_failed_acces}\\label{fig:lup_density_acces_failed}}\n                \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/density_plot_colonized_acces}\\label{fig:rup_density_plot_colonized_acces}}\\\\\n                \\caption{Estimation par noyau de l'accessibilit\u00E9 de la population de parcelles viticoles (fig. \\subref{fig:lup_density_acces_failed}, pour les parcelles abandonn\u00E9es entre 2011 et 2013) (fig. \\subref{fig:rup_density_plot_colonized_acces}, pour les parcelles colonis\u00E9es entre 2011 et 2013) sur l'AOC cru Banyuls}.\n                \\label{fig:density_ggplot_colonVSfailed_acces}\n        \\end{figure}\n\n\n\n\n    \\subsection{Contexte de la mod\u00E9lisation}\\label{part:context_model_LAME} \n\n    \\begin{table}\n        \\centering\n            \\begin{tabular}{l c c}  \n                \\hline\n                 & AOC Banyuls-Collioure & Val di Cembas\\\\\n                \\hline\n                Surface viticole & 219ha & 4506ha \\\\\n                Altitude m\u00E9diane & 189 & 780.8 \\\\\n                pente m\u00E9diane & 18.3 & 26.9\\\\\n                Nombre de viticulteurs & 223 & NA \\\\\n                Nombre de coop\u00E9ratives & 3 & 1 \\\\\n                \\hline\n            \\end{tabular}\n            \\caption{valeurs r\u00E9sum\u00E9es sur la zone de travail (9$km^2$)}\\label{table:resume_banyuls_cembras}\n    \\end{table}\n\n    \\begin{figure}\n        \\centering\n            \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/banyuls_DEM_rasterVIS}\\label{fig:lup_DEM_banyuls}}\n            \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/banyuls_slope_rasterVIS}\\label{fig:rup_slope_banyuls}}\\\\\n            \\caption{Altitudes (fig. \\subref{fig:lup_DEM_banyuls}, en m\u00E8tres), et pentes (fig. \\subref{fig:rup_slope_banyuls}, en degr\u00E9) sur la zone de mod\u00E9lisation dans le bassin de la Baillaury sur la commune de Banyuls-sur-Mer (Pyr\u00E9n\u00E9es orientales, France)}\n             \\label{fig:small_map_banyuls}\n    \\end{figure}\n\n    \\begin{figure}\n        \\centering\n            \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/cembra_DEM_rasterVIS}\\label{fig:lup_DEM_cembra}}\n            \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/cembra_slope_rasterVIS}\\label{fig:rup_slope_cembra}}\\\\\n            \\caption{Altitudes (fig. \\subref{fig:lup_DEM_cembra}, en m\u00E8tres), et pentes (fig. \\subref{fig:rup_slope_cembra}, en degr\u00E9) sur la zone de mod\u00E9lisation dans la haute vall\u00E9e suspendue du Val di Cembra (Trentino, Italie)}\n             \\label{fig:small_map_cembra}\n    \\end{figure}\n\n    \\subsection{Mat\u00E9riels et M\u00E9thodes : ODD}\n\n\n    \\subsubsection{D\u00E9veloppement du mod\u00E8le}\n\n        \\begin{figure}\n            \\centering\n                \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/uml_LAME}\n                \\caption{Diagramme de classes UML du mod\u00E8le Lame}\\todo{pr\u00E9senter UML}\n                \\label{fig:uml_lame}\n        \\end{figure}\n\n\n        \\begin{figure}\n            \\centering\n                \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/scheduling}\n                \\caption{Ordonnancement des processus qui entre en dans LAME}\n                \\label{fig:scheduling_lame}\n        \\end{figure}\n\n    \\subsubsection{Conceptes d'\u00E9laboration}\n\n    \\begin{figure}\n            \\centering\n                \\subfigure[]{\\includegraphics[width=0.32\\textwidth]{partie2/LAME/img/exploration_repetition/echantillon1010}\\label{fig:lame_5ech_10}}\n                \\subfigure[]{\\includegraphics[width=0.32\\textwidth]{partie2/LAME/img/exploration_repetition/echantillon1020}\\label{fig:lame_5ech_20}}\n                \\subfigure[]{\\includegraphics[width=0.32\\textwidth]{partie2/LAME/img/exploration_repetition/echantillon1030}\\label{fig:lame_5ech_30}}\n                \\caption{Evalusation de la stochastist\u00E9 des r\u00E9sultats du mod\u00E8le LAME sur 10 \\subref{fig:lame_5ech_10}, 20 \\subref{fig:lame_5ech_20}et 30 \\subref{fig:lame_5ech_30} r\u00E9plications d'un m\\^eme jeux de param\u00E8tre}\n                \\label{fig:lame_stochastiq}\n        \\end{figure}\n\n\n\n    \\subsubsection{D\u00E9tails} % Implementation Details\n    \\label{part:Details_LAME}\n\n\n        \\begin{table}\n            \\begin{center}\n                \\begin{tabular}{lcc}\n                    \\hline \n                    variable & description & valeurs \\\\ \n                    \\hline \n                    NbVinegrower & nombre de viticulteurs & 300 \\\\ \n                    InitialCapital & Capital de d\u00E9part des viticulteurs & 5000 \\\\ \n                    prix\\_kg & Prix du raison au kg & 1.5 \\\\\n                    rendement\\_hl/ha & Rendement en hectolitre/ha & 2600\\\\ \n                    cout\\_ha & Co\u00FBt de production fixe par ha & 2300 \\\\ \n                    FrontPrice & Prix du front pionnier & 33000 \\\\ \n                    reserveSellPrice & Prix d'achat des parcelles d'occasion & 17000 \\\\ \n                    \\hline \n                \\end{tabular}\n                \\caption{Valeurs d'initialisation du mod\\`ele}\\label{table:init_LAME}\n            \\end{center}\n        \\end{table}\n\n\n\n\n%       \\begin{figure}\n%           \\begin{center}\n%               \\includegraphics[width=200px]{partie2/acidity_gis/img/WK}\n%               \\caption{capacit\u00E9 de travail d'un Homme en ha en fonction de la pente en \\%}\n%               \\label{fig:workingCapacity_LAME}\n%           \\end{center}\n%       \\end{figure}\n        La figure \\ref{fig:workingCapacity_LAME} nous permet d'observer le r\u00E9sultat du calcul de $Ct$. Quand la pente est de 0\\% un Homme est capable de cultiv\u00E9 10 ha, tandis que si la pente est de 45\\% il ne sera en mesure de cultiv\u00E9 que 2ha.\n\n \\subsection{R\u00E9sultats}\n    \\subsubsection{calibration et exploration : espace abstrait, espace physique}\n\n\n    \\begin{figure}%%%%%graphes issu du script R exp_calibre_slope_distance.R\n        \\centering\n            \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/boxplot_med_slope}\\label{fig:up_median_slope_LAME}}\\\\\n            \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/boxplot_surfaceViti_slope}\\label{fig:down_surfaceViti_LAME}}\n            \\caption{Graphiques en boite \u00E0 moustache reprenant la pente m\u00E9diane des parcelles viticole \\subref{fig:up_median_slope_LAME}, et la surface viticole \\subref{fig:down_surfaceViti_LAME} dans une espace abstrait.}\n             \\label{fig:mediane_slope_and_surface_viti_LAME}\n    \\end{figure}\n\n\n        \\begin{figure}%%%%%graphes issu du script R exp_calibre_slope_distance_GIS.R\n        \\centering\n            \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/GIS_boxplot_med_slope}\\label{fig:up_GIS_median_slope_LAME}}\\\\\n            \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/GIS_boxplot_surfaceViti_slope}\\label{fig:down_GIS_surfaceViti_LAME}}\n            \\caption{Graphiques en boite \u00E0 moustache reprenant la pente m\u00E9diane des parcelles viticole \\subref{fig:up_GIS_median_slope_LAME}, et la surface viticole \\subref{fig:down_GIS_surfaceViti_LAME}  dans un espaces r\u00E9el.}\n             \\label{fig:GIS_mediane_slope_and_surface_viti_LAME}\n    \\end{figure}\n\n%%%%%%%%%Cette figure ne r\u00E9ponde pas aux questions  \n    \\begin{figure}\n        \\centering\n            \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/boxplot_hillViti_slope}\\label{fig:up_hillViti_slope_LAME}}\\\\\n            \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/boxplot_vitiRuined_slope}\\label{fig:down_ruinedViti_LAME}}\n            \\caption{Graphiques en boite \u00E0 moustache reprenant en \\ref{fig:up_hillViti_slope_LAME} la proportion de viticulteur en \"zone de pente\", et en \\ref{fig:down_ruinedViti_LAME} la proportion de viticulteurs qui ont fait faillites.}\n             \\label{fig:hillViti_failled_viti_LAME}\n    \\end{figure}\n\n\n    \\begin{figure} %%%script issu du script analyse_stat_parcelles.R\n        \\centering\n            \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/LAME_FWHM}\n            \\caption{Courbe de densit\u00E9 sur les pentes des parcelles \u00E9chang\u00E9es avec la d\u00E9limitation de l'intervalle FWHM}\n             \\label{fig:FWHM_LAME}\n    \\end{figure} \n\n\n    \\begin{figure} %%%script issu du script traitement_simu_alpha_beta.R\n        \\centering\n            \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/density_plot_simlated2}\\label{fig:up_abstract_LAME_slope_exange}}\\\\\n            \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/GISdensity_plot_simlated2}\\label{fig:down_GIS_LAME_slope_exange}}\n            \\caption{Courbe de densit\u00E9 des pentes moyennes pour les parcelles \u00E9chang\u00E9es durant les simulations dans un contexte abstrait \\subref{fig:up_abstract_LAME_slope_exange} et dans un contexte SIG \\subref{fig:down_GIS_LAME_slope_exange}}\n             \\label{fig:echanged_simulation_GIS_lame}\n    \\end{figure} \n    attention l'ambiguit\u00E9 ici est qu'on travail sur les pente moyenne sur toute l'AOC alors que les pentes moyenne de la simulation sont sur la zone de 9ha !!!\n\n\n\n    \\begin{figure} %%%%%graphes issu du script R exp_calibre_slope_distance.R\n        \\centering\n            \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/alpha20_boxplot_med_slope}\\label{fig:up_alpha20_median_slope_LAME}}\n            \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/alpha20_boxplot_surfaceViti_slope}\\label{fig:down_alpha20_surfaceViti_LAME}}\\\\\n            \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/alpha20_boxplot_hillViti_slope}\\label{fig:up_alpha20_hillViti_slope_LAME}}\n            \\subfigure[]{\\includegraphics[width=0.48\\textwidth]{partie2/LAME/img/alpha20_boxplot_vitiRuined_slope}\\label{fig:down_alpha20_ruinedViti_LAME}}\n            \\caption{truc truc}\n             \\label{fig:mediane_slope_and_surface_viti_alpha20_LAME}\n    \\end{figure}\n\n    \\subsubsection{R\u00E9sultats prospectifs : la montagne entre attraction et r\u00E9pulsion}\n\n    %%l'aspect social : repulsif de la montagne -> Le capital des vitis?\n    \\begin{figure} %%%%%graphes issu du script R partie2_propective.R\n        \\centering\n        \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/boxplot_capital_slope_plain}\n            \\caption{R\u00E9partition du capital entre les viticulteurs de plaine et de montagne (avec $\\beta = 60$ )}\\label{fig:Capital_hill_plain}\n    \\end{figure}\n\n    %%la montagne fragmente les exploitations\n    \\begin{figure} %%%%%graphes issu du script R partie2_propective.R\n        \\centering\n        \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/boxplot_fragmentation_slope_plain}\n            \\caption{Fragmentation des exploitations selon leurs lieux d'implantation en plaine ou en montagne}\\label{fig:fragmentation_hill_plain}\n    \\end{figure}  \n\n    \\paragraph*{La montagne, le faire valoir des riches}\n\n    \\hspace{1em}\n\n    %%Le faire valoir des riches\n    \\begin{figure} %%%%%graphes issu du script R partie2_propective.R\n        \\centering\n        \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/boxplot_hillVSrunied_slope_plain}\n            \\caption{\u00C9volution de la population de viticulteur ruin\u00E9,  proportion des viticulteurs en activit\u00E9 qui ont des leur exploitation sur des zones de pentes, et surface viticole totale dans le mod\u00E8le au cour du temps dans un espace asbtrait.}\\label{fig:riuned_hill_plain}\n    \\end{figure}\n\n\n    \\begin{figure} %%%%%graphes issu du script R partie2_propective.R\n        \\centering\n        \\includegraphics[width=0.8\\textwidth]{partie2/LAME/img/GIS_boxplot_hillVSrunied_slope_plain}\n            \\caption{\u00C9volution de la population de viticulteur ruin\u00E9,  proportion des viticulteurs en activit\u00E9 qui ont des leur exploitation sur des zones de pentes, et surface viticole totale dans le mod\u00E8le au cour du temps dans un espace SIG}\\label{fig:GIS_riuned_hill_plain}\n    \\end{figure}\n\n\n\n    \\subsubsection{Pente et distance : contraintes ou opportunit\u00E9?}\n\n \\subsection*{Conclusion prospective}\n\n\n\\section{Le mod\u00E8le CIVIsMe }\\label{part:modele_civisme}\n\n    \\subsection*{Introduction}\n\n    \\subsection{Contexte de la mod\u00E9lisation : La coop\u00E9ration entre marque et terroir}   \n\n    \\begin{figure} %%%script issu du script data_union_coop.R\n            \\centering\n            \\subfigure[]{\\includegraphics[width=0.7\\textwidth]{partie2/CIVIsMe/img/map_nb_coop_dep}\\label{fig:map_nb_coop_dep}}\\\\\n            \\subfigure[]{\\includegraphics[width=0.7\\textwidth]{partie2/CIVIsMe/img/map_c2c_dep}\\label{fig:map_nb_adherent_dep}}\n                \\caption{Mise en regarde du nombre de coop\u00E9ratives par d\u00E9partement \\subref{fig:map_nb_coop_dep}, et du ratio du nombre d'adh\u00E9rents sur le nombre de coop\u00E9rative par d\u00E9partement \\subref{fig:map_nb_adherent_dep}}\n                \\label{fig:muli_map_nb_coop_adherant}\n        \\end{figure}\n\n    \\begin{figure} %%%script issu du script github bazaRd/map_coop.R\n            \\centering\n                \\subfigure[]{\\includegraphics[width=0.7\\textwidth]{partie2/CIVIsMe/img/pct_prod_deptVSnationnale}\\label{fig:map_volume_dep_fr}}\\\\\n                \\subfigure[]{\\includegraphics[width=0.7\\textwidth]{partie2/CIVIsMe/img/pct_coop_departements2013}\\label{fig:map_volume_coop}}\n                \\caption{Mise en regarde de la part des volumes produits en France par d\u00E9partement \\subref{fig:map_volume_dep_fr}, et de la part des volumes d\u00E9partementaux produit en coop\u00E9rative \\subref{fig:map_volume_coop}}\n                \\label{fig:muli_map_volume_coop}\n    \\end{figure}\n\n\n        \\begin{figure} %%%script issu du script traitement_simu_alpha_beta.R\n            \\centering\n                \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/CIVIsMe/img/pie_surface_by_coop}\\label{fig:up_pie_surface_coop}}\\\\\n                \\subfigure[]{\\includegraphics[width=0.8\\textwidth]{partie2/CIVIsMe/img/pie_producteurs_by_coop}\\label{fig:down_pie_producteur_coop}}\n                \\caption{Le poid de la coop\u00E9ration en surface plant\u00E9 (ha) \\subref{fig:up_pie_surface_coop} et en nombre de producteurs \\subref{fig:down_pie_producteur_coop} sur l'AOC du cru Banyuls}\n                \\label{fig:pie_coop_producteurs_surfaces}\n        \\end{figure} \n\n    \\subsection{Mat\u00E9riels et M\u00E9thodes : ODD}\n\n    \\subsubsection{D\u00E9veloppement du mod\u00E8le}\n\n        \\begin{figure}\n            \\centering\n                \\includegraphics[width=0.8\\textwidth]{partie2/CIVIsMe/img/UML_classes}\n                \\caption{Diagramme de classes UML du mod\u00E8le CIVIsMe}\n                \\label{fig:uml_CIVIsMe}\n        \\end{figure}\n\n\n        \\begin{figure}\n            \\centering\n                \\includegraphics[width=0.8\\textwidth]{partie2/CIVIsMe/img/scheduling}\n                \\caption{Ordonnancement des processus qui entre en jeux dans CIVIsMe}\n                \\label{fig:scheduling_civisme}\n        \\end{figure}\n\n\n    \\subsubsection{Conceptes d'\u00E9laboration}\n\n    \\subsubsection{Details} % Implementation Details\n\n        \\begin{figure}\n            \\centering\n                \\includegraphics[width=0.8\\textwidth]{partie2/CIVIsMe/img/regression_capital}\n                \\caption{Deux exemples de r\u00E9gression lin\u00E9aire en fonction du capital \u00E9conomique des agents}\n                \\label{fig:lm_CIVIsMe}\n        \\end{figure}\n\n\n\\end{document}\n</code></pre>\n\n<p>It's not small but at least it produce the float error </p>",
+		"TimeStamp" : "2015-01-29T15:15:42.749Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "\\bavoir\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 0,
+				"FPCount" : 3,
+				"CaughtCount" : 13
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975757",
+		"PostUrl" : "http://judaism.stackexchange.com/questions/53230",
+		"Site" : "judaism.stackexchange.com",
+		"Title" : "Are there any messianic prophecies of Rabbi Judah ben Samuel?",
+		"Body" : "<p>I'd be interested if there are any.\nOriginal quotes would be appreciated.</p>",
+		"TimeStamp" : "2015-01-29T15:14:19.071Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 32,
+				"CaughtCount" : 831
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975737",
+		"PostUrl" : "http://travel.stackexchange.com/a/42658",
+		"Site" : "travel.stackexchange.com",
+		"Title" : "Rom2rio is amazing! All of you after this answer!:)",
+		"Body" : "<p>Rom2rio is amazing! All of you after this answer!:)</p>",
+		"TimeStamp" : "2015-01-29T15:11:57.309Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3055
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975696",
 		"PostUrl" : "http://math.stackexchange.com/questions/1125031",
 		"Site" : "math.stackexchange.com",

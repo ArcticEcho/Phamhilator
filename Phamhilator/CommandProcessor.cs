@@ -130,103 +130,41 @@ namespace Phamhilator
 
             #region Privileged user commands.
 
-            #region Add black term commands.
+            #region Add term commands.
 
-            new ChatCommand(new Regex(@"(?i)^add\-b\-qt\-(spam|off|name|lq) \S", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^add\-b\-(a|q[bt])\-(spam|off|name|lq) \S", regexOptions), command => new[]
             {
-                AddBlackTerm(command)//AddBQTTerm(command)
+                AddBlackTerm(command)
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^add\-b\-qb\-(spam|off|name|lq) \S", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^add\-w\-(a|q[bt])\-(spam|off|name|lq) \S+ \S", regexOptions), command => new[]
             {
-                AddBlackTerm(command)//AddBQBTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^add\-b\-a\-(spam|off|name|lq) \S", regexOptions), command => new[]
-            {
-                AddBlackTerm(command)//AddBATerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            #endregion
-
-            #region Add white term commands.
-
-            new ChatCommand(new Regex(@"(?i)^add\-w\-qt\-(spam|off|name|lq) \S+ \S", regexOptions), command => new[]
-            {
-                AddWhiteTerm(command)//AddWQTTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^add\-w\-qb\-(spam|off|name|lq) \S+ \S", regexOptions), command => new[]
-            {
-                AddWhiteTerm(command)//AddWQBTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^add\-w\-a\-(spam|off|name|lq) \S+ \S", regexOptions), command => new[]
-            {
-                AddWhiteTerm(command)//AddWATerm(command)
+                AddWhiteTerm(command)
             }, CommandAccessLevel.PrivilegedUser),
 
             #endregion
 
-            #region Edit black term commands.
+            #region Edit term commands.
             
-            new ChatCommand(new Regex(@"(?i)^edit\-b\-qt\-(spam|off|name|lq) .+¬¬¬.+$", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^edit\-b\-(a|q[bt])\-(spam|off|name|lq) .+¬¬¬.+$", regexOptions), command => new[]
             {
-                EditBlackTerm(command)//EditBQTTerm(command)
+                EditBlackTerm(command)
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^edit\-b\-qb\-(spam|off|name|lq) .+¬¬¬.+$", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^edit\-w\-(a|q[bt])\-(spam|off|name|lq) \S+ .+¬¬¬.+$", regexOptions), command => new[]
             {
-                EditBlackTerm(command)//EditBQBTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^edit\-b\-a\-(spam|off|name|lq) .+¬¬¬.+$", regexOptions), command => new[]
-            {
-                EditBlackTerm(command)//EditBATerm(command)
+                EditWhiteTerm(command)
             }, CommandAccessLevel.PrivilegedUser),
 
             #endregion
 
-            #region Edit white term commands.
+            #region Remove term commands.
 
-            new ChatCommand(new Regex(@"(?i)^edit\-w\-qt\-(spam|off|name|lq) \S+ .+¬¬¬.+$", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^del\-b\-(a|q[bt])\-(spam|off|name|lq) \S", regexOptions), command => new[]
             {
-                EditWhiteTerm(command)//EditWQTTerm(command)
+                DelBlackTerm(command)
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^edit\-w\-qb\-(spam|off|name|lq) \S+ .+¬¬¬.+$", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^del\-w\-(a|q[bt])\-(spam|off|name|lq) \S+ .*", regexOptions), command => new[]
             {
-                EditWhiteTerm(command)//EditWQBTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^edit\-w\-a\-(spam|off|name|lq) \S+ .+¬¬¬.+$", regexOptions), command => new[]
-            {
-                EditWhiteTerm(command)//EditWATerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-
-            #endregion
-
-            #region Remove black term commands.
-
-            new ChatCommand(new Regex(@"(?i)^del\-b\-qt\-(spam|off|name|lq) \S", regexOptions), command => new[]
-            {
-                DelBlackTerm(command)//RemoveBQTTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^del\-b\-qb\-(spam|off|name|lq) \S", regexOptions), command => new[]
-            {
-                DelBlackTerm(command)//RemoveBQBTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^del\-b\-a\-(spam|off|name|lq) \S", regexOptions), command => new[]
-            {
-                DelBlackTerm(command)//RemoveBATerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-
-            #endregion
-
-            #region Remove white term commands.
-
-            new ChatCommand(new Regex(@"(?i)^del\-w\-qt\-(spam|off|name|lq) \S+ .*", regexOptions), command => new[]
-            {
-                DelWhiteTerm(command)//RemoveWQTTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^del\-w\-qb\-(spam|off|name|lq) \S+ .*", regexOptions), command => new[]
-            {
-                DelWhiteTerm(command)//RemoveWQBTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^del\-w\-a\-(spam|off|name|lq) \S+ .*", regexOptions), command => new[]
-            {
-                DelWhiteTerm(command)//RemoveWATerm(command)
+                DelWhiteTerm(command)
             }, CommandAccessLevel.PrivilegedUser),
 
             #endregion
@@ -269,22 +207,7 @@ namespace Phamhilator
 
             #endregion
 
-            #region Black term auto toggling commands.
-            
-            new ChatCommand(new Regex(@"(?i)^auto\-b-qt\-(spam|off|name|lq)(\-p) \S?$", regexOptions), command => new[]
-            {
-                AutoBlackTerm(command)//AutoBQTTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^auto\-b-qb\-(spam|off|name|lq)(\-p) \S?$", regexOptions), command => new[]
-            {
-                AutoBlackTerm(command)//AutoBQBTerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^auto\-b-a\-(spam|off|name|lq)(\-p) \S?$", regexOptions), command => new[]
-            {
-                AutoBlackTerm(command)//AutoBATerm(command)
-            }, CommandAccessLevel.PrivilegedUser),
-
-            #endregion
+            # region Tag commands.
 
             new ChatCommand(new Regex(@"(?i)^add-tag \S+ \S+$", regexOptions), command => new[]
             {
@@ -293,6 +216,13 @@ namespace Phamhilator
             new ChatCommand(new Regex(@"(?i)^del-tag \S+ \S+$", regexOptions), command => new[]
             {
                 RemoveTag(command)
+            }, CommandAccessLevel.PrivilegedUser),
+
+            # endregion
+
+            new ChatCommand(new Regex(@"(?i)^auto\-b-(a|q[bt])\-(spam|off|name|lq)(\-p) \S?$", regexOptions), command => new[]
+            {
+                AutoBlackTerm(command)
             }, CommandAccessLevel.PrivilegedUser),
             new ChatCommand(new Regex(@"(?i)^clean\b", regexOptions), command => new[]
             {
@@ -1717,7 +1647,9 @@ namespace Phamhilator
 
                     Stats.PostedReports.Add(new Report
                     {
-                        Message = postedMessage, Post = post, Analysis = analysis
+                        Message = postedMessage,
+                        Post = post,
+                        Analysis = analysis
                     });
                 }
 

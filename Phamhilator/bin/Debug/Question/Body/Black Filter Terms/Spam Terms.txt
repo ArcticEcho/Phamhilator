@@ -33,7 +33,7 @@
 		"Score" : 10,
 		"TPCount" : 20,
 		"FPCount" : 20,
-		"CaughtCount" : 55
+		"CaughtCount" : 56
 	},
 	{
 		"Regex" : "officialimeiunlock",
@@ -177,7 +177,7 @@
 		"Score" : 10,
 		"TPCount" : 0,
 		"FPCount" : 3,
-		"CaughtCount" : 12
+		"CaughtCount" : 13
 	},
 	{
 		"Regex" : "(?i)BeautyLabs",
@@ -897,7 +897,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 8,
 		"FPCount" : 7,
-		"CaughtCount" : 25
+		"CaughtCount" : 26
 	},
 	{
 		"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",

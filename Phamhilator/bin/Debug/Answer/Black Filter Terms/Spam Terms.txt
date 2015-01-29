@@ -159,7 +159,7 @@
 		"Score" : 10.8585472,
 		"TPCount" : 2,
 		"FPCount" : 9,
-		"CaughtCount" : 15
+		"CaughtCount" : 16
 	},
 	{
 		"Regex" : "(?i)geolify",
@@ -572,8 +572,8 @@
 		"Site" : "",
 		"Score" : 10.8585472,
 		"TPCount" : 1,
-		"FPCount" : 3,
-		"CaughtCount" : 10
+		"FPCount" : 4,
+		"CaughtCount" : 11
 	},
 	{
 		"Regex" : "(?i)i love men",
