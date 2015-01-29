@@ -1,5 +1,596 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974747",
+		"PostUrl" : "http://math.stackexchange.com/a/1124887",
+		"Site" : "math.stackexchange.com",
+		"Title" : "You are an idiot.\nI am not lying.",
+		"Body" : "<p>You are an idiot.\nI am not lying.</p>",
+		"TimeStamp" : "2015-01-29T12:26:56.837Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\bidiot\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 2,
+				"FPCount" : 7,
+				"CaughtCount" : 22
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974744",
+		"PostUrl" : "http://superuser.com/questions/871081",
+		"Site" : "superuser.com",
+		"Title" : "qemu ARM: Unsupported syscall: 983040",
+		"Body" : "<p>I'm trying to run a ARM32 binary within qemu but I get seg fault:</p>\n\n<pre><code>root@debian:~/squashfs-root# chroot . ./qemu-arm bin/xxx\nqemu: Unsupported syscall: 983040\nqemu: Unsupported syscall: 983040\nqemu: uncaught target signal 11 (Segmentation fault) - core dumped\nSegmentation fault\n</code></pre>\n\n<p><code>bin/xxx: ELF 32-bit LSB executable, ARM, version 1, dynamically linked (uses shared libs), stripped</code></p>\n\n<p>How would I diagnose this further? Is this a bug in qemu? I'm not sure sure syscall 983040 is and I can't seem to find any documentation on it.</p>",
+		"TimeStamp" : "2015-01-29T12:26:53.793Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)call\\s\\d",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0204086,
+				"TPCount" : 0,
+				"FPCount" : 9,
+				"CaughtCount" : 20
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974731",
+		"PostUrl" : "http://android.stackexchange.com/a/97221",
+		"Site" : "android.stackexchange.com",
+		"Title" : "yes now you can install 2 whatsapp account in sinle phone p=may be its d...",
+		"Body" : "<p>yes now you can install 2 whatsapp account in sinle phone p=may be its dual or single sim not matter which phone you are using want to know full detail how can you install 2 whatsapp in singe phone then i have link for you check this link <a href=\"http://technofizi.com/2-whatsapp-in-dual-sim-phone/\" rel=\"nofollow\">how to install two whatsapp in single phone</a></p>",
+		"TimeStamp" : "2015-01-29T12:24:06.379Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 384
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974722",
+		"PostUrl" : "http://stackoverflow.com/a/28214622",
+		"Site" : "stackoverflow.com",
+		"Title" : "You have no idea about what u r doing",
+		"Body" : "<p>You have no idea about what u r doing</p>",
+		"TimeStamp" : "2015-01-29T12:21:26.689Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3037
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974721",
+		"PostUrl" : "http://serverfault.com/a/663366",
+		"Site" : "serverfault.com",
+		"Title" : "chmod -R 777 ... ? Also rm -rf ",
+		"Body" : "<p>chmod -R 777 ... ? Also rm -rf </p>",
+		"TimeStamp" : "2015-01-29T12:21:23.507Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3036
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "serverfault.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974704",
+		"PostUrl" : "http://serverfault.com/questions/663364",
+		"Site" : "serverfault.com",
+		"Title" : "How to serve custom dns to dhcp clients in openWrt?",
+		"Body" : "<p>I would like to serve custom DNS server to dhcp clients. How I can achieve that in openWrt?</p>",
+		"TimeStamp" : "2015-01-29T12:18:24.216Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 817
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974686",
+		"PostUrl" : "http://opendata.stackexchange.com/a/4398",
+		"Site" : "opendata.stackexchange.com",
+		"Title" : "the panel study of income dynamics is the authoritative source for this ...",
+		"Body" : "<p>the panel study of income dynamics is the authoritative source for this information</p>\n\n<p><a href=\"http://www.asdfree.com/search/label/panel%20study%20of%20income%20dynamics%20%28psid%29\" rel=\"nofollow\">http://www.asdfree.com/search/label/panel%20study%20of%20income%20dynamics%20%28psid%29</a></p>\n\n<p>the national longitudinal surveys also have detailed questions about this, but for a shorter cohort.</p>\n\n<p><a href=\"http://www.asdfree.com/search/label/national%20longitudinal%20surveys%20%28nls%29\" rel=\"nofollow\">http://www.asdfree.com/search/label/national%20longitudinal%20surveys%20%28nls%29</a></p>",
+		"TimeStamp" : "2015-01-29T12:15:54.577Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 383
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974685",
+		"PostUrl" : "http://opendata.stackexchange.com/questions/4395",
+		"Site" : "opendata.stackexchange.com",
+		"Title" : "Where can I find a dataset that represents the level of education or/and social class of people and their parents",
+		"Body" : "<p>I'm looking for any opportunity to to track social mobility across generations.</p>",
+		"TimeStamp" : "2015-01-29T12:15:54.146Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 816
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974673",
+		"PostUrl" : "http://serverfault.com/a/663362",
+		"Site" : "serverfault.com",
+		"Title" : "How do I run that script as a login script? Is it vbscript, powershell?",
+		"Body" : "<p>How do I run that script as a login script? Is it vbscript, powershell?</p>",
+		"TimeStamp" : "2015-01-29T12:12:38.674Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3035
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "serverfault.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974668",
+		"PostUrl" : "http://drupal.stackexchange.com/questions/145807",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "Also represent transformation",
+		"Body" : "<p>Also represent transformation and <a href=\"http://supertestoboostsfacts.com/muscle-rev-xtreme/\" rel=\"nofollow\">Muscle Rev Xtreme</a> rebirth. They begin as caterpillars hide in their cocoon, and then when they come, are something completely new. Something beautiful and can fly. Butterfly tattoos are often used to represent life changing or overcoming difficulties. The most popular tattoo design # 2: Skull Skulls are one of the most popular tattoo designs for two reasons. Often used to induce fear. Someone with a skull tattoo scary, right? This may have been the case before skulls appeared in pink pajamas. The second reason skulls are so popular is because they represent death, and the human race is obsessed with her. Skulls represent the physical part of death, decomposition of the body. Today, skulls are everywhere. Wear hats and ribbons. Dancing Skeletons, talk, drink and give riddles. Toddlers use coveralls with skulls suck pacifier. Skulls have become a form used by teenagers in hair clips....\n<a href=\"http://supertestoboostsfacts.com/muscle-rev-xtreme/\" rel=\"nofollow\">http://supertestoboostsfacts.com/muscle-rev-xtreme/</a></p>",
+		"TimeStamp" : "2015-01-29T12:11:56.226Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)muscle[- ]rev[- ]e?xtreme",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 1
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)supertestoboostsfacts",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 4
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974666",
+		"PostUrl" : "http://android.stackexchange.com/a/97217",
+		"Site" : "android.stackexchange.com",
+		"Title" : "Thanks for this prescious answer ! :))",
+		"Body" : "<p>Thanks for this prescious answer ! :))</p>",
+		"TimeStamp" : "2015-01-29T12:11:26.126Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3034
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 2993
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "android.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974644",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/176454",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "Is there any plugin to perform this task, of Auto linking files in direc...",
+		"Body" : "<p>Is there any plugin to perform this task, of Auto linking files in directories.</p>",
+		"TimeStamp" : "2015-01-29T12:07:47.776Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 16
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974638",
+		"PostUrl" : "http://magento.stackexchange.com/a/18927",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "Try:\n\n//Mage::app()-setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID)...",
+		"Body" : "<p>Try:</p>\n\n<pre><code>//Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);\nMage::app('admin');\n</code></pre>",
+		"TimeStamp" : "2015-01-29T12:07:22.391Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^ ]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 16.8727264,
+				"TPCount" : 34,
+				"FPCount" : 3,
+				"CaughtCount" : 82
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974637",
+		"PostUrl" : "http://patents.stackexchange.com/a/10316",
+		"Site" : "patents.stackexchange.com",
+		"Title" : "It expired long ago and is in the public domain.",
+		"Body" : "<p>It expired long ago and is in the public domain.</p>",
+		"TimeStamp" : "2015-01-29T12:07:12.618Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3033
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974635",
+		"PostUrl" : "http://programmers.stackexchange.com/a/271519",
+		"Site" : "programmers.stackexchange.com",
+		"Title" : "Probably is finished already in range of what author needed.",
+		"Body" : "<p>Probably is finished already in range of what author needed.</p>",
+		"TimeStamp" : "2015-01-29T12:07:06.307Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3032
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974629",
+		"PostUrl" : "http://android.stackexchange.com/a/97216",
+		"Site" : "android.stackexchange.com",
+		"Title" : "Since 3 weeks i loking for that aslo..THANKS !!",
+		"Body" : "<p>Since 3 weeks i loking for that aslo..THANKS !!</p>",
+		"TimeStamp" : "2015-01-29T12:06:37.055Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3031
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 2992
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "android.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974610",
+		"PostUrl" : "http://stackoverflow.com/questions/28214340",
+		"Site" : "stackoverflow.com",
+		"Title" : "Custom jTable sorting method",
+		"Body" : "<p>I've been having a problem with a sorting method which I posted on reddit with no response: <a href=\"http://redd.it/2tpj9h\" rel=\"nofollow\">http://redd.it/2tpj9h</a></p>",
+		"TimeStamp" : "2015-01-29T12:04:12.217Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 20,
+				"FPCount" : 20,
+				"CaughtCount" : 55
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974582",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/176447",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "I need to delete multiple selected in admin page.",
+		"Body" : "<p>I need to delete multiple selected in admin page.</p>",
+		"TimeStamp" : "2015-01-29T11:55:06.724Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3030
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974578",
+		"PostUrl" : "http://superuser.com/a/871065",
+		"Site" : "superuser.com",
+		"Title" : "can you ping the Samba server from inside the VM?",
+		"Body" : "<p>can you ping the Samba server from inside the VM?</p>",
+		"TimeStamp" : "2015-01-29T11:54:48.715Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3029
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974569",
+		"PostUrl" : "http://askubuntu.com/questions/579224",
+		"Site" : "askubuntu.com",
+		"Title" : "Ubuntu 14.04 lts freezes",
+		"Body" : "<p>i just installed ubuntu 14.04 lts. The problem is whenever i tried to open any application, it freezes and lock down completely, is there any solution for this kind of problem..  My pc spec is intel dual core, 1gb ram and an onboard nvidea graphic card, pls help me</p>",
+		"TimeStamp" : "2015-01-29T11:52:59.463Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 236
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974557",
+		"PostUrl" : "http://english.stackexchange.com/questions/224410",
+		"Site" : "english.stackexchange.com",
+		"Title" : "Does anyone know what these words mean?",
+		"Body" : "<p>Prefectial\nPrenancial\nInfantial\nMatial</p>\n\n<p>And where it come from?</p>",
+		"TimeStamp" : "2015-01-29T11:50:35.565Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 815
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974550",
+		"PostUrl" : "http://electronics.stackexchange.com/a/151512",
+		"Site" : "electronics.stackexchange.com",
+		"Title" : "Thank you for help! I have succeeded. I have completed it. I have implem...",
+		"Body" : "<p>Thank you for help! I have succeeded. I have completed it. I have implemented one software counter in program and incremented that counter on every falling edge of signal and done. Thank you for your help.</p>",
+		"TimeStamp" : "2015-01-29T11:49:51.967Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 2989
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974540",
+		"PostUrl" : "http://superuser.com/a/871061",
+		"Site" : "superuser.com",
+		"Title" : "Have you tried to browse to ~/Library/Preferences/com.apple.recentitems....",
+		"Body" : "<p>Have you tried to browse to ~/Library/Preferences/com.apple.recentitems.plist using Finder, then hit spacebar and take a look. This is probably where the servers are kept as Favorite Servers, when you call the Cmd-K under Finder ( Go > Connect to Server )</p>\n\n<p>Thanks</p>",
+		"TimeStamp" : "2015-01-29T11:48:03.774Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 2987
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974519",
 		"PostUrl" : "http://stackoverflow.com/a/28213916",
 		"Site" : "stackoverflow.com",

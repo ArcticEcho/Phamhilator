@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 50,
+		"TPCount" : 52,
 		"FPCount" : 0,
 		"CaughtCount" : 2
 	},
@@ -13,7 +13,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 16,
+		"TPCount" : 17,
 		"FPCount" : 0,
 		"CaughtCount" : 0
 	},
@@ -87,7 +87,7 @@
 		"Score" : 89,
 		"TPCount" : 488,
 		"FPCount" : 119,
-		"CaughtCount" : 3028
+		"CaughtCount" : 3037
 	},
 	{
 		"Regex" : "(?i)^please",
@@ -105,7 +105,7 @@
 		"Score" : 16.8727264,
 		"TPCount" : 34,
 		"FPCount" : 3,
-		"CaughtCount" : 81
+		"CaughtCount" : 82
 	},
 	{
 		"Regex" : "(?i)have question",
@@ -123,7 +123,7 @@
 		"Score" : 19.3837166,
 		"TPCount" : 188,
 		"FPCount" : 111,
-		"CaughtCount" : 2989
+		"CaughtCount" : 2995
 	},
 	{
 		"Regex" : "^(?=.*?(?i)please).{0,100}$",
@@ -177,7 +177,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 8,
 		"FPCount" : 6,
-		"CaughtCount" : 84
+		"CaughtCount" : 85
 	},
 	{
 		"Regex" : "^[^A-Z]*$",
@@ -186,7 +186,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 43,
 		"FPCount" : 4,
-		"CaughtCount" : 380
+		"CaughtCount" : 384
 	},
 	{
 		"Regex" : "(?is)^<.*>\\s*i want",
@@ -204,7 +204,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 0,
 		"FPCount" : 1,
-		"CaughtCount" : 14
+		"CaughtCount" : 15
 	},
 	{
 		"Regex" : "(?i)help me",
@@ -213,7 +213,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 5,
 		"FPCount" : 1,
-		"CaughtCount" : 37
+		"CaughtCount" : 38
 	},
 	{
 		"Regex" : "(?i)how about",
@@ -222,7 +222,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 0,
 		"FPCount" : 1,
-		"CaughtCount" : 5
+		"CaughtCount" : 7
 	},
 	{
 		"Regex" : "(?i)recommend jquery",
@@ -267,7 +267,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 2,
 		"FPCount" : 0,
-		"CaughtCount" : 18
+		"CaughtCount" : 19
 	},
 	{
 		"Regex" : "(?i)(please )?any ?one suggest",
@@ -294,7 +294,7 @@
 		"Score" : 19.2035675,
 		"TPCount" : 0,
 		"FPCount" : 0,
-		"CaughtCount" : 14
+		"CaughtCount" : 16
 	},
 	{
 		"Regex" : "(?i)how can (you do|i)",

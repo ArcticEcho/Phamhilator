@@ -30,7 +30,7 @@ namespace Phamhilator
 
             var type = filterConfigIsBlack.IsMatch(lower) ? FilterType.Black : FilterType.White;
             var filterTypeCommand = filterTypeClassStrip.Replace(lower, "").Substring(0, 2);
-            var filterSubclassCommand = filterSubclassStrip.Replace(lower, "").Substring(0, 2);
+            var filterSubclassCommand = filterSubclassStrip.Replace(lower, "");
             var classification = FilterClass.AnswerLQ;
 
             switch (filterTypeCommand)

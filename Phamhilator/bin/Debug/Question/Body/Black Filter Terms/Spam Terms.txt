@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 19,
+		"TPCount" : 20,
 		"FPCount" : 0,
 		"CaughtCount" : 2
 	},
@@ -13,7 +13,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 9,
+		"TPCount" : 10,
 		"FPCount" : 0,
 		"CaughtCount" : 0
 	},
@@ -33,7 +33,7 @@
 		"Score" : 10,
 		"TPCount" : 20,
 		"FPCount" : 20,
-		"CaughtCount" : 54
+		"CaughtCount" : 55
 	},
 	{
 		"Regex" : "officialimeiunlock",
@@ -483,7 +483,7 @@
 		"Score" : 10.0204086,
 		"TPCount" : 0,
 		"FPCount" : 9,
-		"CaughtCount" : 19
+		"CaughtCount" : 20
 	},
 	{
 		"Regex" : "\\sCLICK HERE\\s",
@@ -915,7 +915,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 0,
 		"FPCount" : 0,
-		"CaughtCount" : 0
+		"CaughtCount" : 1
 	},
 	{
 		"Regex" : "(?i)supertestoboostsfacts",
@@ -924,7 +924,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 2,
 		"FPCount" : 0,
-		"CaughtCount" : 3
+		"CaughtCount" : 4
 	},
 	{
 		"Regex" : "(?i)the ?healthy ?advi[cs]er?",
