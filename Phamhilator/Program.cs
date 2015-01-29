@@ -363,7 +363,7 @@ namespace Phamhilator
                     }
                     else
                     {
-                        m = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostReply(message, "`Access denied.`"));
+                        m = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported)..`"));
                     }
 
                     messageHandler.QueueItem(m);

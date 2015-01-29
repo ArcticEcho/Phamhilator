@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Linq;
 
 
 
@@ -8,13 +9,15 @@ namespace Phamhilator
     {
         public static string GetCleanReport(int messageID)
         {
-            var oldTitle = PostFetcher.EscapeString(Stats.PostedReports[messageID].Post.Title, " ");
-            var newTitle = CensorString(Stats.PostedReports[messageID].Post.Title);
+            var report = Stats.PostedReports.First(r => r.Message.ID == messageID);
 
-            var oldName = Stats.PostedReports[messageID].Post.AuthorName;
-            var newName = CensorString(Stats.PostedReports[messageID].Post.AuthorName);
+            var oldTitle = PostFetcher.EscapeString(report.Post.Title, " ");
+            var newTitle = CensorString(report.Post.Title);
 
-            return Stats.PostedReports[messageID].Message.Content.Replace(oldTitle, newTitle).Replace(oldName, newName);
+            var oldName = report.Post.AuthorName;
+            var newName = CensorString(report.Post.AuthorName);
+
+            return report.Message.Content.Replace(oldTitle, newTitle).Replace(oldName, newName);
         }
 
 

@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 2,
+		"TPCount" : 3,
 		"FPCount" : 0,
 		"CaughtCount" : 0
 	},
@@ -24,7 +24,7 @@
 		"Score" : 13.3197279,
 		"TPCount" : 15,
 		"FPCount" : 31,
-		"CaughtCount" : 817
+		"CaughtCount" : 821
 	},
 	{
 		"Regex" : "\\bpl[sz]+\\b",

@@ -1,5 +1,580 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974937",
+		"PostUrl" : "http://lifehacks.stackexchange.com/a/4029",
+		"Site" : "lifehacks.stackexchange.com",
+		"Title" : "Here are few tips:\n\n\norganise your staff as much evenly as you can,\nuse ...",
+		"Body" : "<p>Here are few tips:</p>\n\n<ul>\n<li>organise your staff as much evenly as you can,</li>\n<li>use the extra space between and next to handles underneath the bottom,</li>\n<li>if you're taking extra shoes, use extra space inside them,</li>\n<li>place small item inside packets of your clothes,</li>\n<li>use external hand luggage packets to store some narrow items,</li>\n<li>if you're taking any boxes (like gifts), fold the box and the item will take less space,</li>\n<li>take as much items you can on you (they're not weighing people)\n<ul>\n<li>take small heavy items from bag into your trousers/jacket pockets (e.g. cables, chargers),</li>\n<li>dress your-self using the heaviest clothes you're taking with you (e.g. multiple trousers, sweaters or jackets) as usually clothes are taking the most of space),</li>\n</ul></li>\n<li>if you're going with friend, ask to do the same as above (fill their pockets with extra staff as well),</li>\n</ul>",
+		"TimeStamp" : "2015-01-29T13:06:32.712Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "(?i)\\bgift'?s\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.8585472,
+				"TPCount" : 1,
+				"FPCount" : 2,
+				"CaughtCount" : 8
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974924",
+		"PostUrl" : "http://tex.stackexchange.com/a/126941",
+		"Site" : "tex.stackexchange.com",
+		"Title" : "In this case, where there are lots of text on the right, tabular with sy...",
+		"Body" : "<p>In this case, where there are lots of text on the right, <code>tabular</code> with symbol separation would have been sufficient (and simpler):</p>\n\n<pre><code>\\begin{tabular}{l @{ $=$ } l}\n$P$ & notional permeability factor\\    $N$ & number of waves\\    $S_d$ & damage level \\    $f(x,y,z)$ & distribution\n\\end{tabular}\n</code></pre>\n\n<p>Resulting in</p>\n\n<p><img src=\"http://i.stack.imgur.com/cUkJ8.png\" alt=\"enter image description here\"></p>\n\n<p>It should be possible to replace <code>@{ $=$ }</code> with <code>!{=}</code> since the <code>!</code> adds space before and after the separator but I can't get it work. </p>\n\n<p>Ps: thanks to siteduzero.com</p>",
+		"TimeStamp" : "2015-01-29T13:05:01.798Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3005
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974923",
+		"PostUrl" : "http://superuser.com/a/871094",
+		"Site" : "superuser.com",
+		"Title" : "this is why Linux is such a FUCKING FAILURE and always will be.\nI open a...",
+		"Body" : "<p>this is why Linux is such a FUCKING FAILURE and always will be.\nI open a pdf file and there's NO FUCKING WAY to search it - I have to  open a command prompt and type long instructions which never  work first time...\nFUCKING PATHETIC BASEMENT DWELLERS use the command line for everything.\nI don't have time for this sweaty shit.</p>",
+		"TimeStamp" : "2015-01-29T13:04:33.606Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\bfuck",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11,
+				"TPCount" : 12,
+				"FPCount" : 6,
+				"CaughtCount" : 30
+			},
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\bshit\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 12,
+				"FPCount" : 15,
+				"CaughtCount" : 55
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974895",
+		"PostUrl" : "http://physics.stackexchange.com/a/162210",
+		"Site" : "physics.stackexchange.com",
+		"Title" : "By popular demand (considering two to be popular \u2014 thanks @Rod Vance and...",
+		"Body" : "<p>By popular demand (considering two to be popular \u2014 thanks @Rod Vance and @Love Learning), I'll expand a bit on my comment to @Kieran Hunt's answer:</p>\n\n<h3>Thermal equilibrium</h3>\n\n<p>As I said in the comment, the notion of sound in space plays a very significant role in cosmology: When the Universe was very young, dark matter, normal (\"baryonic\") matter, and light (photons) was in thermal equilibrium, i.e. they shared the same (average) energy per particle, or temperature. This temperature was so high, that neutral atoms couldn't form; everytime it tried, the electron would get knocked off by a photon (or another particle). The photons themselves couldn't travel very far, before hitting a free electron.</p>\n\n<h3>Speed of sound in the primordial soup</h3>\n\n<p>Everything was very smooth, no galaxies or anything like that had formed. Stuff was still slightly clumpy, though, and the clumps growed in size due to gravity. But as a clump grows, pressure from baryons and photons increase, counteracting the collapse, and pushing baryons and photons outwards, while the dark matter tends to stay at the center of the overdensity, since it doesn't care about pressure. This creates oscillations, or sound waves with tremendously long wavelengths, and with velocities of the order of half the speed of light (here you cannot use the formula given by @Kieran Hunt, since the pressure of photon cannot be neglected, instead you use the more general\n$$c = \\sqrt{\\gamma \\frac{p}{\\rho}},$$\nwhere $p$ and $\\rho$ are the pressure and density of the gas; this formula reduces to @Kieran Hunt's for an ideal gas).</p>\n\n<h3>Recombination</h3>\n\n<p>As the Universe expanded, it gradually cooled down. At an age of 379,000 years it had reached a temperature of ~3000 K, and protons and electron could now combine to form neutral atoms. This is called the \"Epoch of Recombination\", though they hadn't previously been combined.</p>\n\n<h3>Decoupling</h3>\n\n<p>Suddenly (the cosmological \"suddenly\" \u2014 I think it was over a course of ~10,000 years) the free electrons disappeared, and photons could stream freely, diffusing away and relieving the overdensity of its pressure.</p>\n\n<h3>Cosmic microwave background</h3>\n\n<p>The radiation that decoupled has ever since redshifted due to the expansion of the Universe, and since the Universe has now expanded ~1100 times, we see the light (called the cosmic microwave background, or CMB) now with a temperature of 3000 K (which was the temperature of the Universe at the time of decoupling), but a temperature of (3000 K)/1100 = 2.73 K, which is the temperature that @Kieran Hunt refers to in his answer.</p>\n\n<h3>Baryon acoustic oscillations</h3>\n\n<p>These overdensities, or <i>baryon acoustic oscillations</i> (BAOs),  are on much larger scales than galaxies, but galaxies tend to clump on these scales, which has ever since expanded and now has a characteristic scale of ~100 $h^{-1}$Mpc, or 465 million lightyears. Measuring how the inter-clump distance change with time provides a way of understanding the expansion history, and acceleration, of the Universe, independent of other methods such as supernovae and the CMB. And beautifully, <a href=\"http://francis.naukas.com/files/2010/02/dibujo20100220_cosmological_precision_data_from_wmap_5_bao_sne.png\" rel=\"nofollow\">the methods all agree</a>.</p>",
+		"TimeStamp" : "2015-01-29T12:59:04.604Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3003
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974891",
+		"PostUrl" : "http://superuser.com/questions/871090",
+		"Site" : "superuser.com",
+		"Title" : "How to unblock fortiguard web filtering unblock?",
+		"Body" : "<p>How will I unblock fortiguard web filtering at company. I can't check YOUTUBE videos etc.</p>",
+		"TimeStamp" : "2015-01-29T12:58:46.522Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 821
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974888",
+		"PostUrl" : "http://android.stackexchange.com/a/96797",
+		"Site" : "android.stackexchange.com",
+		"Title" : "reflash the rom, dont reboot into system, reboot to fastboot or bootload...",
+		"Body" : "<p>reflash the rom, dont reboot into system, reboot to fastboot or bootloader (if so go to fastboot) then do fastboot flash boot boot.img) (you need to extract this from the rom zip you installed)</p>",
+		"TimeStamp" : "2015-01-29T12:58:19.642Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 387
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974887",
+		"PostUrl" : "http://android.stackexchange.com/a/97226",
+		"Site" : "android.stackexchange.com",
+		"Title" : "how to make all the things you've said here? I have the same problem",
+		"Body" : "<p>how to make all the things you've said here? I have the same problem</p>",
+		"TimeStamp" : "2015-01-29T12:58:19.327Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 398
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3041
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 17
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "android.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974872",
+		"PostUrl" : "http://drupal.stackexchange.com/a/145816",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "Do you fix the problem?\n\nCan you help me with it?\n\nThanks.",
+		"Body" : "<p>Do you fix the problem?</p>\n\n<p>Can you help me with it?</p>\n\n<p>Thanks.</p>",
+		"TimeStamp" : "2015-01-29T12:55:37.334Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3002
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 5,
+				"FPCount" : 1,
+				"CaughtCount" : 39
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(please )?help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 20
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974869",
+		"PostUrl" : "http://ell.stackexchange.com/a/48294",
+		"Site" : "ell.stackexchange.com",
+		"Title" : "As by the request of the question, i see you need a informal comment. Wh...",
+		"Body" : "<p>As by the request of the question, i see you need a informal comment. When you are saying something informal you don't need a special way. I would say, <em>just speak what's on your mind</em> . Some of examples are below <br></p>\n\n<blockquote>\n  <p>Your pic is on Flickr/site name too.</p>\n  \n  <p>I'm happy to found that your photo is featured on Flickr too.</p>\n  \n  <p>You got famous on Flickr.</p>\n</blockquote>\n\n<p>And even writing <em>Great pic on Flickr too</em> would look good. Writing small things like <em>thanks</em> never looks like repetitive or <em>robotic</em> .</p>",
+		"TimeStamp" : "2015-01-29T12:54:28.596Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3001
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974867",
+		"PostUrl" : "http://stackoverflow.com/questions/28215285",
+		"Site" : "stackoverflow.com",
+		"Title" : "Best Printer for POS in India for android and iPad?",
+		"Body" : "<p>Bluetooth receipt printer for android tablet in India ?</p>",
+		"TimeStamp" : "2015-01-29T12:53:41.539Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 820
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 6.659864,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974864",
+		"PostUrl" : "http://pt.stackoverflow.com/questions/48665",
+		"Site" : "pt.stackoverflow.com",
+		"Title" : "Como chamar arquivos CSS utilizando Kohana PHP 3.3",
+		"Body" : "<p>Sou iniciante em Kohana e gostaria saber como fazer para chamar o arquivo CSS na view.</p>",
+		"TimeStamp" : "2015-01-29T12:52:33.148Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 819
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974841",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203396",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "Why kotekzot? Because your experience was different than theirs? Thats a...",
+		"Body" : "<p>Why kotekzot? Because your experience was different than theirs? Thats a stupid reason. The game for one is massive and has so many random glitches from that much RAM goin on all the time that alone is enough for that to be possible, but then you throw in the fact that pc gamers cant leave a game alone that is fine and dandy all on its own then why cant you see this bein an option to have happened for this person? I still see shit that ive never seen before on this game and ive logged like a 1000 hours across all my profiles. You just need to calm your little overzealous ass down about what happened for you because not every gamer has the same gameplay or experience that you do.</p>",
+		"TimeStamp" : "2015-01-29T12:46:54.295Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\bshit\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 12,
+				"FPCount" : 15,
+				"CaughtCount" : 54
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974840",
+		"PostUrl" : "http://pt.stackoverflow.com/a/48663",
+		"Site" : "pt.stackoverflow.com",
+		"Title" : "a solu\u00E7\u00E3o \u00E9 alterar o div:\n\n\n\n\npara\n\n\n\n\nremovento o estilo in",
+		"Body" : "<p>a solu\u00E7\u00E3o \u00E9 alterar o div:</p>\n\n<pre><code><div id=\"collapse_@i\" class=\"panel-collapse collapse in\" role=\"tabpanel\" aria-labelledby=\"heading_@i\">\n</code></pre>\n\n<p>para</p>\n\n<pre><code><div id=\"collapse_@i\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading_@i\">\n</code></pre>\n\n<p>removento o estilo <code>in</code></p>",
+		"TimeStamp" : "2015-01-29T12:46:52.927Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 386
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974824",
+		"PostUrl" : "http://electronics.stackexchange.com/questions/140832",
+		"Site" : "electronics.stackexchange.com",
+		"Title" : "What happens to the gain of a switched capacitor circuit when a resistor is placed in series with the input voltage driving source?",
+		"Body" : "<p>Why might that happen? </p>\n\n<p>This was an interview question I received</p>",
+		"TimeStamp" : "2015-01-29T12:43:00.337Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 818
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974821",
+		"PostUrl" : "http://photo.stackexchange.com/a/59801",
+		"Site" : "photo.stackexchange.com",
+		"Title" : "I am still confused about this, but thanks for the help",
+		"Body" : "<p>I am still confused about this, but thanks for the help</p>",
+		"TimeStamp" : "2015-01-29T12:41:48.279Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3040
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 2999
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974820",
+		"PostUrl" : "http://drupal.stackexchange.com/a/145813",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "1.Use module views bootstrap accordion",
+		"Body" : "<p>1.Use module views bootstrap accordion</p>",
+		"TimeStamp" : "2015-01-29T12:41:34.059Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3039
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974810",
+		"PostUrl" : "http://serverfault.com/a/663374",
+		"Site" : "serverfault.com",
+		"Title" : "Check to see if the member server is in the AD DNS",
+		"Body" : "<p>Check to see if the member server is in the AD DNS</p>",
+		"TimeStamp" : "2015-01-29T12:39:38.236Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3038
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "serverfault.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974803",
+		"PostUrl" : "http://webmasters.stackexchange.com/a/76642",
+		"Site" : "webmasters.stackexchange.com",
+		"Title" : "At last i found a solution my self, \n\nBy default CSS is treated as a ren...",
+		"Body" : "<p>At last i found a solution my self, </p>\n\n<p>By default CSS is treated as a render blocking resource, which means that the browser will hold rendering of any processed content until the CSSOM is constructed. Make sure to keep your CSS lean, deliver it as quickly as possible, and use media types and queries to unblock rendering.</p>\n\n<p>To fix this issue, what you need to do is identify the style sheet rule that applies to the above fold content, just remove them from the external css file, minify them and deliver it as inline CSS. And then move your external css link to bottom of the page. Like below, </p>\n\n<pre><code><html>\n  <head>\n    <style>\n      .blue{color:blue;}\n    </style>\n  </head>\n  <body>\n    <div class=\"blue\">\n      Hello, world!\n    </div>\n  </body>\n</html>\n</code></pre>\n\n<p>After making the style rule delivery of above fold as like this, i could achieve speed score 100/100 for one of my landing page. You can have a look on <a href=\"https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fnavasazeez.com%2Fseo-tools%2F\" rel=\"nofollow\">speed insight score</a>.</p>\n\n<p><strong>NOTE: Never use inline css delivery if style rule is to heavy</strong></p>",
+		"TimeStamp" : "2015-01-29T12:36:39.453Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 6,
+				"CaughtCount" : 86
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974795",
+		"PostUrl" : "http://salesforce.stackexchange.com/a/64675",
+		"Site" : "salesforce.stackexchange.com",
+		"Title" : "I have the same issue. Did you try in your developer org. I am trying th...",
+		"Body" : "<p>I have the same issue. Did you try in your developer org. I am trying this in my developer org. I gave the URL as below :</p>\n\n<p><a href=\"https://.....-my.sharepoint.com/personal/\" rel=\"nofollow\">https://.....-my.sharepoint.com/personal/</a></p>\n\n<p>When I do the validate sync I get an error : OAuth token expired</p>\n\n<p>Do you have any idea.</p>\n\n<p>Thanks,\nPrasun</p>",
+		"TimeStamp" : "2015-01-29T12:34:08.067Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 397
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 2997
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 16
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974792",
+		"PostUrl" : "http://android.stackexchange.com/a/97222",
+		"Site" : "android.stackexchange.com",
+		"Title" : "yes its possible i dont know its work in all app or not but you can inst...",
+		"Body" : "<p>yes its possible i dont know its work in all app or not but you can install 2 whatsapp in single mobile. check this here full detail for this: <a href=\"http://technofizi.com/2-whatsapp-in-dual-sim-phone/\" rel=\"nofollow\">how to install 2 whatsapp in single phone</a> </p>",
+		"TimeStamp" : "2015-01-29T12:33:07.669Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 385
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974780",
+		"PostUrl" : "http://codegolf.stackexchange.com/a/45128",
+		"Site" : "codegolf.stackexchange.com",
+		"Title" : "CJam, 34 bytes\n\n1l+256b2b1l{'a-\"11W:mm%!\"4%~}/\n\n\nIt uses the following c...",
+		"Body" : "<h1>CJam, 34 bytes</h1>\n\n<pre><code>1l+256b2b1>l{'a-\"11W:mm%!<>\">4%~}/\n</code></pre>\n\n<p>It uses the following characters for instructions:</p>\n\n<pre><code>a: left rotation\nb: right rotation\nc: reverse\nd: flip\n</code></pre>\n\n<p>The input is taking from STDIN with the word on the first line and the instruction string on the second line.</p>\n\n<p><a href=\"http://cjam.aditsu.net/\" rel=\"nofollow\">Test it here.</a></p>\n\n<h2>Explanation</h2>\n\n<p>Getting the bit string is really just a matter of interpreting the character codes as the digits of a base-256 number (and getting its base-2 representation). The tricky thing is that the latter base conversion won't pad the result with 0s on the left. Therefore, I add a leading 1 to the initial input, and then split off that 1 again in the binary representation. As an example, if the input is <code>ab</code>, I turn that into an array <code>[1 'a 'b]</code>, interpret that as base-256 (characters are automatically converted to character codes), which is <code>90466</code> and the to base-2, which is <code>[1 0 1 1 0 0 0 0 1 0 1 1 0 0 0 1 0]</code>. Now if I just remove that leading <code>1</code> I've got the bitstream I'm looking for.</p>\n\n<p>That's what this part of the code does:</p>\n\n<pre><code>1l+256b2b1>\n</code></pre>\n\n<p>Now I read the list of instructions and execute a block for each character in the instruction string:</p>\n\n<pre><code>l{...}/\n</code></pre>\n\n<p>The first thing to do is to subtract the character <code>a</code> from each instruction, which turns them into integers <code>0</code>, <code>1</code>, <code>2</code> or <code>3</code>. Now the real golfy magic... depending on the instruction I want to run a short piece of code that implements the operation:</p>\n\n<pre><code>Character -> Integer:  Code  Operation\na            0         1m<   \"Left rotation\";\nb            1         1m>   \"Right rotation\";\nc            2         W%    \"Reverse\";\nd            3         :!    \"Flip each bit\";\n</code></pre>\n\n<p>I could store these in an array of blocks and choose the right block to run, but encoding them in a string is actually shorter:</p>\n\n<pre><code>\"11W:mm%!<>\">4%~\n</code></pre>\n\n<p>First, I use the integer associate with the instruction to slice off the beginning of the string. So for left rotation, the string is unchanged, for right rotation the first character is discarded and so on. Then I select every fourth character from the string, starting from the first, with <code>4%</code>. Notice how the four code snippets are distributed throughout the string. Finally I just evaluate the string as code with <code>~</code>.</p>\n\n<p>The bit string is printed automatically at the end of the program.</p>",
+		"TimeStamp" : "2015-01-29T12:31:33.972Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 43
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974747",
 		"PostUrl" : "http://math.stackexchange.com/a/1124887",
 		"Site" : "math.stackexchange.com",
