@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 1,
+		"TPCount" : 2,
 		"FPCount" : 0,
 		"CaughtCount" : 2
 	},

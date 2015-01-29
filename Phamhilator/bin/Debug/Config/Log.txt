@@ -1,5 +1,1360 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974519",
+		"PostUrl" : "http://stackoverflow.com/a/28213916",
+		"Site" : "stackoverflow.com",
+		"Title" : "\u092F\u0926\u093F \u0906\u092A Windows \u091B\u0935\u093F \u0915\u0947 \u0938\u093E\u0925 \u0938\u093E\u0925 VMware \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0915\u094B\u0936\u093F\u0936 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902",
+		"Body" : "<p>\u092F\u0926\u093F \u0906\u092A Windows \u091B\u0935\u093F \u0915\u0947 \u0938\u093E\u0925 \u0938\u093E\u0925 VMware \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0915\u094B\u0936\u093F\u0936 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902</p>",
+		"TimeStamp" : "2015-01-29T11:43:48.468Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3028
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974479",
+		"PostUrl" : "http://physics.stackexchange.com/a/16625",
+		"Site" : "physics.stackexchange.com",
+		"Title" : "Thanks David. I tried to re-write Your solution for the 2D case. So assu...",
+		"Body" : "<p>Thanks David. I tried to re-write Your solution for the 2D case. So assume that the inner area of circle is also charged. Then:</p>\n\n<p>$dq = r \\rho \\, d\\alpha \\, dr$</p>\n\n<p>and the final integral is</p>\n\n<p>$U = \\frac{1}{2} \\cdot \\rho^2 \\int_{0}^{2 \\pi} \\int_{0}^{2 \\pi} \\int_{0}^{R} \\int_{0}^{R} \\frac{r_1 r_2 \\, dr_1 \\, dr_2 \\, d\\theta_1 \\, d\\theta_2 }{\\sqrt{(r_1-r_2 \\cos(\\theta_1 -\\theta_2))^2 + r_2^2 \\sin^2 (\\theta_1 -\\theta_2)}}$</p>\n\n<p>here $1/2$ takes into account double counting of interactions.</p>\n\n<p>I cannot take this integral - nor can I take Yours - but I can see that there are cases when denominator is equal to zero.</p>\n\n<p>It seems to me that such an approach will always give divergence. The only thing which works - is a Poisson's equation: it gives finite potential in 3D for a charged ball (internals also charged).</p>\n\n<p>The reason for that could be abstractness of $\\rho$ - in reality we always have \"discete\" electrons - and if we wish to take that into account - maybe we have to work within quantum theory of electricity.</p>",
+		"TimeStamp" : "2015-01-29T11:38:31.910Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 110,
+				"CaughtCount" : 2985
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974459",
+		"PostUrl" : "http://stackoverflow.com/a/28213704",
+		"Site" : "stackoverflow.com",
+		"Title" : "Finally I solved the issue of session handling in Android. Android cant ...",
+		"Body" : "<p>Finally I solved the issue of session handling in Android. Android cant handle the session itself(which a simple browser can) so we have to handle it explicitly. I changed the code for http connection a bit. Created an instance of DefaultHttpClient in the first Activity when connection established</p>\n\n<pre><code>public static DefaultHttpClient httpClient;\n</code></pre>\n\n<p>For the first time connection,I did the following:</p>\n\n<p>public class ServiceHandler {</p>\n\n<pre><code>static String response = null;\npublic final static int GET = 1;\npublic final static int POST = 2;\n\npublic ServiceHandler() {\n\n}\n\npublic String makeServiceCall(String url, int method) {\n    return this.makeServiceCall(url, method, null);\n}\n\npublic String makeServiceCall(String url, int method,\n        List<NameValuePair> params) {\n    try {\n\n        // http client\n\n        HttpEntity httpEntity = null;\n        HttpResponse httpResponse = null;\n\n        // Checking http request method type\n        if (method == POST) {\n            HttpPost httpPost = new HttpPost(url);\n            // adding post params\n            if (params != null) {\n                httpPost.setEntity(new UrlEncodedFormEntity(params));\n            }\n\n            httpResponse = MainActivity.httpClient.execute(httpPost);\n\n        } else if (method == GET) {\n            // appending params to url\n            if (params != null) {\n                String paramString = URLEncodedUtils\n                        .format(params, \"utf-8\");\n                url += \"?\" + paramString;\n            }\n            HttpGet httpGet = new HttpGet(url);\n\n            httpResponse = MainActivity.httpClient.execute(httpGet);\n\n        }\n        httpEntity = httpResponse.getEntity();\n        response = EntityUtils.toString(httpEntity);\n\n    } catch (UnsupportedEncodingException e) {\n        e.printStackTrace();\n    } catch (ClientProtocolException e) {\n        e.printStackTrace();\n    } catch (IOException e) {\n        e.printStackTrace();\n    }\n\n    return response;\n\n}\n</code></pre>\n\n<p>}</p>\n\n<p>and call as following way</p>\n\n<pre><code>jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);\n</code></pre>\n\n<p>this will help me too to solve session issue in Android.</p>",
+		"TimeStamp" : "2015-01-29T11:32:42.947Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 5,
+				"FPCount" : 1,
+				"CaughtCount" : 37
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(please )?help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 18
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974439",
+		"PostUrl" : "http://meta.stackexchange.com/questions/247767",
+		"Site" : "meta.stackexchange.com",
+		"Title" : "Work at home best apertunti",
+		"Body" : "<p>what Sandra responded I am dazzled that a stay at home mom able to profit $4954 in four weeks on the internet my neighbor's mother makes $63 /hour on the internet . She has been without a job for 8 months but last month her payment was $15225 just working on the internet for a few hoursjust before I looked at the check ov $4954 , I didn't believe ...that...my brothers friend could actualey bringing in money in their spare time on-line. . there sisters neighbour had bean doing this 4 less than nineteen months and a short time ago paid the debts on their place and bought a new GMC . Violet . I agree that Sandra `s blog is impressive... last wednesday I bought a new GMC after bringing in $9926 this-last/5 weeks and-over, 10/k this past month . it's definitly the easiest-work I've had . I began this three months/ago and practically straight away startad earning over $79.. per hour .My Uncle Evan recently got an awesome year old Infiniti G Convertible only from working off a pc at home what Sheila replied I didn't even know that a single mom able to make $6351 in four weeks on the computer .my co-worker's sister-in-law makes $85 every hour on the laptop . She has been without work for six months but last month her pay check was $15510 just working on the laptop for a few hours. check this site out Wikiencome .go to this web-site >>>>>>>>>>>> <a href=\"http://wikijobs99.com/\" rel=\"nofollow\">http://wikijobs99.com/</a></p>",
+		"TimeStamp" : "2015-01-29T11:29:30.442Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*(>>|vist|like).{0,10}<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 10,
+				"FPCount" : 2,
+				"CaughtCount" : 9
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 19,
+				"FPCount" : 20,
+				"CaughtCount" : 54
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "\\>\\>\\>\\>\\>",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 15,
+				"FPCount" : 24,
+				"CaughtCount" : 54
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 3,
+				"FPCount" : 1,
+				"CaughtCount" : 11
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974436",
+		"PostUrl" : "http://android.stackexchange.com/a/97213",
+		"Site" : "android.stackexchange.com",
+		"Title" : "how i downgrade my motoG2nd lolipop to kitkat..plz do the needfull..",
+		"Body" : "<p>how i downgrade my motoG2nd lolipop to kitkat..plz do the needfull..</p>",
+		"TimeStamp" : "2015-01-29T11:28:08.895Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3024
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "android.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974411",
+		"PostUrl" : "http://drupal.stackexchange.com/questions/145803",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "will maintain skin wetness",
+		"Body" : "<p>Why It\u2019s higher Than botulinum toxin\nWhen you gift on your own, your face is that the terribly very first thing people read once they meet you and additionally why wouldn't you need to possess beautiful, healthy and balanced skin? High efficiency wrinkle decrease remedy that's rather more reliable than resorting to botulin toxin treatments, optical maser device therapies or <a href=\"http://%20http://www.thehealthyadvise.com/dermaessence-skin-cream/\" rel=\"nofollow\">DermaEssence Skin Care</a> additionally plastic surgical operation. These medical procedures will price you thousands of bucks and might be terribly painful. Botulin toxin or surgeries not will something to deal with your weakened dermal tissue or replace the important nutrients or peptides required. It\u2019s completely different within the reality it consists of natural ingredients like Trylagen and additionally Argireline to deal with your aging issues.\nRight Now>>>>>>>>>>>>>>> <a href=\"http://www.thehealthyadvise.com/dermaessence-skin-cream/\" rel=\"nofollow\">http://www.thehealthyadvise.com/dermaessence-skin-cream/</a></p>",
+		"TimeStamp" : "2015-01-29T11:23:24.967Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "\\>\\>\\>\\>\\>",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 15,
+				"FPCount" : 24,
+				"CaughtCount" : 53
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 3,
+				"FPCount" : 1,
+				"CaughtCount" : 10
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)the ?healthy ?advi[cs]er?",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 1
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974408",
+		"PostUrl" : "http://gis.stackexchange.com/a/132277",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "Thanks! it works. I didn't realized that it was ArcGIS Server",
+		"Body" : "<p>Thanks! it works. I didn't realized that it was ArcGIS Server</p>",
+		"TimeStamp" : "2015-01-29T11:23:01.442Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3023
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 110,
+				"CaughtCount" : 2981
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974400",
+		"PostUrl" : "http://apple.stackexchange.com/a/169536",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "So I'm a bit late, and with new problems to solve anyway.\nMy issues was ...",
+		"Body" : "<p>So I'm a bit late, and with new problems to solve anyway.\nMy issues was that my main folder which contained the binaries had a SPACEBAR in the name.\nAnd ocl has issues with those. \nI removed the spacebar and it built smoothly.\nI did NOT expect this.</p>\n\n<p>Thanks everyone.</p>",
+		"TimeStamp" : "2015-01-29T11:20:03.384Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 110,
+				"CaughtCount" : 2979
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974396",
+		"PostUrl" : "http://stackoverflow.com/a/28213345",
+		"Site" : "stackoverflow.com",
+		"Title" : "Now I have a requirement some what same like yours. I need to create a s...",
+		"Body" : "<p>Now I have a requirement some what same like yours. I need to create a separate desktop which will comes under window station.</p>\n\n<p>So can you please help me out with this. I need to do this using C# .net.</p>",
+		"TimeStamp" : "2015-01-29T11:16:24.900Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)pl(ease|s|z) help",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 17,
+				"TPCount" : 20,
+				"FPCount" : 3,
+				"CaughtCount" : 123
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 5,
+				"FPCount" : 1,
+				"CaughtCount" : 35
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(please )?help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 16
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974381",
+		"PostUrl" : "http://stackoverflow.com/a/28213206",
+		"Site" : "stackoverflow.com",
+		"Title" : "Try bind and unbind the click events for the button via jQuery",
+		"Body" : "<p>Try bind and unbind the click events for the button via jQuery</p>",
+		"TimeStamp" : "2015-01-29T11:10:52.949Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3022
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974356",
+		"PostUrl" : "http://cs.stackexchange.com/a/37736",
+		"Site" : "cs.stackexchange.com",
+		"Title" : "it introduces some context-free languages that use sub-linear space and ...",
+		"Body" : "<p>it introduces some context-free languages that use sub-linear space and specially a  language\nusing log(n) space.\nit is really interesting!</p>",
+		"TimeStamp" : "2015-01-29T11:05:10.603Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 376
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974355",
+		"PostUrl" : "http://webapps.stackexchange.com/questions/73304",
+		"Site" : "webapps.stackexchange.com",
+		"Title" : "how to forward emails to all my users",
+		"Body" : "<p>I recently buy yahoo bizmail but there are no option to create mailing list or email forwarder. I have setup all users and now can't go to other services provider.</p>\n\n<p>i have 200 users and want to send some mails to all users on my domain.</p>\n\n<p>i have id news@domain.com and i want any mail sent to this id will forward to all 200 users.</p>\n\n<p>plz help i can pay for any third part email forwarding service also</p>",
+		"TimeStamp" : "2015-01-29T11:04:48.335Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 235
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974352",
+		"PostUrl" : "http://superuser.com/a/871050",
+		"Site" : "superuser.com",
+		"Title" : "SATA controller must be set to AHCI mode and QUICKSET must be installed ",
+		"Body" : "<p>SATA controller must be set to AHCI mode and QUICKSET must be installed </p>",
+		"TimeStamp" : "2015-01-29T11:03:16.737Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3021
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974348",
+		"PostUrl" : "http://worldbuilding.stackexchange.com/a/9422",
+		"Site" : "worldbuilding.stackexchange.com",
+		"Title" : "I'm going to [mis]interpret your question as, \"How can I brighten the ni...",
+		"Body" : "<p>I'm going to [mis]interpret your question as, \"How can I brighten the night sky <em>so people can easily see things around them,</em>\" and suggest: <strong>snow</strong>.</p>\n\n<p><img src=\"http://i.imgur.com/eoaVd44.jpg?1\" alt=\"snowy day\"></p>\n\n<p>I took this picture Dec 29, which I think had a quarter moon, 6 or 7 hours after sunset, we'd had about a foot of snow, and I think the sky was heavily overcast; the scene looked very much like this picture to my dark-adjusted eyes.  When there's lots of snow on the ground (or for your case, maybe the local ground (probably a few <em>miles</em> in every direction) is something like a polished quartz?) and trees, and especially when there are low clouds, any light reflects around a lot and you can see pretty well.  It's nowhere near as bright as daylight, of course, and the light doesn't <em>seem</em> as bright as on a night with a full moon, but the light gets distributed more evenly than on a full moon so the shadows aren't as dark and you can see everywhere, more or less.</p>\n\n<p>There's definitely an impact during the day, since snow also reflects the sunlight.  But that's not really unexpected in climates that get lots of snow (I often wear sunglasses when driving in the summer (when the sun is high and bright) <em>and</em> in the winter (when it reflects off the snow) but not in fall or spring).</p>",
+		"TimeStamp" : "2015-01-29T11:02:50.600Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 13
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974347",
+		"PostUrl" : "http://worldbuilding.stackexchange.com/a/9411",
+		"Site" : "worldbuilding.stackexchange.com",
+		"Title" : "How about something like a Dyson sphere encompassing the star and the pl...",
+		"Body" : "<p>How about something like a <a href=\"https://en.wikipedia.org/wiki/Dyson_sphere\" rel=\"nofollow\">Dyson sphere</a> encompassing the star and the planet? This could be seen as a bit of an \"the ancients built it\" McGuffin, but physically plausible.</p>\n\n<p>This is also reminiscent of the planet <a href=\"http://hitchhikers.wikia.com/wiki/Krikkit\" rel=\"nofollow\">Krikkit</a> in the HHGTTG trilogy.</p>\n\n<p>You specified a spherical planet, but I am also reminded of how <a href=\"https://en.wikipedia.org/wiki/Fafhrd_and_the_Gray_Mouser\" rel=\"nofollow\">Fafhrd and the Gray Mouser</a> speculated, in <em>Trapped in the Sea of Stars</em> (which can be found in the collection <em>Swords and Ice Magic</em>), that Nehwon was on the inside of a sphere and the stars were actually sunlight shining through large waterspouts on the opposite side. Their philosophical musings while aboard their ship are worth a read.</p>",
+		"TimeStamp" : "2015-01-29T11:02:50.274Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how about",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 3
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974311",
+		"PostUrl" : "http://scifi.stackexchange.com/a/80453",
+		"Site" : "scifi.stackexchange.com",
+		"Title" : "Kyle Rayner has given a copy of Hal Jordan's power ring to Jade once.",
+		"Body" : "<p>Kyle Rayner has given a copy of Hal Jordan's power ring to Jade once.</p>",
+		"TimeStamp" : "2015-01-29T10:58:23.448Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3020
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974291",
+		"PostUrl" : "http://tex.stackexchange.com/a/225503",
+		"Site" : "tex.stackexchange.com",
+		"Title" : "The file name should not contain space.",
+		"Body" : "<p>The file name should not contain space.</p>",
+		"TimeStamp" : "2015-01-29T10:56:14.546Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3019
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974287",
+		"PostUrl" : "http://islam.stackexchange.com/questions/21654",
+		"Site" : "islam.stackexchange.com",
+		"Title" : "Punishment for kissing & touching with womens",
+		"Body" : "<p>What are the punishment for kissing & touching with womens</p>",
+		"TimeStamp" : "2015-01-29T10:54:59.252Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 813
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974283",
+		"PostUrl" : "http://stackoverflow.com/questions/28212900",
+		"Site" : "stackoverflow.com",
+		"Title" : "C# ASP.NET Developer in Prague wanted",
+		"Body" : "<h2>I'm lookinf for C# ASP.NET Developer. Became a member of interntional team and use modern technologies to work on big project with Europe-wide reach. Please, contact me for more info. (mail/ linkedin) Ji\u0159\u00ED Z\u00E1rybnick\u00FD +420777861633 jiri.zarybnicky@goodcal.eu cz.linkedin.com/in/jirizarybnicky <a href=\"http://www.goodcall.eu/\" rel=\"nofollow\">http://www.goodcall.eu/</a></h2>",
+		"TimeStamp" : "2015-01-29T10:53:52.469Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 18,
+				"FPCount" : 20,
+				"CaughtCount" : 53
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974281",
+		"PostUrl" : "http://webapps.stackexchange.com/questions/73303",
+		"Site" : "webapps.stackexchange.com",
+		"Title" : "iPad photos selected folders synchronization with dropbox",
+		"Body" : "<p>how to synchronize photos selected folders with dropbox on iPad by desktop Mac application?</p>",
+		"TimeStamp" : "2015-01-29T10:53:36.644Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 812
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974279",
+		"PostUrl" : "http://money.stackexchange.com/a/43731",
+		"Site" : "money.stackexchange.com",
+		"Title" : "I am Natasha Howard from Indianapolis here in USA, I wanna advise all th...",
+		"Body" : "<p>I am Natasha Howard from Indianapolis here in USA, I wanna advise all those looking for a loan to contact Abu Abdullah Loan Firm cos that is where I got a loan from three days ago without credit check and low interest rate of 4% and there was no cosigner, if you need a loan then contact them now with this email cos I know they can still help you abuabdullahloanfirm@gmail.com</p>",
+		"TimeStamp" : "2015-01-29T10:53:12.311Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "^(?!.*?<code>).*?[-\\w]{3}@\\w+\\.",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 15,
+				"TPCount" : 32,
+				"FPCount" : 130,
+				"CaughtCount" : 501
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974248",
+		"PostUrl" : "http://askubuntu.com/questions/579203",
+		"Site" : "askubuntu.com",
+		"Title" : "Lipogen Rx Garcinia Cambogia",
+		"Body" : "<p>The best option is to purchase a Lipogen Rx Garcinia Cambogia. It is just many more idle chit-chat. I certainly have my share of it. That can be life changing. It is why you should never use a Lipogen Rx Garcinia Cambogia like that. </p>\n\n<p><a href=\"http://www.onlinefitnessworld.com/lipogen-rx-garcinia-cambogia/\" rel=\"nofollow\">http://www.onlinefitnessworld.com/lipogen-rx-garcinia-cambogia/</a></p>",
+		"TimeStamp" : "2015-01-29T10:47:22.165Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)^<p>.*</p?>\\n\\n?<p><a.*></p>$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 24
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974240",
+		"PostUrl" : "http://magento.stackexchange.com/a/53764",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "i want some update in tier price can any one provide me idea that how ca...",
+		"Body" : "<p>i want some update in tier price can any one provide me idea that how can i display all group price at once but if customer is not login then price is not display only qty display and instead of price login link to be display</p>",
+		"TimeStamp" : "2015-01-29T10:46:14.226Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 375
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*i want",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 4,
+				"FPCount" : 1,
+				"CaughtCount" : 35
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how can (you do|i)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 12
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974239",
+		"PostUrl" : "http://stackoverflow.com/a/28212718",
+		"Site" : "stackoverflow.com",
+		"Title" : "Try to echo the result ($content) and not return it.",
+		"Body" : "<p>Try to echo the result ($content) and not return it.</p>",
+		"TimeStamp" : "2015-01-29T10:45:44.540Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3018
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974232",
+		"PostUrl" : "http://raspberrypi.stackexchange.com/a/19919",
+		"Site" : "raspberrypi.stackexchange.com",
+		"Title" : "sudo apt-get install xfonts-base",
+		"Body" : "<p>sudo apt-get install xfonts-base</p>",
+		"TimeStamp" : "2015-01-29T10:44:52.637Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3017
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 374
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974218",
+		"PostUrl" : "http://ux.stackexchange.com/a/72754",
+		"Site" : "ux.stackexchange.com",
+		"Title" : "I have full freedom in where I place my monitors.\n\nThe one closest to my...",
+		"Body" : "<p>I have full freedom in where I place my monitors.</p>\n\n<p>The one closest to my keyboard, I want to be <em>close</em> to my keyboard. So it is below eye level, the bottom only barely over my hands. This is convenient so I can move my eyes from screen to keyboard easily.</p>\n\n<p>The other I have with about 10% of the screen above my eyes - I can see the screen content without craning my neck up, and everything comfortably in me view when looking straight forwards.</p>\n\n<p>For people with a single monitor, proximity to the keyboard would seem a good driving reason to make the screen lower.</p>",
+		"TimeStamp" : "2015-01-29T10:42:20.982Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 39
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974197",
+		"PostUrl" : "http://money.stackexchange.com/a/43729",
+		"Site" : "money.stackexchange.com",
+		"Title" : "I am Natasha Howard from Indianapolis here in USA, I wanna advise all th...",
+		"Body" : "<p>I am Natasha Howard from Indianapolis here in USA, I wanna advise all those looking for a loan to contact Abu Abdullah Loan Firm cos that is where I got a loan from three days ago without credit check and low interest rate of 4% and there was no cosigner, if you need a loan then contact them now with this email cos I know they can still help you abuabdullahloanfirm@gmail.com</p>",
+		"TimeStamp" : "2015-01-29T10:39:59.198Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "^(?!.*?<code>).*?[-\\w]{3}@\\w+\\.",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 15,
+				"TPCount" : 32,
+				"FPCount" : 130,
+				"CaughtCount" : 499
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974195",
+		"PostUrl" : "http://sharepoint.stackexchange.com/a/130093",
+		"Site" : "sharepoint.stackexchange.com",
+		"Title" : "I would like to do this with a list template as will. Is that possible. ?",
+		"Body" : "<p>I would like to do this with a list template as will. Is that possible. ?</p>",
+		"TimeStamp" : "2015-01-29T10:39:33.491Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3016
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974186",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/176436",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "I want to0 be able to download moby and epub files into my website, but ...",
+		"Body" : "<p>I want to0 be able to download moby and epub files into my website, but I missed the mnost imoportant information.</p>\n\n<p>Can I have the complete  to add on the editor?</p>\n\n<p>Where and what should I add the upload on the editor?</p>\n\n<p>(Sorry Ive tried to study the HTML language, then Ive got too bored and now Im studyng grafic web design!! )   :)))</p>\n\n<p>CAN YOU CORRECT IT?? </p>\n\n<p>function custom_myme_types($mime_types){</p>\n\n<pre><code>//Adding avi extension\n$mime_types['avi'] = 'video/avi'; \n\n//Removing the pdf extension\nunset($mime_types['pdf']); \n\n\nreturn $mime_types;\n</code></pre>\n\n<p>}</p>\n\n<p>add_filter application/x-mobipocket-ebook and application/epub+zip </p>",
+		"TimeStamp" : "2015-01-29T10:37:40.674Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*i want",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 4,
+				"FPCount" : 1,
+				"CaughtCount" : 34
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974166",
+		"PostUrl" : "http://academia.stackexchange.com/questions/37796",
+		"Site" : "academia.stackexchange.com",
+		"Title" : "Who Owns the Publishing Rights of my Ph.D. Thesis?",
+		"Body" : "<p>Do I own the entire publishing rights of my Ph.D. thesis? </p>",
+		"TimeStamp" : "2015-01-29T10:32:19.496Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 811
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974157",
+		"PostUrl" : "http://salesforce.stackexchange.com/a/20554",
+		"Site" : "salesforce.stackexchange.com",
+		"Title" : "I am also facing the same behavior in some of my test classes... \n\nsome ...",
+		"Body" : "<p>I am also facing the same behavior in some of my test classes... </p>\n\n<p>some times following the workaround (disable parallel testing and store only aggregate coverage) works some times it doesn't </p>\n\n<p>The good news is that it is a known issue and I guess it will be fixed soon. you can check the status here</p>\n\n<p><a href=\"https://success.salesforce.com/issues_view?id=a1p30000000T0FeAAK\" rel=\"nofollow\">https://success.salesforce.com/issues_view?id=a1p30000000T0FeAAK</a></p>",
+		"TimeStamp" : "2015-01-29T10:30:12.259Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)also face?ing",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 3
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974156",
+		"PostUrl" : "http://emacs.stackexchange.com/a/7782",
+		"Site" : "emacs.stackexchange.com",
+		"Title" : "Thanks to wvxvw's comment, I can answer my own (main) question: in order...",
+		"Body" : "<p>Thanks to wvxvw's comment, I can answer my own (main) question: in order to convert a <code>TeX</code>-encoded file, say <code>foo.tex</code>, into an UTF-8 encoded one, it is enough to run:</p>\n\n<pre><code>emacs -batch foo.tex -f mark-whole-buffer -f iso-tex2iso -f save-buffer -kill\n</code></pre>",
+		"TimeStamp" : "2015-01-29T10:29:51.027Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 110,
+				"CaughtCount" : 2975
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974147",
+		"PostUrl" : "http://gis.stackexchange.com/a/132271",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "I found out what was wrong\n\nI set locationDisplay.dataSource.Delegate to...",
+		"Body" : "<p>I found out what was wrong</p>\n\n<p>I set locationDisplay.dataSource.Delegate to self, and it was causing all these issues</p>\n\n<p>Using the locationDisplayDataSourceDelegate methods, I was receiving location and heading updates without any trouble. Yet it appears that I also had to implement a way to draw the symbol and handle the map view responses to the autoPanMode</p>\n\n<p>I think it'll be easier to keep it this way and create another location manager instance to receive location data</p>\n\n<p>Thanks again</p>",
+		"TimeStamp" : "2015-01-29T10:27:02.163Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 110,
+				"CaughtCount" : 2973
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974138",
+		"PostUrl" : "http://stackoverflow.com/a/28212285",
+		"Site" : "stackoverflow.com",
+		"Title" : "Helo there,\nI have the exact same problem as you. Did you found out what...",
+		"Body" : "<p>Helo there,\nI have the exact same problem as you. Did you found out what the problem was?\nIf so could you please contact me. lomanit91@gmail.com</p>",
+		"TimeStamp" : "2015-01-29T10:26:02.098Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(did|have) you f(in|oun)d",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 12,
+				"TPCount" : 7,
+				"FPCount" : 1,
+				"CaughtCount" : 70
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(have|did) you (solve|fix|find|found)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 11,
+				"FPCount" : 0,
+				"CaughtCount" : 89
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(did|have) you (found|fix|resolve)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 2
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974136",
+		"PostUrl" : "http://webapps.stackexchange.com/a/73302",
+		"Site" : "webapps.stackexchange.com",
+		"Title" : "I'm Having the same issue with my posts Please let me know if you fixed ...",
+		"Body" : "<p>I'm Having the same issue with my posts Please let me know if you fixed the problem?</p>",
+		"TimeStamp" : "2015-01-29T10:25:25.142Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?=.*?(?i)please).{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 22.3837166,
+				"TPCount" : 84,
+				"FPCount" : 139,
+				"CaughtCount" : 1256
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974125",
+		"PostUrl" : "http://magento.stackexchange.com/a/53761",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "yes, you can set different tier price for not login as well as whole sel...",
+		"Body" : "<p>yes, you can set different tier price for not login as well as whole seller and also set same tier price for not login and general customer group   </p>",
+		"TimeStamp" : "2015-01-29T10:22:05.147Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 383
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974115",
+		"PostUrl" : "http://webapps.stackexchange.com/a/73301",
+		"Site" : "webapps.stackexchange.com",
+		"Title" : "Wtf a load of pooy peckas if u ask me",
+		"Body" : "<p>Wtf a load of pooy peckas if u ask me</p>",
+		"TimeStamp" : "2015-01-29T10:21:06.544Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3015
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974112",
+		"PostUrl" : "http://drupal.stackexchange.com/questions/145796",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "Deadlifts Would Be The Best Bodybuilding Exercise?",
+		"Body" : "<p>It is not soft to determine the variation between an intermediate and sophisticated exercise. The easiest description is that more work is performed by your body in an advanced workout. The physics description of function has become the best. It is the length a weight moves given a quantity of time (weight x range x period). If you should be currently performing representatives but are training more weight or you're training the same amount of weight but are raising it faster or going it further, your muscles are doing more work. You need to conduct whole associates for optimum benefits. Partial benefits will be only given by partial associates. Practice tough with strength and be patient. In case you are a starter you CAn't expect you'll practice with the advanced workout let alone participate in a strongman competition.</p>\n\n<p>more info >>> <a href=\"http://musclexpro.net/\" rel=\"nofollow\">http://musclexpro.net/</a></p>",
+		"TimeStamp" : "2015-01-29T10:20:10.476Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 3,
+				"FPCount" : 1,
+				"CaughtCount" : 9
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974109",
+		"PostUrl" : "http://aviation.stackexchange.com/questions/12140",
+		"Site" : "aviation.stackexchange.com",
+		"Title" : "Is there any cameras inside a plane?",
+		"Body" : "<p>Is there any cameras inside a plane to watch out the activities of passengers?</p>",
+		"TimeStamp" : "2015-01-29T10:18:52.299Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 810
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974105",
+		"PostUrl" : "http://magento.stackexchange.com/a/53760",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "Thnak you user7823 your answer was helpful ",
+		"Body" : "<p>Thnak you user7823 your answer was helpful </p>",
+		"TimeStamp" : "2015-01-29T10:16:57.358Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3014
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974101",
+		"PostUrl" : "http://superuser.com/a/871033",
+		"Site" : "superuser.com",
+		"Title" : "Ive created a WIN 8.1 iso usb disk using the microsoft creation tool.\n\nT...",
+		"Body" : "<p>Ive created a WIN 8.1 iso usb disk using the microsoft creation tool.</p>\n\n<p>The key works fine and activated as Pro and genuine.</p>\n\n<p>Im baffled that the disk, which does say on it Windows 8.1 Pro Full edition didnt ask for the key after installation and wouldnt allow me to change key to pro.</p>\n\n<p>Anyway, sorted now. Thanks for the pointers.</p>\n\n<p>Thanks magicandri, the pc did come with 8.1 standard, so i get what u are saying.</p>\n\n<p>John</p>",
+		"TimeStamp" : "2015-01-29T10:14:53.535Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 110,
+				"CaughtCount" : 2972
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974100",
+		"PostUrl" : "http://tridion.stackexchange.com/questions/10950",
+		"Site" : "tridion.stackexchange.com",
+		"Title" : "Need to create a reference workspace for Tridion with JAVA, what are all that i need to install?",
+		"Body" : "<p>Need to create a reference workspace for Tridion with JAVA</p>",
+		"TimeStamp" : "2015-01-29T10:14:30.579Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 809
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974089",
+		"PostUrl" : "http://meta.stackexchange.com/questions/247765",
+		"Site" : "meta.stackexchange.com",
+		"Title" : "Weight Loss Programs A Real Paradigm Shift",
+		"Body" : "<p>Losing body weight or losing body fat is easier, but one should aim at long term weight loss not that for some required or desire period. For long term weight loss, medical weight management has been found to be very effective. california medical weight management program is one such program where you will be guided under a medical practitioner, who will decide easy diets and exercises based upon the individual\u2019s body-mass index and base metabolic rate. This is place where people are put to long term weight loss or effective weight loss management program since they understand that maintaining a constant body weight is more crucial than weight reduction.\nEverybody is desirous of attaining good health in addition to perfect body shape. People who have gained excessive weight or have become out of shape are very much tensed over getting into right shape, but attaining perfect body shape under Supervised Medical Weight Loss Program is just 3 steps away, for those who take to California weight loss management program.\nVisit it!  to get more information >>>>>> <a href=\"http://hyperglycemiaabout.com/natural-max-garcinia/\" rel=\"nofollow\">http://hyperglycemiaabout.com/natural-max-garcinia/</a></p>",
+		"TimeStamp" : "2015-01-29T10:11:25.835Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "\\>\\>\\>\\>\\>",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 15,
+				"FPCount" : 24,
+				"CaughtCount" : 52
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)weight loss(.|\\s)*http://",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0204086,
+				"TPCount" : 5,
+				"FPCount" : 0,
+				"CaughtCount" : 11
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 3,
+				"FPCount" : 1,
+				"CaughtCount" : 8
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974072",
+		"PostUrl" : "http://stackoverflow.com/a/28211875",
+		"Site" : "stackoverflow.com",
+		"Title" : "Please Check whether it is going into the IF statement.",
+		"Body" : "<p>Please Check whether it is going into the IF statement.</p>",
+		"TimeStamp" : "2015-01-29T10:06:22.799Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3013
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?=.*?(?i)please).{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 22.3837166,
+				"TPCount" : 84,
+				"FPCount" : 139,
+				"CaughtCount" : 1255
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974055",
+		"PostUrl" : "http://stackoverflow.com/a/28211798",
+		"Site" : "stackoverflow.com",
+		"Title" : "I also research about ejabber and strophe.js.\nHow to localhost:5280/http...",
+		"Body" : "<p>I also research about ejabber and strophe.js.\nHow to localhost:5280/http-bind running file Micha\u00EBl. When I run localhost:5280/http-bind I got Not Found</p>\n\n<p>Please help</p>",
+		"TimeStamp" : "2015-01-29T10:02:03.697Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)pl(ease|s|z) help",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 17,
+				"TPCount" : 20,
+				"FPCount" : 3,
+				"CaughtCount" : 122
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974042",
+		"PostUrl" : "http://money.stackexchange.com/a/43728",
+		"Site" : "money.stackexchange.com",
+		"Title" : "I am Natasha Howard from Indianapolis here in USA, I wanna advise all th...",
+		"Body" : "<p>I am Natasha Howard from Indianapolis here in USA, I wanna advise all those looking for a loan to contact Abu Abdullah Loan Firm cos that is where I got a loan from three days ago without credit check and low interest rate of 4% and there was no cosigner, if you need a loan then contact them now with this email cos I know they can still help you abuabdullahloanfirm@gmail.com</p>",
+		"TimeStamp" : "2015-01-29T09:59:37.069Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "^(?!.*?<code>).*?[-\\w]{3}@\\w+\\.",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 15,
+				"TPCount" : 32,
+				"FPCount" : 130,
+				"CaughtCount" : 498
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974033",
+		"PostUrl" : "http://english.stackexchange.com/a/224396",
+		"Site" : "english.stackexchange.com",
+		"Title" : "Basically speaking it means -- Time is critical to the outcome",
+		"Body" : "<p>Basically speaking it means -- Time is critical to the outcome</p>",
+		"TimeStamp" : "2015-01-29T09:58:27.986Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3011
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "english.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974023",
+		"PostUrl" : "http://stackoverflow.com/a/28135503",
+		"Site" : "stackoverflow.com",
+		"Title" : "use xmlhttp = new ActiveXObject(\"MSXML2.XMLHTTP\")",
+		"Body" : "<p>use <code>xmlhttp = new ActiveXObject(\"MSXML2.XMLHTTP\")</code></p>",
+		"TimeStamp" : "2015-01-29T09:56:56.137Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3010
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974013",
+		"PostUrl" : "http://meta.stackexchange.com/questions/247764",
+		"Site" : "meta.stackexchange.com",
+		"Title" : "Natural Max Garcinia Is The Best Slimming Shapewear",
+		"Body" : "<p><a href=\"http://hyperglycemiaabout.com/natural-max-garcinia/\" rel=\"nofollow\">Natural Max Garcinia</a> Raw foods equal whole-grains, vegetables and fruits are low-calorie items as fine as luxurious sources of nutrients.A proper fasting schedule and regularized training of exercises are requisite to confirm typical eudaimonia as good as embody metric. One cannot be dead sound without maintaining the right body unit. Thence, all Tips and advice for Welfare Furtherance are fundamentally the ways to win and have the penalize metric of the body. The fastest way to recede weight leave enable a organism to bound the body weight by 8 10kg within a punctuation of 6 months. Regular brisken walking screening a length of 1Km in 20 minutes, irregular cycling, watery, activity games equal badminton and plateau sport regularly etc are the aerobiotic exercises that give ensure gradual bully strengthening effort is also a must for weight moderate. By way of doing regularized exercises that relate shoulders, munition, pectus, hip, abdominals and legs etc the muscles become stronger. Invigorating of muscles leads to combustion of calories which in otherwise text is reducing the embody unit. Visit it!  to get more information >>>>>> <a href=\"http://hyperglycemiaabout.com/natural-max-garcinia/\" rel=\"nofollow\">http://hyperglycemiaabout.com/natural-max-garcinia/</a></p>",
+		"TimeStamp" : "2015-01-29T09:55:47.021Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*(>>|vist|like).{0,10}<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 6,
+				"FPCount" : 2,
+				"CaughtCount" : 8
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 17,
+				"FPCount" : 20,
+				"CaughtCount" : 52
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "\\>\\>\\>\\>\\>",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 15,
+				"FPCount" : 24,
+				"CaughtCount" : 51
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 3,
+				"FPCount" : 1,
+				"CaughtCount" : 7
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973988",
 		"PostUrl" : "http://meta.stackexchange.com/questions/247762",
 		"Site" : "meta.stackexchange.com",
@@ -25239,1535 +26594,6 @@
 				"TPCount" : 4,
 				"FPCount" : 12,
 				"CaughtCount" : 433
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942852",
-		"PostUrl" : "http://meta.stackexchange.com/questions/247444",
-		"Site" : "meta.stackexchange.com",
-		"Title" : "Exercising and existence somatogenic",
-		"Body" : "<p>One of the most good ways meliorate boilersuit wellbeing and fountainhead - existence is effort. Yet, in our progressively sedentary way of animation, nigh every duty can be performed electronically. Xtreme Antler  Exercising and existence somatogenic can be something of a repugn to support.In realism, everyone should preparation, yet in experience, only 30 % of the Tied States soul collection gets the advisable cardinal transactions a day of animal activity, and the difference are not proactive at all.Lounge potatoism is thought to be one of the key reasons for the heave of typewrite 2 diabetes in America, because being a couch potato and lugging around too more spare pounds both support insulin opposition and life-threatening diseases. Visit it!  to get more information >>>>>> <a href=\"http://www.healthcaresup.com/is-xtreme-antler-scam-or-legit/\" rel=\"nofollow\">http://www.healthcaresup.com/is-xtreme-antler-scam-or-legit/</a></p>",
-		"TimeStamp" : "2015-01-22T11:23:24.391Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*(>>|vist|like).{0,10}<a href=\".*\">https?://\\S*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 3,
-				"FPCount" : 1,
-				"CaughtCount" : 5
-			},
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 15,
-				"FPCount" : 18,
-				"CaughtCount" : 45
-			},
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "(?i)xtreme antler",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 1
-			},
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "\\>\\>\\>\\>\\>",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 15,
-				"FPCount" : 24,
-				"CaughtCount" : 51
-			},
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "(?i)healthcaresup",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.0206881,
-				"TPCount" : 4,
-				"FPCount" : 0,
-				"CaughtCount" : 5
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942835",
-		"PostUrl" : "http://stackoverflow.com/a/28043053",
-		"Site" : "stackoverflow.com",
-		"Title" : "How about just to remember pointer when touching down and check that on ...",
-		"Body" : "<p>How about just to remember pointer when touching down and check that on touch up instead of coordinates? Something like this:</p>\n\n<pre><code>private int jumpPointer;\n\n@Override\npublic boolean touchDown(int x, int y, int pointer, int button) {\n    if((x > (5*width)/7 && y < (2*height)/7)) {\n        controller.jumpPressed(); //make the character jump\n        jumpPointer = pointer;\n    }\n    return false;\n}\n\n@Override\npublic boolean touchUp(int x, int y, int pointer, int button) {\n    if (pointer == jumpPointer && Gdx.app.getType().equals(ApplicationType.Android))\n        controller.jumpReleased();\n    }\n    return false;\n}\n</code></pre>\n\n<p>Well, pointer is a bit oddly named in my opinion.  TouchIndex would probably have made more sense, especially with pointer having a pair of very well defined meanings already.  The pointer value is value between 0 and n (defined as 20 in LibGDX, in reality much lower) that represents the ORDER in which the touch event occurred in the event of multiple simultaneous touches.  Therefore if you have multiple fingers touching, a pointer value of 0 would indicate that this touch event represents the first finger to touch the screen, while a value of 3 would be the fourth finger to touch the screen.</p>",
-		"TimeStamp" : "2015-01-22T11:20:41.526Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)how about",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 5
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942832",
-		"PostUrl" : "http://dba.stackexchange.com/questions/33184",
-		"Site" : "dba.stackexchange.com",
-		"Title" : "sql agent job hangs without any errors or warnings",
-		"Body" : "<p>Problem:</p>\n\n<p>we have a SQL Agent job which runs everyday in the morning at 4:00 am. This job hangs sometimes without providing any errors or warnings. It just hangs. BUT when i stop the job and run again it works perfectly. This happens once in a week atleast.</p>\n\n<p>This job is executing a SSIS package which loads data from oracle (source) to SQL SERVER 2008R2 (destination)</p>\n\n<p>Steps Taken to Resolve issue</p>\n\n<p>1) I thought the ssis package is losing connection in the middle of the process and i had increased the Connection Timeout=60 in the config file of this package but this doesn't worked. {I am using a xml configuration file for connection string }</p>\n\n<p>2) I had configured logging for this package by using sysssislog table and i had checked this table when the job hanged, it doesn't showed any error information.</p>\n\n<p>3) I informed this issue to our network administrator to check is there any network issues, but he told that everything is fine with the network.</p>\n\n<p>4) in the OLEDB Destination editor i had used</p>\n\n<p>Data Access Mode=Table or view-fastload</p>\n\n<p>Table lock=checked</p>\n\n<p>keep nulls=checked</p>\n\n<p>check constraints=checked</p>\n\n<p>rows per batch : blank</p>\n\n<p>The above steps didn't worked yet, and it continues hanging oftenly.</p>\n\n<p>Please share your opinions on this issue. I need your advice to troubleshoot this issue</p>",
-		"TimeStamp" : "2015-01-22T11:20:17.153Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 9,
-				"FPCount" : 79,
-				"CaughtCount" : 5015
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "dba.stackexchange.com",
-				"Score" : 7.69708824,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942822",
-		"PostUrl" : "http://english.stackexchange.com/questions/223070",
-		"Site" : "english.stackexchange.com",
-		"Title" : "Different words for educational problems",
-		"Body" : "<p>What is the difference between the following words (terms) in a context of education (online education in particular)?</p>\n\n<ol>\n<li>Quiz</li>\n<li>Exercise</li>\n<li>Assignment</li>\n<li>Problem</li>\n<li>Question</li>\n</ol>\n\n<p>Which one is more proper to use as a name of automatically graded educational <em>problem</em>?</p>\n\n<p>Are there any other meaningful synonyms or related terms (maybe test, task, homework etc.)?</p>",
-		"TimeStamp" : "2015-01-22T11:19:44.609Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 67,
-				"CaughtCount" : 2656
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "english.stackexchange.com",
-				"Score" : 5.41666651,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942821",
-		"PostUrl" : "http://history.stackexchange.com/questions/19063",
-		"Site" : "history.stackexchange.com",
-		"Title" : "What was the impact of utilitarianism upon the development of psychiatric care in 18th-19th century England?",
-		"Body" : "<p>I'm interested in the impact of utilitarianism upon English psychiatric care by way of the philosophy's influence on social reformers. I also want to know whether utilitarianism shaped theoretical writings on the nosology of madness within the second half of the 18th century and the first half of the 19th amongst physicians. </p>\n\n<p>Before I ask whether a monograph devoted to the topic exists will I be castigated for submitting yet another (sort of) reference request? </p>",
-		"TimeStamp" : "2015-01-22T11:19:19.684Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleSpam",
-				"Regex" : "(?i)\\bcare(ing)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 13,
-				"TPCount" : 3,
-				"FPCount" : 12,
-				"CaughtCount" : 19
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942816",
-		"PostUrl" : "http://gamedev.stackexchange.com/a/92666",
-		"Site" : "gamedev.stackexchange.com",
-		"Title" : "not sure how your gravity works in unity but in our jump and run we did ...",
-		"Body" : "<p>not sure how your gravity works in unity but in our jump and run we did years ago we checked if the player touched a moving platform and glued him on it unless the player jumps again. you could do this calling the physic system manually until the player touches the platform again or you just add the player in your scene graph to the platform. it was a very simple game though and didn't use any other physical simulation other than falling down.</p>",
-		"TimeStamp" : "2015-01-22T11:18:51.101Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 376
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942804",
-		"PostUrl" : "http://cs.stackexchange.com/questions/37485",
-		"Site" : "cs.stackexchange.com",
-		"Title" : "reduction of maxcut problem",
-		"Body" : "<p>Show that if the MAX CUT decision problem can be solved in polynomial time so can the MAX CUT optimization problem by writing an algorithm that solves the optimization problem using an algorithm for the decision problem as a subroutine</p>\n\n<p>MAX CUT</p>\n\n<p>INSTANCE: A graph G = (V,E), a function c giving each edge e \u2208 E an integer capacity c(e) and an integer B. QUESTION: (D) Does the graph have a cut of size at least B? (O) Find a cut with the maximum size.</p>\n\n<pre><code>Algorithm\n\nFind the maxcut value k by binary search from 1 to m using decision subroutine\n     where m is global maximum value\nfor all edge e \u2208 E\n  select a edge e=(u,v) \u2208 E, construct G' after removing egde e from G\n  if SUBROUTINE(G',k)=1 =>removal of edge has no effect on MAXCUT\n    add u and v to same set S or S'(use 2 SAT to determine which group)\n  else\n    add u and v to different sets S or S'\n</code></pre>\n\n<p>This algorithm works only if there is only one MAXCUT solution in the graph(i have considered only unweighted graph). In case of a complete graph this algorithm fails as there is more than one MAXCUT solution present.</p>\n\n<p>consider 4 nodes complete graph with edges (1,2),(1,3),(1,4),(2,3),(2,4),(3,4). The algorithm fails because when we remove any one edge still there is a MAXCUT of size 4.</p>\n\n<p>Please suggest any other algorithm which works or any additional condition which can solve this problem.</p>\n\n<p>Thanks in advance</p>",
-		"TimeStamp" : "2015-01-22T11:18:10.645Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 66,
-				"CaughtCount" : 2655
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "cs.stackexchange.com",
-				"Score" : 5.41666651,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942793",
-		"PostUrl" : "http://stackoverflow.com/a/28087435",
-		"Site" : "stackoverflow.com",
-		"Title" : "*Try Test_Core::output() because you are using wrong class name *",
-		"Body" : "<p>*Try Test_Core::output() because you are using wrong class name *</p>",
-		"TimeStamp" : "2015-01-22T11:16:57.999Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 488,
-				"FPCount" : 118,
-				"CaughtCount" : 3022
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942776",
-		"PostUrl" : "http://superuser.com/a/867979",
-		"Site" : "superuser.com",
-		"Title" : "I disable e-sata from bios and it works",
-		"Body" : "<p>I disable e-sata from bios and it works</p>",
-		"TimeStamp" : "2015-01-22T11:12:26.202Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 488,
-				"FPCount" : 118,
-				"CaughtCount" : 3021
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942775",
-		"PostUrl" : "http://askubuntu.com/a/576499",
-		"Site" : "askubuntu.com",
-		"Title" : "i have the same issue but on Facebook (XMPP) \n\nFor example:\n\nI write to ...",
-		"Body" : "<p>i have the same issue but on Facebook (XMPP) </p>\n\n<p>For example:</p>\n\n<p>I write to Pepe from my facebook online in firefox. \n- Hi Pepe\n- Hi Marc (he answers) </p>\n\n<p>In my pidgin, which it is online all the time, I see:\n...\n- Hi Marc (he answers)</p>\n\n<p>So, I see the incoming messages from Pepe, but I dont see in my Pidgin what I have SENT FROM MY FACEBOOK in firefox/chrome. </p>\n\n<p>That is really unconfortable!</p>",
-		"TimeStamp" : "2015-01-22T11:11:29.752Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 18,
-				"TPCount" : 45,
-				"FPCount" : 6,
-				"CaughtCount" : 369
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942764",
-		"PostUrl" : "http://android.stackexchange.com/a/96582",
-		"Site" : "android.stackexchange.com",
-		"Title" : "I also hv the same problem help guys",
-		"Body" : "<p>I also hv the same problem help guys</p>",
-		"TimeStamp" : "2015-01-22T11:04:51.187Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 487,
-				"FPCount" : 118,
-				"CaughtCount" : 3020
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942761",
-		"PostUrl" : "http://mathoverflow.net/questions/194559",
-		"Site" : "mathoverflow.net",
-		"Title" : "I have problems in calculations",
-		"Body" : "<p>if $t\\phi''(t)+d\\phi'(t)+(L+kt)\\phi(t)=0$.</p>\n\n<p>we get   $\\phi(t)=e^{-i\\sqrt{k}t}f(t)$.</p>\n\n<p>find an equation satisfied by $f$.</p>",
-		"TimeStamp" : "2015-01-22T11:03:12.708Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 65,
-				"CaughtCount" : 2654
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "mathoverflow.net",
-				"Score" : 5.41666651,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942751",
-		"PostUrl" : "http://security.stackexchange.com/a/79813",
-		"Site" : "security.stackexchange.com",
-		"Title" : "Like others have said, firewall, and if you feel it necessary IDS/IPS to...",
-		"Body" : "<p>Like others have said, firewall, and if you feel it necessary IDS/IPS too.  But to me, it's the wrong question.  You need to address these things:</p>\n\n<h2>Forensics</h2>\n\n<p>Have you managed to work out how you were comprimised before?  If not, it would be a good place to start.  Knowing how your system ended up with a RAT on it in the first place means you can close off that door</p>\n\n<h2>Firewall</h2>\n\n<p>As mentioned by a few others, firewall that stuff.  A box running two NICs and using   <a href=\"http://en.wikipedia.org/wiki/Uncomplicated_Firewall\" rel=\"nofollow\">UFW</a> or <a href=\"http://en.wikipedia.org/wiki/Iptables\" rel=\"nofollow\">Iptables</a> to filter traffic is a good start, although make sure that box is itself very locked down.  Consider whether you need to run each service on the firewall box too.  e.g. if it's in the same room as you, does it need SSH/telnet running, or can you just use it in person?</p>\n\n<h2>IDS/IPS</h2>\n\n<p>If you consider it necessary, you could even add an Intrusion Protection/Detection System to the box.  There are <a href=\"https://www.alienvault.com/blogs/security-essentials/open-source-intrusion-detection-tools-a-quick-overview\" rel=\"nofollow\">several freeware tools</a> to consider in this regard.</p>\n\n<h2>System hardening</h2>\n\n<p>Both on the box you proxy through, and the box you develop on, consider some hardening.  Get a software firewall that is good for your OS, and antivirus for that OS too, and ideally some way to check regularly for Rootkits etc.</p>\n\n<h2>Good practices</h2>\n\n<p>More important than any of the above is to adopt good practices.  It's no good setting up a hardware firewall if you then open ports whenever something doesn't work, and forget to address whether they need to stay open, and it's no good installing a rootkit finder if you never run it.</p>\n\n<p>All of this said, base what you do on a risk assessment (useful to know how previous exploits worked for risk assessment, too), and don't go overboard.  You could spend a week building a nice little setup with custom hardware firewalls, IDS/IPS protection, hardware level AV, and all manner of other stuff, but if you'd do better with a simpler set up and spending that time working, consider whether that's a better idea.</p>\n\n<h2>Audit</h2>\n\n<p>Try and find a decent security audit tool for your system.  If you are running linux, I find <a href=\"http://www.nongnu.org/tiger/\" rel=\"nofollow\">tiger</a> is pretty good, </p>\n\n<h2>Opportunism</h2>\n\n<p>The likelihood is that you weren't targeted.  Statistically speaking, people trying to make money out of security holes in a criminal way (like holding code to ransom) aren't seeking out particular individuals to exploit, but rather people who fit a certain demographic.  It's more likely that you were exploited last time because some script kiddie could find a dev server of some sort running or something like that, and was scanning for these particular things in order to perform the exploit on you that they did.  Your biggest aim is to make yourself hard to find and then target, as this is a much more likely scenario than a direct target of you and only you.  The other thing that makes me think this is that you were extorted for money, whereas a targetted attack would probably be trying to steal your code and keep it.</p>\n\n<p>Consider whether you may have been targeted, but I think on the whole, closing any security holes you can find will be a good first step.  I think you can probably avoid this problem again with just the firewall, but a lot depends on how you were comprimised.</p>",
-		"TimeStamp" : "2015-01-22T11:01:22.587Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerSpam",
-				"Regex" : "(?i)Make money",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.8585472,
-				"TPCount" : 2,
-				"FPCount" : 8,
-				"CaughtCount" : 15
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942749",
-		"PostUrl" : "http://superuser.com/a/867975",
-		"Site" : "superuser.com",
-		"Title" : "I have the same problem with an internal WD caviar Black sata 2 Buffer 6...",
-		"Body" : "<p>I have the same problem with an internal WD caviar Black sata 2 Buffer 64Mb. The weird thing is that i gave three partitions and i have the problem only with one \"can't read from the source file or disk\". I have already tried the chkdsk and evryting seems to be ok. what do you advice me to do next? Thank you</p>",
-		"TimeStamp" : "2015-01-22T11:00:58.494Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 18,
-				"TPCount" : 44,
-				"FPCount" : 6,
-				"CaughtCount" : 368
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 189,
-				"FPCount" : 109,
-				"CaughtCount" : 2979
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942734",
-		"PostUrl" : "http://webmasters.stackexchange.com/questions/76376",
-		"Site" : "webmasters.stackexchange.com",
-		"Title" : "So bringing the left palm into the center",
-		"Body" : "<p>So bringing the left palm into the center line taking a second to crest up in our foundation again check in at the top to the feet call in your opening up into our tryst opening the chest the heart we read write fingertips up towards the sky I seriously doubt I was able to bring mat my range of motion all the way here when I was new to the practice so again it might come here might come here I come here but we're not collapsing were opening up pressing away from near on an exhale floated down will do two more these in hell don't forget about the top soothe P one more keep extension to the Crown an act Hill flute it down of a walk appalls in front Johnny\u2019s back and you need to hit points girl <a href=\"http://www.maletestosteronebooster.org/miracle-slim-cleanse-overview/\" rel=\"nofollow\">Miracle Slim Cleanse</a> the Tons honor and again as if someone were lifting you up home you tell he really sure all now we pedaled iffy here so there's no rush to get to the Yoga Journal and that 's ridiculous cell that no offense you return on to saying no need to create a shape you seen before create your own shape and sensation in a promise you'll find ass and juicy rewards in yoga Arsenal practice pedal it out one more depressing you got this Cantonal another slow to send it down to the knees awesome great sorry come onto the top spiffy here spinal stability analysts on my right tools all the way or take a deep breath here to play an influx the fee just stretched out rightly mine even rotate the right angle one way and then the other notice ok lapsing into your arms possible way the nice n slow drawl your rainy all the way up and we're gonna slowly place a right foot.</p>\n\n<p><a href=\"http://www.maletestosteronebooster.org/miracle-slim-cleanse-overview/\" rel=\"nofollow\">http://www.maletestosteronebooster.org/miracle-slim-cleanse-overview/</a></p>",
-		"TimeStamp" : "2015-01-22T10:58:13.972Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "(?i)maletestosteronebooster",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.0206881,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 1
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942728",
-		"PostUrl" : "http://webmasters.stackexchange.com/questions/76375",
-		"Site" : "webmasters.stackexchange.com",
-		"Title" : "Problems with bad mail reputation",
-		"Body" : "<p>I have recently started with a small company that is having pretty bad problems with mail ending up in peoples junk folders. </p>\n\n<p>They used to send large bursts of newsletters from the one address every 2 months, but I have now convinced them to stop, and use MailChimp.</p>\n\n<p>Ive checked our domain to make sure we are not Blacklisted anywhere and chased up with our mail service provider that we have reverse DNS and SPF set up.</p>\n\n<p>I have started including Opt-Out options in newsletters to reduce the chance of more people marking them as junk. </p>\n\n<p>But the problem seems to be persisting and we are not really in a position to keep on going like this, as several important mails are not arriving, even after people add us to their contacts.</p>\n\n<p>So. onto the actual questions! Is there anything else that I can do to quickly repair our reputation, or reduce the risk of being flagged as spam?</p>\n\n<p>Also, is there any credence to the suggestion to opt for a business package like those google offer? Would they make any difference to the problem?</p>\n\n<p>Sorry for the wordy question!</p>",
-		"TimeStamp" : "2015-01-22T10:57:16.252Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 65,
-				"CaughtCount" : 2653
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?s-m)^.{0,150}$",
-				"IsAuto" : false,
-				"Site" : "webmasters.stackexchange.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942727",
-		"PostUrl" : "http://serverfault.com/a/661517",
-		"Site" : "serverfault.com",
-		"Title" : "I'm having a similar issue.  The UNC file share is pointing to a NetApp ...",
-		"Body" : "<p>I'm having a similar issue.  The UNC file share is pointing to a NetApp file store.  The problem goes away after resetting IIS, but then comes back again.  We thought this hotfix would address it</p>\n\n<p><a href=\"https://support.microsoft.com/kb/2560289?wa=wsignin1.0\" rel=\"nofollow\">https://support.microsoft.com/kb/2560289?wa=wsignin1.0</a></p>\n\n<p>but after a couple of days it came back.  Maybe this hotfix may help you.  If you did find the answer, please post it.</p>\n\n<p>Thanks,\nMark</p>",
-		"TimeStamp" : "2015-01-22T10:57:00.351Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2978
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942726",
-		"PostUrl" : "http://webapps.stackexchange.com/questions/73033",
-		"Site" : "webapps.stackexchange.com",
-		"Title" : "Which are the best Windows phone software and please recommended me free software download sites?",
-		"Body" : "<p>Which are the best Windows phone software and please recommended me best software download sites?</p>",
-		"TimeStamp" : "2015-01-22T10:56:59.489Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)wh(at|ich).*best",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 13,
-				"TPCount" : 9,
-				"FPCount" : 16,
-				"CaughtCount" : 285
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)^(?=.*?which)(?=.*?(?:choose|best|quality))",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 3,
-				"FPCount" : 2,
-				"CaughtCount" : 74
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?s-m)^.{0,150}$",
-				"IsAuto" : false,
-				"Site" : "webapps.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942716",
-		"PostUrl" : "http://superuser.com/questions/867969",
-		"Site" : "superuser.com",
-		"Title" : "To Find The Best Colon Cleanser",
-		"Body" : "<p>You will be surprised after finishing this detox plan, at how great you are feeling. Preserving the toxins from gathering again will keep you interestingly balanced. Your system could have the ability to function in a more maximum stage to ward off several common conditions. Liver your kidneys and colon will soon be able to eradicate toxins from your body faster, leading to less toxic buildup. Read more on :- <a href=\"http://capiluxprobrazilblog.com/lean-balance/\" rel=\"nofollow\">http://capiluxprobrazilblog.com/lean-balance/</a></p>",
-		"TimeStamp" : "2015-01-22T10:53:00.194Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 14,
-				"FPCount" : 18,
-				"CaughtCount" : 44
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942712",
-		"PostUrl" : "http://physics.stackexchange.com/a/160811",
-		"Site" : "physics.stackexchange.com",
-		"Title" : "@Waffle's Crazy Peanut\n\nsorry, i'm bad at notation!\n\nwhat is the lowerca...",
-		"Body" : "<p>@Waffle's Crazy Peanut</p>\n\n<p>sorry, i'm bad at notation!</p>\n\n<p>what is the lowercase v in the \"Fc = v/2.Pi root(A/VL)\"?\nI understand the V is volume.</p>\n\n<p>Thanks!</p>",
-		"TimeStamp" : "2015-01-22T10:50:26.846Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2976
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942711",
-		"PostUrl" : "http://astronomy.stackexchange.com/questions/8636",
-		"Site" : "astronomy.stackexchange.com",
-		"Title" : "The tidal locking problem concerning Earth sized planets in habital zone around Red Dwarfs",
-		"Body" : "<p>Would twin planets orbiting around each-other present a solution to tidal locking of habitable planets in Red Dwarf systems. It's an awfully easy equation to set up....oh ok I'm fibbing I can't do it. I was hoping someone might show me when they get a moment.</p>",
-		"TimeStamp" : "2015-01-22T10:50:11.235Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 65,
-				"CaughtCount" : 2651
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942710",
-		"PostUrl" : "http://magento.stackexchange.com/a/52938",
-		"Site" : "magento.stackexchange.com",
-		"Title" : "what about a custom layout calling a custom block rendering a custom tem...",
-		"Body" : "<p>what about a custom layout calling a custom block rendering a custom template looking like the core product layout with some modifications? </p>",
-		"TimeStamp" : "2015-01-22T10:50:04.788Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 375
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942709",
-		"PostUrl" : "http://gis.stackexchange.com/a/131306",
-		"Site" : "gis.stackexchange.com",
-		"Title" : "create a additional database-user without the right to change anything i...",
-		"Body" : "<p>create a additional database-user without the right to change anything in the database/ in the table</p>",
-		"TimeStamp" : "2015-01-22T10:49:56.326Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 374
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942708",
-		"PostUrl" : "http://electronics.stackexchange.com/questions/150412",
-		"Site" : "electronics.stackexchange.com",
-		"Title" : "Which LED string I should choose for my Basys2 FPGA?",
-		"Body" : "<p>I have two options, WS2801: <a href=\"http://www.aliexpress.com/item/50pcs-12mm-IP65-Waterproof-WS2801-RGB-LED-Pixels-Modules-with-WS2801-IC-Addressable-Color/663520530.html\" rel=\"nofollow\">http://www.aliexpress.com/item/50pcs-12mm-IP65-Waterproof-WS2801-RGB-LED-Pixels-Modules-with-WS2801-IC-Addressable-Color/663520530.html</a>\nand WS2811: <a href=\"http://www.aliexpress.com/item/12mm-WS2811-as-WS2801-led-pixel-module-IP68-waterproof-DC5V-full-color-RGB-50pcs-a-string/1022672558.html\" rel=\"nofollow\">http://www.aliexpress.com/item/12mm-WS2811-as-WS2801-led-pixel-module-IP68-waterproof-DC5V-full-color-RGB-50pcs-a-string/1022672558.html</a></p>\n\n<p>If I understood correctly, WS2801 has clock wire, while WS2811 has internal clock.</p>\n\n<blockquote>\n  <p>the ws2801 is the older version of the protocol and they need a clock\n  line wich makes problems with some controllers the ws2811 is newer and\n  doesn\u00B4t need a clock line but it makes the timing more difficult</p>\n</blockquote>\n\n<p>So my question is, which one I should choose for my Basys2 FPGA?\nFrom it's documentation:</p>\n\n<blockquote>\n  <p>The primary silicon oscillator is flexible and\n  inexpensive, but it lacks the frequency stability of\n  a crystal oscillator. Some circuits that drive a\n  VGA monitor may realize a slight improvement in\n  image stability by using a crystal oscillator installed in the IC6 socket.</p>\n</blockquote>\n\n<p>And if in the future I might replace it to another FPGA to send data directly from the PC?</p>",
-		"TimeStamp" : "2015-01-22T10:49:40.363Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)^(?=.*?which)(?=.*?(?:choose|best|quality))",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 3,
-				"FPCount" : 2,
-				"CaughtCount" : 73
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942706",
-		"PostUrl" : "http://german.stackexchange.com/a/20319",
-		"Site" : "german.stackexchange.com",
-		"Title" : "Wow, this one is hard.\nA very good idea is distinguishing between topics...",
-		"Body" : "<p>Wow, this one is hard.<br>\nA very good idea is distinguishing between topics and people (like Kilian did). Maybe some more examples will help.</p>\n\n<p>You usually talk <em>about</em> a topic and generalize it to some point. The German \"\u00FCber\" does the same just like in \"\u00DCbersicht\". You ask somebody to tell you <em>about</em> something to get an impression. When I tell you something <em>about</em> a topic I am giving you more like a summary so you get the idea.</p>\n\n<blockquote>\n  <p>What is he talking about?. - \u00DCber was spricht er?<br>\n  (<em>He is talking about nature (in general)</em>).</p>\n</blockquote>\n\n<p>When I talk <em>of</em> a certain topic I (maybe) want to convince/win you. I think the contents are more important here.</p>\n\n<blockquote>\n  <p>He is talking of nature and it's different animals. - Er redet von der Natur und den verschiednen Tieren.<br>\n  (Ending the sentence after \"nature\" in both languages feels odd because you expect something else to follow. At least I do.)</p>\n</blockquote>\n\n<p><br>To sum up:</p>\n\n<blockquote>\n  <p>Did he tell you <strong>about</strong> something? - is generally asking (\u00FCber).<br>\n  Did you hear <strong>of</strong> this thing? - is going further into detail (von).</p>\n</blockquote>\n\n<p>Some special case might be:</p>\n\n<blockquote>\n  <p>Someone is talking well <strong>of</strong> you. (von, detail: talking <em>well</em>)<br>\n  Someone is talking <strong>about</strong> you (\u00FCber, in general, no judging)</p>\n</blockquote>\n\n<p>Speaking of \"of\" and \"about\", I'm about to go off (so much confusion :D)</p>",
-		"TimeStamp" : "2015-01-22T10:49:02.225Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 8,
-				"FPCount" : 5,
-				"CaughtCount" : 84
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942704",
-		"PostUrl" : "http://stackoverflow.com/a/28086849",
-		"Site" : "stackoverflow.com",
-		"Title" : "First of all, just flagging that you should call require('modernizr') in...",
-		"Body" : "<p>First of all, just flagging that you should call <code>require('modernizr')</code> instead of <code>require('modernizer')</code>.</p>\n\n<p>Secondly, to answer your question <em>\u201CIs there a way to use Modernizer from pack to include it modules without using this directive on page?</em></p>\n\n<p>Yes there is. It's the <a href=\"https://github.com/webpack/script-loader\" rel=\"nofollow\"><code>script-loader</code></a>. It basically allows you to require a library, and execute it as if it were inside a <code><script></code> tag. You'd use it by calling:</p>\n\n<pre><code>require('script-loader');\nrequire(script!modernizr);\n</code></pre>\n\n<p>Remember to install <code>script-loader</code> in advance, by calling <code>npm install script-loader --save</code> in your command line.</p>",
-		"TimeStamp" : "2015-01-22T10:47:25.130Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)is there a way",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 14
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942694",
-		"PostUrl" : "http://music.stackexchange.com/questions/29010",
-		"Site" : "music.stackexchange.com",
-		"Title" : "modal chord progressions questions",
-		"Body" : "<p>i need these video below to explained easier</p>\n\n<p>\n            </p><div style=\"z-index:0;\">\n                <object style=\"height: 385px; width: 640px\">\n                    <param name=\"movie\" value=\"http://www.youtube.com/v/nrz2Y94BkjM?version=3&start=0&feature=player_embedded\">\n                    <param name=\"allowFullScreen\" value=\"true\">\n                    <param name=\"allowScriptAccess\" value=\"always\">\n                    <param name=\"wmode\" value=\"opaque\">\n                    <embed src=\"http://www.youtube.com/v/nrz2Y94BkjM?version=3&start=0&feature=player_embedded\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowscriptaccess=\"always\" width=\"640\" height=\"385\" wmode=\"transparent\">\n                </object>\n            </div><p></p>\n\n<h1>what are related chords? and how are they related chord?</h1>\n\n<h1>what is a tonal center?</h1>\n\n<p>thats the only part that confused me in this video....</p>\n\n<p>heres the website link to this video for more info if your confused too</p>\n\n<p><a href=\"http://www.fretjam.com/guitar-modes.html\" rel=\"nofollow\">http://www.fretjam.com/guitar-modes.html</a></p>\n\n<p>and heres a more in dept version of that with left me with these questions to ask ..</p>\n\n<p>\n            </p><div style=\"z-index:0;\">\n                <object style=\"height: 385px; width: 640px\">\n                    <param name=\"movie\" value=\"http://www.youtube.com/v/dC5yzoGQAAE?version=3&start=0&feature=player_embedded\">\n                    <param name=\"allowFullScreen\" value=\"true\">\n                    <param name=\"allowScriptAccess\" value=\"always\">\n                    <param name=\"wmode\" value=\"opaque\">\n                    <embed src=\"http://www.youtube.com/v/dC5yzoGQAAE?version=3&start=0&feature=player_embedded\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowscriptaccess=\"always\" width=\"640\" height=\"385\" wmode=\"transparent\">\n                </object>\n            </div><p></p>\n\n<p>how would you know your in F lydian when it sounds the same as C major?</p>\n\n<p>how do you identify modal chord progressions?</p>\n\n<ol start=\"4\">\n<li>how do you make one? do modal chord progressions only apply to one mode (scale) \nlike are you suppose to swap out parent scale for a chord ?</li>\n</ol>\n\n<p>i.e. say if your in C ionian do you swap out to C mixolydian C7 (when i say \"swap out\" im not talking modulation) or do you have to stay inside the parent scale C ionion for modal chord progressions</p>\n\n<p>:do you use a F lydian chord progression in a C ionian song  ? to make it sound more lydian ? \nor do you use a F lydian chord progression in a f lydian song ?</p>\n\n<p>:whats the F lydian progression for?</p>\n\n<h1>like here are some progressions from the mode of a C major scale. ( which contains a F lydian chord progression in the examples below )</h1>\n\n<p>Ionian chord progression</p>\n\n<p>Mode: C Ionian Progression: C (I) Dm (ii) G (V)</p>\n\n<p>Dorian chord progression</p>\n\n<p>Mode: D Dorian Progression: Dm (ii) Em (iii) Dm (ii) G (V)</p>\n\n<p>Phrygian chord progression</p>\n\n<p>Mode: E Phrygian Progression: Em (iii) F (IV) Em (iii) Dm (ii)</p>\n\n<p>Lydian chord progression</p>\n\n<p>Mode: F Lydian Progression: F (IV) G (V)  </p>\n\n<p>Mode: G Mixolydian Progression: G (V) Dm (ii) G (V) F (IV)</p>\n\n<p>Aeolian chord progression Mode: A Aeolian Progression: Am (vi) F (IV) G (V)</p>\n\n<h1>another thing</h1>\n\n<h1>what is the point of a modal chord pression what does it do and why should we want to know how to indentify it ?</h1>\n\n<h1>basically , how do you make a song in a modal chord progression like =</h1>\n\n<p>\"Norwegian Wood\" or \"sweet home alamba\" \"lorde royals \" </p>\n\n<p>those were all mixolydian mode music </p>\n\n<p>sweet home alambama and lorde royals  was in D mixolydian D \u2013 C9 \u2013 G chord progression</p>\n\n<p>the simpsons melody was in C lydian which is the same as G major how did they make it a C lydian  ? like how can you tell the difference?</p>\n\n<p>can you give me tips on mastering modal chord progressions and melodies that are modes</p>",
-		"TimeStamp" : "2015-01-22T10:43:23.104Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)question",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 5,
-				"FPCount" : 23,
-				"CaughtCount" : 1613
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942692",
-		"PostUrl" : "http://unix.stackexchange.com/questions/180440",
-		"Site" : "unix.stackexchange.com",
-		"Title" : "I want to delete all xml code above <moreovercontentdump> through parsing.Plz help.Thanks in advance",
-		"Body" : "<p><a href=\"http://d.moreover.com/metabase?client_id=prnewswiremultivu_cim_cb04&maxdocs=500\" rel=\"nofollow\">http://d.moreover.com/metabase?client_id=prnewswiremultivu_cim_cb04&maxdocs=500</a>\n\n    \n    \n        \n        <a href=\"http://c.moreover.com/click/here.pl?z8105225268&z=1600249610\" rel=\"nofollow\">http://c.moreover.com/click/here.pl?z8105225268&z=1600249610</a>\n    Global Print Monitor\n    Trade\n    Blog\n    \n    text</p>\n\n<pre><code></article>\n</code></pre>\n\n<p></p>",
-		"TimeStamp" : "2015-01-22T10:43:09.666Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)thanks",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 0,
-				"FPCount" : 1,
-				"CaughtCount" : 17
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)i want to",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 16,
-				"FPCount" : 13,
-				"CaughtCount" : 210
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\bh[ae]lp\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 35,
-				"FPCount" : 44,
-				"CaughtCount" : 1237
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)^I want",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.5906382,
-				"TPCount" : 16,
-				"FPCount" : 11,
-				"CaughtCount" : 172
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)pl(z|s|ease)",
-				"IsAuto" : false,
-				"Site" : "unix.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?s-m)^.{0,150}$",
-				"IsAuto" : false,
-				"Site" : "unix.stackexchange.com",
-				"Score" : 7,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942689",
-		"PostUrl" : "http://security.stackexchange.com/a/79808",
-		"Site" : "security.stackexchange.com",
-		"Title" : "I want to create an Android FIPS Capable app (140-2 level 1). In the app...",
-		"Body" : "<p>I want to create an Android FIPS Capable app (140-2 level 1). In the app I use network communications (Android SDK, HttpClient), encryption (bouncy-castle)  and GCM (GooglePlayServices). How can I do it?</p>\n\n<p>As I understood from this post:\n<a href=\"http://security.stackexchange.com/questions/37488/fips-compliance-for-my-android-project\">FIPS Compliance for my Android project</a></p>\n\n<p>First step:\nI should use FIPS Validated libraries.</p>\n\n<p>Second step:\nSend the app to NIST to validate it?</p>\n\n<p><b>The first step:</b></p>\n\n<p>1) Network communication:\nI know that there is OpenSSL FIPS Validated lib and I can built it for Android.\n<a href=\"http://wiki.openssl.org/index.php/Android#Using_OpenSSL_in_an_Application\" rel=\"nofollow\">http://wiki.openssl.org/index.php/Android#Using_OpenSSL_in_an_Application</a></p>\n\n<p>After I built the openSSL FIPS Capable lib I should copy *.so files to my project.\nI should add to code instructions that Java system loader should load openSSL library from the project.\nShould I do something else?</p>\n\n<p>2) Encryption (bouncy-castle)\nI know that bouncy-castle is not FIPS capable library, so I must change it. Can you recommend some library?\nI know there is some encryption library from Mozilla (NSS). Can I use it for Android?</p>\n\n<p>3) GooglePlayServices\nIf I change openSSL module I believe that Google play services uses this module. Is it right?\nIf Google play services uses some encryption how can It be FIPS capable? </p>\n\n<p>Thanks.</p>",
-		"TimeStamp" : "2015-01-22T10:42:03.433Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2975
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?is)^<.*>\\s*i want",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 4,
-				"FPCount" : 0,
-				"CaughtCount" : 34
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942681",
-		"PostUrl" : "http://stackoverflow.com/questions/28086690",
-		"Site" : "stackoverflow.com",
-		"Title" : "Which is better performance wise - Divide a table to two or increase the column count - Oracle",
-		"Body" : "<p>Suppose there is an Oracal table which may have 200 columns and 2000K rows. Suppose I have to add a new column to the table. Since the column count is on the high side (even though the max column count is 1000 i think 200 is high side) I can create a new table with the primary key columns and my new column or I can add the new column to the existing table. Which will be performance wise better. Which will be overall better design. If you can elaborate and lead me for more information it would be better. Thanks in advance.</p>",
-		"TimeStamp" : "2015-01-22T10:39:24.819Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleSpam",
-				"Regex" : "(?i)(enhance|boost|(in|de)crease) (our|you|th(ose|ese|e|at))",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 0,
-				"FPCount" : 24,
-				"CaughtCount" : 39
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942680",
-		"PostUrl" : "http://android.stackexchange.com/a/96579",
-		"Site" : "android.stackexchange.com",
-		"Title" : "Yes , you are right ...I am also facing the same issue",
-		"Body" : "<p>Yes , you are right ...I am also facing the same issue</p>",
-		"TimeStamp" : "2015-01-22T10:38:33.235Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 487,
-				"FPCount" : 118,
-				"CaughtCount" : 3019
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)also face?ing",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 1
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942676",
-		"PostUrl" : "http://superuser.com/questions/867964",
-		"Site" : "superuser.com",
-		"Title" : "Need 7 zip command line code for deleting the files",
-		"Body" : "<p>I need to delete filed and folders that are having long path issue. I am able to delete using 7 zip manager tool manually in GUI. But I want to automate the process. Can anybody help me to get command line script to delete the files using 7 zip in batch script. or please suggest any other way to meet my requirement.</p>",
-		"TimeStamp" : "2015-01-22T10:37:57.529Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)need.*code",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11.5906382,
-				"TPCount" : 1,
-				"FPCount" : 0,
-				"CaughtCount" : 43
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)^need",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11.5906382,
-				"TPCount" : 4,
-				"FPCount" : 12,
-				"CaughtCount" : 432
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?s-m)^.{0,200}$",
-				"IsAuto" : false,
-				"Site" : "superuser.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?s-m)^.{0,150}$",
-				"IsAuto" : false,
-				"Site" : "superuser.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942673",
-		"PostUrl" : "http://stackoverflow.com/a/22092911",
-		"Site" : "stackoverflow.com",
-		"Title" : "i is not accessible outside for loop.\n\nlong int i=0;\nfor(i= x-1;x%i;--i)...",
-		"Body" : "<p>i is not accessible outside <code>for</code> loop.</p>\n\n<pre><code>long int i=0;\nfor(i= x-1;x%i;--i);\ncout<<i<<endl;\n</code></pre>",
-		"TimeStamp" : "2015-01-22T10:37:21.129Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 373
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942671",
-		"PostUrl" : "http://writers.stackexchange.com/questions/15956",
-		"Site" : "writers.stackexchange.com",
-		"Title" : "Question about this brochure i am writing for an assignment?",
-		"Body" : "<p>Okay so I have to write this little brochure about a company and I just getting started, (currently on the Intro/About Us) part.</p>\n\n<p>Now, the company brochure is focused on an additional service that they are offering, Lets say the service is \"X\". Since I am writing about the \"X\" service offered by the company, I want to also mention a little about the previous service the company offers. </p>\n\n<p>The question is, while writing the intro about the brochure should I first mention the original service offered by the company or should I first write about the \"X\" service offered and then write a little paragraph in the end?</p>",
-		"TimeStamp" : "2015-01-22T10:36:19.151Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)question",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 5,
-				"FPCount" : 23,
-				"CaughtCount" : 1611
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942667",
-		"PostUrl" : "http://stackoverflow.com/questions/28086475",
-		"Site" : "stackoverflow.com",
-		"Title" : "exception occurring while using twain to acuquir the scanned image",
-		"Body" : "<p>hi i am using 64 bit java and windows 7 when i try to compile my application i am getting below exception.<br>\n uk.co.mmscomputing.device.twain.TwainSource.enable:\n scan timed out Close data source.<br>\n        my code is.\nwhen i compile the application it is prompting one popup window but it is taking so much time to open then when it is opened it is throwing above exception.\nso can any one try to help me out from this issue.</p>\n\n<pre><code>public class TwainExample implements ScannerListener{\n\n      static TwainExample app;  \n\n      Scanner scanner;\n    //  List devices = ScanManager.getDefaultManager().getDevices();\n\n      public TwainExample(String[] argv)throws ScannerIOException{\n       scanner=scanner.getDevice();\n\n       String scanners[]=scanner.getDeviceNames();\n       for(String scann:scanners){\n           System.out.println(\"scann: \"+scann);\n       }\n        scanner.addListener(this);    \n        scanner.acquire();\n      }\n\n      public void update(ScannerIOMetadata.Type type, ScannerIOMetadata metadata){\n        if(type.equals(ScannerIOMetadata.ACQUIRED)){\n          BufferedImage image=metadata.getImage();\n          System.out.println(\"Have an image now!\");\n          try{\n            ImageIO.write(image, \"png\", new File(\"mmsc_image.png\"));\n          }catch(Exception e){\n            e.printStackTrace();\n          }\n        }else if(type.equals(ScannerIOMetadata.NEGOTIATE)){\n          ScannerDevice device=(ScannerDevice) metadata.getDevice();\n          try{\n//          device.setShowUserInterface(true);\n//          device.setShowProgressBar(true);\n//          device.setResolution(100);\n          }catch(Exception e){\n            e.printStackTrace();\n          }\n        }else if(type.equals(ScannerIOMetadata.STATECHANGE)){\n          System.err.println(metadata.getStateStr());\n          if(metadata.isFinished()){\n            System.exit(0);\n          }\n        }else if(type.equals(ScannerIOMetadata.EXCEPTION)){\n          metadata.getException().printStackTrace();\n        }\n      }\n\n      public static void main(String[] argv){\n        try{\n          app=new TwainExample(argv);\n        }catch(Exception e){\n          e.printStackTrace();\n        }\n      }\n    }\n</code></pre>\n\n<p>so plz can any one help me out from this issue.</p>",
-		"TimeStamp" : "2015-01-22T10:33:43.663Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodyLQ",
-				"Regex" : "\\bpl[sz]+\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 14,
-				"TPCount" : 18,
-				"FPCount" : 16,
-				"CaughtCount" : 236
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942662",
-		"PostUrl" : "http://android.stackexchange.com/a/96578",
-		"Site" : "android.stackexchange.com",
-		"Title" : "For that you need to send request for every scroll refer this link\n\nhttp...",
-		"Body" : "<p>For that you need to send request for every scroll refer this link</p>\n\n<p><a href=\"http://thanksandroid.com/json-parsing-in-android/\" rel=\"nofollow\">http://thanksandroid.com/json-parsing-in-android/</a> </p>\n\n<p>sample code is here </p>\n\n<p><a href=\"https://github.com/thanksandroid/JSONDemo\" rel=\"nofollow\">https://github.com/thanksandroid/JSONDemo</a> </p>",
-		"TimeStamp" : "2015-01-22T10:32:48.437Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2974
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942659",
-		"PostUrl" : "http://meta.stackexchange.com/questions/247442",
-		"Site" : "meta.stackexchange.com",
-		"Title" : "Best Weight Gainer Supplements",
-		"Body" : "<p>Touching nose to your needs later palms flat on the ground next year P and bending your leveling just picture like leg behind stretch of the body backwards basic bombs on the ground keep book  your feet together and but your weight on your hands and feet pull the legs and private channels canny pick you <a href=\"http://www.lxwpro-t.com/if-you-are-buying-maxx-test-300-read-this-first/\" rel=\"nofollow\">Maxx Test 300</a> up abode followed and place it in on the ground between a keep your elbows flat on the ground move your body followed and a plant history on your hands been the upper body back rubs with your body on your hands and feet but your body in words bring a light foot forward and stretcher body backwards keeping you awake on you like legged be your feet.</p>\n\n<p><a href=\"http://www.lxwpro-t.com/if-you-are-buying-maxx-test-300-read-this-first/\" rel=\"nofollow\">http://www.lxwpro-t.com/if-you-are-buying-maxx-test-300-read-this-first/</a></p>",
-		"TimeStamp" : "2015-01-22T10:32:14.718Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleSpam",
-				"Regex" : "(?i)\\bsupplement(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 10,
-				"FPCount" : 0,
-				"CaughtCount" : 13
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942653",
-		"PostUrl" : "http://stackoverflow.com/a/23269105",
-		"Site" : "stackoverflow.com",
-		"Title" : "this definetly is not the only way- but another way of doing it.\n\ndef fi...",
-		"Body" : "<p>this definetly is not the only way- but another way of doing it.</p>\n\n<pre><code>def fib(number):\n    series = [1,1]\n    lastnum = (series[len(series)-1]+series[len(series)-2])\n    _sum = 0\n    while lastnum < number:\n        if lastnum % 2 == 0:\n            _sum += lastnum\n        series.append(lastnum)\n        lastnum = (series[len(series)-1] +series[len(series)-2])\n    return series,_sum\n</code></pre>",
-		"TimeStamp" : "2015-01-22T10:29:24.537Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 371
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942651",
-		"PostUrl" : "http://mathoverflow.net/questions/194556",
-		"Site" : "mathoverflow.net",
-		"Title" : "Proof of a cubic equation problem",
-		"Body" : "<p>Well I was doing some questions and i found something. This equation\nx3+y3+z3=w3\nhas only one solution which is\nx=3,y=4,z=5,w=6\n.</p>\n\n<p>And what I have have proposed is that there is not other natural number solution for all values of x,y,z,w>1. So my question is this proposition true and if it is can we prove that there is only one natural number solution to this.</p>",
-		"TimeStamp" : "2015-01-22T10:28:29.814Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 65,
-				"CaughtCount" : 2648
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "mathoverflow.net",
-				"Score" : 5.41666651,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942644",
-		"PostUrl" : "http://dba.stackexchange.com/questions/56351",
-		"Site" : "dba.stackexchange.com",
-		"Title" : "Problems using \u201CExcel PostgreSQL Import, Export & Convert Software\u201D",
-		"Body" : "<p>I want to export data from Postgresql, and I tried many ways then find the tutorial of <strong>Excel PostgreSQL Import, Export & Convert Software</strong> on Youtube.</p>\n\n<p>I installed the software, but I could not make excel connect to the postgresql manager\uFF1A\n<img src=\"http://i.stack.imgur.com/Ce395.png\" alt=\"enter image description here\"></p>\n\n<p>I have checked the detail in the blank and still couldn't make connection.</p>\n\n<p>What should I do to solve this\uFF1FAre there better ways to make postgresql-excel connection than using this software\uFF1F\nThanks for giving me advices.</p>",
-		"TimeStamp" : "2015-01-22T10:25:44.900Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 65,
-				"CaughtCount" : 2647
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942632",
-		"PostUrl" : "http://math.stackexchange.com/a/1114858",
-		"Site" : "math.stackexchange.com",
-		"Title" : "I like geometry because I like looking at triangles and circles..",
-		"Body" : "<p>I like geometry because I like looking at triangles and circles..</p>",
-		"TimeStamp" : "2015-01-22T10:22:21.127Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 487,
-				"FPCount" : 118,
-				"CaughtCount" : 3018
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "math.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "math.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^.{0,150}$",
-				"IsAuto" : false,
-				"Site" : "math.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942621",
-		"PostUrl" : "http://expressionengine.stackexchange.com/questions/24810",
-		"Site" : "expressionengine.stackexchange.com",
-		"Title" : "Missing data - different IP error when submitting a form",
-		"Body" : "<p>Has anyone ever come across this error before? I've never seen it. </p>\n\n<p>When a form is submitted, users get the error shown in the screenshot attached.</p>\n\n<p><img src=\"http://i.stack.imgur.com/Qt2OA.jpg\" alt=\"enter image description here\"></p>",
-		"TimeStamp" : "2015-01-22T10:19:18.314Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 9,
-				"FPCount" : 79,
-				"CaughtCount" : 5004
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "expressionengine.stackexchange.com",
-				"Score" : 6.568182,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942602",
-		"PostUrl" : "http://stackoverflow.com/a/28086150",
-		"Site" : "stackoverflow.com",
-		"Title" : "Got to love that good ol' dick",
-		"Body" : "<p>Got to love that good ol' dick</p>",
-		"TimeStamp" : "2015-01-22T10:14:10.212Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3017
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,60}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942601",
-		"PostUrl" : "http://stackoverflow.com/questions/12633780",
-		"Site" : "stackoverflow.com",
-		"Title" : "textbox to accept only characters in vb.net",
-		"Body" : "<p>heyy hello</p>\n\n<p>I creating a simple application in Vb.net where i need to do validations\nSo I want a name textbox to accept only characters from a-z and A-Z</p>\n\n<p>For this i wrote following code</p>\n\n<pre><code>   Private Sub txtname_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox5.KeyPress\n    If Asc(e.KeyChar) <> 8 Then\n        If Asc(e.KeyChar) > 65 Or Asc(e.KeyChar) < 90 Or Asc(e.KeyChar) > 96 Or Asc(e.KeyChar) < 122 Then\n            e.Handled = True\n        End If\n    End If\nEnd Sub\n</code></pre>\n\n<p>but sum how it is not allowing me to enter character.... when i try to enter any character it does nothing</p>\n\n<p>can sumbody help me with this plssss</p>",
-		"TimeStamp" : "2015-01-22T10:14:09.859Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodyLQ",
-				"Regex" : "\\bpl[sz]+\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 14,
-				"TPCount" : 18,
-				"FPCount" : 16,
-				"CaughtCount" : 234
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942589",
-		"PostUrl" : "http://gaming.stackexchange.com/a/202652",
-		"Site" : "gaming.stackexchange.com",
-		"Title" : "I as well stopped getting tickets after buying discounted diamonds :/",
-		"Body" : "<p>I as well stopped getting tickets after buying discounted diamonds :/</p>",
-		"TimeStamp" : "2015-01-22T10:10:26.797Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3016
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942580",
-		"PostUrl" : "http://graphicdesign.stackexchange.com/questions/46172",
-		"Site" : "graphicdesign.stackexchange.com",
-		"Title" : "Problem exporting blend materials to fbx",
-		"Body" : "<p>I have been searching for a while on this one.  Im not sure if its possible.</p>\n\n<p>I'm trying to export some animations to an .FBX file and in my animations I make use of blend materials that I animate, so that I have an animated texture.  </p>\n\n<p>How ever when I go to export the file to FBX the blend materials never make it through.  I always get the error:</p>\n\n<p>Some materials in this scene may not be supported by certain applications and will import as standard gray materials instead. The following materials are affected: \n    -Left_HemiSphere_Blend\n    -Right_Hemisphere_Blend</p>\n\n<p>Those 2 materials are 2 Blend materials that have 2 children each, those children themselves are just standard materials with a .jpg map attached to the diffuse.  </p>\n\n<p>I realize that not all applications support blend materials but if I then open the fbx file again in 3ds max, the materials are gone.  </p>\n\n<p>Is it not possible to bake or export the blend material information to an .FBX file from 3ds max? Or am I missing a step?</p>\n\n<p>Thanks!</p>",
-		"TimeStamp" : "2015-01-22T10:06:48.545Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 65,
-				"CaughtCount" : 2645
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "graphicdesign.stackexchange.com",
-				"Score" : 5.41666651,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942579",
-		"PostUrl" : "http://graphicdesign.stackexchange.com/questions/46164",
-		"Site" : "graphicdesign.stackexchange.com",
-		"Title" : "Sizes of Smartwatch app launcher icon",
-		"Body" : "<p>I am creating app launcher icon for Smartwatch(Android). pls help to know what sizes should i have to consider while designing it. i tried to find template on the internet. but i cdnt find one.</p>",
-		"TimeStamp" : "2015-01-22T10:06:16.790Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodyLQ",
-				"Regex" : "\\bpl[sz]+\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 14,
-				"TPCount" : 18,
-				"FPCount" : 16,
-				"CaughtCount" : 233
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942574",
-		"PostUrl" : "http://boardgames.stackexchange.com/a/22642",
-		"Site" : "boardgames.stackexchange.com",
-		"Title" : "How about resolute angel? (Return your life total to your starting life ...",
-		"Body" : "<p>How about resolute angel? (Return your life total to your starting life total). Is that \"gaining life\"? Say if I'm on 1 hp, i dont get 19 health points, I just return it to 20. Do you see my point?\nIf yes, then resolute angel would in fact work with Sunbond (Whenever you gain life, put that many +1/+1 counters)\nIs this true or false?</p>",
-		"TimeStamp" : "2015-01-22T10:03:50.451Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)how about",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 3
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942573",
-		"PostUrl" : "http://photo.stackexchange.com/a/59613",
-		"Site" : "photo.stackexchange.com",
-		"Title" : "Putting your cap in your pocket WILL get dust into it. I know most of my...",
-		"Body" : "<p>Putting your cap in your pocket WILL get dust into it. I know most of my pockets have crap in them. If it's hot, your sweat can also collect in the cap. Go with the partially loosen strategy.</p>",
-		"TimeStamp" : "2015-01-22T10:02:32.132Z",
-		"ReportType" : "Offensive",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerOff",
-				"Regex" : "(?i)\\bcrap\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 3,
-				"FPCount" : 21,
-				"CaughtCount" : 53
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942570",
-		"PostUrl" : "http://stackoverflow.com/a/28085875",
-		"Site" : "stackoverflow.com",
-		"Title" : "enable debug and check the errors",
-		"Body" : "<p>enable debug and check the errors</p>",
-		"TimeStamp" : "2015-01-22T10:02:18.230Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3015
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 370
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,60}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942568",
-		"PostUrl" : "http://salesforce.stackexchange.com/a/42339",
-		"Site" : "salesforce.stackexchange.com",
-		"Title" : "Figured out how to do it, still I think that it's not the best way to do...",
-		"Body" : "<p>Figured out how to do it, still I think that it's not the best way to do it but it works and since the inputFields are rendered as select picklists in html and they all need the same style I added the following code in the style:</p>\n\n<pre><code>select {\n    height:33px;\n    width:255px;\n    font-size:14px;\n    font-style:italic;\n    font-weight:bold;\n    color:#26523C;\n    background-color:#9FA074; \n    text-align:left;\n    padding-top:7px;\n    padding-bottom:7px;\n    padding-left:10px;\n    border: 0;\n}\n</code></pre>\n\n<p>And added a div with the position where it should be rendered:</p>\n\n<pre><code><!-- Children picklist -->\n<div style=\"left:400px; top:275px;\">\n    <apex:inputField id=\"children\" value=\"{!Object__c.children__c}\"/>\n</div>\n</code></pre>\n\n<p>This way the dependent and controller picklists are rendered with same style as I wish it to be.</p>\n\n<p>@Uwe Heim: Thanks anyway, firebug's awesome and helped me out on this.</p>",
-		"TimeStamp" : "2015-01-22T10:01:26.845Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2971
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942565",
-		"PostUrl" : "http://stackoverflow.com/questions/14955000",
-		"Site" : "stackoverflow.com",
-		"Title" : "selenium ide loop through array variables",
-		"Body" : "<p>in selenium ide, i have built a test case, in which a array variable stores the values. i have used while loop to print those array variables. </p>\n\n<p><img src=\"http://i.stack.imgur.com/8wV7R.png\" alt=\"enter image description here\"></p>\n\n<p>here i have used \"getEval | myarray[0]\" to print the first value which is 'postgresql'. but the value is not listed. no error occurs.</p>\n\n<pre><code>[info] Executing: |getEval | myarray = new Array('postgresql','mysql'); | |\n[info] script is: myarray = new Array('postgresql','mysql');\n[info] Executing: |getEval | index=0; | |\n[info] script is: index=0;\n[info] Executing: |while | index < myarray.length; | |\n[info] Executing: |getEval | myarray[0] | mynewvalue |\n[info] script is: myarray[0]\n[info] Executing: |echo | ${mynewvalue} | |\n[info] echo: ${mynewvalue}\n[info] Executing: |getEval | index++; | |\n[info] script is: index++;\n[info] Executing: |endWhile | | |\n[info] Executing: |while | index < myarray.length; | |\n[info] Executing: |getEval | myarray[0] | mynewvalue |\n[info] script is: myarray[0]\n[info] Executing: |echo | ${mynewvalue} | |\n[info] echo: ${mynewvalue}\n[info] Executing: |getEval | index++; | |\n[info] script is: index++;\n[info] Executing: |endWhile | | |\n[info] Executing: |while | index < myarray.length; | | \n</code></pre>\n\n<p>now again in the same test case i have changed the \"getEval | myarray[0]\" as \"getEval | myarray[${index}] to list the array values by loop index.</p>\n\n<p><img src=\"http://i.stack.imgur.com/XAch9.png\" alt=\"enter image description here\"></p>\n\n<p>now i am getting the following error:</p>\n\n<pre><code>[info] Executing: |getEval | myarray = new Array('postgresql','mysql'); | |\n[info] script is: myarray = new Array('postgresql','mysql');\n[info] Executing: |getEval | index=0; | |\n[info] script is: index=0;\n[info] Executing: |while | index < myarray.length; | |\n[info] Executing: |getEval | myarray[${index}] | mynewvalue |\n[info] script is: myarray[${index}]\n[error] Threw an exception: missing ] in index expression \n</code></pre>\n\n<p>all i need is echo to print \"postgresql\" and \"mysql\" is separate new lines.\ni am very new to selenium plz help me to solve this.  </p>",
-		"TimeStamp" : "2015-01-22T09:57:55.528Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodyLQ",
-				"Regex" : "\\bpl[sz]+\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 14,
-				"TPCount" : 18,
-				"FPCount" : 16,
-				"CaughtCount" : 232
 			}
 		],
 		"WhiteTerms" : []

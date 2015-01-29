@@ -62,7 +62,7 @@ namespace Phamhilator
             Stats.UpTime = DateTime.UtcNow;
 
             Config.PrimaryRoom.PostMessage("`Phamhilator™ started.`");
-            Console.WriteLine("Phamhilator™ started.");
+            Console.WriteLine("Phamhilator started.");
 
             InitialiseSocket();
         }

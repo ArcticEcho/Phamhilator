@@ -2017,7 +2017,7 @@ namespace Phamhilator
 
         private static ReplyMessage Ask()
         {
-            var newReport = Regex.Replace(Stats.PostedReports[message.ParentID].Message.Content, @"\*\* \(\d*(\.\d)?\%\)\:", "?**:");
+            var newReport = Regex.Replace(Stats.PostedReports.First(r => r.Message.ID == message.ParentID).Message.Content, @"\*\* \(\d*(\.\d)?\%\)\:", "?**:");
 
             foreach (var secondaryRoom in Config.SecondaryRooms)
             {

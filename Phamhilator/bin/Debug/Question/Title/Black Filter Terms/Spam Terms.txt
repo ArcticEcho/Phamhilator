@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 1,
+		"TPCount" : 2,
 		"FPCount" : 3,
 		"CaughtCount" : 15
 	},
@@ -256,8 +256,8 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 13,
-		"TPCount" : 5,
-		"FPCount" : 12,
+		"TPCount" : 3,
+		"FPCount" : 13,
 		"CaughtCount" : 19
 	},
 	{
@@ -735,7 +735,7 @@
 		"Score" : 10,
 		"TPCount" : 0,
 		"FPCount" : 25,
-		"CaughtCount" : 40
+		"CaughtCount" : 39
 	},
 	{
 		"Regex" : "(?i)^no hassle",
