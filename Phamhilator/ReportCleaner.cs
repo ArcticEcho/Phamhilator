@@ -25,10 +25,19 @@ namespace Phamhilator
         private static string CensorString(string input)
         {
             var censored = new StringBuilder();
+            var nonSpaceI = 0;
 
-            foreach (var c in input)
+            for (var i = 0; i < input.Length; i++)
             {
-                censored.Append(c == ' ' ? ' ' : '★');
+                if (input[i] == ' ')
+                {
+                    censored.Append(' ');
+                }
+                else
+                {
+                    nonSpaceI++;
+                    censored.Append(nonSpaceI % 2 == 0 ? '★' : '✩');
+                }
             }
 
             return censored.ToString();

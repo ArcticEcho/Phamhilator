@@ -897,7 +897,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 8,
 		"FPCount" : 7,
-		"CaughtCount" : 24
+		"CaughtCount" : 25
 	},
 	{
 		"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",

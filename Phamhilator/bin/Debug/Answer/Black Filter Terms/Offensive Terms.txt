@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 3,
+		"TPCount" : 4,
 		"FPCount" : 0,
 		"CaughtCount" : 2
 	},
@@ -96,7 +96,7 @@
 		"Score" : 11,
 		"TPCount" : 12,
 		"FPCount" : 6,
-		"CaughtCount" : 30
+		"CaughtCount" : 31
 	},
 	{
 		"Regex" : "(?i)\\bidiot\\b",

@@ -573,7 +573,7 @@
 		"Score" : 10.8585472,
 		"TPCount" : 1,
 		"FPCount" : 3,
-		"CaughtCount" : 8
+		"CaughtCount" : 10
 	},
 	{
 		"Regex" : "(?i)i love men",

@@ -1,5 +1,1307 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975696",
+		"PostUrl" : "http://math.stackexchange.com/questions/1125031",
+		"Site" : "math.stackexchange.com",
+		"Title" : "help me with an integral?",
+		"Body" : "<p>(x^2)/sqrt(4-x^2)\nI am still new no idea how to write it... \nplease help..</p>",
+		"TimeStamp" : "2015-01-29T15:06:24.292Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 32,
+				"CaughtCount" : 830
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975683",
+		"PostUrl" : "http://stackoverflow.com/a/28217772",
+		"Site" : "stackoverflow.com",
+		"Title" : "Implement an SelectedIndexChanged event and set AutoPostBack to True.",
+		"Body" : "<p>Implement an SelectedIndexChanged event and set AutoPostBack to True.</p>",
+		"TimeStamp" : "2015-01-29T15:05:07.660Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3054
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975636",
+		"PostUrl" : "http://money.stackexchange.com/a/43740",
+		"Site" : "money.stackexchange.com",
+		"Title" : "UPDATE for anyone else in this situation: the payment went through! As I...",
+		"Body" : "<p>UPDATE for anyone else in this situation: the payment went through! As I said in the original post, my PayPal purchases don't show up on my bank account until at least a day later, and I just checked and the total PayPal amount had been deducted. </p>\n\n<p>(My account does not have overdraft coverage, so it says transactions with insufficient funds will be denied, but I won't get overdraft fees.)</p>\n\n<p>I made the PayPal purchase at 6:08am and had the difference deposited into my bank account less than an hour later, at 7:02am on the 28th, and the full payment showed up today, the 29th, in my bank account.</p>\n\n<p>Thank you to everyone for their input on this! I guess the only way to really know is to wait it out! If anyone else is short a few dollars when paying via their bank account's instant transfer on PayPal, just try to be quick and deposit the difference as soon as possible!</p>",
+		"TimeStamp" : "2015-01-29T15:01:04.655Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3024
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975632",
+		"PostUrl" : "http://japanese.stackexchange.com/questions/18815",
+		"Site" : "japanese.stackexchange.com",
+		"Title" : "What is difference between \u5024\u6BB5 (nedan) and \u4EE3\u91D1 (daikin)?",
+		"Body" : "<p>\u5024\u6BB5 (nedan) and \u4EE3\u91D1 (daikin) both means \"cost\" but im not sure where is a difference.</p>",
+		"TimeStamp" : "2015-01-29T15:00:43.794Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 829
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975631",
+		"PostUrl" : "http://dba.stackexchange.com/a/90504",
+		"Site" : "dba.stackexchange.com",
+		"Title" : "I recently migrated 15tb across 6 databases using mirroring. Very simple...",
+		"Body" : "<p>I recently migrated 15tb across 6 databases using mirroring. Very simple and worked perfectly with just a couple seconds of failover time. </p>\n\n<p>Edits:</p>\n\n<p>I had two new virtualized SQL Servers. The databases were coming from 3 servers that they had just plain outgrown, and were impacting performance on the smaller databases hosted on them.</p>\n\n<p>The process was very simple. </p>\n\n<ol>\n<li>Wait for weekend full backups to complete</li>\n<li>Restore with no recovery to new servers</li>\n<li>When those restores complete, pause backups</li>\n<li>Run one additional restore up to the latest log backup from originals</li>\n<li>Start mirroring across all six</li>\n</ol>\n\n<p>I chose to leave them in asynchronous mode until we were ready to fail them over to reduce load on the network, etc. Mirroring has some reputation for causing latency during maintenance (index/statistics) and other high volume activities, but I didn't find that to be true.</p>\n\n<p>During the next maintenance window, I manually failed over each database, and after some smoke testing, turned mirroring off, and eventually removed the old data files from the originating servers. One quirk in this process is that failing a mirrored database over leaves the former primary in a recovering state, so unless you're comfortable just dropping them, you need to bring them back online and then detach, or whatever your preferred method of removal is.</p>\n\n<p>Please let me know if you'd like any further specifics. I've left out server and network specs but can provide if you'd like. </p>\n\n<p>Thanks</p>",
+		"TimeStamp" : "2015-01-29T15:00:32.014Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3023
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975623",
+		"PostUrl" : "http://askubuntu.com/a/579295",
+		"Site" : "askubuntu.com",
+		"Title" : "its all a lie **********************************************************...",
+		"Body" : "<p>its all a lie ************************************************************\n<strong>Fuck you</strong>  ************************************************************                                                                                      </p>",
+		"TimeStamp" : "2015-01-29T14:59:49.911Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\bfuck",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11,
+				"TPCount" : 12,
+				"FPCount" : 6,
+				"CaughtCount" : 31
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975616",
+		"PostUrl" : "http://dba.stackexchange.com/questions/90192",
+		"Site" : "dba.stackexchange.com",
+		"Title" : "Create a read only excel file from SSIS?",
+		"Body" : "<p>Is there a way to create a read only excel file from SSIS?</p>",
+		"TimeStamp" : "2015-01-29T14:58:47.083Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 828
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975600",
+		"PostUrl" : "http://english.stackexchange.com/questions/224451",
+		"Site" : "english.stackexchange.com",
+		"Title" : "which one is best i'll go with you or i'll come with you?",
+		"Body" : "<p>which one is best?\nI'll come with you or I'll go with you.</p>",
+		"TimeStamp" : "2015-01-29T14:57:25.108Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 827
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975597",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203406",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "lol, last answer was in 2012...damn im L8",
+		"Body" : "<p>lol, last answer was in 2012...damn im L8</p>",
+		"TimeStamp" : "2015-01-29T14:57:20.032Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3053
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975588",
+		"PostUrl" : "http://apple.stackexchange.com/a/169564",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "Why are these morons offering a Windows PC solution for a Mac problem?",
+		"Body" : "<p>Why are these morons offering a Windows PC solution for a Mac problem?</p>",
+		"TimeStamp" : "2015-01-29T14:55:45.136Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3052
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975583",
+		"PostUrl" : "http://gaming.stackexchange.com/a/203404",
+		"Site" : "gaming.stackexchange.com",
+		"Title" : "iv completed \"good intentions\" and I was told to get a staff of magnus b...",
+		"Body" : "<p>iv completed \"good intentions\" and I was told to get a staff of magnus but no quest popped up nor  marker for the location. iv researched it and apparently savos aren is supposed to die and give marribelle a tork of laberithian then she gives it to me thus allowing me to enter a ceremonial door to get said staff. but that's not how it went for me and I cannot go to previous save because iv carried onward, a lot, I just ignored it but iv been running out of quests...this quest is a quest I want to do. I have a lot of good stuff to just restart and iv played to much longer to return to save. so ima guess im screwed...? BTW this is happening on thy ps3.</p>",
+		"TimeStamp" : "2015-01-29T14:54:57.106Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 50
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975582",
+		"PostUrl" : "http://security.stackexchange.com/questions/80359",
+		"Site" : "security.stackexchange.com",
+		"Title" : "session management and login php scripts",
+		"Body" : "<p>-4 down vote favorite</p>\n\n<p>I am wanting to write login scripts for clients websites to make them more secure. I want to know what best practices I can implement into this. Password protected control panels are in their abundance, but very few seem to implement best practices in terms of code writing, speed and security.</p>\n\n<p>I will be using PHP and a MYSQL database. I used to use pbkdf2 and bcrypt for hashing. I use MVC for design pattern.</p>\n\n<p>Some login scripts log the IP address throughout the session or even the user agent, but I want to avoid that as it isn't compatible with proxy servers.</p>\n\n<p>I am also a little behind the best practice in using sessions in PHP 5 so some best practices with this would be helpful and also an example will be very helpful.</p>",
+		"TimeStamp" : "2015-01-29T14:54:55.931Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "down vote favorite",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.75,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 13
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975572",
+		"PostUrl" : "http://parenting.stackexchange.com/a/18498",
+		"Site" : "parenting.stackexchange.com",
+		"Title" : "At the early stages holding a childs interest is far more important than...",
+		"Body" : "<p>At the early stages holding a childs interest is far more important than practicing. the child must want to learn and forcing practice would make it a chore rather than a good time and you could stifle the childs own natural gifts.  When i was taking lessons I did not want to show up for lessons if i had not practised for fear the teacher would look down on me.  My roommate taught guitar and what we did at the end of each lesson was to have an \"open jam\" for 20 minutes or so with the student on lead guitar my roommate on bass and me on drums.  the students couldnt wait to come to practice.  make them WANT to learn.</p>",
+		"TimeStamp" : "2015-01-29T14:51:44.905Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "(?i)\\bgift'?s\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.8585472,
+				"TPCount" : 1,
+				"FPCount" : 3,
+				"CaughtCount" : 10
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975561",
+		"PostUrl" : "http://superuser.com/questions/871137",
+		"Site" : "superuser.com",
+		"Title" : "Icons in Windows 7 are .LNKs and icons are changed",
+		"Body" : "<p>I would like you to answer my question on this page</p>\n\n<p><a href=\"http://answers.microsoft.com/en-us/windows/forum/windows_7-windows_programs/icons-have-unknown-icon-image-on-top-of-the-actual/3e04a608-3405-4ebb-b5e9-93beb69f9419?tm=1422199030642\" rel=\"nofollow\">http://answers.microsoft.com/en-us/windows/forum/windows_7-windows_programs/icons-have-unknown-icon-image-on-top-of-the-actual/3e04a608-3405-4ebb-b5e9-93beb69f9419?tm=1422199030642</a></p>",
+		"TimeStamp" : "2015-01-29T14:48:05.663Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)^<p>.*</p?>\\n\\n?<p><a.*></p>$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 25
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975560",
+		"PostUrl" : "http://math.stackexchange.com/a/1125019",
+		"Site" : "math.stackexchange.com",
+		"Title" : "write 6^k = (6^k)(3-2) = 3^(k+1).2^k - 3^k.2^(k+1)\n\n= 3^(k+1).2^k - 3^k....",
+		"Body" : "<p>write 6^k = (6^k)(3-2) = 3^(k+1).2^k - 3^k.2^(k+1)</p>\n\n<p>= 3^(k+1).2^k - 3^k.2^(k+1) + 3^(2k+1) - 3^(2k+1)</p>\n\n<p>take (first and fourth) and (second and third) term and factorise </p>\n\n<p>it will split into the req form</p>",
+		"TimeStamp" : "2015-01-29T14:47:53.737Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 397
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975548",
+		"PostUrl" : "http://pt.stackoverflow.com/a/48691",
+		"Site" : "pt.stackoverflow.com",
+		"Title" : "O que isso altera? Poderia deixar uma explica\u00E7\u00E3o junto ao c\u00F3digo?",
+		"Body" : "<p>O que isso altera? Poderia deixar uma explica\u00E7\u00E3o junto ao c\u00F3digo?</p>",
+		"TimeStamp" : "2015-01-29T14:47:32.625Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3051
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975525",
+		"PostUrl" : "http://mathoverflow.net/a/195142",
+		"Site" : "mathoverflow.net",
+		"Title" : "How about this:\nAs you assumed, $P$ has terminal singularities, which me...",
+		"Body" : "<p>How about this:\nAs you assumed, $P$ has terminal singularities, which means that the singular locus of $P$ has codimension at least 3 (see Corollary 5.18 in Koll\u00E1r-Mori's book). Hence, the singular locus has codimension at most 2 in $X$. We can consider everything outside the singular locus because we work on the level of divisors of $X$. Hence $P$ is just smooth and $X$ is Cartier and everything is true for you.</p>\n\n<p>EDIT:\n@LiYutong, of course I did not mean that $K_P$ is Cartier (which is not true in general). I mean that there exists a codimension 3 subset $Z$ of $P$ such that $U=P-Z$ is smooth and hence $X|_U$ is Cartier divisor on $U$. Hence $K_{X|_U}=(K_U+X|_U)|_{X|_U}$ is $\\mathbb{Q}$-trivial by adjunction. Not that $X-X|_U$ has codimension 2 in $X$, so the Weil divisors class $\\rm{Cl}(X)$ on $X$ coincides with  the Weil divisors class $\\rm{Cl}(X|_U)$ on $X|_U$ by restriction.\n So $K_X\\sim_\\mathbb{Q}0$.</p>",
+		"TimeStamp" : "2015-01-29T14:43:26.585Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)how about",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 8
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975523",
+		"PostUrl" : "http://electronics.stackexchange.com/a/131521",
+		"Site" : "electronics.stackexchange.com",
+		"Title" : "Aragh! Sorry My Bad. Just been over the data sheet again. In my design I...",
+		"Body" : "<p>Aragh! Sorry My Bad. Just been over the data sheet again. In my design I left out the Cap CBST, between Boost and SW Pins. :-(</p>\n\n<p>Sorry I asked the question as I'm sure I'll have to correct that issue before I can proceed. Thanks for all your comments and info on this.</p>",
+		"TimeStamp" : "2015-01-29T14:43:02.173Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3021
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975506",
+		"PostUrl" : "http://stackoverflow.com/questions/28217415",
+		"Site" : "stackoverflow.com",
+		"Title" : "Java - Cannot Catch arithmetic Expression",
+		"Body" : "<p>I must have done something stupid here. But I can't seem to figure out why this simple code doesn't work. The InputMismatchException works, but the ArithmeticException never get caught.</p>\n\n<p>Help me pls :(\n</p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\">\n<div class=\"snippet-code\">\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>import java.util.InputMismatchException;\nimport java.util.Scanner;\npublic class SubChap02_DivisionByZero {\n  public static double quotient(double num, double denum) throws ArithmeticException {\n    return num / denum;\n  }\n\n  public static void main(String[] args) {\n    Scanner scanner = new Scanner(System.in);\n    double num, denum, result;\n    boolean continueLoop = true;\n    do {\n      try {\n        System.out.printf(\"Please enter the numerator: \");\n        num = scanner.nextFloat();\n        System.out.printf(\"Please enter the denumerator: \");\n        denum = scanner.nextFloat();\n        result = quotient(num, denum);\n        continueLoop = false;\n        System.out.printf(\"THIS: %.2f/%.2f is %.2f\\n\", num, denum, result);\n        scanner.close();\n      } catch (ArithmeticException ArithmeticException) {\n        System.err.printf(\"Exception : %s\\n\", ArithmeticException);\n        scanner.nextLine();\n        System.out.println(\"You can try again!\");\n      } catch (InputMismatchException inputMismatchException) {\n        System.err.printf(\"Exception : %s\\n\", inputMismatchException);\n        scanner.nextLine();\n        System.out.println(\"You can try again!\");\n      }\n    } while (continueLoop == true);\n\n\n\n\n\n  }\n\n}</code></pre>\n</div>\n</div>\n<p></p>",
+		"TimeStamp" : "2015-01-29T14:42:14.630Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 237
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 7,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975494",
+		"PostUrl" : "http://money.stackexchange.com/a/43738",
+		"Site" : "money.stackexchange.com",
+		"Title" : "Is there a sevice tax on this amt received in India? Do we need a IEC co...",
+		"Body" : "<p>Is there a sevice tax on this amt received in India? Do we need a IEC code for this,</p>\n\n<p>Thanks\nvijji</p>",
+		"TimeStamp" : "2015-01-29T14:39:44.533Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3020
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 17
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975462",
+		"PostUrl" : "http://magento.stackexchange.com/a/53793",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "Thanks for given this awesome solution. chandra bhushan",
+		"Body" : "<p>Thanks for given this awesome solution. chandra bhushan</p>",
+		"TimeStamp" : "2015-01-29T14:36:50.296Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3050
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3019
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975452",
+		"PostUrl" : "http://gis.stackexchange.com/a/132300",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "Next question... What would the code look like if we want to take our Re...",
+		"Body" : "<p>Next question... What would the code look like if we want to take our Recode and update an attribute in the record? Thank you!</p>",
+		"TimeStamp" : "2015-01-29T14:36:03.770Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3018
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975414",
+		"PostUrl" : "http://apple.stackexchange.com/questions/169559",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "iPad photos selected folders synchronization with dropbox",
+		"Body" : "<p>how to synchronize photos selected folders with dropbox on iPad by desktop Mac application?</p>",
+		"TimeStamp" : "2015-01-29T14:29:19.239Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 826
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975413",
+		"PostUrl" : "http://ux.stackexchange.com/a/72608",
+		"Site" : "ux.stackexchange.com",
+		"Title" : "Authentication and security are critical. A security breach will kill yo...",
+		"Body" : "<p>Authentication and security are critical. A security breach will kill you.</p>\n\n<p>Do you have any idea what goes on between a keyboard and server? You have normalization, encoding, ambiguities in Unicode, serialization, NAT, man-in-the-middle, and other measures. That is a secure end-to-end transaction that is used for the entire session. Bad guys want to take advantage of any of that stuff.</p>\n\n<p>A common security practice is to limit the attack surface and protect it like a soldier.</p>\n\n<p>This is not programmers being lazy: it is about protecting a very sensitive and critical function that lots of bad guys are tying to exploit.</p>\n\n<p>To say \u201CI want to use any character, but protect me\u201D is like saying \u201Caccept any form of ID but assure me that they are who they say they are\u201D. I cannot get on a plane with my school ID for a reason: it is not as secure.</p>\n\n<p>The bottom line is that a functional secure password can be created from 128 characters. There is no security reason to support more. To support all Unicode is a needless security vulnerability.</p>",
+		"TimeStamp" : "2015-01-29T14:29:05.243Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 49
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975412",
+		"PostUrl" : "http://cooking.stackexchange.com/a/52101",
+		"Site" : "cooking.stackexchange.com",
+		"Title" : "You can also engrave on glass using a product from Joannns/Michaels call...",
+		"Body" : "<p>You can also engrave on glass using a product from Joannns/Michaels called Amour Etch.  I've engraved 9x13 glassware with it, and given it as gifts.  Yes, it's washable.  Amour Etch is something that you have to use carefully.  Google it.</p>\n\n<p>Here's a handy <a href=\"https://www.youtube.com/watch?v=3OGe2hmlv94\" rel=\"nofollow\">instructional video</a></p>",
+		"TimeStamp" : "2015-01-29T14:28:47.274Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerSpam",
+				"Regex" : "(?i)\\bgift'?s\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.8585472,
+				"TPCount" : 1,
+				"FPCount" : 3,
+				"CaughtCount" : 9
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975388",
+		"PostUrl" : "http://android.stackexchange.com/questions/97235",
+		"Site" : "android.stackexchange.com",
+		"Title" : "Notification symbol - checkerboard?",
+		"Body" : "<p>What does the 4-square checkerboard symbol on my notification bar represent?</p>",
+		"TimeStamp" : "2015-01-29T14:23:36.798Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 825
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975384",
+		"PostUrl" : "http://apple.stackexchange.com/a/169558",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "I have the same issue, and none of these responses helps. It's funny how...",
+		"Body" : "<p>I have the same issue, and none of these responses helps. It's funny how people always blame it on you, like you are a moron and doing something wrong, when the problem is clearly with the apple.  They say, just hold it longer, or just drag it higher, or stop pressing command, as if you are a moron who has not already tried all that.  </p>",
+		"TimeStamp" : "2015-01-29T14:22:31.450Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (has|have|g(e|o)t)( the)? same (problem|issue|error|exception)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18,
+				"TPCount" : 46,
+				"FPCount" : 7,
+				"CaughtCount" : 400
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)i (have|got) the same (problem|issue)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 18
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975357",
+		"PostUrl" : "http://apple.stackexchange.com/a/169557",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "Thank you for answers, but No i don't have access to machine that's why ...",
+		"Body" : "<p>Thank you for answers, but No i don't have access to machine that's why i asked, does it clears up after user logging out ?</p>\n\n<p>Thank you </p>",
+		"TimeStamp" : "2015-01-29T14:19:26.296Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3017
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975345",
+		"PostUrl" : "http://hermeneutics.stackexchange.com/a/6349",
+		"Site" : "hermeneutics.stackexchange.com",
+		"Title" : "Here are some examples I found:\n\n\n  Exd 31:14 Ye shall keep the sabbath ...",
+		"Body" : "<p>Here are some examples I found:</p>\n\n<blockquote>\n  <p>Exd 31:14 Ye shall keep the sabbath therefore; for it is holy unto you: every one that defileth it shall surely be put to death: for whosoever doeth any work therein, that soul shall be <strong>cut off from among his people</strong>.</p>\n  \n  <p>Exd 31:15 Six days may work be done; but in the seventh is the sabbath of rest, holy to the LORD: whosoever doeth any work in the sabbath day, he shall surely be <strong>put to death</strong>.</p>\n  \n  <hr>\n  \n  <p>Lev 23:29 For whatsoever soul it be that shall not be afflicted in that same day, he shall be <strong>cut off from among his people</strong>.</p>\n  \n  <p>Lev 23:30 And whatsoever soul it be that doeth any work in that same day, the same soul will I <strong>destroy from among his people</strong>.</p>\n  \n  <hr>\n  \n  <p>Jdg 21:6 And the children of Israel repented them for Benjamin their brother, and said, There is <strong>one tribe cut off from Israel</strong> this day.</p>\n  \n  <p>In context, \"cut off from Israel\" means <strong>the complete extinction of the tribe</strong>.</p>\n  \n  <hr>\n  \n  <p>1Ki 14:10 Therefore, behold, I will bring evil upon the house of Jeroboam, and <strong>will cut off from Jeroboam him that pisseth against the wall</strong>, and him that is shut up and left in Israel, and will take away the remnant of the house of Jeroboam, as a man taketh away dung, till it be all gone.</p>\n  \n  <p>1Ki 15:29 And it came to pass, when he reigned, that <strong>he smote all the house of Jeroboam; he left not to Jeroboam any that breathed, until he had destroyed him</strong>, according unto the saying of the LORD, which he spake by his servant Ahijah the Shilonite.</p>\n  \n  <hr>\n  \n  <p>1Ki 21:21 Behold, I will bring evil upon thee, and will take away thy posterity, and will <strong>cut off from Ahab him that pisseth against the wall</strong>, and him that is shut up and left in Israel,</p>\n  \n  <p>2Ki 9:8 For the whole house of Ahab shall perish: and I will <strong>cut off from Ahab him that pisseth against the wall</strong>, and him that is shut up and left in Israel:</p>\n  \n  <p>2Ki 9:9 And <strong>I will make the house of Ahab like the house of Jeroboam</strong> the son of Nebat, and like the house of Baasha the son of Ahijah</p>\n  \n  <p>2Ki 10:17 And when he came to Samaria, <strong>he slew all that remained unto Ahab</strong> in Samaria, till he had destroyed him, according to the saying of the LORD, which he spake to Elijah.</p>\n  \n  <p>2Ki 10:30 And the LORD said unto Jehu, Because thou hast done well in executing that which is right in mine eyes, <strong>and hast done unto the house of Ahab according to all that was in mine heart</strong>, thy children of the fourth generation shall sit on the throne of Israel.</p>\n</blockquote>\n\n<p>Thus the general trend is that \"cut off from Israel\" and \"cut off from the earth\" mean physical death.  However, when \"cut off from [other places in specific contexts]\" occurs, it may mean other things: </p>\n\n<blockquote>\n  <p>2Ch 26:21 And Uzziah the king was a leper unto the day of his death, and dwelt in a several house, being a leper; for <strong>he was cut off from the house of the LORD:</strong> and Jotham his son was over the king's house, judging the people of the land.</p>\n  \n  <p>Uzziah was not killed at that time, but became a leper and was no longer allowed to the temple, or even within Jerusalem.</p>\n</blockquote>\n\n<p><strong>Summa summarum</strong>: Generally, \"cut off\", when it is a generic punishment or statement, means death/extinction.  However, in certain specific circumstances the phrase refers to separation from a particular location or institution.</p>",
+		"TimeStamp" : "2015-01-29T14:18:28.408Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 95
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975320",
+		"PostUrl" : "http://askubuntu.com/a/579276",
+		"Site" : "askubuntu.com",
+		"Title" : "sudo apt-get update; sudo apt-get dist-upgrade",
+		"Body" : "<p>sudo apt-get update; sudo apt-get dist-upgrade</p>",
+		"TimeStamp" : "2015-01-29T14:14:15.089Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3048
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 395
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975291",
+		"PostUrl" : "http://pt.stackoverflow.com/questions/48688",
+		"Site" : "pt.stackoverflow.com",
+		"Title" : "Como fazer bot\u00E3o piscar no Android.",
+		"Body" : "<p>Ol\u00E1, gostaria de fazer um bot\u00E3o(<code>Button</code>) piscar no Android.  </p>",
+		"TimeStamp" : "2015-01-29T14:11:27.892Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 824
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975272",
+		"PostUrl" : "http://parenting.stackexchange.com/a/18485",
+		"Site" : "parenting.stackexchange.com",
+		"Title" : "I'd like to offer a different opinion.\n\nI don't think there's ever 'noth...",
+		"Body" : "<p>I'd like to offer a different opinion.</p>\n\n<p>I don't think there's ever 'nothing' you can do.</p>\n\n<p>You may not be able to prevent your parents divorce, but whether they do or they don't divorce it's still a very important moment in all your lives and it's important that you understand why they want to divorce. If you don't understand the situation then it becomes much harder to come to terms with. If they do divorce you'll have questions preying on your mind for a very long time. If they don't divorce, without knowing why you'll find yourself always worrying whenever there's a tiny argument. This is why it's important that you know.</p>\n\n<p>Nobody here can tell you why your parents are considering divorce, only your parents know and only they can explain it to you. This is why my advice to you is to confront them about it - ask them outright, be it alone or together, why they want to divorce. The truth may hurt, but not knowing will hurt more.</p>\n\n<p>If you understand why they are considering divorce you can form an opinion on whether it's a good thing or a bad thing and then express your opinion to your parents. Parents always value their kid's opinions, and even if they don't agree with you they'll acknowledge your opinion, which is another important thing.</p>\n\n<p>All in all, whatever happens, make sure that your parents know that you love them both and that whatever they choose to do you'll support them both, even if you don't agree with their decision. It might be hard, but it's better for everyone to part on good terms, even if you change your mind later in life.</p>",
+		"TimeStamp" : "2015-01-29T14:08:45.296Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)have question",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 18.0265732,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 15
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975246",
+		"PostUrl" : "http://math.stackexchange.com/a/1124972",
+		"Site" : "math.stackexchange.com",
+		"Title" : "$$\\int\\frac{1}{\\sin x\\cos x}dx=\\int\\frac{\\cos x}{\\sin x\\cos^2 x}dx=\\int\\...",
+		"Body" : "<p>$$\\int\\frac{1}{\\sin x\\cos x}dx=\\int\\frac{\\cos x}{\\sin x\\cos^2 x}dx=\\int\\frac{\\cos x}{\\sin x(1-\\sin^2 x)}dx\\stackrel{u=\\sin x}{=}\\int\\frac{1}{u(1-u^2)}du$$</p>\n\n<p>now you can use partial fraction</p>",
+		"TimeStamp" : "2015-01-29T14:04:33.153Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 394
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975243",
+		"PostUrl" : "http://stackoverflow.com/a/28216654",
+		"Site" : "stackoverflow.com",
+		"Title" : "How would i actually migrate tags and notes from SP10 to SP13?",
+		"Body" : "<p>How would i actually migrate tags and notes from SP10 to SP13?</p>",
+		"TimeStamp" : "2015-01-29T14:04:02.020Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3047
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975232",
+		"PostUrl" : "http://math.stackexchange.com/a/1124975",
+		"Site" : "math.stackexchange.com",
+		"Title" : "It is just using the Taylor series of $\\log(1+x)$ in the vicinity of $0$",
+		"Body" : "<p>It is just using the Taylor series of $\\log(1+x)$ in the vicinity of $0$</p>",
+		"TimeStamp" : "2015-01-29T14:02:25.719Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3046
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975227",
+		"PostUrl" : "http://mathematica.stackexchange.com/a/72774",
+		"Site" : "mathematica.stackexchange.com",
+		"Title" : "Problem Confirmed\n\nWolfram has confirmed this to be a problem with Mathe...",
+		"Body" : "<h2>Problem Confirmed</h2>\n\n<p>Wolfram has confirmed this to be a problem with <em>Mathematica</em> 10.0.2.0, not a damaged installation. There is no known workaround for now.</p>\n\n<p>Transcript of the confirmation mail (dated 2015-01-28):</p>\n\n<blockquote>\n<pre>Hello -\n\nThank you for your email.\n\nI have filed a report with our developers on this issue with \nTransformedRegion so that they are aware of the problem.\nThis may allow them to fix the problem in a future version of\nMathematica.  I am not aware of any workarounds for this \nproblem at the current time, but I will be sure to pass on\nany useful information should it become available.\nPlease let me know if you have any further questions. \n\n~[name masked]~\nTechnical Support\nWolfram Research, Inc.\nhttp://support.wolfram.com</pre>\n</blockquote>",
+		"TimeStamp" : "2015-01-29T14:01:50.885Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3016
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 94
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975226",
+		"PostUrl" : "http://scifi.stackexchange.com/a/80289",
+		"Site" : "scifi.stackexchange.com",
+		"Title" : "The answer is a simple 'No', but answers have to be 30 characters (min).",
+		"Body" : "<p>The answer is a simple 'No', but answers have to be 30 characters (min).</p>",
+		"TimeStamp" : "2015-01-29T14:01:44.789Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3045
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975193",
+		"PostUrl" : "http://apple.stackexchange.com/a/169553",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "Yes it does. If that's a problem then get a clipboard manager.",
+		"Body" : "<p>Yes it does. If that's a problem then get a clipboard manager.</p>",
+		"TimeStamp" : "2015-01-29T13:57:43.719Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3044
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975191",
+		"PostUrl" : "http://salesforce.stackexchange.com/a/64687",
+		"Site" : "salesforce.stackexchange.com",
+		"Title" : "Thank you for using the fuel-soap library. It looks like you have forgot...",
+		"Body" : "<p>Thank you for using the fuel-soap library. It looks like you have forgotten a comma in your ParentFolder object. This could be a typo. You should only need to provide the ParentFolder.ID. I am currently using the library to create folder structures. I have provided a working snippet.</p>\n\n<pre><code>client.create(\n    \"DataFolder\",\n    {\n        CustomerKey: \"TEST_FOLDER_20150129\",\n        Name: \"TEST_FOLDER_20150129\",\n        Description: \"Test Folder using fuel-soap\",\n        ContentType: \"email\",\n        IsActive: true,\n        IsEditable: true,\n        AllowChildren: true,\n        ParentFolder: {\n            ID: \"2149\"\n        }\n    },\n    function(err, response) {\n        if ( err ) {\n            throw err;\n        }\n        console.log(response.body);\n    }\n);\n</code></pre>",
+		"TimeStamp" : "2015-01-29T13:57:42.808Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3011
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975160",
+		"PostUrl" : "http://puzzling.stackexchange.com/a/8334",
+		"Site" : "puzzling.stackexchange.com",
+		"Title" : "\n   $8928 = 992 \\times 9 = 96 \\times 93$.\n",
+		"Body" : "<blockquote class=\"spoiler\">\n  <p> $8928 = 992 \\times 9 = 96 \\times 93$.</p>\n</blockquote>",
+		"TimeStamp" : "2015-01-29T13:55:19.364Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 393
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975148",
+		"PostUrl" : "http://anime.stackexchange.com/a/18949",
+		"Site" : "anime.stackexchange.com",
+		"Title" : "You could just use the f***ing Google image search!",
+		"Body" : "<p>You could just use the f***ing Google image search!</p>",
+		"TimeStamp" : "2015-01-29T13:54:13.730Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3043
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975113",
+		"PostUrl" : "http://stackoverflow.com/a/28216376",
+		"Site" : "stackoverflow.com",
+		"Title" : "did you get a solution to this ? I need a solution for same kind of issu...",
+		"Body" : "<p>did you get a solution to this ? I need a solution for same kind of issue ! Please help !</p>",
+		"TimeStamp" : "2015-01-29T13:49:40.128Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)pl(ease|s|z) help",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 17,
+				"TPCount" : 20,
+				"FPCount" : 3,
+				"CaughtCount" : 126
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?=.*?(?i)please).{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 22.3837166,
+				"TPCount" : 84,
+				"FPCount" : 139,
+				"CaughtCount" : 1257
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975103",
+		"PostUrl" : "http://math.stackexchange.com/a/1124956",
+		"Site" : "math.stackexchange.com",
+		"Title" : "let the angle rotated be z about the fixed focus\nand lets take the std e...",
+		"Body" : "<p>let the angle rotated be z about the fixed focus\nand lets take the std eq of ellipse</p>\n\n<p>use the parametric form of line passing through the fixed focus and with slope tan z to find the point through which the nearer directrix passes</p>\n\n<p>like,   (x-ae)/cosz = (y-0)/sinz = -r ,where r= a/e -ae</p>\n\n<p>find x and y and hence the eq of directrix with slope -cotz\nnow u know the focus and directrix so find the eq of ellipse.</p>",
+		"TimeStamp" : "2015-01-29T13:47:50.669Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 392
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975079",
+		"PostUrl" : "http://stackoverflow.com/a/28216268",
+		"Site" : "stackoverflow.com",
+		"Title" : "set your alarm using setRepeat or setInExactRepeat methods",
+		"Body" : "<p>set your alarm using setRepeat or setInExactRepeat methods</p>",
+		"TimeStamp" : "2015-01-29T13:43:36.925Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 119,
+				"CaughtCount" : 3042
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975074",
+		"PostUrl" : "http://apple.stackexchange.com/a/83679",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "Use phone disk. It mounts your iPhone or iPod .... and can you give exam...",
+		"Body" : "<p>Use phone disk. It mounts your iPhone or iPod .... and can you give example of your applet code....\nThanks\nRaji</p>",
+		"TimeStamp" : "2015-01-29T13:42:52.538Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3010
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975071",
+		"PostUrl" : "http://math.stackexchange.com/questions/1124950",
+		"Site" : "math.stackexchange.com",
+		"Title" : "maximize a function on $H=\\left\\{x \\right\\}$",
+		"Body" : "<p>Let $f: R\\to R$ a function . how solve $\\sup_{x\\in H}f(x)$ with $H=\\left\\{x \\right\\}$ ?</p>",
+		"TimeStamp" : "2015-01-29T13:42:33.663Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 823
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975034",
+		"PostUrl" : "http://english.stackexchange.com/questions/224435",
+		"Site" : "english.stackexchange.com",
+		"Title" : "Problems related right form of verb",
+		"Body" : "<p>Which one is correct?</p>\n\n<p>'He can help solve this.' or 'He can help solving this.'</p>",
+		"TimeStamp" : "2015-01-29T13:29:47.161Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 822
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975027",
+		"PostUrl" : "http://android.stackexchange.com/a/32332",
+		"Site" : "android.stackexchange.com",
+		"Title" : "I don't know if this will work with BlueStacks specifically, but wheneve...",
+		"Body" : "<p>I don't know if this will work with BlueStacks specifically, but whenever I want to share a clipboard between my PC and Android device, I use <a href=\"http://airdroid.com/\" rel=\"nofollow\">AirDroid</a>. </p>",
+		"TimeStamp" : "2015-01-29T13:28:20.733Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 47
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975024",
+		"PostUrl" : "http://gis.stackexchange.com/a/132291",
+		"Site" : "gis.stackexchange.com",
+		"Title" : "you can enable tis button under the settings button within the python co...",
+		"Body" : "<p>you can enable tis button under the settings button within the python console / editor</p>",
+		"TimeStamp" : "2015-01-29T13:27:01.571Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 389
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2975011",
+		"PostUrl" : "http://ell.stackexchange.com/a/48296",
+		"Site" : "ell.stackexchange.com",
+		"Title" : "I skimmed other answers and didn't find any mention of articles, so I'll...",
+		"Body" : "<p>I skimmed other answers and didn't find any mention of articles, so I'll just add some information about grammar:</p>\n\n<p>The word <em>a</em> in English is an <em>indefinite article</em>. It is used in the following situations:</p>\n\n<ol>\n<li><p>before phrases of time and measurements (per week/weekly)</p>\n\n<blockquote>\n  <p>I go to English class 4 times <em>a</em> <strong>week</strong></p>\n  \n  <ul>\n  <li>you can also use <em>per week</em> here</li>\n  </ul>\n</blockquote></li>\n<li><p>before phrases of jobs</p>\n\n<blockquote>\n  <p>I am <em>a</em> <strong>doctor</strong></p>\n</blockquote></li>\n<li><p>with a noun complement</p>\n\n<blockquote>\n  <p>Do you have <em>a</em> <strong>daughter</strong>? Yes, I have <em>a</em> <strong>daughter</strong></p>\n  \n  <ul>\n  <li>This is your case</li>\n  <li>Note that if you have more than one daughter, you would start numbering how many: <em>I actually have <strong>three</strong> daughters!</em></li>\n  </ul>\n</blockquote></li>\n<li><p>before phrases of nationality (very rarely)</p>\n\n<blockquote>\n  <p>He is <em>an</em> <strong>American</strong></p>\n  \n  <ul>\n  <li>This is not used often, only when the nationality is being used as a noun phrase (as used above). Some more examples/exceptions:\n  <ol>\n  <li>She is <em>a</em> <strong>native French speaker</strong> (the noun phrase is in bold).</li>\n  <li>She is <em>a</em> <strong>French</strong>\n  <ul>\n  <li>This is incorrect because <em>French</em> is being used as an adjective to describe the woman; it is <em>not</em> a noun phrase</li>\n  </ul></li>\n  </ol></li>\n  </ul>\n</blockquote></li>\n<li><p>half/quite with a <em>noun phrase</em></p>\n\n<blockquote>\n  <p>He is <strong>quite</strong> <em>a</em> handsome man</p>\n  \n  <p>The recipe requires <strong>half</strong> <em>a</em> cup of sugar</p>\n</blockquote></li>\n</ol>",
+		"TimeStamp" : "2015-01-29T13:23:50.322Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 91
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974985",
+		"PostUrl" : "http://writers.stackexchange.com/a/16061",
+		"Site" : "writers.stackexchange.com",
+		"Title" : "I think the real answer is, fall in love with the nuance of language and...",
+		"Body" : "<p>I think the real answer is, fall in love with the nuance of language and how it works in the reader's mind.</p>\n\n<p>I often mention the book, <a href=\"http://newtonsaber.com/AmazonBooks/BookLink.aspx?author=provost\" rel=\"nofollow\">Make Your Words Work, by the late Gary Provost -- amazon link</a>, because it is the book which most helped me fall in love with how words on the paper transform into images in people's minds.  </p>\n\n<p>Don't view the editing process so much as a work to do, but more as a research project where you are attempting to answer the question:</p>\n\n<blockquote>\n  <p>\"How do I write this more clearly so that an FTR (First Time Reader)\n  will see it the same way as I do?\"</p>\n</blockquote>\n\n<p>Don't you love reading a book which does something to you so that at some point you are no longer reading, but watching the story play out on the Movie-Screen of Your Mind?</p>\n\n<p>I believe great fiction writing like that occurs because of what Jack Bickham talks about in his book, <a href=\"http://newtonsaber.com/AmazonBooks/BookLink.aspx?author=bickham\" rel=\"nofollow\">Scene & Structure -- amazon.com</a>, related to stimulus / response.</p>\n\n<p>He provides an example which shows the flow something like the following:</p>\n\n<p><strong>Incorrect</strong></p>\n\n<blockquote>\n  <p>Joe threw the ball to Tom.</p>\n  \n  <p>Tom said, \"Hey, have you ever eaten oysters for breakfast?\"</p>\n</blockquote>\n\n<p>That is incorrect, because in the reader's mind the ball hangs in the air.</p>\n\n<p><strong>Correct</strong></p>\n\n<blockquote>\n  <p>Joe threw the ball to Tom.<br>\n  Tom caught the ball and said, \"Hey have you ever eaten escargo for\n  breakfast?\"</p>\n</blockquote>\n\n<p>It's a very subtle thing, but if you really apply this to your writing where one sentence stimulates another you get great transitions which make your reading flow really well.</p>\n\n<p>All of this adds up to concentrating on one sentence at a time as you do your edits and you'll get a lot more done than if you concentrate on the overwhelming large number of pages.  Good luck.</p>\n\n<p><strong>John Grisham: The Partner</strong></p>\n\n<p>Here is an example of great writing that definitely came from an author who thought about all these things.  No matter what you think of Grisham and his novels I believe if you read one sentence you will want to read more so it is a great example of this stimulus / response and using the exact right language.</p>\n\n<blockquote>\n  <p>They found him in Ponta Pora, a pleasant little town in Brazil, on the\n  border of Paraguay, in a land still known as the Frontier.</p>\n  \n  <p>They found him living in a shaded brick house on Rua Tiradentes, a\n  wide avenue with trees down the center and barefoot boys dribbling\n  soccer balls along the hot pavement.</p>\n  \n  <p>They found him alone, as best they could tell, though a maid came and\n  went at odd hours during the eight days they hid and watched.</p>\n</blockquote>\n\n<p>You can read more of the excerpt at :\n<a href=\"http://newtonsaber.com/AmazonBooks/BookLink.aspx?author=grisham\" rel=\"nofollow\">John Grisham - The Partner (amazon link)</a></p>",
+		"TimeStamp" : "2015-01-29T13:18:43.916Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 90
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974980",
+		"PostUrl" : "http://math.stackexchange.com/a/1124926",
+		"Site" : "math.stackexchange.com",
+		"Title" : "$$\\int \\frac{1}{\\sin x\\cos x} dx  = \\int tanx+cotx dx= \\int sinx/cosx dx...",
+		"Body" : "<p>$$\\int \\frac{1}{\\sin x\\cos x} dx  = \\int tanx+cotx dx= \\int sinx/cosx dx+\\int cosx/sinx dx$$ from where it should be fairly simple....(choose correctly the variables though)</p>",
+		"TimeStamp" : "2015-01-29T13:17:33.676Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 388
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974963",
+		"PostUrl" : "http://mechanics.stackexchange.com/a/15212",
+		"Site" : "mechanics.stackexchange.com",
+		"Title" : "I have switched out the fuel pump with another I bought on ebay for $40 ...",
+		"Body" : "<p>I have switched out the fuel pump with another I bought on ebay for $40 and ridden the bike on hot days. I found the fuel filter was heavily clogged which possibly contributed. I think as some of you have suggested it was an electrical fault when the bike was hot due to higher resistance.</p>\n\n<p>Thanks for all your answers! I'll update if the problem re-occurs but I think its fixed.</p>",
+		"TimeStamp" : "2015-01-29T13:13:39.146Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 188,
+				"FPCount" : 111,
+				"CaughtCount" : 3006
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974952",
+		"PostUrl" : "http://stackoverflow.com/a/28215631",
+		"Site" : "stackoverflow.com",
+		"Title" : "Thank llya Yevlampiev,This help me developing android logcat api on ddml...",
+		"Body" : "<p>Thank llya Yevlampiev,This help me developing android logcat api on ddmlib.</p>\n\n<p><a href=\"https://github.com/cosysoft/device#user-content-logcat-with-custom-filter\" rel=\"nofollow\">Custom Logfilter</a></p>",
+		"TimeStamp" : "2015-01-29T13:11:55.460Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 5,
+				"FPCount" : 1,
+				"CaughtCount" : 40
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(please )?help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 21
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2974937",
 		"PostUrl" : "http://lifehacks.stackexchange.com/a/4029",
 		"Site" : "lifehacks.stackexchange.com",
