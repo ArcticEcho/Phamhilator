@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 11,
-		"TPCount" : 2,
+		"TPCount" : 3,
 		"FPCount" : 0,
 		"CaughtCount" : 20
 	},
@@ -50,8 +50,8 @@
 		"Site" : "",
 		"Score" : 11,
 		"TPCount" : 1,
-		"FPCount" : 1,
-		"CaughtCount" : 70
+		"FPCount" : 2,
+		"CaughtCount" : 56
 	},
 	{
 		"Regex" : "(?i)\\bif (yes|no)\\b",
@@ -123,7 +123,7 @@
 		"Score" : 12,
 		"TPCount" : 1,
 		"FPCount" : 66,
-		"CaughtCount" : 2508
+		"CaughtCount" : 2633
 	},
 	{
 		"Regex" : "(?i)(\\{|\\[|\\(|\\-)((re)?solved|edit(ed)?|update(d)?|fixed)(\\}|\\]|\\)|\\-)",
@@ -195,7 +195,7 @@
 		"Score" : 11,
 		"TPCount" : 1,
 		"FPCount" : 27,
-		"CaughtCount" : 3008
+		"CaughtCount" : 3023
 	},
 	{
 		"Regex" : "^[^a-z]*$",
@@ -357,7 +357,7 @@
 		"Score" : 16,
 		"TPCount" : 9,
 		"FPCount" : 80,
-		"CaughtCount" : 4958
+		"CaughtCount" : 4971
 	},
 	{
 		"Regex" : "(?i:need help|help me)",
@@ -400,9 +400,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 11,
-		"TPCount" : 7,
-		"FPCount" : 44,
-		"CaughtCount" : 2122
+		"TPCount" : 6,
+		"FPCount" : 45,
+		"CaughtCount" : 2219
 	},
 	{
 		"Regex" : "(?i)i need.{0,15}(help|advice)",

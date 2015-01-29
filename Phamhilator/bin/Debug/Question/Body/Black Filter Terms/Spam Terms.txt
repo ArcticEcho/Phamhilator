@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 2,
+		"TPCount" : 9,
 		"FPCount" : 0,
 		"CaughtCount" : 2
 	},
@@ -13,7 +13,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 0,
+		"TPCount" : 5,
 		"FPCount" : 0,
 		"CaughtCount" : 0
 	},
@@ -22,18 +22,18 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 5,
+		"TPCount" : 7,
 		"FPCount" : 2,
-		"CaughtCount" : 7
+		"CaughtCount" : 8
 	},
 	{
 		"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 17,
+		"TPCount" : 18,
 		"FPCount" : 20,
-		"CaughtCount" : 49
+		"CaughtCount" : 52
 	},
 	{
 		"Regex" : "officialimeiunlock",
@@ -148,9 +148,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 19,
-		"FPCount" : 25,
-		"CaughtCount" : 58
+		"TPCount" : 15,
+		"FPCount" : 24,
+		"CaughtCount" : 51
 	},
 	{
 		"Regex" : "(?i)ComplexiDerm",
@@ -663,7 +663,7 @@
 		"Score" : 10.0204086,
 		"TPCount" : 5,
 		"FPCount" : 0,
-		"CaughtCount" : 8
+		"CaughtCount" : 10
 	},
 	{
 		"Regex" : "(?i)alphafuelxreview",
@@ -897,7 +897,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 8,
 		"FPCount" : 7,
-		"CaughtCount" : 22
+		"CaughtCount" : 23
 	},
 	{
 		"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
@@ -906,7 +906,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 3,
 		"FPCount" : 1,
-		"CaughtCount" : 6
+		"CaughtCount" : 7
 	},
 	{
 		"Regex" : "(?i)muscle[- ]rev[- ]e?xtreme",
@@ -924,7 +924,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 2,
 		"FPCount" : 0,
-		"CaughtCount" : 2
+		"CaughtCount" : 3
 	},
 	{
 		"Regex" : "(?i)the ?healthy ?advi[cs]er?",

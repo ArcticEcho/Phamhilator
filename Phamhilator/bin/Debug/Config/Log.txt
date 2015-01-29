@@ -1,5 +1,495 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973988",
+		"PostUrl" : "http://meta.stackexchange.com/questions/247762",
+		"Site" : "meta.stackexchange.com",
+		"Title" : "Reductil sibutramine is one the most popular slimming pill today The drug works",
+		"Body" : "<p>The highly effective slimming pill also helps to curb your craving for those high calorie snacks in-between the meals.<a href=\"http://hyperglycemiaabout.com/natural-max-garcinia/\" rel=\"nofollow\">Natural Max Garcinia</a> An additional advantage of Reductil is that it helps to boost your metabolism. An increase in metabolic rate helps to burn more calories in the body. To reduce your body fat even further, it is recommended that you use Reductil sibutramine in conjunction with low-calorie diet and regular physical exercise. This will not just help you reduce body fat but also help you get a slim and well-toned body. Buy Reductil online If you have an excess of fat in your body and wish to know more about Reductil treatment take advantage of online clinics dedicated to weight loss and obesity treatments. The trusted website provides you the required information on Reductil and also offers you the convenience to consult a specialist doctor online. All you would be required to do is fill-in an online consultation form that requires details about your health and medicines you are taking. If the doctor considers Reductil suitable according to your condition, you\u2019ll receive prescription for Reductil over your email. Following this, you will receive Reductil pills at your address in a safe and discreet packaging. <a href=\"http://hyperglycemiaabout.com/natural-max-garcinia/\" rel=\"nofollow\">http://hyperglycemiaabout.com/natural-max-garcinia/</a></p>",
+		"TimeStamp" : "2015-01-29T09:51:41.509Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 17,
+				"FPCount" : 20,
+				"CaughtCount" : 51
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)weight loss(.|\\s)*http://",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0204086,
+				"TPCount" : 5,
+				"FPCount" : 0,
+				"CaughtCount" : 10
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973977",
+		"PostUrl" : "http://askubuntu.com/questions/579184",
+		"Site" : "askubuntu.com",
+		"Title" : "Openstack: Authentiaction Required",
+		"Body" : "<p>I installed Openstack using Devstack. Now when i try to connect to:</p>\n\n<p><a href=\"http://mydomain:8774\" rel=\"nofollow\">http://mydomain:8774</a> <br>\nor <br>\n<a href=\"http://mydomain:8776\" rel=\"nofollow\">http://mydomain:8776</a> <br>\n<a href=\"http://mydomain:8777\" rel=\"nofollow\">http://mydomain:8777</a> <br>\n<a href=\"http://mydomain:8773\" rel=\"nofollow\">http://mydomain:8773</a> <br></p>\n\n<p>(most of Openstack Services)</p>\n\n<p>I have an error message as output: \"Authentication Required\". I need to connect to those service since i want to connect the cloud to Scalr.</p>\n\n<p>Can someone tell me how solve this pls?</p>",
+		"TimeStamp" : "2015-01-29T09:49:47.125Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "\\bpl[sz]+\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 14,
+				"TPCount" : 18,
+				"FPCount" : 17,
+				"CaughtCount" : 240
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973974",
+		"PostUrl" : "http://meta.stackexchange.com/questions/247761",
+		"Site" : "meta.stackexchange.com",
+		"Title" : "Man here\u2019s the car love are",
+		"Body" : "<p>Man here\u2019s the car love are official unofficial judge Carroll etlarouso for mike Tyson\u2019s awesome use what the <a href=\"http://supertestoboostsfacts.com/is-maximum-shred-effective-or-the-newest-bodybuilding-scam/\" rel=\"nofollow\">Maximum Shred</a> first two rounds with clean heart effective Hodges or he staying writing brings chest is just run away with it so far oh yeah Tyson anxious to get to work mention one other thing Phil Harris I was a little hot piece that much weight loss we have production assistant on the other side the ring settlement she was my face it was a bad reaction with a couple of took her to a hookah question I'll just give you an idea power top Mike Tyson vs. mike Tyson this spring is it hard the prices so much authority so much cop subject to termination I the go home now won't have a stranglehold the second time has more grants car to the right now slow Tasha now Tyson delete it do this because .\n<a href=\"http://supertestoboostsfacts.com/is-maximum-shred-effective-or-the-newest-bodybuilding-scam/\" rel=\"nofollow\">http://supertestoboostsfacts.com/is-maximum-shred-effective-or-the-newest-bodybuilding-scam/</a></p>",
+		"TimeStamp" : "2015-01-29T09:49:28.257Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)weight loss(.|\\s)*http://",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0204086,
+				"TPCount" : 5,
+				"FPCount" : 0,
+				"CaughtCount" : 9
+			},
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)supertestoboostsfacts",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 3
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973973",
+		"PostUrl" : "http://stackoverflow.com/questions/28210265",
+		"Site" : "stackoverflow.com",
+		"Title" : "Image effect(reshape)",
+		"Body" : "<p>I want to create function(reshape). User can interact with image by touching and reshape the image.\nI found question <a href=\"http://stackoverflow.com/questions/27149251/how-to-implement-reshape-effect-on-image\">enter link description here</a> but there was no answer...</p>\n\n<p>Maybe someone can tell me where I can find the answer fro this question? or what I have to read for this? </p>",
+		"TimeStamp" : "2015-01-29T09:49:17.711Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "enter link description here",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.75,
+				"TPCount" : 3,
+				"FPCount" : 4,
+				"CaughtCount" : 54
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "enter link description here",
+				"IsAuto" : false,
+				"Site" : "stackoverflow.com",
+				"Score" : 6.875,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973971",
+		"PostUrl" : "http://wordpress.stackexchange.com/a/176432",
+		"Site" : "wordpress.stackexchange.com",
+		"Title" : "I didn't understand your question. Can you tell more about it?",
+		"Body" : "<p>I didn't understand your question. Can you tell more about it?</p>",
+		"TimeStamp" : "2015-01-29T09:48:53.260Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3009
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973964",
+		"PostUrl" : "http://android.stackexchange.com/a/97196",
+		"Site" : "android.stackexchange.com",
+		"Title" : "pls tell if i forget the text memo lock how i open now ",
+		"Body" : "<p>pls tell if i forget the text memo lock how i open now </p>",
+		"TimeStamp" : "2015-01-29T09:47:48.332Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3008
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 43,
+				"FPCount" : 4,
+				"CaughtCount" : 372
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "android.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973963",
+		"PostUrl" : "http://pt.stackoverflow.com/a/48645",
+		"Site" : "pt.stackoverflow.com",
+		"Title" : "In my opinion. General Deductions is clear.",
+		"Body" : "<p>In my opinion. General Deductions is clear.</p>",
+		"TimeStamp" : "2015-01-29T09:47:30.751Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3007
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973959",
+		"PostUrl" : "http://tex.stackexchange.com/a/225492",
+		"Site" : "tex.stackexchange.com",
+		"Title" : "I did that but it doesn't work to me.",
+		"Body" : "<p>I did that but it doesn't work to me.</p>",
+		"TimeStamp" : "2015-01-29T09:46:42.359Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3006
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973928",
+		"PostUrl" : "http://superuser.com/questions/871022",
+		"Site" : "superuser.com",
+		"Title" : "Has An Anti Aging Cream Review Steered You Wrong?",
+		"Body" : "<p>Earn Money On Tips - How To Find What Is Currently Selling On Ebay</p>\n\n<p><a href=\"http://www.powerfulskincaresolution.com/revlante/\" rel=\"nofollow\">http://www.powerfulskincaresolution.com/revlante/</a></p>",
+		"TimeStamp" : "2015-01-29T09:41:02.737Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)^<p>.*</p?>\\n\\n?<p><a.*></p>$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 8,
+				"FPCount" : 7,
+				"CaughtCount" : 23
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973923",
+		"PostUrl" : "http://sharepoint.stackexchange.com/questions/130075",
+		"Site" : "sharepoint.stackexchange.com",
+		"Title" : "How to add ads in SharePoint hosted app?",
+		"Body" : "<p>How can we add ads (eg Google adsense) to SharePoint hosted app ?</p>",
+		"TimeStamp" : "2015-01-29T09:40:20.441Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 808
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973915",
+		"PostUrl" : "http://askubuntu.com/a/579175",
+		"Site" : "askubuntu.com",
+		"Title" : "I eventually fixed this by using a PCI network card. I was still getting...",
+		"Body" : "<p>I eventually fixed this by using a PCI network card. I was still getting the message in Network Manager that the device wasn't managed, so I followed the instructions in <a href=\"http://askubuntu.com/questions/71159/network-manager-says-device-not-managed\">this question</a>. I am finally back to normal! Thanks for everyone's help.</p>\n\n<p>P.S. Also fixed the display resolution being stuck at 640\u00D7480 by following <a href=\"http://www.linuxbsdos.com/2014/10/31/solutions-for-low-screen-resolution-in-ubuntu-14-0414-10-and-virtualbox/\" rel=\"nofollow\">this article</a> (#1 solution worked for me)</p>",
+		"TimeStamp" : "2015-01-29T09:39:09.498Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 110,
+				"CaughtCount" : 2952
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973909",
+		"PostUrl" : "http://drupal.stackexchange.com/a/145794",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "Thanks loolooyyyy man!!\n\nYou helped me to solve the problem!! I spent co...",
+		"Body" : "<p>Thanks loolooyyyy man!!</p>\n\n<p>You helped me to solve the problem!! I spent couple days to fix it. I searched a lot of papers, but no one can help me to fix it. Until I found your way!!!</p>\n\n<p>I checked the \"user\" table that I found the uid = 0 record in the table. I deleted it, then it works! </p>\n\n<p>Thank you very very much!!</p>",
+		"TimeStamp" : "2015-01-29T09:38:17.189Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 187,
+				"FPCount" : 110,
+				"CaughtCount" : 2951
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 5,
+				"FPCount" : 1,
+				"CaughtCount" : 34
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)(please )?help me",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 2,
+				"FPCount" : 0,
+				"CaughtCount" : 15
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973908",
+		"PostUrl" : "http://superuser.com/a/871020",
+		"Site" : "superuser.com",
+		"Title" : "the LastVerb.cfg works fine on 64-bit Outlook 2013",
+		"Body" : "<p>the LastVerb.cfg works fine on 64-bit Outlook 2013</p>",
+		"TimeStamp" : "2015-01-29T09:37:57.423Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 486,
+				"FPCount" : 119,
+				"CaughtCount" : 3005
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973898",
+		"PostUrl" : "http://android.stackexchange.com/a/97194",
+		"Site" : "android.stackexchange.com",
+		"Title" : "The \"proper\" answer would be exFAT. \"Proper\" because exFAT is crap but s...",
+		"Body" : "<p>The \"proper\" answer would be exFAT. \"Proper\" because exFAT is crap but since it does \"fix\" some of FAT's problems, it is the only hassle-free option. </p>\n\n<p>Forget NTFS. </p>\n\n<p>Ext4 would be a much better option. Should it be properly managed in Android regarding rights management - from my quite recent understanding (latest CM11 as of Jan 2015), Android does not expect the true external storage to understarnd, let alone enfore access rights. Since *FAT has no concept of any rights, this is no problem. However, in Linux there is no clean way of disabling rights management on a native filesystem. Android's concept of security uses UNIX access rights in a different way than it was intended. Not to blame Android, the UNIX concept is ancient but it's use comes at a price. The price being the need of external rights management which Android is not ready for and the User has (usually) no control of either.</p>\n\n<p>There is a way to use ext4 on Android, called Mounts2SD. It's quite clean and reliable though it is anything but native (made of \"nasty hacks\" some would say). I wouldn't recommend it unless you have absolute confidence in what you are doing.</p>",
+		"TimeStamp" : "2015-01-29T09:34:42.407Z",
+		"ReportType" : "Offensive",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerOff",
+				"Regex" : "(?i)\\bcrap\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 11,
+				"TPCount" : 3,
+				"FPCount" : 21,
+				"CaughtCount" : 60
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973894",
+		"PostUrl" : "http://superuser.com/questions/871019",
+		"Site" : "superuser.com",
+		"Title" : "multitude of flavors and specialty drinks",
+		"Body" : "<p>Hidden House Green Coffee Review provides a variety of Micro Roasted coffee beans which are natural and organic and offers a multitude of flavors and specialty drinks for your pleasure. A few weeks back, when reading in the detailed instruction manual, how wonderful and complete this coffee system, I admit to thinking, Okay, another coffee system, so what is so incredibly different about this one? I humbly stand corrected. Read more on :- <a href=\"http://eboostblog.com/nutrasun-garcinia-cambogia-uk/\" rel=\"nofollow\">http://eboostblog.com/nutrasun-garcinia-cambogia-uk/</a></p>",
+		"TimeStamp" : "2015-01-29T09:34:01.109Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10,
+				"TPCount" : 17,
+				"FPCount" : 20,
+				"CaughtCount" : 50
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973891",
+		"PostUrl" : "http://sharepoint.stackexchange.com/questions/130080",
+		"Site" : "sharepoint.stackexchange.com",
+		"Title" : "Query String (URL) Filter for Search Result?",
+		"Body" : "<p>How to activate a Query String (URL) Filter for Search Result?</p>",
+		"TimeStamp" : "2015-01-29T09:32:36.558Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 807
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973890",
+		"PostUrl" : "http://security.stackexchange.com/a/80338",
+		"Site" : "security.stackexchange.com",
+		"Title" : "A good answer has already been given by sasha, but I want to look at thi...",
+		"Body" : "<p><a href=\"http://security.stackexchange.com/a/80334/2138\">A good answer has already been given by sasha</a>, but I want to look at this from another angle; specifically, what memcpy actually <em>does</em> (in terms of what code gets executed).</p>\n\n<p>Allowing for the possibility of minor bugs in this quick-and-dirty implementation, a trivial implementation of a function with the signature <code>void memcpy(void* target, void* source, size_t n)</code> (that's your regular memcpy()) might be something not entirely unlike:</p>\n\n<pre><code>for(size_t i = 0; i < n; i++)\n{\n     *target++ = *source++;\n     /* or possibly the here equivalent: target[i] = source[i]; */\n}\n</code></pre>\n\n<p>The important part to note is that <strong>there is no bounds checking. <em>This is by design!</em></strong> There are three important things to keep in mind for why this is so:</p>\n\n<ol>\n<li>C is often used as a operating system programming language, and it was designed as a \"portable assembler\". Thus, the general approach to many of the old library functions, and the language in general, is that if you can do it in assembler, it should also be doable in C.</li>\n<li>There is no way to, given a pointer to a memory location, know how much memory is properly allocated at that location.</li>\n<li>Basically, arrays degenerate to pointers, where the unindexed array variable is the same thing as a pointer to the start of the array. This is not <em>strictly</em> true in every case, but it's good enough for us right now.</li>\n</ol>\n\n<p>It follows from (1) that you should be able to copy any memory you want to, from anywhere to anywhere. Memory protection is <em>Someone Else's Problem</em>.</p>\n\n<p>It follows from (2) that <code>memcpy()</code> and friends need to be told exactly how much data to copy, and they have to trust that the buffer at the target is sufficiently large to hold that data. Memory allocation is <em>The Programmer's Problem</em>.</p>\n\n<p>It follows from (3) that we can't tell how much data is safe to copy. Making sure memory allocations are <em>sufficient</em> is <em>The Programmer's Problem</em>.</p>\n\n<p>When an attacker can control the number of bytes to copy using memcpy(), (2) and (3) break down. If the target buffer is too small, whatever follows it will be overwritten. If you are lucky, that will result in a memory access violation, but <em>C the language</em> or its standard libraries doesn't guarantee that it will happen. (You asked it to copy memory contents, and it either does that, or it dies trying.) If you pass a source array that is smaller than the number of bytes you ask for memcpy() to copy, there is reliable no way for memcpy() to tell that such is the case, and it will happily barrage on past the end of the source array as long as writing to the target location works.</p>\n\n<p>By allowing an attacker to control <code>n</code> in your example code, in such a way that <code>n</code> is larger than the maximum size of the array on the source side of the copy, memcpy() will because of the above points happily keep copying beyond the length of the intended source array.</p>\n\n<p><strong>That is why the code leaks data.</strong> <em>Exactly what data</em> is leaked depends both on the value of <code>n</code> and how the compiler lays out the machine language code in memory. The diagram in sasha's answer gives a good overview, and every architecture is similar but different.</p>\n\n<p>Depending on how exactly <code>buf</code> is declared, allocated and laid out, you might <strong>also</strong> have what is known as a <strong>stack smashing attack</strong> where data needed for the proper operation of the program is overwritten, and the data that overwrote whatever was there is subsequently referred to. In mundane cases this leads to crashes or nigh-impossible-to-debug bugs; in severe, targetted cases, it can lead to arbitrary code execution.</p>",
+		"TimeStamp" : "2015-01-29T09:32:35.329Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 38
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973887",
+		"PostUrl" : "http://unix.stackexchange.com/questions/181765",
+		"Site" : "unix.stackexchange.com",
+		"Title" : "How install Google Chrome on Scientific Linux?",
+		"Body" : "<p>Is there a way to install and use Google Chrome on a Scientific Linux machine? </p>",
+		"TimeStamp" : "2015-01-29T09:31:41.561Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 806
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2973883",
+		"PostUrl" : "http://unix.stackexchange.com/questions/181764",
+		"Site" : "unix.stackexchange.com",
+		"Title" : "How to find out the when Jboss instance was down and when it was UP?",
+		"Body" : "<p>How to find out the  when Jboss instance was down and when it was UP?  </p>",
+		"TimeStamp" : "2015-01-29T09:31:01.393Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 31,
+				"CaughtCount" : 805
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2971479",
 		"PostUrl" : "http://stackoverflow.com/a/28202053",
 		"Site" : "stackoverflow.com",
@@ -26278,1421 +26768,6 @@
 				"TPCount" : 18,
 				"FPCount" : 16,
 				"CaughtCount" : 232
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942559",
-		"PostUrl" : "http://superuser.com/a/867934",
-		"Site" : "superuser.com",
-		"Title" : "Hmmm.. use pivot table na lang siguro po. Baka makatulong.",
-		"Body" : "<p>Hmmm.. use pivot table na lang siguro po. Baka makatulong.</p>",
-		"TimeStamp" : "2015-01-22T09:49:51.470Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3014
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942558",
-		"PostUrl" : "http://superuser.com/a/867943",
-		"Site" : "superuser.com",
-		"Title" : "This has a very simple solution just call upon the Laptop Hard Drive Rec...",
-		"Body" : "<p>This has a very simple solution just call upon the <a href=\"http://www.swanseadatarecovery.co.uk/laptop-recovery/\" rel=\"nofollow\">Laptop Hard Drive Recovery</a> professionals at your house for such a issue as they can accurately determine the nature of the hard drive.</p>",
-		"TimeStamp" : "2015-01-22T09:48:52.286Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerSpam",
-				"Regex" : "datarecovery",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.6277781,
-				"TPCount" : 11,
-				"FPCount" : 0,
-				"CaughtCount" : 27
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942547",
-		"PostUrl" : "http://drupal.stackexchange.com/questions/145033",
-		"Site" : "drupal.stackexchange.com",
-		"Title" : "token does not work in upload directory of webform",
-		"Body" : "<p>i'm using service modules for generate json data , ve it's done in json data image data is inserted but i want to insert image url in json , how can i do this ?\nthanks for your helping</p>\n\n<p><img src=\"http://i.stack.imgur.com/69P9l.png\" alt=\"enter image description here\"></p>",
-		"TimeStamp" : "2015-01-22T09:44:44.317Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 1,
-				"FPCount" : 26,
-				"CaughtCount" : 3023
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942538",
-		"PostUrl" : "http://stackoverflow.com/questions/27957880",
-		"Site" : "stackoverflow.com",
-		"Title" : "Play Audio on Android",
-		"Body" : "<p>Answers to many questions about this theme doesn't help me! It's not the problem that audio needs to be started first by a click or any other type of action.</p>\n\n<p>I want to Play a number of different short mp3's on my website. The best approach I've found is the following. It works on Internet Explorer and Chrome (other Desktop browsers not tested) and on mobile devices with iOS. But not on Android.</p>\n\n<p>In my html I initialize an audio device:</p>\n\n<pre><code><audio id=\"mp3play\" src=\"\"></audio>\n</code></pre>\n\n<p>It's only for defining the name \"mp3play\".</p>\n\n<p>In the header of the html I have the following javascript:</p>\n\n<pre><code><SCRIPT language=JavaScript> \n<!--\nfunction play(name) {\n        var oAudio = document.getElementById(\"mp3play\");\n        oAudio.stop;\n        oAudio.src = name;\n        oAudio.play();\n}\n\n//-->\n</code></pre>\n\n<p></p>\n\n<p>Now I can invoke the player with the following link:</p>\n\n<pre><code><a href=\"javascript:play('stuff/voc/WAVvow/011001.MP3');\"\n</code></pre>\n\n<p>This works fine, even on Android.</p>\n\n<p>But for special requirements I do not use filenames for mp3's. I've made a Perl script to deliver the pm3 data depending on a computation. For this I use the following link:</p>\n\n<pre><code><a href=\"javascript:play('../cgi-bin/playmp3.pl?185004');\"\n</code></pre>\n\n<p>This Perl code \"playmp3.pl\" sends a header and then the complete mp3 data:</p>\n\n<pre><code>    ($entry[0] has a pointer to the desired data, $entry[1] the length)\n    open(DAT, \"<../wbtde/DictData/dv8.dat\");\n    binmode DAT;\n    seek(DAT, $entry[0], 0);\n    read(DAT, $mp3, $entry[1]);       # Lesen des Eintrages\n    close DAT;\n    print \"Content-type: audio/mpeg\\n\\n\"; \n    print $mp3;\n</code></pre>\n\n<p>Also this works fine on IE, Chrome and iOS browsers, but not on Android. </p>\n\n<p>I can invoke the script also directly with</p>\n\n<pre><code>www.mysite.com/cgi-bin/playmp3.pl?185004\n</code></pre>\n\n<p>Also this is working fine on IE, Chrome and iOS browser, but not on Android. Android tells me it can not play this type of content. But with content type audio/mpeg3 it's also not playing.</p>\n\n<p>This is the Android error log when I tap one link only:</p>\n\n<pre><code>            D/CDX_Player( 2402): >>>>>>>> CedarX Player Version: 00010707\n            I/CedarPlayerWrapper( 2402): setDataSource('http://www.example.com/cgi-bin/playmp3.pl?062013')\n            I/ChromiumHTTPDataSource( 2402): connect to http://www.example.com/cgi-bin/playmp3.pl?062013 @0\n            W/MediaPlayer(  967): info/warning (701, 0)\n            I/MediaPlayer(  967): Info (701,0)\n            D/sft_http_stream( 2402): reset stream\n            I/NuCachedSource2( 2402): ERROR_END_OF_STREAM\n            W/demux_http( 2402): unknown file format!\n            E/demux_http( 2402): open error, destroy stream handle\n            E/DemuxSftNetwork_Component( 2402): cedar demuxer open error\n            E/CedarXPlayer( 2402): CedarXPlayer:prepare error!\n            E/MediaPlayer(  967): error (1, -2147483648)\n            E/MediaPlayer(  967): Error (1,-2147483648)\n            I/CDX_Player( 2402): cancel prepare!\n            D/CDX_Player( 2402): >>>>>>>> CedarX Player Version: 00010707\n            I/CedarPlayerWrapper( 2402): setDataSource('http://www.example.com/cgi-bin/playmp3.pl?062013')\n            W/MediaPlayer(  967): info/warning (701, 0)\n            I/ChromiumHTTPDataSource( 2402): connect to http://www.example.com/cgi-bin/playmp3.pl?062013 @0\n            I/MediaPlayer(  967): Info (701,0)\n            D/sft_http_stream( 2402): reset stream\n            I/NuCachedSource2( 2402): ERROR_END_OF_STREAM\n            W/demux_http( 2402): unknown file format!\n            E/demux_http( 2402): open error, destroy stream handle\n            E/DemuxSftNetwork_Component( 2402): cedar demuxer open error\n            E/CedarXPlayer( 2402): CedarXPlayer:prepare error!\n            E/MediaPlayer(  967): error (1, -2147483648)\n            E/MediaPlayer(  967): Error (1,-2147483648)\n            I/CDX_Player( 2402): cancel prepare!\n</code></pre>\n\n<p>Another try:\nI've saved the output from Perl script to a file with the name \"test.MP3\". Then I've prepared a link in my html as</p>\n\n<pre><code><a href=\"javascript:play('stuff/test.MP3');\"\n</code></pre>\n\n<p>This works on Android! So I can assume that the output of the Perl script is correct.</p>\n\n<p>Is it a question of content type?</p>\n\n<p>Is it a question of the filename (.pl instead of mp3)?</p>",
-		"TimeStamp" : "2015-01-22T09:43:32.257Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "\\>\\>\\>\\>\\>",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 15,
-				"FPCount" : 23,
-				"CaughtCount" : 50
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "\\>\\>\\>\\>\\>",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6.05,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942537",
-		"PostUrl" : "http://stackoverflow.com/a/28085441",
-		"Site" : "stackoverflow.com",
-		"Title" : "Make your Christmas Eve with family and friends more special with these ...",
-		"Body" : "<p>Make your Christmas Eve with family and friends more special with these radiant Flowers and Gifts.  Send Christmas Flowers to Singapore  to your loved ones and be happy to see the joy it brings to their life.</p>",
-		"TimeStamp" : "2015-01-22T09:43:07.544Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerSpam",
-				"Regex" : "(?i)\\bgift'?s\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.8585472,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 1
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942536",
-		"PostUrl" : "http://stackoverflow.com/a/28085434",
-		"Site" : "stackoverflow.com",
-		"Title" : "use display:flex;\nflex stands for flexible layout.",
-		"Body" : "<p>use display:flex;\nflex stands for flexible layout.</p>",
-		"TimeStamp" : "2015-01-22T09:42:40.385Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 369
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942532",
-		"PostUrl" : "http://drupal.stackexchange.com/questions/145032",
-		"Site" : "drupal.stackexchange.com",
-		"Title" : "Ajax callback not working",
-		"Body" : "<p>I am creating hooks/callbacks fro my ajax, but for some reason I can not get one of them to work. The hook is identical to other hooks, it is called from different page and it keeps getting 404. If I change it to some other hook everything is fine. I have the correct path to script and I even tried copying the script to modules and changing the file path, but it did not help.  Please someone guide me, because I am baffled.</p>\n\n<pre><code>$items['create/new'] = array(\n                                                    'title' => t('create cu'),\n                                                    'page callback' => 'Ready',\n                                                    'access callback' => 'site_access_check',\n                                                    'access arguments' => array('cred1','cred2'),\n                                                    'type' => MENU_CALLBACK,\n                                                    'file' => 'modules/cu/create/insert.php',\n                                                    );  \n</code></pre>\n\n<p>AJAX        </p>\n\n<pre><code>jQuery.ajax({\n                type: \"POST\",\n                url: '/create/new',\n                dataType: 'json', \n                data: {edi:edi54, db:db\n                },\n            success: function() {\n                alert(\"success\");\n                    setInterval(location.reload(),3000);\n                },\n            error: function() {\n\n                    alert(\"error\");\n\n                },\n                }); \n</code></pre>\n\n<p>Thanks for your help</p>",
-		"TimeStamp" : "2015-01-22T09:41:32.485Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)(no(t)?|doesn('t|t)?) work(ing|ed|d)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 1,
-				"FPCount" : 26,
-				"CaughtCount" : 3021
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942531",
-		"PostUrl" : "http://stackoverflow.com/a/28082271",
-		"Site" : "stackoverflow.com",
-		"Title" : "something like this? \n\nselect week(time_stamp), count(investment_id)\ngro...",
-		"Body" : "<p>something like this? </p>\n\n<pre><code>select week(time_stamp), count(investment_id)\ngroup by time_stamp, investment_id\n</code></pre>",
-		"TimeStamp" : "2015-01-22T09:40:41.461Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 368
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942527",
-		"PostUrl" : "http://islam.stackexchange.com/questions/21555",
-		"Site" : "islam.stackexchange.com",
-		"Title" : "Ghusul after sex",
-		"Body" : "<p>Asslamualaikum\nI recently found out on this site that if penetration of the penis in the vagina needs ghusul to be pure again eeven if either partner did not ejaculate.  I did not know this for a long time. Do you still have to make up for it evwn if u didnt know?</p>",
-		"TimeStamp" : "2015-01-22T09:40:08.417Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "^(?i).{0,18}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 6,
-				"FPCount" : 44,
-				"CaughtCount" : 2219
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942526",
-		"PostUrl" : "http://stackoverflow.com/questions/28085375",
-		"Site" : "stackoverflow.com",
-		"Title" : "Error \u201Ccannot set property gridDim of undefined\u201D in angular js",
-		"Body" : "<p>Getting error \"cannot set property gridDim of undefined\" while using ng-grid in angular js. i have already declared vm.gridOptions = { data: 'vm.course_view'};.plz help me</p>",
-		"TimeStamp" : "2015-01-22T09:39:25.687Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodyLQ",
-				"Regex" : "\\bpl[sz]+\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 14,
-				"TPCount" : 18,
-				"FPCount" : 16,
-				"CaughtCount" : 231
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942523",
-		"PostUrl" : "http://joomla.stackexchange.com/a/7134",
-		"Site" : "joomla.stackexchange.com",
-		"Title" : "That's ok, but is there any other way to call it to content with a href ...",
-		"Body" : "<p>That's ok, but is there any other way to call it to content with a href (but not necessarily with a href) without opening modal ?\nI have created new tab in index.php?option=com_virtuemart&view=user&layout=edit called 'simple data', where I'm putting com_user edit form.\nI done that with external component but that's not the point :).\nComponent is loading so I have simple user data in one tab, adress data in the seckond and orders list in the third tab. But the save form buttons in first and the seckond tab are disturbing to each other giving error 500 or in best case only com_user form is saving data but virtuemart edit form save button doesn't work because of js errors and I don't know how to get stuff works (actually I don't know js at all).\nif some one want to check just visit: <a href=\"http://gantry.belladonnafashion.pl/sklep/logowanie\" rel=\"nofollow\">http://gantry.belladonnafashion.pl/sklep/logowanie</a>\nlogin as user: demo pass: demo and go to: <a href=\"http://gantry.belladonnafashion.pl/sklep/twoje-konto/edit\" rel=\"nofollow\">http://gantry.belladonnafashion.pl/sklep/twoje-konto/edit</a></p>\n\n<p>This is scenario when com_user form saves data but virtuemart form save button doesn't work at all.\nWhy I'm doing things in that way? because I made plugin for com_user which adds checkboxes to com_user form, that checkboxes should be editable by user in the place I've created :) that's mean in virtuemart user edit place.the code for vm user/edit.php:</p>\n\n<pre><code><?php\n/**\n*\n* Modify user form view\n*\n* @package  VirtueMart\n* @subpackage User\n* @author Oscar van Eijk\n* @link http://www.virtuemart.net\n* @copyright Copyright (c) 2004 - 2010 VirtueMart Team. All rights reserved.\n* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php\n* VirtueMart is free software. This version may have been modified pursuant\n* to the GNU General Public License, and as distributed it includes or\n* is derivative of works licensed under the GNU General Public License or\n* other free or open source software licenses.\n* @version $Id: edit.php 6472 2012-09-19 08:46:21Z alatak $\n*/\n\n// Check to ensure this file is included in Joomla!\ndefined('_JEXEC') or die('Restricted access');\n\n//AdminMenuHelper::startAdminArea($this);\n\n// Implement Joomla's form validation\nJHTML::_('behavior.formvalidation');\nJHTML::stylesheet('vmpanels.css', JURI::root().'components/com_virtuemart/assets/css/'); // VM_THEMEURL\n?>\n<style type=\"text/css\">\n.invalid {\n    border-color: #f00;\n    background-color: #ffd;\n    color: #000;\n}\nlabel.invalid {\n    background-color: #fff;\n    color: #f00;\n}\n</style>\n<script language=\"javascript\">\nfunction myValidator(f, t) {\n    f.task.value=t;\n    if (document.formvalidator.isValid(f)) {\n        f.submit();\n        //We must return here false, to prevent that the form is sent again. We cannot just return true without using f.submit, because then the task is not set\n        return false;\n    } else {\n        var msg = '<?php echo addslashes( JText::_('COM_VIRTUEMART_USER_FORM_MISSING_REQUIRED_JS') ); ?>';\n        alert (msg);\n    }\n    return false;\n}\nfunction callValidatorForRegister(f,t) {\n\n    var elem = jQuery('#username_field');\n    elem.attr('class', \"required\");\n\n    var elem = jQuery('#name_field');\n    elem.attr('class', \"required\");\n<?php if($this->userDetails->JUser->guest){ ?>\n    var elem = jQuery('#password_field');\n    elem.attr('class', \"required\");\n\n    var elem = jQuery('#password2_field');\n    elem.attr('class', \"required\");\n<?php } ?>\n    return myValidator(f, t);\n}\n\n</script>\n<h1><?php echo $this->page_title ?></h1>\n<?php echo shopFunctionsF::getLoginForm(false); ?>\n\n<h2><?php if($this->userDetails->virtuemart_user_id==0) {\n    echo JText::_('COM_VIRTUEMART_YOUR_ACCOUNT_REG');\n}?></h2>\n\n<?php \n$tabarray = array();\n$tabarray['user_data'] = 'COM_VIRTUEMART_USER_SIMPLE_DATA';\n\n?>\n<form method=\"post\" id=\"adminForm\" name=\"userForm\" action=\"<?php echo JRoute::_('index.php?option=com_virtuemart&view=user',$this->useXHTML,$this->useSSL) ?>\" class=\"form-validate\">\n<?php if($this->userDetails->user_is_vendor){ ?>\n    <div class=\"buttonBar-right\">\n    <button class=\"button\" type=\"submit\" onclick=\"javascript:return callValidatorForRegister(userForm, 'saveUser');\" ><?php echo $this->button_lbl ?></button>\n    &nbsp;\n<button class=\"button\" type=\"reset\" onclick=\"window.location.href='<?php echo JRoute::_('index.php?option=com_virtuemart&view=user', FALSE); ?>'\" ><?php echo JText::_('COM_VIRTUEMART_CANCEL'); ?></button></div>\n    <?php } ?>\n<?php // Loading Templates in Tabs\nif($this->userDetails->virtuemart_user_id!=0) {\n\n    if($this->userDetails->user_is_vendor){\n        if(!empty($this->add_product_link)) {\n            echo $this->add_product_link;\n        }\n        $tabarray['vendor'] = 'COM_VIRTUEMART_VENDOR';\n    }\n\n    $tabarray['shopper'] = 'COM_VIRTUEMART_SHOPPER_FORM_LBL';\n    //$tabarray['user'] = 'COM_VIRTUEMART_USER_FORM_TAB_GENERALINFO';\n    if (!empty($this->shipto)) {\n        $tabarray['shipto'] = 'COM_VIRTUEMART_USER_FORM_ADD_SHIPTO_LBL';\n    }\n    if (($_ordcnt = count($this->orderlist)) > 0) {\n        $tabarray['orderlist'] = 'COM_VIRTUEMART_YOUR_ORDERS';\n    }   \n\n\n } else {\n    echo $this->loadTemplate ( 'shopper' );\n }\n\n\n\n// captcha addition\nif(VmConfig::get ('reg_captcha')){\n    JHTML::_('behavior.framework');\n    JPluginHelper::importPlugin('captcha');\n    $dispatcher = JDispatcher::getInstance(); $dispatcher->trigger('onInit','dynamic_recaptcha_1');\n    ?>\n    <div id=\"dynamic_recaptcha_1\"></div>\n<?php \n}\n// end of captcha addition \n?>\n<input type=\"hidden\" name=\"option\" value=\"com_virtuemart\" />\n<input type=\"hidden\" name=\"controller\" value=\"user\" />\n<?php echo JHTML::_( 'form.token' ); ?>\n</form>\n<?php shopFunctionsF::buildTabs ( $this, $tabarray); ?>\n</code></pre>\n\n<p>and the code for created tab is: user/edit_user_data.php</p>\n\n<pre><code><?php\n/**\n *\n * Enter address data for the cart, when anonymous users checkout\n *\n * @package    VirtueMart\n * @subpackage User\n * @author Oscar van Eijk, Max Milbers\n * @link http://www.virtuemart.net\n * @copyright Copyright (c) 2004 - 2010 VirtueMart Team. All rights reserved.\n * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php\n * VirtueMart is free software. This version may have been modified pursuant\n * to the GNU General Public License, and as distributed it includes or\n * is derivative of works licensed under the GNU General Public License or\n * other free or open source software licenses.\n * @version $Id: edit_address.php 6406 2012-09-08 09:46:55Z Milbo $\n */\n// Check to ensure this file is included in Joomla!\ndefined ('_JEXEC') or die('Restricted access');\n\n// Implement Joomla's form validation\n//JHTML::_ ('behavior.formvalidation');\nJHTML::stylesheet ('vmpanels.css', JURI::root () . 'components/com_virtuemart/assets/css/');\n\n\n\n?>\n<p>{component index.php?option=com_users&view=profile&layout=edit}</p>\n</code></pre>\n\n<p>If any specyfic informations are nedded please just write :)</p>\n\n<p>Thanks for any suggestion.</p>",
-		"TimeStamp" : "2015-01-22T09:38:17.537Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2967
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942522",
-		"PostUrl" : "http://superuser.com/a/867937",
-		"Site" : "superuser.com",
-		"Title" : "hold cmd + double click the bookmark.",
-		"Body" : "<p>hold cmd + double click the bookmark.</p>",
-		"TimeStamp" : "2015-01-22T09:37:03.338Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3013
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 367
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942518",
-		"PostUrl" : "http://superuser.com/a/867936",
-		"Site" : "superuser.com",
-		"Title" : "I was having the exact same problem and the following person's answer wo...",
-		"Body" : "<p>I was having the exact same problem and the following person's answer worked in less than 15 seconds and it fixed everything!  My Word documents don't have that stupid generic icon anymore!!  Thanks, Dean!!!</p>\n\n<pre><code>**\"Just type \"winword /r\" in your search box or run, and your problem will be solved immediately. \n Don't waste time to change IconCache.db because it often doesn't work.\"**\n</code></pre>",
-		"TimeStamp" : "2015-01-22T09:35:46.587Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2966
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942513",
-		"PostUrl" : "http://android.stackexchange.com/a/96573",
-		"Site" : "android.stackexchange.com",
-		"Title" : "I face same problem on xperia Z1 i can use whatsapp chats send and recei...",
-		"Body" : "<p>I face same problem on xperia Z1 i can use whatsapp chats send and receive thus voice clips images and videos are not allowed to be downloaded via 3g/H+ please help.</p>",
-		"TimeStamp" : "2015-01-22T09:34:52.429Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)pl(ease|s|z) help",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 17,
-				"TPCount" : 20,
-				"FPCount" : 2,
-				"CaughtCount" : 125
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942509",
-		"PostUrl" : "http://drupal.stackexchange.com/questions/145030",
-		"Site" : "drupal.stackexchange.com",
-		"Title" : "This is a fruit developed in usa",
-		"Body" : "<p>This is a fruit developed in India which has acid. This component could quit the synthesis of fat from your foods we eat without affecting the protein metabolism. In addition it acts as an appetite suppressant. Consider the quantity recommended after having a meal on the offer.As a result of an heart attack, Auntie Annie died instantly in the age <a href=\"http://gojixtremesitebrazil.com/lean-balance/\" rel=\"nofollow\">Lean Balance</a> of 49. Her death that was premature was attributed by doctor to obesity. At 182 pounds, Auntie Annie was merely 5 feet. That's not light.All of these may help accelerate your motabolism without getting the center planning like a lab rat as you sleep and you will be worked for by them,. Not simply will they help with Weight Loss, nevertheless they may help the human body generally. <strong><a href=\"http://gojixtremesitebrazil.com/lean-balance/\" rel=\"nofollow\">http://gojixtremesitebrazil.com/lean-balance/</a></strong></p>",
-		"TimeStamp" : "2015-01-22T09:34:19.364Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "^((?!\\<code\\>).)*</a></strong></p>$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 1,
-				"FPCount" : 0,
-				"CaughtCount" : 2
-			},
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 13,
-				"FPCount" : 18,
-				"CaughtCount" : 43
-			},
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "(?i)weight loss(.|\\s)*http://",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.0204086,
-				"TPCount" : 4,
-				"FPCount" : 0,
-				"CaughtCount" : 8
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942506",
-		"PostUrl" : "http://physics.stackexchange.com/a/160805",
-		"Site" : "physics.stackexchange.com",
-		"Title" : "to reduce dim effect when we switch on the lighting circuit.",
-		"Body" : "<p>to reduce dim effect when we switch on the lighting circuit.</p>",
-		"TimeStamp" : "2015-01-22T09:32:19.188Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3012
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 366
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "physics.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942504",
-		"PostUrl" : "http://askubuntu.com/a/576473",
-		"Site" : "askubuntu.com",
-		"Title" : "I guess it should be /usr/bin not /user/bin - unless you created it.",
-		"Body" : "<p>I guess it should be /usr/bin not /user/bin - unless you created it.</p>",
-		"TimeStamp" : "2015-01-22T09:27:15.670Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3011
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942501",
-		"PostUrl" : "http://ell.stackexchange.com/questions/47513",
-		"Site" : "ell.stackexchange.com",
-		"Title" : "A particular meaning of the phrasal verb 'work out' in AmE",
-		"Body" : "<p>Could someone please tell me if in AmE the phrasal verb \"work out\" in the sense of \"finding an answer to a question\" is in common use and sounds natural and idiomatic to everyone or not; (I think it is used only in BE!) Please have a look on the following example:</p>\n\n<blockquote>\n  <ul>\n  <li>I still can\u2019t <strong>work out</strong> how they knew about our relationship. --- I don't know too.</li>\n  </ul>\n</blockquote>",
-		"TimeStamp" : "2015-01-22T09:26:29.632Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleSpam",
-				"Regex" : "(?i)\\bwork out\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 0,
-				"FPCount" : 3,
-				"CaughtCount" : 7
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942497",
-		"PostUrl" : "http://magento.stackexchange.com/questions/35333",
-		"Site" : "magento.stackexchange.com",
-		"Title" : "PayPal Express Checkout redirecting to cart: error in exception.log",
-		"Body" : "<p>Magento CE 1.9.0.1 running on Ubuntu 14.04</p>\n\n<p>PayPal Express Checkout</p>\n\n<p>Not sure at all where this issue cropped up from. In the process of upgrading from 1.7 to 1.9 and had checked PayPal integration off the list. I didn't make any changes outside of styling during the time which this error began occurring.</p>\n\n<p>Here is the logged error:</p>\n\n<pre><code>2014-09-09T20:24:35+00:00 ERR (3):\nexception 'Mage_Core_Exception' with message 'PayPal NVP gateway errors: Array Correlation ID: 964dcac6ee158. Version: 72.0.' in /var/www/html/app/code/core/Mage/Paypal/Model/Api/Nvp.php:1062\nStack trace:\n#0 /var/www/html/app/code/core/Mage/Paypal/Model/Api/Nvp.php(1008): Mage_Paypal_Model_Api_Nvp->_handleCallErrors(Array)\n#1 /var/www/html/app/code/core/Mage/Paypal/Model/Api/Nvp.php(616): Mage_Paypal_Model_Api_Nvp->call('SetExpressCheck...', Array)\n#2 /var/www/html/app/code/core/Mage/Paypal/Model/Express/Checkout.php(381): Mage_Paypal_Model_Api_Nvp->callSetExpressCheckout()\n#3 /var/www/html/app/code/core/Mage/Paypal/Controller/Express/Abstract.php(108): Mage_Paypal_Model_Express_Checkout->start('http://staging.p...', 'http://staging.p...', false)\n#4 /var/www/html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Paypal_Controller_Express_Abstract->startAction()\n#5 /var/www/html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('start')\n#6 /var/www/html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))\n#7 /var/www/html/app/code/core/Mage/Core/Model/App.php(354): Mage_Core_Controller_Varien_Front->dispatch()\n#8 /var/www/html/app/Mage.php(684): Mage_Core_Model_App->run(Array)\n#9 /var/www/html/staging/store/index.php(87): Mage::run('staging', 'website')\n</code></pre>",
-		"TimeStamp" : "2015-01-22T09:23:24.881Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 9,
-				"FPCount" : 79,
-				"CaughtCount" : 4992
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "magento.stackexchange.com",
-				"Score" : 6.568182,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942493",
-		"PostUrl" : "http://serverfault.com/a/661490",
-		"Site" : "serverfault.com",
-		"Title" : "Problem solved - wrong socket file used in amavis configuration, thus ca...",
-		"Body" : "<p>Problem solved - wrong socket file used in amavis configuration, thus causing messages to be deffered.</p>\n\n<p>Thank you for your time.</p>",
-		"TimeStamp" : "2015-01-22T09:22:08.487Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2961
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942492",
-		"PostUrl" : "http://english.stackexchange.com/questions/223024",
-		"Site" : "english.stackexchange.com",
-		"Title" : "Open/start/begin",
-		"Body" : "<p>What verbs (open/start/begin or any other verbs) are used to describe the opening timings of office, bank, school and market?</p>\n\n<p>For example:</p>\n\n<p>Schools open/start/begin at 8:00 am</p>\n\n<p>Offices open/start/begin at 9:00 am</p>\n\n<p>Banks open/start/begin at 9:00 am</p>\n\n<p>Markets open/start/begin at 10:00 am</p>",
-		"TimeStamp" : "2015-01-22T09:20:03.128Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "^\\S*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 4,
-				"FPCount" : 5,
-				"CaughtCount" : 56
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "^(?i).{0,18}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 6,
-				"FPCount" : 44,
-				"CaughtCount" : 2217
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "^[^ ]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.5106382,
-				"TPCount" : 4,
-				"FPCount" : 5,
-				"CaughtCount" : 57
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "^(?i).{0,18}$",
-				"IsAuto" : false,
-				"Site" : "english.stackexchange.com",
-				"Score" : 9.087904,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942491",
-		"PostUrl" : "http://askubuntu.com/a/576470",
-		"Site" : "askubuntu.com",
-		"Title" : "You can try to use command locate lib_name",
-		"Body" : "<p>You can try to use command <em>locate lib_name</em></p>",
-		"TimeStamp" : "2015-01-22T09:17:32.037Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3010
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,60}$",
-				"IsAuto" : false,
-				"Site" : "askubuntu.com",
-				"Score" : 7,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942490",
-		"PostUrl" : "http://linguistics.stackexchange.com/a/11147",
-		"Site" : "linguistics.stackexchange.com",
-		"Title" : "Dependencies are not restricted to verbs and their dependents. Attributi...",
-		"Body" : "<p>Dependencies are not restricted to verbs and their dependents. Attributive adjectives, such as <strong>white</strong> in <em>white horses</em>, depend on their nouns. Hence <strong>holy</strong> should depend on <strong>shit</strong>. Since this is a modifying relationship (the adjective modifies the noun), the <em>Stanford Dependencies</em> take this to be a <strong>nmod</strong> (noun modification) dependency. (<a href=\"http://www.ling.ohio-state.edu/~mcdm/publications.html\" rel=\"nofollow\">The first paper</a> from the top lists common dependencies on the second page).</p>",
-		"TimeStamp" : "2015-01-22T09:17:07.847Z",
-		"ReportType" : "Offensive",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerOff",
-				"Regex" : "(?i)\\bshit\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 13,
-				"FPCount" : 14,
-				"CaughtCount" : 55
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942485",
-		"PostUrl" : "http://sharepoint.stackexchange.com/questions/129329",
-		"Site" : "sharepoint.stackexchange.com",
-		"Title" : "How can we send an email in sharepoint hosted app?",
-		"Body" : "<p>From a SharePoint hosted app, I want to send some emails in my sharepoint hosted app which will be deployed to office 365 tenants. Is there any code i can add in my app which will send emails to clients ? or maybe notifications ?</p>\n\n<p>Please tell me how can I do so, I looked at several resources - none say anything about content type?</p>",
-		"TimeStamp" : "2015-01-22T09:14:55.723Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleSpam",
-				"Regex" : "(?i)^how can we",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 0,
-				"FPCount" : 29,
-				"CaughtCount" : 73
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942473",
-		"PostUrl" : "http://stackoverflow.com/a/20758277",
-		"Site" : "stackoverflow.com",
-		"Title" : "Why not using memset + volatile? Will it be deleted too?",
-		"Body" : "<p>Why not using memset + volatile? Will it be deleted too?</p>",
-		"TimeStamp" : "2015-01-22T09:08:42.908Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3009
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942471",
-		"PostUrl" : "http://serverfault.com/questions/661328",
-		"Site" : "serverfault.com",
-		"Title" : "Exchange 2013 SMTP reply error not being sent",
-		"Body" : "<p>We are scanning to our exchange 2013 server from a scanning application that uses smtp, in the past when the mail exceeded the smtp size limit it would send an email with a link instead of the scanned file, this stopped working possibly after an exchange update, from what I can tell using wireshark the exchange server accepts the job there are no failure codes sent back in the SMTP communication yet an email is sent to the user scanning saying it has exceeded the limit although this is no good for our purpose, why would exchange not sent a exceeded mail limit back during smtp communication?\nSo to summarize: where it used to fail during SMTP comms it now appears to accept and queue the mail then fail it after its queued instead of failing during the SMTP message exchanges.\nThanks</p>",
-		"TimeStamp" : "2015-01-22T09:07:48.014Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 9,
-				"FPCount" : 79,
-				"CaughtCount" : 4987
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "serverfault.com",
-				"Score" : 10.0301609,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942469",
-		"PostUrl" : "http://serverfault.com/a/661482",
-		"Site" : "serverfault.com",
-		"Title" : "dpkg-reconfigure php5-ioncube-loader solved it at my server",
-		"Body" : "<p><code>dpkg-reconfigure php5-ioncube-loader</code> solved it at my server</p>",
-		"TimeStamp" : "2015-01-22T09:07:19.930Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3008
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 365
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942465",
-		"PostUrl" : "http://blender.stackexchange.com/a/23604",
-		"Site" : "blender.stackexchange.com",
-		"Title" : "This is great, well done! Nice, I will try this. Thanks You!",
-		"Body" : "<p>This is great, well done! Nice, I will try this. Thanks You!</p>",
-		"TimeStamp" : "2015-01-22T09:06:06.681Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3007
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2957
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942458",
-		"PostUrl" : "http://stackoverflow.com/a/9728068",
-		"Site" : "stackoverflow.com",
-		"Title" : "Finally, solved the problem. It appears VMware takes a very different pa...",
-		"Body" : "<p>Finally, solved the problem. It appears VMware takes a very different path. The question was misconstrued.</p>\n\n<p>First, I traced the connection using WireShark, and at no point the server asks (need or  want) a certificate. However, VirtualCenter (VC) does provide a way to register a certificate as part of a connection and then use that certificate authenticate. For this to work, they provide a way to tunnel connections.</p>\n\n<p>The sequence I used is:</p>\n\n<ul>\n<li><p>First specify the URL to connect to as https://: (note the protocol is secure, but the port is not).</p></li>\n<li><p>The initial socket will be opened to the clear text port. But having https as the protocol will force calling my own SSLSocketFactory. In my socket factory, I get a call to my <code>public Socket createSocket(Socket s, String host, int port, boolean autoClose)</code> method, which allows me to convert my socket to SSLSocket to my taste.</p></li>\n</ul>\n\n<p>My code essentially looks like:</p>\n\n<pre><code>@Override\npublic Socket createSocket(Socket s, String host, int port, boolean autoClose)\n    throws IOException {\n    s.setKeepAlive(true);\n    String connectReq = \"CONNECT /sdkTunnel HTTP/1.1\\r\\n\\r\\n\";\n    OutputStreamWriter writer = new OutputStreamWriter(socket.getOutputStream());\n    writer.write(connectReq, 0, connectReq.length());\n    writer.flush();\n    // In this initial response, all that matters is the http code. If\n    // it is 200, the rest can be ignored.\n    READ_AND_VERIFY_INITIAL_RESPONSE();\n    SSLSocket sock = (SSLSocket) origSslSockFactory\n        .createSocket(s, s.getInetAddress().getHostName(), s.getPort(), true);\n    // Depending on whether the caller actually does the handshake\n    // or not, you may need to call handshake here. In my case, I\n    // did not need to, since HTTPClient I am using calls the\n    // handshake. Axis does not call, so you may have to in that\n    // case.\n\n    // sock.startHandshake();\n    return sock;\n}\n</code></pre>\n\n<p>In the above block, origSslSockFactory is the SSLSocketFactory that got replaced by your implementation. In my case it was an instance of sun.security.ssl.SSLSocketFactoryImpl.</p>\n\n<p>After that procedure, calling ExtensionManager.setExtensionCertificate() succeeds. And subsequently, all calls to SessionManager.loginExtensionByCertificate() also succeeds. </p>\n\n<p>I wanted to post this as there seem to be a lot of questions about this.</p>",
-		"TimeStamp" : "2015-01-22T09:03:12.481Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?is)^<.*>\\s*i want",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 4,
-				"FPCount" : 0,
-				"CaughtCount" : 32
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942457",
-		"PostUrl" : "http://stats.stackexchange.com/questions/134455",
-		"Site" : "stats.stackexchange.com",
-		"Title" : "lag length selection in Vector Error Correction Models",
-		"Body" : "<p>I am doing a VECM analysis in R using vars R package. My problem is to find the lag length of the VECM model to be specified. I a previous post I was suggested to use the VARSelect function. However I suppose that this function should be used on stationary series, that are not the usual one on which VECM are estimated. Is therefore correct to differentiate the input variables before using VARSelect or there is a more straightforward approach to identify VECM lag length?</p>",
-		"TimeStamp" : "2015-01-22T09:02:55.621Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 9,
-				"FPCount" : 79,
-				"CaughtCount" : 4985
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)error(s)?",
-				"IsAuto" : false,
-				"Site" : "stats.stackexchange.com",
-				"Score" : 7,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942456",
-		"PostUrl" : "http://security.stackexchange.com/questions/79797",
-		"Site" : "security.stackexchange.com",
-		"Title" : "Someone or something tried to login to my gmail using ip address of my shared hosting",
-		"Body" : "<p>My gmail told me someone tried to login with <strong>correct</strong> password. But gmail blocked it because IP address used is different with my IP address. When I looked up an IP address who tried to login to my gmail, it was IP address of my shared hosting. How can it become possible? I don't remember to connect my shared hosting or my website or my wordpress plugin with my gmail.</p>\n\n<p>Big thanks for your opinion!</p>",
-		"TimeStamp" : "2015-01-22T09:02:06.257Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)tried",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 1,
-				"FPCount" : 1,
-				"CaughtCount" : 56
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942455",
-		"PostUrl" : "http://stats.stackexchange.com/a/134454",
-		"Site" : "stats.stackexchange.com",
-		"Title" : "Thanks for your reply! I know the formula. I cannot calculate Mahalanobi...",
-		"Body" : "<p>Thanks for your reply! I know the formula. I cannot calculate Mahalanobis distance having vectors as rows, that v1 is 1x18 and and v2 is 1x18 using R or Matlab. However, I can calculate using these vectors as columns, but that's not what I am after. </p>",
-		"TimeStamp" : "2015-01-22T09:00:44.602Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2955
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942453",
-		"PostUrl" : "http://scifi.stackexchange.com/a/79800",
-		"Site" : "scifi.stackexchange.com",
-		"Title" : "In literature and cinema (and art), what you're referring to as \"thought...",
-		"Body" : "<p>In literature and cinema (and art), what you're referring to as \"thought experiment\" is formally called themes. And yes, Philip K. Dick is very well known for questioning reality in his works (Blade Runner is based on Do Androids Dream Electric Sheep).</p>\n\n<p>For a quick introduction on the themes within the works of Philip K. Dick I suggest you look him up on Wikipedia (specifically under the <a href=\"http://en.wikipedia.org/wiki/Philip_K._Dick#Themes\" rel=\"nofollow\">\"Themes\"</a> section).</p>\n\n<p>You'll also find similar themes to the ones you're thinking in other movies based on his works:</p>\n\n<ul>\n<li>Total Recall -- What is real and what is a dream?</li>\n<li>Screamers -- What's human?</li>\n<li>Minority Report -- If you can prevent the future, is the future real?</li>\n<li>Next -- Same as above?</li>\n<li>The Adjustment Bureau -- Is our fate real? Is free will real?</li>\n</ul>\n\n<p>You'll find a complete list of movies based on his novels on his wikipedia page. However, some of his very best novels haven't been turned to movies so I also encourage you to read his stuff.</p>",
-		"TimeStamp" : "2015-01-22T08:59:51.844Z",
-		"ReportType" : "Offensive",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerOff",
-				"Regex" : "(?i)\\sdick\\s",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.2105265,
-				"TPCount" : 4,
-				"FPCount" : 2,
-				"CaughtCount" : 8
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942452",
-		"PostUrl" : "http://serverfault.com/questions/177077",
-		"Site" : "serverfault.com",
-		"Title" : "Problem with apache + ssl: length mismatch error and ocasional bad request",
-		"Body" : "<p>we migrated a server from slicehost to linode recently, we copied the config from one server to the other. Everything works perfectly except that we get:</p>\n\n<p>Occasional errors with \"Bad Request\", this error is not common, you can use it all day and not see it, and the next day it will happen a lot.</p>\n\n<p>apart from that, a lot of the time, event though the request works fine we get some errors.</p>\n\n<p>using ssldump we get:</p>\n\n<pre><code>New TCP connection #1: myip(39831) <-> develserk(443)\n1 1  0.2316 (0.2316)  C>S SSLv2 compatible client hello\n  Version 3.1 \n  cipher suites\n  Unknown value 0x39  \n  Unknown value 0x38  \n  Unknown value 0x35  \n  TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA  \n  TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA  \n  TLS_RSA_WITH_3DES_EDE_CBC_SHA  \n  SSL2_CK_3DES  \n  Unknown value 0x33  \n  Unknown value 0x32  \n  Unknown value 0x2f  \n  SSL2_CK_RC2  \n  TLS_RSA_WITH_RC4_128_SHA  \n  TLS_RSA_WITH_RC4_128_MD5  \n  SSL2_CK_RC4  \n  TLS_DHE_RSA_WITH_DES_CBC_SHA  \n  TLS_DHE_DSS_WITH_DES_CBC_SHA  \n  TLS_RSA_WITH_DES_CBC_SHA  \n  SSL2_CK_DES  \n  TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA  \n  TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA  \n  TLS_RSA_EXPORT_WITH_DES40_CBC_SHA  \n  TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5  \n  SSL2_CK_RC2_EXPORT40  \n  TLS_RSA_EXPORT_WITH_RC4_40_MD5  \n  SSL2_CK_RC4_EXPORT40  \n1 2  0.2429 (0.0112)  S>C  Handshake\n      ServerHello\n        Version 3.1 \n        session_id[32]=\n          9a 1e ae c4 5f df 99 47 97 40 42 71 97 eb b9 14 \n          96 2d 11 ac c0 00 15 67 4e f3 7d 65 4e c4 30 e9 \n        cipherSuite         Unknown value 0x39\n        compressionMethod                   NULL\n1 3  0.2429 (0.0000)  S>C  Handshake\n      Certificate\n1 4  0.2429 (0.0000)  S>C  Handshake\n      ServerKeyExchange\n1 5  0.2429 (0.0000)  S>C  Handshake\n      ServerHelloDone\n1 6  0.4965 (0.2536)  C>S  Handshake\n      ClientKeyExchange\n1 7  0.4965 (0.0000)  C>S  ChangeCipherSpec\n1 8  0.4965 (0.0000)  C>S  Handshake\n1 9  0.5040 (0.0075)  S>C  ChangeCipherSpec\n1 10 0.5040 (0.0000)  S>C  Handshake\nERROR: Length mismatch\n</code></pre>\n\n<p>from the apache error.log </p>\n\n<pre><code>[Fri Aug 27 14:50:05 2010] [debug] ssl_engine_io.c(1892): OpenSSL: I/O error, 5 bytes expected to read on BIO#b80c1e70 [mem: b8100918]\n</code></pre>\n\n<p>the server is ubuntu 10.04.1</p>\n\n<p>the apache version is 2.2.14-5ubuntu8</p>\n\n<p>the openssl version is 0.9.8k-7ubuntu8</p>",
-		"TimeStamp" : "2015-01-22T08:58:22.848Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 65,
-				"CaughtCount" : 2636
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 9,
-				"FPCount" : 79,
-				"CaughtCount" : 4982
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "serverfault.com",
-				"Score" : 10.0301609,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "serverfault.com",
-				"Score" : 6.41666651,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942451",
-		"PostUrl" : "http://linguistics.stackexchange.com/questions/11146",
-		"Site" : "linguistics.stackexchange.com",
-		"Title" : "Semitic: *w > y",
-		"Body" : "<p>In some Semitic languages, the consonant <em>w</em> seems to have become <em>y</em> (a palatal glide) in certain positions: for example Arabic <strong><em>w</em></strong><em>alid</em> \"newborn\", Hebrew <strong><em>y</em></strong><em>eled</em> \"child\", or Arabic <strong><em>w</em></strong><em>araq</em> \"leaves, foliage\", Hebrew <strong><em>y</em></strong><em>aroq</em> \"green\".</p>\n\n<p>Are there any theories on the mechanism of this change? I ask because <em>w</em> > <em>y</em> (labial to coronal/palatal) doesn't seem like a very common trajectory.</p>\n\n<p>Thanks for any info</p>",
-		"TimeStamp" : "2015-01-22T08:58:14.577Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "^(?i).{0,18}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 6,
-				"FPCount" : 44,
-				"CaughtCount" : 2215
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942437",
-		"PostUrl" : "http://ux.stackexchange.com/a/72360",
-		"Site" : "ux.stackexchange.com",
-		"Title" : "I think adapting the app to device language is an idiot idea. For most u...",
-		"Body" : "<p>I think adapting the app to device language is an idiot idea. For most users the default language is not what they have chosen. It depends on where they have bought their device. A Spanish marketplace mostly sells devices with Spanish as default language.</p>\n\n<p>We are not supposed to guess the user preferred language. Preferred language depends on lots of parameters that we are not aware about them. So simply let the user to choose a language.</p>\n\n<p>No body dislike FREEDOM.</p>",
-		"TimeStamp" : "2015-01-22T08:52:18.253Z",
-		"ReportType" : "Offensive",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerOff",
-				"Regex" : "(?i)\\bidiot\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 2,
-				"FPCount" : 6,
-				"CaughtCount" : 21
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942410",
-		"PostUrl" : "http://worldbuilding.stackexchange.com/a/4808",
-		"Site" : "worldbuilding.stackexchange.com",
-		"Title" : "Many thanks to all of you! I think you all have good points, and the rea...",
-		"Body" : "<p>Many thanks to all of you! I think you all have good points, and the real answer to my question would be a combination of these.</p>\n\n<p><strong>No: Economic or climatic (lack of ressources) pressures couldn't do the trick</strong><br>\nAs @WorldSpinner and @Vandroiy point out above, these types of pressure can only force a population drop for a limited amount of time. Indeed when the humans are less numerous, then the pressure fades and restrained fertility rise again.<br>\nAs the population is spread on a lot of planets, the risk for a great catastrophe to kill enough humans at once to get passed the minimal amount for specie perpetuation is also really unlikely.</p>\n\n<p><strong>No: It's all about culture!</strong><br>\nAs @Mark remarks in his answer, even if the mainstream culture discourages having lots of children, in time it would be replaced by the subcultures with higher fertility rates.<br>\nEven if global human fertility is decreasing, (for w/e reason) the individuals from the fertile subcultures willing to have children will try everything in order to do so, and probably succeed thanks to advanced science. (in vitro fecondation and so on) As @Vincent points out, individuals mostly do see their interest before such things as their specie's destiny.</p>\n\n<p><strong>Yes: It would require intervention of a greater institution or entity</strong><br>\nAs @WorldSpinner and @Vandroiy emphasise, the only way to go past these barriers is to postulate that an extremely well informed and patient institution or entity works in the shadows to lower the overall fertility (using viruses or chemicals) and break the most fertile subcultures. (using manipulation)<br>\nI think we proved here that this is necessary as else evolution or fertile subcultures (that we can see as a social mutation towards specie surviving) would always take over.</p>\n\n<p><strong>Alternative possibility: coincidences</strong><br>\nThe only other way is if an extremely unlucky chain of coincidences happens. For example first the economic pressure makes couples less eager to procreate, then a few catastrophic events dynamite the most fertile subcultures, while a very hardcore sect takes over...<br>\nWith the dramatic combination of all these economic, climatic and cultural factors, humanity could end up being a very infertile and fanatic small group of individuals.</p>",
-		"TimeStamp" : "2015-01-22T08:44:06.681Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 188,
-				"FPCount" : 109,
-				"CaughtCount" : 2954
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942352",
-		"PostUrl" : "http://apple.stackexchange.com/a/168463",
-		"Site" : "apple.stackexchange.com",
-		"Title" : "Anyone able to find location of an email  to iphone pic? Lmk ",
-		"Body" : "<p>Anyone able to find location of an email  to iphone pic? Lmk </p>",
-		"TimeStamp" : "2015-01-22T08:36:07.599Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3006
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942332",
-		"PostUrl" : "http://gardening.stackexchange.com/a/16165",
-		"Site" : "gardening.stackexchange.com",
-		"Title" : "It is a nice post. Thanks for creating a post for stump removal. Rather ...",
-		"Body" : "<p>It is a nice post. Thanks for creating a post for stump removal. Rather you can also visit at [<a href=\"http://www.quickchip.com.au][1]\" rel=\"nofollow\">http://www.quickchip.com.au][1]</a> to know more about stump removal.</p>",
-		"TimeStamp" : "2015-01-22T08:34:09.744Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 187,
-				"FPCount" : 109,
-				"CaughtCount" : 2952
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942324",
-		"PostUrl" : "http://english.stackexchange.com/a/223022",
-		"Site" : "english.stackexchange.com",
-		"Title" : "Yes, the first one is correct. Though it has aswell a slightly different...",
-		"Body" : "<p>Yes, the first one is correct. Though it has aswell a slightly different meaning depening on context, it generally states the same.</p>\n\n<blockquote>\n  <p>1) There was a time when he used to be our class representative.</p>\n</blockquote>\n\n<p>The second example on the other hand implies that he <em>was used</em> to the fact that he <em>was</em> your class' representative.<br>\n\"was used to\" would in the second case mean that he was \"<strong>familiar</strong> with the situation\"</p>\n\n<p><strong><em>Note:</em></strong> \"Used to\" becomes an <strong>adjective</strong> in the second sentence! </p>\n\n<p>to be + used to conjugated_______________\"Use to\" conjugated (there is no present tense)<br>\nTo be used to something________________  used to be</p>\n\n<p>He <strong>is used to</strong> something______________  (He uses to be) / <strong>he is</strong><br>\nHe <strong>was used to</strong> something_____________He <strong>used to be</strong><br>\nHe <strong>had/s been used to</strong> sth____________  He <strong>had/s used to be</strong></p>\n\n<p>PPS: Even: \"He used to be used to\" is theoretically correct to describe what you are saying in the second example</p>",
-		"TimeStamp" : "2015-01-22T08:33:14.640Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 8,
-				"FPCount" : 5,
-				"CaughtCount" : 83
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942308",
-		"PostUrl" : "http://movies.stackexchange.com/a/30260",
-		"Site" : "movies.stackexchange.com",
-		"Title" : "It sounds like Wrongfully Accused (1998), but that was a bus, not a plan...",
-		"Body" : "<p>It sounds like <strong><em>Wrongfully Accused</em> (1998)</strong>, but that was a bus, not a plane.</p>\n\n<p><a href=\"http://www.imdb.com/title/tt0120901/quotes?qt=qt0342827\" rel=\"nofollow\">http://www.imdb.com/title/tt0120901/quotes?qt=qt0342827</a></p>\n\n<blockquote>\n  <p>P.A. on the Prison Bus: Seats in the upright position. Handcuffs and\n  ankle chains must be securely fastened or you will be shot. Exits are\n  clearly marked but you will not be using them. Should you use them you\n  will be shot. On behalf of the State of Minnesota thank you for being\n  arrested and convicted. Sit back and enjoy your bus ride.</p>\n</blockquote>",
-		"TimeStamp" : "2015-01-22T08:31:04.171Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 187,
-				"FPCount" : 109,
-				"CaughtCount" : 2950
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942289",
-		"PostUrl" : "http://unix.stackexchange.com/questions/180363",
-		"Site" : "unix.stackexchange.com",
-		"Title" : "freenas disc problems - smart error - how to repair zfs raid?",
-		"Body" : "<p>Whats the best way to analyse problems on an freenas raid file server?</p>\n\n<p>I have troubles with my freenas 9.2.1. It crashed today. Its running a fileserver on zfs jbod raid 2. I'm not sure what exactly causes the problems. The system is booting however reacting pretty slow. From the logs I couldn't figure anything totally wrong. Thus I'm not sure where to get startet with error analysis and how to solve them.</p>\n\n<p>The problem is that the system crashes and responds pretty slow. The freenas web interface crashes as well since pyhon dies.</p>\n\n<p>Freenas is installed on an usb stick, an additional drive (2tb) is attached for backup. The other 4 drives run as zfs raid.</p>\n\n<p>The harddrives do show smart errors. How can I fix them? May they be the reason for the problems.</p>\n\n<p>zpool status</p>\n\n<pre><code>pool: fink-zfs01\n state: ONLINE\nstatus: One or more devices has experienced an unrecoverable error.  An\n    attempt was made to correct the error.  Applications are unaffected.\naction: Determine if the device needs to be replaced, and clear the errors\n    using 'zpool clear' or replace the device with 'zpool replace'.\n   see: http://illumos.org/msg/ZFS-8000-9P\n  scan: resilvered 1.77M in 0h7m with 0 errors on Wed Jan 21 03:33:12 2015\nconfig:\n\n    NAME                                            STATE     READ WRITE CKSUM\n    fink-zfs01                                      ONLINE       0     0     0\n      raidz2-0                                      ONLINE       0     0     0\n        gptid/8d63c24b-abbe-11e3-8c43-bc5ff4edd351  ONLINE       0     0     1\n        gptid/8dc4f454-abbe-11e3-8c43-bc5ff4edd351  ONLINE       0     0     0\n        gptid/8e23f253-abbe-11e3-8c43-bc5ff4edd351  ONLINE       0     0     0\n        gptid/8e827351-abbe-11e3-8c43-bc5ff4edd351  ONLINE       0     0     0\n\nerrors: No known data errors\n</code></pre>\n\n<p>TOP</p>\n\n<pre><code>CPU:  0.1% user,  0.0% nice,  2.5% system,  0.1% interrupt, 97.3% idle\nMem: 131M Active, 11G Inact, 3689M Wired, 494M Cache, 3232M Buf, 16M Free\nARC: 3028K Total, 347K MFU, 1858K MRU, 16K Anon, 330K Header, 477K Other\nSwap: 10G Total, 636K Used, 10G Free\n</code></pre>\n\n<p>DF</p>\n\n<pre><code>Filesystem                       Size    Used   Avail Capacity  Mounted on\n/dev/ufs/FreeNASs2a              971M    866M     27M    97%    /\ndevfs                            1.0k    1.0k      0B   100%    /dev\n/dev/md0                         4.8M    3.5M    918k    79%    /etc\n/dev/md1                         843k    2.6k    773k     0%    /mnt\n/dev/md2                         156M     40M    103M    28%    /var\n/dev/ufs/FreeNASs4                20M    3.4M     15M    18%    /data\nfink-zfs01                       6.0T    249k    6.0T     0%    /mnt/fink-zfs01\nfink-zfs01/.system               6.0T    249k    6.0T     0%    /mnt/fink-zfs01/.system\nfink-zfs01/.system/cores         6.0T     14M    6.0T     0%    /mnt/fink-zfs01/.system/cores\nfink-zfs01/.system/samba4        6.0T    862k    6.0T     0%    /mnt/fink-zfs01/.system/samba4\nfink-zfs01/.system/syslog        6.0T    2.7M    6.0T     0%    /mnt/fink-zfs01/.system/syslog\nfink-zfs01/shares                6.0T    261k    6.0T     0%    /mnt/fink-zfs01/shares\nfink-zfs01/shares/fink-privat    6.4T    344G    6.0T     5%    /mnt/fink-zfs01/shares/fink-privat\nfink-zfs01/shares/gf             6.0T    214k    6.0T     0%    /mnt/fink-zfs01/shares/gf\nfink-zfs01/shares/kundendaten    6.6T    563G    6.0T     9%    /mnt/fink-zfs01/shares/kundendaten\nfink-zfs01/shares/zubehoer       6.6T    539G    6.0T     8%    /mnt/fink-zfs01/shares/zubehoer\nfink-zfs01/temp                  6.2T    106G    6.0T     2%    /mnt/fink-zfs01/temp\n/dev/ufs/Backup                  1.9T    114G    1.7T     6%    /mnt/Backup\n</code></pre>\n\n<p>/var/log/messages</p>\n\n<pre><code>Jan 21 21:48:32 s-FreeNAS root: /etc/rc: WARNING: failed to start syslogd\nJan 21 21:48:32 s-FreeNAS kernel: .\nJan 21 21:48:32 s-FreeNAS root: /etc/rc: WARNING: failed to start watchdogd\nJan 21 21:48:32 s-FreeNAS root: /etc/rc: WARNING: failed precmd routine for vmware_guestd\nJan 21 21:48:34 s-FreeNAS ntpd[2589]: ntpd 4.2.4p5-a (1)\nJan 21 21:48:34 s-FreeNAS kernel: .\nJan 21 21:48:36 s-FreeNAS generate_smb4_conf.py: [common.pipesubr:58] Popen()ing: zfs list -H -o mountpoint,name\nJan 21 21:48:36 s-FreeNAS generate_smb4_conf.py: [common.pipesubr:58] Popen()ing: zfs list -H -o mountpoint\nJan 21 21:48:38 s-FreeNAS last message repeated 4 times\nJan 21 21:48:38 s-FreeNAS generate_smb4_conf.py: [common.pipesubr:58] Popen()ing: /usr/local/bin/pdbedit -d 0 -i smbpasswd:/tmp/tmpEKKZ2A -e tdbsam:/var/etc/private/passdb.tdb -s /usr/local/etc/smb4.conf\nJan 21 21:48:43 s-FreeNAS ntpd[2590]: time reset -0.194758 s\nJan 21 21:48:45 s-FreeNAS smartd[2867]: Device: /dev/ada3, FAILED SMART self-check. BACK UP DATA NOW!\nJan 21 21:48:45 s-FreeNAS smartd[2867]: Device: /dev/ada3, 164 Currently unreadable (pending) sectors\nJan 21 21:48:45 s-FreeNAS smartd[2867]: Device: /dev/ada3, Failed SMART usage Attribute: 5 Reallocated_Sector_Ct.\nJan 21 21:48:45 s-FreeNAS smartd[2867]: Device: /dev/ada3, previous self-test completed with error (unknown test element)\nJan 21 21:48:51 s-FreeNAS mDNSResponder: mDNSResponder (Engineering Build) (Mar  1 2014 18:12:24) starting\nJan 21 21:48:51 s-FreeNAS mDNSResponder:   8: Listening for incoming Unix Domain Socket client requests\nJan 21 21:48:51 s-FreeNAS mDNSResponder: mDNS_AddDNSServer: Lock not held! mDNS_busy (0) mDNS_reentrancy (0)\nJan 21 21:48:51 s-FreeNAS mDNSResponder: mDNS_AddDNSServer: Lock not held! mDNS_busy (0) mDNS_reentrancy (0)\nJan 21 21:48:53 s-FreeNAS netatalk[3142]: Netatalk AFP server starting\nJan 21 21:48:53 s-FreeNAS cnid_metad[3179]: CNID Server listening on localhost:4700\nJan 21 21:48:53 s-FreeNAS kernel: done.\nJan 21 21:48:54 s-FreeNAS mDNSResponder: mDNS_Register_internal: ERROR!! Tried to register AuthRecord 0000000800C2FD60 s-FreeNAS.local. (Addr) that's already in the list\n...\nJan 21 21:48:54 s-FreeNAS mDNSResponder: mDNS_Register_internal: ERROR!! Tried to register AuthRecord 0000000800C30180 109.1.1.10.in-addr.arpa. (PTR) that's already in the list\n\nJan 21 22:04:44 s-FreeNAS kernel: swap_pager: indefinite wait buffer: bufobj: 0, blkno: 1572950, size: 8192\n...\nJan 21 22:05:25 s-FreeNAS kernel: GEOM_ELI: g_eli_read_done() failed ada0p1.eli[READ(offset=110592, length=4096)]\nJan 21 22:05:25 s-FreeNAS kernel: swap_pager: I/O error - pagein failed; blkno 1572894,size 4096, error 5\nJan 21 22:05:25 s-FreeNAS kernel: vm_fault: pager read error, pid 3020 (python2.7)\nJan 21 22:05:25 s-FreeNAS kernel: Failed to write core file for process python2.7 (error 14)\n...\nJan 21 22:19:44 s-FreeNAS kernel: (ada0:ahcich0:0:0:0): READ_FPDMA_QUEUED. ACB: 60 08 70 02 00 40 00 00 00 00 00 00\nJan 21 22:19:44 s-FreeNAS kernel: (ada0:ahcich0:0:0:0): CAM status: ATA Status Error\nJan 21 22:19:44 s-FreeNAS kernel: (ada0:ahcich0:0:0:0): ATA status: 41 (DRDY ERR), error: 40 (UNC )\nJan 21 22:19:44 s-FreeNAS kernel: (ada0:ahcich0:0:0:0): RES: 41 40 70 02 00 40 00 00 00 00 00\nJan 21 22:19:44 s-FreeNAS kernel: (ada0:ahcich0:0:0:0): Error 5, Retries exhausted\nJan 21 22:19:44 s-FreeNAS kernel: GEOM_ELI: g_eli_read_done() failed ada0p1.eli[READ(offset=253952, length=4096)]\nJan 21 22:19:44 s-FreeNAS kernel: swap_pager: I/O error - pagein failed; blkno 1572929,size 4096, error 5\nJan 21 22:19:44 s-FreeNAS kernel: vm_fault: pager read error, pid 2869 (smartd)\nJan 21 22:19:44 s-FreeNAS kernel: Failed to write core file for process smartd (error 14)\nJan 21 22:19:44 s-FreeNAS kernel: pid 2869 (smartd), uid 0: exited on signal 11\n</code></pre>\n\n<p>smartctl --scan</p>\n\n<pre><code>/dev/ada0 -d atacam # /dev/ada0, ATA device\n/dev/ada1 -d atacam # /dev/ada1, ATA device\n/dev/ada2 -d atacam # /dev/ada2, ATA device\n/dev/pass3 -d atacam # /dev/pass3, ATA device\n/dev/ada3 -d atacam # /dev/ada3, ATA device\n/dev/ada4 -d atacam # /dev/ada4, ATA device\n/dev/ada5 -d atacam # /dev/ada5, ATA device\n</code></pre>\n\n<p>smartctl -a /dev/ada3</p>\n\n<pre><code>smartctl 6.2 2013-07-26 r3841 [FreeBSD 9.2-RELEASE-p3 amd64] (local build)\nCopyright (C) 2002-13, Bruce Allen, Christian Franke, www.smartmontools.org\n\n=== START OF INFORMATION SECTION ===\nDevice Model:     WDC WD4000F9YZ-09N20L0\nSerial Number:    WD-WMC1F1211607\nLU WWN Device Id: 5 0014ee 0ae5c0b4c\nFirmware Version: 01.01A01\nUser Capacity:    4,000,787,030,016 bytes [4.00 TB]\nSector Sizes:     512 bytes logical, 4096 bytes physical\nRotation Rate:    7200 rpm\nDevice is:        Not in smartctl database [for details use: -P showall]\nATA Version is:   ATA8-ACS (minor revision not indicated)\nSATA Version is:  SATA 3.0, 6.0 Gb/s (current: 3.0 Gb/s)\nLocal Time is:    Wed Jan 21 23:07:55 2015 CET\nSMART support is: Available - device has SMART capability.\nSMART support is: Enabled\n\n=== START OF READ SMART DATA SECTION ===\nSMART overall-health self-assessment test result: FAILED!\nSee vendor-specific Attribute list for failed Attributes.\n\nGeneral SMART Values:\nOffline data collection status:  (0x85) Offline data collection activity\n                    was aborted by an interrupting command from host.\n                    Auto Offline Data Collection: Enabled.\nSelf-test execution status:      (  73) The previous self-test completed having\n                    a test element that failed and the test\n                    element that failed is not known.\nTotal time to complete Offline\ndata collection:        (41640) seconds.\nOffline data collection\ncapabilities:           (0x7b) SMART execute Offline immediate.\n                    Auto Offline data collection on/off support.\n                    Suspend Offline collection upon new\n                    command.\n                    Offline surface scan supported.\n                    Self-test supported.\n                    Conveyance Self-test supported.\n                    Selective Self-test supported.\nSMART capabilities:            (0x0003) Saves SMART data before entering\n                    power-saving mode.\n                    Supports SMART auto save timer.\nError logging capability:        (0x01) Error logging supported.\n                    General Purpose Logging supported.\nShort self-test routine\nrecommended polling time:   (   2) minutes.\nExtended self-test routine\nrecommended polling time:   ( 451) minutes.\nConveyance self-test routine\nrecommended polling time:   (   5) minutes.\nSCT capabilities:          (0x70bd) SCT Status supported.\n                    SCT Error Recovery Control supported.\n                    SCT Feature Control supported.\n                    SCT Data Table supported.\n\nSMART Attributes Data Structure revision number: 16\nVendor Specific SMART Attributes with Thresholds:\nID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE\n  1 Raw_Read_Error_Rate     0x002f   187   187   051    Pre-fail  Always       -       553\n  3 Spin_Up_Time            0x0027   142   138   021    Pre-fail  Always       -       11900\n  4 Start_Stop_Count        0x0032   100   100   000    Old_age   Always       -       93\n  5 Reallocated_Sector_Ct   0x0033   139   139   140    Pre-fail  Always   FAILING_NOW 1791\n  7 Seek_Error_Rate         0x002e   200   200   000    Old_age   Always       -       0\n  9 Power_On_Hours          0x0032   090   090   000    Old_age   Always       -       7553\n 10 Spin_Retry_Count        0x0032   100   253   000    Old_age   Always       -       0\n 11 Calibration_Retry_Count 0x0032   100   253   000    Old_age   Always       -       0\n 12 Power_Cycle_Count       0x0032   100   100   000    Old_age   Always       -       93\n183 Runtime_Bad_Block       0x0032   100   100   000    Old_age   Always       -       0\n192 Power-Off_Retract_Count 0x0032   200   200   000    Old_age   Always       -       59\n193 Load_Cycle_Count        0x0032   200   200   000    Old_age   Always       -       35\n194 Temperature_Celsius     0x0022   108   098   000    Old_age   Always       -       44\n196 Reallocated_Event_Count 0x0032   001   001   000    Old_age   Always       -       353\n197 Current_Pending_Sector  0x0032   200   199   000    Old_age   Always       -       162\n198 Offline_Uncorrectable   0x0030   100   253   000    Old_age   Offline      -       0\n199 UDMA_CRC_Error_Count    0x0032   200   200   000    Old_age   Always       -       0\n200 Multi_Zone_Error_Rate   0x0008   100   253   000    Old_age   Offline      -       0\n\nSMART Error Log Version: 1\nNo Errors Logged\n\nSMART Self-test log structure revision number 1\nNum  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error\n# 1  Short offline       Completed: unknown failure    90%      7553         -\n# 2  Short offline       Completed: unknown failure    90%      7552         -\n# 3  Short offline       Completed: unknown failure    90%      7551         -\n# 4  Short offline       Completed: unknown failure    90%      7550         -\n# 5  Short offline       Completed: unknown failure    90%      7549         -\n# 6  Short offline       Completed: unknown failure    90%      7548         -\n# 7  Short offline       Completed: unknown failure    90%      7547         -\n# 8  Short offline       Completed: unknown failure    90%      7546         -\n# 9  Short offline       Completed: unknown failure    90%      7545         -\n#10  Short offline       Completed: unknown failure    90%      7544         -\n#11  Short offline       Completed: unknown failure    90%      7543         -\n#12  Short offline       Completed: unknown failure    90%      7542         -\n#13  Short offline       Completed without error       00%      7541         -\n#14  Short offline       Completed without error       00%      7540         -\n#15  Short offline       Completed: read failure       10%      7538         1148054536\n#16  Short offline       Completed: read failure       10%      7538         1148054536\n#17  Short offline       Completed: read failure       10%      7536         1148057328\n#18  Short offline       Completed: read failure       10%      7535         1148057328\n#19  Short offline       Completed without error       00%      7530         -\n#20  Short offline       Completed without error       00%      7529         -\n#21  Short offline       Completed: read failure       10%      7528         1148057328\n\nSMART Selective self-test log data structure revision number 1\n SPAN  MIN_LBA  MAX_LBA  CURRENT_TEST_STATUS\n    1        0        0  Not_testing\n    2        0        0  Not_testing\n    3        0        0  Not_testing\n    4        0        0  Not_testing\n    5        0        0  Not_testing\nSelective self-test flags (0x0):\n  After scanning selected spans, do NOT read-scan remainder of disk.\nIf Selective self-test is pending on power-up, resume after 0 minute delay.\n</code></pre>",
-		"TimeStamp" : "2015-01-22T08:28:00.606Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)problem(s)?",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 1,
-				"FPCount" : 65,
-				"CaughtCount" : 2633
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 9,
-				"FPCount" : 79,
-				"CaughtCount" : 4972
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "unix.stackexchange.com",
-				"Score" : 6.568182,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?s-m)^.{0,150}$",
-				"IsAuto" : false,
-				"Site" : "unix.stackexchange.com",
-				"Score" : 7,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942285",
-		"PostUrl" : "http://stackoverflow.com/a/28084138",
-		"Site" : "stackoverflow.com",
-		"Title" : "Change your main layout's parent Linearlayout to Relative layout",
-		"Body" : "<p>Change your main layout's parent Linearlayout to Relative layout</p>",
-		"TimeStamp" : "2015-01-22T08:27:04.780Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3005
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942281",
-		"PostUrl" : "http://apple.stackexchange.com/a/123877",
-		"Site" : "apple.stackexchange.com",
-		"Title" : "only works with nvidia graphics card and 1G vram I believe",
-		"Body" : "<p>only works with nvidia graphics card and 1G vram I believe</p>",
-		"TimeStamp" : "2015-01-22T08:25:47.806Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3004
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942276",
-		"PostUrl" : "http://stackoverflow.com/a/28084118",
-		"Site" : "stackoverflow.com",
-		"Title" : "With Android NFC service and \"thin client\": one problem, and one hack in...",
-		"Body" : "<p>With Android NFC service and \"thin client\": one problem, and one hack in <a href=\"http://www.dematte.org/2014/08/15/AndroidNFCServiceAndThinClientOneProblemAndOneHack.aspx\" rel=\"nofollow\">http://www.dematte.org/2014/08/15/AndroidNFCServiceAndThinClientOneProblemAndOneHack.aspx</a>\n<br>Anyone know how to get reflection of NativeNfcTag?\nPlease help.</p>",
-		"TimeStamp" : "2015-01-22T08:25:21.640Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)pl(ease|s|z) help",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 17,
-				"TPCount" : 20,
-				"FPCount" : 2,
-				"CaughtCount" : 124
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942273",
-		"PostUrl" : "http://stackoverflow.com/a/28081083",
-		"Site" : "stackoverflow.com",
-		"Title" : "How about just this?\n\n  lf_sindex = lf_index.\n  CONCATENATE\n    'MO_LU_D...",
-		"Body" : "<p>How about just this?</p>\n\n<pre><code>  lf_sindex = lf_index.\n  CONCATENATE\n    'MO_LU_DATA_'\n    lf_sindex\n    INTO RO_TAB.\n</code></pre>",
-		"TimeStamp" : "2015-01-22T08:25:01.860Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)how about",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 2
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942271",
-		"PostUrl" : "http://gis.stackexchange.com/a/127343",
-		"Site" : "gis.stackexchange.com",
-		"Title" : "thank you so much, i downloaded the Global Mapper v16.0 and run it, at t...",
-		"Body" : "<p>thank you so much, i downloaded the Global Mapper v16.0 and run it, at the end the Global Mapper v16.0 needs a license type for register, would you tell which license type should i select or would you please tell me an order number? thanks in advanced!\n<img src=\"http://i.stack.imgur.com/YatSw.png\" alt=\"enter image description here\"></p>",
-		"TimeStamp" : "2015-01-22T08:24:06.211Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 187,
-				"FPCount" : 109,
-				"CaughtCount" : 2948
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942261",
-		"PostUrl" : "http://dba.stackexchange.com/questions/89892",
-		"Site" : "dba.stackexchange.com",
-		"Title" : "MySQL replication error when an event is expired and dropped automatically",
-		"Body" : "<p>I have an event that ends at 2014-01-21 10:00:00, and a replication error was caused by <code>drop event ***</code> statement, coz the slave complains that the event does not exist at all.</p>\n\n<p>A little bit more background: we have about 10 MySQL master/slave pairs, each running independently, with identical config(all managed by chef). An event was created previously on all masters, and when the event expired, half of the slaves has a replication error, caused by the <code>drop event</code> statement, while the other half were fine. I checked with one pair of master/slave, both binlog and relay log shows there was a <code>drop event</code> statement at about 2014-01-21 10:06:00(the event actually ends at 2014-01-21 10:00:00), while the 'fine' ones seem not having the <code>drop event</code> statement at all.</p>\n\n<p>According to <a href=\"http://dev.mysql.com/doc/refman/5.5/en/create-event.html\" rel=\"nofollow\">http://dev.mysql.com/doc/refman/5.5/en/create-event.html</a>, the event is supposed to be immediately dropped once is has expired. </p>\n\n<p>So I did a simple test. First create an event on master, I can see both master and slave has this event, while the status of that event on the slave is 'SLAVESIDE_DISABLED', which is expected. </p>\n\n<pre><code>DELIMITER |\nDROP EVENT IF EXISTS `test_event` |\nCREATE EVENT `test_event`\nON SCHEDULE EVERY 1 MINUTE STARTS '2015-01-22 15:45:00' ENDS '2015-01-22 15:48:00'\n  DO BEGIN\n    insert into t values ();\n  END |\nDELIMITER ;\n</code></pre>\n\n<p>At 15:48, the event on both master & slave was gone. I check the binlog and relay log, both show that there was a <code>DROP EVENT test.test_event</code> at 2015-01-22 15:48:00, which looks quite fine.</p>\n\n<p>So my question is: \n1. Among the 10 master/slave pairs, any idea why half the master did not execute <code>drop event ***</code> at all when the event expired, while the other half did, but late for several minutes, and the event on the slave is already gone(while a simple test worked just as expected)? Or where should I look at besides the binlog and relay log?</p>\n\n<ol start=\"2\">\n<li>All events on the slaves are gone already, those without a replication error doesn't have the <code>drop event</code> statement in relay log at all. So how did those event gone in the first place?</li>\n</ol>\n\n<p>PS: MySQL version is 5.5.29-29.4-log Percona Server</p>",
-		"TimeStamp" : "2015-01-22T08:23:05.155Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 16,
-				"TPCount" : 9,
-				"FPCount" : 79,
-				"CaughtCount" : 4971
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)\\berror(s)?\\b",
-				"IsAuto" : false,
-				"Site" : "dba.stackexchange.com",
-				"Score" : 7.69708824,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942258",
-		"PostUrl" : "http://stackoverflow.com/a/28084084",
-		"Site" : "stackoverflow.com",
-		"Title" : "I have the same problem half hours ago\uFF0Cconsole views  ADB is rejecting s...",
-		"Body" : "<p>I have the same problem half hours ago\uFF0Cconsole views  <strong>ADB is rejecting shell commands...</strong>,but now this issue has been solved\uFF0Cjust few steps </p>\n\n<ol>\n<li><strong>Restart your phone and restar USB DEBUG!!</strong></li>\n<li><strong>Reset adb</strong></li>\n</ol>\n\n<p>and now you can run your application</p>",
-		"TimeStamp" : "2015-01-22T08:22:32.312Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)i (have|g(e|o)t)( the)? same (problem|issue|error|exception)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 18,
-				"TPCount" : 44,
-				"FPCount" : 6,
-				"CaughtCount" : 364
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942250",
-		"PostUrl" : "http://askubuntu.com/a/576456",
-		"Site" : "askubuntu.com",
-		"Title" : "mount -o ro,loop,offset=32256 nandc.img nandc",
-		"Body" : "<p>mount -o ro,loop,offset=32256 nandc.img nandc</p>",
-		"TimeStamp" : "2015-01-22T08:21:20.655Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 486,
-				"FPCount" : 118,
-				"CaughtCount" : 3003
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 43,
-				"FPCount" : 3,
-				"CaughtCount" : 363
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,60}$",
-				"IsAuto" : false,
-				"Site" : "askubuntu.com",
-				"Score" : 7,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2942249",
-		"PostUrl" : "http://askubuntu.com/a/434027",
-		"Site" : "askubuntu.com",
-		"Title" : "thanks for replay,\n\nmount -o loop -t ext3 nandc.img nandc\n\nmount: wrong ...",
-		"Body" : "<p>thanks for replay,</p>\n\n<h1>mount -o loop -t ext3 nandc.img nandc</h1>\n\n<p>mount: wrong fs type, bad option, bad superblock on /dev/loop0,\n       missing codepage or helper program, or other error\n       In some cases useful info is found in syslog - try</p>\n\n<h1>mount -t ext3 -o loop,ro nandc.img nandc</h1>\n\n<p>mount: wrong fs type, bad option, bad superblock on /dev/loop0,\n       missing codepage or helper program, or other error\n       In some cases useful info is found in syslog - try</p>\n\n<h1>mount -t ext3 -o loop,ro,noexec nandc.img nandc</h1>\n\n<p>mount: wrong fs type, bad option, bad superblock on /dev/loop0,\n       missing codepage or helper program, or other error\n       In some cases useful info is found in syslog - try\n       dmesg | tail  or so</p>\n\n<p>dmesg</p>\n\n<p>[ 1061.547662] EXT3-fs (loop0): error: can't find ext3 filesystem on dev loop0.</p>\n\n<p>I can able to mount vfat but not ext3.\nHow to solve this err?</p>",
-		"TimeStamp" : "2015-01-22T08:21:20.337Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 187,
-				"FPCount" : 109,
-				"CaughtCount" : 2947
 			}
 		],
 		"WhiteTerms" : []

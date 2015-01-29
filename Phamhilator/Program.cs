@@ -46,23 +46,15 @@ namespace Phamhilator
             InitialiseCore();
 
             var credMan = new CredManager();
-            var success = false;
 
             //if (String.IsNullOrEmpty(credMan.Email) || String.IsNullOrEmpty(credMan.Password))
             //{
-                success = TryManualLogin(credMan);
+                TryManualLogin(credMan);
             //}
             //else
             //{
             //    success = TryAutoLogin(credMan);
             //}
-
-            if (!success)
-            {
-                Console.WriteLine("\n\nPress any key to close Yam...");
-                Console.ReadKey(true);
-                return;
-            }
 
             JoinRooms();
 
@@ -70,6 +62,7 @@ namespace Phamhilator
             Stats.UpTime = DateTime.UtcNow;
 
             Config.PrimaryRoom.PostMessage("`Phamhilator™ started.`");
+            Console.WriteLine("Phamhilator™ started.");
 
             InitialiseSocket();
         }
@@ -138,7 +131,7 @@ namespace Phamhilator
             Console.WriteLine("done.\n");
         }
 
-        private static bool TryManualLogin(CredManager credMan)
+        private static void TryManualLogin(CredManager credMan)
         {
             Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
 
@@ -156,40 +149,38 @@ namespace Phamhilator
 
                     chatClient = new Client(email, password);
 
-                    Console.Write("login successful!\nShall I remember your creds? ");
+                    //Console.Write("login successful!\nShall I remember your creds? ");
 
-                    try
-                    {
-                        var remCreds = Console.ReadLine();
+                    //try
+                    //{
+                    //    var remCreds = Console.ReadLine();
 
-                        if (Regex.IsMatch(remCreds, @"(?i)^y(e[sp]|up|)?\s*$"))
-                        {
-                            credMan.Email = email;
-                            credMan.Password = password;
+                    //    if (Regex.IsMatch(remCreds, @"(?i)^y(e[sp]|up|)?\s*$"))
+                    //    {
+                    //        credMan.Email = email;
+                    //        credMan.Password = password;
 
-                            Console.WriteLine("Creds successfully remembered!");
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        credMan.Email = "";
-                        credMan.Password = "";
+                    //        Console.WriteLine("Creds successfully remembered!");
+                    //    }
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    credMan.Email = "";
+                    //    credMan.Password = "";
 
-                        Console.WriteLine("Failed to save your creds (creds not remembered).");
-                    }
+                    //    Console.WriteLine("Failed to save your creds (creds not remembered).");
+                    //}
 
-                    return true;
+                    return;
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("failed to login.");
-
-                    return false;
                 }
             }
         }
 
-        private static bool TryAutoLogin(CredManager credMan)
+        private static void TryAutoLogin(CredManager credMan)
         {
             Console.WriteLine("Email: " + credMan.Email);
             Console.WriteLine("Password: " + credMan.Password);
@@ -225,10 +216,10 @@ namespace Phamhilator
             {
                 Console.WriteLine("failed to login.");
 
-                return false;
+                return;
             }
 
-            return true;
+            return;
         }
 
         private static void JoinRooms()

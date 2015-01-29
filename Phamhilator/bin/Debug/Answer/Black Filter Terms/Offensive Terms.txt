@@ -78,7 +78,7 @@
 		"Score" : 11,
 		"TPCount" : 3,
 		"FPCount" : 21,
-		"CaughtCount" : 59
+		"CaughtCount" : 60
 	},
 	{
 		"Regex" : "(?i)\\bfag\\b",
@@ -105,7 +105,7 @@
 		"Score" : 10,
 		"TPCount" : 2,
 		"FPCount" : 7,
-		"CaughtCount" : 23
+		"CaughtCount" : 21
 	},
 	{
 		"Regex" : "(?i)\\bshit\\b",
@@ -168,7 +168,7 @@
 		"Score" : 10.2105265,
 		"TPCount" : 4,
 		"FPCount" : 3,
-		"CaughtCount" : 10
+		"CaughtCount" : 8
 	},
 	{
 		"Regex" : "(?i)good luck to stack overflow developers",

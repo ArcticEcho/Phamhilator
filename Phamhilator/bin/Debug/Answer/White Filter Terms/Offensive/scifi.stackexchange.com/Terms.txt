@@ -1,0 +1,1 @@
+[{"Regex":"(?i)\\sdick\\s","IsAuto":false,"Site":"scifi.stackexchange.com","Score":5.105263,"TPCount":0,"FPCount":0,"CaughtCount":0}]

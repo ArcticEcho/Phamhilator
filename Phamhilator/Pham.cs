@@ -111,7 +111,7 @@ namespace Phamhilator
                     // Increase score of each white term (matching the found black term) not found on this site.
                     for (var ii = 0; ii < Config.WhiteFilters[whiteFilter].Terms.Count; ii++)
                     {
-                        var whiteTerm = Config.WhiteFilters[whiteFilter].Terms.ElementAt(i);
+                        var whiteTerm = Config.WhiteFilters[whiteFilter].Terms.ElementAt(ii);
 
                         if (whiteTerm.Regex.ToString() != blackTerm.Regex.ToString() || whiteTerm.Site == post.Site) { continue; }
 
