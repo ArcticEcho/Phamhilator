@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 20,
+		"TPCount" : 32,
 		"FPCount" : 0,
 		"CaughtCount" : 2
 	},
@@ -13,7 +13,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 10,
+		"TPCount" : 15,
 		"FPCount" : 0,
 		"CaughtCount" : 0
 	},
@@ -22,25 +22,25 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 11,
+		"TPCount" : 4,
 		"FPCount" : 2,
-		"CaughtCount" : 9
+		"CaughtCount" : 6
 	},
 	{
 		"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 20,
-		"FPCount" : 20,
-		"CaughtCount" : 56
+		"TPCount" : 16,
+		"FPCount" : 19,
+		"CaughtCount" : 46
 	},
 	{
 		"Regex" : "officialimeiunlock",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 1,
+		"TPCount" : 2,
 		"FPCount" : 0,
 		"CaughtCount" : 0
 	},
@@ -49,7 +49,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 0,
+		"TPCount" : 1,
 		"FPCount" : 0,
 		"CaughtCount" : 0
 	},
@@ -148,9 +148,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 15,
-		"FPCount" : 24,
-		"CaughtCount" : 54
+		"TPCount" : 16,
+		"FPCount" : 25,
+		"CaughtCount" : 55
 	},
 	{
 		"Regex" : "(?i)ComplexiDerm",
@@ -482,8 +482,8 @@
 		"Site" : "",
 		"Score" : 10.0204086,
 		"TPCount" : 0,
-		"FPCount" : 9,
-		"CaughtCount" : 20
+		"FPCount" : 7,
+		"CaughtCount" : 15
 	},
 	{
 		"Regex" : "\\sCLICK HERE\\s",
@@ -762,7 +762,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 5,
 		"FPCount" : 0,
-		"CaughtCount" : 5
+		"CaughtCount" : 9
 	},
 	{
 		"Regex" : "(?i)Penomet",
@@ -870,7 +870,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 2,
 		"FPCount" : 0,
-		"CaughtCount" : 2
+		"CaughtCount" : 3
 	},
 	{
 		"Regex" : "(?i)lavishskincarehelp\\.com",
@@ -895,9 +895,9 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0206881,
-		"TPCount" : 8,
-		"FPCount" : 7,
-		"CaughtCount" : 26
+		"TPCount" : 0,
+		"FPCount" : 1,
+		"CaughtCount" : 3
 	},
 	{
 		"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
@@ -906,7 +906,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 3,
 		"FPCount" : 1,
-		"CaughtCount" : 11
+		"CaughtCount" : 13
 	},
 	{
 		"Regex" : "(?i)muscle[- ]rev[- ]e?xtreme",
@@ -942,7 +942,7 @@
 		"Score" : 10.0206881,
 		"TPCount" : 0,
 		"FPCount" : 0,
-		"CaughtCount" : 0
+		"CaughtCount" : 4
 	},
 	{
 		"Regex" : "(?i)amazinggarciniacambogiaidea",

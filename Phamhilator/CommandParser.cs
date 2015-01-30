@@ -30,7 +30,7 @@ namespace Phamhilator
 
             var type = filterConfigIsBlack.IsMatch(lower) ? FilterType.Black : FilterType.White;
             var filterTypeCommand = filterTypeClassStrip.Replace(lower, "").Substring(0, 2);
-            var filterSubclassCommand = filterSubclassStrip.Replace(lower, "");
+            var filterSubclassCommand = filterSubclassStrip.Replace(lower, "").Substring(0, 2);
             var classification = FilterClass.AnswerLQ;
 
             switch (filterTypeCommand)
@@ -42,12 +42,12 @@ namespace Phamhilator
                 }
                 case "qb":
                 {
-                    classification = ParseQt(filterSubclassCommand);
+                    classification = ParseQb(filterSubclassCommand);
                     break;
                 }
                 case "a-":
                 {
-                    classification = ParseQt(filterSubclassCommand);
+                    classification = ParseA(filterSubclassCommand);
                     break;
                 }
             }
@@ -61,11 +61,11 @@ namespace Phamhilator
         {
             switch (command)
             {
-                case "spam":
+                case "sp":
                 {
                     return FilterClass.QuestionTitleSpam;
                 }
-                case "off":
+                case "of":
                 {
                     return FilterClass.QuestionTitleOff;
                 }
@@ -73,7 +73,7 @@ namespace Phamhilator
                 {
                     return FilterClass.QuestionTitleLQ;
                 }
-                case "name":
+                case "na":
                 {
                     return FilterClass.QuestionTitleName;
                 }
@@ -88,11 +88,11 @@ namespace Phamhilator
         {
             switch (command)
             {
-                case "spam":
+                case "sp":
                 {
                     return FilterClass.QuestionBodySpam;
                 }
-                case "off":
+                case "of":
                 {
                     return FilterClass.QuestionBodyOff;
                 }
@@ -111,11 +111,11 @@ namespace Phamhilator
         {
             switch (command)
             {
-                case "spam":
+                case "sp":
                 {
                     return FilterClass.AnswerSpam;
                 }
-                case "off":
+                case "of":
                 {
                     return FilterClass.AnswerOff;
                 }
@@ -123,7 +123,7 @@ namespace Phamhilator
                 {
                     return FilterClass.AnswerLQ;
                 }
-                case "name":
+                case "na":
                 {
                     return FilterClass.AnswerName;
                 }

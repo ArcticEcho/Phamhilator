@@ -21,48 +21,30 @@ namespace Phamhilator
         private static Thread postCatcherThread;
         private static DateTime requestedDieTime;
         private static MessageHandler messageHandler;
-        //private static ReportLog log;
-        //private static UserAccess userAccess;
-        //private static BannedUsers bannedUsers;
         private static Client chatClient;
         private static ActiveRooms roomsToJoin;
-        //private static Room primaryRoom;
-        //private static List<Room> secondaryRooms;
-        //private static Dictionary<FilterConfig, BlackFilter> blackFilters;
-        //private static Dictionary<FilterConfig, WhiteFilter> whiteFilters;
-        //private static BadTags badTags;
 
 
 
         static void Main(string[] args)
         {
             Console.Title = "Phamhilator";
+            Console.WriteLine("Phamhilator.\nPress Ctrl + C to exit.\n");
             AppDomain.CurrentDomain.UnhandledException += GlobalExceptionHandler;
-            AppDomain.CurrentDomain.DomainUnload += (o, oo) => Close();
+            Console.CancelKeyPress += (o, oo) => Close();
 
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
             InitialiseCore();
-
-            var credMan = new CredManager();
-
-            //if (String.IsNullOrEmpty(credMan.Email) || String.IsNullOrEmpty(credMan.Password))
-            //{
-                TryManualLogin(credMan);
-            //}
-            //else
-            //{
-            //    success = TryAutoLogin(credMan);
-            //}
-
+            TryLogin();
             JoinRooms();
 
             Config.IsRunning = true;
             Stats.UpTime = DateTime.UtcNow;
 
             Config.PrimaryRoom.PostMessage("`Phamhilator™ started.`");
-            Console.WriteLine("Phamhilator started.");
+            Console.WriteLine("\nPhamhilator started.");
 
             InitialiseSocket();
         }
@@ -131,7 +113,7 @@ namespace Phamhilator
             Console.WriteLine("done.\n");
         }
 
-        private static void TryManualLogin(CredManager credMan)
+        private static void TryLogin()
         {
             Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
 
@@ -149,27 +131,7 @@ namespace Phamhilator
 
                     chatClient = new Client(email, password);
 
-                    //Console.Write("login successful!\nShall I remember your creds? ");
-
-                    //try
-                    //{
-                    //    var remCreds = Console.ReadLine();
-
-                    //    if (Regex.IsMatch(remCreds, @"(?i)^y(e[sp]|up|)?\s*$"))
-                    //    {
-                    //        credMan.Email = email;
-                    //        credMan.Password = password;
-
-                    //        Console.WriteLine("Creds successfully remembered!");
-                    //    }
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    credMan.Email = "";
-                    //    credMan.Password = "";
-
-                    //    Console.WriteLine("Failed to save your creds (creds not remembered).");
-                    //}
+                    Console.WriteLine("login successful!");
 
                     return;
                 }
@@ -178,48 +140,6 @@ namespace Phamhilator
                     Console.WriteLine("failed to login.");
                 }
             }
-        }
-
-        private static void TryAutoLogin(CredManager credMan)
-        {
-            Console.WriteLine("Email: " + credMan.Email);
-            Console.WriteLine("Password: " + credMan.Password);
-            Console.WriteLine("\nPress the enter key to login...");
-            Console.Read();
-
-            try
-            {
-                Console.Write("Authenticating...");
-
-                chatClient = new Client(credMan.Email, credMan.Password);
-
-                Console.Write("login successful!\nShall I forget your creds?");
-
-                try
-                {
-                    var clrCreds = Console.ReadLine();
-
-                    if (Regex.IsMatch(clrCreds, @"(?i)^y(e[sp]|up|)?\s*$"))
-                    {
-                        credMan.Email = "";
-                        credMan.Password = "";
-
-                        Console.WriteLine("Creds successfully forgotten!");
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Failed to forget your creds.");
-                }
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("failed to login.");
-
-                return;
-            }
-
-            return;
         }
 
         private static void JoinRooms()
@@ -527,7 +447,18 @@ namespace Phamhilator
 
         private static void Close()
         {
-            Config.PrimaryRoom.PostMessage("`Phamhilator™ stopped.`");
+            // Check if the user has been auth'd, if so the bot has already been fully initialised
+            // so post the shutdown message, otherwise, the bot hasn't been initialised so just exit.
+            if (chatClient != null)
+            {
+                Config.Shutdown = true;
+                Config.Log.Dispose();
+                messageHandler.Dispose();
+                Config.PrimaryRoom.PostMessage("`Phamhilator™ stopped.`");
+            }
+
+            Process.GetCurrentProcess().Close();
+            //Environment.Exit(Environment.ExitCode);
         }
 
         # region UI Events

@@ -67,7 +67,7 @@ namespace Phamhilator
             {
                 var blackTerm = blackTerms.Terms.ElementAt(i);
 
-                if (blackTerm.Regex.IsMatch(post.Body) && !filterType.IsQuestionTitle() && !filterType.ToString().ToLowerInvariant().Contains("name"))
+                if (post.Body != null && blackTerm.Regex.IsMatch(post.Body) && !filterType.IsQuestionTitle() && !filterType.ToString().ToLowerInvariant().Contains("name"))
                 {
                     info.Accuracy += blackTerm.Score;
                     info.BlackTermsFound.Add(blackTerm);

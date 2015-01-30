@@ -40,7 +40,7 @@ namespace Phamhilator
                 }
             }
 
-            return censored.ToString();
+            return censored.ToString().Trim();
         }
     }
 }

@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChatExchange.Net">
+    <Reference Include="ChatExchange.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ChatExchange.Net\ChatExchange.Net\bin\Debug\ChatExchange.Net.dll</HintPath>
     </Reference>
     <Reference Include="CsQuery">
@@ -67,7 +68,6 @@
     <Compile Include="CommandAccessLevel.cs" />
     <Compile Include="CommandParser.cs" />
     <Compile Include="CommandProcessor.cs" />
-    <Compile Include="CredManager.cs" />
     <Compile Include="DirectoryTools.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FilePaths.cs" />

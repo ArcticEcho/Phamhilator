@@ -109,7 +109,7 @@ namespace Phamhilator
 
                 sw.Start();
 
-                while (sw.Elapsed.TotalMinutes < 5 && !dispose)
+                while (sw.Elapsed.TotalMinutes < 30 && !dispose)
                 {
                     Thread.Sleep(1000);
                 }

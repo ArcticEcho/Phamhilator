@@ -7,12 +7,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLP", "NLP\NLP.csproj", "{F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghamhilator", "Ghamhilator\Ghamhilator.csproj", "{993E523C-48D4-44D7-AFD2-272F35564BCA}"
 	ProjectSection(ProjectDependencies) = postProject
+		{53B36231-4989-4180-9F0A-DB1748AFC61E} = {53B36231-4989-4180-9F0A-DB1748AFC61E}
 		{FF9060CA-0692-4170-A98B-C01BB03E726A} = {FF9060CA-0692-4170-A98B-C01BB03E726A}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yamhilator", "Yamhilator\Yamhilator.csproj", "{53B36231-4989-4180-9F0A-DB1748AFC61E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator", "Phamhilator\Phamhilator.csproj", "{6217E96F-4C87-4961-8EC2-EBDAD05122DD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53B36231-4989-4180-9F0A-DB1748AFC61E} = {53B36231-4989-4180-9F0A-DB1748AFC61E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagExchange.Net", "FlagExchange.Net\FlagExchange.Net\FlagExchange.Net.csproj", "{8BAC4155-8AEE-4282-B64B-823397C75438}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +26,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FAC3EC10-A91D-4E01-A53A-49AB139CE1C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAC3EC10-A91D-4E01-A53A-49AB139CE1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FAC3EC10-A91D-4E01-A53A-49AB139CE1C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FAC3EC10-A91D-4E01-A53A-49AB139CE1C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF9060CA-0692-4170-A98B-C01BB03E726A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF9060CA-0692-4170-A98B-C01BB03E726A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF9060CA-0692-4170-A98B-C01BB03E726A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,6 +42,10 @@ Global
 		{6217E96F-4C87-4961-8EC2-EBDAD05122DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6217E96F-4C87-4961-8EC2-EBDAD05122DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6217E96F-4C87-4961-8EC2-EBDAD05122DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BAC4155-8AEE-4282-B64B-823397C75438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BAC4155-8AEE-4282-B64B-823397C75438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BAC4155-8AEE-4282-B64B-823397C75438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BAC4155-8AEE-4282-B64B-823397C75438}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

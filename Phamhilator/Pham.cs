@@ -15,7 +15,7 @@ namespace Phamhilator
         {
             Config.Log.EntriesRemovedEvent = items =>
             {
-                var vaildEntries = items.Where(i => i.ReportType == PostType.Spam || i.ReportType == PostType.Offensive || i.ReportType == PostType.LowQuality).Take(30);
+                var vaildEntries = items.Where(i => i.ReportType == PostType.Spam || i.ReportType == PostType.Offensive || i.ReportType == PostType.LowQuality);
 
                 var results = new Dictionary<LogItem, bool>();
 
