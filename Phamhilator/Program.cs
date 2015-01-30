@@ -186,24 +186,27 @@ namespace Phamhilator
                     {
                         var question = PostFetcher.GetQuestion(message);
 
-                        if (Config.Log.Entries.All(p => p.PostUrl != question.Url))
+                        lock (Config.Log)
                         {
-                            var qResults = PostAnalyser.AnalyseQuestion(question);
-                            var qMessage = MessageGenerator.GetQReport(qResults, question);
-
-                            CheckSendReport(question, qMessage, qResults);
-                        }
-
-                        if (Config.FullScanEnabled)
-                        {
-                            var answers = PostFetcher.GetLatestAnswers(question);
-
-                            foreach (var a in answers.Where(ans => Config.Log.Entries.All(p => p.PostUrl != ans.Url)))
+                            if (Config.Log.Entries.All(p => p.PostUrl != question.Url))
                             {
-                                var aResults = PostAnalyser.AnalyseAnswer(a);
-                                var aMessage = MessageGenerator.GetPostReport(aResults, a);
+                                var qResults = PostAnalyser.AnalyseQuestion(question);
+                                var qMessage = MessageGenerator.GetQReport(qResults, question);
 
-                                CheckSendReport(a, aMessage, aResults);
+                                CheckSendReport(question, qMessage, qResults);
+                            }
+
+                            if (Config.FullScanEnabled)
+                            {
+                                var answers = PostFetcher.GetLatestAnswers(question);
+
+                                foreach (var a in answers.Where(ans => Config.Log.Entries.All(p => p.PostUrl != ans.Url)))
+                                {
+                                    var aResults = PostAnalyser.AnalyseAnswer(a);
+                                    var aMessage = MessageGenerator.GetPostReport(aResults, a);
+
+                                    CheckSendReport(a, aMessage, aResults);
+                                }
                             }
                         }
                     }
@@ -419,7 +422,14 @@ namespace Phamhilator
                 {
                     foreach (var room in Config.SecondaryRooms)
                     {
-                        room.PostMessage(chatMessage.Message.Content);
+                        var autoMessage = room.PostMessage(chatMessage.Message.Content);
+
+                        Stats.PostedReports.Add(new Report
+                        {
+                            Analysis = info,
+                            Message = autoMessage,
+                            Post = p
+                        });
                     }
                 }
             }
@@ -451,14 +461,19 @@ namespace Phamhilator
             // so post the shutdown message, otherwise, the bot hasn't been initialised so just exit.
             if (chatClient != null)
             {
+                Console.WriteLine("Closing Phamhilator...");
+                Config.PrimaryRoom.PostMessage("`Closing Phamhilator™...`");
                 Config.Shutdown = true;
-                Config.Log.Dispose();
+
+                lock (Config.Log)
+                {
+                    Config.Log.Dispose();
+                }
+
                 messageHandler.Dispose();
-                Config.PrimaryRoom.PostMessage("`Phamhilator™ stopped.`");
             }
 
             Process.GetCurrentProcess().Close();
-            //Environment.Exit(Environment.ExitCode);
         }
 
         # region UI Events

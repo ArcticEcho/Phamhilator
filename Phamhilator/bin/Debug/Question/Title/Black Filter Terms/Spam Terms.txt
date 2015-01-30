@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 6,
+		"TPCount" : 7,
 		"FPCount" : 3,
 		"CaughtCount" : 15
 	},
@@ -302,8 +302,8 @@
 		"Site" : "",
 		"Score" : 18,
 		"TPCount" : 21,
-		"FPCount" : 56,
-		"CaughtCount" : 113
+		"FPCount" : 58,
+		"CaughtCount" : 116
 	},
 	{
 		"Regex" : "(?i)the perfect",
@@ -410,8 +410,8 @@
 		"Site" : "",
 		"Score" : 12,
 		"TPCount" : 10,
-		"FPCount" : 15,
-		"CaughtCount" : 34
+		"FPCount" : 16,
+		"CaughtCount" : 35
 	},
 	{
 		"Regex" : "(?i)\\bexclusive\\b",
@@ -1067,8 +1067,8 @@
 		"Site" : "",
 		"Score" : 10.2258778,
 		"TPCount" : 0,
-		"FPCount" : 1,
-		"CaughtCount" : 1
+		"FPCount" : 2,
+		"CaughtCount" : 2
 	},
 	{
 		"Regex" : "(?i)Losing Weight",

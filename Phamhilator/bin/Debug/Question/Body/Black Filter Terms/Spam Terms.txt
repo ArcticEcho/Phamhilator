@@ -4,7 +4,7 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10,
-		"TPCount" : 32,
+		"TPCount" : 35,
 		"FPCount" : 0,
 		"CaughtCount" : 2
 	},
@@ -895,18 +895,18 @@
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0206881,
-		"TPCount" : 0,
-		"FPCount" : 1,
-		"CaughtCount" : 4
+		"TPCount" : 7,
+		"FPCount" : 2,
+		"CaughtCount" : 6
 	},
 	{
 		"Regex" : "(?i)(-|=|>){3,}.{30,}https?://",
 		"IsAuto" : false,
 		"Site" : "",
 		"Score" : 10.0206881,
-		"TPCount" : 3,
+		"TPCount" : 1,
 		"FPCount" : 1,
-		"CaughtCount" : 13
+		"CaughtCount" : 3
 	},
 	{
 		"Regex" : "(?i)muscle[- ]rev[- ]e?xtreme",
