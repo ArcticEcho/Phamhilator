@@ -1,5 +1,433 @@
 [
 	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2981021",
+		"PostUrl" : "http://magento.stackexchange.com/a/53935",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "First I want to say that nothing ensures upgradability. It can only lowe...",
+		"Body" : "<p>First I want to say that nothing ensures upgradability. It can only lower the risk.<br>\nBut in this case I don't think that using the sort order with <code>before/after</code> is going to go away. If it does, we're all screwed.  </p>\n\n<p>The best practice says that you should copy and change as least as possible the original files and to use your own layout file or <code>local.xml</code> to do your changes. This way the risk of something blowing up after an upgrade is lower.  </p>\n\n<p>I can tell you from experience that once I upgraded an EE from 1.11 to 1.12 and something changed in the layout for the google analytics layout file, but previously I copied the layout file in my own theme. Lost about 4-5 hours until I figured it out.<br>\nSo my advice is to use before/after sorting.</p>",
+		"TimeStamp" : "2015-01-30T12:38:02.581Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 75
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2981013",
+		"PostUrl" : "http://superuser.com/a/187273",
+		"Site" : "superuser.com",
+		"Title" : "you could download systools-ms backup recovery software-it has a trial p...",
+		"Body" : "<p>you could download systools-ms backup recovery software-it has a trial period and will let you see in side a system backup that does not open with the normal ms backup and restore,up to you-the free ones should also let you see in side, you dont have to restore.\nedit-they have the-ntbackup restore utilities-at microsoft xp help this the microsoft fix and will for free open and restore all data,etc. </p>",
+		"TimeStamp" : "2015-01-30T12:34:52.237Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 45,
+				"FPCount" : 4,
+				"CaughtCount" : 428
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2981010",
+		"PostUrl" : "http://math.stackexchange.com/a/1126440",
+		"Site" : "math.stackexchange.com",
+		"Title" : "Take an infinite direct sum of $\\mathbb{Z}/3$.",
+		"Body" : "<p>Take an infinite direct sum of $\\mathbb{Z}/3$.</p>",
+		"TimeStamp" : "2015-01-30T12:34:42.978Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 121,
+				"CaughtCount" : 3071
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2981009",
+		"PostUrl" : "http://math.stackexchange.com/a/1126433",
+		"Site" : "math.stackexchange.com",
+		"Title" : "$(\\Bbb F_3[X],+){}{}{}{}{}{}$.",
+		"Body" : "<p>$(\\Bbb F_3[X],+){}{}{}{}{}{}$.</p>",
+		"TimeStamp" : "2015-01-30T12:34:42.662Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 121,
+				"CaughtCount" : 3070
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2981003",
+		"PostUrl" : "http://drupal.stackexchange.com/a/64667",
+		"Site" : "drupal.stackexchange.com",
+		"Title" : "I've achieved the desired output by creating a vocabulary of taxonomy te...",
+		"Body" : "<p>I've achieved the desired output by creating a vocabulary of taxonomy terms which is essentially just a flat list of foreign keys. There is no semantic representation of a hierarchy here.</p>\n\n<p><b>NOTE:</b> This is a different example than the event calendar I described in the comments of my initial post, however the data model is the same.</p>\n\n<ul>\n<li>Parent content type (Rich Menu) contains this taxonomy term field, in this example called \"Menu\".</li>\n<li>Child content type (Rich Menu Item) also contains the \"Menu\" taxonomy term field.</li>\n<li>If Rich Menu Item is a child of Rich Menu, the two term fields are set to match. <strong>NOTE:</strong> I wonder if this idea can be simplified using node references (References module) instead of taxonomy.</li>\n</ul>\n\n<p>Then I created a new block view called \"Rich Section Menu\". This block will display the parent content type, Rich Menu, filtered by the taxonomy term from the field \"Menu\" (value = Section). Create an attachment to be displayed after the block which will render a list of children from the Rich Menu Item content type. The child content type will also be filtered by the Menu term field (value = Section). <strong>NOTE:</strong> Adding the relational term field to the list of filters is only necessary if you expect to have multiple parent/child relationships that share the same content types.</p>\n\n<p>Tried to post screenshots of my Views configuration for clarity, but my reputation isn't high enough.</p>\n\n<p>This achieves the output I desire, however it's a bit simplistic. I would prefer to create a semantically correct parent/child hierarchy using taxonomy or node references, and have Views render that output in a single block, without an attachment, with support for children more than one level deep.</p>\n\n<p>So this works, but is there any way that I can do it better?</p>",
+		"TimeStamp" : "2015-01-30T12:33:22.754Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 35
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980991",
+		"PostUrl" : "http://stackoverflow.com/a/28236005",
+		"Site" : "stackoverflow.com",
+		"Title" : "Is there any special thoughts about the 2 first translates in the rotati...",
+		"Body" : "<p>Is there any special thoughts about the 2 first translates in the rotation code? The x ans z translations will cancel each other out but not the y axis. Which could be the source of the problem.</p>\n\n<pre><code>        vTrans.set(transx + x, (float) (transy + y), transz + z);   \n        Matrix4f.translate(vTrans, model1, model);                  \n\n        vTrans.set(-(transx + x), (float) (-transy + y), -(transz + z));    \n        Matrix4f.translate(vTrans, model, model);\n</code></pre>\n\n<p>What happens if you remove these 4 lines? You still do the translation after the rotation.</p>",
+		"TimeStamp" : "2015-01-30T12:31:28.301Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)is there a",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 34
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980980",
+		"PostUrl" : "http://gamedev.stackexchange.com/a/93147",
+		"Site" : "gamedev.stackexchange.com",
+		"Title" : "Is that possible duplicate of your original post on stackoverflow?\n\nBut ...",
+		"Body" : "<p>Is that possible duplicate of your <a href=\"http://stackoverflow.com/questions/26199863/can-i-write-software-using-unreal-engine-4-without-compiling-unreal-engine-4-fro/26503823#26503823\">original post on stackoverflow</a>?</p>\n\n<p>But I want to give to you the same answer here:</p>\n\n<blockquote>\n  <p>No you dont need the whole engine. There is a difference between the\n  code which builds the editor and the code which builds your game. If\n  you only want to program your game you should create a new \"code\n  project\" and modify the code you're getting after creating the new\n  project.</p>\n</blockquote>",
+		"TimeStamp" : "2015-01-30T12:30:08.049Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)\\bi want to\\b",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 1,
+				"FPCount" : 1,
+				"CaughtCount" : 74
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980973",
+		"PostUrl" : "http://pt.stackoverflow.com/questions/48794",
+		"Site" : "pt.stackoverflow.com",
+		"Title" : "Primefaces colocar Filtro no rodap\u00E9 ao inv\u00E9s do cabe\u00E7alho",
+		"Body" : "<p>Neste exemplo podemos ver que o filterby adiciona o filtro no header e eu gostaria de colocar no footer.</p>\n\n<p><a href=\"http://www.primefaces.org/showcase/ui/data/datatable/filter.xhtml\" rel=\"nofollow\">http://www.primefaces.org/showcase/ui/data/datatable/filter.xhtml</a></p>",
+		"TimeStamp" : "2015-01-30T12:29:20.359Z",
+		"ReportType" : "Spam",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodySpam",
+				"Regex" : "(?i)^<p>.*</p?>\\n\\n?<p><a.*></p>$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 10.0206881,
+				"TPCount" : 0,
+				"FPCount" : 1,
+				"CaughtCount" : 3
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980970",
+		"PostUrl" : "http://apple.stackexchange.com/questions/169710",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "how to change the carrier name in my iphone 6 without Jailbreak?",
+		"Body" : "<p>how to change the carrier name in my iphone 6 without Jailbreak? Can anybody help me?</p>",
+		"TimeStamp" : "2015-01-30T12:28:59.004Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "QuestionBodyLQ",
+				"Regex" : "(?s-m)^.{0,100}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 13.3197279,
+				"TPCount" : 15,
+				"FPCount" : 32,
+				"CaughtCount" : 812
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980962",
+		"PostUrl" : "http://math.stackexchange.com/a/1126432",
+		"Site" : "math.stackexchange.com",
+		"Title" : "$\\langle x_i : i\\in\\mathbb N | x_i^3=1 \\rangle$",
+		"Body" : "<p>$\\langle x_i : i\\in\\mathbb N | x_i^3=1 \\rangle$</p>",
+		"TimeStamp" : "2015-01-30T12:27:52.273Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 121,
+				"CaughtCount" : 3069
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980941",
+		"PostUrl" : "http://unix.stackexchange.com/a/181998",
+		"Site" : "unix.stackexchange.com",
+		"Title" : "There is a \" missing at the end of line 5.",
+		"Body" : "<p>There is a <code>\"</code> missing at the end of line 5.</p>",
+		"TimeStamp" : "2015-01-30T12:25:42.800Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 121,
+				"CaughtCount" : 3068
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "unix.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980914",
+		"PostUrl" : "http://scifi.stackexchange.com/a/74162",
+		"Site" : "scifi.stackexchange.com",
+		"Title" : "beceause she is her own child?",
+		"Body" : "<p>beceause she is her own child?</p>",
+		"TimeStamp" : "2015-01-30T12:23:00.096Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 121,
+				"CaughtCount" : 3067
+			},
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 45,
+				"FPCount" : 4,
+				"CaughtCount" : 427
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980903",
+		"PostUrl" : "http://apple.stackexchange.com/a/169707",
+		"Site" : "apple.stackexchange.com",
+		"Title" : "With OS X Yosemite 10.10.2, WebDAV is only accessible via HTTPS.",
+		"Body" : "<p>With OS X Yosemite 10.10.2, WebDAV is only accessible via HTTPS.</p>",
+		"TimeStamp" : "2015-01-30T12:21:37.262Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 121,
+				"CaughtCount" : 3066
+			}
+		],
+		"WhiteTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "apple.stackexchange.com",
+				"Score" : 45,
+				"TPCount" : 0,
+				"FPCount" : 0,
+				"CaughtCount" : 0
+			}
+		]
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980879",
+		"PostUrl" : "http://magento.stackexchange.com/a/44782",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "Have you tried changing address_override to 0 rather than removing it?\n\n...",
+		"Body" : "<p>Have you tried changing address_override to 0 rather than removing it?</p>\n\n<p>i'd shy away from editing that file directly as it'll be kicked out if you upgrade magento. Better to create a copy of that file in /app/code/local/Mage/Paypal/Model/Api/Nvp.php\nand modify that.</p>\n\n<p>(thanks to <a href=\"http://magento.stackexchange.com/a/26102\">http://magento.stackexchange.com/a/26102</a> for that)</p>",
+		"TimeStamp" : "2015-01-30T12:17:59.131Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 193,
+				"FPCount" : 110,
+				"CaughtCount" : 3032
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980865",
+		"PostUrl" : "http://academia.stackexchange.com/a/37869",
+		"Site" : "academia.stackexchange.com",
+		"Title" : "My advice is to examine your own feelings, and understand what exactly y...",
+		"Body" : "<p>My advice is to examine your own feelings, and understand what exactly you want to express.  Then words should come more naturally to you (at least if you're fluent in English).  If you just say \"I'm very glad to hear that\" (I don't know if you meant you would write only this sentence) it sounds to me like you are at least reasonably happy you will likely be admitted, but you're not specific expressing gratitude for the effort they put into your inquiry.</p>\n\n<p>In this case, I presume you want to do two things: show excitement/enthusiasm about the news and express appreciation for their effort.  For example: \"That's great/wonderful news!  I really appreciate all of the effort you took to personally examine my application.\"  Or: \"I'm excited to hear that.  Thank you very much for taking the time look at my application in detail.\"</p>\n\n<p>Note: It appears Peter is Scandanavian, so he may be more reserved than a classless American like me.  Anyway, I don't think you need to restrict yourself to 1 sentence.  Two or three is fine, though I agree that you should be brief.</p>",
+		"TimeStamp" : "2015-01-30T12:16:03.294Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 193,
+				"FPCount" : 110,
+				"CaughtCount" : 3031
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980864",
+		"PostUrl" : "http://tex.stackexchange.com/a/225686",
+		"Site" : "tex.stackexchange.com",
+		"Title" : "\\documentclass{article}\n\\usepackage{graphicx,lipsum}\n%------------------...",
+		"Body" : "<p>\\documentclass{article}\n\\usepackage{graphicx,lipsum}\n%--------------------------------------------------\n\\newsavebox\\mtbox\n\\newcommand{\\mtgraphics}[1]{%\n\\sbox\\mtbox{\\includegraphics{#1}}%\n\\null%\n\\dimen255=\\dimexpr\\pagegoal-\\pagetotal-\\baselineskip\\relax%\n\\ifdim\\dimen255>\\ht\\mtbox\n  \\usebox\\mtbox\n\\else\n\\dimen254=\\dimen255%\n\\dimen255=\\dimexpr\\ht\\mtbox-\\dimen254\\relax%\n  \\includegraphics[trim=0mm 1.\\dimen255 0mm 0mm, clip=true]{#1}\n  \\par\n  \\includegraphics[trim=0mm 0mm 0mm \\dimen254, clip=true]{#1}\n\\fi}\n%--------------------------------------------------\n\\begin{document}</p>\n\n<p>\\lipsum[1-5]</p>\n\n<p>\\mtgraphics{myfoto}</p>\n\n<p>\\end{document}</p>",
+		"TimeStamp" : "2015-01-30T12:15:51.540Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^[^A-Z]*$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.2035675,
+				"TPCount" : 45,
+				"FPCount" : 4,
+				"CaughtCount" : 425
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980828",
+		"PostUrl" : "http://superuser.com/a/871053",
+		"Site" : "superuser.com",
+		"Title" : "I needed to set static ip to guest machine and it's working!",
+		"Body" : "<p>I needed to set static ip to guest machine and it's working!</p>",
+		"TimeStamp" : "2015-01-30T12:06:33.967Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "^(?i).{0,80}$",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 89,
+				"TPCount" : 488,
+				"FPCount" : 121,
+				"CaughtCount" : 3065
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
+		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980827",
+		"PostUrl" : "http://magento.stackexchange.com/a/53926",
+		"Site" : "magento.stackexchange.com",
+		"Title" : "Thanks. This really works.\nThis is because the calculation is done item ...",
+		"Body" : "<p>Thanks. This really works.\nThis is because the calculation is done item by item.</p>",
+		"TimeStamp" : "2015-01-30T12:06:26.921Z",
+		"ReportType" : "LowQuality",
+		"BlackTerms" : [
+			{
+				"Type" : "AnswerLQ",
+				"Regex" : "(?i)thank(s| you)",
+				"IsAuto" : false,
+				"Site" : "",
+				"Score" : 19.3837166,
+				"TPCount" : 193,
+				"FPCount" : 110,
+				"CaughtCount" : 3030
+			}
+		],
+		"WhiteTerms" : []
+	},
+	{
 		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2980813",
 		"PostUrl" : "http://tex.stackexchange.com/a/225683",
 		"Site" : "tex.stackexchange.com",
@@ -30063,656 +30491,5 @@
 			}
 		],
 		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949400",
-		"PostUrl" : "http://magento.stackexchange.com/questions/40471",
-		"Site" : "magento.stackexchange.com",
-		"Title" : "Magento : Hide admin side menu \u201Cmobile\u201D inside custom plugin",
-		"Body" : "<p>I had to hide Some menus in Admin side.</p>\n\n<p>I refered MANY questions here on Stackoverflow , on other sites . BUT they simply say ,</p>\n\n<p>Create a file called adminhtml.xml under /etc folder of your module:</p>\n\n<p>BUT no one told what should be in module , will it have class , what should be in it????</p>\n\n<p>Lets take it easy :</p>\n\n<p>I hav all folders like ,controller,Model .. In folder local\\MyCompanyName\\WelcomeInsync NOW WHAT ?</p>\n\n<p>I simply created adminhtml.xml in etc folder but NOTHING happened</p>\n\n<p>I used following</p>\n\n<pre><code><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<config>\n    <menu>\n        <xmlconnect> <!-- <xmlconnect> to match adminhtml.xml file of Mage_XmlConnect module -->\n            <depends>\n                <module>HideMe</module> <!-- Fake dependance to hide tab -->\n            </depends>\n        </xmlconnect>\n    </menu>\n</config>\n</code></pre>\n\n<p>What should be done ? I have folders only blank ,just etc has files config.xml + adminhtml.xml.</p>\n\n<p>I tried cache clearing Nothing Worked . Is there any magento EXPERT to answer ? THANKS!</p>",
-		"TimeStamp" : "2015-01-23T12:35:12.375Z",
-		"ReportType" : "BadUsername",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleName",
-				"Regex" : "\\.com",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 0,
-				"FPCount" : 2,
-				"CaughtCount" : 17
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949389",
-		"PostUrl" : "http://ell.stackexchange.com/questions/47645",
-		"Site" : "ell.stackexchange.com",
-		"Title" : "what is different \u201Cdo you know where\u201D and \u201C where is \u201D ?",
-		"Body" : "<p>I can not understand different between this two sentences in 2 persons communicate</p>\n\n<p>person A and B :</p>\n\n<p>1)  Do you know where my son is?</p>\n\n<p>AND</p>\n\n<p>2) Where is my son?</p>\n\n<p>What is different?</p>",
-		"TimeStamp" : "2015-01-23T12:33:28.377Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleSpam",
-				"Regex" : "(?i)\\byou know\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 0,
-				"FPCount" : 9,
-				"CaughtCount" : 26
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949382",
-		"PostUrl" : "http://stackoverflow.com/questions/28110005",
-		"Site" : "stackoverflow.com",
-		"Title" : "local web server not accessible on Chrome - Android",
-		"Body" : "<p>I am trying to access my website (hosted on intranet) for testing on Google Chrome for mobile (using nexus 5) and the website is not accessible (on the same network using Wifi). If I access my website from any other pc on the same network it loads the webpage. I just checked that network connection is working fine and on my mobile i am able to browse any website on internet. I found the same behavior on android. Please guide me if there is any settings in android/chrome to access local server. The address of my webserver is like \"<a href=\"http://my-server/webapp\" rel=\"nofollow\">http://my-server/webapp</a>\"</p>",
-		"TimeStamp" : "2015-01-23T12:32:25.999Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*(>>|vist|like).{0,10}<a href=\".*\">https?://\\S*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 4,
-				"FPCount" : 1,
-				"CaughtCount" : 6
-			},
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "^((?!\\\\n\\\\n|\\<code\\>).)*<a href=\".*\">https?://\\S*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 16,
-				"FPCount" : 18,
-				"CaughtCount" : 46
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949378",
-		"PostUrl" : "http://joomla.stackexchange.com/questions/7170",
-		"Site" : "joomla.stackexchange.com",
-		"Title" : "JLoader::import AND JLoader::register",
-		"Body" : "<p>Hellow All Can You Please Answer What Is The Difference Between  </p>\n\n<p><strong>JLoader::import AND JLoader::register</strong>  Functions Of Joomla loader.php file </p>\n\n<p>Thanks In Advance I'm New On Joomla Development Please Help me</p>",
-		"TimeStamp" : "2015-01-23T12:32:00.875Z",
-		"ReportType" : "BadUsername",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleName",
-				"Regex" : "(?i)sumer",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 1
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949376",
-		"PostUrl" : "http://tex.stackexchange.com/a/224562",
-		"Site" : "tex.stackexchange.com",
-		"Title" : "I had the the Problem after updating from 12.04 to 14.04.. I use the Lat...",
-		"Body" : "<p>I had the the Problem after updating from 12.04 to 14.04.. I use the Latex editor \"Kile\".  Deleting <code>~/.texmf-var</code> worked for me. Thanks for the posts, wich I found immediately!</p>",
-		"TimeStamp" : "2015-01-23T12:31:58.597Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 194,
-				"FPCount" : 109,
-				"CaughtCount" : 3039
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949373",
-		"PostUrl" : "http://stackoverflow.com/questions/28109985",
-		"Site" : "stackoverflow.com",
-		"Title" : "Warning: mysqli::mysqli(): (28000/1045): Access denied for user 'krishisa_admin'@'192.185.196.66' (using password: YES)",
-		"Body" : "<p>Hello I am beginner in web hosting sector. I have design and finalize my website using localhost. But when uploading in server, it display error and cann't connect database.  </p>\n\n<p><strong>This is my problem</strong></p>\n\n<p><strong>Warning: mysqli::mysqli(): (28000/1045): Access denied for user 'krishisa_admin'@'192.185.196.66' (using password: YES) in /home/krishisa/public_html/includes/connect.php on line 9\nAccess denied for user 'krishisa_admin'@'192.185.196.66' (using password: YES)unable to connect database</strong></p>\n\n<p><strong>connect.php</strong></p>\n\n<pre><code><?php\n\n$dbhost = \"krishisansar.com\";\n$dbname = \"krishisa_krishisansar\";\n$dbuser = \"krishisa_admin\";\n$dbpass = \"D4DHFpb7CiBU\";\n\n\n$con= new mysqli($dbhost, $dbuser, $dbpass, $dbname);\nif ($con->connect_errno) {\n    echo $con->connect_error;\n    die('unable to connect database');\n}\nheader('Content-Type: text/html; charset=UTF-8');\n$item_per_page = 5;\n?>\n</code></pre>\n\n<p><strong>index.php</strong> (it is just sample php file. it is not my final page but error is same.)</p>\n\n<pre><code><?php\nrequire('includes/connect.php');\n?>\n<html>\n<head>\n</head>\n<body>\n<h1>Hello ! what's wrong</h1>\n</body>\n</html>\n</code></pre>\n\n<p>In localhost, there is no error.\ni have just bought new server and create database. Database name, password, username are all correct according to cpanel. what is my fault ? what can i do ? Thanks in advance.</p>",
-		"TimeStamp" : "2015-01-23T12:31:41.815Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleSpam",
-				"Regex" : "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 18,
-				"TPCount" : 21,
-				"FPCount" : 55,
-				"CaughtCount" : 113
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleSpam",
-				"Regex" : "(?i)\\d(?!\\d-?\\d{2}-\\d{4})(?>\\W*\\d){8}",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 11.304615,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949372",
-		"PostUrl" : "http://scifi.stackexchange.com/a/1216",
-		"Site" : "scifi.stackexchange.com",
-		"Title" : "I'm pretty sure it was \"Friday\" by Heinlein.",
-		"Body" : "<p>I'm pretty sure it was \"Friday\" by Heinlein.</p>",
-		"TimeStamp" : "2015-01-23T12:31:39.924Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 489,
-				"FPCount" : 120,
-				"CaughtCount" : 3077
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949366",
-		"PostUrl" : "http://meta.stackexchange.com/questions/247489",
-		"Site" : "meta.stackexchange.com",
-		"Title" : "NO2 Maximus Useful Tips For Building Muscle",
-		"Body" : "<p>People are easily NO2 Maximus drawn to women who transude specified compelling touch, no thing what situation of breasts they individual. So, if you wanna draw many group, don't righteous adapt on having bigger breasts and wanting what you don't screw, instead production your way up with your self esteem. At any evaluate, you leave create that you gift be happier with a bigger self esteem than a bigger boobs. Your money of joy has arrived, and you are so riant almost your new acquisition. The close minor comes and you sense virtuous as thrilled, but you are play to mention the effects of the babies on your embody. a small sag here, a immature flab there. With apiece soul, a small much wrongdoing is done. Visit it!  To get more information >>>>>>  www.strongmenmuscle.com/is-no2-maximus-scam-or-fake/ </p>",
-		"TimeStamp" : "2015-01-23T12:29:31.019Z",
-		"ReportType" : "Spam",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "\\>\\>\\>\\>\\>",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10,
-				"TPCount" : 16,
-				"FPCount" : 25,
-				"CaughtCount" : 54
-			},
-			{
-				"Type" : "QuestionBodySpam",
-				"Regex" : "(?i)www\\.\\S{0,30}muscle\\S{0,30}\\.com",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.0204086,
-				"TPCount" : 1,
-				"FPCount" : 0,
-				"CaughtCount" : 3
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949359",
-		"PostUrl" : "http://history.stackexchange.com/questions/19074",
-		"Site" : "history.stackexchange.com",
-		"Title" : "Is Columbus ever tried to come India?",
-		"Body" : "<p>Is Columbus ever tried to come India after he came to know that what he discovered is some other continent know as America</p>",
-		"TimeStamp" : "2015-01-23T12:26:45.591Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)tried",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 11,
-				"TPCount" : 1,
-				"FPCount" : 1,
-				"CaughtCount" : 57
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949358",
-		"PostUrl" : "http://ux.stackexchange.com/a/72453",
-		"Site" : "ux.stackexchange.com",
-		"Title" : "The best term is what it is: Administration Panel.",
-		"Body" : "<p>The best term is what it is: Administration Panel.</p>",
-		"TimeStamp" : "2015-01-23T12:25:14.336Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 489,
-				"FPCount" : 120,
-				"CaughtCount" : 3076
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949355",
-		"PostUrl" : "http://startups.stackexchange.com/a/3129",
-		"Site" : "startups.stackexchange.com",
-		"Title" : "I've worked with MobileFirst and they had great results. They did not ov...",
-		"Body" : "<p>I've worked with <a href=\"http://www.rockteam.com/ibm-mobilefirst/\" rel=\"nofollow\">MobileFirst</a> and they had great results. They did not overcharged me and did great job at making my website code work perfectly. Hope that was constructive enough and helped somebody. Anyway just my 2 cents.</p>\n\n<p>After reading all the comments I must say, these are some great advices and I will be following most of them in the future myself. Thanks for sharing guys.</p>",
-		"TimeStamp" : "2015-01-23T12:24:40.640Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 194,
-				"FPCount" : 109,
-				"CaughtCount" : 3038
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949354",
-		"PostUrl" : "http://sharepoint.stackexchange.com/a/129475",
-		"Site" : "sharepoint.stackexchange.com",
-		"Title" : "It works attaching iisexpress manually and then starting an app project.",
-		"Body" : "<p>It works attaching iisexpress manually and then starting an app project.</p>",
-		"TimeStamp" : "2015-01-23T12:24:34.105Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 489,
-				"FPCount" : 120,
-				"CaughtCount" : 3075
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949351",
-		"PostUrl" : "http://cooking.stackexchange.com/questions/53904",
-		"Site" : "cooking.stackexchange.com",
-		"Title" : "how long can I leave cooked meat out on the counter before it goes bad?",
-		"Body" : "<p>How long can I leave cooked meat on the counter before it goes bad and I can't use it?</p>",
-		"TimeStamp" : "2015-01-23T12:23:35.494Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionBodyLQ",
-				"Regex" : "(?s-m)^.{0,100}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 13.3197279,
-				"TPCount" : 15,
-				"FPCount" : 31,
-				"CaughtCount" : 813
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949350",
-		"PostUrl" : "http://math.stackexchange.com/a/1116380",
-		"Site" : "math.stackexchange.com",
-		"Title" : "Thanks to all who answered here. I thought of a solution, and whether it...",
-		"Body" : "<p>Thanks to all who answered here. I thought of a solution, and whether it is correct or not, I leave it for you to judge.</p>\n\n<blockquote>\n  <p>$F$ is increasing, continuous, so consider <strong>any</strong> sequence $\\{x_n\\}\\subset[0,1]$ such that $x_n\\to0$. </p>\n  \n  <p>Then, we will get a positive divergent sequence $\\{L_n\\}$ such that $[x_n,1-x_n]\\subset F([-L_n,L_n])$. So $F(L_n)\\geq1-x_n$ and $F(-L_n)\\leq x_n$.</p>\n  \n  <p>Thus, $0\\leq \\lim_{n\\to\\infty} F(-L_n)\\leq\\lim_{n\\to\\infty} x_n=0$ giving $F(\\lim_{n\\to\\infty}-L_n)=0$ by Sandwich Theorem and continuity of $F$. Analogously it follows that $F(\\lim_{n\\to\\infty}L_n)=1$.</p>\n  \n  <p>Now we know that $F$ being continuous over $\\mathbb R$, $F$ is uniformly continuous in the closed and bounded interval $[-L_n,L_n]$ <strong>for all $n\\in\\mathbb N$</strong>. </p>\n  \n  <p>But, $$ [-L_n,L_n]\\subset[-L_{n+1},L_{n+1}],and\\\\\\cup_{n\\in \\mathbb N}[-L_n,L_n]=\\mathbb R.$$</p>\n  \n  <p>$F$ is uniformly continuous in each $[-L_n,L_n]$ so $F$ is uniformly continuous in whole of $\\mathbb R$</p>\n</blockquote>",
-		"TimeStamp" : "2015-01-23T12:23:28.540Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 194,
-				"FPCount" : 109,
-				"CaughtCount" : 3037
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949327",
-		"PostUrl" : "http://stackoverflow.com/a/28109712",
-		"Site" : "stackoverflow.com",
-		"Title" : "Look at this example which completely describes the logic",
-		"Body" : "<p>Look at this example which completely describes the logic</p>",
-		"TimeStamp" : "2015-01-23T12:16:03.101Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 489,
-				"FPCount" : 120,
-				"CaughtCount" : 3074
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949323",
-		"PostUrl" : "http://stackoverflow.com/a/28109698",
-		"Site" : "stackoverflow.com",
-		"Title" : "$pageID = (int) $this-params()-fromRoute('pageID', 0);\n\n\nThis is the con...",
-		"Body" : "<pre><code>$pageID = (int) $this->params()->fromRoute('pageID', 0);\n</code></pre>\n\n<p>This is the controller action helper call and should be used inside your controller.\nInside the helper</p>\n\n<pre><code>$this->getEvent()->getRouteMatch()->getParam()\n</code></pre>\n\n<p>is called.</p>\n\n<p>As u can see - both ways are legit - the helper call is, as the name says, a tool to spare you some typing.</p>\n\n<p>You can use the first way to get parameters inside an attached event for example, most of the time used when u attach something to the default ZF2 events like dispatch, render ...</p>\n\n<p>greetings</p>",
-		"TimeStamp" : "2015-01-23T12:15:13.291Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?is)^<.*>\\s*(h(i|e(llo)?)|greetings)\\b",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 8,
-				"FPCount" : 5,
-				"CaughtCount" : 96
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949322",
-		"PostUrl" : "http://sharepoint.stackexchange.com/a/83408",
-		"Site" : "sharepoint.stackexchange.com",
-		"Title" : "Check you alternate access mappings.",
-		"Body" : "<p>Check you alternate access mappings.</p>",
-		"TimeStamp" : "2015-01-23T12:15:09.245Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 489,
-				"FPCount" : 120,
-				"CaughtCount" : 3073
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949319",
-		"PostUrl" : "http://stackoverflow.com/questions/28109655",
-		"Site" : "stackoverflow.com",
-		"Title" : "I want to execute awk command from tcl script",
-		"Body" : "<p>I want to execute the following command from my tcl script </p>\n\n<pre><code>exec /bin/awk '/Start/{f=1;++file}/END/{f=0}f{print > \"/home/user/report/\"file }' input\n</code></pre>\n\n<p>I'm getting this error </p>\n\n<pre><code>awk: ^ invalid char ''' in expression\n</code></pre>",
-		"TimeStamp" : "2015-01-23T12:12:44.199Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)i want to",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 12,
-				"TPCount" : 17,
-				"FPCount" : 13,
-				"CaughtCount" : 214
-			},
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?i)^I want",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 10.5906382,
-				"TPCount" : 17,
-				"FPCount" : 11,
-				"CaughtCount" : 174
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "QuestionTitleLQ",
-				"Regex" : "(?s-m)^.{0,150}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 8,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949317",
-		"PostUrl" : "http://stackoverflow.com/a/28109651",
-		"Site" : "stackoverflow.com",
-		"Title" : "Presented solution above is functional but not too user-friendly. Is the...",
-		"Body" : "<p>Presented solution above is functional but not too user-friendly. Is there a way how to search particular phrase in all files in the project?</p>\n\n<p>The best solution would be the same as you searching word using # (in console after ctrl+p), but this works within just-opened file only, I need within all files in project.</p>",
-		"TimeStamp" : "2015-01-23T12:12:26.007Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)is there a way",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 15
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949311",
-		"PostUrl" : "http://codereview.stackexchange.com/a/78414",
-		"Site" : "codereview.stackexchange.com",
-		"Title" : "I think this solution outlined would simplify your needs. Thanks to one ...",
-		"Body" : "<p>I think this solution outlined would simplify your needs. Thanks to one of the response from stackoverflow:  <a href=\"http://stackoverflow.com/questions/2557606/how-do-i-associate-parameters-to-command-objects-in-ado-with-vbscript\">http://stackoverflow.com/questions/2557606/how-do-i-associate-parameters-to-command-objects-in-ado-with-vbscript</a></p>",
-		"TimeStamp" : "2015-01-23T12:07:14.109Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)thank(s| you)",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.3837166,
-				"TPCount" : 194,
-				"FPCount" : 109,
-				"CaughtCount" : 3034
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949310",
-		"PostUrl" : "http://magento.stackexchange.com/a/44240",
-		"Site" : "magento.stackexchange.com",
-		"Title" : "How about this.\n\n$productIds = array($id1 , $id2); // specify your produ...",
-		"Body" : "<p>How about this.</p>\n\n<pre><code>$productIds = array($id1 , $id2); // specify your product ids here\n$attributes = array( \n                'price' => $newPrice,\n                'special_to_date' => '',\n                'special_from_date => '',\n                'special_price' => null); // attribute codes and values \n\n$storeId = $someStoreId // change this to your store id\n\nMage::getSingleton(\"catalog/product_action')\n        ->updateAttributes($productIds , $attributes , $storeId); // update the products\n</code></pre>",
-		"TimeStamp" : "2015-01-23T12:06:45.416Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "(?i)how about",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 10
-			}
-		],
-		"WhiteTerms" : []
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949307",
-		"PostUrl" : "http://math.stackexchange.com/a/1116358",
-		"Site" : "math.stackexchange.com",
-		"Title" : "To use the first identity in your example, let $a=\\sqrt3$.",
-		"Body" : "<p>To use the first identity in your example, let $a=\\sqrt3$.</p>",
-		"TimeStamp" : "2015-01-23T12:05:31.468Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 489,
-				"FPCount" : 120,
-				"CaughtCount" : 3072
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "math.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "math.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^.{0,150}$",
-				"IsAuto" : false,
-				"Site" : "math.stackexchange.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
-	},
-	{
-		"ReportLink" : "http://chat.meta.stackexchange.com/transcript/message/2949303",
-		"PostUrl" : "http://stackoverflow.com/a/28109497",
-		"Site" : "stackoverflow.com",
-		"Title" : "you're missing the dollar sign on your query string",
-		"Body" : "<p>you're missing the dollar sign on your query string</p>",
-		"TimeStamp" : "2015-01-23T12:03:10.043Z",
-		"ReportType" : "LowQuality",
-		"BlackTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,80}$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 89,
-				"TPCount" : 489,
-				"FPCount" : 120,
-				"CaughtCount" : 3071
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^[^A-Z]*$",
-				"IsAuto" : false,
-				"Site" : "",
-				"Score" : 19.2035675,
-				"TPCount" : 45,
-				"FPCount" : 3,
-				"CaughtCount" : 426
-			}
-		],
-		"WhiteTerms" : [
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,60}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 5,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,200}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			},
-			{
-				"Type" : "AnswerLQ",
-				"Regex" : "^(?i).{0,150}$",
-				"IsAuto" : false,
-				"Site" : "stackoverflow.com",
-				"Score" : 6,
-				"TPCount" : 0,
-				"FPCount" : 0,
-				"CaughtCount" : 0
-			}
-		]
 	}
 ]

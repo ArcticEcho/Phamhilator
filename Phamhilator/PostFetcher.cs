@@ -195,23 +195,23 @@ namespace Phamhilator
             var authorLink = "";
             var authorRep = 0;
 
-            var authorE = dom[".user-details"].Last()[0];
+            var authorE = dom[aDom + ".user-details"].Last()[0];
 
             if (authorE.InnerHTML.Contains("<a href=\"/users/"))
             {
-                authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details a"].Last()[0].InnerHTML).Trim());
-                authorLink = TrimUrl("http://" + host + dom[".user-details a"].Last()[0].Attributes["href"].Trim());
+                authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details a"].Last()[0].InnerHTML).Trim());
+                authorLink = TrimUrl("http://" + host + dom[aDom + ".user-details a"].Last()[0].Attributes["href"].Trim());
 
                 if (authorE.InnerHTML.Contains("class=\"reputation-score\""))
                 {
-                    authorRep = ParseRep(dom[".reputation-score"].Last()[0].InnerHTML.Trim());
+                    authorRep = ParseRep(dom[aDom + ".reputation-score"].Last()[0].InnerHTML.Trim());
                 }
             }
             else
             {
                 if (Regex.IsMatch(authorE.InnerHTML, "(?s)^\\s*<a.*?/revisions\".*?>.*</a>\\s*$", RegexOptions.CultureInvariant))
                 {
-                    authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details a"].Last()[0].InnerHTML).Trim());
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details a"].Last()[0].InnerHTML).Trim());
                 }
                 else
                 {
