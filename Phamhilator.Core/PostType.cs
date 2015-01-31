@@ -1,0 +1,12 @@
+﻿namespace Phamhilator.Core
+{
+    public enum PostType
+    {
+        Clean,
+        BadTagUsed,
+        LowQuality,
+        Spam,
+        Offensive,
+        BadUsername
+    }
+}

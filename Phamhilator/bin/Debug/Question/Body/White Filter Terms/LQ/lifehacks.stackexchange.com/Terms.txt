@@ -1,1 +1,0 @@
-[{"Regex":"(?s-m)^.{0,100}$","IsAuto":false,"Site":"lifehacks.stackexchange.com","Score":6.659864,"TPCount":0,"FPCount":0,"CaughtCount":0}]

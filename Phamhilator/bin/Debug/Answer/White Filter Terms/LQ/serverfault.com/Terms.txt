@@ -1,1 +1,0 @@
-[{"Regex":"^(?i).{0,80}$","IsAuto":false,"Site":"android.stackexchange.com","Score":45,"TPCount":0,"FPCount":0,"CaughtCount":0},{"Regex":"(?i)thank(s| you)","IsAuto":false,"Site":"serverfault.com","Score":9.691858,"TPCount":0,"FPCount":0,"CaughtCount":0}]
