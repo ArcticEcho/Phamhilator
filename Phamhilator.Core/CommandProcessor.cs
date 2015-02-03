@@ -376,7 +376,9 @@ namespace Phamhilator.Core
         }
 
         public static bool IsValidCommand(Room messageRoom, Message command)
-        {            
+        {
+            if (Object.ReferenceEquals(messageRoom, null) || Object.ReferenceEquals(command, null)) { return false; }
+
             var trimmedCommand = command.Content.Trim();
 
             try
@@ -387,7 +389,7 @@ namespace Phamhilator.Core
                 }
                 else if (command.ParentID != -1 && messageRoom[command.ParentID].AuthorID == messageRoom.Me.ID)
                 {
-                    trimmedCommand = command.Content.TrimStart();
+                    trimmedCommand = command.Content.StripMention().TrimStart();
                 }
             }
             catch (Exception)

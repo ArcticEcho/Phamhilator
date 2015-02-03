@@ -47,7 +47,14 @@ namespace Phamhilator.Core
         public ActiveRooms()
         {
             if (!File.Exists(secRoomsPath) || !File.Exists(priRoomPath))
-            { 
+            {
+                var dirPath = Path.GetDirectoryName(priRoomPath);
+
+                if (!Directory.Exists(dirPath))
+                {
+                    Directory.CreateDirectory(dirPath);
+                }
+
                 // Set default to the LQP HQ & the tavern.
                 PrimaryRoomUrl = "http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq";
                 secRoomUrls = new List<string> { "http://chat.meta.stackexchange.com/rooms/89/tavern-on-the-meta" };
