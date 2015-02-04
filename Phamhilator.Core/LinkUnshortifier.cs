@@ -1,11 +1,14 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
+using System.Linq;
 using System.Text.RegularExpressions;
+using JsonFx.Json;
 
 
 
 namespace Phamhilator.Core
 {
-    public static class UnshortifyLink
+    public static class LinkUnshortifier
     {
         private static readonly Regex shortLink = new Regex(@"(?is)^https?://(goo\.gl|bit\.ly|tinyurl\.com|ow\.ly|tiny\.cc|bit\.do|po\.st|bigly\.us|t\.co|r\.im|cli\.gs|short\.ie|kl\.am|idek\.net|i\.gd|hex\.io)/\w*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
@@ -13,9 +16,7 @@ namespace Phamhilator.Core
 
         public static bool IsShortLink(string url)
         {
-            var trimmed = url.Trim();
-
-            return shortLink.IsMatch(trimmed);
+            return shortLink.IsMatch(url.Trim());
         }
 
         public static string UnshortenLink(string url)
@@ -23,12 +24,10 @@ namespace Phamhilator.Core
             if (!IsShortLink(url)) { return url; }
 
             var trimmed = url.Trim();
+            var res = new WebClient().DownloadString("http://urlex.org/json/" + trimmed);
+            var data = new JsonReader().Read<Dictionary<string, string>>(res);
 
-            var res = new WebClient().DownloadString("http://api.unshort.tk/index.php?u=" + trimmed);
-
-            var longUrl = res.Remove(0, res.IndexOf("\":\"http", System.StringComparison.Ordinal) + 3);
-
-            return longUrl.Substring(0, longUrl.Length - 2).Replace(@"\/", @"/");
+            return data.Values.First();
         }
     }
 }

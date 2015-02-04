@@ -105,7 +105,7 @@
     <Compile Include="Term.cs" />
     <Compile Include="TermCreater.cs" />
     <Compile Include="TermReader.cs" />
-    <Compile Include="UnshortifyLink.cs" />
+    <Compile Include="LinkUnshortifier.cs" />
     <Compile Include="UserAccess.cs" />
     <Compile Include="WhiteFilter.cs" />
   </ItemGroup>

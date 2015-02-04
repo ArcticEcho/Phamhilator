@@ -311,11 +311,11 @@ namespace Phamhilator.Core
 
                 if (String.IsNullOrEmpty(url)) { continue; }
 
-                if (UnshortifyLink.IsShortLink(url) && !shortLinks.Contains(url))
+                if (LinkUnshortifier.IsShortLink(url) && !shortLinks.Contains(url))
                 {
                     shortLinks.Add(url);
 
-                    var longUrl = UnshortifyLink.UnshortenLink(url);
+                    var longUrl = LinkUnshortifier.UnshortenLink(url);
 
                     bodyCopy = bodyCopy.Replace(url, longUrl);
                 }
