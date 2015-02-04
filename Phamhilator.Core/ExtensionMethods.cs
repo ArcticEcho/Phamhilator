@@ -21,6 +21,11 @@ namespace Phamhilator.Core
             return classification.ToString().StartsWith("QuestionTitle");
         }
 
+        public static bool IsName(this FilterClass classification)
+        {
+            return classification.ToString().EndsWith("Name");
+        }
+
         public static QuestionAnalysis ToQuestionAnalysis(this PostAnalysis input)
         {
             return input == null ? null : new QuestionAnalysis 

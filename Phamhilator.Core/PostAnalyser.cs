@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -58,54 +59,6 @@ namespace Phamhilator.Core
 
 
 
-        private static AnswerAnalysis AnaylsePost(Post post, BlackFilter blackTerms, WhiteFilter whiteTerms, FilterClass filterType)
-        {
-            var termsFound = 0;
-            var info = new AnswerAnalysis();
-
-            for (var i = 0; i < blackTerms.Terms.Count; i++)
-            {
-                var blackTerm = blackTerms.Terms.ElementAt(i);
-
-                if (post.Body != null && blackTerm.Regex.IsMatch(post.Body) && !filterType.IsQuestionTitle() && !filterType.ToString().ToLowerInvariant().Contains("name"))
-                {
-                    info.Accuracy += blackTerm.Score;
-                    info.BlackTermsFound.Add(blackTerm);
-
-                    blackTerm.CaughtCount++;
-                    termsFound++;
-                }
-            }
-
-            // If no black listed terms were found, assume the post is clean.
-            if (termsFound == 0) { return null; }
-
-            for (var i = 0; i < whiteTerms.Terms.Count; i++)
-            {
-                var whiteTerm = whiteTerms.Terms.ElementAt(i);
-
-                if (whiteTerm.Site != post.Site) { continue; }
-
-                if (whiteTerm.Regex.IsMatch(post.Body))
-                {
-                    info.Accuracy -= whiteTerm.Score;
-                    info.WhiteTermsFound.Add(whiteTerm);
-                    info.FiltersUsed.Add(new FilterConfig(filterType, FilterType.White));
-
-                    termsFound++;
-                }
-            }
-
-            info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
-            info.FiltersUsed.Add(new FilterConfig(filterType, FilterType.Black));
-            info.Accuracy /= termsFound;
-            info.Accuracy /= blackTerms.HighestScore;
-            info.Accuracy *= 100;
-            info.Type = info.Accuracy >= Config.AccuracyThreshold ? filterType.ToPostType() : PostType.Clean;
-
-            return info;
-        }
-
         private static Dictionary<string, string> FindBadTags(Question question, out QuestionAnalysis info)
         {
             var tags = new Dictionary<string, string>();
@@ -128,6 +81,90 @@ namespace Phamhilator.Core
             }
 
             return tags;
+        }
+
+        private static AnswerAnalysis AnaylsePost(Post post, BlackFilter blackTerms, WhiteFilter whiteTerms, FilterClass filterClass)
+        {
+            var info = new AnswerAnalysis();
+
+            for (var i = 0; i < blackTerms.Terms.Count; i++)
+            {
+                var blackTerm = blackTerms.Terms.ElementAt(i);
+
+                if (filterClass.IsQuestionTitle() && !filterClass.IsName())
+                {
+                    info = BlackTermCheckString(blackTerm, post.Title, info);
+                }
+                else if (filterClass.IsName())
+                {
+                    info = BlackTermCheckString(blackTerm, post.AuthorName, info);
+                }
+                else
+                {
+                    info = BlackTermCheckString(blackTerm, post.Body, info);
+                }
+            }
+
+            // If no black listed terms were found, assume the post is clean.
+            if (info.BlackTermsFound.Count == 0) { return null; }
+
+            for (var i = 0; i < whiteTerms.Terms.Count; i++)
+            {
+                var whiteTerm = whiteTerms.Terms.ElementAt(i);
+
+                if (whiteTerm.Site != post.Site) { continue; }
+
+                if (filterClass.IsQuestionTitle() && !filterClass.IsName())
+                {
+                    info = WhiteTermCheckString(whiteTerm, post.Title, info);
+                }
+                else if (filterClass.IsName())
+                {
+                    info = WhiteTermCheckString(whiteTerm, post.AuthorName, info);
+                }
+                else
+                {
+                    info = WhiteTermCheckString(whiteTerm, post.Body, info);
+                }
+            }
+
+            if (info.WhiteTermsFound.Count != 0)
+            {
+                info.FiltersUsed.Add(new FilterConfig(filterClass, FilterType.White));
+            }
+
+            info.AutoTermsFound = info.BlackTermsFound.Any(t => t.IsAuto);
+            info.FiltersUsed.Add(new FilterConfig(filterClass, FilterType.Black));
+            info.Accuracy /= (info.BlackTermsFound.Count + info.WhiteTermsFound.Count);
+            info.Accuracy /= blackTerms.HighestScore;
+            info.Accuracy *= 100;
+            info.Type = info.Accuracy >= Config.AccuracyThreshold ? filterClass.ToPostType() : PostType.Clean;
+
+            return info;
+        }
+
+        private static AnswerAnalysis BlackTermCheckString(Term blackTerm, string postString, AnswerAnalysis info)
+        {
+            if (!String.IsNullOrEmpty(postString) && blackTerm.Regex.IsMatch(postString))
+            {
+                info.Accuracy += blackTerm.Score;
+                info.BlackTermsFound.Add(blackTerm);
+
+                blackTerm.CaughtCount++;
+            }
+
+            return info;
+        }
+
+        private static AnswerAnalysis WhiteTermCheckString(Term whiteTerm, string postString, AnswerAnalysis info)
+        {
+            if (!String.IsNullOrEmpty(postString) && whiteTerm.Regex.IsMatch(postString))
+            {
+                info.Accuracy -= whiteTerm.Score;
+                info.WhiteTermsFound.Add(whiteTerm);
+            }
+
+            return info;
         }
     }
 }

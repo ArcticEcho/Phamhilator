@@ -8,6 +8,8 @@ namespace Phamhilator.Core
 {
     public static class MessageGenerator
     {
+        private const string squareDescLink = "http://chat.meta.stackexchange.com/transcript/message/2998326";
+
         public static string GetQReport(QuestionAnalysis info, Question post)
         {
             if (info == null || post == null) { return null; }
@@ -37,7 +39,7 @@ namespace Phamhilator.Core
             else
             {
                 accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
-                author =  (post.AuthorRep > 20 ?"■" : "□") + author + " \"Rep: " + post.AuthorRep + "\")";
+                author = "[" + (post.AuthorRep >= 20 ? "■" : "□") + "](" + squareDescLink + ") " + author + " \"Rep: " + post.AuthorRep + "\")";
                 postScore = " \"Score: " + post.Score + "\")";
             }
 
@@ -60,7 +62,7 @@ namespace Phamhilator.Core
             if (info == null || post == null) { return null; }
 
             var name = PostFetcher.EscapeString(post.AuthorName, "");
-            var author = (post.AuthorRep > 20 ? "■" : "□") + (String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + " \"Rep: " + post.AuthorRep + "\")");
+            var author = "[" + (post.AuthorRep >= 20 ? "■" : "□") + "](" + squareDescLink + ") " + (String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + " \"Rep: " + post.AuthorRep + "\")");
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.EscapeString(post.Title, " ");
             var accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
 

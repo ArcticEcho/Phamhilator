@@ -107,9 +107,6 @@
     <Compile Include="TermReader.cs" />
     <Compile Include="UnshortifyLink.cs" />
     <Compile Include="UserAccess.cs" />
-    <Compile Include="WebDownload.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="WhiteFilter.cs" />
   </ItemGroup>
   <ItemGroup>

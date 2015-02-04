@@ -377,7 +377,7 @@ namespace Phamhilator.Core
 
         public static bool IsValidCommand(Room messageRoom, Message command)
         {
-            if (Object.ReferenceEquals(messageRoom, null) || Object.ReferenceEquals(command, null)) { return false; }
+            if (messageRoom == null || command == null) { return false; }
 
             var trimmedCommand = command.Content.Trim();
 
@@ -727,7 +727,7 @@ namespace Phamhilator.Core
             {
                 var m = room[message.ParentID].Content;
 
-                if (analysis.Type == PostType.Offensive || command.ToLowerInvariant() == "tpa clean")
+                if (analysis.Type == PostType.Offensive || command.ToLowerInvariant().StartsWith("tpa clean"))
                 {
                     m = ReportCleaner.GetCleanReport(message.ParentID);
                 }

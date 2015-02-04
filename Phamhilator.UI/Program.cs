@@ -19,7 +19,6 @@ namespace Phamhilator.UI
     public class Program
     {
         private static Thread postCatcherThread;
-        private static DateTime requestedDieTime;
         private static MessageHandler messageHandler;
         private static Client chatClient;
         private static ActiveRooms roomsToJoin;
@@ -61,12 +60,12 @@ namespace Phamhilator.UI
 
             Console.Write("done.\nLoading config data...");
 
-            Config.Core = new Pham();
+            messageHandler = new MessageHandler();
             roomsToJoin = new ActiveRooms();
+            Config.Core = new Pham();
+            Stats.PostedReports = new List<Report>();
             Config.UserAccess = new UserAccess("meta.stackexchange.com", 773);
             Config.BannedUsers = new BannedUsers(Config.UserAccess);
-            Stats.PostedReports = new List<Report>();
-            messageHandler = new MessageHandler();
 
             Console.Write("done.\nLoading bad tag definitions...");
 
@@ -220,45 +219,13 @@ namespace Phamhilator.UI
 
         # endregion
 
-        private static void KillBot()
-        {
-            requestedDieTime = DateTime.UtcNow;
-            Console.WriteLine("Kill command issued, closing Pham...");
-
-            Config.Shutdown = true;
-            postSocket.Dispose();
-            messageHandler.Dispose();
-            Config.Log.Dispose();
-
-            Config.PrimaryRoom.PostMessage("`All threads have died. Kill successful!`");
-
-            chatClient.Dispose();
-
-            Environment.Exit(Environment.ExitCode);
-        }
-
         private static void HandlePrimaryNewMessage(Message message)
         {
             Task.Factory.StartNew(() =>
             {
-                if (message.Content == ">>kill-it-with-no-regrets-for-sure")
+                if (message.Content.ToLowerInvariant() == ">>kill-it-with-no-regrets-for-sure")
                 {
-                    ChatAction m;
-
-                    if (Config.UserAccess.Owners.Any(user => user.ID == message.AuthorID))
-                    {
-                        m = new ChatAction(Config.PrimaryRoom, () =>
-                        {
-                            Config.PrimaryRoom.PostReply(message, "`Killing...`");
-                            KillBot();
-                        });
-                    }
-                    else
-                    {
-                        m = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported)..`"));
-                    }
-
-                    messageHandler.QueueItem(m);
+                    KillBot(message);
                 }
                 else
                 {
@@ -406,22 +373,55 @@ namespace Phamhilator.UI
             Stats.PostsCaught++;
         }
 
-        private static void Close()
+        private static void KillBot(Message message)
+        {
+            if (Config.Shutdown) { return; }
+
+            if (Config.UserAccess.Owners.Any(user => user.ID == message.AuthorID))
+            {
+                Close("Kill command issued, closing Pham...", "`Killing...`", "`Kill successful!`");
+            }
+            else
+            {
+                var m = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported)..`"));
+                messageHandler.QueueItem(m);
+            }
+        }
+
+        private static void Close(string consoleCloseMessage = "Closing Phamhilator...", string roomClosingMessage = "`Stopping Phamhilator™...`", string roomClosedMessage = "`Phamhilator™ stopped.`")
         {
             // Check if the user has been auth'd, if so the bot has already been fully initialised
             // so post the shutdown message, otherwise, the bot hasn't been initialised so just exit.
             if (chatClient != null)
             {
-                Console.WriteLine("Closing Phamhilator...");
-                Config.PrimaryRoom.PostMessage("`Closing Phamhilator™...`");
                 Config.Shutdown = true;
+
+                if (!String.IsNullOrEmpty(consoleCloseMessage))
+                {
+                    Console.WriteLine(consoleCloseMessage);
+                }
+
+                if (!String.IsNullOrEmpty(roomClosingMessage))
+                {
+                    Config.PrimaryRoom.PostMessage(roomClosingMessage);
+                }
+
+                postSocket.Dispose();
+                messageHandler.Dispose();
 
                 lock (Config.Log)
                 {
                     Config.Log.Dispose();
                 }
 
-                messageHandler.Dispose();
+                if (!String.IsNullOrEmpty(roomClosedMessage))
+                {
+                    Config.PrimaryRoom.PostMessage(roomClosedMessage);
+                }
+
+                Thread.Sleep(3000); // Give the primary room a chance to post the messages before disposing the client.
+
+                chatClient.Dispose();
             }
 
             Process.GetCurrentProcess().Close();
