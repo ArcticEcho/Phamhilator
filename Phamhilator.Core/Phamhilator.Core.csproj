@@ -74,6 +74,7 @@
     <Compile Include="GlobalInfo.cs" />
     <Compile Include="Hastebin.cs" />
     <Compile Include="JsonTerm.cs" />
+    <Compile Include="LinkStripper.cs" />
     <Compile Include="LogItem.cs" />
     <Compile Include="LogTerm.cs" />
     <Compile Include="MessageGenerator.cs" />

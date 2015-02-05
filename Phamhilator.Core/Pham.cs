@@ -13,48 +13,48 @@ namespace Phamhilator.Core
     {
         public Pham()
         {
-            Config.Log.EntriesRemovedEvent = items =>
-            {
-                var vaildEntries = items.Where(i => i.ReportType == PostType.Spam || i.ReportType == PostType.Offensive || i.ReportType == PostType.LowQuality);
+            //Config.Log.EntriesRemovedEvent = items =>
+            //{
+            //    var vaildEntries = items.Where(i => i.ReportType == PostType.Spam || i.ReportType == PostType.Offensive || i.ReportType == PostType.LowQuality);
 
-                var results = new Dictionary<LogItem, bool>();
+            //    var results = new Dictionary<LogItem, bool>();
 
-                foreach (var item in vaildEntries)
-                {
-                    var data = GetDataFromLog(item);
-                    var wasTPd = false;
+            //    foreach (var item in vaildEntries)
+            //    {
+            //        var data = GetDataFromLog(item);
+            //        var wasTPd = false;
 
-                    switch (item.ReportType)
-                    {
-                        case PostType.Spam:
-                        {
-                            wasTPd = CheckForClass1Report(item, data);
-                            break;
-                        }
+            //        switch (item.ReportType)
+            //        {
+            //            case PostType.Spam:
+            //            {
+            //                wasTPd = CheckForClass1Report(item, data);
+            //                break;
+            //            }
 
-                        case PostType.Offensive:
-                        {
-                            wasTPd = CheckForClass1Report(item, data);
-                            break;
-                        }
+            //            case PostType.Offensive:
+            //            {
+            //                wasTPd = CheckForClass1Report(item, data);
+            //                break;
+            //            }
 
-                        case PostType.LowQuality:
-                        {
-                            wasTPd = CheckForClass2Report(item, data);
-                            break;
-                        }
-                    }
+            //            case PostType.LowQuality:
+            //            {
+            //                wasTPd = CheckForClass2Report(item, data);
+            //                break;
+            //            }
+            //        }
 
-                    results.Add(item, wasTPd);
-                    Thread.Sleep(8000); // 8 secs. Try to avoid getting throttled.
-                }
+            //        results.Add(item, wasTPd);
+            //        Thread.Sleep(8000); // 8 secs. Try to avoid getting throttled.
+            //    }
 
-                if (results.Count == 0) { return; }
+            //    if (results.Count == 0) { return; }
 
-                var hasteLink = Hastebin.PostDocument("Reports TPd:" + FormatTPdReports(results) + "\n\nReports FPd:" + FormatFPdReports(results));
+            //    var hasteLink = Hastebin.PostDocument("Reports TPd:" + FormatTPdReports(results) + "\n\nReports FPd:" + FormatFPdReports(results));
 
-                Config.PrimaryRoom.PostMessage("[`Auto-review Results.`](" + hasteLink + ")");
-            };
+            //    Config.PrimaryRoom.PostMessage("[`Auto-review Results.`](" + hasteLink + ")");
+            //};
         }
 
 
@@ -155,6 +155,11 @@ namespace Phamhilator.Core
 
             return data;
         }
+
+        private static readonly List<int> o = new List<int>()
+        {
+
+        };
 
         private bool IsAnswerClass1(string postUrl)
         {

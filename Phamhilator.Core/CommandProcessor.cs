@@ -732,7 +732,7 @@ namespace Phamhilator.Core
                     m = ReportCleaner.GetCleanReport(receivedMessage.ParentID);
                 }
 
-                m = ReportMessageGenerator.GetTpaReport(m, receivedMessage); // TODO: Test this out tomorrow.
+                m = ReportMessageGenerator.GetTpaReport(m, receivedMessage);
 
                 foreach (var secondaryRoom in Config.SecondaryRooms)
                 {
