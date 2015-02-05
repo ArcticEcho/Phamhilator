@@ -19,7 +19,7 @@ namespace Phamhilator.Core
     public static class CommandProcessor
     {
         private static Room room;
-        private static Message message;
+        private static Message receivedMessage;
         private static PostAnalysis analysis;
         private static Post post;
         private static bool fileMissingWarningMessagePosted;
@@ -55,11 +55,11 @@ namespace Phamhilator.Core
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^(help list|list help|commands)$", regexOptions), command => new[]
             {
-                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status, env & log.\n    Supported replies: (fp/tp/tpa), why, ask, clean, del & log.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
+                new ReplyMessage("    @" + receivedMessage.AuthorName.Replace(" ", "") + "\n    Supported commands: info, stats, status, env & log.\n    Supported replies: (fp/tp/tpa), why, ask, clean, del & log.\n    Owner-only commands: resume, pause, (add/ban)-user {user-id}, threshold {percentage}, kill-it-with-no-regrets-for-sure, full-scan & set-status {message}.", false)
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^stats$", regexOptions), command => new []
             {
-                new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Posts caught (last 7 days): " + Stats.PostsCaught + ".\n    Terms: " + Stats.TermCount + ".\n    Posts checked: " + Stats.TotalCheckedPosts + ".\n    TPs acknowledged: " + Stats.TotalTPCount + ".\n    FPs acknowledged: " + Stats.TotalFPCount + ".\n    Uptime: " + (DateTime.UtcNow - Stats.UpTime) + ".", false)
+                new ReplyMessage("    @" + receivedMessage.AuthorName.Replace(" ", "") + "\n    Posts caught (last 7 days): " + Stats.PostsCaught + ".\n    Terms: " + Stats.TermCount + ".\n    Posts checked: " + Stats.TotalCheckedPosts + ".\n    TPs acknowledged: " + Stats.TotalTPCount + ".\n    FPs acknowledged: " + Stats.TotalFPCount + ".\n    Uptime: " + (DateTime.UtcNow - Stats.UpTime) + ".", false)
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex(@"(?i)^(terms|why)\b", regexOptions), command => new[]
             {
@@ -71,7 +71,7 @@ namespace Phamhilator.Core
 
                 return new[]
                 {
-                    new ReplyMessage("    @" + message.AuthorName.Replace(" ", "") + "\n    Cores (logical): " + Environment.ProcessorCount + "\n    Total RAM: " +  totalMem + "GB\n    OS: " + Environment.OSVersion.VersionString + "\n    64-bit: " + Environment.Is64BitOperatingSystem + "\n    CLR version: " + Environment.Version, false)
+                    new ReplyMessage("    @" + receivedMessage.AuthorName.Replace(" ", "") + "\n    Cores (logical): " + Environment.ProcessorCount + "\n    Total RAM: " +  totalMem + "GB\n    OS: " + Environment.OSVersion.VersionString + "\n    64-bit: " + Environment.Is64BitOperatingSystem + "\n    CLR version: " + Environment.Version, false)
                 };
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex(@"(?i)^log( \d+)?$", regexOptions), command =>
@@ -80,7 +80,7 @@ namespace Phamhilator.Core
 
                 if (String.IsNullOrEmpty(entryID))
                 {
-                    var messageReport = Stats.PostedReports.First(r => r.Message.ID == message.ParentID);
+                    var messageReport = Stats.PostedReports.First(r => r.Message.ID == receivedMessage.ParentID);
 
                     entryID = Stats.PostedReports.First(i => i.Post.Url == messageReport.Post.Url && i.Message.RoomID == Config.PrimaryRoom.ID).Message.ID.ToString(CultureInfo.InvariantCulture);
                 }
@@ -290,7 +290,7 @@ namespace Phamhilator.Core
 
             string command;
             room = messageRoom;
-            message = input;
+            receivedMessage = input;
 
             try
             {
@@ -429,7 +429,7 @@ namespace Phamhilator.Core
                 return new ReplyMessage(m);
             }
 
-            var builder = new StringBuilder("    @" + message.AuthorName.Replace(" ", "") + "\n    Terms found:\n");
+            var builder = new StringBuilder("    @" + receivedMessage.AuthorName.Replace(" ", "") + "\n    Terms found:\n");
 
             foreach (var term in analysis.BlackTermsFound)
             {
@@ -676,14 +676,14 @@ namespace Phamhilator.Core
             {
                 var questionReport = new Regex(@"^\*\*(Low Quality|Spam|Offensive)\*\* \*\*Q\*\*|\*\*Bad Tag Used\*\*", RegexOptions.CultureInvariant);
 
-                if (questionReport.IsMatch(room[message.ParentID].Content))
+                if (questionReport.IsMatch(room[receivedMessage.ParentID].Content))
                 {
                     var p = PostFetcher.GetQuestion(post.Url);
                     var info = PostAnalyser.AnalyseQuestion(p);
 
                     if (info != null && info.Type == PostType.LowQuality)
                     {
-                        var newMessage = MessageGenerator.GetPostReport(info, p, true);
+                        var newMessage = ReportMessageGenerator.GetPostReport(info, p, true);
                         var postedMessage = Config.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
 
                         Stats.PostedReports.Add(new Report
@@ -701,7 +701,7 @@ namespace Phamhilator.Core
 
                     if (info != null && info.Type == PostType.LowQuality)
                     {
-                        var newMessage = MessageGenerator.GetPostReport(info, p);
+                        var newMessage = ReportMessageGenerator.GetPostReport(info, p);
                         var postedMessage = Config.PrimaryRoom.PostMessage("**Low Quality** " + newMessage);
 
                         Stats.PostedReports.Add(new Report
@@ -716,21 +716,23 @@ namespace Phamhilator.Core
 
             Config.Core.RegisterFP(post, analysis);
 
-            return room.EditMessage(message.ParentID, "---" + room[message.ParentID].Content + "---") ? new ReplyMessage("") : new ReplyMessage("`FP acknowledged.`");
+            return room.EditMessage(receivedMessage.ParentID, "---" + room[receivedMessage.ParentID].Content + "---") ? new ReplyMessage("") : new ReplyMessage("`FP acknowledged.`");
         }
 
         private static ReplyMessage TruePositive(string command)
         {
             string postBack = null;
 
-            if (command.ToLowerInvariant().StartsWith("tpa"))
+            if (command.ToLowerInvariant().StartsWith("tpa") && !Config.SecondaryRooms.Contains(room))
             {
-                var m = room[message.ParentID].Content;
+                var m = room[receivedMessage.ParentID].Content;
 
                 if (analysis.Type == PostType.Offensive || command.ToLowerInvariant().StartsWith("tpa clean"))
                 {
-                    m = ReportCleaner.GetCleanReport(message.ParentID);
+                    m = ReportCleaner.GetCleanReport(receivedMessage.ParentID);
                 }
+
+                m = ReportMessageGenerator.GetTpaReport(m, receivedMessage); // TODO: Test this out tomorrow.
 
                 foreach (var secondaryRoom in Config.SecondaryRooms)
                 {
@@ -757,10 +759,10 @@ namespace Phamhilator.Core
                 Config.Core.RegisterTP(post, analysis);
             }
 
-            var reportMessage = room[message.ParentID].Content;
+            var reportMessage = room[receivedMessage.ParentID].Content;
             reportMessage = reportMessage.Remove(reportMessage.Length - 1);
 
-            return room.EditMessage(message.ParentID, reportMessage + (postBack ?? " ***TP Acknowledged***.")) ? new ReplyMessage("") : new ReplyMessage("`TP acknowledged.`");
+            return room.EditMessage(receivedMessage.ParentID, reportMessage + (postBack ?? " ***TP Acknowledged***.")) ? new ReplyMessage("") : new ReplyMessage("`TP acknowledged.`");
         }
 
         # endregion
@@ -859,9 +861,9 @@ namespace Phamhilator.Core
         {
             try
             {
-                var newMessage = ReportCleaner.GetCleanReport(message.ParentID);
+                var newMessage = ReportCleaner.GetCleanReport(receivedMessage.ParentID);
 
-                room.EditMessage(message.ParentID, newMessage);
+                room.EditMessage(receivedMessage.ParentID, newMessage);
             }
             catch (Exception)
             {
@@ -873,14 +875,14 @@ namespace Phamhilator.Core
 
         private static ReplyMessage DeleteMessage()
         {
-            room.DeleteMessage(message.ParentID);
+            room.DeleteMessage(receivedMessage.ParentID);
 
             return new ReplyMessage("", false);
         }
 
         private static ReplyMessage Ask()
         {
-            var newReport = Regex.Replace(Stats.PostedReports.First(r => r.Message.ID == message.ParentID).Message.Content, @"\*\* \(\d*(\.\d)?\%\)\:", "?**:");
+            var newReport = Regex.Replace(Stats.PostedReports.First(r => r.Message.ID == receivedMessage.ParentID).Message.Content, @"\*\* \(\d*(\.\d)?\%\)\:", "?**:");
 
             foreach (var secondaryRoom in Config.SecondaryRooms)
             {

@@ -3,6 +3,7 @@ using System.Net;
 using System.Linq;
 using System.Text.RegularExpressions;
 using JsonFx.Json;
+using System;
 
 
 
@@ -16,10 +17,10 @@ namespace Phamhilator.Core
 
         public static bool IsShortLink(string url)
         {
-            return shortLink.IsMatch(url.Trim());
+            return !String.IsNullOrEmpty(url) && shortLink.IsMatch(url.Trim());
         }
 
-        public static string UnshortenLink(string url)
+        public static string UnshortifyLink(string url)
         {
             if (!IsShortLink(url)) { return url; }
 

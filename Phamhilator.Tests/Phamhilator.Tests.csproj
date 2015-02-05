@@ -57,6 +57,7 @@
     <Compile Include="CommandProcessorTest.cs" />
     <Compile Include="ExtensionMethodsTest.cs" />
     <Compile Include="GlobalTestFields.cs" />
+    <Compile Include="LinkUnshortifierTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
+using ChatExchangeDotNet;
 
 
 
 namespace Phamhilator.Core
 {
-    public static class MessageGenerator
+    public static class ReportMessageGenerator
     {
+        // TODO: Parse user badges
+
+
         private const string squareDescLink = "http://chat.meta.stackexchange.com/transcript/message/2998326";
+        private static readonly Regex tpaReportRegex = new Regex(@"\s\(\d{1,3}(\.\d)?\%\)\:\s\[", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public static string GetQReport(QuestionAnalysis info, Question post)
         {
@@ -67,6 +73,12 @@ namespace Phamhilator.Core
             var accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
 
             return (isQuestion ? " **Q**" : " **A**") + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.";
+        }
+
+        public static string GetTpaReport(string reportContent, Message tpaMessage)
+        {
+            var tpaMessageLink = "http://chat." + tpaMessage.Host + "/transcript/message/" + tpaMessage.ID;
+            return tpaReportRegex.Replace(reportContent, " ([`TPA`'d by " + tpaMessage.AuthorName + "](" + tpaMessageLink + ")): [");
         }
 
 

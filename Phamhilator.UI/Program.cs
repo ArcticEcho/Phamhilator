@@ -186,7 +186,7 @@ namespace Phamhilator.UI
                         if (Config.Log.Entries.All(p => p.PostUrl != question.Url))
                         {
                             var qResults = PostAnalyser.AnalyseQuestion(question);
-                            var qMessage = MessageGenerator.GetQReport(qResults, question);
+                            var qMessage = ReportMessageGenerator.GetQReport(qResults, question);
 
                             CheckSendReport(question, qMessage, qResults);
                         }
@@ -202,7 +202,7 @@ namespace Phamhilator.UI
                         foreach (var a in answers.Where(ans => Config.Log.Entries.All(p => p.PostUrl != ans.Url)))
                         {
                             var aResults = PostAnalyser.AnalyseAnswer(a);
-                            var aMessage = MessageGenerator.GetPostReport(aResults, a);
+                            var aMessage = ReportMessageGenerator.GetPostReport(aResults, a);
 
                             CheckSendReport(a, aMessage, aResults);
                         }

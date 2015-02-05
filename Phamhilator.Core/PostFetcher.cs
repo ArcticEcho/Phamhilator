@@ -315,7 +315,7 @@ namespace Phamhilator.Core
                 {
                     shortLinks.Add(url);
 
-                    var longUrl = LinkUnshortifier.UnshortenLink(url);
+                    var longUrl = LinkUnshortifier.UnshortifyLink(url);
 
                     bodyCopy = bodyCopy.Replace(url, longUrl);
                 }
