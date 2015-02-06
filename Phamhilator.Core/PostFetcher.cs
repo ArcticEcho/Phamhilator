@@ -166,7 +166,7 @@ namespace Phamhilator.Core
             return (int)float.Parse(trimmed);
         }
 
-        public static string EscapeString(string input, string newlineReplace)
+        public static string ChatEscapeString(string input, string newlineReplace = "")
         {
             var output = input.Replace("\n", newlineReplace).Replace("\\n", newlineReplace);
 

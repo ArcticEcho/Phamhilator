@@ -20,9 +20,9 @@ namespace Phamhilator.Core
         {
             if (info == null || post == null) { return null; }
 
-            var name = PostFetcher.EscapeString(post.AuthorName, "");
+            var name = PostFetcher.ChatEscapeString(post.AuthorName, "");
             var author = String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink;
-            var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.EscapeString(post.Title, "");
+            var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.ChatEscapeString(post.Title, "");
             var accuracy = "";
             var fullScanFailed = "";
             var postScore = "";
@@ -67,9 +67,9 @@ namespace Phamhilator.Core
         {
             if (info == null || post == null) { return null; }
 
-            var name = PostFetcher.EscapeString(post.AuthorName, "");
+            var name = PostFetcher.ChatEscapeString(post.AuthorName, "");
             var author = "[" + (post.AuthorRep >= 20 ? "■" : "□") + "](" + squareDescLink + ") " + (String.IsNullOrEmpty(post.AuthorLink) ? name : "[" + name + "](" + post.AuthorLink + " \"Rep: " + post.AuthorRep + "\")");
-            var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.EscapeString(post.Title, " ");
+            var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.ChatEscapeString(post.Title, " ");
             var accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
 
             return (isQuestion ? " **Q**" : " **A**") + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.";

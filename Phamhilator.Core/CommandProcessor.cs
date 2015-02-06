@@ -38,11 +38,7 @@ namespace Phamhilator.Core
                 GitDataFetcher.GetData(out commitHash, out commitMessage, out commitAuthor);
 
                 var commitLink = "https://github.com/ArcticEcho/Phamhilator/commit/" + commitHash;
-
-                Func<string, string> escapeForChat = (string orig) => Regex.Replace(orig, @"([_*\\`\[\]])", @"\$1");
-
-                string chatMessage = String.Format("[*{0}* by *{1}* - `{2}`]({3})", escapeForChat(commitMessage),
-                    escapeForChat(commitAuthor), commitHash, commitLink);
+                var chatMessage = String.Format("[*{0}* by *{1}* - `{2}`]({3}).", commitMessage, commitAuthor, commitHash, commitLink);
 
                 return new[]
                 {
@@ -210,18 +206,32 @@ namespace Phamhilator.Core
                 FalsePositive(),
                 CleanMessage()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"^tpa?((?!\s(why|clean)).)*$", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"^tp((?!\s(why|clean)).)*$", regexOptions), command => new[]
             {
                 TruePositive(command)
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^tpa? why\b", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^tp why\b", regexOptions), command => new[]
             {
                 TruePositive(command),
                 GetTerms()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"(?i)^tpa? clean\b", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^tp clean\b", regexOptions), command => new[]
             {
                 TruePositive(command),
+                CleanMessage()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"^tpa((?!\s(why|clean)).)*$", regexOptions), command => new[]
+            {
+                TruePositiveAnnounce(command)
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^tpa why\b", regexOptions), command => new[]
+            {
+                TruePositiveAnnounce(command),
+                GetTerms()
+            }, CommandAccessLevel.PrivilegedUser),
+            new ChatCommand(new Regex(@"(?i)^tpa clean\b", regexOptions), command => new[]
+            {
+                TruePositiveAnnounce(command),
                 CleanMessage()
             }, CommandAccessLevel.PrivilegedUser),
 

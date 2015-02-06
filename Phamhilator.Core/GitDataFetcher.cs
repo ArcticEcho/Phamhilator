@@ -11,7 +11,7 @@ namespace Phamhilator.Core
 {
     public static class GitDataFetcher
     {
-        public static void GetData(out string commitHash, out string commitMessage, out string commitAuthor)
+        public static void GetData(out string commitHash, out string commitMessage, out string commitAuthor, bool escapeData = true)
         {
             string output;
 
@@ -34,6 +34,14 @@ namespace Phamhilator.Core
             }
 
             var data = Regex.Split(output, @"\|\|\|");
+
+            if (escapeData)
+            {
+                for (var i = 0; i < data.Length; i++)
+                {
+                    data[i] = PostFetcher.ChatEscapeString(data[i]);
+                }
+            }
 
             commitHash = data[0];
             commitMessage = data[1];

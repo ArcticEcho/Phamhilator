@@ -11,7 +11,7 @@ namespace Phamhilator.Core
         {
             var report = Stats.PostedReports.First(r => r.Message.ID == messageID);
 
-            var oldTitle = PostFetcher.EscapeString(report.Post.Title, " ");
+            var oldTitle = PostFetcher.ChatEscapeString(report.Post.Title, " ");
             var newTitle = CensorString(report.Post.Title);
 
             var oldName = report.Post.AuthorName;
