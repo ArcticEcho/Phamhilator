@@ -39,9 +39,14 @@ namespace Phamhilator.Core
 
                 var commitLink = "https://github.com/ArcticEcho/Phamhilator/commit/" + commitHash;
 
+                Func<string, string> escapeForChat = (string orig) => Regex.Replace(orig, @"([_*\\`\[\]])", @"\$1");
+
+                string chatMessage = String.Format("[*{0}* by *{1}* - `{2}`]({3})", escapeForChat(commitMessage),
+                    escapeForChat(commitAuthor), commitHash, commitLink);
+
                 return new[]
                 {
-                    new ReplyMessage(commitHash + " " + commitMessage)
+                    new ReplyMessage(chatMessage)
                 };
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^status$", regexOptions), command => new[]
