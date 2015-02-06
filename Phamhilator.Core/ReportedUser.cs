@@ -4,7 +4,7 @@
 
 namespace Phamhilator.Core
 {
-    public class Spammer
+    public class ReportedUser
     {
         private readonly DateTime creationTime;
         private readonly string site;
@@ -14,7 +14,8 @@ namespace Phamhilator.Core
         {
             get
             {
-                if ((DateTime.UtcNow - creationTime).TotalMinutes > 60)
+                // Invalidate data after 5 hours.
+                if ((DateTime.UtcNow - creationTime).TotalMinutes > 300)
                 {
                     return "";
                 }
@@ -27,7 +28,8 @@ namespace Phamhilator.Core
         {
             get
             {
-                if ((DateTime.UtcNow - creationTime).TotalMinutes > 60)
+                // Invalidate data after 5 hours.
+                if ((DateTime.UtcNow - creationTime).TotalMinutes > 300)
                 {
                     return "";
                 }
@@ -38,7 +40,7 @@ namespace Phamhilator.Core
 
 
 
-        public Spammer(string site, string name)
+        public ReportedUser(string site, string name)
         {
             creationTime = DateTime.UtcNow;
 

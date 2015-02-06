@@ -71,6 +71,7 @@
     <Compile Include="FilterClass.cs" />
     <Compile Include="FilterConfig.cs" />
     <Compile Include="FilterType.cs" />
+    <Compile Include="GitDataFetcher.cs" />
     <Compile Include="GlobalInfo.cs" />
     <Compile Include="Hastebin.cs" />
     <Compile Include="JsonTerm.cs" />
@@ -100,7 +101,7 @@
     <Compile Include="Report.cs" />
     <Compile Include="ReportCleaner.cs" />
     <Compile Include="ReportLog.cs" />
-    <Compile Include="Spammer.cs" />
+    <Compile Include="ReportedUser.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="StringDownloader.cs" />
     <Compile Include="Term.cs" />

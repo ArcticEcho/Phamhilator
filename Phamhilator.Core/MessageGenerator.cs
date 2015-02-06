@@ -75,10 +75,25 @@ namespace Phamhilator.Core
             return (isQuestion ? " **Q**" : " **A**") + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.";
         }
 
-        public static string GetTpaReport(string reportContent, Message tpaMessage)
+        public static string GetSecondaryRoomTpaReport(string reportContent, Message tpaMessage)
         {
             var tpaMessageLink = "http://chat." + tpaMessage.Host + "/transcript/message/" + tpaMessage.ID;
             return tpaReportRegex.Replace(reportContent, " ([`TPA`'d by " + tpaMessage.AuthorName + "](" + tpaMessageLink + ")): [");
+        }
+
+        public static string GetPrimaryRoomTpaReport(string reportContent)
+        {
+            return reportContent.Remove(reportContent.Length - 1) + " ***TPA Acknowledged***.";
+        }
+
+        public static string GetFPdReport(string reportContent)
+        {
+            return "---" + reportContent + "---";
+        }
+
+        public static string GetTPdReport(string reportContent)
+        {
+            return reportContent.Remove(reportContent.Length - 1) + " ***TP Acknowledged***.";
         }
 
 

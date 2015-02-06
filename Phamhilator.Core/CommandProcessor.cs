@@ -20,26 +20,41 @@ namespace Phamhilator.Core
     {
         private static Room room;
         private static Message receivedMessage;
-        private static PostAnalysis analysis;
-        private static Post post;
+        private static Report receivedReport;
         private static bool fileMissingWarningMessagePosted;
         private const RegexOptions regexOptions = RegexOptions.Compiled | RegexOptions.CultureInvariant;
+        private static Regex isQestionReport = new Regex(@"^\*\*(Low Quality|Spam|Offensive)\*\* \*\*Q\*\*|\*\*Bad Tag Used\*\*", regexOptions);
         private static readonly Random random = new Random();
         private static readonly HashSet<ChatCommand> commands = new HashSet<ChatCommand>
         {
             #region Normal user commands.
 
+            new ChatCommand(new Regex("(?i)^(git(hub)?|commit)( (data|info(rmation)?))?$", regexOptions), command =>
+            {
+                var commitHash = "";
+                var commitMessage = "";
+                var commitAuthor = "";
+
+                GitDataFetcher.GetData(out commitHash, out commitMessage, out commitAuthor);
+
+                var commitLink = "https://github.com/ArcticEcho/Phamhilator/commit/" + commitHash;
+
+                return new[]
+                {
+                    new ReplyMessage(commitHash + " " + commitMessage)
+                };
+            }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^status$", regexOptions), command => new[]
             {
-                new ReplyMessage(String.Concat("`", Config.Status, "`." /*" @ ", GlobalInfo.CommitFormatted, "(https://github.com/ArcticEcho/Phamhilator.Core/commit/", GlobalInfo.CommitHash, ").")*/))
+                new ReplyMessage(String.Concat("`", Config.Status, "`."))
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^(info(rmation)?|about)$", regexOptions), command => new[]
             {
-                new ReplyMessage("[`Phamhilator.Core`](https://github.com/ArcticEcho/Phamhilator.Core/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + Config.UserAccess.OwnerNames + ".`")
+                new ReplyMessage("[`Phamhilator.Core`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + Config.UserAccess.OwnerNames + ".`")
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^help$", regexOptions), command => new[]
             {
-                new ReplyMessage("`See` [`here`](https://github.com/ArcticEcho/Phamhilator.Core/wiki/Chat-Commands) `for a full list of commands.`")
+                new ReplyMessage("`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands) `for a full list of commands.`")
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^(help (add|del)|(add|del) help)$", regexOptions), command => new[]
             {
@@ -321,14 +336,11 @@ namespace Phamhilator.Core
 
             if (Stats.PostedReports.Any(report => report != null && report.Message.ID == input.ParentID))
             {
-                var report = Stats.PostedReports.First(r => r.Message.ID == input.ParentID);
-                analysis = report.Analysis;
-                post = report.Post;
+                receivedReport = Stats.PostedReports.First(r => r.Message.ID == input.ParentID);
             }
             else
             {
-                analysis = null;
-                post = null;
+                receivedReport = null;
             }
 
             try
@@ -342,7 +354,7 @@ namespace Phamhilator.Core
 
                     case CommandAccessLevel.PrivilegedUser:
                     {
-                        if (!Config.UserAccess.PrivUsers.Contains(input.AuthorID) && Config.UserAccess.Owners.All(user => user.ID != input.AuthorID))
+                        if (!input.IsAuthorPrivUser())
                         {
                             return new[]
                             {
@@ -355,7 +367,7 @@ namespace Phamhilator.Core
 
                     case CommandAccessLevel.Owner:
                     {
-                        if (Config.UserAccess.Owners.All(user => user.ID != input.AuthorID))
+                        if (!input.IsAuthorOwner())
                         {
                             return new[]
                             {
@@ -406,9 +418,9 @@ namespace Phamhilator.Core
 
         private static ReplyMessage GetTerms()
         {
-            if (analysis.BlackTermsFound.Count == 1)
+            if (receivedReport.Analysis.BlackTermsFound.Count == 1)
             {
-                var term = analysis.BlackTermsFound.First();
+                var term = receivedReport.Analysis.BlackTermsFound.First();
                 var m = "`Term found: " + term.Regex.ToString().Replace("\\n", "(?# new line)");
 
                 if (term.TPCount + term.FPCount >= 5)
@@ -431,7 +443,7 @@ namespace Phamhilator.Core
 
             var builder = new StringBuilder("    @" + receivedMessage.AuthorName.Replace(" ", "") + "\n    Terms found:\n");
 
-            foreach (var term in analysis.BlackTermsFound)
+            foreach (var term in receivedReport.Analysis.BlackTermsFound)
             {
                 var termString = term.Regex.ToString().Replace("\n", "(?# new line)");
 
@@ -670,15 +682,13 @@ namespace Phamhilator.Core
 
         private static ReplyMessage FalsePositive()
         {
-            if (analysis.Type == PostType.BadTagUsed) { return new ReplyMessage(""); }
+            if (receivedReport.Analysis.Type == PostType.BadTagUsed) { return null; }
 
-            if (analysis.Type == PostType.Spam)
+            if (receivedReport.Analysis.Type == PostType.Spam)
             {
-                var questionReport = new Regex(@"^\*\*(Low Quality|Spam|Offensive)\*\* \*\*Q\*\*|\*\*Bad Tag Used\*\*", RegexOptions.CultureInvariant);
-
-                if (questionReport.IsMatch(room[receivedMessage.ParentID].Content))
+                if (isQestionReport.IsMatch(room[receivedMessage.ParentID].Content))
                 {
-                    var p = PostFetcher.GetQuestion(post.Url);
+                    var p = PostFetcher.GetQuestion(receivedReport.Post.Url);
                     var info = PostAnalyser.AnalyseQuestion(p);
 
                     if (info != null && info.Type == PostType.LowQuality)
@@ -696,7 +706,7 @@ namespace Phamhilator.Core
                 }
                 else
                 {
-                    var p = PostFetcher.GetAnswer(post.Url);
+                    var p = PostFetcher.GetAnswer(receivedReport.Post.Url);
                     var info = PostAnalyser.AnalyseAnswer(p);
 
                     if (info != null && info.Type == PostType.LowQuality)
@@ -714,55 +724,94 @@ namespace Phamhilator.Core
                 }
             }
 
-            Config.Core.RegisterFP(post, analysis);
+            Config.Core.RegisterFP(receivedReport.Post, receivedReport.Analysis);
 
             return room.EditMessage(receivedMessage.ParentID, "---" + room[receivedMessage.ParentID].Content + "---") ? new ReplyMessage("") : new ReplyMessage("`FP acknowledged.`");
         }
 
         private static ReplyMessage TruePositive(string command)
         {
-            string postBack = null;
+            if (receivedReport.TPd) { return null; }
 
-            if (command.ToLowerInvariant().StartsWith("tpa") && !Config.SecondaryRooms.Contains(room))
+            // Fetch a fresh report message and clean if necessary.
+            var m = room[receivedMessage.ParentID].Content;
+            var freshReport = ReportMessageGenerator.GetPostReport(receivedReport.Analysis, receivedReport.Post, isQestionReport.IsMatch(m));
+
+            if (receivedReport.Analysis.Type == PostType.Offensive || command.ToLowerInvariant().Contains("clean") || receivedReport.IsCleaned)
             {
-                var m = room[receivedMessage.ParentID].Content;
+                freshReport = ReportCleaner.GetCleanReport(receivedMessage.ParentID);
+            }
 
-                if (analysis.Type == PostType.Offensive || command.ToLowerInvariant().StartsWith("tpa clean"))
+            // Log the post's author.
+            if (receivedReport.Analysis.Type == PostType.Spam || receivedReport.Analysis.Type == PostType.Offensive)
+            {
+                Stats.ReportedUsers.Add(new ReportedUser(receivedReport.Post.Site, receivedReport.Post.AuthorName));
+            }
+
+            // Register the TP.
+            if (receivedReport.Analysis.Type != PostType.BadTagUsed)
+            {
+                Config.Core.RegisterTP(receivedReport.Post, receivedReport.Analysis);
+            }
+
+            // Post back to the command issuer.
+            if (room.EditMessage(receivedMessage.ParentID, ReportMessageGenerator.GetTPdReport(freshReport)))
+            {
+                return null;
+            }
+            else
+            {
+                return new ReplyMessage("`TP acknowledged.`");
+            }
+        }
+
+        private static ReplyMessage TruePositiveAnnounce(string command)
+        {
+            if (receivedReport.TPAd) { return null; }
+
+            // Fetch a fresh report message and clean if necessary.
+            var m = room[receivedMessage.ParentID].Content;
+            var freshReport = ReportMessageGenerator.GetPostReport(receivedReport.Analysis, receivedReport.Post, isQestionReport.IsMatch(m));
+
+            if (receivedReport.Analysis.Type == PostType.Offensive || command.ToLowerInvariant().Contains("clean") || receivedReport.IsCleaned)
+            {
+                freshReport = ReportCleaner.GetCleanReport(receivedMessage.ParentID);
+            }
+
+            // Post the fresh report message in all secondary rooms.
+            foreach (var secondaryRoom in Config.SecondaryRooms)
+            {
+                var postedMessage = secondaryRoom.PostMessage(freshReport);
+
+                Stats.PostedReports.Add(new Report
                 {
-                    m = ReportCleaner.GetCleanReport(receivedMessage.ParentID);
-                }
-
-                m = ReportMessageGenerator.GetTpaReport(m, receivedMessage);
-
-                foreach (var secondaryRoom in Config.SecondaryRooms)
-                {
-                    var postedMessage = secondaryRoom.PostMessage(m);
-
-                    Stats.PostedReports.Add(new Report
-                    {
-                        Message = postedMessage,
-                        Post = post,
-                        Analysis = analysis
-                    });
-                }
-
-                postBack = " ***TPA Acknowledged***.";
+                    Message = postedMessage,
+                    Post = receivedReport.Post,
+                    Analysis = receivedReport.Analysis
+                });
             }
 
-            if (analysis.Type == PostType.Spam)
+            // Log the post's author.
+            if (receivedReport.Analysis.Type == PostType.Spam || receivedReport.Analysis.Type == PostType.Offensive)
             {
-                Stats.Spammers.Add(new Spammer(post.Site, post.AuthorName));
+                Stats.ReportedUsers.Add(new ReportedUser(receivedReport.Post.Site, receivedReport.Post.AuthorName));
             }
 
-            if (analysis.Type != PostType.BadTagUsed)
+            // Register the TP.
+            if (receivedReport.Analysis.Type != PostType.BadTagUsed)
             {
-                Config.Core.RegisterTP(post, analysis);
+                Config.Core.RegisterTP(receivedReport.Post, receivedReport.Analysis);
             }
 
-            var reportMessage = room[receivedMessage.ParentID].Content;
-            reportMessage = reportMessage.Remove(reportMessage.Length - 1);
-
-            return room.EditMessage(receivedMessage.ParentID, reportMessage + (postBack ?? " ***TP Acknowledged***.")) ? new ReplyMessage("") : new ReplyMessage("`TP acknowledged.`");
+            // Post back to the command issuer.
+            if (room.EditMessage(receivedMessage.ParentID, ReportMessageGenerator.GetPrimaryRoomTpaReport(freshReport)))
+            {
+                return null;
+            }
+            else
+            {
+                return new ReplyMessage("`TPA acknowledged.`");
+            }
         }
 
         # endregion
@@ -870,14 +919,14 @@ namespace Phamhilator.Core
                 DeleteMessage();
             }
             
-            return new ReplyMessage("");
+            return null;
         }
 
         private static ReplyMessage DeleteMessage()
         {
             room.DeleteMessage(receivedMessage.ParentID);
 
-            return new ReplyMessage("", false);
+            return null;
         }
 
         private static ReplyMessage Ask()
@@ -891,12 +940,12 @@ namespace Phamhilator.Core
                 Stats.PostedReports.Add(new Report
                 {
                     Message = postedMessage,
-                    Post = post,
-                    Analysis = analysis
+                    Post = receivedReport.Post,
+                    Analysis = receivedReport.Analysis
                 });
             }
 
-            return new ReplyMessage("");
+            return null;
         }
 
         # endregion

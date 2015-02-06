@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using ChatExchangeDotNet;
 using JsonFx.Json;
 
 
@@ -11,6 +12,16 @@ namespace Phamhilator.Core
 {
     public static class ExtensionMethods
     {
+        public static bool IsAuthorOwner(this Message input)
+        {
+            return Config.UserAccess.Owners.Any(user => user.ID == input.AuthorID);
+        }
+
+        public static bool IsAuthorPrivUser(this Message input)
+        {
+            return Config.UserAccess.PrivUsers.Any(user => user == input.AuthorID) || input.IsAuthorOwner();
+        }
+
         public static bool IsQuestion(this FilterClass classification)
         {
             return classification.ToString().StartsWith("Question");

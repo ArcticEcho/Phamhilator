@@ -9,7 +9,7 @@ namespace Phamhilator.Core
 {
     public static class Stats
     {
-        private static readonly HashSet<Spammer> spammers = new HashSet<Spammer>();
+        private static readonly HashSet<ReportedUser> reportedUsers = new HashSet<ReportedUser>();
 
         public static DateTime UpTime { get; set; }
 
@@ -76,11 +76,11 @@ namespace Phamhilator.Core
             }
         }
 
-        public static HashSet<Spammer> Spammers
+        public static HashSet<ReportedUser> ReportedUsers
         {
             get
             {
-                return spammers;
+                return reportedUsers;
             }
         }
     }

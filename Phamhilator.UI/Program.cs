@@ -289,7 +289,7 @@ namespace Phamhilator.UI
             Message message = null;
             Report chatMessage = null;
 
-            if (Stats.Spammers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
+            if (Stats.ReportedUsers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
             {
                 message = Config.PrimaryRoom.PostMessage("**Spam**" + messageBody);
                 chatMessage = new Report { Message = message, Post = p, Analysis = info };
@@ -377,7 +377,7 @@ namespace Phamhilator.UI
         {
             if (Config.Shutdown) { return; }
 
-            if (Config.UserAccess.Owners.Any(user => user.ID == message.AuthorID))
+            if (message.IsAuthorOwner())
             {
                 Close("Kill command issued, closing Pham...", "`Killing...`", "`Kill successful!`");
             }
