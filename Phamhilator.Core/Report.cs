@@ -9,9 +9,7 @@ namespace Phamhilator.Core
         public PostAnalysis Analysis;
         public Post Post;
         public Message Message;
-        public bool FPd;
-        public bool TPd;
-        public bool TPAd;
+        public bool ReceivedFeedback;
         public bool IsCleaned;
     }
 }

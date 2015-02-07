@@ -23,7 +23,7 @@ namespace Phamhilator.Core
         private static Report receivedReport;
         private static bool fileMissingWarningMessagePosted;
         private const RegexOptions regexOptions = RegexOptions.Compiled | RegexOptions.CultureInvariant;
-        private static Regex isQestionReport = new Regex(@"^\*\*(Low Quality|Spam|Offensive)\*\* \*\*Q\*\*|\*\*Bad Tag Used\*\*", regexOptions);
+        private static Regex isQestionReport = new Regex(@"(?i)^\*\*(Low Quality|Spam|Offensive|Bad Username)\*\* \*\*Q\*\*|\*\*Bad Tag(s) Used\*\*", regexOptions);
         private static readonly Random random = new Random();
         private static readonly HashSet<ChatCommand> commands = new HashSet<ChatCommand>
         {
@@ -187,7 +187,7 @@ namespace Phamhilator.Core
 
             #region FP/TP commands.
 
-            new ChatCommand(new Regex(@"^f(p|alse)((?!\s(why|del|clean)).)*$", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^f(p|alse)$", regexOptions), command => new[]
             {
                 FalsePositive()
             }, CommandAccessLevel.PrivilegedUser),
@@ -206,7 +206,7 @@ namespace Phamhilator.Core
                 FalsePositive(),
                 CleanMessage()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"^tp((?!\s(why|clean)).)*$", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^tp$", regexOptions), command => new[]
             {
                 TruePositive(command)
             }, CommandAccessLevel.PrivilegedUser),
@@ -220,7 +220,7 @@ namespace Phamhilator.Core
                 TruePositive(command),
                 CleanMessage()
             }, CommandAccessLevel.PrivilegedUser),
-            new ChatCommand(new Regex(@"^tpa((?!\s(why|clean)).)*$", regexOptions), command => new[]
+            new ChatCommand(new Regex(@"(?i)^tpa$", regexOptions), command => new[]
             {
                 TruePositiveAnnounce(command)
             }, CommandAccessLevel.PrivilegedUser),
@@ -697,7 +697,7 @@ namespace Phamhilator.Core
 
         private static ReplyMessage FalsePositive()
         {
-            if (receivedReport.Analysis.Type == PostType.BadTagUsed) { return null; }
+            if (receivedReport.Analysis.Type == PostType.BadTagUsed || receivedReport.ReceivedFeedback) { return null; }
 
             if (receivedReport.Analysis.Type == PostType.Spam)
             {
@@ -741,12 +741,14 @@ namespace Phamhilator.Core
 
             Config.Core.RegisterFP(receivedReport.Post, receivedReport.Analysis);
 
+            receivedReport.ReceivedFeedback = true;
+
             return room.EditMessage(receivedMessage.ParentID, "---" + room[receivedMessage.ParentID].Content + "---") ? new ReplyMessage("") : new ReplyMessage("`FP acknowledged.`");
         }
 
         private static ReplyMessage TruePositive(string command)
         {
-            if (receivedReport.TPd) { return null; }
+            if (receivedReport.ReceivedFeedback) { return null; }
 
             // Fetch a fresh report message and clean if necessary.
             var m = room[receivedMessage.ParentID].Content;
@@ -769,6 +771,8 @@ namespace Phamhilator.Core
                 Config.Core.RegisterTP(receivedReport.Post, receivedReport.Analysis);
             }
 
+            receivedReport.ReceivedFeedback = true;
+
             // Post back to the command issuer.
             if (room.EditMessage(receivedMessage.ParentID, ReportMessageGenerator.GetTPdReport(freshReport)))
             {
@@ -782,11 +786,12 @@ namespace Phamhilator.Core
 
         private static ReplyMessage TruePositiveAnnounce(string command)
         {
-            if (receivedReport.TPAd) { return null; }
+            if (receivedReport.ReceivedFeedback) { return null; }
 
             // Fetch a fresh report message and clean if necessary.
             var m = room[receivedMessage.ParentID].Content;
             var freshReport = ReportMessageGenerator.GetPostReport(receivedReport.Analysis, receivedReport.Post, isQestionReport.IsMatch(m));
+            freshReport = ReportMessageGenerator.GetSecondaryRoomTpaReport(freshReport, receivedMessage);
 
             if (receivedReport.Analysis.Type == PostType.Offensive || command.ToLowerInvariant().Contains("clean") || receivedReport.IsCleaned)
             {
@@ -817,6 +822,8 @@ namespace Phamhilator.Core
             {
                 Config.Core.RegisterTP(receivedReport.Post, receivedReport.Analysis);
             }
+
+            receivedReport.ReceivedFeedback = true;
 
             // Post back to the command issuer.
             if (room.EditMessage(receivedMessage.ParentID, ReportMessageGenerator.GetPrimaryRoomTpaReport(freshReport)))

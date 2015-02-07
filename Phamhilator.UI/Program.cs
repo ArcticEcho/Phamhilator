@@ -233,7 +233,7 @@ namespace Phamhilator.UI
 
                     if (messages == null || messages.Length == 0) { return; }
 
-                    foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
+                    foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
                     {
                         ChatAction action;
 
@@ -262,7 +262,7 @@ namespace Phamhilator.UI
 
                 if (messages == null || messages.Length == 0) { return; }
 
-                foreach (var m in messages.Where(m => !String.IsNullOrEmpty(m.Content)))
+                foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
                 {
                     ChatAction action;
 
@@ -295,45 +295,43 @@ namespace Phamhilator.UI
                 chatMessage = new Report { Message = message, Post = p, Analysis = info };
             }
 
+            if (info.Type == PostType.Clean)
+            {
+                Stats.PostsCaught++;
+                return;
+            }
+
+            message = Config.PrimaryRoom.PostMessage(messageBody);
+
             switch (info.Type)
             {
                 case PostType.Offensive:
                 {
-                    message = Config.PrimaryRoom.PostMessage("**Offensive**" + messageBody);
                     chatMessage = new Report { Message = message, Post = p, Analysis = info };
-
                     break;
                 }
 
                 case PostType.BadUsername:
                 {
-                    message = Config.PrimaryRoom.PostMessage("**Bad Username**" + messageBody);
                     chatMessage = new Report { Message = message, Post = p, Analysis = info };
-
                     break;
                 }
 
                 case PostType.BadTagUsed:
                 {
-                    message = Config.PrimaryRoom.PostMessage("**Bad Tag(s) Used**" + messageBody);
                     chatMessage = new Report { Message = message, Post = p, Analysis = info };
-
                     break;
                 }
 
                 case PostType.LowQuality:
                 {
-                    message = Config.PrimaryRoom.PostMessage("**Low Quality**" + messageBody);
                     chatMessage = new Report { Message = message, Post = p, Analysis = info };
-
                     break;
                 }
 
                 case PostType.Spam:
                 {
-                    message = Config.PrimaryRoom.PostMessage("**Spam**" + messageBody);
                     chatMessage = new Report { Message = message, Post = p, Analysis = info };
-
                     break;
                 }
             }

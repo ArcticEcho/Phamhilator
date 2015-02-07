@@ -53,12 +53,12 @@ namespace Phamhilator.Core
             {
                 case PostType.BadTagUsed:
                 {
-                    return ": " + FormatTags(info.BadTags) + "| [" + title + "](" + post.Url + postScore + ", by " + author + ", on `" + post.Site + "`.";
+                    return InsertReportType(": " + FormatTags(info.BadTags) + "| [" + title + "](" + post.Url + postScore + ", by " + author + ", on `" + post.Site + "`.", info);
                 }
 
                 default:
                 {
-                    return " **Q**" + accuracy + fullScanFailed + ": [" + title + "](" + post.Url + postScore + ", by " + author + ", on `" + post.Site + "`.";
+                    return InsertReportType(" **Q**" + accuracy + fullScanFailed + ": [" + title + "](" + post.Url + postScore + ", by " + author + ", on `" + post.Site + "`.", info);
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace Phamhilator.Core
             var title = String.IsNullOrEmpty(post.Title) ? "`Unable to get post excerpt.`" : PostFetcher.ChatEscapeString(post.Title, " ");
             var accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
 
-            return (isQuestion ? " **Q**" : " **A**") + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.";
+            return InsertReportType((isQuestion ? " **Q**" : " **A**") + accuracy + ": [" + title + "](" + post.Url + " \"Score: " + post.Score + "\"), by " + author + ", on `" + post.Site + "`.", info);
         }
 
         public static string GetSecondaryRoomTpaReport(string reportContent, Message tpaMessage)
@@ -97,6 +97,39 @@ namespace Phamhilator.Core
         }
 
 
+
+        private static string InsertReportType(string reportMessage, PostAnalysis info)
+        {
+            switch (info.Type)
+            {
+                case PostType.Offensive:
+                {
+                    return "**Offensive**" + reportMessage;
+                }
+
+                case PostType.BadUsername:
+                {
+                    return "**Bad Username**" + reportMessage;
+                }
+
+                case PostType.BadTagUsed:
+                {
+                    return "**Bad Tag(s) Used**" + reportMessage;
+                }
+
+                case PostType.LowQuality:
+                {
+                    return "**Low Quality**" + reportMessage;
+                }
+
+                case PostType.Spam:
+                {
+                    return "**Spam**" + reportMessage;
+                }
+            }
+
+            return reportMessage;
+        }
 
         private static string FormatTags(Dictionary<string, string> tags)
         {
