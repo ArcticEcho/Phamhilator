@@ -28,7 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.Core", "Phamhil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.Tests", "Phamhilator.Tests\Phamhilator.Tests.csproj", "{7ABD2941-8CCB-4500-80A9-60FCA5C4E2E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatExchange.Net", "ChatExchange.Net\ChatExchange.Net\ChatExchange.Net.csproj", "{145AF77F-B475-40E4-8B85-CE3393BCD906}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatExchange.Net", "ChatExchange.Net\ChatExchange.Net.csproj", "{145AF77F-B475-40E4-8B85-CE3393BCD906}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
