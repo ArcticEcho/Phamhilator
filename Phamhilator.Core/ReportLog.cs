@@ -130,14 +130,14 @@ namespace Phamhilator.Core
                             i = 0;
                         }
                     }
+                    
+                    File.WriteAllText(DirectoryTools.GetLogFile(), new JsonWriter(new DataWriterSettings { PrettyPrint = true } ).Write(entries));
                 }
 
                 if (entriesRemoved.Count != 0 && EntriesRemovedEvent != null)
                 {
                     EntriesRemovedEvent(entriesRemoved);
                 }
-
-                File.WriteAllText(DirectoryTools.GetLogFile(), new JsonWriter(new DataWriterSettings { PrettyPrint = true } ).Write(entries));
             }
         }
     }
