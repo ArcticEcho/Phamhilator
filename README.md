@@ -9,12 +9,10 @@ is a .NET-based internet bot written in `C#` which watches over the `/realtime t
 
 -----
 
-<sup>
-*Developer's note:*
-You *may* experience build errors upon cloning (relating to missing references to `CsQuery`, `WebSocket4Net` and/or `ChatExchange.Net`), to fix this issue (if using Visual Studio) open the Package Manager Console<sup>1</sup> and run `Update-Package -reinstall`.
+<sup>*Developer's note:*
+You *may* experience build errors upon cloning (relating to missing references to `CsQuery`, `WebSocket4Net` and/or `ChatExchange.Net`), to fix this issue (if using Visual Studio) open the Package Manager Console<sup>1</sup> and run `Update-Package -reinstall`.</sup>
 
-<sup>1</sup>: Under `View -> Other Windows -> Package Manager Window`.
-</sup>
+<sup><sup>1</sup>: Under `View -> Other Windows -> Package Manager Window`.</sup>
 
 [1]: http://stackexchange.com/
 [2]: http://meta.stackexchange.com/users/271128/pham
