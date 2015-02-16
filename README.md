@@ -7,6 +7,15 @@ is a .NET-based internet bot written in `C#` which watches over the `/realtime t
 
 [Pham][2] and can be found at the [Low Quality Posts HQ][3].
 
+-----
+
+<sup>
+*Developer's note:*
+You *may* experience build errors upon cloning (relating to missing references to `CsQuery`, `WebSocket4Net` and/or `ChatExchange.Net`), to fix this issue (if using Visual Studio) open the Package Manager Console<sup>1</sup> and run `Update-Package -reinstall`.
+
+<sup>1</sup>: Under `View -> Other Windows -> Package Manager Window`.
+</sup>
+
 [1]: http://stackexchange.com/
 [2]: http://meta.stackexchange.com/users/271128/pham
 [3]: http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq
