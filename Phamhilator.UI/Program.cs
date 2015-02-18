@@ -289,12 +289,6 @@ namespace Phamhilator.UI
             Message message = null;
             Report chatMessage = null;
 
-            if (Stats.ReportedUsers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
-            {
-                message = Config.PrimaryRoom.PostMessage("**Spam**" + messageBody);
-                chatMessage = new Report { Message = message, Post = p, Analysis = info };
-            }
-
             if (info.Type == PostType.Clean)
             {
                 Stats.PostsCaught++;
@@ -332,6 +326,15 @@ namespace Phamhilator.UI
                 case PostType.Spam:
                 {
                     chatMessage = new Report { Message = message, Post = p, Analysis = info };
+                    break;
+                }
+
+                default:
+                {
+                    if (Stats.ReportedUsers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
+                    {
+                        chatMessage = new Report { Message = message, Post = p, Analysis = info };
+                    }
                     break;
                 }
             }
