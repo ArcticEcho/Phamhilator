@@ -1,3 +1,2 @@
 language: csharp
 solution: Phamhilator.sln
-script: xbuild /p:Configuration=Release ./ChatExchange.Net/ChatExchange.Net/ChatExchange.Net.csproj;./FlagExchange.Net/FlagExchange.Net/FlagExchange.Net.cspro;./Ghamhilator/Ghamhilator.csproj;./NLP/NLP.csproj;./Phamhilator.Core/Phamhilator.Core.csproj;./Phamhilator.UI/Phamhilator.UI.csproj;./Yamhilator/Yamhilator.csproj          
