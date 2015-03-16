@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsQuery">
-      <HintPath>..\..\..\..\GitHub\ChatExchange.Net\ChatExchange.Net\bin\Debug\CsQuery.dll</HintPath>
+      <HintPath>..\..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +48,9 @@
     <Compile Include="Flagger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
