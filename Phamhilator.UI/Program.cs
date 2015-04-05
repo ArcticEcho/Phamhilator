@@ -19,10 +19,10 @@ namespace Phamhilator.UI
     public class Program
     {
         private static Thread postCatcherThread;
-        private static MessageHandler messageHandler;
         private static Client chatClient;
         private static ActiveRooms roomsToJoin;
         private static RealtimePostSocket postSocket;
+
 
 
         static void Main(string[] args)
@@ -60,7 +60,6 @@ namespace Phamhilator.UI
 
             Console.Write("done.\nLoading config data...");
 
-            messageHandler = new MessageHandler();
             roomsToJoin = new ActiveRooms();
             Config.Core = new Pham();
             Stats.PostedReports = new List<Report>();
@@ -148,8 +147,8 @@ namespace Phamhilator.UI
             Config.PrimaryRoom = chatClient.JoinRoom(roomsToJoin.PrimaryRoomUrl);
             Config.PrimaryRoom.IgnoreOwnEvents = false;
             Config.PrimaryRoom.StripMentionFromMessages = false;
-            Config.PrimaryRoom.NewMessage += HandlePrimaryNewMessage;
-            Config.PrimaryRoom.MessageEdited += (oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage);
+            Config.PrimaryRoom.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(HandlePrimaryNewMessage));
+            Config.PrimaryRoom.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message, Message>((oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage)));
 
             Console.WriteLine("done.\nJoining secondary room(s):");
 
@@ -162,8 +161,8 @@ namespace Phamhilator.UI
                 var secRoom = chatClient.JoinRoom(roomUrl);
                 secRoom.IgnoreOwnEvents = false;
                 secRoom.StripMentionFromMessages = false;
-                secRoom.NewMessage += message => HandleSecondaryNewMessage(secRoom, message);
-                secRoom.MessageEdited += (oldMessage, newMessage) => HandleSecondaryNewMessage(secRoom, newMessage);
+                secRoom.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(message => HandleSecondaryNewMessage(secRoom, message)));
+                secRoom.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message, Message>((oldMessage, newMessage) => HandleSecondaryNewMessage(secRoom, newMessage)));
 
                 Config.SecondaryRooms.Add(secRoom);
 
@@ -210,7 +209,6 @@ namespace Phamhilator.UI
                 };
 
                 postSocket.OnExcption = ex => Config.PrimaryRoom.PostMessage("Error:\n" + ex);
-
                 postSocket.Connect();
             });
 
@@ -221,63 +219,49 @@ namespace Phamhilator.UI
 
         private static void HandlePrimaryNewMessage(Message message)
         {
-            Task.Factory.StartNew(() =>
+            if (message.Content.ToLowerInvariant() == ">>kill-it-with-no-regrets-for-sure")
             {
-                if (message.Content.ToLowerInvariant() == ">>kill-it-with-no-regrets-for-sure")
-                {
-                    KillBot(message);
-                }
-                else
-                {
-                    var messages = CommandProcessor.ExacuteCommand(Config.PrimaryRoom, message);
-
-                    if (messages == null || messages.Length == 0) { return; }
-
-                    foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
-                    {
-                        ChatAction action;
-
-                        if (m.IsReply)
-                        {
-                            action = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostReply(message, m.Content));
-                        }
-                        else
-                        {
-                            action = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostMessage(m.Content));
-                        }
-
-                        messageHandler.QueueItem(action);
-                    }
-                }
-            });
-        }
-
-        private static void HandleSecondaryNewMessage(Room room, Message message)
-        {
-            Task.Factory.StartNew(() =>
+                KillBot(message);
+            }
+            else
             {
-                if (!CommandProcessor.IsValidCommand(room, message)) { return; }
-
-                var messages = CommandProcessor.ExacuteCommand(room, message);
+                var messages = CommandProcessor.ExacuteCommand(Config.PrimaryRoom, message);
 
                 if (messages == null || messages.Length == 0) { return; }
 
                 foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
                 {
-                    ChatAction action;
-
                     if (m.IsReply)
                     {
-                        action = new ChatAction(room, () => room.PostReply(message, m.Content));
+                        Config.PrimaryRoom.PostReply(message, m.Content);
                     }
                     else
                     {
-                        action = new ChatAction(room, () => room.PostMessage(m.Content));
+                        Config.PrimaryRoom.PostMessage(m.Content);
                     }
-
-                    messageHandler.QueueItem(action);
                 }
-            });
+            }
+        }
+
+        private static void HandleSecondaryNewMessage(Room room, Message message)
+        {
+            if (!CommandProcessor.IsValidCommand(room, message)) { return; }
+
+            var messages = CommandProcessor.ExacuteCommand(room, message);
+
+            if (messages == null || messages.Length == 0) { return; }
+
+            foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
+            {
+                if (m.IsReply)
+                {
+                    room.PostReply(message, m.Content);
+                }
+                else
+                {
+                    room.PostMessage(m.Content);
+                }
+            }
         }
 
         private static void CheckSendReport(Post p, string messageBody, PostAnalysis info)
@@ -384,8 +368,7 @@ namespace Phamhilator.UI
             }
             else
             {
-                var m = new ChatAction(Config.PrimaryRoom, () => Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported)..`"));
-                messageHandler.QueueItem(m);
+                Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported)..`");
             }
         }
 
@@ -408,7 +391,7 @@ namespace Phamhilator.UI
                 }
 
                 postSocket.Dispose();
-                messageHandler.Dispose();
+                //messageHandler.Dispose();
 
                 lock (Config.Log)
                 {

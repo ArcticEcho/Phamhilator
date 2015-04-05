@@ -59,7 +59,6 @@
     <Compile Include="BadTagDefinitions.cs" />
     <Compile Include="BannedUsers.cs" />
     <Compile Include="BlackFilter.cs" />
-    <Compile Include="ChatAction.cs" />
     <Compile Include="ChatCommand.cs" />
     <Compile Include="CommandAccessLevel.cs" />
     <Compile Include="CommandParser.cs" />
@@ -79,7 +78,6 @@
     <Compile Include="LogItem.cs" />
     <Compile Include="LogTerm.cs" />
     <Compile Include="MessageGenerator.cs" />
-    <Compile Include="MessageHandler.cs" />
     <Compile Include="Pham.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostAnalyser.cs" />
