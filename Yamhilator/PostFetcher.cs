@@ -12,18 +12,51 @@ using Microsoft.CSharp.RuntimeBinder;
 
 
 
-namespace Phamhilator.Core
+namespace Yamhilator
 {
     public static class PostFetcher
     {
         private static readonly Regex shareLinkIDParser = new Regex(@".*(q|a)/|/\d*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex isShareLink = new Regex(@"(q|a)/\d*/\d*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex escapeChars = new Regex(@"[_*`\[\]]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        
+
         public static readonly Regex HostParser = new Regex(@".*//|/.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         public static readonly Regex PostIDParser = new Regex(@"\D*/|\D.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
 
+
+        public static Question GetQuestion(MessageEventArgs message)
+        {
+            var data = (dynamic)new JsonReader().Read(((dynamic)new JsonReader().Read(message.Data)).data);
+
+            var url = TrimUrl((string)data.url);
+
+            var host = (string)data.siteBaseHostAddress;
+            var title = WebUtility.HtmlDecode((string)data.titleEncodedFancy);
+            var authorName = WebUtility.HtmlDecode((string)data.ownerDisplayName);
+            var tags = new List<string>();
+            var authorLink = "";
+
+            try
+            {
+                authorLink = TrimUrl((string)data.ownerUrl);
+            }
+            catch (RuntimeBinderException) { }
+
+            foreach (var tag in data.tags)
+            {
+                tags.Add((string)tag);
+            }
+
+            var html = new StringDownloader().DownloadString(url);
+            var dom = CQ.Create(html);
+
+            var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
+            var score = int.Parse(dom[".vote-count-post"].Html());
+            var authorRep = PostFetcher.ParseRep(dom[".reputation-score"].Html());
+
+            return new Question(url, host, title, body, score, authorName, authorLink, authorRep, tags, html);
+        }
 
         public static Question GetQuestion(string postUrl)
         {
@@ -72,7 +105,7 @@ namespace Phamhilator.Core
                 else
                 {
                     // Dead account owner.
-                    authorName = WebUtility.HtmlDecode(StripTags(dom[ ".user-details"][0].InnerHTML));
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details"][0].InnerHTML));
                     authorName = authorName.Remove(authorName.Length - 4);
                     authorLink = null;
                     authorRep = 1;
@@ -102,7 +135,7 @@ namespace Phamhilator.Core
 
             var dom = CQ.Create(question.Html, Encoding.UTF8);
             var host = "";
-            var questionID = 0; 
+            var questionID = 0;
             var answers = new List<Answer>();
 
             GetPostInfo(question.Url, out host, out questionID);
@@ -110,7 +143,7 @@ namespace Phamhilator.Core
             foreach (var a in dom[".answer"])
             {
                 var id = a.Attributes["data-answerid"];
-                
+
                 answers.Add(GetAnswer(dom, host, id));
             }
 
@@ -119,7 +152,7 @@ namespace Phamhilator.Core
 
         public static int ParseRep(string rep)
         {
-            if (String.IsNullOrEmpty(rep))  {  return 1; }
+            if (String.IsNullOrEmpty(rep)) { return 1; }
 
             var trimmed = rep.Trim();
 

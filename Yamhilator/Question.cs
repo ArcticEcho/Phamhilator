@@ -5,7 +5,7 @@ using CsQuery;
 
 
 
-namespace Phamhilator.Core
+namespace Yamhilator
 {
     public class Question : Post
     {
@@ -14,7 +14,7 @@ namespace Phamhilator.Core
 
 
 
-        public Question(string url, string site, string body, string title, int score, string authorName, string authorLink, int authorRep, List<string> tags, string html)
+        public Question(string url, string site, string title, string body, int score, string authorName, string authorLink, int authorRep, List<string> tags, string html)
         {
             Url = url;
             Title = title;

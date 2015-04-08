@@ -18,10 +18,9 @@ namespace Phamhilator.UI
 {
     public class Program
     {
-        private static Thread postCatcherThread;
+        private static PostListener postListener;
         private static Client chatClient;
         private static ActiveRooms roomsToJoin;
-        private static RealtimePostSocket postSocket;
 
 
 
@@ -172,47 +171,39 @@ namespace Phamhilator.UI
 
         private static void InitialiseSocket()
         {
-            postCatcherThread = new Thread(() =>
+            postListener = new PostListener();
+
+            postListener.OnActiveQuestion += question =>
             {
-                postSocket = new RealtimePostSocket();
+                if (!Config.IsRunning) { return; }
 
-                postSocket.OnActiveQuestion = question =>
+                lock (Config.Log)
                 {
-                    if (!Config.IsRunning) { return; }
-
-                    lock (Config.Log)
+                    if (Config.Log.Entries.All(p => p.PostUrl != question.Url))
                     {
-                        if (Config.Log.Entries.All(p => p.PostUrl != question.Url))
-                        {
-                            var qResults = PostAnalyser.AnalyseQuestion(question);
-                            var qMessage = ReportMessageGenerator.GetQReport(qResults, question);
+                        var qResults = PostAnalyser.AnalyseQuestion(question);
+                        var qMessage = ReportMessageGenerator.GetQReport(qResults, question);
 
-                            CheckSendReport(question, qMessage, qResults);
-                        }
+                        CheckSendReport(question, qMessage, qResults);
                     }
-                };
+                }
+            };
 
-                postSocket.OnActiveThreadAnswers = answers =>
+            postListener.OnActiveAnswer += answer =>
+            {
+                if (!Config.IsRunning) { return; }
+
+                lock (Config.Log)
                 {
-                    if (!Config.IsRunning) { return; }
-
-                    lock (Config.Log)
+                    if (Config.Log.Entries.All(p => p.PostUrl != answer.Url))
                     {
-                        foreach (var a in answers.Where(ans => Config.Log.Entries.All(p => p.PostUrl != ans.Url)))
-                        {
-                            var aResults = PostAnalyser.AnalyseAnswer(a);
-                            var aMessage = ReportMessageGenerator.GetPostReport(aResults, a);
+                        var aResults = PostAnalyser.AnalyseAnswer(answer);
+                        var aMessage = ReportMessageGenerator.GetPostReport(aResults, answer);
 
-                            CheckSendReport(a, aMessage, aResults);
-                        }
+                        CheckSendReport(answer, aMessage, aResults);
                     }
-                };
-
-                postSocket.OnExcption = ex => Config.PrimaryRoom.PostMessage("Error:\n" + ex);
-                postSocket.Connect();
-            });
-
-            postCatcherThread.Start();
+                }
+            };
         }
 
         # endregion
@@ -390,8 +381,7 @@ namespace Phamhilator.UI
                     Config.PrimaryRoom.PostMessage(roomClosingMessage);
                 }
 
-                postSocket.Dispose();
-                //messageHandler.Dispose();
+                postListener.Dispose();
 
                 lock (Config.Log)
                 {

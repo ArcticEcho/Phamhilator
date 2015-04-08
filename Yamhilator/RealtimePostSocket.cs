@@ -7,7 +7,7 @@ using WebSocketSharp;
 
 
 
-namespace Phamhilator.Core
+namespace Yamhilator
 {
     public class RealtimePostSocket : IDisposable
     {
@@ -17,7 +17,7 @@ namespace Phamhilator.Core
         public Action<Question> OnActiveQuestion { get; set; }
         public Action<List<Answer>> OnActiveThreadAnswers { get; set; }
         public Action<Exception> OnExcption { get; set; }
-        public WebSocketState SocketState 
+        public WebSocketState SocketState
         {
             get
             {

@@ -4,48 +4,101 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ChatExchangeDotNet;
-
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+using JsonFx.Json;
 
 namespace Ghamhilator
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
-            //var credsVerified = false;
-            Client client;
+        private static readonly int[] owners = new[] { 227577, 266094, 229438 }; // Sam, Uni & Fox.
+        private static Client chatClient;
+        private static Room primaryRoom;
+        private static bool shutdown;
 
+
+
+        private static void Main(string[] args)
+        {
+            TryLogin();
+
+            Console.Write("Joining room(s)...");
+
+            var primaryRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+
+            Console.Write("done.\nStarting sockets...");
+
+            var socket = new PostListener();
+            socket.OnActiveAnswer += a => Console.WriteLine(a.Title);
+            socket.OnActiveQuestion += q => Console.WriteLine(q.Title);
+
+            Console.Write("done.\nGhamhilator started (press Q to exit).\n");
+            primaryRoom.PostMessage("`Ghamhilator started.`");
+
+            while (!shutdown)
+            {
+                if (Char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
+                {
+                    shutdown = true;
+                }
+            }
+
+            socket.Dispose();
+
+            primaryRoom.PostMessage("`Ghamhilator stopped.`");
+        }
+
+        private static void TryLogin()
+        {
             Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
 
             while (true)
             {
-                Console.WriteLine("Username: ");
-                var username = Console.ReadLine();
+                Console.Write("Email: ");
+                var email = Console.ReadLine();
 
-                Console.WriteLine("Password: ");
+                Console.Write("Password: ");
                 var password = Console.ReadLine();
 
                 try
                 {
-                    client = new Client(username, password);
-                    Console.WriteLine("Login successful!");
-                    break;
+                    Console.Write("\nAuthenticating...");
+
+                    chatClient = new Client(email, password);
+
+                    Console.WriteLine("login successful!");
+
+                    return;
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Failed to login.\n");
+                    Console.WriteLine("failed to login.");
                 }
             }
+        }
 
-            Console.Write("Joining room(s)...");
+        private static void JoinRooms()
+        {
+            Console.Write("Joining primary room...");
 
-            var primaryRoom = client.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+            primaryRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+            primaryRoom.IgnoreOwnEvents = false;
+            primaryRoom.StripMentionFromMessages = false;
+            primaryRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleCommand));
+        }
 
-            primaryRoom.PostMessage("`Ghamhilator started.`");
+        private static void HandleCommand(Message command)
+        {
+            if (!owners.Contains(command.AuthorID)) { return; }
 
-
-
-
+            if (command.Content.Trim() == "stop")
+            {
+                primaryRoom.PostMessage("Stopping...");
+                shutdown = true;
+            }
         }
     }
 }
+

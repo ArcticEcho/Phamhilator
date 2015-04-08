@@ -27,27 +27,9 @@ namespace Phamhilator.Core
             var fullScanFailed = "";
             var postScore = "";
 
-            if (post.PopulateExtraDataFailed)
-            {
-                if (info.Accuracy == 0)
-                {
-                    fullScanFailed = " (FSF)";
-                }
-                else
-                {
-                    accuracy = " (" + Math.Round(info.Accuracy, 1) + "%";
-                    fullScanFailed = " FSF)";
-                }
-
-                author += ")";
-                postScore = ")";
-            }
-            else
-            {
-                accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
-                author = "[" + (post.AuthorRep >= 20 ? "■" : "□") + "](" + squareDescLink + ") " + author + " \"Rep: " + post.AuthorRep + "\")";
-                postScore = " \"Score: " + post.Score + "\")";
-            }
+            accuracy = " (" + Math.Round(info.Accuracy, 1) + "%)";
+            author = "[" + (post.AuthorRep >= 20 ? "■" : "□") + "](" + squareDescLink + ") " + author + " \"Rep: " + post.AuthorRep + "\")";
+            postScore = " \"Score: " + post.Score + "\")";
 
             switch (info.Type)
             {

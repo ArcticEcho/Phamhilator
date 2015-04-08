@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using CsQuery;
 
 
 
-namespace Phamhilator.Core
+namespace Ghamhilator
 {
     public class Question : Post
     {

@@ -1,4 +1,4 @@
-﻿﻿namespace Phamhilator.Core
+﻿﻿namespace Ghamhilator
  {
      public class Answer : Post
      {
