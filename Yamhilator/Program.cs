@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
 using System.Net;
 using System.Threading;
+using Phamhilator.Core;
 
 
 
@@ -22,6 +23,7 @@ namespace Yamhilator
         private static Socket broadcastSocket;
         private static bool shutdown;
         private static uint dataSent;
+
 
 
         private static void Main(string[] args)

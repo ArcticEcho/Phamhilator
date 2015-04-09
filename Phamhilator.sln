@@ -12,6 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghamhilator", "Ghamhilator\
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yamhilator", "Yamhilator\Yamhilator.csproj", "{53B36231-4989-4180-9F0A-DB1748AFC61E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9588D7B-6A4B-4832-9E67-CABE5673E407} = {E9588D7B-6A4B-4832-9E67-CABE5673E407}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.UI", "Phamhilator.UI\Phamhilator.UI.csproj", "{6217E96F-4C87-4961-8EC2-EBDAD05122DD}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -22,7 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagExchange.Net", "FlagExc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.Core", "Phamhilator.Core\Phamhilator.Core.csproj", "{E9588D7B-6A4B-4832-9E67-CABE5673E407}"
 	ProjectSection(ProjectDependencies) = postProject
-		{53B36231-4989-4180-9F0A-DB1748AFC61E} = {53B36231-4989-4180-9F0A-DB1748AFC61E}
 		{8BAC4155-8AEE-4282-B64B-823397C75438} = {8BAC4155-8AEE-4282-B64B-823397C75438}
 	EndProjectSection
 EndProject

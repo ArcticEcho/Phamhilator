@@ -25,6 +25,39 @@ namespace Phamhilator.Core
 
 
 
+        public static Question GetQuestion(MessageEventArgs message)
+        {
+            var data = (dynamic)new JsonReader().Read(((dynamic)new JsonReader().Read(message.Data)).data);
+
+            var url = TrimUrl((string)data.url);
+
+            var host = (string)data.siteBaseHostAddress;
+            var title = WebUtility.HtmlDecode((string)data.titleEncodedFancy);
+            var authorName = WebUtility.HtmlDecode((string)data.ownerDisplayName);
+            var tags = new List<string>();
+            var authorLink = "";
+
+            try
+            {
+                authorLink = TrimUrl((string)data.ownerUrl);
+            }
+            catch (RuntimeBinderException) { }
+
+            foreach (var tag in data.tags)
+            {
+                tags.Add((string)tag);
+            }
+
+            var html = new StringDownloader().DownloadString(url);
+            var dom = CQ.Create(html);
+
+            var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
+            var score = int.Parse(dom[".vote-count-post"].Html());
+            var authorRep = PostFetcher.ParseRep(dom[".reputation-score"].Html());
+
+            return new Question(url, host, title, body, score, authorName, authorLink, authorRep, tags, html);
+        }
+
         public static Question GetQuestion(string postUrl)
         {
             string host;
@@ -79,7 +112,7 @@ namespace Phamhilator.Core
                 }
             }
 
-            return new Question(postUrl, title, body, host, score, authorName, authorLink, authorRep, tags, html);
+            return new Question(postUrl, host, title, body, score, authorName, authorLink, authorRep, tags, html);
         }
 
         public static Answer GetAnswer(string postUrl)
