@@ -9,6 +9,8 @@ using System.Net.Sockets;
 using System.Threading;
 using JsonFx.Json;
 using Phamhilator.Core;
+using GibberishClassification;
+using System.Text.RegularExpressions;
 
 
 
@@ -30,7 +32,7 @@ namespace Ghamhilator
 
             Console.Write("Joining room(s)...");
 
-            var primaryRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+            JoinRooms();
 
             Console.Write("done.\nStarting sockets...");
 
@@ -108,13 +110,62 @@ namespace Ghamhilator
 
             postListener.OnActiveQuestion += question =>
             {
+                var safeTitle = PostFetcher.ChatEscapeString(question.Title, " ");
+                var cleanTitle = GetCleanText(question.Title);
 
+                if (cleanTitle.Length < 5) { return; }
+
+                var titleRes = GibberishClassifier.Classify(cleanTitle);
+
+                if (titleRes > 75)
+                {
+                    primaryRoom.PostMessage("**Low Quality Q** (" + Math.Round(titleRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
+                    return;
+                }
+
+                var plainBody = GetCleanText(question.Body);
+
+                if (plainBody.Length < 5) { return; }
+
+                var bodyRes = GibberishClassifier.Classify(plainBody);
+
+                if (bodyRes > 75)
+                {
+                    primaryRoom.PostMessage("**Low Quality Q** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
+                }
             };
 
             postListener.OnActiveAnswer += answer =>
             {
+                var plainBody = GetCleanText(answer.Body);
 
+                if (plainBody.Length < 5) { return; }
+
+                var safeTitle = PostFetcher.ChatEscapeString(answer.Title, " ");
+                var bodyRes = GibberishClassifier.Classify(plainBody);
+
+                if (bodyRes > 75)
+                {
+                    primaryRoom.PostMessage("**Low Quality A** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + answer.Url + ").");
+                }
             };
+        }
+
+        private static string GetCleanText(string bodyHtml)
+        {
+            // Remove code.
+            var body = Regex.Replace(bodyHtml, @"(?is)(<pre>)?<code>.*?</code>(</pre>)?", "");
+
+            // Remove big chunks of MathJax.
+            body = Regex.Replace(body, @"(?s)\$\$.*?\$\$", "");
+
+            // Remove all weird unicode chars.
+            body = Regex.Replace(body, @"[^\u0000-\u007F]", "");
+
+            // Remove all HTML tags.
+            body = Regex.Replace(body, @"(?is)<.*?>", "");
+
+            return body;
         }
     }
 }

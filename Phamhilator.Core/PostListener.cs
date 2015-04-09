@@ -11,7 +11,8 @@ namespace Phamhilator.Core
 {
     public class PostListener : IDisposable
     {
-        private Socket listener;
+        //private Socket listener;
+        private UdpClient listener;
         private EndPoint endPoint = new IPEndPoint(new IPAddress(new byte[] { 0, 0, 0, 0 }), 60000);
         private Thread listenerThread;
         private uint dataReceived;
@@ -27,8 +28,36 @@ namespace Phamhilator.Core
 
         public PostListener()
         {
-            listener = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            listener.Bind(endPoint);
+            //listener = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            //listener.Bind(endPoint);
+            //UdpClient client = new UdpClient();
+
+            //client.ExclusiveAddressUse = false;
+            IPEndPoint localEp = new IPEndPoint(IPAddress.Any, 60000);
+
+            //client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            //client.ExclusiveAddressUse = false;
+
+            //client.Client.Bind(localEp);
+
+            IPAddress multicastaddress = IPAddress.Parse("239.0.0.222");
+            //client.JoinMulticastGroup(multicastaddress);
+
+            //Console.WriteLine("Listening this will never quit so you will need to ctrl-c it");
+
+            //while (true)
+            //{
+            //    Byte[] data = client.Receive(ref localEp);
+            //    string strData = Encoding.Unicode.GetString(data);
+            //    Console.WriteLine(strData);
+            //}
+
+
+            listener = new UdpClient();
+            listener.ExclusiveAddressUse = false;
+            listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            listener.Client.Bind(localEp);
+            listener.JoinMulticastGroup(multicastaddress);
 
             listenerThread = new Thread(Listen) { IsBackground = true };
             listenerThread.Start();
@@ -63,12 +92,13 @@ namespace Phamhilator.Core
         {
             while (!dispose)
             {
-                var bytes = new byte[50000];
-                EndPoint ep = new IPEndPoint(0, 0);
+                var bytes = new byte[0];
+                var ep = new IPEndPoint(0, 0);
 
                 try
                 {
-                    dataReceived += (uint)listener.ReceiveFrom(bytes, ref ep);
+                    bytes = listener.Receive(ref ep);
+                    //dataReceived += (uint)listener.ReceiveFrom(bytes, ref ep);
                 }
                 catch (Exception) { }
 

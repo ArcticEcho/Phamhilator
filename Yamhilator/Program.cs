@@ -20,9 +20,12 @@ namespace Yamhilator
         private static Client chatClient;
         private static Room primaryRoom;
         private static RealtimePostSocket postSocket;
-        private static Socket broadcastSocket;
+        //private static Socket broadcastSocket;
+        private static UdpClient broadcastSocket;
         private static bool shutdown;
         private static uint dataSent;
+        private static IPAddress multicastaddress = IPAddress.Parse("239.0.0.222");
+        private static IPEndPoint remoteep = new IPEndPoint(multicastaddress, 60000);
 
 
 
@@ -39,8 +42,12 @@ namespace Yamhilator
             postSocket = new RealtimePostSocket();
             postSocket.OnActiveQuestion = new Action<Question>(BroadcastQuestion);
             postSocket.OnActiveThreadAnswers = new Action<List<Answer>>(BroadcastAnswers);
-            broadcastSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            broadcastSocket.Connect(new IPAddress(new byte[] { 255, 255, 255, 255 }), 60000);
+            //broadcastSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            //broadcastSocket.Connect(new IPAddress(new byte[] { 255, 255, 255, 255 }), 60000);
+            
+            broadcastSocket = new UdpClient();
+            broadcastSocket.JoinMulticastGroup(multicastaddress);
+
             postSocket.Connect();
 
             Console.Write("done.\nYamhilator started (press Q to exit).\n");
@@ -56,7 +63,7 @@ namespace Yamhilator
 
             postSocket.Close();
             postSocket.Dispose();
-            broadcastSocket.Shutdown(SocketShutdown.Both);
+            //broadcastSocket.Shutdown(SocketShutdown.Both);
             broadcastSocket.Close();
             primaryRoom.PostMessage("`Yamhilator stopped.`");
         }
@@ -115,7 +122,7 @@ namespace Yamhilator
         {
             var data = "<Q>" + new JsonFx.Json.JsonWriter().Write(q);
             var bytes = Encoding.UTF8.GetBytes(data);
-            var bytesSent = broadcastSocket.Send(bytes);
+            var bytesSent = broadcastSocket.Send(bytes, bytes.Length, remoteep);
             Console.WriteLine(bytesSent + " bytes sent.");
             dataSent += (uint)bytesSent;
         }
@@ -126,7 +133,7 @@ namespace Yamhilator
             {
                 var data = "<A>" + new JsonFx.Json.JsonWriter().Write(a);
                 var bytes = Encoding.UTF8.GetBytes(data);
-                var bytesSent = broadcastSocket.Send(bytes);
+                var bytesSent = broadcastSocket.Send(bytes, bytes.Length, remoteep);
                 Console.WriteLine(bytesSent + " bytes sent.");
                 dataSent += (uint)bytesSent;
             }

@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.Tests", "Phamhi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatExchange.Net", "..\ChatExchange.Net\ChatExchange.Net\ChatExchange.Net.csproj", "{145AF77F-B475-40E4-8B85-CE3393BCD906}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GibberishClassification", "GibberishClassifier.NET\GibberishClassification\GibberishClassification.csproj", "{09569529-5ED5-41F7-8B58-F61AF8AA738B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{145AF77F-B475-40E4-8B85-CE3393BCD906}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{145AF77F-B475-40E4-8B85-CE3393BCD906}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{145AF77F-B475-40E4-8B85-CE3393BCD906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

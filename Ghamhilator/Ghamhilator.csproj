@@ -56,6 +56,10 @@
       <Project>{145af77f-b475-40e4-8b85-ce3393bcd906}</Project>
       <Name>ChatExchange.Net</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GibberishClassifier.NET\GibberishClassification\GibberishClassification.csproj">
+      <Project>{09569529-5ed5-41f7-8b58-f61af8aa738b}</Project>
+      <Name>GibberishClassification</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Phamhilator.Core\Phamhilator.Core.csproj">
       <Project>{e9588d7b-6a4b-4832-9e67-cabe5673e407}</Project>
       <Name>Phamhilator.Core</Name>
