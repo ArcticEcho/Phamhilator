@@ -8,6 +8,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using JsonFx.Json;
+using Phamhilator.Core;
+
+
 
 namespace Ghamhilator
 {
@@ -16,6 +19,7 @@ namespace Ghamhilator
         private static readonly int[] owners = new[] { 227577, 266094, 229438 }; // Sam, Uni & Fox.
         private static Client chatClient;
         private static Room primaryRoom;
+        private static PostListener postListener;
         private static bool shutdown;
 
 
@@ -30,9 +34,7 @@ namespace Ghamhilator
 
             Console.Write("done.\nStarting sockets...");
 
-            var socket = new PostListener();
-            socket.OnActiveAnswer += a => Console.WriteLine(a.Title);
-            socket.OnActiveQuestion += q => Console.WriteLine(q.Title);
+            InitialiseSocket();
 
             Console.Write("done.\nGhamhilator started (press Q to exit).\n");
             primaryRoom.PostMessage("`Ghamhilator started.`");
@@ -45,7 +47,7 @@ namespace Ghamhilator
                 }
             }
 
-            socket.Dispose();
+            postListener.Dispose();
 
             primaryRoom.PostMessage("`Ghamhilator stopped.`");
         }
@@ -99,6 +101,20 @@ namespace Ghamhilator
                 shutdown = true;
             }
         }
+
+        private static void InitialiseSocket()
+        {
+            postListener = new PostListener();
+
+            postListener.OnActiveQuestion += question =>
+            {
+
+            };
+
+            postListener.OnActiveAnswer += answer =>
+            {
+
+            };
+        }
     }
 }
-
