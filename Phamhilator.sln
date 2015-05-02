@@ -30,8 +30,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.Core", "Phamhil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.Tests", "Phamhilator.Tests\Phamhilator.Tests.csproj", "{7ABD2941-8CCB-4500-80A9-60FCA5C4E2E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatExchange.Net", "..\ChatExchange.Net\ChatExchange.Net\ChatExchange.Net.csproj", "{145AF77F-B475-40E4-8B85-CE3393BCD906}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GibberishClassification", "GibberishClassifier.NET\GibberishClassification\GibberishClassification.csproj", "{09569529-5ED5-41F7-8B58-F61AF8AA738B}"
 EndProject
 Global
@@ -68,10 +66,6 @@ Global
 		{7ABD2941-8CCB-4500-80A9-60FCA5C4E2E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ABD2941-8CCB-4500-80A9-60FCA5C4E2E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ABD2941-8CCB-4500-80A9-60FCA5C4E2E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{145AF77F-B475-40E4-8B85-CE3393BCD906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{145AF77F-B475-40E4-8B85-CE3393BCD906}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{145AF77F-B475-40E4-8B85-CE3393BCD906}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{145AF77F-B475-40E4-8B85-CE3393BCD906}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Release|Any CPU.ActiveCfg = Release|Any CPU

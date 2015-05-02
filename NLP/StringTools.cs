@@ -43,7 +43,7 @@ namespace NLP
                     }
                     else
                     {
-                        sentences.Add((split[i] + split[i + 1]).Trim());
+                        sentences.Add((split[i] + (i + 1 == split.Length ? "" : split[i + 1])).Trim());
                     }
                 }
             }
