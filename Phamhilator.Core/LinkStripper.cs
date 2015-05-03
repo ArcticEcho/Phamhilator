@@ -25,9 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     static class LinkStripper
     {

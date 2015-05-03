@@ -22,9 +22,7 @@
 
 using ChatExchangeDotNet;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class Report
     {

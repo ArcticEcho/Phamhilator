@@ -20,7 +20,7 @@
 
 
 
-namespace Yam.Core
+namespace Phamhilator.Yam.Core
 {
     public abstract class Post
     {

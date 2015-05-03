@@ -20,7 +20,7 @@
 
 
 
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class LogTerm : JsonTerm
     {

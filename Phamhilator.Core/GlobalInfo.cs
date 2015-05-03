@@ -27,9 +27,7 @@
 //using System.IO;
 //using ChatExchangeDotNet;
 
-
-
-//namespace Phamhilator.Core
+//namespace Phamhilator.Pham.Core
 //{
 //    public static partial class GlobalInfo
 //    {

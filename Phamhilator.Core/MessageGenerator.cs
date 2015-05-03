@@ -26,9 +26,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class ReportMessageGenerator
     {

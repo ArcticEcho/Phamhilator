@@ -22,9 +22,7 @@
 
 using System;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class ReportedUser
     {

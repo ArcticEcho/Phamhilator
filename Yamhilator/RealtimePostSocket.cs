@@ -26,9 +26,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebSocketSharp;
-using Phamhilator.Core;
+using Phamhilator.Yam.Core;
 
-namespace Yamhilator
+namespace Phamhilator.Yam.UI
 {
     public class RealtimePostSocket : IDisposable
     {

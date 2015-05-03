@@ -36,9 +36,7 @@ using NLP.Properties;
 using File = System.IO.File;
 using Console = System.Console;
 
-
-
-namespace NLP
+namespace Phamhilator.NLP
 {
     public class PoSTagger
     {

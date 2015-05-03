@@ -7,7 +7,7 @@
     <ProjectGuid>{53B36231-4989-4180-9F0A-DB1748AFC61E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yamhilator</RootNamespace>
+    <RootNamespace>Phamhilator.Yam.UI</RootNamespace>
     <AssemblyName>Yamhilator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -59,7 +59,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LinkUnshortifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealtimePostSocket.cs" />
@@ -69,9 +68,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phamhilator.Core\Pham.Core.csproj">
-      <Project>{e9588d7b-6a4b-4832-9e67-cabe5673e407}</Project>
-      <Name>Pham.Core</Name>
+    <ProjectReference Include="..\Yam.Core\Yam.Core.csproj">
+      <Project>{5823ff27-6194-43d8-a16e-5943c2e34f09}</Project>
+      <Name>Yam.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

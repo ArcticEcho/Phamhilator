@@ -26,9 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-namespace Ghamhilator
+namespace Phamhilator.Gham
 {
     public class ClassificationRating
     {

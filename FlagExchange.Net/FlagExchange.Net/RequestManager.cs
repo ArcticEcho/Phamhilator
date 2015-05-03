@@ -25,9 +25,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-
-
-namespace FlagExchangeDotNet
+namespace Phamhilator.FlagExchangeDotNet
 {
     public static class RequestManager
     {
@@ -124,27 +122,18 @@ namespace FlagExchangeDotNet
         {
             if (req == null) { throw new ArgumentNullException("req"); }
 
-            HttpWebResponse res = null;
+            var res = (HttpWebResponse)req.GetResponse();
 
-            try
+            foreach (var cookie in res.Cookies)
             {
-                res = (HttpWebResponse)req.GetResponse();
-
-                foreach (var cookie in res.Cookies)
+                if (!Extensions.GetCookies(GlobalCookies).Contains((Cookie)cookie))
                 {
-                    if (!Extensions.GetCookies(GlobalCookies).Contains((Cookie)cookie))
-                    {
-                        GlobalCookies.Add((Cookie)cookie);
-                    }
+                    GlobalCookies.Add((Cookie)cookie);
                 }
-
-                GlobalCookies.Add(res.Cookies);
-            }
-            catch (WebException)
-            {
-
             }
 
+            GlobalCookies.Add(res.Cookies);
+            
             return res;
         }
     }

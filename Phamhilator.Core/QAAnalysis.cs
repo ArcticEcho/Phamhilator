@@ -22,9 +22,7 @@
 
 using System.Collections.Generic;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class QAAnalysis
     {

@@ -34,9 +34,7 @@ using JsonFx.Json;
 using JsonFx.Serialization;
 using Microsoft.VisualBasic.Devices;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class CommandProcessor
     {

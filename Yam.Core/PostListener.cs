@@ -30,7 +30,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using JsonFx.Json;
 
-namespace Yam.Core
+namespace Phamhilator.Yam.Core
 {
     public class MessageListener : IDisposable
     {

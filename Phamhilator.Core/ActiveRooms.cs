@@ -27,9 +27,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class ActiveRooms
     {

@@ -25,9 +25,7 @@ using System.Collections.Generic;
 using System.IO;
 using JsonFx.Json;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class TermReader
     {

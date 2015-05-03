@@ -26,9 +26,7 @@ using System;
 using JsonFx.Json;
 using JsonFx.Serialization;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class Term
     {

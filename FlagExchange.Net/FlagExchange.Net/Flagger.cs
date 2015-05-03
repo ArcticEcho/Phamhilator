@@ -26,9 +26,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using CsQuery;
 
-
-
-namespace FlagExchangeDotNet
+namespace Phamhilator.FlagExchangeDotNet
 {
     public class Flagger
     {
@@ -69,7 +67,6 @@ namespace FlagExchangeDotNet
             }
 
             var fkey = CQ.Create(RequestManager.GetResponseContent(RequestManager.SendGETRequest("https://" + host + "/users/signup"))).GetFkey();
-
             var res = RequestManager.SendPOSTRequest("http://" + host + "/flags/posts/" + postID + "/add/PostSpam", "fkey=" + fkey + "&otherText=");
 
             return FlagWasSucessful(res);
@@ -89,7 +86,6 @@ namespace FlagExchangeDotNet
             }
 
             var fkey = CQ.Create(RequestManager.GetResponseContent(RequestManager.SendGETRequest("https://" + host + "/users/signup"))).GetFkey();
-
             var res = RequestManager.SendPOSTRequest("http://" + host + "/flags/posts/" + postID + "/add/PostOffensive", "fkey=" + fkey + "&otherText=");
 
             return FlagWasSucessful(res);
@@ -100,9 +96,7 @@ namespace FlagExchangeDotNet
         private bool FlagWasSucessful(HttpWebResponse res)
         {
             if (res == null) { return false; }
-
             var resContent = RequestManager.GetResponseContent(res);
-
             return resContent.StartsWith("{\"Success\":true");
         }
 

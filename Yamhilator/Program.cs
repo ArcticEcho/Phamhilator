@@ -30,11 +30,9 @@ using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
 using System.Net;
 using System.Threading;
-using Phamhilator.Core;
+using Phamhilator.Yam.Core;
 
-
-
-namespace Yamhilator
+namespace Phamhilator.Yam.UI
 {
     public class Program
     {
@@ -62,8 +60,8 @@ namespace Yamhilator
             Console.Write("done.\nStarting sockets...");
 
             postSocket = new RealtimePostSocket();
-            postSocket.OnActiveQuestion = new Action<Question>(BroadcastQuestion);
-            postSocket.OnActiveThreadAnswers = new Action<List<Answer>>(BroadcastAnswers);
+            postSocket.OnActiveQuestion += BroadcastQuestion;
+            postSocket.OnActiveThreadAnswers += BroadcastAnswers;
             //broadcastSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             //broadcastSocket.Connect(new IPAddress(new byte[] { 255, 255, 255, 255 }), 60000);
             

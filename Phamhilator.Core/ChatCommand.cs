@@ -22,9 +22,7 @@
 
 using System.Text.RegularExpressions;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     class ChatCommand
     {

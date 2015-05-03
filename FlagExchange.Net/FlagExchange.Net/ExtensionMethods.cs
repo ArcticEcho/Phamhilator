@@ -28,16 +28,13 @@ using System.Reflection;
 using System.Linq;
 using CsQuery;
 
-
-
-namespace FlagExchangeDotNet
+namespace Phamhilator.FlagExchangeDotNet
 {
     public static class Extensions
     {
         public static List<Cookie> GetCookies(this CookieContainer container)
         {
             var cookies = new List<Cookie>();
-
             var table = (Hashtable)container.GetType().InvokeMember("m_domainTable", BindingFlags.NonPublic | BindingFlags.GetField | BindingFlags.Instance, null, container, new object[] { });
 
             foreach (var key in table.Keys)
@@ -69,16 +66,13 @@ namespace FlagExchangeDotNet
         public static string GetFkey(this CQ input)
         {
             var fkeyE = input["input"].First(e => e.Attributes["name"] != null && e.Attributes["name"] == "fkey");
-
             return fkeyE == null ? "" : fkeyE.Attributes["value"];
         }
 
         public static string GetS(this CQ input)
         {
             var sE = input["input"].First(e => e.Attributes["name"] != null && e.Attributes["name"] == "s");
-
             return sE == null ? "" : sE.Attributes["value"];
         }
     }
-
 }

@@ -29,9 +29,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using JsonFx.Json;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class TermCreater
     {

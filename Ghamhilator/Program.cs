@@ -22,30 +22,28 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChatExchangeDotNet;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
-using JsonFx.Json;
-using Phamhilator.Core;
-using GibberishClassification;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+using ChatExchangeDotNet;
+using GibberishClassification;
+using JsonFx.Json;
 using NLP;
-using System.IO;
+using Yam.Core;
 
-
-
-namespace Ghamhilator
+namespace Phamhilator.Gham
 {
     public class Program
     {
         private static readonly int[] owners = new[] { 227577, 266094, 229438 }; // Sam, Uni & Fox.
         private static Client chatClient;
         private static Room primaryRoom;
-        private static PostListener postListener;
+        private static MessageListener messageListener;
         private static bool shutdown;
         private static PoSTagger tagger;
         private static HashSet<PoSTModel> models;
@@ -111,9 +109,9 @@ namespace Ghamhilator
             Console.Write("\nLoading model(s)...");
 
             models = new HashSet<PoSTModel>();
-            foreach (var m in Directory.EnumerateFiles(PoSTModelFDBManager.modelDir))
+            foreach (var m in Directory.EnumerateFiles(PoSTModelFFDBManager.modelDir))
             {
-                models.Add(new PoSTModelFDBManager(Path.GetFileName(m)).LoadModel());
+                models.Add(new PoSTModelFFDBManager(Path.GetFileName(m)).LoadModel());
             }
              
             nlpProcessor = new Thread(NLPProcessor);
@@ -131,7 +129,7 @@ namespace Ghamhilator
                 }
             }
 
-            postListener.Dispose();
+            messageListener.Dispose();
 
             primaryRoom.PostMessage("`Ghamhilator stopped.`");
         }
@@ -188,14 +186,14 @@ namespace Ghamhilator
 
         private static void InitialiseSocket()
         {
-            postListener = new PostListener();
-            postListener.OnActiveQuestion += CheckQuestionNLP;//CheckQuestionForGibberish;
-            postListener.OnActiveAnswer += CheckAnswerNLP;//CheckAnswerForGibberish;
+            messageListener = new MessageListener();
+            messageListener.OnActiveQuestion += CheckQuestionNLP;//CheckQuestionForGibberish;
+            messageListener.OnActiveAnswer += CheckAnswerNLP;//CheckAnswerForGibberish;
         }
 
         private static void CheckQuestionNLP(Question q)
         {
-            if (nlpQuestionQueue.Count < 3 && q.Score < 2)
+            if (nlpQuestionQueue.Count < 3 && q.Score < 2 && q.AuthorRep < 1000)
             {
                 nlpQuestionQueue.Add(q);
             }
@@ -203,7 +201,7 @@ namespace Ghamhilator
 
         private static void CheckAnswerNLP(Answer a)
         {
-            if (nlpAnswerQueue.Count < 3 && a.Score < 2)
+            if (nlpAnswerQueue.Count < 3 && a.Score < 2 && a.AuthorRep < 1000)
             {
                 nlpAnswerQueue.Add(a);
             }

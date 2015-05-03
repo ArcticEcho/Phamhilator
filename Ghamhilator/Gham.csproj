@@ -7,7 +7,7 @@
     <ProjectGuid>{993E523C-48D4-44D7-AFD2-272F35564BCA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ghamhilator</RootNamespace>
+    <RootNamespace>Phamhilator.Gham</RootNamespace>
     <AssemblyName>Ghamhilator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -63,7 +63,7 @@
     <Compile Include="KeyWord.cs" />
     <Compile Include="PoSTag.cs" />
     <Compile Include="PoSTags.cs" />
-    <Compile Include="PoSTModelFDBManager.cs" />
+    <Compile Include="PoSTModelFFDBManager.cs" />
     <Compile Include="PoSTModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,9 +81,9 @@
       <Project>{ff9060ca-0692-4170-a98b-c01bb03e726a}</Project>
       <Name>NLP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phamhilator.Core\Pham.Core.csproj">
-      <Project>{e9588d7b-6a4b-4832-9e67-cabe5673e407}</Project>
-      <Name>Pham.Core</Name>
+    <ProjectReference Include="..\Yam.Core\Yam.Core.csproj">
+      <Project>{5823ff27-6194-43d8-a16e-5943c2e34f09}</Project>
+      <Name>Yam.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

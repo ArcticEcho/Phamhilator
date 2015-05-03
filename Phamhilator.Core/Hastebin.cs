@@ -30,9 +30,7 @@ using System.Threading.Tasks;
 using JsonFx.Json;
 using JsonFx.Serialization;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class Hastebin
     {

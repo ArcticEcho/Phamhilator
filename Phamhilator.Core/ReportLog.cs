@@ -29,9 +29,7 @@ using System.Threading;
 using JsonFx.Json;
 using JsonFx.Serialization;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class ReportLog : IDisposable
     {

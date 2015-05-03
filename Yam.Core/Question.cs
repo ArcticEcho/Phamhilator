@@ -24,9 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 
-
-
-namespace Yam.Core
+namespace Phamhilator.Yam.Core
 {
     public class Question : Post
     {

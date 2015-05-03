@@ -27,9 +27,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using JsonFx.Json;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class WhiteFilter
     {

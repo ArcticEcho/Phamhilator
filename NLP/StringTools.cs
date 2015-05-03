@@ -27,9 +27,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-
-
-namespace NLP
+namespace Phamhilator.NLP
 {
     public static class StringTools
     {

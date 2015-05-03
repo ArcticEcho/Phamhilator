@@ -7,7 +7,7 @@
     <ProjectGuid>{E9588D7B-6A4B-4832-9E67-CABE5673E407}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Phamhilator.Core</RootNamespace>
+    <RootNamespace>Phamhilator.Pham.Core</RootNamespace>
     <AssemblyName>Phamhilator.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -60,11 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveRooms.cs" />
-    <Compile Include="Answer.cs" />
     <Compile Include="AnswerAnalyser.cs" />
     <Compile Include="AnswerAnalysis.cs" />
     <Compile Include="BadTagDefinitions.cs" />
-    <Compile Include="BannedUsers.cs" />
     <Compile Include="BlackFilter.cs" />
     <Compile Include="ChatCommand.cs" />
     <Compile Include="CommandAccessLevel.cs" />
@@ -86,11 +84,8 @@
     <Compile Include="LogTerm.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="Pham.cs" />
-    <Compile Include="Post.cs" />
     <Compile Include="PostAnalyser.cs" />
     <Compile Include="PostAnalysis.cs" />
-    <Compile Include="PostFetcher.cs" />
-    <Compile Include="PostListener.cs" />
     <Compile Include="PostType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -99,7 +94,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="QAAnalysis.cs" />
-    <Compile Include="Question.cs" />
     <Compile Include="QuestionAnalyser.cs" />
     <Compile Include="QuestionAnalysis.cs" />
     <Compile Include="ReplyMessage.cs" />
@@ -108,12 +102,9 @@
     <Compile Include="ReportLog.cs" />
     <Compile Include="ReportedUser.cs" />
     <Compile Include="Stats.cs" />
-    <Compile Include="StringDownloader.cs" />
     <Compile Include="Term.cs" />
     <Compile Include="TermCreater.cs" />
     <Compile Include="TermReader.cs" />
-    <Compile Include="LinkUnshortifier.cs" />
-    <Compile Include="UserAccess.cs" />
     <Compile Include="WhiteFilter.cs" />
   </ItemGroup>
   <ItemGroup>

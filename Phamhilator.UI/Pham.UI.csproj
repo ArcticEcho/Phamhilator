@@ -7,7 +7,7 @@
     <ProjectGuid>{6217E96F-4C87-4961-8EC2-EBDAD05122DD}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Phamhilator.UI</RootNamespace>
+    <RootNamespace>Phamhilator.Pham.UI</RootNamespace>
     <AssemblyName>Phamhilator.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -66,6 +66,10 @@
     <ProjectReference Include="..\Phamhilator.Core\Pham.Core.csproj">
       <Project>{e9588d7b-6a4b-4832-9e67-cabe5673e407}</Project>
       <Name>Pham.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yam.Core\Yam.Core.csproj">
+      <Project>{5823ff27-6194-43d8-a16e-5943c2e34f09}</Project>
+      <Name>Yam.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

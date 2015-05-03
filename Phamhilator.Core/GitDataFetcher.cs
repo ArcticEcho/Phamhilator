@@ -29,7 +29,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class GitDataFetcher
     {

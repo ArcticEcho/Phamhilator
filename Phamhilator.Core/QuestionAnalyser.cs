@@ -23,9 +23,7 @@
 //using System.Collections.Generic;
 //using System.Linq;
 
-
-
-//namespace Phamhilator.Core
+//namespace Phamhilator.Pham.Core
 //{
 //    public static class QuestionAnalyser
 //    {

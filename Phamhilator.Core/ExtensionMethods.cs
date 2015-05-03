@@ -28,9 +28,7 @@ using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
 using JsonFx.Json;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class ExtensionMethods
     {

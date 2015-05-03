@@ -29,9 +29,7 @@ using System.IO;
 using System.Globalization;
 using ChatExchangeDotNet;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class Config
     {

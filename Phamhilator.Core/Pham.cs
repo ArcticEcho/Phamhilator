@@ -27,9 +27,7 @@ using System.Text;
 using System.Threading;
 using CsQuery;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public class Pham
     {

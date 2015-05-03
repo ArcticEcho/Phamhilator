@@ -31,16 +31,15 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Phamhilator.Core;
+using Yam.Core;
+using Phamhilator.Pham.Core;
 using ChatExchangeDotNet;
 
-
-
-namespace Phamhilator.UI
+namespace Phamhilator.Pham.UI
 {
     public class Program
     {
-        private static PostListener postListener;
+        private static MessageListener messageListener;
         private static Client chatClient;
         private static ActiveRooms roomsToJoin;
 
@@ -82,10 +81,10 @@ namespace Phamhilator.UI
             Console.Write("done.\nLoading config data...");
 
             roomsToJoin = new ActiveRooms();
-            Config.Core = new Pham();
+            Config.Core = new Pham.Core.Pham();
             Stats.PostedReports = new List<Report>();
-            Config.UserAccess = new UserAccess("meta.stackexchange.com", 773);
-            Config.BannedUsers = new BannedUsers(Config.UserAccess);
+            //Config.UserAccess = new UserAccess("meta.stackexchange.com", 773);
+            //Config.BannedUsers = new BannedUsers(Config.UserAccess);
 
             Console.Write("done.\nLoading bad tag definitions...");
 
@@ -193,9 +192,9 @@ namespace Phamhilator.UI
 
         private static void InitialiseSocket()
         {
-            postListener = new PostListener();
+            messageListener = new MessageListener();
 
-            postListener.OnActiveQuestion += question =>
+            messageListener.OnActiveQuestion += question =>
             {
                 if (!Config.IsRunning) { return; }
 
@@ -211,7 +210,7 @@ namespace Phamhilator.UI
                 }
             };
 
-            postListener.OnActiveAnswer += answer =>
+            messageListener.OnActiveAnswer += answer =>
             {
                 if (!Config.IsRunning) { return; }
 
@@ -403,7 +402,7 @@ namespace Phamhilator.UI
                     Config.PrimaryRoom.PostMessage(roomClosingMessage);
                 }
 
-                postListener.Dispose();
+                messageListener.Dispose();
 
                 lock (Config.Log)
                 {

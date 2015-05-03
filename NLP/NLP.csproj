@@ -7,7 +7,7 @@
     <ProjectGuid>{FF9060CA-0692-4170-A98B-C01BB03E726A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NLP</RootNamespace>
+    <RootNamespace>Phamhilator.NLP</RootNamespace>
     <AssemblyName>NLP</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

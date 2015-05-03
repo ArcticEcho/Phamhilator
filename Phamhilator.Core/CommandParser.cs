@@ -29,7 +29,7 @@ using System.Text.RegularExpressions;
 
 
 
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     public static class CommandParser
     {

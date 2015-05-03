@@ -23,9 +23,7 @@
 using System;
 using System.IO;
 
-
-
-namespace Phamhilator.Core
+namespace Phamhilator.Pham.Core
 {
     internal static class FilePaths
     {
