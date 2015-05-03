@@ -5,25 +5,25 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLP", "NLP\NLP.csproj", "{FF9060CA-0692-4170-A98B-C01BB03E726A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghamhilator", "Ghamhilator\Ghamhilator.csproj", "{993E523C-48D4-44D7-AFD2-272F35564BCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gham", "Ghamhilator\Gham.csproj", "{993E523C-48D4-44D7-AFD2-272F35564BCA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E9588D7B-6A4B-4832-9E67-CABE5673E407} = {E9588D7B-6A4B-4832-9E67-CABE5673E407}
 		{FF9060CA-0692-4170-A98B-C01BB03E726A} = {FF9060CA-0692-4170-A98B-C01BB03E726A}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yamhilator", "Yamhilator\Yamhilator.csproj", "{53B36231-4989-4180-9F0A-DB1748AFC61E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yam.UI", "Yamhilator\Yam.UI.csproj", "{53B36231-4989-4180-9F0A-DB1748AFC61E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E9588D7B-6A4B-4832-9E67-CABE5673E407} = {E9588D7B-6A4B-4832-9E67-CABE5673E407}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.UI", "Phamhilator.UI\Phamhilator.UI.csproj", "{6217E96F-4C87-4961-8EC2-EBDAD05122DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pham.UI", "Phamhilator.UI\Pham.UI.csproj", "{6217E96F-4C87-4961-8EC2-EBDAD05122DD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E9588D7B-6A4B-4832-9E67-CABE5673E407} = {E9588D7B-6A4B-4832-9E67-CABE5673E407}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagExchange.Net", "FlagExchange.Net\FlagExchange.Net\FlagExchange.Net.csproj", "{8BAC4155-8AEE-4282-B64B-823397C75438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.Core", "Phamhilator.Core\Phamhilator.Core.csproj", "{E9588D7B-6A4B-4832-9E67-CABE5673E407}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pham.Core", "Phamhilator.Core\Pham.Core.csproj", "{E9588D7B-6A4B-4832-9E67-CABE5673E407}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8BAC4155-8AEE-4282-B64B-823397C75438} = {8BAC4155-8AEE-4282-B64B-823397C75438}
 	EndProjectSection
@@ -31,6 +31,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phamhilator.Tests", "Phamhilator.Tests\Phamhilator.Tests.csproj", "{7ABD2941-8CCB-4500-80A9-60FCA5C4E2E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GibberishClassification", "GibberishClassifier.NET\GibberishClassification\GibberishClassification.csproj", "{09569529-5ED5-41F7-8B58-F61AF8AA738B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yam.Core", "Yam.Core\Yam.Core.csproj", "{5823FF27-6194-43D8-A16E-5943C2E34F09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09569529-5ED5-41F7-8B58-F61AF8AA738B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5823FF27-6194-43D8-A16E-5943C2E34F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5823FF27-6194-43D8-A16E-5943C2E34F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5823FF27-6194-43D8-A16E-5943C2E34F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5823FF27-6194-43D8-A16E-5943C2E34F09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

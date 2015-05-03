@@ -61,9 +61,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phamhilator.Core\Phamhilator.Core.csproj">
+    <ProjectReference Include="..\Phamhilator.Core\Pham.Core.csproj">
       <Project>{e9588d7b-6a4b-4832-9e67-cabe5673e407}</Project>
-      <Name>Phamhilator.Core</Name>
+      <Name>Pham.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
