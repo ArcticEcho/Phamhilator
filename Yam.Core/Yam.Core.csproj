@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ChatExchange.Net">
-      <HintPath>..\packages\ChatExchange.Net.2.1.1-beta\lib\ChatExchange.Net.dll</HintPath>
+      <HintPath>..\packages\ChatExchange.Net.2.1.2-beta\lib\ChatExchange.Net.dll</HintPath>
     </Reference>
     <Reference Include="CsQuery">
       <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
@@ -59,12 +59,13 @@
     <Compile Include="LocalSocketPorts-LocalSocketIPEndPoints.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostFetcher.cs" />
+    <Compile Include="SocketEventType.cs" />
+    <Compile Include="LocalUDPSocketListener.cs" />
     <Compile Include="YamClientLocal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="StringDownloader.cs" />
     <Compile Include="UserAccess.cs" />
-    <Compile Include="YamClientLocal.EventType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

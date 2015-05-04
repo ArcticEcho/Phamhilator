@@ -34,174 +34,184 @@ namespace Phamhilator.Yam.Core
 {
     public partial class YamClientLocal : IDisposable
     {
-        private bool disposed;
-        private IPEndPoint targetEP;
+        //TODO: Use listener socket + sender socket (yet to be implemented) classes for communication, rather than reimplementing each socket.
 
-        # region Private listening fields.
+        //private bool disposed;
+        //private IPEndPoint targetEP;
 
-        private readonly ManualResetEvent listenerThreadDeadMRE = new ManualResetEvent(false);
-        private UdpClient listener;
-        private EndPoint endPoint = new IPEndPoint(new IPAddress(new byte[] { 0, 0, 0, 0 }), 60000);
-        private Thread listenerThread;
+        //# region Private listening fields.
 
-        # endregion
+        //private readonly ManualResetEvent listenerThreadDeadMRE = new ManualResetEvent(false);
+        //private UdpClient listener;
+        //private EndPoint endPoint = new IPEndPoint(new IPAddress(new byte[] { 0, 0, 0, 0 }), 60000);
+        //private Thread listenerThread;
 
-        # region Private transmitting fields.
+        //# endregion
 
-        private static UdpClient broadcastSocket;
-        private static bool shutdown;
-        private static uint dataSent;
+        //# region Private transmitting fields.
 
-        # endregion
+        //private static UdpClient broadcastSocket;
+        //private static bool shutdown;
+        //private static uint dataSent;
 
-        # region Public properties.
+        //# endregion
 
-        public EventManager<EventType> EventManager { get; private set; }
+        //# region Public properties.
 
-        public ulong TotalDataReceived { get; private set; }
+        //public EventManager<ClientSocketEventType> EventManager { get; private set; }
 
-        public ulong TotalDataSent { get; private set; }
+        //public ulong TotalDataReceived { get; private set; }
 
-        # endregion
+        //public ulong TotalDataSent { get; private set; }
 
-
-
-        public YamClientLocal(char sender)
-        {
-            if ("PG".Contains(Char.ToUpperInvariant(sender))) { throw new ArgumentException("Invalid sender char selected. Supported chars include: 'P' and 'G'.", "sender"); }
-
-            EventManager = new EventManager<EventType>(EventType.InternalException);
-
-            // Initialise listener.
-            listener = new UdpClient();
-            listener.ExclusiveAddressUse = false;
-            listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            listener.Client.Bind(LocalSocketIPEndPoints.YamToAll);
-            listener.JoinMulticastGroup(LocalSocketIPEndPoints.MulticastAddress);
-            listenerThread = new Thread(Listen) { IsBackground = true };
-            listenerThread.Start();
-
-            // Initialise sender.
-            targetEP = GetTargetEP(sender);
-            broadcastSocket = new UdpClient();
-            broadcastSocket.JoinMulticastGroup(LocalSocketIPEndPoints.MulticastAddress);
-        }
-
-        ~YamClientLocal()
-        {
-            if (!disposed)
-            {
-                Dispose();
-            }
-        }
+        //# endregion
 
 
 
-        public void Dispose()
-        {
-            if (disposed) { return; }
+        //public YamClientLocal(char sender)
+        //{
+        //    if ("PG".Contains(Char.ToUpperInvariant(sender))) { throw new ArgumentException("Invalid sender char selected. Supported chars include: 'P' and 'G'.", "sender"); }
 
-            disposed = true;
+        //    EventManager = new EventManager<ClientSocketEventType>(ClientSocketEventType.InternalException);
 
-            broadcastSocket.Close();
-            broadcastSocket.Client.Dispose();
-            listenerThreadDeadMRE.WaitOne();
-            listenerThreadDeadMRE.Dispose();
-            listener.Close();
-            listener.Client.Dispose();
+        //    // Initialise listener.
+        //    listener = new UdpClient();
+        //    listener.ExclusiveAddressUse = false;
+        //    listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        //    listener.Client.Bind(LocalSocketIPEndPoints.YamToAll);
+        //    listener.JoinMulticastGroup(LocalSocketIPEndPoints.MulticastAddress);
+        //    listenerThread = new Thread(Listen) { IsBackground = true };
+        //    listenerThread.Start();
 
-            GC.SuppressFinalize(this);
-        }
+        //    // Initialise sender.
+        //    targetEP = GetTargetEP(sender);
+        //    broadcastSocket = new UdpClient();
+        //    broadcastSocket.JoinMulticastGroup(LocalSocketIPEndPoints.MulticastAddress);
+        //}
 
-        public void SendData(string messageType, object objData)
-        {
-            if (String.IsNullOrEmpty(messageType)) { throw new ArgumentException("'messageType' cannot be null or empty.", "messageType"); }
-            if (objData == null) { throw new ArgumentNullException("objData"); }
-            if (disposed) { return; }
-
-            var json = JsonConvert.SerializeObject(objData, Formatting.Indented);
-            var bytes = Encoding.BigEndianUnicode.GetBytes(messageType + json);
-            TotalDataSent += (uint)broadcastSocket.Send(bytes, bytes.Length, targetEP);
-        }
+        //~YamClientLocal()
+        //{
+        //    if (!disposed)
+        //    {
+        //        Dispose();
+        //    }
+        //}
 
 
 
-        private IPEndPoint GetTargetEP(char sender)
-        {
-            var sndrUp = Char.ToUpperInvariant(sender);
-            switch (sndrUp)
-            {
-                case 'P':
-                {
-                    return LocalSocketIPEndPoints.PhamToYam;
-                }
-                case 'G':
-                {
-                    return LocalSocketIPEndPoints.GhamToYam;
-                }
-                default:
-                {
-                    throw new NotSupportedException();
-                }
-            }
-        }
+        //public void Dispose()
+        //{
+        //    if (disposed) { return; }
 
-        private void Listen()
-        {
-            while (!disposed)
-            {
-                var bytes = new byte[0];
-                var ep = new IPEndPoint(0, 0);
+        //    disposed = true;
 
-                try
-                {
-                    bytes = listener.Receive(ref ep);
-                    TotalDataReceived += (uint)bytes.Length;
+        //    broadcastSocket.Close();
+        //    broadcastSocket.Client.Dispose();
+        //    listenerThreadDeadMRE.WaitOne();
+        //    listenerThreadDeadMRE.Dispose();
+        //    listener.Close();
+        //    listener.Client.Dispose();
+
+        //    GC.SuppressFinalize(this);
+        //}
+
+        //public void SendData(string messageType, object objData)
+        //{
+        //    if (String.IsNullOrEmpty(messageType)) { throw new ArgumentException("'messageType' cannot be null or empty.", "messageType"); }
+        //    if (objData == null) { throw new ArgumentNullException("objData"); }
+        //    if (disposed) { return; }
+
+        //    var json = JsonConvert.SerializeObject(objData, Formatting.Indented);
+        //    var bytes = Encoding.BigEndianUnicode.GetBytes(messageType + json);
+        //    TotalDataSent += (uint)broadcastSocket.Send(bytes, bytes.Length, targetEP);
+        //}
+
+
+
+        //private IPEndPoint GetTargetEP(char sender)
+        //{
+        //    var sndrUp = Char.ToUpperInvariant(sender);
+        //    switch (sndrUp)
+        //    {
+        //        case 'P':
+        //        {
+        //            return LocalSocketIPEndPoints.PhamToYam;
+        //        }
+        //        case 'G':
+        //        {
+        //            return LocalSocketIPEndPoints.GhamToYam;
+        //        }
+        //        default:
+        //        {
+        //            throw new NotSupportedException();
+        //        }
+        //    }
+        //}
+
+        //private void Listen()
+        //{
+        //    while (!disposed)
+        //    {
+        //        var bytes = new byte[0];
+        //        var ep = new IPEndPoint(0, 0);
+
+        //        try
+        //        {
+        //            bytes = listener.Receive(ref ep);
+        //            TotalDataReceived += (uint)bytes.Length;
                 
-                    var data = Encoding.BigEndianUnicode.GetString(bytes);
+        //            var data = Encoding.BigEndianUnicode.GetString(bytes);
 
-                    if (data.Length < 3) { continue; }
+        //            if (data.Length < 3) { continue; }
 
-                    var payload = data.Remove(0, 3);
-                    switch (Char.ToUpperInvariant(data[1]))
-                    {
-                        case 'Q': // Received a question from Yam.
-                        {
-                            var q = JsonConvert.DeserializeObject<Question>(payload);
-                            EventManager.CallListeners(EventType.Question, q);
-                            break;
-                        }
-                        case 'A': // Received an answer from Yam.
-                        {
-                            var a = JsonConvert.DeserializeObject<Answer>(payload);
-                            EventManager.CallListeners(EventType.Answer, a);
-                            break;
-                        }
-                        case 'C': // Received a command from Yam.
-                        {
-                            if (!String.IsNullOrEmpty(payload))
-                            {
-                                EventManager.CallListeners(EventType.Command, payload);
-                            }
-                            break;
-                        }
-                        case 'D': // Received misc. data from Yam.
-                        {
-                            if (!String.IsNullOrEmpty(payload))
-                            {
-                                EventManager.CallListeners(EventType.Data, payload);
-                            }
-                            break;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    EventManager.CallListeners(EventType.InternalException, ex);
-                }
-            }
+        //            var payload = data.Remove(0, 3);
+        //            switch (Char.ToUpperInvariant(data[1]))
+        //            {
+        //                case 'Q': // Received a question from Yam.
+        //                {
+        //                    var q = JsonConvert.DeserializeObject<Question>(payload);
+        //                    EventManager.CallListeners(ClientSocketEventType.Question, q);
+        //                    break;
+        //                }
+        //                case 'A': // Received an answer from Yam.
+        //                {
+        //                    var a = JsonConvert.DeserializeObject<Answer>(payload);
+        //                    EventManager.CallListeners(ClientSocketEventType.Answer, a);
+        //                    break;
+        //                }
+        //                case 'C': // Received a command from Yam.
+        //                {
+        //                    if (!String.IsNullOrEmpty(payload))
+        //                    {
+        //                        EventManager.CallListeners(ClientSocketEventType.Command, payload);
+        //                    }
+        //                    break;
+        //                }
+        //                case 'D': // Received misc. data from Yam.
+        //                {
+        //                    if (!String.IsNullOrEmpty(payload))
+        //                    {
+        //                        EventManager.CallListeners(ClientSocketEventType.Data, payload);
+        //                    }
+        //                    break;
+        //                }
+        //                case 'F': // Received a requested file from Yam.
+        //                {
+        //                    if (!String.IsNullOrEmpty(payload))
+        //                    {
+        //                        EventManager.CallListeners(ClientSocketEventType.File, payload);
+        //                    }
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            EventManager.CallListeners(ClientSocketEventType.InternalException, ex);
+        //        }
+        //    }
 
-            listenerThreadDeadMRE.Set();
-        }
+        //    listenerThreadDeadMRE.Set();
+        //}
     }
 }
