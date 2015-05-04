@@ -216,7 +216,6 @@ namespace Phamhilator.Yam.Core
                 catch (Exception ex)
                 {
                     if (OnError != null) { OnError(ex); }
-                    continue;
                 }
             }
 

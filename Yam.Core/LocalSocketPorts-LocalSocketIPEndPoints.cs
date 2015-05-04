@@ -31,9 +31,9 @@ namespace Phamhilator.Yam.Core
 {
     public enum LocalSocketPort
     {
-        YamToAll = 60000,
-        PhamToYam = 60001,
-        GhamToYam = 60002
+        YamToAll = 45000,
+        PhamToYam = 45001,
+        GhamToYam = 45002
     }
 
     public static class LocalSocketIPEndPoints
