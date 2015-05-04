@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using JsonFx.Json;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Pham.Core
 {
@@ -39,11 +39,10 @@ namespace Phamhilator.Pham.Core
 
         public WhiteFilter(FilterClass filter)
         {
-            Config = new FilterConfig(filter, Phamhilator.Core.FilterType.White);
+            Config = new FilterConfig(filter, Phamhilator.Pham.Core.FilterType.White);
             Terms = new HashSet<Term>();
 
             var sites = Directory.EnumerateDirectories(DirectoryTools.GetFilterFile(Config)).ToArray();
-            var reader = new JsonReader();
 
             for (var i = 0; i < sites.Length; i++)
             {
@@ -57,7 +56,7 @@ namespace Phamhilator.Pham.Core
 
                 try
                 {
-                    data = reader.Read<List<JsonTerm>>(File.ReadAllText(path));
+                    data = JsonConvert.DeserializeObject<List<JsonTerm>>(File.ReadAllText(path));
                 }
                 catch (Exception ex)
                 {

@@ -59,6 +59,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealtimePostSocket.cs" />
+    <Compile Include="YamServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

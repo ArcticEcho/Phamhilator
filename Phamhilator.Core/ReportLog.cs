@@ -26,8 +26,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using JsonFx.Json;
-using JsonFx.Serialization;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Pham.Core
 {
@@ -57,7 +56,6 @@ namespace Phamhilator.Pham.Core
             EntryLinks = new Dictionary<string, string>();
 
             var data = File.ReadAllText(DirectoryTools.GetLogFile());
-            var reader = new JsonReader();
 
             if (String.IsNullOrEmpty(data))
             {
@@ -65,7 +63,7 @@ namespace Phamhilator.Pham.Core
             }
             else
             {
-                entries = reader.Read<List<LogItem>>(data);
+                entries = JsonConvert.DeserializeObject<List<LogItem>>(data);
             }
 
             Stats.PostsCaught += entries.Count;
@@ -151,7 +149,7 @@ namespace Phamhilator.Pham.Core
                         }
                     }
                     
-                    File.WriteAllText(DirectoryTools.GetLogFile(), new JsonWriter(new DataWriterSettings { PrettyPrint = true } ).Write(entries));
+                    File.WriteAllText(DirectoryTools.GetLogFile(), JsonConvert.SerializeObject(entries, Formatting.Indented));
                 }
 
                 if (entriesRemoved.Count != 0 && EntriesRemovedEvent != null)

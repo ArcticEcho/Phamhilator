@@ -32,7 +32,7 @@ using java.util;
 using edu.stanford.nlp.ling;
 using edu.stanford.nlp.tagger.maxent;
 using System.Reflection;
-using NLP.Properties;
+using Phamhilator.NLP.Properties;
 using File = System.IO.File;
 using Console = System.Console;
 

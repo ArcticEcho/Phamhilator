@@ -23,7 +23,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using JsonFx.Json;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Pham.Core
 {
@@ -36,7 +36,7 @@ namespace Phamhilator.Pham.Core
 
             try
             {
-                data = new JsonReader().Read<List<JsonTerm>>(File.ReadAllText(filePath));
+                data = JsonConvert.DeserializeObject<List<JsonTerm>>(File.ReadAllText(filePath));
             }
             catch (Exception ex)
             {

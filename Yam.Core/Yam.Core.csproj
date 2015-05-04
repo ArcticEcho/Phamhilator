@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Answer.cs" />
     <Compile Include="BannedUsers.cs" />
+    <Compile Include="EventManager.cs" />
     <Compile Include="LinkUnshortifier.cs" />
     <Compile Include="LocalSocketPorts-LocalSocketIPEndPoints.cs" />
     <Compile Include="Post.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Question.cs" />
     <Compile Include="StringDownloader.cs" />
     <Compile Include="UserAccess.cs" />
+    <Compile Include="YamClientLocal.EventType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

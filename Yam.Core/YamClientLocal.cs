@@ -32,7 +32,7 @@ using Newtonsoft.Json;
 
 namespace Phamhilator.Yam.Core
 {
-    public class YamClientLocal : IDisposable
+    public partial class YamClientLocal : IDisposable
     {
         private bool disposed;
         private IPEndPoint targetEP;
@@ -54,22 +54,9 @@ namespace Phamhilator.Yam.Core
 
         # endregion
 
-        # region Public events.
-
-        public delegate void OnActiveQuestionEventHandler(Question q);
-        public delegate void OnActiveAnswerEventHandler(Answer a);
-        public delegate void OnCommandEventHandler(string command);
-        public delegate void OnInfoMessageEventHandler(string infoMessage);
-        public delegate void OnErrorEventHandler(Exception ex);
-        public event OnActiveQuestionEventHandler OnActiveQuestion;
-        public event OnActiveAnswerEventHandler OnActiveAnswer;
-        public event OnCommandEventHandler OnCommand;
-        public event OnInfoMessageEventHandler OnInfoMessage;
-        public event OnErrorEventHandler OnError;
-
-        # endregion
-
         # region Public properties.
+
+        public EventManager<EventType> EventManager { get; private set; }
 
         public ulong TotalDataReceived { get; private set; }
 
@@ -81,9 +68,10 @@ namespace Phamhilator.Yam.Core
 
         public YamClientLocal(char sender)
         {
-            if (sender == null) { throw new ArgumentNullException("sender"); }
-            if ("pg".Contains(Char.ToLowerInvariant(sender))) { throw new ArgumentException("Invalid sender char selected. Supported chars include: P and G.", "sender"); }
-            
+            if ("PG".Contains(Char.ToUpperInvariant(sender))) { throw new ArgumentException("Invalid sender char selected. Supported chars include: 'P' and 'G'.", "sender"); }
+
+            EventManager = new EventManager<EventType>(EventType.InternalException);
+
             // Initialise listener.
             listener = new UdpClient();
             listener.ExclusiveAddressUse = false;
@@ -180,34 +168,28 @@ namespace Phamhilator.Yam.Core
                         case 'Q': // Received a question from Yam.
                         {
                             var q = JsonConvert.DeserializeObject<Question>(payload);
-                            if (q != null && OnActiveQuestion != null)
-                            {
-                                OnActiveQuestion(q);
-                            }
+                            EventManager.CallListeners(EventType.Question, q);
                             break;
                         }
                         case 'A': // Received an answer from Yam.
                         {
                             var a = JsonConvert.DeserializeObject<Answer>(payload);
-                            if (a != null && OnActiveAnswer != null)
-                            {
-                                OnActiveAnswer(a);
-                            }
+                            EventManager.CallListeners(EventType.Answer, a);
                             break;
                         }
                         case 'C': // Received a command from Yam.
                         {
-                            if (!String.IsNullOrEmpty(payload) && OnCommand != null)
+                            if (!String.IsNullOrEmpty(payload))
                             {
-                                OnCommand(payload);
+                                EventManager.CallListeners(EventType.Command, payload);
                             }
                             break;
                         }
-                        case 'I': // Received misc. info from Yam.
+                        case 'D': // Received misc. data from Yam.
                         {
-                            if (!String.IsNullOrEmpty(payload) && OnInfoMessage != null)
+                            if (!String.IsNullOrEmpty(payload))
                             {
-                                OnInfoMessage(payload);
+                                EventManager.CallListeners(EventType.Data, payload);
                             }
                             break;
                         }
@@ -215,7 +197,7 @@ namespace Phamhilator.Yam.Core
                 }
                 catch (Exception ex)
                 {
-                    if (OnError != null) { OnError(ex); }
+                    EventManager.CallListeners(EventType.InternalException, ex);
                 }
             }
 

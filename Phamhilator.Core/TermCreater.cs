@@ -27,7 +27,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using JsonFx.Json;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Pham.Core
 {
@@ -51,7 +51,7 @@ namespace Phamhilator.Pham.Core
 
             var t = new Term(filter, term, newScore, site);
             
-            File.WriteAllText(file, new JsonWriter().Write(t.ToJsonTerm()));
+            File.WriteAllText(file, JsonConvert.SerializeObject(t.ToJsonTerm(), Formatting.Indented));
         }
     }
 }
