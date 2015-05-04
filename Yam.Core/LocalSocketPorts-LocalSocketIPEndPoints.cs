@@ -20,35 +20,42 @@
 
 
 
-using System.Collections.Generic;
-using System.Net;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Phamhilator.Yam.Core
 {
-    public static class LinkUnshortifier
+    public enum LocalSocketPort
     {
-        private static readonly Regex shortLink = new Regex(@"(?is)^https?://(goo\.gl|bit\.ly|tinyurl\.com|ow\.ly|tiny\.cc|bit\.do|po\.st|bigly\.us|t\.co|r\.im|cli\.gs|short\.ie|kl\.am|idek\.net|i\.gd|hex\.io)/\w*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        YamToAll = 60000,
+        PhamToYam = 60001,
+        GhamToYam = 60002
+    }
 
-
-
-        public static bool IsShortLink(string url)
+    public static class LocalSocketIPEndPoints
+    {
+        public static IPAddress MulticastAddress
         {
-            return !String.IsNullOrEmpty(url) && shortLink.IsMatch(url.Trim());
+            get { return IPAddress.Parse("239.0.0.222"); }
         }
 
-        public static string UnshortifyLink(string url)
+        public static IPEndPoint YamToAll
         {
-            if (!IsShortLink(url)) { return url; }
+            get { return new IPEndPoint(IPAddress.Any, (int)LocalSocketPort.YamToAll); }
+        }
 
-            var trimmed = url.Trim();
-            var res = new WebClient().DownloadString("http://urlex.org/json/" + trimmed);
-            var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(res);
+        public static IPEndPoint PhamToYam
+        {
+            get { return new IPEndPoint(IPAddress.Any, (int)LocalSocketPort.PhamToYam); }
+        }
 
-            return data.Values.First();
+        public static IPEndPoint GhamToYam
+        {
+            get { return new IPEndPoint(IPAddress.Any, (int)LocalSocketPort.GhamToYam); }
         }
     }
 }

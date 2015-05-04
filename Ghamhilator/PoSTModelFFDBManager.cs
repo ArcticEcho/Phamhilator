@@ -26,7 +26,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JsonFx.Json;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Gham
 {
@@ -61,16 +61,31 @@ namespace Phamhilator.Gham
 
         public PoSTModel LoadModel()
         {
-            var data = File.ReadAllText(modelFile);
-            var obj = new JsonReader().Read<PoSTModel>(data);
+            PoSTModel model = null;
+            try
+            {
+                var data = File.ReadAllText(modelFile);
+                model = JsonConvert.DeserializeObject<PoSTModel>(data);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to read model: " + modelFile, ex);
+            }
 
-            return obj;
+            return model;
         }
 
         public void UpdateModel(PoSTModel model)
         {
-            var json = new JsonWriter().Write(model);
-            File.WriteAllText(modelFile, json);
+            try
+            {
+                var json = JsonConvert.SerializeObject(model, Formatting.Indented);
+                File.WriteAllText(modelFile, json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to update model: " + modelFile, ex);
+            }
         }
     }
 }

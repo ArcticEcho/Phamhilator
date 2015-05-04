@@ -29,8 +29,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using CsQuery;
 using WebSocketSharp;
-using JsonFx.Json;
 using Microsoft.CSharp.RuntimeBinder;
+using Newtonsoft.Json.Linq;
 
 namespace Phamhilator.Yam.Core
 {
@@ -47,7 +47,7 @@ namespace Phamhilator.Yam.Core
 
         public static Question GetQuestion(MessageEventArgs message)
         {
-            var data = (dynamic)new JsonReader().Read(((dynamic)new JsonReader().Read(message.Data)).data);
+            var data = (dynamic)JObject.Parse(((dynamic)JObject.Parse(message.Data)).data);
             var url = TrimUrl((string)data.url);
             var host = (string)data.siteBaseHostAddress;
             var title = WebUtility.HtmlDecode((string)data.titleEncodedFancy);

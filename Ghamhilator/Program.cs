@@ -32,9 +32,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using ChatExchangeDotNet;
 using GibberishClassification;
-using JsonFx.Json;
-using NLP;
-using Yam.Core;
+using Phamhilator.NLP;
+using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Gham
 {
@@ -43,7 +42,7 @@ namespace Phamhilator.Gham
         private static readonly int[] owners = new[] { 227577, 266094, 229438 }; // Sam, Uni & Fox.
         private static Client chatClient;
         private static Room primaryRoom;
-        private static MessageListener messageListener;
+        private static YamClientLocal yamClient;
         private static bool shutdown;
         private static PoSTagger tagger;
         private static HashSet<PoSTModel> models;
@@ -129,7 +128,7 @@ namespace Phamhilator.Gham
                 }
             }
 
-            messageListener.Dispose();
+            yamClient.Dispose();
 
             primaryRoom.PostMessage("`Ghamhilator stopped.`");
         }
@@ -180,15 +179,16 @@ namespace Phamhilator.Gham
             if (command.Content.Trim() == "stop")
             {
                 primaryRoom.PostMessage("Stopping...");
+                yamClient.SendData("<I>", "Acknowledged shutdown command.");
                 shutdown = true;
             }
         }
 
         private static void InitialiseSocket()
         {
-            messageListener = new MessageListener();
-            messageListener.OnActiveQuestion += CheckQuestionNLP;//CheckQuestionForGibberish;
-            messageListener.OnActiveAnswer += CheckAnswerNLP;//CheckAnswerForGibberish;
+            yamClient = new YamClientLocal('g');
+            yamClient.OnActiveQuestion += CheckQuestionNLP;//CheckQuestionForGibberish;
+            yamClient.OnActiveAnswer += CheckAnswerNLP;//CheckAnswerForGibberish;
         }
 
         private static void CheckQuestionNLP(Question q)
