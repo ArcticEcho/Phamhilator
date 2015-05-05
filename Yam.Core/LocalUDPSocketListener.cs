@@ -28,10 +28,11 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Yam.Core
 {
-    public class LocalUDPSocketListener
+    public class LocalUDPSocketListener : IDisposable
     {
         private readonly ManualResetEvent listenerThreadDeadMRE = new ManualResetEvent(false);
         private readonly UdpClient listener;
@@ -39,9 +40,9 @@ namespace Phamhilator.Yam.Core
         private readonly Thread listenerThread;
         private bool disposed;
 
-        public delegate void OnErrorEventHandler(Exception ex);
-        public delegate void OnMessageEventHandler(string message);
-        public event OnErrorEventHandler OnError;
+        public delegate void OnExceptionEventHandler(Exception ex);
+        public delegate void OnMessageEventHandler(LocalRequest request);
+        public event OnExceptionEventHandler OnException;
         public event OnMessageEventHandler OnMessage;
 
         public ulong TotalDataReceived { get; private set; }
@@ -54,9 +55,29 @@ namespace Phamhilator.Yam.Core
             listener = new UdpClient() { ExclusiveAddressUse = false };
             listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             listener.Client.Bind(endPoint);
-            listener.JoinMulticastGroup(LocalSocketIPEndPoints.MulticastAddress);
+            listener.JoinMulticastGroup(LocalSocketMulticastAddress.Address);
             listenerThread = new Thread(Listen) { IsBackground = true };
             listenerThread.Start();
+        }
+
+        ~LocalUDPSocketListener()
+        {
+            if (disposed) { return; }
+            Dispose();
+        }
+
+
+
+        public void Dispose()
+        {
+            if (disposed) { return; }
+            disposed = true;
+
+            listener.Close();
+            listenerThreadDeadMRE.WaitOne();
+            listenerThreadDeadMRE.Dispose();
+
+            GC.SuppressFinalize(this);
         }
 
 
@@ -71,16 +92,20 @@ namespace Phamhilator.Yam.Core
                 try
                 {
                     bytes = listener.Receive(ref ep);
-                    TotalDataReceived += (uint)bytes.Length;
-                    var data = Encoding.BigEndianUnicode.GetString(bytes);
 
-                    if (OnMessage == null) { return; }
+                    if (bytes == null || bytes.Length == 0) { continue; }
+
+                    TotalDataReceived += (uint)bytes.Length;
+                    var json = Encoding.BigEndianUnicode.GetString(bytes);
+                    var data = JsonConvert.DeserializeObject<LocalRequest>(json);
+
+                    if (OnMessage == null || data == null || data.Data == null || data.Options == null) { continue; }
                     OnMessage(data);
                 }
                 catch (Exception ex)
                 {
-                    if (OnError == null) { return; }
-                    OnError(ex);
+                    if (OnException == null) { continue; }
+                    OnException(ex);
                 }
             }
 

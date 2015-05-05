@@ -47,7 +47,8 @@ namespace Phamhilator.Yam.Core
 
         public static Question GetQuestion(MessageEventArgs message)
         {
-            var data = (dynamic)JObject.Parse(((dynamic)JObject.Parse(message.Data)).data);
+            var t = ((dynamic)JObject.Parse(message.Data)).data;
+            var data = (dynamic)JObject.Parse(t.ToString());
             var url = TrimUrl((string)data.url);
             var host = (string)data.siteBaseHostAddress;
             var title = WebUtility.HtmlDecode((string)data.titleEncodedFancy);

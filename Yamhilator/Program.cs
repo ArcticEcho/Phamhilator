@@ -31,61 +31,54 @@ using ChatExchangeDotNet;
 using System.Net;
 using System.Threading;
 using Phamhilator.Yam.Core;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Yam.UI
 {
+    using RequestType = LocalRequest.RequestType;
+
     public class Program
     {
-        private static readonly int[] owners = new[] { 227577, 266094, 229438 }; // Sam, Uni & Fox.
+        private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static Client chatClient;
         private static Room primaryRoom;
         private static RealtimePostSocket postSocket;
-        //private static Socket broadcastSocket;
-        private static UdpClient broadcastSocket;
-        private static bool shutdown;
-        private static uint dataSent;
-        private static IPAddress multicastaddress = IPAddress.Parse("239.0.0.222");
-        private static IPEndPoint remoteep = new IPEndPoint(multicastaddress, 60000);
+        private static YamServer server;
+        private static DateTime startTime;
+        private static uint phamErrorCount;
+        private static uint ghamErrorCount;
 
 
 
         private static void Main(string[] args)
         {
+            Console.Title = "Yam V2";
             TryLogin();
-
             Console.Write("Joining room(s)...");
+            JoinRooms();
+            Console.Write("done.\nStarting server...");
+            InitialiseServer();
+            Console.Write("done.\nYam V2 started (press Q to exit).\n");
+            primaryRoom.PostMessage("`Yam V2 started.`");
+            startTime = DateTime.UtcNow;
 
-            var primaryRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
-
-            Console.Write("done.\nStarting sockets...");
-
-            postSocket = new RealtimePostSocket();
-            postSocket.OnActiveQuestion += BroadcastQuestion;
-            postSocket.OnActiveThreadAnswers += BroadcastAnswers;
-            //broadcastSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            //broadcastSocket.Connect(new IPAddress(new byte[] { 255, 255, 255, 255 }), 60000);
-            
-            broadcastSocket = new UdpClient();
-            broadcastSocket.JoinMulticastGroup(multicastaddress);
-
-            postSocket.Connect();
-
-            Console.Write("done.\nYamhilator started (press Q to exit).\n");
-            primaryRoom.PostMessage("`Yamhilator started.`");
-
-            while (!shutdown)
+            Task.Run(() =>
             {
-                if (Char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
+                while (true)
                 {
-                    shutdown = true;
+                    if (Char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
+                    {
+                        shutdownMre.Set();
+                        return;
+                    }
                 }
-            }
+            });
+
+            shutdownMre.WaitOne();
 
             postSocket.Close();
             postSocket.Dispose();
-            //broadcastSocket.Shutdown(SocketShutdown.Both);
-            broadcastSocket.Close();
-            primaryRoom.PostMessage("`Yamhilator stopped.`");
+            primaryRoom.PostMessage("`Yamhilator V2 stopped.`");
         }
 
         private static void TryLogin()
@@ -123,40 +116,154 @@ namespace Phamhilator.Yam.UI
 
             primaryRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
             primaryRoom.IgnoreOwnEvents = true;
-            primaryRoom.StripMentionFromMessages = false;
-            primaryRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleCommand));
+            primaryRoom.StripMentionFromMessages = true;
+            primaryRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
         }
 
-        private static void HandleCommand(Message command)
+        private static void InitialiseServer()
         {
-            if (!owners.Contains(command.AuthorID)) { return; }
+            postSocket = new RealtimePostSocket(true);
+            postSocket.OnActiveQuestion += BroadcastQuestion;
+            postSocket.OnActiveThreadAnswers += BroadcastAnswers;
 
-            if (command.Content.Trim() == "stop")
+            server = new YamServer();
+            server.PhamEventManager.ConnectListener(RequestType.Exception, new Action<Exception>(ex =>
             {
-                primaryRoom.PostMessage("Stopping...");
-                shutdown = true;
+                phamErrorCount++;
+                primaryRoom.PostMessage("Warning, error detected in Pham:\n\n" + ex.ToString());
+            }));
+            server.GhamEventManager.ConnectListener(RequestType.Exception, new Action<Exception>(ex =>
+            {
+                ghamErrorCount++;
+                primaryRoom.PostMessage("Warning, error detected in Gham:\n\n" + ex.ToString());
+            }));
+            server.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
+            {
+                HandleDataManagerRequest(true, req);
+            }));
+            server.GhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
+            {
+                HandleDataManagerRequest(false, req);
+            }));
+            //server.PhamEventManager.ConnectListener(RequestType.Info, new Action<LocalRequest>(req =>
+            //{
+            //    // Do something...
+            //}));
+            //server.GhamEventManager.ConnectListener(RequestType.Info, new Action<LocalRequest>(req =>
+            //{
+            //    // Do something...
+            //}));
+            //server.PhamEventManager.ConnectListener(RequestType.Command, new Action<LocalRequest>(req =>
+            //{
+            //    // Do something...
+            //}));
+            //server.GhamEventManager.ConnectListener(RequestType.Command, new Action<LocalRequest>(req =>
+            //{
+            //    // Do something...
+            //}));
+        }
+
+        private static void HandleChatCommand(Message command)
+        {
+            if (!UserAccess.Owners.Select(u => u.ID).Contains(command.AuthorID)) { return; }
+
+            var cmd = command.Content.Trim().ToUpperInvariant();
+
+            switch (cmd)
+            {
+                case "STOP":
+                {
+                    primaryRoom.PostReply(command, "`Stopping...`");
+                    shutdownMre.Set();
+                    break;
+                }
+                case "DATA":
+                {
+                    var dataReport = "    Yam data report (in bytes):\n" +
+                                     "    Sent to Pham:       " + server.DataSentPham + ",\n" +
+                                     "    Received from Pham: " + server.DataReceivedPham + ",\n" +
+                                     "    Sent to Gham:       " + server.DataSentGham + ",\n" +
+                                     "    Received from Gham: " + server.DataReceivedGham + ".";
+                    primaryRoom.PostReply(command, dataReport);
+                    break;
+                }
+                default:
+                {
+                    primaryRoom.PostReply(command, "`Command not recognised.`");
+                    break;
+                }
             }
         }
 
         private static void BroadcastQuestion(Question q)
         {
-            var data = "<Q>" + new JsonFx.Json.JsonWriter().Write(q);
-            var bytes = Encoding.UTF8.GetBytes(data);
-            var bytesSent = broadcastSocket.Send(bytes, bytes.Length, remoteep);
-            Console.WriteLine(bytesSent + " bytes sent.");
-            dataSent += (uint)bytesSent;
+            var req = new LocalRequest { Type = LocalRequest.RequestType.Question, Data = q }; 
+            server.SendData(true, req);
+            server.SendData(false, req);
         }
 
         private static void BroadcastAnswers(List<Answer> answers)
         {
             foreach (var a in answers)
             {
-                var data = "<A>" + new JsonFx.Json.JsonWriter().Write(a);
-                var bytes = Encoding.UTF8.GetBytes(data);
-                var bytesSent = broadcastSocket.Send(bytes, bytes.Length, remoteep);
-                Console.WriteLine(bytesSent + " bytes sent.");
-                dataSent += (uint)bytesSent;
+                var req = new LocalRequest { Type = LocalRequest.RequestType.Answer, Data = a };
+                server.SendData(true, req);
+                server.SendData(false, req);
             }
+        }
+
+        private static void HandleDataManagerRequest(bool fromPham, LocalRequest req)
+        {
+            var owner = (string)req.Options["Owner"];
+            var key = (string)req.Options["Key"];
+            byte[] data = null;
+
+            if (req.Data is byte[])
+            {
+                data = (byte[])req.Data;
+            }
+            else if (req.Data is string)
+            {
+                data = Encoding.BigEndianUnicode.GetBytes((string)req.Data);
+            }
+            else
+            {
+                SendEx(fromPham, new NotSupportedException(), new Dictionary<string, object> { { "ReceivedReq", req } });
+                return;
+            }
+
+            switch ((string)req.Options["DMReqType"])
+            {
+                case "GET":
+                {
+                    return;
+                }
+                case "UPD":
+                {
+                    DataManager.SaveData(owner, key, data);
+                    return;
+                }
+                case "DEL":
+                {
+                    DataManager.DeleteData(owner, key);
+                    return;
+                }
+                default:
+                {
+                    SendEx(fromPham, new NotSupportedException(), new Dictionary<string, object>{ { "ReceivedReq", req } });
+                    return;
+                }
+            }
+        }
+
+        private static void SendEx(bool toPham, Exception ex, Dictionary<string, object> additionalInfo = null)
+        {
+            server.SendData(toPham, new LocalRequest
+            {
+                Type = LocalRequest.RequestType.Exception,
+                Options = additionalInfo,
+                Data = ex
+            });
         }
     }
 }

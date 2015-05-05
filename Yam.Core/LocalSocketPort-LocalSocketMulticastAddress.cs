@@ -23,18 +23,25 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Phamhilator.Yam.Core
 {
-    public enum ClientSocketEventType
+    public enum LocalSocketPort
     {
-        InternalException,
-        Question,
-        Answer,
-        Command,
-        Data,
-        File
+        YamToPham = 45000,
+        YamToGham = 45001,
+        PhamToYam = 45002,
+        GhamToYam = 45003
+    }
+
+    public static class LocalSocketMulticastAddress
+    {
+        public static IPAddress Address
+        {
+            get { return IPAddress.Parse("239.0.0.222"); }
+        }
     }
 }

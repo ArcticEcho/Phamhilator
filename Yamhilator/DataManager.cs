@@ -48,6 +48,13 @@ namespace Phamhilator.Yam.UI
 
 
 
+        public static bool DataExists(string owner, string key)
+        {
+            if (String.IsNullOrEmpty(owner) || String.IsNullOrEmpty(key)) { return false; }
+            var safeKey = GetSafeFileName(owner, key);
+            return activeFiles.ContainsKey(safeKey);
+        }
+
         public static string LoadData(string owner, string key)
         {
             var k = GetSafeFileName(owner, key);
@@ -65,6 +72,11 @@ namespace Phamhilator.Yam.UI
 
         public static void SaveData(string owner, string key, string data)
         {
+            SaveData(owner, key, Encoding.BigEndianUnicode.GetBytes(data));
+        }
+
+        public static void SaveData(string owner, string key, byte[] data)
+        {
             var k = GetSafeFileName(owner, key);
             if (!activeFiles.ContainsKey(k))
             {
@@ -74,7 +86,7 @@ namespace Phamhilator.Yam.UI
             WaitForFile(k);
 
             activeFiles[k] = true;
-            File.WriteAllText(Path.Combine(root, k), data, Encoding.BigEndianUnicode);
+            File.WriteAllBytes(Path.Combine(root, k), data);
 
             NotifyWaitingThreads(k);
         }

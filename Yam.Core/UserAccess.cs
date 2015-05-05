@@ -82,7 +82,7 @@ namespace Phamhilator.Yam.Core
         {
             PrivUsers.Add(id);
 
-            File.AppendAllLines(DirectoryTools.GetPrivUsersFile(), new[] { id.ToString(CultureInfo.InvariantCulture) });
+            //File.AppendAllLines(DirectoryTools.GetPrivUsersFile(), new[] { id.ToString(CultureInfo.InvariantCulture) });
         }
 
 
@@ -91,15 +91,15 @@ namespace Phamhilator.Yam.Core
         {
             PrivUsers = new List<int>();
 
-            var users = File.ReadAllLines(DirectoryTools.GetPrivUsersFile());
+            //var users = File.ReadAllLines(DirectoryTools.GetPrivUsersFile());
 
-            foreach (var user in users)
-            {
-                if (!string.IsNullOrWhiteSpace(user))
-                {
-                    PrivUsers.Add(int.Parse(user.Trim()));
-                }
-            }
+            //foreach (var user in users)
+            //{
+            //    if (!string.IsNullOrWhiteSpace(user))
+            //    {
+            //        PrivUsers.Add(int.Parse(user.Trim()));
+            //    }
+            //}
         }
 
         static private void PopulateOwners(string host, int roomID)

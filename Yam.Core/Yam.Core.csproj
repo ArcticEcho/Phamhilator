@@ -56,10 +56,12 @@
     <Compile Include="BannedUsers.cs" />
     <Compile Include="EventManager.cs" />
     <Compile Include="LinkUnshortifier.cs" />
-    <Compile Include="LocalSocketPorts-LocalSocketIPEndPoints.cs" />
+    <Compile Include="LocalRequest.cs" />
+    <Compile Include="LocalRequest.RequestType.cs" />
+    <Compile Include="LocalSocketPort-LocalSocketMulticastAddress.cs" />
+    <Compile Include="LocalUDPSocketSender.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostFetcher.cs" />
-    <Compile Include="SocketEventType.cs" />
     <Compile Include="LocalUDPSocketListener.cs" />
     <Compile Include="YamClientLocal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

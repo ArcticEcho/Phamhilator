@@ -56,7 +56,7 @@ namespace Phamhilator.Yam.Core
 
 
 
-        internal void CallListeners(TEventType eventType, params object[] args)
+        public void CallListeners(TEventType eventType, params object[] args)
         {
             if (disposed) { return; }
             if (args == null) { return; }

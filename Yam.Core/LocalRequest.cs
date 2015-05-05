@@ -22,40 +22,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Phamhilator.Yam.Core
 {
-    public enum LocalSocketPort
+    public partial class LocalRequest
     {
-        YamToAll = 45000,
-        PhamToYam = 45001,
-        GhamToYam = 45002
-    }
-
-    public static class LocalSocketIPEndPoints
-    {
-        public static IPAddress MulticastAddress
-        {
-            get { return IPAddress.Parse("239.0.0.222"); }
-        }
-
-        public static IPEndPoint YamToAll
-        {
-            get { return new IPEndPoint(IPAddress.Any, (int)LocalSocketPort.YamToAll); }
-        }
-
-        public static IPEndPoint PhamToYam
-        {
-            get { return new IPEndPoint(IPAddress.Any, (int)LocalSocketPort.PhamToYam); }
-        }
-
-        public static IPEndPoint GhamToYam
-        {
-            get { return new IPEndPoint(IPAddress.Any, (int)LocalSocketPort.GhamToYam); }
-        }
+        public RequestType Type { get; set; }
+        public Dictionary<string, object> Options { get; set; }
+        public object Data { get; set; }
     }
 }

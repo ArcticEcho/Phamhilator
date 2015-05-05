@@ -33,188 +33,124 @@ using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Yam.UI
 {
-    internal class YamServer : IDisposable
+    internal partial class YamServer : IDisposable
     {
-        //TODO: Use listener socket + sender socket (yet to be implemented) classes for communication, rather than reimplementing each socket.
+        private readonly LocalUDPSocketListener phamListener;
+        private readonly LocalUDPSocketListener ghamListener;
+        private readonly LocalUDPSocketSender phamSender;
+        private readonly LocalUDPSocketSender ghamSender;
+        private bool disposed;
 
-    //    private bool disposed;
-    //    private IPEndPoint targetEP;
+        # region Public properties.
 
-    //    # region Private listening fields.
+        public EventManager<LocalRequest.RequestType> PhamEventManager { get; private set; }
 
-    //    private readonly ManualResetEvent listenerThreadDeadMRE = new ManualResetEvent(false);
-    //    private UdpClient listener;
-    //    private EndPoint endPoint = new IPEndPoint(new IPAddress(new byte[] { 0, 0, 0, 0 }), 60000);
-    //    private Thread listenerThread;
+        public EventManager<LocalRequest.RequestType> GhamEventManager { get; private set; }
 
-    //    # endregion
+        /// <summary>
+        /// The total number of bytes of data received from Pham.
+        /// </summary>
+        public ulong DataReceivedPham { get { return phamListener.TotalDataReceived; } }
 
-    //    # region Private transmitting fields.
+        /// <summary>
+        /// The total number of bytes of data received from Gham.
+        /// </summary>
+        public ulong DataReceivedGham { get { return ghamListener.TotalDataReceived; } }
 
-    //    private static UdpClient broadcastSocket;
-    //    private static bool shutdown;
-    //    private static uint dataSent;
+        /// <summary>
+        /// The total number of bytes of data sent to Pham.
+        /// </summary>
+        public ulong DataSentPham { get { return phamSender.TotalDataSent; } }
 
-    //    # endregion
+        /// <summary>
+        /// The total number of bytes of data sent to Gham.
+        /// </summary>
+        public ulong DataSentGham { get { return ghamSender.TotalDataSent; } }
 
-    //    # region Public properties.
-
-    //    public EventManager<ClientSocketEventType> PhamEventManager { get; private set; }
-
-    //    public EventManager<ClientSocketEventType> GhamEventManager { get; private set; }
-
-    //    public ulong TotalDataReceived { get; private set; }
-
-    //    public ulong TotalDataSent { get; private set; }
-
-    //    # endregion
-
-
-
-    //    public YamServer()
-    //    {
-    //        PhamEventManager = new EventManager<ClientSocketEventType>(ClientSocketEventType.InternalException);
-    //        GhamEventManager = new EventManager<ClientSocketEventType>(ClientSocketEventType.InternalException);
-
-    //        // Initialise listener.
-    //        listener = new UdpClient();
-    //        listener.ExclusiveAddressUse = false;
-    //        listener.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-    //        listener.Client.Bind(LocalSocketIPEndPoints.YamToAll);
-    //        listener.JoinMulticastGroup(LocalSocketIPEndPoints.MulticastAddress);
-    //        listenerThread = new Thread(Listen) { IsBackground = true };
-    //        listenerThread.Start();
-
-    //        // Initialise sender.
-    //        targetEP = GetTargetEP(sender);
-    //        broadcastSocket = new UdpClient();
-    //        broadcastSocket.JoinMulticastGroup(LocalSocketIPEndPoints.MulticastAddress);
-    //    }
-
-    //    ~YamServer()
-    //    {
-    //        if (!disposed)
-    //        {
-    //            Dispose();
-    //        }
-    //    }
+        # endregion
 
 
 
-    //    public void Dispose()
-    //    {
-    //        if (disposed) { return; }
+        public YamServer()
+        {
+            // Initialise listeners.
+            phamListener = new LocalUDPSocketListener((int)LocalSocketPort.PhamToYam);
+            ghamListener = new LocalUDPSocketListener((int)LocalSocketPort.GhamToYam);
+            PhamEventManager = new EventManager<LocalRequest.RequestType>(LocalRequest.RequestType.Exception);
+            GhamEventManager = new EventManager<LocalRequest.RequestType>(LocalRequest.RequestType.Exception);
+            phamListener.OnMessage += r => HandleMessage(true, r);
+            ghamListener.OnMessage += r => HandleMessage(false, r);
+            phamListener.OnException += ex => HandleException(true, ex);
+            ghamListener.OnException += ex => HandleException(false, ex);
 
-    //        disposed = true;
+            // Initialise senders.
+            phamSender = new LocalUDPSocketSender((int)LocalSocketPort.YamToPham);
+            ghamSender = new LocalUDPSocketSender((int)LocalSocketPort.YamToGham);
+        }
 
-    //        broadcastSocket.Close();
-    //        broadcastSocket.Client.Dispose();
-    //        listenerThreadDeadMRE.WaitOne();
-    //        listenerThreadDeadMRE.Dispose();
-    //        listener.Close();
-    //        listener.Client.Dispose();
-
-    //        GC.SuppressFinalize(this);
-    //    }
-
-    //    public void SendData(string messageType, object objData)
-    //    {
-    //        if (String.IsNullOrEmpty(messageType)) { throw new ArgumentException("'messageType' cannot be null or empty.", "messageType"); }
-    //        if (objData == null) { throw new ArgumentNullException("objData"); }
-    //        if (disposed) { return; }
-
-    //        var json = JsonConvert.SerializeObject(objData, Formatting.Indented);
-    //        var bytes = Encoding.BigEndianUnicode.GetBytes(messageType + json);
-    //        TotalDataSent += (uint)broadcastSocket.Send(bytes, bytes.Length, targetEP);
-    //    }
+        ~YamServer()
+        {
+            if (!disposed)
+            {
+                Dispose();
+            }
+        }
 
 
 
-    //    private IPEndPoint GetTargetEP(char sender)
-    //    {
-    //        var sndrUp = Char.ToUpperInvariant(sender);
-    //        switch (sndrUp)
-    //        {
-    //            case 'P':
-    //            {
-    //                return LocalSocketIPEndPoints.PhamToYam;
-    //            }
-    //            case 'G':
-    //            {
-    //                return LocalSocketIPEndPoints.GhamToYam;
-    //            }
-    //            default:
-    //            {
-    //                throw new NotSupportedException();
-    //            }
-    //        }
-    //    }
+        public void Dispose()
+        {
+            if (disposed) { return; }
 
-    //    private void Listen()
-    //    {
-    //        while (!disposed)
-    //        {
-    //            var bytes = new byte[0];
-    //            var ep = new IPEndPoint(0, 0);
+            disposed = true;
 
-    //            try
-    //            {
-    //                bytes = listener.Receive(ref ep);
-    //                TotalDataReceived += (uint)bytes.Length;
+            phamListener.Dispose();
+            ghamListener.Dispose();
+            phamSender.Dispose();
+            ghamSender.Dispose();
 
-    //                var data = Encoding.BigEndianUnicode.GetString(bytes);
+            GC.SuppressFinalize(this);
+        }
 
-    //                if (data.Length < 3) { continue; }
+        public void SendData(bool toPham, LocalRequest req)
+        {
+            if (req == null) { throw new ArgumentNullException("objData"); }
+            if (disposed) { return; }
 
-    //                var payload = data.Remove(0, 3);
-    //                switch (Char.ToUpperInvariant(data[1]))
-    //                {
-    //                    case 'Q': // Received a question from Yam.
-    //                    {
-    //                        var q = JsonConvert.DeserializeObject<Question>(payload);
-    //                        EventManager.CallListeners(ClientSocketEventType.Question, q);
-    //                        break;
-    //                    }
-    //                    case 'A': // Received an answer from Yam.
-    //                    {
-    //                        var a = JsonConvert.DeserializeObject<Answer>(payload);
-    //                        EventManager.CallListeners(ClientSocketEventType.Answer, a);
-    //                        break;
-    //                    }
-    //                    case 'C': // Received a command from Yam.
-    //                    {
-    //                        if (!String.IsNullOrEmpty(payload))
-    //                        {
-    //                            EventManager.CallListeners(ClientSocketEventType.Command, payload);
-    //                        }
-    //                        break;
-    //                    }
-    //                    case 'D': // Received misc. data from Yam.
-    //                    {
-    //                        if (!String.IsNullOrEmpty(payload))
-    //                        {
-    //                            EventManager.CallListeners(ClientSocketEventType.Data, payload);
-    //                        }
-    //                        break;
-    //                    }
-    //                    case 'F': // Received a requested file from Yam.
-    //                    {
-    //                        if (!String.IsNullOrEmpty(payload))
-    //                        {
-    //                            EventManager.CallListeners(ClientSocketEventType.File, payload);
-    //                        }
-    //                        break;
-    //                    }
-    //                }
-    //            }
-    //            catch (Exception ex)
-    //            {
-    //                EventManager.CallListeners(ClientSocketEventType.InternalException, ex);
-    //            }
-    //        }
+            if (toPham)
+            {
+                phamSender.SendData(req);
+            }
+            else
+            {
+                ghamSender.SendData(req);
+            }
+        }
 
-    //        listenerThreadDeadMRE.Set();
-    //    }
-    //}
-    
+
+
+        private void HandleMessage(bool fromPham, LocalRequest req)
+        {
+            if (fromPham)
+            {
+                PhamEventManager.CallListeners(req.Type, req);
+            }
+            else
+            {
+                GhamEventManager.CallListeners(req.Type, req);
+            }
+        }
+
+        private void HandleException(bool phamSocket, Exception ex)
+        {
+            if (phamSocket)
+            {
+                PhamEventManager.CallListeners(LocalRequest.RequestType.Exception, ex);
+            }
+            else
+            {
+                GhamEventManager.CallListeners(LocalRequest.RequestType.Exception, ex);
+            }
+        }
+    }
 }
