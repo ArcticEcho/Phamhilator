@@ -53,14 +53,14 @@ namespace Phamhilator.Yam.UI
 
         private static void Main(string[] args)
         {
-            Console.Title = "Yam V2";
+            Console.Title = "Yam v2";
             TryLogin();
             Console.Write("Joining room(s)...");
             JoinRooms();
             Console.Write("done.\nStarting server...");
             InitialiseServer();
-            Console.Write("done.\nYam V2 started (press Q to exit).\n");
-            primaryRoom.PostMessage("`Yam V2 started.`");
+            Console.Write("done.\nYam v2 started (press Q to exit).\n");
+            primaryRoom.PostMessage("`Yam v2 started.`");
             startTime = DateTime.UtcNow;
 
             Task.Run(() =>
@@ -79,7 +79,7 @@ namespace Phamhilator.Yam.UI
 
             postSocket.Close();
             postSocket.Dispose();
-            primaryRoom.PostMessage("`Yamhilator V2 stopped.`");
+            primaryRoom.PostMessage("`Yam v2 stopped.`");
         }
 
         private static void TryLogin()
