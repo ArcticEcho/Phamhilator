@@ -93,5 +93,51 @@ namespace Phamhilator.Yam.Core
 
             sender.SendData(req);
         }
+
+        public byte[] RequestData(string owner, string key)
+        {
+            var reqId = LocalRequest.GetNewID();
+            LocalRequest response = null;
+            Action<LocalRequest> dataReceivedAction;
+            using (var dataWaitMre = new ManualResetEvent(false))
+            {
+                dataReceivedAction = new Action<LocalRequest>(r =>
+                {
+                    if ((Guid)r.Options["FullFillReqID"] == reqId)
+                    {
+                        response = r;
+                        dataWaitMre.Set();
+                    }
+                });
+                var req = new LocalRequest
+                {
+                    ID = reqId,
+                    Type = LocalRequest.RequestType.DataManagerRequest,
+                    Options = new Dictionary<string, object>
+                    {
+                        { "DMReqType", "GET" },
+                        { "Owner", owner },
+                        { "Key", key }
+                    }
+                };
+                EventManager.ConnectListener(LocalRequest.RequestType.DataManagerRequest, dataReceivedAction);
+                sender.SendData(req);
+                dataWaitMre.WaitOne();
+            }
+
+            EventManager.DisconnectListener(LocalRequest.RequestType.DataManagerRequest, dataReceivedAction);
+
+            return (byte[])response.Data;
+        }
+
+        public void UpdateData(string owner, string key, byte[] data)
+        {
+
+        }
+
+        public void DeleteData(string owner, string key)
+        {
+
+        }
     }
 }

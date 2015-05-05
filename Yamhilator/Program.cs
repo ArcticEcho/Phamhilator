@@ -45,6 +45,7 @@ namespace Phamhilator.Yam.UI
         private static RealtimePostSocket postSocket;
         private static YamServer server;
         private static DateTime startTime;
+        private static uint yamErrorCount;
         private static uint phamErrorCount;
         private static uint ghamErrorCount;
 
@@ -175,22 +176,45 @@ namespace Phamhilator.Yam.UI
                 {
                     primaryRoom.PostReply(command, "`Stopping...`");
                     shutdownMre.Set();
-                    break;
+                    return;
+                }
+                case "STATUS":
+                {
+                    var hoursAlive = (DateTime.UtcNow - startTime).TotalHours;
+                    var getStatus = new Func<int, string>(er => er == 0 ? "Good" : er <= 3 ? "Ok" : "Bad");
+                    var getErrorRate = new Func<uint, int>(ec => (int)Math.Round(ec / hoursAlive));
+                    var yamErrorRate = getErrorRate(yamErrorCount);   var yamStatus = getStatus(yamErrorRate);
+                    var phamErrorRate = getErrorRate(phamErrorCount); var phamStatus = getStatus(phamErrorRate);
+                    var ghamErrorRate = getErrorRate(ghamErrorCount); var ghamStatus = getStatus(ghamErrorRate);
+                    var statusReport = "    Status report:\n    \n" +
+                                       "    Yam:  " + yamStatus + " (" + yamErrorCount + " @ " + yamErrorRate + "/h)\n" +
+                                       "    Pham: " + phamStatus + " (" + phamErrorCount + " @ " + phamErrorRate + "/h)\n" +
+                                       "    Gham: " + ghamStatus + " (" + ghamErrorCount + " @ " + ghamErrorRate + "/h)";
+                    primaryRoom.PostMessage(statusReport);
+                    return;
                 }
                 case "DATA":
                 {
-                    var dataReport = "    Yam data report (in bytes):\n" +
-                                     "    Sent to Pham:       " + server.DataSentPham + ",\n" +
-                                     "    Received from Pham: " + server.DataReceivedPham + ",\n" +
-                                     "    Sent to Gham:       " + server.DataSentGham + ",\n" +
-                                     "    Received from Gham: " + server.DataReceivedGham + ".";
-                    primaryRoom.PostReply(command, dataReport);
-                    break;
+                    var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
+                    var phamRecTotal = server.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
+                    var phamSentTotal = server.DataSentPham / 1024.0;    var phamSentPerSec = phamSentTotal / secsAlive;
+                    var ghamRecTotal = server.DataReceivedGham / 1024.0; var ghamRecPerSec = ghamRecTotal / secsAlive;
+                    var ghamSentTotal = server.DataSentGham / 1024.0;    var ghamSentPerSec = ghamSentTotal / secsAlive;
+                    var overallTotal = phamRecTotal + phamSentTotal + ghamRecTotal + ghamSentTotal;
+                    var overallPerSec = overallTotal / secsAlive;
+                    var dataReport = "    Yam Data report (in KiB):\n" +
+                                     "    Total transferred:  " + Math.Round(overallTotal) + " (~" + Math.Round(overallPerSec, 1) + "/s)\n    \n" +
+                                     "    Sent to Pham:       " + Math.Round(phamSentTotal) + " (~" + Math.Round(phamSentPerSec, 1) + "/s)\n" +
+                                     "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n    \n" +
+                                     "    Sent to Gham:       " + Math.Round(ghamSentTotal) + " (~" + Math.Round(ghamSentPerSec, 1) + "/s)\n" +
+                                     "    Received from Gham: " + Math.Round(ghamRecTotal) + " (~" + Math.Round(ghamRecPerSec, 1) + "/s)";
+                    primaryRoom.PostMessage(dataReport);
+                    return;
                 }
                 default:
                 {
                     primaryRoom.PostReply(command, "`Command not recognised.`");
-                    break;
+                    return;
                 }
             }
         }
@@ -216,26 +240,36 @@ namespace Phamhilator.Yam.UI
         {
             var owner = (string)req.Options["Owner"];
             var key = (string)req.Options["Key"];
-            byte[] data = null;
-
-            if (req.Data is byte[])
-            {
-                data = (byte[])req.Data;
-            }
-            else if (req.Data is string)
-            {
-                data = Encoding.BigEndianUnicode.GetBytes((string)req.Data);
-            }
-            else
-            {
-                SendEx(fromPham, new NotSupportedException(), new Dictionary<string, object> { { "ReceivedReq", req } });
-                return;
-            }
+            var data = GetDataFromDataManagerRequest(fromPham, req);
+            if (data == null) { return; }
 
             switch ((string)req.Options["DMReqType"])
             {
                 case "GET":
                 {
+                    var requestedData = DataManager.LoadData(owner, key);
+                    var response = new LocalRequest
+                    {
+                        ID = LocalRequest.GetNewID(),
+                        Type = LocalRequest.RequestType.DataManagerRequest,
+                        Options = new Dictionary<string, object>
+                        {
+                            { "FullFillReqId", req.ID },
+                            { "Owner", owner },
+                            { "Key", key }
+                        },
+                        Data = requestedData
+                    };
+
+                    try
+                    {
+                        server.SendData(fromPham, null);
+                    }
+                    catch (Exception ex)
+                    {
+                        primaryRoom.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
+                        yamErrorCount++;
+                    }
                     return;
                 }
                 case "UPD":
@@ -250,20 +284,45 @@ namespace Phamhilator.Yam.UI
                 }
                 default:
                 {
-                    SendEx(fromPham, new NotSupportedException(), new Dictionary<string, object>{ { "ReceivedReq", req } });
+                    SendEx(fromPham, new NotSupportedException(), new Dictionary<string, object>{ { "ReceivedRequest", req } });
                     return;
                 }
             }
         }
 
+        private static byte[] GetDataFromDataManagerRequest(bool fromPham, LocalRequest req)
+        {
+            if (req.Data is byte[])
+            {
+                return (byte[])req.Data;
+            }
+            else if (req.Data is string)
+            {
+                return Encoding.BigEndianUnicode.GetBytes((string)req.Data);
+            }
+            else
+            {
+                SendEx(fromPham, new NotSupportedException(), new Dictionary<string, object> { { "ReceivedRequest", req } });
+                return null;
+            }
+        }
+
         private static void SendEx(bool toPham, Exception ex, Dictionary<string, object> additionalInfo = null)
         {
-            server.SendData(toPham, new LocalRequest
+            try
             {
-                Type = LocalRequest.RequestType.Exception,
-                Options = additionalInfo,
-                Data = ex
-            });
+                server.SendData(toPham, new LocalRequest
+                {
+                    Type = LocalRequest.RequestType.Exception,
+                    Options = additionalInfo,
+                    Data = ex
+                });
+            }
+            catch (Exception e)
+            {
+                yamErrorCount++;
+                primaryRoom.PostMessage("Detected error in Yam:\n\n" + e.ToString());
+            }
         }
     }
 }

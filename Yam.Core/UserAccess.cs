@@ -28,16 +28,18 @@ using ChatExchangeDotNet;
 
 namespace Phamhilator.Yam.Core
 {
-    public static class UserAccess
+    public class UserAccess
     {
         static private readonly List<User> owners = new List<User>();
+        private readonly YamClientLocal client;
 
-        static public List<int> PrivUsers { get; private set; }
+        public List<int> PrivUsers { get; private set; }
 
         static public List<User> Owners
         {
             get
             {
+                if (owners == null) { PopulateOwners("meta.stackexchange.com", 773); }
                 return owners;
             }
         }
@@ -70,15 +72,17 @@ namespace Phamhilator.Yam.Core
 
 
 
-        static UserAccess()
+        public UserAccess(ref YamClientLocal client)
         {
+            if (client == null) { throw new ArgumentNullException("client"); }
+
+            this.client = client;
             PopulatePrivUsers();
-            PopulateOwners("meta.stackexchange.com", 773); // The LQP HQ.
         }
 
 
 
-        static public void AddPrivUser(int id)
+        public void AddPrivUser(int id)
         {
             PrivUsers.Add(id);
 
@@ -87,7 +91,7 @@ namespace Phamhilator.Yam.Core
 
 
 
-        static private void PopulatePrivUsers()
+        private void PopulatePrivUsers()
         {
             PrivUsers = new List<int>();
 

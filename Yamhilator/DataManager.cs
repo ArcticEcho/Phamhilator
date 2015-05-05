@@ -55,7 +55,7 @@ namespace Phamhilator.Yam.UI
             return activeFiles.ContainsKey(safeKey);
         }
 
-        public static string LoadData(string owner, string key)
+        public static byte[] LoadData(string owner, string key)
         {
             var k = GetSafeFileName(owner, key);
             if (!activeFiles.ContainsKey(k)) { throw new KeyNotFoundException(); }
@@ -63,16 +63,11 @@ namespace Phamhilator.Yam.UI
             WaitForFile(k);
 
             activeFiles[k] = true;
-            var data = File.ReadAllText(Path.Combine(root, k), Encoding.BigEndianUnicode);
+            var data = File.ReadAllBytes(Path.Combine(root, k));
 
             NotifyWaitingThreads(k);
 
             return data;
-        }
-
-        public static void SaveData(string owner, string key, string data)
-        {
-            SaveData(owner, key, Encoding.BigEndianUnicode.GetBytes(data));
         }
 
         public static void SaveData(string owner, string key, byte[] data)

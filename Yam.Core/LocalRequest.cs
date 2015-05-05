@@ -27,8 +27,16 @@ namespace Phamhilator.Yam.Core
 {
     public partial class LocalRequest
     {
+        public Guid ID { get; set; }
         public RequestType Type { get; set; }
         public Dictionary<string, object> Options { get; set; }
         public object Data { get; set; }
+
+
+
+        public static Guid GetNewID()
+        {
+            return Guid.NewGuid();
+        }
     }
 }
