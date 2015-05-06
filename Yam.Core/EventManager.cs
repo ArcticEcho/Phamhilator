@@ -56,6 +56,15 @@ namespace Phamhilator.Yam.Core
 
 
 
+        public void Dispose()
+        {
+            if (disposed) { return; }
+
+            GC.SuppressFinalize(this);
+            ConnectedListeners.Clear();
+            disposed = true;
+        }
+
         public void CallListeners(TEventType eventType, params object[] args)
         {
             if (disposed) { return; }
@@ -77,29 +86,25 @@ namespace Phamhilator.Yam.Core
             }
         }
 
-        public void Dispose()
-        {
-            if (disposed) { return; }
-
-            GC.SuppressFinalize(this);
-            ConnectedListeners.Clear();
-            disposed = true;
-        }
-
         public void ConnectListener(TEventType eventType, Delegate listener)
         {
             if (disposed) { return; }
+
             if (!ConnectedListeners.ContainsKey(eventType))
             {
                 ConnectedListeners[eventType] = new ConcurrentDictionary<int, Delegate>();
+            }
+            else if (ConnectedListeners[eventType].Values.Contains(listener))
+            {
+                throw new Exception("'listener' has already been connected to this event type.");
+            }
+
+            if (ConnectedListeners[eventType].Count == 0)
+            {
                 ConnectedListeners[eventType][0] = listener;
             }
             else
             {
-                if (ConnectedListeners[eventType].Values.Contains(listener))
-                {
-                    throw new Exception("'listener' has already been connected to this event type.");
-                }
                 var index = ConnectedListeners[eventType].Keys.Max() + 1;
                 ConnectedListeners[eventType][index] = listener;
             }

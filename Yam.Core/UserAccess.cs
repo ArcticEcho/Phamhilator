@@ -39,7 +39,7 @@ namespace Phamhilator.Yam.Core
         {
             get
             {
-                if (owners == null) { PopulateOwners("meta.stackexchange.com", 773); }
+                if (owners.Count == 0) { PopulateOwners("meta.stackexchange.com", 773); }
                 return owners;
             }
         }

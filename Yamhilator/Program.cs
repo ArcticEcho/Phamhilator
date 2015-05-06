@@ -27,9 +27,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
-using ChatExchangeDotNet;
 using System.Net;
 using System.Threading;
+using ChatExchangeDotNet;
 using Phamhilator.Yam.Core;
 using Newtonsoft.Json;
 
@@ -41,7 +41,7 @@ namespace Phamhilator.Yam.UI
     {
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static Client chatClient;
-        private static Room primaryRoom;
+        private static Room chatRoom;
         private static RealtimePostSocket postSocket;
         private static YamServer server;
         private static DateTime startTime;
@@ -55,13 +55,48 @@ namespace Phamhilator.Yam.UI
         {
             Console.Title = "Yam v2";
             TryLogin();
-            Console.Write("Joining room(s)...");
+            Console.Write("Joining chat room...");
             JoinRooms();
             Console.Write("done.\nStarting server...");
             InitialiseServer();
             Console.Write("done.\nYam v2 started (press Q to exit).\n");
-            primaryRoom.PostMessage("`Yam v2 started.`");
+            chatRoom.PostMessage("`Yam v2 started.`");
             startTime = DateTime.UtcNow;
+
+            // DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG
+
+            var client = new YamClientLocal("Gham");
+            client.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(req =>
+            {
+                client.SendData(new LocalRequest
+                {
+                    ID = LocalRequest.GetNewID(),
+                    Type = LocalRequest.RequestType.Exception,
+                    Options = req.Options,
+                    Data = req.Data
+                });
+            }));
+            client.EventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
+            {
+                chatRoom.PostMessage("`Received response.`");
+            }));
+            chatRoom.PostMessage("`Initialised test Gham client.`");
+            //var dataReq = new LocalRequest
+            //{
+            //    ID = LocalRequest.GetNewID(),
+            //    Type = RequestType.DataManagerRequest,
+            //    Options = new Dictionary<string, object>
+            //    {
+            //        { "DMReqType", "GET" },
+            //        { "Owner", "gham" },
+            //        { "Key", "Model Count" }
+            //    }
+            //};
+            //client.SendData(dataReq);
+            chatRoom.PostMessage("`Sending DataManager UDP request...`");
+            client.UpdateData("gham", "Model Count", "2");
+
+            // DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG
 
             Task.Run(() =>
             {
@@ -79,7 +114,9 @@ namespace Phamhilator.Yam.UI
 
             postSocket.Close();
             postSocket.Dispose();
-            primaryRoom.PostMessage("`Yam v2 stopped.`");
+            chatRoom.PostMessage("`Yam v2 stopped.`");
+            chatRoom.Leave();
+            chatClient.Dispose();
         }
 
         private static void TryLogin()
@@ -113,12 +150,10 @@ namespace Phamhilator.Yam.UI
 
         private static void JoinRooms()
         {
-            Console.Write("Joining primary room...");
-
-            primaryRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
-            primaryRoom.IgnoreOwnEvents = true;
-            primaryRoom.StripMentionFromMessages = true;
-            primaryRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
+            chatRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+            chatRoom.IgnoreOwnEvents = true;
+            chatRoom.StripMentionFromMessages = true;
+            chatRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
         }
 
         private static void InitialiseServer()
@@ -128,15 +163,15 @@ namespace Phamhilator.Yam.UI
             postSocket.OnActiveThreadAnswers += BroadcastAnswers;
 
             server = new YamServer();
-            server.PhamEventManager.ConnectListener(RequestType.Exception, new Action<Exception>(ex =>
+            server.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 phamErrorCount++;
-                primaryRoom.PostMessage("Warning, error detected in Pham:\n\n" + ex.ToString());
+                chatRoom.PostMessage("Warning, error detected in Pham:\n\n" + JsonConvert.SerializeObject(req, Formatting.Indented));
             }));
-            server.GhamEventManager.ConnectListener(RequestType.Exception, new Action<Exception>(ex =>
+            server.GhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 ghamErrorCount++;
-                primaryRoom.PostMessage("Warning, error detected in Gham:\n\n" + ex.ToString());
+                chatRoom.PostMessage("Warning, error detected in Gham:\n\n" + JsonConvert.SerializeObject(req, Formatting.Indented));
             }));
             server.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
             {
@@ -174,14 +209,14 @@ namespace Phamhilator.Yam.UI
             {
                 case "STOP":
                 {
-                    primaryRoom.PostReply(command, "`Stopping...`");
+                    chatRoom.PostReply(command, "`Stopping...`");
                     shutdownMre.Set();
                     return;
                 }
                 case "STATUS":
                 {
                     var hoursAlive = (DateTime.UtcNow - startTime).TotalHours;
-                    var getStatus = new Func<int, string>(er => er == 0 ? "Good" : er <= 3 ? "Ok" : "Bad");
+                    var getStatus = new Func<int, string>(er => er == 0 ? "Good" : er <= 2 ? "Ok" : "Bad");
                     var getErrorRate = new Func<uint, int>(ec => (int)Math.Round(ec / hoursAlive));
                     var yamErrorRate = getErrorRate(yamErrorCount);   var yamStatus = getStatus(yamErrorRate);
                     var phamErrorRate = getErrorRate(phamErrorCount); var phamStatus = getStatus(phamErrorRate);
@@ -190,7 +225,7 @@ namespace Phamhilator.Yam.UI
                                        "    Yam:  " + yamStatus + " (" + yamErrorCount + " @ " + yamErrorRate + "/h)\n" +
                                        "    Pham: " + phamStatus + " (" + phamErrorCount + " @ " + phamErrorRate + "/h)\n" +
                                        "    Gham: " + ghamStatus + " (" + ghamErrorCount + " @ " + ghamErrorRate + "/h)";
-                    primaryRoom.PostMessage(statusReport);
+                    chatRoom.PostMessage(statusReport);
                     return;
                 }
                 case "DATA":
@@ -208,12 +243,12 @@ namespace Phamhilator.Yam.UI
                                      "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n    \n" +
                                      "    Sent to Gham:       " + Math.Round(ghamSentTotal) + " (~" + Math.Round(ghamSentPerSec, 1) + "/s)\n" +
                                      "    Received from Gham: " + Math.Round(ghamRecTotal) + " (~" + Math.Round(ghamRecPerSec, 1) + "/s)";
-                    primaryRoom.PostMessage(dataReport);
+                    chatRoom.PostMessage(dataReport);
                     return;
                 }
                 default:
                 {
-                    primaryRoom.PostReply(command, "`Command not recognised.`");
+                    chatRoom.PostReply(command, "`Command not recognised.`");
                     return;
                 }
             }
@@ -221,7 +256,7 @@ namespace Phamhilator.Yam.UI
 
         private static void BroadcastQuestion(Question q)
         {
-            var req = new LocalRequest { Type = LocalRequest.RequestType.Question, Data = q }; 
+            var req = new LocalRequest { Type = LocalRequest.RequestType.Question, Data = q };
             server.SendData(true, req);
             server.SendData(false, req);
         }
@@ -238,74 +273,89 @@ namespace Phamhilator.Yam.UI
 
         private static void HandleDataManagerRequest(bool fromPham, LocalRequest req)
         {
-            var owner = (string)req.Options["Owner"];
-            var key = (string)req.Options["Key"];
-            var data = GetDataFromDataManagerRequest(fromPham, req);
-            if (data == null) { return; }
-
-            switch ((string)req.Options["DMReqType"])
+            try
             {
-                case "GET":
+                var owner = (string)req.Options["Owner"];
+                var key = (string)req.Options["Key"];
+                var data = (string)req.Data;// == null ? null : GetDataFromDataManagerRequest(fromPham, req);
+
+                switch ((string)req.Options["DMReqType"])
                 {
-                    var requestedData = DataManager.LoadData(owner, key);
-                    var response = new LocalRequest
+                    case "GET":
                     {
-                        ID = LocalRequest.GetNewID(),
-                        Type = LocalRequest.RequestType.DataManagerRequest,
-                        Options = new Dictionary<string, object>
+                        var requestedData = DataManager.LoadData(owner, key);
+                        var response = new LocalRequest
                         {
-                            { "FullFillReqId", req.ID },
-                            { "Owner", owner },
-                            { "Key", key }
-                        },
-                        Data = requestedData
-                    };
+                            ID = LocalRequest.GetNewID(),
+                            Type = LocalRequest.RequestType.DataManagerRequest,
+                            Options = new Dictionary<string, object>
+                            {
+                                { "FullFillReqID", req.ID },
+                                { "Owner", owner },
+                                { "Key", key }
+                            },
+                            Data = requestedData
+                        };
 
-                    try
-                    {
-                        server.SendData(fromPham, null);
+                        try
+                        {
+                            server.SendData(fromPham, response);
+                        }
+                        catch (Exception ex)
+                        {
+                            chatRoom.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
+                            yamErrorCount++;
+                        }
+                        return;
                     }
-                    catch (Exception ex)
+                    case "UPD":
                     {
-                        primaryRoom.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
-                        yamErrorCount++;
+                        DataManager.SaveData(owner, key, data);
+                        return;
                     }
-                    return;
+                    case "DEL":
+                    {
+                        DataManager.DeleteData(owner, key);
+                        return;
+                    }
+                    default:
+                    {
+                        throw new NotSupportedException();
+                    }
                 }
-                case "UPD":
-                {
-                    DataManager.SaveData(owner, key, data);
-                    return;
-                }
-                case "DEL":
-                {
-                    DataManager.DeleteData(owner, key);
-                    return;
-                }
-                default:
-                {
-                    SendEx(fromPham, new NotSupportedException(), new Dictionary<string, object>{ { "ReceivedRequest", req } });
-                    return;
-                }
+            }
+            catch (Exception ex)
+            {
+                SendEx(fromPham, ex, new Dictionary<string, object> { { "ReceivedRequest", req } });
             }
         }
 
-        private static byte[] GetDataFromDataManagerRequest(bool fromPham, LocalRequest req)
+        /*private static byte[] GetDataFromDataManagerRequest(bool fromPham, LocalRequest req)
         {
-            if (req.Data is byte[])
+            try
             {
-                return (byte[])req.Data;
+                if (req.Data is byte[])
+                {
+                    return (byte[])req.Data;
+                }
+                else if (req.Data is string)
+                {
+                    return Encoding.BigEndianUnicode.GetBytes((string)req.Data);
+                }
+                else
+                {
+                    throw new NotSupportedException();
+                }
             }
-            else if (req.Data is string)
+            catch (Exception ex)
             {
-                return Encoding.BigEndianUnicode.GetBytes((string)req.Data);
+                SendEx(fromPham, ex, new Dictionary<string, object>
+                {
+                    { "ReceivedRequest", req }
+                });
             }
-            else
-            {
-                SendEx(fromPham, new NotSupportedException(), new Dictionary<string, object> { { "ReceivedRequest", req } });
-                return null;
-            }
-        }
+            return null;
+        }*/
 
         private static void SendEx(bool toPham, Exception ex, Dictionary<string, object> additionalInfo = null)
         {
@@ -313,7 +363,7 @@ namespace Phamhilator.Yam.UI
             {
                 server.SendData(toPham, new LocalRequest
                 {
-                    Type = LocalRequest.RequestType.Exception,
+                    Type = RequestType.Exception,
                     Options = additionalInfo,
                     Data = ex
                 });
@@ -321,7 +371,7 @@ namespace Phamhilator.Yam.UI
             catch (Exception e)
             {
                 yamErrorCount++;
-                primaryRoom.PostMessage("Detected error in Yam:\n\n" + e.ToString());
+                chatRoom.PostMessage("Detected error in Yam:\n\n" + e.ToString());
             }
         }
     }

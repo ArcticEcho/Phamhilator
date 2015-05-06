@@ -34,21 +34,22 @@ using ChatExchangeDotNet;
 using GibberishClassification;
 using Phamhilator.NLP;
 using Phamhilator.Yam.Core;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Gham
 {
     public class Program
     {
-        private static readonly int[] owners = new[] { 227577, 266094, 229438 }; // Sam, Uni & Fox.
+        //private static readonly int[] owners = new[] { 227577, 266094, 229438 }; // Sam, Uni & Fox.
+        private static readonly List<Question> nlpQuestionQueue = new List<Question>();
+        private static readonly List<Answer> nlpAnswerQueue = new List<Answer>();
         private static Client chatClient;
-        private static Room primaryRoom;
+        private static Room chatRoom;
         private static YamClientLocal yamClient;
-        private static bool shutdown;
         private static PoSTagger tagger;
         private static HashSet<PoSTModel> models;
         private static Thread nlpProcessor;
-        private static List<Question> nlpQuestionQueue = new List<Question>();
-        private static List<Answer> nlpAnswerQueue = new List<Answer>();
+        private static bool shutdown;
 
 
 
@@ -94,34 +95,49 @@ namespace Phamhilator.Gham
             //m = new PoSTModel(tags.ToArray(), "M2");
             //new PoSTModelFDBManager("M2").UpdateModel(m);
 
-
-
+            Console.Title = "Gham v2";
             TryLogin();
-
+            Console.Write("Joining chat room...");
             JoinRooms();
-
             Console.Write("done.\nStarting sockets...");
-
-            InitialiseSocket();
-
+            InitialiseClient();
             Console.Write("done.\nLoading core PoS tagger: ");
-
             tagger = new PoSTagger();
+            Console.Write("\nRequesting model(s)...");
 
-            Console.Write("\nLoading model(s)...");
 
-            models = new HashSet<PoSTModel>();
-            foreach (var m in Directory.EnumerateFiles(PoSTModelFFDBManager.modelDir))
+
+            yamClient.UpdateData("gham", "Model Count", "2");
+            yamClient.UpdateData("gham", "PoST Model:0", File.ReadAllText(@"C:\Users\Samuel\Documents\GitHub\Phamhilator\Ghamhilator\bin\Debug\PoST Models\M0"));
+            yamClient.UpdateData("gham", "PoST Model:1", File.ReadAllText(@"C:\Users\Samuel\Documents\GitHub\Phamhilator\Ghamhilator\bin\Debug\PoST Models\M1"));
+
+
+
+
+            try
             {
-                models.Add(new PoSTModelFFDBManager(Path.GetFileName(m)).LoadModel());
+                models = new HashSet<PoSTModel>();
+                var modelCount = int.Parse(yamClient.RequestData("gham", "Model Count"));
+                for (var i = 0; i < modelCount; i++)
+                {
+                    var modelJson = yamClient.RequestData("gham", "PoST Model:" + i);
+                    models.Add(JsonConvert.DeserializeObject<PoSTModel>(modelJson));
+                }
+                nlpProcessor = new Thread(NLPProcessor);
+                nlpProcessor.Start();
             }
-             
-            nlpProcessor = new Thread(NLPProcessor);
-            nlpProcessor.Start();
+            catch (Exception ex)
+            {
+                yamClient.SendData(new LocalRequest
+                {
+                    ID = LocalRequest.GetNewID(),
+                    Type = LocalRequest.RequestType.Exception,
+                    Data = ex
+                });
+            }
 
-            Console.WriteLine("done.\nGhamhilator started (press Q to exit).\n");
-
-            primaryRoom.PostMessage("`Ghamhilator started.`");
+            Console.WriteLine("done.\nGham started (press Q to exit).\n");
+            chatRoom.PostMessage("`Gham started.`");
 
             while (!shutdown)
             {
@@ -132,8 +148,9 @@ namespace Phamhilator.Gham
             }
 
             yamClient.Dispose();
-
-            primaryRoom.PostMessage("`Ghamhilator stopped.`");
+            chatRoom.PostMessage("`Gham stopped.`");
+            chatRoom.Leave();
+            chatClient.Dispose();
         }
 
         private static void TryLogin()
@@ -167,31 +184,55 @@ namespace Phamhilator.Gham
 
         private static void JoinRooms()
         {
-            Console.Write("Joining primary room...");
-
-            primaryRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
-            primaryRoom.IgnoreOwnEvents = false;
-            primaryRoom.StripMentionFromMessages = false;
-            primaryRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleCommand));
+            chatRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
+            chatRoom.IgnoreOwnEvents = true;
+            chatRoom.StripMentionFromMessages = true;
+            chatRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
         }
 
-        private static void HandleCommand(Message command)
+        private static void InitialiseClient()
         {
-            if (!owners.Contains(command.AuthorID)) { return; }
-
-            if (command.Content.Trim() == "stop")
+            yamClient = new YamClientLocal("GHAM");
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(CheckQuestionNLP));
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(CheckAnswerNLP));
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(req =>
             {
-                primaryRoom.PostMessage("Stopping...");
-                yamClient.SendData("<I>", "Acknowledged shutdown command.");
-                shutdown = true;
-            }
+                yamClient.SendData(new LocalRequest
+                {
+                    ID = LocalRequest.GetNewID(),
+                    Type = LocalRequest.RequestType.Exception,
+                    Options = req.Options,
+                    Data = req.Data
+                });
+            }));
         }
 
-        private static void InitialiseSocket()
+        private static void HandleChatCommand(Message command)
         {
-            yamClient = new YamClientLocal('g');
-            yamClient.OnActiveQuestion += CheckQuestionNLP;//CheckQuestionForGibberish;
-            yamClient.OnActiveAnswer += CheckAnswerNLP;//CheckAnswerForGibberish;
+            if (!UserAccess.Owners.Select(u => u.ID).Contains(command.AuthorID)) { return; }
+
+            var cmd = command.Content.Trim().ToUpperInvariant();
+
+            switch (cmd)
+            {
+                case "STOP":
+                {
+                    chatRoom.PostReply(command, "Stopping...");
+                    yamClient.SendData(new LocalRequest
+                    {
+                        ID = LocalRequest.GetNewID(),
+                        Type = LocalRequest.RequestType.Info,
+                        Data = "Shutting down (user command)."
+                    });
+                    shutdown = true;
+                    break;
+                }
+                default:
+                {
+                    chatRoom.PostReply(command, "`Command not recognised.`");
+                    return;
+                }
+            }
         }
 
         private static void CheckQuestionNLP(Question q)
@@ -216,61 +257,73 @@ namespace Phamhilator.Gham
 
             while (!shutdown)
             {
-                Thread.Sleep(50);
-
-                if (nlpQuestionQueue.Count < 0 && nlpAnswerQueue.Count < 0) { Thread.Sleep(100); continue; }
-
-                if (processQuestionNext && nlpQuestionQueue.Count > 0)
+                try
                 {
-                    var q = nlpQuestionQueue.First();
-                    nlpQuestionQueue.Remove(q);
-                    var cleanText = GetCleanText(q.Body);
+                    Thread.Sleep(50);
 
-                    if (cleanText.Length < 10) { continue; }
+                    if (nlpQuestionQueue.Count < 0 && nlpAnswerQueue.Count < 0) { Thread.Sleep(100); continue; }
 
-                    var safeTitle = PostFetcher.ChatEscapeString(q.Title, "");
-                    var cleanSentence = StringTools.GetSentences(cleanText)[0];
-                    var tags = tagger.TagString(cleanSentence).Split(' ');
-                    var words = cleanSentence.Split(' ').Where(s => !String.IsNullOrEmpty(s)).ToArray();
-
-                    foreach (var model in models)
+                    if (processQuestionNext && nlpQuestionQueue.Count > 0)
                     {
-                        var score = CheckTags(model, words, tags);
+                        var q = nlpQuestionQueue.First();
+                        nlpQuestionQueue.Remove(q);
+                        var cleanText = GetCleanText(q.Body);
 
-                        if (score > 0.4)
+                        if (cleanText.Length < 10) { continue; }
+
+                        var safeTitle = PostFetcher.ChatEscapeString(q.Title, "");
+                        var cleanSentence = StringTools.GetSentences(cleanText)[0];
+                        var tags = tagger.TagString(cleanSentence).Split(' ');
+                        var words = cleanSentence.Split(' ').Where(s => !String.IsNullOrEmpty(s)).ToArray();
+
+                        foreach (var model in models)
                         {
-                            primaryRoom.PostMessage("**Spam Q** (`" + model.ModelID + "` @ "+ Math.Round(score * 100, 1) + "%): [" + safeTitle + "](" + q.Url + "), by [" + q.AuthorName + "](" + q.AuthorLink + "), on `" + q.Site + "`.");
-                            break;
+                            var score = CheckTags(model, words, tags);
+
+                            if (score > 0.4)
+                            {
+                                chatRoom.PostMessage("**Spam Q** (`" + model.ModelID + "` @ "+ Math.Round(score * 100, 1) + "%): [" + safeTitle + "](" + q.Url + "), by [" + q.AuthorName + "](" + q.AuthorLink + "), on `" + q.Site + "`.");
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (!processQuestionNext && nlpAnswerQueue.Count > 0)
-                {
-                    var a = nlpAnswerQueue.First();
-                    nlpAnswerQueue.Remove(a);
-                    var cleanText = GetCleanText(a.Body);
-
-                    if (cleanText.Length < 10) { continue; }
-
-                    var safeTitle = PostFetcher.ChatEscapeString(a.Title, " ");
-                    var cleanSentence = StringTools.GetSentences(cleanText)[0];
-                    var tags = tagger.TagString(cleanSentence).Split(' ');
-                    var words = cleanSentence.Split(' ').Where(s => !String.IsNullOrEmpty(s)).ToArray();
-
-                    foreach (var model in models)
+                    if (!processQuestionNext && nlpAnswerQueue.Count > 0)
                     {
-                        var score = CheckTags(model, words, tags);
+                        var a = nlpAnswerQueue.First();
+                        nlpAnswerQueue.Remove(a);
+                        var cleanText = GetCleanText(a.Body);
 
-                        if (score > 0.4)
+                        if (cleanText.Length < 10) { continue; }
+
+                        var safeTitle = PostFetcher.ChatEscapeString(a.Title, " ");
+                        var cleanSentence = StringTools.GetSentences(cleanText)[0];
+                        var tags = tagger.TagString(cleanSentence).Split(' ');
+                        var words = cleanSentence.Split(' ').Where(s => !String.IsNullOrEmpty(s)).ToArray();
+
+                        foreach (var model in models)
                         {
-                            primaryRoom.PostMessage("**Spam A** (`" + model.ModelID + "` @ " + Math.Round(score * 100, 1) + "%): [" + safeTitle + "](" + a.Url + "), by [" + a.AuthorName + "](" + a.AuthorLink + "), on `" + a.Site + "`.");
-                            break;
+                            var score = CheckTags(model, words, tags);
+
+                            if (score > 0.4)
+                            {
+                                chatRoom.PostMessage("**Spam A** (`" + model.ModelID + "` @ " + Math.Round(score * 100, 1) + "%): [" + safeTitle + "](" + a.Url + "), by [" + a.AuthorName + "](" + a.AuthorLink + "), on `" + a.Site + "`.");
+                                break;
+                            }
                         }
                     }
-                }
 
-                processQuestionNext = !processQuestionNext;
+                    processQuestionNext = !processQuestionNext;
+                }
+                catch (Exception ex)
+                {
+                    yamClient.SendData(new LocalRequest
+                    {
+                        ID = LocalRequest.GetNewID(),
+                        Type = LocalRequest.RequestType.Exception,
+                        Data = ex
+                    });
+                }
             }
         }
 
@@ -322,7 +375,7 @@ namespace Phamhilator.Gham
 
             if (titleRes > 75)
             {
-                primaryRoom.PostMessage("**Low Quality Q** (" + Math.Round(titleRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
+                chatRoom.PostMessage("**Low Quality Q** (" + Math.Round(titleRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
                 return;
             }
 
@@ -334,7 +387,7 @@ namespace Phamhilator.Gham
 
             if (bodyRes > 75)
             {
-                primaryRoom.PostMessage("**Low Quality Q** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
+                chatRoom.PostMessage("**Low Quality Q** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
             }
         }
 
@@ -349,7 +402,7 @@ namespace Phamhilator.Gham
 
             if (bodyRes > 75)
             {
-                primaryRoom.PostMessage("**Low Quality A** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + answer.Url + ").");
+                chatRoom.PostMessage("**Low Quality A** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + answer.Url + ").");
             }
         }
 

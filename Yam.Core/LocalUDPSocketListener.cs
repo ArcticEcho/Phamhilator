@@ -99,7 +99,7 @@ namespace Phamhilator.Yam.Core
                     var json = Encoding.BigEndianUnicode.GetString(bytes);
                     var data = JsonConvert.DeserializeObject<LocalRequest>(json);
 
-                    if (OnMessage == null || data == null || data.Data == null || data.Options == null) { continue; }
+                    if (OnMessage == null || data == null) { continue; }
                     OnMessage(data);
                 }
                 catch (Exception ex)

@@ -26,23 +26,30 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Reflection;
+using System.Security.Cryptography;
 
 namespace Phamhilator.Yam.UI
 {
     internal static class DataManager
     {
-        private static readonly string root = Path.GetDirectoryName(new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath) + "Data";
+        private static readonly string root = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath), "Data");
         private static readonly ConcurrentDictionary<string, object> activeFiles = new ConcurrentDictionary<string, object>();
 
 
 
         static DataManager()
         {
+            if (!Directory.Exists(root))
+            {
+                Directory.CreateDirectory(root);
+            }
+
             var allFiles = Directory.EnumerateFiles(root, "*", SearchOption.AllDirectories);
-            
+
             foreach (var file in allFiles)
             {
-                activeFiles[file] = false;
+                activeFiles[Path.GetFileNameWithoutExtension(file)] = false;
             }
         }
 
@@ -55,7 +62,7 @@ namespace Phamhilator.Yam.UI
             return activeFiles.ContainsKey(safeKey);
         }
 
-        public static byte[] LoadData(string owner, string key)
+        public static string LoadData(string owner, string key)
         {
             var k = GetSafeFileName(owner, key);
             if (!activeFiles.ContainsKey(k)) { throw new KeyNotFoundException(); }
@@ -63,14 +70,14 @@ namespace Phamhilator.Yam.UI
             WaitForFile(k);
 
             activeFiles[k] = true;
-            var data = File.ReadAllBytes(Path.Combine(root, k));
+            var data = File.ReadAllText(Path.Combine(root, k), Encoding.BigEndianUnicode);
 
             NotifyWaitingThreads(k);
 
             return data;
         }
 
-        public static void SaveData(string owner, string key, byte[] data)
+        public static void SaveData(string owner, string key, string data)
         {
             var k = GetSafeFileName(owner, key);
             if (!activeFiles.ContainsKey(k))
@@ -81,7 +88,7 @@ namespace Phamhilator.Yam.UI
             WaitForFile(k);
 
             activeFiles[k] = true;
-            File.WriteAllBytes(Path.Combine(root, k), data);
+            File.WriteAllText(Path.Combine(root, k), data, Encoding.BigEndianUnicode);
 
             NotifyWaitingThreads(k);
         }
@@ -120,10 +127,10 @@ namespace Phamhilator.Yam.UI
 
         private static string GetSafeFileName(string owner, string key)
         {
-            var upperOwner = owner.ToUpperInvariant();
+            var upperOwner = owner.Trim().ToUpperInvariant();
             var bytes = Encoding.BigEndianUnicode.GetBytes(upperOwner + key);
-
-            return BitConverter.ToString(bytes);
+            var hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(bytes);
+            return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
         }
     }
 }
