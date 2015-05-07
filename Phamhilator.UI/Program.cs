@@ -31,7 +31,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Yam.Core;
+using Phamhilator.Yam.Core;
 using Phamhilator.Pham.Core;
 using ChatExchangeDotNet;
 
@@ -39,7 +39,7 @@ namespace Phamhilator.Pham.UI
 {
     public class Program
     {
-        private static MessageListener messageListener;
+        private static YamClientLocal client;
         private static Client chatClient;
         private static ActiveRooms roomsToJoin;
 
@@ -133,10 +133,11 @@ namespace Phamhilator.Pham.UI
 
         private static void TryLogin()
         {
-            Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
-
+            var success = false;
             while (true)
             {
+                Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
+
                 Console.Write("Email: ");
                 var email = Console.ReadLine();
 
@@ -146,17 +147,17 @@ namespace Phamhilator.Pham.UI
                 try
                 {
                     Console.Write("\nAuthenticating...");
-
                     chatClient = new Client(email, password);
-
                     Console.WriteLine("login successful!");
-
-                    return;
+                    success = true;
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("failed to login.");
                 }
+                Thread.Sleep(3000);
+                Console.Clear();
+                if (success) { return; }
             }
         }
 
@@ -192,9 +193,9 @@ namespace Phamhilator.Pham.UI
 
         private static void InitialiseSocket()
         {
-            messageListener = new MessageListener();
+            client = new YamClientLocal("PHAM");
 
-            messageListener.OnActiveQuestion += question =>
+            client.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(question =>
             {
                 if (!Config.IsRunning) { return; }
 
@@ -208,9 +209,9 @@ namespace Phamhilator.Pham.UI
                         CheckSendReport(question, qMessage, qResults);
                     }
                 }
-            };
+            }));
 
-            messageListener.OnActiveAnswer += answer =>
+            client.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(answer =>
             {
                 if (!Config.IsRunning) { return; }
 
@@ -224,7 +225,7 @@ namespace Phamhilator.Pham.UI
                         CheckSendReport(answer, aMessage, aResults);
                     }
                 }
-            };
+            }));
         }
 
         # endregion
@@ -402,7 +403,7 @@ namespace Phamhilator.Pham.UI
                     Config.PrimaryRoom.PostMessage(roomClosingMessage);
                 }
 
-                messageListener.Dispose();
+                client.Dispose();
 
                 lock (Config.Log)
                 {
@@ -414,7 +415,11 @@ namespace Phamhilator.Pham.UI
                     Config.PrimaryRoom.PostMessage(roomClosedMessage);
                 }
 
-                Thread.Sleep(3000); // Give the primary room a chance to post the messages before disposing the client.
+                foreach (var room in Config.SecondaryRooms)
+                {
+                    room.Leave();
+                }
+                Config.PrimaryRoom.Leave();
 
                 chatClient.Dispose();
             }

@@ -22,6 +22,7 @@
 
 using System.Text;
 using System.Linq;
+using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.Core
 {

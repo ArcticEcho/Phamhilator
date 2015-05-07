@@ -21,6 +21,7 @@
 
 
 using System.Collections.Generic;
+using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.Core
 {

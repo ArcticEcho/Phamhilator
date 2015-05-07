@@ -22,7 +22,7 @@
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Phamhilator.Core;
+using Phamhilator.Yam.Core;
 
 
 

@@ -26,6 +26,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using CsQuery;
+using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.Core
 {
@@ -303,24 +304,24 @@ namespace Phamhilator.Pham.Core
             {
                 if (IsQuestionClass1(item.PostUrl))
                 {
-                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0, 0), data);
 
                     return true;
                 }
 
-                RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0, 0), data);
 
                 return false;
             }
 
             if (IsAnswerClass1(item.PostUrl))
             {
-                RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0, 0), data);
 
                 return true;
             }
 
-            RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+            RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0, 0), data);
 
             return false;
         }
@@ -331,24 +332,24 @@ namespace Phamhilator.Pham.Core
             {
                 if (IsQuestionClass2(item.PostUrl))
                 {
-                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                    RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0, 0), data);
 
                     return true;
                 }
 
-                RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0, 0), data);
 
                 return false;
             }
 
             if (IsAnswerClass2(item.PostUrl))
             {
-                RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+                RegisterTP(new Answer("", "", "", item.Site, 0, "", "", 0, 0), data);
 
                 return true;
             }
 
-            RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0), data);
+            RegisterFP(new Answer("", "", "", item.Site, 0, "", "", 0, 0), data);
 
             return false;
         }

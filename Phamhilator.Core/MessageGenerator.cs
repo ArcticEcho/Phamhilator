@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
+using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.Core
 {

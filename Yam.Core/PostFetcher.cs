@@ -36,12 +36,14 @@ namespace Phamhilator.Yam.Core
 {
     public static class PostFetcher
     {
-        private static readonly Regex shareLinkIDParser = new Regex(@".*(q|a)/|/\d*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex isShareLink = new Regex(@"(q|a)/\d*/\d*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex escapeChars = new Regex(@"[_*`\[\]]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        
-        public static readonly Regex HostParser = new Regex(@".*//|/.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        public static readonly Regex PostIDParser = new Regex(@"\D*/|\D.*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private const RegexOptions regOpts = RegexOptions.CultureInvariant | RegexOptions.Compiled;
+        private static readonly Regex shareLinkIDParser = new Regex(@".*(q|a)/|/\d*", regOpts);
+        private static readonly Regex isShareLink = new Regex(@"(q|a)/\d*/\d*$", regOpts);
+        private static readonly Regex escapeChars = new Regex(@"[_*`\[\]]", regOpts);
+        public static readonly Regex userNetworkID = new Regex(@"accountId: \d+", regOpts);
+
+        public static readonly Regex HostParser = new Regex(@".*//|/.*", regOpts);
+        public static readonly Regex PostIDParser = new Regex(@"\D*/|\D.*", regOpts);
 
 
 
@@ -54,6 +56,7 @@ namespace Phamhilator.Yam.Core
             var title = WebUtility.HtmlDecode((string)data.titleEncodedFancy);
             var authorName = WebUtility.HtmlDecode((string)data.ownerDisplayName);
             var tags = new List<string>();
+            var networkID = -1;
             var authorLink = "";
 
             try
@@ -61,6 +64,11 @@ namespace Phamhilator.Yam.Core
                 authorLink = TrimUrl((string)data.ownerUrl);
             }
             catch (RuntimeBinderException) { }
+
+            if (!String.IsNullOrEmpty(authorLink))
+            {
+                networkID = GetUserNetworkID(authorLink);
+            }
 
             foreach (var tag in data.tags)
             {
@@ -74,7 +82,7 @@ namespace Phamhilator.Yam.Core
             var score = int.Parse(dom[".vote-count-post"].Html());
             var authorRep = PostFetcher.ParseRep(dom[".reputation-score"].Html());
 
-            return new Question(url, host, title, body, score, authorName, authorLink, authorRep, tags, html);
+            return new Question(url, host, title, body, score, authorName, authorLink, networkID, authorRep, tags, html);
         }
 
         public static Question GetQuestion(string postUrl)
@@ -103,6 +111,7 @@ namespace Phamhilator.Yam.Core
 
             string authorName;
             string authorLink;
+            var networkID = -1;
             int authorRep;
 
             if (dom[".reputation-score"][0] != null)
@@ -131,7 +140,12 @@ namespace Phamhilator.Yam.Core
                 }
             }
 
-            return new Question(postUrl, host, title, body, score, authorName, authorLink, authorRep, tags, html);
+            if (!String.IsNullOrEmpty(authorLink))
+            {
+                networkID = GetUserNetworkID(authorLink);
+            }
+
+            return new Question(postUrl, host, title, body, score, authorName, authorLink, networkID, authorRep, tags, html);
         }
 
         public static Answer GetAnswer(string postUrl)
@@ -210,6 +224,28 @@ namespace Phamhilator.Yam.Core
 
 
 
+        private static int GetUserNetworkID(string authorProfileLink)
+        {
+            try
+            {
+                var req = (HttpWebRequest)WebRequest.Create(authorProfileLink);
+                req.AddRange(0, 2048);
+                var res = (HttpWebResponse)req.GetResponse();
+                using (var strm = res.GetResponseStream())
+                {
+                    var bytes = new byte[2048];
+                    strm.Read(bytes, 0, 2048);
+                    var html = Encoding.UTF8.GetString(bytes);
+                    var id = new string(userNetworkID.Match(html).Value.Where(Char.IsDigit).ToArray());
+                    return int.Parse(id);
+                }
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
         private static Answer GetAnswer(CQ dom, string host, string id)
         {
             var aDom = "#answer-" + id + " ";
@@ -219,6 +255,7 @@ namespace Phamhilator.Yam.Core
             var url = "http://" + host + "/a/" + id;
             var authorName = "";
             var authorLink = "";
+            var networkID = -1;
             var authorRep = 0;
 
             var authorE = dom[aDom + ".user-details"].Last()[0];
@@ -245,11 +282,16 @@ namespace Phamhilator.Yam.Core
                 }
             }
 
+            if (!String.IsNullOrEmpty(authorLink))
+            {
+                networkID = GetUserNetworkID(authorLink);
+            }
+
             var excerpt = StripTags(body);
 
             excerpt = excerpt.Length > 75 ? excerpt.Substring(0, 72) + "..." : excerpt;
 
-            return new Answer(url, excerpt, body, host, score, authorName, authorLink, authorRep);
+            return new Answer(url, excerpt, body, host, score, authorName, authorLink, networkID, authorRep);
         }
 
         private static string TrimUrl(string url)

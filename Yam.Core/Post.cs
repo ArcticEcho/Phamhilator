@@ -25,6 +25,7 @@ namespace Phamhilator.Yam.Core
     public abstract class Post
     {
         public string Title { get; protected set; }
+        public int AuthorNetworkID { get; protected set; }
         public string AuthorName { get; protected set; }
         public string AuthorLink { get; protected set; }
         public string Url { get; protected set; }

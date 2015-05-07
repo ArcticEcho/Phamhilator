@@ -155,10 +155,11 @@ namespace Phamhilator.Gham
 
         private static void TryLogin()
         {
-            Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
-
+            var success = false;
             while (true)
             {
+                Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
+
                 Console.Write("Email: ");
                 var email = Console.ReadLine();
 
@@ -168,17 +169,17 @@ namespace Phamhilator.Gham
                 try
                 {
                     Console.Write("\nAuthenticating...");
-
                     chatClient = new Client(email, password);
-
                     Console.WriteLine("login successful!");
-
-                    return;
+                    success = true;
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("failed to login.");
                 }
+                Thread.Sleep(3000);
+                Console.Clear();
+                if (success) { return; }
             }
         }
 

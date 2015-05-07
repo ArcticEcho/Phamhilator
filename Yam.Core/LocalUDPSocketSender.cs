@@ -71,7 +71,7 @@ namespace Phamhilator.Yam.Core
             if (disposed) { return; }
             if (req == null) { throw new ArgumentNullException("req"); }
 
-            var json = JsonConvert.SerializeObject(req, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(req);
             var bytes = Encoding.BigEndianUnicode.GetBytes(json);
             TotalDataSent += (uint)broadcastSocket.Send(bytes, bytes.Length, targetEP);
         }

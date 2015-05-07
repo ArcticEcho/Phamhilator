@@ -24,23 +24,30 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
 
 namespace Phamhilator.Yam.Core
 {
     public class UserAccess
     {
-        static private readonly List<User> owners = new List<User>();
+        private const string dataKey = "Authorised Users";
+        private static readonly List<User> owners = new List<User>();
+        private readonly Regex dataSplit = new Regex("\r\n", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private readonly YamClientLocal client;
 
-        public List<int> PrivUsers { get; private set; }
+        public List<int> AuthorisedUsers { get; private set; }
 
         static public List<User> Owners
         {
             get
             {
-                if (owners.Count == 0) { PopulateOwners("meta.stackexchange.com", 773); }
-                return owners;
+                lock (owners)
+                {
+                    if (owners.Count == 0) { PopulateOwners("meta.stackexchange.com", 773); }
+                    return owners;
+                }
             }
         }
 
@@ -77,33 +84,38 @@ namespace Phamhilator.Yam.Core
             if (client == null) { throw new ArgumentNullException("client"); }
 
             this.client = client;
-            PopulatePrivUsers();
+            PopulateAuthorisedUsers();
         }
 
 
 
-        public void AddPrivUser(int id)
+        public void AddAuthorisedUser(int id)
         {
-            PrivUsers.Add(id);
+            AuthorisedUsers.Add(id);
 
-            //File.AppendAllLines(DirectoryTools.GetPrivUsersFile(), new[] { id.ToString(CultureInfo.InvariantCulture) });
+            var sb = new StringBuilder();
+
+            foreach (var i in AuthorisedUsers)
+            {
+                sb.Append(i);
+                sb.Append("\r\n");
+            }
+
+            client.UpdateData("Yam", dataKey, sb.ToString());
         }
 
 
 
-        private void PopulatePrivUsers()
+        private void PopulateAuthorisedUsers()
         {
-            PrivUsers = new List<int>();
+            AuthorisedUsers = new List<int>();
+            var data = client.RequestData("Yam", dataKey);
+            var idsStr = dataSplit.Split(data);
 
-            //var users = File.ReadAllLines(DirectoryTools.GetPrivUsersFile());
-
-            //foreach (var user in users)
-            //{
-            //    if (!string.IsNullOrWhiteSpace(user))
-            //    {
-            //        PrivUsers.Add(int.Parse(user.Trim()));
-            //    }
-            //}
+            foreach (var id in idsStr)
+            {
+                AuthorisedUsers.Add(int.Parse(id));
+            }
         }
 
         static private void PopulateOwners(string host, int roomID)

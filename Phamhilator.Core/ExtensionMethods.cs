@@ -26,7 +26,8 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
-using JsonFx.Json;
+using Newtonsoft.Json;
+using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.Core
 {
@@ -34,12 +35,12 @@ namespace Phamhilator.Pham.Core
     {
         public static bool IsAuthorOwner(this Message input)
         {
-            return Config.UserAccess.Owners.Any(user => user.ID == input.AuthorID);
+            return UserAccess.Owners.Any(user => user.ID == input.AuthorID);
         }
 
         public static bool IsAuthorPrivUser(this Message input)
         {
-            return Config.UserAccess.PrivUsers.Any(user => user == input.AuthorID) || input.IsAuthorOwner();
+            return Config.UserAccess.AuthorisedUsers.Any(user => user == input.AuthorID) || input.IsAuthorOwner();
         }
 
         public static bool IsQuestion(this FilterClass classification)
@@ -136,7 +137,7 @@ namespace Phamhilator.Pham.Core
                 terms.Add(new Term(filter, newTerm, realTerm.Score, realTerm.Site, realTerm.IsAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
             }
 
-            File.WriteAllText(file, new JsonWriter().Write(terms.ToJsonTerms()));
+            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms()));
         }
 
         public static void WriteScore(this HashSet<Term> terms, FilterConfig filter, Regex term, float newScore, string site = "")
@@ -159,7 +160,7 @@ namespace Phamhilator.Pham.Core
             terms.Remove(realTerm);
             terms.Add(new Term(filter, realTerm.Regex, newScore, realTerm.Site, realTerm.IsAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 
-            File.WriteAllText(file, new JsonWriter().Write(terms.ToJsonTerms()));
+            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms()));
         }
 
         public static void WriteAuto(this HashSet<Term> terms, FilterConfig filter, Regex term, bool isAuto, string site = "")
@@ -172,7 +173,7 @@ namespace Phamhilator.Pham.Core
             terms.Remove(realTerm);
             terms.Add(new Term(filter, realTerm.Regex, realTerm.Score, realTerm.Site, isAuto, realTerm.TPCount, realTerm.FPCount, realTerm.CaughtCount));
 
-            File.WriteAllText(file, new JsonWriter().Write(terms.ToJsonTerms()));
+            File.WriteAllText(file, JsonConvert.SerializeObject(terms.ToJsonTerms()));
         }
 
         public static Term GetRealTerm(this HashSet<Term> terms, Regex term, string site = "")

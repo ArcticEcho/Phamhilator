@@ -27,8 +27,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using JsonFx.Json;
-using JsonFx.Serialization;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Pham.Core
 {
@@ -49,7 +48,7 @@ namespace Phamhilator.Pham.Core
             }
 
             var response = (HttpWebResponse)request.GetResponse();
-            dynamic resJson = new JsonReader().Read(new StreamReader(response.GetResponseStream()).ReadToEnd());
+            dynamic resJson = JsonConvert.DeserializeObject(new StreamReader(response.GetResponseStream()).ReadToEnd());
 
             return "http://hastebin.com/" + (string)resJson.key + ".hs";
         }

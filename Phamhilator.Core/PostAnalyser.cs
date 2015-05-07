@@ -23,6 +23,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.Core
 {

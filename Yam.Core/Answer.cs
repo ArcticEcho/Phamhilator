@@ -24,7 +24,7 @@
  {
      public class Answer : Post
      {
-         public Answer(string url, string title, string body, string site, int score, string authorName, string authorLink, int authorRep)
+         public Answer(string url, string title, string body, string site, int score, string authorName, string authorLink, int authorNetworkID, int authorRep)
          {
              Url = url;
              Title = title;
@@ -33,6 +33,7 @@
              Score = score;
              AuthorName = authorName;
              AuthorLink = authorLink;
+             AuthorNetworkID = authorNetworkID;
              AuthorRep = authorRep;
          }
      }

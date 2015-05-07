@@ -65,36 +65,36 @@ namespace Phamhilator.Yam.UI
 
             // DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG
 
-            var client = new YamClientLocal("Gham");
-            client.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(req =>
-            {
-                client.SendData(new LocalRequest
-                {
-                    ID = LocalRequest.GetNewID(),
-                    Type = LocalRequest.RequestType.Exception,
-                    Options = req.Options,
-                    Data = req.Data
-                });
-            }));
-            client.EventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
-            {
-                chatRoom.PostMessage("`Received response.`");
-            }));
-            chatRoom.PostMessage("`Initialised test Gham client.`");
-            //var dataReq = new LocalRequest
+            //var client = new YamClientLocal("Gham");
+            //client.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(req =>
             //{
-            //    ID = LocalRequest.GetNewID(),
-            //    Type = RequestType.DataManagerRequest,
-            //    Options = new Dictionary<string, object>
+            //    client.SendData(new LocalRequest
             //    {
-            //        { "DMReqType", "GET" },
-            //        { "Owner", "gham" },
-            //        { "Key", "Model Count" }
-            //    }
-            //};
-            //client.SendData(dataReq);
-            chatRoom.PostMessage("`Sending DataManager UDP request...`");
-            client.UpdateData("gham", "Model Count", "2");
+            //        ID = LocalRequest.GetNewID(),
+            //        Type = LocalRequest.RequestType.Exception,
+            //        Options = req.Options,
+            //        Data = req.Data
+            //    });
+            //}));
+            //client.EventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
+            //{
+            //    chatRoom.PostMessage("`Received response.`");
+            //}));
+            //chatRoom.PostMessage("`Initialised test Gham client.`");
+            ////var dataReq = new LocalRequest
+            ////{
+            ////    ID = LocalRequest.GetNewID(),
+            ////    Type = RequestType.DataManagerRequest,
+            ////    Options = new Dictionary<string, object>
+            ////    {
+            ////        { "DMReqType", "GET" },
+            ////        { "Owner", "gham" },
+            ////        { "Key", "Model Count" }
+            ////    }
+            ////};
+            ////client.SendData(dataReq);
+            //chatRoom.PostMessage("`Sending DataManager UDP request...`");
+            //client.UpdateData("gham", "Model Count", "2");
 
             // DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG
 
@@ -121,10 +121,11 @@ namespace Phamhilator.Yam.UI
 
         private static void TryLogin()
         {
-            Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
-
+            var success = false;
             while (true)
             {
+                Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
+
                 Console.Write("Email: ");
                 var email = Console.ReadLine();
 
@@ -134,17 +135,17 @@ namespace Phamhilator.Yam.UI
                 try
                 {
                     Console.Write("\nAuthenticating...");
-
                     chatClient = new Client(email, password);
-
                     Console.WriteLine("login successful!");
-
-                    return;
+                    success = true;
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("failed to login.");
                 }
+                Thread.Sleep(3000);
+                Console.Clear();
+                if (success) { return; }
             }
         }
 
@@ -158,10 +159,6 @@ namespace Phamhilator.Yam.UI
 
         private static void InitialiseServer()
         {
-            postSocket = new RealtimePostSocket(true);
-            postSocket.OnActiveQuestion += BroadcastQuestion;
-            postSocket.OnActiveThreadAnswers += BroadcastAnswers;
-
             server = new YamServer();
             server.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
@@ -197,6 +194,10 @@ namespace Phamhilator.Yam.UI
             //{
             //    // Do something...
             //}));
+
+            postSocket = new RealtimePostSocket(true);
+            postSocket.OnActiveQuestion += BroadcastQuestion;
+            postSocket.OnActiveThreadAnswers += BroadcastAnswers;
         }
 
         private static void HandleChatCommand(Message command)
@@ -277,34 +278,47 @@ namespace Phamhilator.Yam.UI
             {
                 var owner = (string)req.Options["Owner"];
                 var key = (string)req.Options["Key"];
-                var data = (string)req.Data;// == null ? null : GetDataFromDataManagerRequest(fromPham, req);
+                var data = (string)req.Data;
 
                 switch ((string)req.Options["DMReqType"])
                 {
                     case "GET":
                     {
-                        var requestedData = DataManager.LoadData(owner, key);
-                        var response = new LocalRequest
-                        {
-                            ID = LocalRequest.GetNewID(),
-                            Type = LocalRequest.RequestType.DataManagerRequest,
-                            Options = new Dictionary<string, object>
-                            {
-                                { "FullFillReqID", req.ID },
-                                { "Owner", owner },
-                                { "Key", key }
-                            },
-                            Data = requestedData
-                        };
-
                         try
                         {
+                            var requestedData = DataManager.LoadData(owner, key);
+                            var response = new LocalRequest
+                            {
+                                ID = LocalRequest.GetNewID(),
+                                Type = LocalRequest.RequestType.DataManagerRequest,
+                                Options = new Dictionary<string, object>
+                                {
+                                    { "FullFillReqID", req.ID },
+                                    { "Owner", owner },
+                                    { "Key", key }
+                                },
+                                Data = requestedData
+                            };
+
                             server.SendData(fromPham, response);
                         }
                         catch (Exception ex)
                         {
                             chatRoom.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
                             yamErrorCount++;
+                        }
+                        finally
+                        {
+                            var response = new LocalRequest
+                            {
+                                ID = LocalRequest.GetNewID(),
+                                Type = LocalRequest.RequestType.DataManagerRequest,
+                                Options = new Dictionary<string, object>
+                                {
+                                    { "FullFillReqID", req.ID }
+                                }
+                            };
+                            server.SendData(fromPham, response);
                         }
                         return;
                     }
@@ -329,33 +343,6 @@ namespace Phamhilator.Yam.UI
                 SendEx(fromPham, ex, new Dictionary<string, object> { { "ReceivedRequest", req } });
             }
         }
-
-        /*private static byte[] GetDataFromDataManagerRequest(bool fromPham, LocalRequest req)
-        {
-            try
-            {
-                if (req.Data is byte[])
-                {
-                    return (byte[])req.Data;
-                }
-                else if (req.Data is string)
-                {
-                    return Encoding.BigEndianUnicode.GetBytes((string)req.Data);
-                }
-                else
-                {
-                    throw new NotSupportedException();
-                }
-            }
-            catch (Exception ex)
-            {
-                SendEx(fromPham, ex, new Dictionary<string, object>
-                {
-                    { "ReceivedRequest", req }
-                });
-            }
-            return null;
-        }*/
 
         private static void SendEx(bool toPham, Exception ex, Dictionary<string, object> additionalInfo = null)
         {

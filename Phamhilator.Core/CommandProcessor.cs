@@ -30,8 +30,8 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
-using JsonFx.Json;
-using JsonFx.Serialization;
+using Phamhilator.Yam.Core;
+using Newtonsoft.Json;
 using Microsoft.VisualBasic.Devices;
 
 namespace Phamhilator.Pham.Core
@@ -41,7 +41,7 @@ namespace Phamhilator.Pham.Core
         private static Room room;
         private static Message receivedMessage;
         private static Report receivedReport;
-        private static bool fileMissingWarningMessagePosted;
+        //private static bool fileMissingWarningMessagePosted;
         private const RegexOptions regexOptions = RegexOptions.Compiled | RegexOptions.CultureInvariant;
         private static Regex isQestionReport = new Regex(@"(?i)^\*\*(Low Quality|Spam|Offensive|Bad Username)\*\* \*\*Q\*\*|\*\*Bad Tag(s) Used\*\*", regexOptions);
         private static readonly Random random = new Random();
@@ -71,7 +71,7 @@ namespace Phamhilator.Pham.Core
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^(info(rmation)?|about)$", regexOptions), command => new[]
             {
-                new ReplyMessage("[`Phamhilator.Core`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + Config.UserAccess.OwnerNames + ".`")
+                new ReplyMessage("[`Phamhilator.Core`](https://github.com/ArcticEcho/Phamhilator/wiki) `is a` [`.NET`](http://en.wikipedia.org/wiki/.NET_Framework)-`based` [`internet bot`](http://en.wikipedia.org/wiki/Internet_bot) `written in` [`C#`](http://stackoverflow.com/questions/tagged/c%23) `which watches over` [`the /realtime tab`](http://stackexchange.com/questions?tab=realtime) `of` [`Stack Exchange`](http://stackexchange.com/)`. Owners: " + UserAccess.OwnerNames + ".`")
             }, CommandAccessLevel.NormalUser),
             new ChatCommand(new Regex("(?i)^help$", regexOptions), command => new[]
             {
@@ -136,7 +136,7 @@ namespace Phamhilator.Pham.Core
                 }
                 else
                 {
-                    link = Hastebin.PostDocument(new JsonWriter(new DataWriterSettings { PrettyPrint = true, Tab = "    " }).Write(logEntry));
+                    link = Hastebin.PostDocument(JsonConvert.SerializeObject(logEntry, Formatting.Indented));
                     Config.Log.EntryLinks.Add(entryID, link);
                 }
 
@@ -295,10 +295,10 @@ namespace Phamhilator.Pham.Core
             {
                 AddUser(command)
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^ban-user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            /*new ChatCommand(new Regex(@"(?i)^ban-user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 BanUser(command)
-            }, CommandAccessLevel.Owner),
+            }, CommandAccessLevel.Owner),*/
             new ChatCommand(new Regex(@"(?i)^resume\b", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
             {
                 ResumeBot()
@@ -327,16 +327,16 @@ namespace Phamhilator.Pham.Core
 
         public static ReplyMessage[] ExacuteCommand(Room messageRoom, Message input)
         {
-            if (!Config.BannedUsers.SystemIsClear && !fileMissingWarningMessagePosted)
-            {
-                fileMissingWarningMessagePosted = true;
+            //if (!Config.BannedUsers.SystemIsClear && !fileMissingWarningMessagePosted)
+            //{
+            //    fileMissingWarningMessagePosted = true;
 
-                return new[]
-                {
-                    new ReplyMessage("`Warning: the banned users file is missing. All commands have been disabled until the issue has been resolved.`")
-                };
-            }
-            if (Config.BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture))) { return new[] { new ReplyMessage("", false) }; }
+            //    return new[]
+            //    {
+            //        new ReplyMessage("`Warning: the banned users file is missing. All commands have been disabled until the issue has been resolved.`")
+            //    };
+            //}
+            //if (Config.BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture))) { return new[] { new ReplyMessage("", false) }; }
 
             string command;
             room = messageRoom;
@@ -1007,21 +1007,21 @@ namespace Phamhilator.Pham.Core
         {
             var id = int.Parse(command.Replace("add-user", "").Trim());
 
-            if (Config.UserAccess.PrivUsers.Contains(id)) { return new ReplyMessage("`User already has command access.`"); }
+            if (Config.UserAccess.AuthorisedUsers.Contains(id)) { return new ReplyMessage("`User already has command access.`"); }
 
-            Config.UserAccess.AddPrivUser(id);
+            Config.UserAccess.AddAuthorisedUser(id);
 
             return new ReplyMessage("`User added!`");
         }
 
-        private static ReplyMessage BanUser(string command)
-        {
-            var id = command.Replace("ban-user", "").Trim();
+        //private static ReplyMessage BanUser(string command)
+        //{
+        //    var id = command.Replace("ban-user", "").Trim();
 
-            if (Config.BannedUsers.IsUserBanned(id)) { return new ReplyMessage("`User is already banned.`"); }
+        //    if (Config.BannedUsers.IsUserBanned(id)) { return new ReplyMessage("`User is already banned.`"); }
 
-            return new ReplyMessage(Config.BannedUsers.AddUser(id) ? "`User banned!`" : "`Warning: the banned users file is missing (unable to add user). All commands have been disabled until the issue has been resolved.`");
-        }
+        //    return new ReplyMessage(Config.BannedUsers.AddUser(id) ? "`User banned!`" : "`Warning: the banned users file is missing (unable to add user). All commands have been disabled until the issue has been resolved.`");
+        //}
 
         private static ReplyMessage SetAccuracyThreshold(string command)
         {
