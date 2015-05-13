@@ -101,7 +101,7 @@ namespace Phamhilator.Yam.Core
                 sb.Append("\r\n");
             }
 
-            client.UpdateData("Yam", dataKey, sb.ToString());
+            client.UpdateData("Yam", dataKey, sb.ToString().Trim());
         }
 
 

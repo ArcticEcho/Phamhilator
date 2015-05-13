@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChatExchange.Net, Version=2.1.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ChatExchange.Net.2.1.6-beta\lib\ChatExchange.Net.dll</HintPath>
+    <Reference Include="ChatExchange.Net, Version=2.1.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ChatExchange.Net.2.1.8-beta\lib\ChatExchange.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="CsQuery">
