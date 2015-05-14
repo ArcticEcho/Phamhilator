@@ -1,3 +1,3 @@
 language: csharp
 solution: Phamhilator.sln
-script: xbuild /p:Configuration=Release /t:NLP;FlagExchange.Net;GirrerishClassification;Yam.Core;Pham.Core;Yam.UI;Gham;Pham.UI Phamhilator.sln
+script: xbuild Phamhilator.sln /t:NLP;FlagExchange.Net;GirrerishClassification;Yam.Core;Pham.Core;Yam.UI;Gham;Pham.UI /p:Configuration=Release
