@@ -32,7 +32,7 @@ using Newtonsoft.Json;
 
 namespace Phamhilator.Yam.Core
 {
-    public class LocalUDPSocketListener : IDisposable
+    public class LocalSocketListener : IDisposable
     {
         private readonly ManualResetEvent listenerThreadDeadMRE = new ManualResetEvent(false);
         private readonly UdpClient listener;
@@ -49,7 +49,7 @@ namespace Phamhilator.Yam.Core
 
 
 
-        public LocalUDPSocketListener(int port)
+        public LocalSocketListener(int port)
         {
             endPoint = new IPEndPoint(IPAddress.Any, port);
             listener = new UdpClient() { ExclusiveAddressUse = false };
@@ -60,7 +60,7 @@ namespace Phamhilator.Yam.Core
             listenerThread.Start();
         }
 
-        ~LocalUDPSocketListener()
+        ~LocalSocketListener()
         {
             if (disposed) { return; }
             Dispose();

@@ -34,12 +34,13 @@ using System.Text.RegularExpressions;
 using Phamhilator.Yam.Core;
 using Phamhilator.Pham.Core;
 using ChatExchangeDotNet;
+using Phamhilator.FlagExchangeDotNet;
 
 namespace Phamhilator.Pham.UI
 {
     public class Program
     {
-        private static YamClientLocal yamClient;
+        private static LocalRequestClient yamClient;
         private static Client chatClient;
         private static ActiveRooms roomsToJoin;
 
@@ -47,14 +48,15 @@ namespace Phamhilator.Pham.UI
 
         static void Main(string[] args)
         {
-            Console.Title = "Phamhilator";
-            Console.WriteLine("Phamhilator.\nPress Ctrl + C to exit.\n");
+            Console.Title = "Pham v2";
+            Console.WriteLine("Pham v2.\nPress Ctrl + C to exit.\n");
             AppDomain.CurrentDomain.UnhandledException += (o, ex) => Config.PrimaryRoom.PostMessage("Error:\n" + ex.ExceptionObject.ToString());
             Console.CancelKeyPress += (o, oo) => Close();
 
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
+            InitialiseFlagger();
             InitialiseCore();
             TryLogin();
             JoinRooms();
@@ -62,8 +64,13 @@ namespace Phamhilator.Pham.UI
             Config.IsRunning = true;
             Stats.UpTime = DateTime.UtcNow;
 
-            Config.PrimaryRoom.PostMessage("`Phamhilator™ started.`");
-            Console.WriteLine("\nPhamhilator started.");
+#if DEBUG
+            Console.Write("\nPham v2 started (debug).");
+            Config.PrimaryRoom.PostMessage("`Pham v2 started` (**`debug`**)`.`");
+#else
+            Config.PrimaryRoom.PostMessage("`Pham v2 started.`");
+            Console.WriteLine("\nPham v2 started.");
+#endif
 
             ConnectYamClientEvents();
         }
@@ -75,7 +82,7 @@ namespace Phamhilator.Pham.UI
         private static void InitialiseCore()
         {
             Console.Write("Initialising Yam client...");
-            yamClient = new YamClientLocal("PHAM");
+            yamClient = new LocalRequestClient("PHAM");
 
             yamClient.UpdateData("Yam", "Authorised Users", "201151");
 
@@ -87,7 +94,6 @@ namespace Phamhilator.Pham.UI
             Config.Core = new Pham.Core.Pham();
             Stats.PostedReports = new List<Report>();
             Config.UserAccess = new UserAccess(ref yamClient);
-            //Config.BannedUsers = new BannedUsers(Config.UserAccess);
 
             Console.Write("done.\nLoading bad tag definitions...");
             Config.BadTags = new BadTags();
@@ -129,6 +135,25 @@ namespace Phamhilator.Pham.UI
             };
 
             Console.WriteLine("done.\n");
+        }
+
+        private static void InitialiseFlagger()
+        {
+            Console.WriteLine("Please enter your Stack Exchange OpenID credentials (for the flagging module; account must have 200+ rep).\n");
+
+            Console.Write("Username (case sensitive): ");
+            var name = Console.ReadLine();
+
+            Console.Write("Email: ");
+            var email = Console.ReadLine();
+
+            Console.Write("Password: ");
+            var password = Console.ReadLine();
+
+            Config.Flagger = new Flagger(name, email, password);
+
+            Thread.Sleep(3000);
+            Console.Clear();
         }
 
         private static void TryLogin()
@@ -375,11 +400,11 @@ namespace Phamhilator.Pham.UI
             }
             else
             {
-                Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported)..`");
+                Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported).`");
             }
         }
 
-        private static void Close(string consoleCloseMessage = "Closing Phamhilator...", string roomClosingMessage = "`Stopping Phamhilator™...`", string roomClosedMessage = "`Phamhilator™ stopped.`")
+        private static void Close(string consoleCloseMessage = "Closing Pham...", string roomClosingMessage = "`Stopping Pham v2...`", string roomClosedMessage = "`Pham v2 stopped.`")
         {
             // Check if the user has been auth'd, if so the bot has already been fully initialised
             // so post the shutdown message, otherwise, the bot hasn't been initialised so just exit.
@@ -414,6 +439,8 @@ namespace Phamhilator.Pham.UI
                     room.Leave();
                 }
                 Config.PrimaryRoom.Leave();
+
+                Thread.Sleep(5000);
 
                 chatClient.Dispose();
             }

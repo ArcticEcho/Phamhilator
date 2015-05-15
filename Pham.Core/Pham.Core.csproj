@@ -73,7 +73,6 @@
     <Compile Include="FilterType.cs" />
     <Compile Include="GitDataFetcher.cs" />
     <Compile Include="GlobalInfo.cs" />
-    <Compile Include="Hastebin.cs" />
     <Compile Include="JsonTerm.cs" />
     <Compile Include="LinkStripper.cs" />
     <Compile Include="LogItem.cs" />
@@ -113,6 +112,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FlagExchange.Net\FlagExchange.Net\FlagExchange.Net.csproj">
+      <Project>{8bac4155-8aee-4282-b64b-823397c75438}</Project>
+      <Name>FlagExchange.Net</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yam.Core\Yam.Core.csproj">
       <Project>{5823ff27-6194-43d8-a16e-5943c2e34f09}</Project>
       <Name>Yam.Core</Name>

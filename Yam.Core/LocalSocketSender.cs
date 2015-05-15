@@ -31,7 +31,7 @@ using Newtonsoft.Json;
 
 namespace Phamhilator.Yam.Core
 {
-    public class LocalUDPSocketSender : IDisposable
+    public class LocalSocketSender : IDisposable
     {
         private readonly UdpClient broadcastSocket;
         private readonly IPEndPoint targetEP;
@@ -41,14 +41,14 @@ namespace Phamhilator.Yam.Core
 
 
 
-        public LocalUDPSocketSender(int port)
+        public LocalSocketSender(int port)
         {
             targetEP = new IPEndPoint(LocalSocketMulticastAddress.Address, port);
             broadcastSocket = new UdpClient();
             broadcastSocket.JoinMulticastGroup(LocalSocketMulticastAddress.Address);
         }
 
-        ~LocalUDPSocketSender()
+        ~LocalSocketSender()
         {
             if (disposed) { return; }
             Dispose();

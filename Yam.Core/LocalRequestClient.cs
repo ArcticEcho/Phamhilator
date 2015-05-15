@@ -34,10 +34,10 @@ namespace Phamhilator.Yam.Core
 {
     using RequestType = LocalRequest.RequestType;
 
-    public partial class YamClientLocal : IDisposable
+    public partial class LocalRequestClient : IDisposable
     {
-        private readonly LocalUDPSocketSender sender;
-        private readonly LocalUDPSocketListener listener;
+        private readonly LocalSocketSender sender;
+        private readonly LocalSocketListener listener;
         private bool disposed;
 
         public EventManager<LocalRequest.RequestType> EventManager { get; private set; }
@@ -48,7 +48,7 @@ namespace Phamhilator.Yam.Core
 
 
 
-        public YamClientLocal(string callerBot)
+        public LocalRequestClient(string callerBot)
         {
             if (String.IsNullOrEmpty(callerBot)) { throw new ArgumentException("callerBot"); }
             var caller = callerBot.ToUpperInvariant();
@@ -58,15 +58,15 @@ namespace Phamhilator.Yam.Core
             var listenPort = (int)(caller == "PHAM" ? LocalSocketPort.YamToPham : LocalSocketPort.YamToGham);
             var sendPort = (int)(caller == "PHAM" ? LocalSocketPort.PhamToYam : LocalSocketPort.GhamToYam);
 
-            listener = new LocalUDPSocketListener(listenPort);
+            listener = new LocalSocketListener(listenPort);
             EventManager = new EventManager<RequestType>(RequestType.Exception);
             listener.OnMessage += HandleMessage;
             listener.OnException += HandleException;
 
-            sender = new LocalUDPSocketSender(sendPort);
+            sender = new LocalSocketSender(sendPort);
         }
 
-        ~YamClientLocal()
+        ~LocalRequestClient()
         {
             if (!disposed)
             {

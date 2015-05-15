@@ -33,12 +33,12 @@ using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Yam.UI
 {
-    internal partial class YamServer : IDisposable
+    internal partial class LocalServer : IDisposable
     {
-        private readonly LocalUDPSocketListener phamListener;
-        private readonly LocalUDPSocketListener ghamListener;
-        private readonly LocalUDPSocketSender phamSender;
-        private readonly LocalUDPSocketSender ghamSender;
+        private readonly LocalSocketListener phamListener;
+        private readonly LocalSocketListener ghamListener;
+        private readonly LocalSocketSender phamSender;
+        private readonly LocalSocketSender ghamSender;
         private bool disposed;
 
         # region Public properties.
@@ -71,11 +71,11 @@ namespace Phamhilator.Yam.UI
 
 
 
-        public YamServer()
+        public LocalServer()
         {
             // Initialise listeners.
-            phamListener = new LocalUDPSocketListener((int)LocalSocketPort.PhamToYam);
-            ghamListener = new LocalUDPSocketListener((int)LocalSocketPort.GhamToYam);
+            phamListener = new LocalSocketListener((int)LocalSocketPort.PhamToYam);
+            ghamListener = new LocalSocketListener((int)LocalSocketPort.GhamToYam);
             PhamEventManager = new EventManager<LocalRequest.RequestType>(LocalRequest.RequestType.Exception);
             GhamEventManager = new EventManager<LocalRequest.RequestType>(LocalRequest.RequestType.Exception);
             phamListener.OnMessage += r => HandleMessage(true, r);
@@ -84,11 +84,11 @@ namespace Phamhilator.Yam.UI
             ghamListener.OnException += ex => HandleException(false, ex);
 
             // Initialise senders.
-            phamSender = new LocalUDPSocketSender((int)LocalSocketPort.YamToPham);
-            ghamSender = new LocalUDPSocketSender((int)LocalSocketPort.YamToGham);
+            phamSender = new LocalSocketSender((int)LocalSocketPort.YamToPham);
+            ghamSender = new LocalSocketSender((int)LocalSocketPort.YamToGham);
         }
 
-        ~YamServer()
+        ~LocalServer()
         {
             if (!disposed)
             {

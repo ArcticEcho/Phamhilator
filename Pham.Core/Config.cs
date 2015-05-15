@@ -29,6 +29,7 @@ using System.IO;
 using System.Globalization;
 using ChatExchangeDotNet;
 using Phamhilator.Yam.Core;
+using Phamhilator.FlagExchangeDotNet;
 
 namespace Phamhilator.Pham.Core
 {
@@ -48,7 +49,7 @@ namespace Phamhilator.Pham.Core
 
         public static UserAccess UserAccess { get; set; }
 
-        //public static BannedUsers BannedUsers { get; set; }
+        public static Flagger Flagger { get; set; }
 
         public static ReportLog Log { get; set; }
 

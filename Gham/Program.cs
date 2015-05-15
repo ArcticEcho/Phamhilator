@@ -40,12 +40,11 @@ namespace Phamhilator.Gham
 {
     public class Program
     {
-        //private static readonly int[] owners = new[] { 227577, 266094, 229438 }; // Sam, Uni & Fox.
         private static readonly List<Question> nlpQuestionQueue = new List<Question>();
         private static readonly List<Answer> nlpAnswerQueue = new List<Answer>();
         private static Client chatClient;
         private static Room chatRoom;
-        private static YamClientLocal yamClient;
+        private static LocalRequestClient yamClient;
         private static PoSTagger tagger;
         private static HashSet<PoSTModel> models;
         private static Thread nlpProcessor;
@@ -55,46 +54,6 @@ namespace Phamhilator.Gham
 
         private static void Main(string[] args)
         {
-
-
-
-            //tagger = new POST();
-
-
-
-            //var f = tagger.TagString("Have you thought about plastic surgery, Botox or laser treatments to give you the skin you desire?").Split(' ');
-            //var tags = new List<PoSTag>();
-
-            //foreach (var t in f)
-            //{
-            //    tags.Add(new PoSTag(t));
-            //}
-
-            //var m = new PoSTModel(tags.ToArray(), "M0");
-            //new PoSTModelFDBManager("M0").UpdateModel(m);
-
-            //f = tagger.TagString("With so many teeth whitening products on store shelves and at dental offices, choosing the best teeth whitener can prove challenging.").Split(' ');
-            //tags = new List<PoSTag>();
-
-            //foreach (var t in f)
-            //{
-            //    tags.Add(new PoSTag(t));
-            //}
-
-            //m = new PoSTModel(tags.ToArray(), "M1");
-            //new PoSTModelFDBManager("M1").UpdateModel(m);
-
-            //f = tagger.TagString("Do not initiate intense cardio upbringing with metric training.").Split(' ');
-            //tags = new List<PoSTag>();
-
-            //foreach (var t in f)
-            //{
-            //    tags.Add(new PoSTag(t));
-            //}
-
-            //m = new PoSTModel(tags.ToArray(), "M2");
-            //new PoSTModelFDBManager("M2").UpdateModel(m);
-
             Console.Title = "Gham v2";
             TryLogin();
             Console.Write("Joining chat room...");
@@ -103,41 +62,18 @@ namespace Phamhilator.Gham
             InitialiseClient();
             Console.Write("done.\nLoading core PoS tagger: ");
             tagger = new PoSTagger();
-            Console.Write("\nRequesting model(s)...");
+            Console.Write("\nRequesting models...");
+            LoadModels();
+            nlpProcessor = new Thread(NLPProcessor);
+            nlpProcessor.Start();
 
-
-
-            yamClient.UpdateData("gham", "Model Count", "2");
-            yamClient.UpdateData("gham", "PoST Model:0", File.ReadAllText(@"C:\Users\Samuel\Documents\GitHub\Phamhilator\Ghamhilator\bin\Debug\PoST Models\M0"));
-            yamClient.UpdateData("gham", "PoST Model:1", File.ReadAllText(@"C:\Users\Samuel\Documents\GitHub\Phamhilator\Ghamhilator\bin\Debug\PoST Models\M1"));
-
-
-
-
-            try
-            {
-                models = new HashSet<PoSTModel>();
-                var modelCount = int.Parse(yamClient.RequestData("gham", "Model Count"));
-                for (var i = 0; i < modelCount; i++)
-                {
-                    var modelJson = yamClient.RequestData("gham", "PoST Model:" + i);
-                    models.Add(JsonConvert.DeserializeObject<PoSTModel>(modelJson));
-                }
-                nlpProcessor = new Thread(NLPProcessor);
-                nlpProcessor.Start();
-            }
-            catch (Exception ex)
-            {
-                yamClient.SendData(new LocalRequest
-                {
-                    ID = LocalRequest.GetNewID(),
-                    Type = LocalRequest.RequestType.Exception,
-                    Data = ex
-                });
-            }
-
-            Console.WriteLine("done.\nGham started (press Q to exit).\n");
-            chatRoom.PostMessage("`Gham started.`");
+#if DEBUG
+            Console.Write("done.\nGham v2 started (debug), press Q to exit.\n");
+            chatRoom.PostMessage("`Gham v2 started` (**`debug`**)`.`");
+#else
+            Console.Write("done.\nGham v2 started, press Q to exit.\n");
+            chatRoom.PostMessage("`Gham v2 started.`");
+#endif
 
             while (!shutdown)
             {
@@ -148,7 +84,7 @@ namespace Phamhilator.Gham
             }
 
             yamClient.Dispose();
-            chatRoom.PostMessage("`Gham stopped.`");
+            chatRoom.PostMessage("`Gham v2 stopped.`");
             chatRoom.Leave();
             chatClient.Dispose();
         }
@@ -191,9 +127,33 @@ namespace Phamhilator.Gham
             chatRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
         }
 
+        private static void LoadModels()
+        {
+            try
+            {
+                models = new HashSet<PoSTModel>();
+                var modelCount = int.Parse(yamClient.RequestData("gham", "Model Count"));
+                for (var i = 0; i < modelCount; i++)
+                {
+                    var modelJson = yamClient.RequestData("gham", "PoST Model:" + i);
+                    models.Add(JsonConvert.DeserializeObject<PoSTModel>(modelJson));
+                }
+            }
+            catch (Exception ex)
+            {
+                yamClient.SendData(new LocalRequest
+                {
+                    ID = LocalRequest.GetNewID(),
+                    Type = LocalRequest.RequestType.Exception,
+                    Data = ex
+                });
+                Console.WriteLine(ex);
+            }
+        }
+
         private static void InitialiseClient()
         {
-            yamClient = new YamClientLocal("GHAM");
+            yamClient = new LocalRequestClient("GHAM");
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(CheckQuestionNLP));
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(CheckAnswerNLP));
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(req =>
@@ -275,7 +235,7 @@ namespace Phamhilator.Gham
                         var safeTitle = PostFetcher.ChatEscapeString(q.Title, "");
                         var cleanSentence = StringTools.GetSentences(cleanText)[0];
                         var tags = tagger.TagString(cleanSentence).Split(' ');
-                        var words = cleanSentence.Split(' ').Where(s => !String.IsNullOrEmpty(s)).ToArray();
+                        var words = Regex.Split(cleanSentence, @"\W").Where(s => !String.IsNullOrEmpty(s)).ToArray();
 
                         foreach (var model in models)
                         {

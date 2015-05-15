@@ -35,7 +35,7 @@ namespace Phamhilator.Yam.Core
         private const string dataKey = "Authorised Users";
         private static readonly List<User> owners = new List<User>();
         private readonly Regex dataSplit = new Regex("\r\n", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private readonly YamClientLocal client;
+        private readonly LocalRequestClient client;
 
         public List<int> AuthorisedUsers { get; private set; }
 
@@ -79,7 +79,7 @@ namespace Phamhilator.Yam.Core
 
 
 
-        public UserAccess(ref YamClientLocal client)
+        public UserAccess(ref LocalRequestClient client)
         {
             if (client == null) { throw new ArgumentNullException("client"); }
 

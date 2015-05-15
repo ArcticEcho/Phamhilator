@@ -54,17 +54,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Answer.cs" />
-    <Compile Include="BannedUsers.cs" />
     <Compile Include="EventManager.cs" />
+    <Compile Include="Hastebin.cs" />
     <Compile Include="LinkUnshortifier.cs" />
     <Compile Include="LocalRequest.cs" />
     <Compile Include="LocalRequest.RequestType.cs" />
     <Compile Include="LocalSocketPort-LocalSocketMulticastAddress.cs" />
-    <Compile Include="LocalUDPSocketSender.cs" />
+    <Compile Include="LocalSocketSender.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostFetcher.cs" />
-    <Compile Include="LocalUDPSocketListener.cs" />
-    <Compile Include="YamClientLocal.cs" />
+    <Compile Include="LocalSocketListener.cs" />
+    <Compile Include="LocalRequestClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="StringDownloader.cs" />

@@ -43,7 +43,8 @@ namespace Phamhilator.Yam.UI
         private static Client chatClient;
         private static Room chatRoom;
         private static RealtimePostSocket postSocket;
-        private static YamServer server;
+        private static LocalServer locServer;
+        private static RemoteServer remServer;
         private static DateTime startTime;
         private static uint yamErrorCount;
         private static uint phamErrorCount;
@@ -58,9 +59,15 @@ namespace Phamhilator.Yam.UI
             Console.Write("Joining chat room...");
             JoinRooms();
             Console.Write("done.\nStarting server...");
-            InitialiseServer();
-            Console.Write("done.\nYam v2 started (press Q to exit).\n");
+            InitialiseLocalServer();
+            InitialiseRemoteServer();
+#if DEBUG
+            Console.Write("done.\nYam v2 started (debug), press Q to exit.\n");
+            chatRoom.PostMessage("`Yam v2 started` (**`debug`**)`.`");
+#else
+            Console.Write("done.\nYam v2 started, press Q to exit.\n");
             chatRoom.PostMessage("`Yam v2 started.`");
+#endif
             startTime = DateTime.UtcNow;
 
             // DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG
@@ -112,8 +119,11 @@ namespace Phamhilator.Yam.UI
 
             shutdownMre.WaitOne();
 
+            shutdownMre.Dispose();
             postSocket.Close();
             postSocket.Dispose();
+            locServer.Dispose();
+            remServer.Dispose();
             chatRoom.PostMessage("`Yam v2 stopped.`");
             chatRoom.Leave();
             chatClient.Dispose();
@@ -157,24 +167,29 @@ namespace Phamhilator.Yam.UI
             chatRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
         }
 
-        private static void InitialiseServer()
+        private static void InitialiseRemoteServer()
         {
-            server = new YamServer();
-            server.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
+            remServer = new RemoteServer();
+        }
+
+        private static void InitialiseLocalServer()
+        {
+            locServer = new LocalServer();
+            locServer.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 phamErrorCount++;
                 chatRoom.PostMessage("Warning, error detected in Pham:\n\n" + JsonConvert.SerializeObject(req, Formatting.Indented));
             }));
-            server.GhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
+            locServer.GhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 ghamErrorCount++;
                 chatRoom.PostMessage("Warning, error detected in Gham:\n\n" + JsonConvert.SerializeObject(req, Formatting.Indented));
             }));
-            server.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
+            locServer.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
             {
                 HandleDataManagerRequest(true, req);
             }));
-            server.GhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
+            locServer.GhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
             {
                 HandleDataManagerRequest(false, req);
             }));
@@ -229,21 +244,33 @@ namespace Phamhilator.Yam.UI
                     chatRoom.PostMessage(statusReport);
                     return;
                 }
-                case "DATA":
+                case "LOCAL DATA":
                 {
                     var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
-                    var phamRecTotal = server.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
-                    var phamSentTotal = server.DataSentPham / 1024.0;    var phamSentPerSec = phamSentTotal / secsAlive;
-                    var ghamRecTotal = server.DataReceivedGham / 1024.0; var ghamRecPerSec = ghamRecTotal / secsAlive;
-                    var ghamSentTotal = server.DataSentGham / 1024.0;    var ghamSentPerSec = ghamSentTotal / secsAlive;
+                    var phamRecTotal = locServer.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
+                    var phamSentTotal = locServer.DataSentPham / 1024.0; var phamSentPerSec = phamSentTotal / secsAlive;
+                    var ghamRecTotal = locServer.DataReceivedGham / 1024.0; var ghamRecPerSec = ghamRecTotal / secsAlive;
+                    var ghamSentTotal = locServer.DataSentGham / 1024.0; var ghamSentPerSec = ghamSentTotal / secsAlive;
                     var overallTotal = phamRecTotal + phamSentTotal + ghamRecTotal + ghamSentTotal;
                     var overallPerSec = overallTotal / secsAlive;
-                    var dataReport = "    Yam Data report (in KiB):\n" +
+                    var dataReport = "    Local Yam Data report (in KiB):\n" +
                                      "    Total transferred:  " + Math.Round(overallTotal) + " (~" + Math.Round(overallPerSec, 1) + "/s)\n    \n" +
                                      "    Sent to Pham:       " + Math.Round(phamSentTotal) + " (~" + Math.Round(phamSentPerSec, 1) + "/s)\n" +
                                      "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n    \n" +
                                      "    Sent to Gham:       " + Math.Round(ghamSentTotal) + " (~" + Math.Round(ghamSentPerSec, 1) + "/s)\n" +
                                      "    Received from Gham: " + Math.Round(ghamRecTotal) + " (~" + Math.Round(ghamRecPerSec, 1) + "/s)";
+                    chatRoom.PostMessage(dataReport);
+                    return;
+                }
+                case "REMOTE DATA":
+                {
+                    var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
+                    var clientCount = remServer.Clients.Count;
+                    var overallTotal = remServer.TotalDataSent / 1024.0;
+                    var overallPerSec = Math.Round(overallTotal / secsAlive, 1);
+                    var dataReport = "    Remote Yam Data report (in KiB):\n" +
+                                     "    Total transferred: " + Math.Round(overallTotal) + " (~" + overallPerSec + "/s)\n" +
+                                     "    Clients:           " + clientCount;
                     chatRoom.PostMessage(dataReport);
                     return;
                 }
@@ -257,18 +284,22 @@ namespace Phamhilator.Yam.UI
 
         private static void BroadcastQuestion(Question q)
         {
-            var req = new LocalRequest { Type = LocalRequest.RequestType.Question, Data = q };
-            server.SendData(true, req);
-            server.SendData(false, req);
+            var locReq = new LocalRequest { Type = LocalRequest.RequestType.Question, Data = q };
+            locServer.SendData(true, locReq);
+            locServer.SendData(false, locReq);
+
+            remServer.SendDataAll(q);
         }
 
         private static void BroadcastAnswers(List<Answer> answers)
         {
             foreach (var a in answers)
             {
-                var req = new LocalRequest { Type = LocalRequest.RequestType.Answer, Data = a };
-                server.SendData(true, req);
-                server.SendData(false, req);
+                var locReq = new LocalRequest { Type = LocalRequest.RequestType.Answer, Data = a };
+                locServer.SendData(true, locReq);
+                locServer.SendData(false, locReq);
+
+                remServer.SendDataAll(a);
             }
         }
 
@@ -300,7 +331,7 @@ namespace Phamhilator.Yam.UI
                                 Data = requestedData
                             };
 
-                            server.SendData(fromPham, response);
+                            locServer.SendData(fromPham, response);
                         }
                         catch (Exception ex)
                         {
@@ -317,7 +348,7 @@ namespace Phamhilator.Yam.UI
                                     { "FullFillReqID", req.ID }
                                 }
                             };
-                            server.SendData(fromPham, response);
+                            locServer.SendData(fromPham, response);
                         }
                         return;
                     }
@@ -347,7 +378,7 @@ namespace Phamhilator.Yam.UI
         {
             try
             {
-                server.SendData(toPham, new LocalRequest
+                locServer.SendData(toPham, new LocalRequest
                 {
                     Type = RequestType.Exception,
                     Options = additionalInfo,

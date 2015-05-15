@@ -29,10 +29,11 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using ChatExchangeDotNet;
-using Phamhilator.Yam.Core;
-using Newtonsoft.Json;
 using Microsoft.VisualBasic.Devices;
+using Phamhilator.FlagExchangeDotNet;
+using Phamhilator.Yam.Core;
+using ChatExchangeDotNet;
+using Newtonsoft.Json;
 
 namespace Phamhilator.Pham.Core
 {
@@ -41,7 +42,6 @@ namespace Phamhilator.Pham.Core
         private static Room room;
         private static Message receivedMessage;
         private static Report receivedReport;
-        //private static bool fileMissingWarningMessagePosted;
         private const RegexOptions regexOptions = RegexOptions.Compiled | RegexOptions.CultureInvariant;
         private static Regex isQestionReport = new Regex(@"(?i)^\*\*(Low Quality|Spam|Offensive|Bad Username)\*\* \*\*Q\*\*|\*\*Bad Tag(s) Used\*\*", regexOptions);
         private static readonly Random random = new Random();
@@ -291,34 +291,50 @@ namespace Phamhilator.Pham.Core
 
             #region Owner commands.
 
-            new ChatCommand(new Regex(@"(?i)^add-user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^add-user \d+$", regexOptions), command => new[]
             {
                 AddUser(command)
             }, CommandAccessLevel.Owner),
-            /*new ChatCommand(new Regex(@"(?i)^ban-user \d+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
-            {
-                BanUser(command)
-            }, CommandAccessLevel.Owner),*/
-            new ChatCommand(new Regex(@"(?i)^resume\b", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^resume\b", regexOptions), command => new[]
             {
                 ResumeBot()
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^pause\b", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^pause\b", regexOptions), command => new[]
             {
                 PauseBot()
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^full-scan\b", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^full-scan\b", regexOptions), command => new[]
             {
                 FullScan()
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^threshold (\d|\.)+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^threshold (\d|\.)+$", regexOptions), command => new[]
             {
                 SetAccuracyThreshold(command)
             }, CommandAccessLevel.Owner),
-            new ChatCommand(new Regex(@"(?i)^set-status .+$", RegexOptions.Compiled | RegexOptions.CultureInvariant), command => new[]
+            new ChatCommand(new Regex(@"(?i)^set-status .+$", regexOptions), command => new[]
             {
                 SetStatus(command)
             }, CommandAccessLevel.Owner),
+            new ChatCommand(new Regex(@"(?i)^flag spam", regexOptions), command =>
+            {
+                string url;
+
+                if (receivedMessage.ParentID != -1)
+                {
+                    url = receivedReport.Post.Url;
+                }
+                else
+                {
+                    url = command.Remove(0, command.IndexOf("http")).Trim();
+                }
+
+                var success = Config.Flagger.FlagSpam(url);
+
+                return new []
+                {
+                    new ReplyMessage(success ? "`Post successfully flagged.`" : "`Failed to flag post.`", true)
+                };
+            }, CommandAccessLevel.Owner)
 
             #endregion
         };
@@ -327,17 +343,6 @@ namespace Phamhilator.Pham.Core
 
         public static ReplyMessage[] ExacuteCommand(Room messageRoom, Message input)
         {
-            //if (!Config.BannedUsers.SystemIsClear && !fileMissingWarningMessagePosted)
-            //{
-            //    fileMissingWarningMessagePosted = true;
-
-            //    return new[]
-            //    {
-            //        new ReplyMessage("`Warning: the banned users file is missing. All commands have been disabled until the issue has been resolved.`")
-            //    };
-            //}
-            //if (Config.BannedUsers.IsUserBanned(input.AuthorID.ToString(CultureInfo.InvariantCulture))) { return new[] { new ReplyMessage("", false) }; }
-
             string command;
             room = messageRoom;
             receivedMessage = input;
@@ -1013,15 +1018,6 @@ namespace Phamhilator.Pham.Core
 
             return new ReplyMessage("`User added!`");
         }
-
-        //private static ReplyMessage BanUser(string command)
-        //{
-        //    var id = command.Replace("ban-user", "").Trim();
-
-        //    if (Config.BannedUsers.IsUserBanned(id)) { return new ReplyMessage("`User is already banned.`"); }
-
-        //    return new ReplyMessage(Config.BannedUsers.AddUser(id) ? "`User banned!`" : "`Warning: the banned users file is missing (unable to add user). All commands have been disabled until the issue has been resolved.`");
-        //}
 
         private static ReplyMessage SetAccuracyThreshold(string command)
         {
