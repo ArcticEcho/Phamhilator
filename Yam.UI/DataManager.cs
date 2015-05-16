@@ -64,13 +64,19 @@ namespace Phamhilator.Yam.UI
 
         public static string LoadData(string owner, string key)
         {
+            var bytes = LoadRawData(owner, key);
+            return Encoding.UTF8.GetString(bytes);
+        }
+
+        public static byte[] LoadRawData(string owner, string key)
+        {
             var k = GetSafeFileName(owner, key);
             if (!activeFiles.ContainsKey(k)) { throw new KeyNotFoundException(); }
 
             WaitForFile(k);
 
             activeFiles[k] = true;
-            var data = File.ReadAllText(Path.Combine(root, k), Encoding.BigEndianUnicode);
+            var data = File.ReadAllBytes(Path.Combine(root, k));
 
             NotifyWaitingThreads(k);
 
@@ -78,6 +84,12 @@ namespace Phamhilator.Yam.UI
         }
 
         public static void SaveData(string owner, string key, string data)
+        {
+            var bytes = Encoding.UTF8.GetBytes(data);
+            SaveData(owner, key, bytes);
+        }
+
+        public static void SaveData(string owner, string key, byte[] data)
         {
             var k = GetSafeFileName(owner, key);
             if (!activeFiles.ContainsKey(k))
@@ -88,7 +100,7 @@ namespace Phamhilator.Yam.UI
             WaitForFile(k);
 
             activeFiles[k] = true;
-            File.WriteAllText(Path.Combine(root, k), data, Encoding.BigEndianUnicode);
+            File.WriteAllBytes(Path.Combine(root, k), data);
 
             NotifyWaitingThreads(k);
         }
@@ -128,7 +140,7 @@ namespace Phamhilator.Yam.UI
         private static string GetSafeFileName(string owner, string key)
         {
             var upperOwner = owner.Trim().ToUpperInvariant();
-            var bytes = Encoding.BigEndianUnicode.GetBytes(upperOwner + key);
+            var bytes = Encoding.UTF8.GetBytes(upperOwner + key);
             var hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(bytes);
             return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
         }

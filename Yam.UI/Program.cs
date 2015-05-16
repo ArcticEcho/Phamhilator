@@ -36,10 +36,12 @@ using Newtonsoft.Json;
 namespace Phamhilator.Yam.UI
 {
     using RequestType = LocalRequest.RequestType;
+    using System.Net.Mail;
 
     public class Program
     {
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
+        private static string apiKeySenderEmail;
         private static Client chatClient;
         private static Room chatRoom;
         private static RealtimePostSocket postSocket;
@@ -58,6 +60,8 @@ namespace Phamhilator.Yam.UI
             TryLogin();
             Console.Write("Joining chat room...");
             JoinRooms();
+            Console.Write("done.\nInitialising log...");
+            PostLogger.InitialiseLogger();
             Console.Write("done.\nStarting server...");
             InitialiseLocalServer();
             InitialiseRemoteServer();
@@ -69,41 +73,6 @@ namespace Phamhilator.Yam.UI
             chatRoom.PostMessage("`Yam v2 started.`");
 #endif
             startTime = DateTime.UtcNow;
-
-            // DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG
-
-            //var client = new YamClientLocal("Gham");
-            //client.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(req =>
-            //{
-            //    client.SendData(new LocalRequest
-            //    {
-            //        ID = LocalRequest.GetNewID(),
-            //        Type = LocalRequest.RequestType.Exception,
-            //        Options = req.Options,
-            //        Data = req.Data
-            //    });
-            //}));
-            //client.EventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
-            //{
-            //    chatRoom.PostMessage("`Received response.`");
-            //}));
-            //chatRoom.PostMessage("`Initialised test Gham client.`");
-            ////var dataReq = new LocalRequest
-            ////{
-            ////    ID = LocalRequest.GetNewID(),
-            ////    Type = RequestType.DataManagerRequest,
-            ////    Options = new Dictionary<string, object>
-            ////    {
-            ////        { "DMReqType", "GET" },
-            ////        { "Owner", "gham" },
-            ////        { "Key", "Model Count" }
-            ////    }
-            ////};
-            ////client.SendData(dataReq);
-            //chatRoom.PostMessage("`Sending DataManager UDP request...`");
-            //client.UpdateData("gham", "Model Count", "2");
-
-            // DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG ~  DEBUG
 
             Task.Run(() =>
             {
@@ -124,6 +93,7 @@ namespace Phamhilator.Yam.UI
             postSocket.Dispose();
             locServer.Dispose();
             remServer.Dispose();
+            PostLogger.StopLogger();
             chatRoom.PostMessage("`Yam v2 stopped.`");
             chatRoom.Leave();
             chatClient.Dispose();
@@ -146,6 +116,7 @@ namespace Phamhilator.Yam.UI
                 {
                     Console.Write("\nAuthenticating...");
                     chatClient = new Client(email, password);
+                    apiKeySenderEmail = email;
                     Console.WriteLine("login successful!");
                     success = true;
                 }
@@ -211,8 +182,8 @@ namespace Phamhilator.Yam.UI
             //}));
 
             postSocket = new RealtimePostSocket(true);
-            postSocket.OnActiveQuestion += BroadcastQuestion;
-            postSocket.OnActiveThreadAnswers += BroadcastAnswers;
+            postSocket.OnActiveQuestion += HandleActiveQuestion;
+            postSocket.OnActiveAnswer += HandleActiveAnswer;
         }
 
         private static void HandleChatCommand(Message command)
@@ -220,6 +191,21 @@ namespace Phamhilator.Yam.UI
             if (!UserAccess.Owners.Select(u => u.ID).Contains(command.AuthorID)) { return; }
 
             var cmd = command.Content.Trim().ToUpperInvariant();
+
+            if (cmd.StartsWith("ADD REMOTE CLIENT"))
+            {
+                var emailKeyPair = command.Content.Trim().Remove(17).Split(' ');
+                var owner = emailKeyPair[0];
+                var email = emailKeyPair[1];
+                var key = Guid.NewGuid().ToString();
+
+                remServer.ApiKeys[key] = owner;
+                DataManager.SaveData("Yam", RemoteServer.ApiKeysDataKey, owner + ":" + key);
+                SendApiKeyEmail(command.AuthorName, email, key);
+
+                chatRoom.PostReply(command, "`Client successfully added; an email has been sent with the API key.`");
+                return;
+            }
 
             switch (cmd)
             {
@@ -244,16 +230,31 @@ namespace Phamhilator.Yam.UI
                     chatRoom.PostMessage(statusReport);
                     return;
                 }
+                case "LOG DATA":
+                {
+                    var items = PostLogger.Log.Count;
+                    var uncomp = PostLogger.LogSizeUncompressed / 1024.0 / 1024;
+                    var comp = PostLogger.LogSizeCompressed / 1024.0 / 1024;
+                    var compRatio = Math.Round((uncomp / comp) * 100);
+                    var dataReport = "    Log report:\n    \n" +
+                                     "    Items: " + items + "\n" +
+                                     "    Update interval: " + PostLogger.UpdateInterval + " seconds \n" +
+                                     "    Size (uncompressed): " + Math.Round(uncomp) + " MiB\n" +
+                                     "    Size (compressed): " + Math.Round(comp) + " MiB\n" +
+                                     "    Compression %: " + compRatio + "\n";
+                    chatRoom.PostMessage(dataReport);
+                    return;
+                }
                 case "LOCAL DATA":
                 {
                     var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
                     var phamRecTotal = locServer.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
-                    var phamSentTotal = locServer.DataSentPham / 1024.0; var phamSentPerSec = phamSentTotal / secsAlive;
+                    var phamSentTotal = locServer.DataSentPham / 1024.0;    var phamSentPerSec = phamSentTotal / secsAlive;
                     var ghamRecTotal = locServer.DataReceivedGham / 1024.0; var ghamRecPerSec = ghamRecTotal / secsAlive;
-                    var ghamSentTotal = locServer.DataSentGham / 1024.0; var ghamSentPerSec = ghamSentTotal / secsAlive;
+                    var ghamSentTotal = locServer.DataSentGham / 1024.0;    var ghamSentPerSec = ghamSentTotal / secsAlive;
                     var overallTotal = phamRecTotal + phamSentTotal + ghamRecTotal + ghamSentTotal;
                     var overallPerSec = overallTotal / secsAlive;
-                    var dataReport = "    Local Yam Data report (in KiB):\n" +
+                    var dataReport = "    Local Yam data report (in KiB):\n" +
                                      "    Total transferred:  " + Math.Round(overallTotal) + " (~" + Math.Round(overallPerSec, 1) + "/s)\n    \n" +
                                      "    Sent to Pham:       " + Math.Round(phamSentTotal) + " (~" + Math.Round(phamSentPerSec, 1) + "/s)\n" +
                                      "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n    \n" +
@@ -268,7 +269,7 @@ namespace Phamhilator.Yam.UI
                     var clientCount = remServer.Clients.Count;
                     var overallTotal = remServer.TotalDataSent / 1024.0;
                     var overallPerSec = Math.Round(overallTotal / secsAlive, 1);
-                    var dataReport = "    Remote Yam Data report (in KiB):\n" +
+                    var dataReport = "    Remote Yam data report (in KiB):\n" +
                                      "    Total transferred: " + Math.Round(overallTotal) + " (~" + overallPerSec + "/s)\n" +
                                      "    Clients:           " + clientCount;
                     chatRoom.PostMessage(dataReport);
@@ -282,8 +283,10 @@ namespace Phamhilator.Yam.UI
             }
         }
 
-        private static void BroadcastQuestion(Question q)
+        private static void HandleActiveQuestion(Question q)
         {
+            PostLogger.EnqueuePost(true, q.Base);
+
             var locReq = new LocalRequest { Type = LocalRequest.RequestType.Question, Data = q };
             locServer.SendData(true, locReq);
             locServer.SendData(false, locReq);
@@ -291,16 +294,15 @@ namespace Phamhilator.Yam.UI
             remServer.SendDataAll(q);
         }
 
-        private static void BroadcastAnswers(List<Answer> answers)
+        private static void HandleActiveAnswer(Answer a)
         {
-            foreach (var a in answers)
-            {
-                var locReq = new LocalRequest { Type = LocalRequest.RequestType.Answer, Data = a };
-                locServer.SendData(true, locReq);
-                locServer.SendData(false, locReq);
+            PostLogger.EnqueuePost(false, a);
 
-                remServer.SendDataAll(a);
-            }
+            var locReq = new LocalRequest { Type = LocalRequest.RequestType.Answer, Data = a };
+            locServer.SendData(true, locReq);
+            locServer.SendData(false, locReq);
+
+            remServer.SendDataAll(a);
         }
 
         private static void HandleDataManagerRequest(bool fromPham, LocalRequest req)
@@ -371,6 +373,32 @@ namespace Phamhilator.Yam.UI
             catch (Exception ex)
             {
                 SendEx(fromPham, ex, new Dictionary<string, object> { { "ReceivedRequest", req } });
+            }
+        }
+
+        private static void SendApiKeyEmail(string acceptedBy, string recipient, string key)
+        {
+            using (var client = new SmtpClient())
+            {
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+                client.Timeout = 10000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(apiKeySenderEmail, "password");
+
+                using (var mm = new MailMessage(apiKeySenderEmail, recipient)
+                {
+                    Subject = "Phamhilator API Key",
+                    Body = "This is an automated message sent from the Phamhilator Network (upon request from yourself).\n" +
+                            "Your application for an API key has been successfully received & accepted by " + acceptedBy + "!\n\n" +
+                            "Your API key is: " + key + "\n\n" +
+                            "Regards, The Pham Team."
+                })
+                {
+                    client.Send(mm);
+                }
             }
         }
 

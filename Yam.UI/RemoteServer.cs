@@ -21,12 +21,14 @@
 
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -34,10 +36,17 @@ namespace Phamhilator.Yam.UI
 {
     public class RemoteServer : IDisposable
     {
-        private readonly TcpListener listener = new TcpListener(IPAddress.Any, 45010);
+        private readonly ManualResetEvent apiKeysUpdaterMre;
+        private readonly TcpListener listener;
         private bool disposed;
 
-        public List<TcpClient> Clients { get; private set; }
+        public const string ApiKeysDataKey = "Registered API keys";
+        public delegate void ClientEventHandler(RemoteClient client);
+        public event ClientEventHandler ClientConnected;
+
+        public ConcurrentDictionary<string, string> ApiKeys { get; private set; }
+
+        public List<RemoteClient> Clients { get; private set; }
 
         public ulong TotalDataSent { get; private set; }
 
@@ -45,10 +54,12 @@ namespace Phamhilator.Yam.UI
 
         public RemoteServer()
         {
-            Clients = new List<TcpClient>();
+            apiKeysUpdaterMre = new ManualResetEvent(false);
+            Clients = new List<RemoteClient>();
 
-            Task.Run(() => ListenLoop());
+            listener = new TcpListener(IPAddress.Any, 45010);
             listener.Start();
+            Task.Run(() => ListenLoop());
         }
 
         ~RemoteServer()
@@ -67,7 +78,7 @@ namespace Phamhilator.Yam.UI
 
             foreach (var client in Clients)
             {
-                client.Close();
+                client.Socket.Close();
             }
 
             GC.SuppressFinalize(this);
@@ -79,16 +90,16 @@ namespace Phamhilator.Yam.UI
 
             for (var i = 0; i < Clients.Count; i++)
             {
-                if (!Clients[i].Connected)
+                if (!Clients[i].Socket.Connected)
                 {
                     Clients.RemoveAt(i);
                     i--;
                     continue;
                 }
                 var json = JsonConvert.SerializeObject(data);
-                var bytes = Encoding.BigEndianUnicode.GetBytes(json);
+                var bytes = Encoding.UTF8.GetBytes(json);
                 var size = bytes.Length;
-                Clients[i].GetStream().Write(bytes, 0, size);
+                Clients[i].Socket.GetStream().Write(bytes, 0, size);
                 TotalDataSent += (ulong)size;
             }
         }
@@ -99,8 +110,64 @@ namespace Phamhilator.Yam.UI
         {
             while (!disposed)
             {
-                var client = listener.AcceptTcpClient();
+                var socket = listener.AcceptTcpClient();
+                var apiKeyBytes = new byte[1024];
+                var apiKey = "";
+
+                try
+                {
+                    socket.GetStream().Read(apiKeyBytes, 0, 1024);
+                    apiKey = Encoding.UTF8.GetString(apiKeyBytes).ToLowerInvariant();
+                }
+                catch (Exception) { }
+
+                if (String.IsNullOrEmpty(apiKey) || !ApiKeys.ContainsKey(apiKey))
+                {
+                    try
+                    {
+                        var message = Encoding.UTF8.GetBytes("Invalid API key.");
+                        socket.GetStream().Write(message, 0, message.Length);
+                        socket.Close();
+                    }
+                    catch (Exception) { }
+                    continue;
+                }
+
+                var client = new RemoteClient
+                {
+                    Socket = socket,
+                    ApiKey = apiKey,
+                    Owner = ApiKeys[apiKey]
+                };
+
                 Clients.Add(client);
+                if (ClientConnected == null) { continue; }
+                ClientConnected(client);
+            }
+        }
+
+        private void ApiKeysUpdater()
+        {
+            while (!disposed)
+            {
+                if (!DataManager.DataExists("Yam", ApiKeysDataKey)) { continue; }
+
+                var data = DataManager.LoadData("Yam", ApiKeysDataKey);
+                var keys = data.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var keyPair in keys)
+                {
+                    var split = keyPair.Split(':');
+                    var owner = split[0];
+                    var key = split[1].ToLowerInvariant();
+
+                    if (!String.IsNullOrEmpty(owner) && !String.IsNullOrEmpty(key))
+                    {
+                        ApiKeys[key] = owner;
+                    }
+                }
+
+                apiKeysUpdaterMre.WaitOne(TimeSpan.FromMinutes(2));
             }
         }
     }

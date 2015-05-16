@@ -96,7 +96,7 @@ namespace Phamhilator.Yam.Core
                     if (bytes == null || bytes.Length == 0) { continue; }
 
                     TotalDataReceived += (uint)bytes.Length;
-                    var json = Encoding.BigEndianUnicode.GetString(bytes);
+                    var json = Encoding.UTF8.GetString(bytes);
                     var data = JsonConvert.DeserializeObject<LocalRequest>(json);
 
                     if (OnMessage == null || data == null) { continue; }

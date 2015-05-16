@@ -57,10 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
+    <Compile Include="LogEntry.cs" />
+    <Compile Include="PostLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealtimePostSocket.cs" />
     <Compile Include="LocalServer.cs" />
+    <Compile Include="RemoteClient.cs" />
     <Compile Include="RemoteServer.cs" />
     <Compile Include="RemoteSocketSender.cs" />
   </ItemGroup>

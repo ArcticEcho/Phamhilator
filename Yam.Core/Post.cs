@@ -22,16 +22,16 @@
 
 namespace Phamhilator.Yam.Core
 {
-    public abstract class Post
+    public class Post
     {
-        public string Title { get; protected set; }
-        public int AuthorNetworkID { get; protected set; }
-        public string AuthorName { get; protected set; }
-        public string AuthorLink { get; protected set; }
-        public string Url { get; protected set; }
-        public string Site { get; protected set; }
-        public string Body { get; protected set; }
-        public int Score { get; protected set; }
-        public int AuthorRep { get; protected set; }
+        public string Title { get; set; }
+        public int AuthorNetworkID { get; set; }
+        public string AuthorName { get; set; }
+        public string AuthorLink { get; set; }
+        public string Url { get; set; }
+        public string Site { get; set; }
+        public string Body { get; set; }
+        public int Score { get; set; }
+        public int AuthorRep { get; set; }
     }
 }

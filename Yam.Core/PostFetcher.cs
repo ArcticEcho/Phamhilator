@@ -162,25 +162,23 @@ namespace Phamhilator.Yam.Core
             return GetAnswer(dom, host, id.ToString(CultureInfo.InvariantCulture));
         }
 
-        public static List<Answer> GetLatestAnswers(Question question)
+        public static Answer GetLatestAnswer(Question question)
         {
-            if (string.IsNullOrEmpty(question.Html)) { return new List<Answer>(); }
+            if (string.IsNullOrEmpty(question.Html)) { return null; }
 
             var dom = CQ.Create(question.Html, Encoding.UTF8);
             var host = "";
-            var questionID = 0; 
-            var answers = new List<Answer>();
+            var questionID = 0;
 
             GetPostInfo(question.Url, out host, out questionID);
 
             foreach (var a in dom[".answer"])
             {
                 var id = a.Attributes["data-answerid"];
-                
-                answers.Add(GetAnswer(dom, host, id));
+                return GetAnswer(dom, host, id);
             }
 
-            return answers;
+            return null;
         }
 
         public static int ParseRep(string rep)

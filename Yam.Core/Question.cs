@@ -22,13 +22,32 @@
 
 using System;
 using System.Collections.Generic;
-using System.Net;
 
 namespace Phamhilator.Yam.Core
 {
     public class Question : Post
     {
         public List<string> Tags { get; private set; }
+
+        public Post Base
+        {
+            get
+            {
+                return new Post
+                {
+                    Url = this.Url,
+                    Site = this.Site,
+                    Title = this.Title,
+                    Body = this.Body,
+                    Score = this.Score,
+                    AuthorName = this.AuthorName,
+                    AuthorLink = this.AuthorLink,
+                    AuthorNetworkID = this.AuthorNetworkID,
+                    AuthorRep = this.AuthorRep
+                };
+            }
+        }
+
         internal string Html { get; private set; }
 
 

@@ -36,10 +36,10 @@ namespace Phamhilator.Yam.UI
         private bool disposed;
 
         public delegate void OnActiveQuestionEventHandler(Question q);
-        public delegate void OnActiveThreadAnswersEventHandler(List<Answer> a);
+        public delegate void OnActiveAnswerEventHandler(Answer a);
         public delegate void OnExceptionEventHandler(Exception ex);
         public event OnActiveQuestionEventHandler OnActiveQuestion;
-        public event OnActiveThreadAnswersEventHandler OnActiveThreadAnswers;
+        public event OnActiveAnswerEventHandler OnActiveAnswer;
         public event OnExceptionEventHandler OnException;
 
 
@@ -114,7 +114,7 @@ namespace Phamhilator.Yam.UI
             socket.OnOpen += (o, oo) => socket.Send("155-questions-active");
             socket.OnMessage += (o, message) =>
             {
-                if (OnActiveQuestion == null && OnActiveThreadAnswers == null) { return; }
+                if (OnActiveQuestion == null && OnActiveAnswer == null) { return; }
 
                 try
                 {
@@ -127,9 +127,11 @@ namespace Phamhilator.Yam.UI
                             OnActiveQuestion(question);
                         }
 
-                        if (OnActiveThreadAnswers != null)
+                        if (OnActiveAnswer != null)
                         {
-                            OnActiveThreadAnswers(PostFetcher.GetLatestAnswers(question));
+                            var answer = PostFetcher.GetLatestAnswer(question);
+                            if (answer == null) { return; }
+                            OnActiveAnswer(answer);
                         }
                     });
                 }

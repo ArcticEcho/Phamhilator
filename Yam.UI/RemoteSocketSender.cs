@@ -72,7 +72,7 @@ namespace Phamhilator.Yam.UI
             if (req == null) { throw new ArgumentNullException("req"); }
 
             var json = JsonConvert.SerializeObject(req);
-            var bytes = Encoding.BigEndianUnicode.GetBytes(json);
+            var bytes = Encoding.UTF8.GetBytes(json);
             var size = bytes.Length;
             using (var stream = socket.GetStream())
             {
