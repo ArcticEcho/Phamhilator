@@ -81,8 +81,18 @@ namespace Phamhilator.Yam.Core
             var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
             var authorRep = PostFetcher.ParseRep(dom[".reputation-score"].Html());
+            var creationDate = DateTime.MaxValue;
+            foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
+            {
+                var dt = DateTime.Parse(timestamp.Attributes["title"]);
 
-            return new Question(url, host, title, body, score, authorName, authorLink, networkID, authorRep, tags, html);
+                if (dt < creationDate)
+                {
+                    creationDate = dt;
+                }
+            }
+
+            return new Question(url, host, title, body, score, creationDate, authorName, authorLink, networkID, authorRep, tags, html);
         }
 
         public static Question GetQuestion(string postUrl)
@@ -108,6 +118,16 @@ namespace Phamhilator.Yam.Core
             var title = WebUtility.HtmlDecode(dom[".question-hyperlink"].Html());
             var body = UnshortifyLinks(WebUtility.HtmlDecode(dom[".post-text"].Html().Trim()));
             var score = int.Parse(dom[".vote-count-post"].Html());
+            var creationDate = DateTime.MaxValue;
+            foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
+            {
+                var dt = DateTime.Parse(timestamp.Attributes["title"]);
+
+                if (dt < creationDate)
+                {
+                    creationDate = dt;
+                }
+            }
 
             string authorName;
             string authorLink;
@@ -145,7 +165,7 @@ namespace Phamhilator.Yam.Core
                 networkID = GetUserNetworkID(authorLink);
             }
 
-            return new Question(postUrl, host, title, body, score, authorName, authorLink, networkID, authorRep, tags, html);
+            return new Question(postUrl, host, title, body, score, creationDate, authorName, authorLink, networkID, authorRep, tags, html);
         }
 
         public static Answer GetAnswer(string postUrl)
@@ -255,6 +275,7 @@ namespace Phamhilator.Yam.Core
             var authorLink = "";
             var networkID = -1;
             var authorRep = 0;
+            var creationDate = DateTime.Parse(dom[".post-signature .user-info .user-action-time .relativetime"].Last()[0].Attributes["title"]);
 
             var authorE = dom[aDom + ".user-details"].Last()[0];
 
@@ -289,7 +310,7 @@ namespace Phamhilator.Yam.Core
 
             excerpt = excerpt.Length > 75 ? excerpt.Substring(0, 72) + "..." : excerpt;
 
-            return new Answer(url, excerpt, body, host, score, authorName, authorLink, networkID, authorRep);
+            return new Answer(url, excerpt, body, host, score, creationDate, authorName, authorLink, networkID, authorRep);
         }
 
         private static string TrimUrl(string url)

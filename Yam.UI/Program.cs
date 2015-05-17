@@ -42,6 +42,8 @@ namespace Phamhilator.Yam.UI
     {
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static string apiKeySenderEmail;
+        private static string apiKeySenderPwd;
+        private static string apiKeySenderHost;
         private static Client chatClient;
         private static Room chatRoom;
         private static RealtimePostSocket postSocket;
@@ -57,6 +59,7 @@ namespace Phamhilator.Yam.UI
         private static void Main(string[] args)
         {
             Console.Title = "Yam v2";
+            GetApiKeyEmailCreds();
             TryLogin();
             Console.Write("Joining chat room...");
             JoinRooms();
@@ -99,12 +102,39 @@ namespace Phamhilator.Yam.UI
             chatClient.Dispose();
         }
 
+        private static void GetApiKeyEmailCreds()
+        {
+            Console.WriteLine("Please enter your API key email sender email credentials.\n");
+
+            Console.Write("Email: ");
+            apiKeySenderEmail = Console.ReadLine();
+
+            Console.Write("Password: ");
+            apiKeySenderPwd = Console.ReadLine();
+
+            var domain = apiKeySenderEmail.Split('@')[1].ToLowerInvariant();
+            switch(domain)
+            {
+                case "gmail.com":
+                {
+                    apiKeySenderHost = "smtp.gmail.com";
+                    return;
+                }
+                case "outlook.com":
+                {
+                    apiKeySenderHost = "smtp-mail.outlook.com";
+                    return;
+                }
+                //TODO: Add more later.
+            }
+        }
+
         private static void TryLogin()
         {
             var success = false;
             while (true)
             {
-                Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
+                Console.WriteLine("\nPlease enter your Stack Exchange OpenID credentials.\n");
 
                 Console.Write("Email: ");
                 var email = Console.ReadLine();
@@ -116,7 +146,6 @@ namespace Phamhilator.Yam.UI
                 {
                     Console.Write("\nAuthenticating...");
                     chatClient = new Client(email, password);
-                    apiKeySenderEmail = email;
                     Console.WriteLine("login successful!");
                     success = true;
                 }
@@ -141,6 +170,14 @@ namespace Phamhilator.Yam.UI
         private static void InitialiseRemoteServer()
         {
             remServer = new RemoteServer();
+            remServer.ClientConnected += client =>
+            {
+                chatRoom.PostMessage("`Remote client: " + client.Owner + " has connected.`");
+            };
+            remServer.ClientDisconnected += client =>
+            {
+                chatRoom.PostMessage("`Remote client: " + client.Owner + " has disconnected.`");
+            };
         }
 
         private static void InitialiseLocalServer()
@@ -194,13 +231,14 @@ namespace Phamhilator.Yam.UI
 
             if (cmd.StartsWith("ADD REMOTE CLIENT"))
             {
-                var emailKeyPair = command.Content.Trim().Remove(17).Split(' ');
+                var emailKeyPair = command.Content.Trim().Remove(0, 17).Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                 var owner = emailKeyPair[0];
                 var email = emailKeyPair[1];
-                var key = Guid.NewGuid().ToString();
+                var key = Guid.NewGuid().ToString().ToLowerInvariant();
 
                 remServer.ApiKeys[key] = owner;
-                DataManager.SaveData("Yam", RemoteServer.ApiKeysDataKey, owner + ":" + key);
+                var otherKeys = DataManager.LoadData("Yam", RemoteServer.ApiKeysDataKey) + "\n";
+                DataManager.SaveData("Yam", RemoteServer.ApiKeysDataKey, otherKeys + owner + ":" + key);
                 SendApiKeyEmail(command.AuthorName, email, key);
 
                 chatRoom.PostReply(command, "`Client successfully added; an email has been sent with the API key.`");
@@ -381,12 +419,12 @@ namespace Phamhilator.Yam.UI
             using (var client = new SmtpClient())
             {
                 client.Port = 587;
-                client.Host = "smtp.gmail.com";
+                client.Host = apiKeySenderHost;
                 client.EnableSsl = true;
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(apiKeySenderEmail, "password");
+                client.Credentials = new NetworkCredential(apiKeySenderEmail, apiKeySenderPwd);
 
                 using (var mm = new MailMessage(apiKeySenderEmail, recipient)
                 {

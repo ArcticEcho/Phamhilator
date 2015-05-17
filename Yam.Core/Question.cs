@@ -52,13 +52,14 @@ namespace Phamhilator.Yam.Core
 
 
 
-        public Question(string url, string site, string title, string body, int score, string authorName, string authorLink, int authorNetworkID, int authorRep, List<string> tags, string html)
+        public Question(string url, string site, string title, string body, int score, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep, List<string> tags, string html)
         {
             Url = url;
             Title = title;
             Body = body;
             Site = site;
             Score = score;
+            CreationDate = creationDate;
             AuthorName = authorName;
             AuthorLink = authorLink;
             AuthorNetworkID = authorNetworkID;

@@ -20,17 +20,20 @@
 
 
 
+using System;
+
 ﻿namespace Phamhilator.Yam.Core
  {
      public class Answer : Post
      {
-         public Answer(string url, string title, string body, string site, int score, string authorName, string authorLink, int authorNetworkID, int authorRep)
+         public Answer(string url, string title, string body, string site, int score, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep)
          {
              Url = url;
              Title = title;
              Body = body;
              Site = site;
              Score = score;
+             CreationDate = creationDate;
              AuthorName = authorName;
              AuthorLink = authorLink;
              AuthorNetworkID = authorNetworkID;

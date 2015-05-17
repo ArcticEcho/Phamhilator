@@ -20,18 +20,21 @@
 
 
 
+using System;
+
 namespace Phamhilator.Yam.Core
 {
     public class Post
     {
-        public string Title { get; set; }
-        public int AuthorNetworkID { get; set; }
-        public string AuthorName { get; set; }
-        public string AuthorLink { get; set; }
         public string Url { get; set; }
         public string Site { get; set; }
+        public string Title { get; set; }
         public string Body { get; set; }
         public int Score { get; set; }
+        public DateTime CreationDate { get; set; }
         public int AuthorRep { get; set; }
+        public string AuthorName { get; set; }
+        public string AuthorLink { get; set; }
+        public int AuthorNetworkID { get; set; }
     }
 }

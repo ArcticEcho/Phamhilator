@@ -27,6 +27,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,13 +37,13 @@ namespace Phamhilator.Yam.UI
 {
     public class RemoteServer : IDisposable
     {
-        private readonly ManualResetEvent apiKeysUpdaterMre;
         private readonly TcpListener listener;
         private bool disposed;
 
         public const string ApiKeysDataKey = "Registered API keys";
         public delegate void ClientEventHandler(RemoteClient client);
         public event ClientEventHandler ClientConnected;
+        public event ClientEventHandler ClientDisconnected;
 
         public ConcurrentDictionary<string, string> ApiKeys { get; private set; }
 
@@ -54,7 +55,29 @@ namespace Phamhilator.Yam.UI
 
         public RemoteServer()
         {
-            apiKeysUpdaterMre = new ManualResetEvent(false);
+            if (DataManager.DataExists("Yam", ApiKeysDataKey))
+            {
+                var data = DataManager.LoadData("Yam", ApiKeysDataKey);
+                var keys = data.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                ApiKeys = new ConcurrentDictionary<string, string>();
+
+                foreach (var keyPair in keys)
+                {
+                    var split = keyPair.Split(':');
+                    var owner = split[0];
+                    var key = split[1].ToLowerInvariant();
+
+                    if (!String.IsNullOrEmpty(owner) && !String.IsNullOrEmpty(key))
+                    {
+                        ApiKeys[key] = owner;
+                    }
+                }
+            }
+            else
+            {
+                ApiKeys = new ConcurrentDictionary<string, string>();
+            }
+
             Clients = new List<RemoteClient>();
 
             listener = new TcpListener(IPAddress.Any, 45010);
@@ -88,19 +111,28 @@ namespace Phamhilator.Yam.UI
         {
             if (data == null) { throw new ArgumentNullException("data"); }
 
+            Clients = Clients.Where(c =>
+            {
+                if (!c.Socket.Connected)
+                {
+                    c.Socket.Close();
+                    if (ClientDisconnected != null) { ClientDisconnected(c); }
+                    return false;
+                }
+                return true;
+            }).ToList();
+
             for (var i = 0; i < Clients.Count; i++)
             {
-                if (!Clients[i].Socket.Connected)
+                try
                 {
-                    Clients.RemoveAt(i);
-                    i--;
-                    continue;
+                    var json = JsonConvert.SerializeObject(data);
+                    var bytes = Encoding.UTF8.GetBytes(json);
+                    var size = bytes.Length;
+                    Clients[i].Socket.GetStream().Write(bytes, 0, size);
+                    TotalDataSent += (ulong)size;
                 }
-                var json = JsonConvert.SerializeObject(data);
-                var bytes = Encoding.UTF8.GetBytes(json);
-                var size = bytes.Length;
-                Clients[i].Socket.GetStream().Write(bytes, 0, size);
-                TotalDataSent += (ulong)size;
+                catch (Exception) { }
             }
         }
 
@@ -111,17 +143,18 @@ namespace Phamhilator.Yam.UI
             while (!disposed)
             {
                 var socket = listener.AcceptTcpClient();
-                var apiKeyBytes = new byte[1024];
-                var apiKey = "";
+                var apiKey = new byte[32];
+                var owner = "";
 
                 try
                 {
-                    socket.GetStream().Read(apiKeyBytes, 0, 1024);
-                    apiKey = Encoding.UTF8.GetString(apiKeyBytes).ToLowerInvariant();
+                    socket.GetStream().Read(apiKey, 0, 32);
                 }
                 catch (Exception) { }
 
-                if (String.IsNullOrEmpty(apiKey) || !ApiKeys.ContainsKey(apiKey))
+                owner = CheckApiKey(apiKey);
+
+                if (String.IsNullOrEmpty(owner))
                 {
                     try
                     {
@@ -137,8 +170,18 @@ namespace Phamhilator.Yam.UI
                 {
                     Socket = socket,
                     ApiKey = apiKey,
-                    Owner = ApiKeys[apiKey]
+                    Owner = owner
                 };
+                var mre = new ManualResetEvent(false);
+                Task.Run(() =>
+                {
+                    while (!socket.Connected)
+                    {
+                        Thread.Sleep(100);
+                    }
+                    mre.Set();
+                });
+                mre.WaitOne();
 
                 Clients.Add(client);
                 if (ClientConnected == null) { continue; }
@@ -146,29 +189,33 @@ namespace Phamhilator.Yam.UI
             }
         }
 
-        private void ApiKeysUpdater()
+        public string CheckApiKey(byte[] clientKey)
         {
-            while (!disposed)
+            foreach (var realKey in ApiKeys)
             {
-                if (!DataManager.DataExists("Yam", ApiKeysDataKey)) { continue; }
+                byte[] realKeyHashed;
 
-                var data = DataManager.LoadData("Yam", ApiKeysDataKey);
-                var keys = data.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                foreach (var keyPair in keys)
+                using (var sha = new SHA256Managed())
                 {
-                    var split = keyPair.Split(':');
-                    var owner = split[0];
-                    var key = split[1].ToLowerInvariant();
-
-                    if (!String.IsNullOrEmpty(owner) && !String.IsNullOrEmpty(key))
-                    {
-                        ApiKeys[key] = owner;
-                    }
+                    var realKeyBytes = Encoding.UTF8.GetBytes(realKey.Key);
+                    realKeyHashed = sha.ComputeHash(realKeyBytes);
                 }
 
-                apiKeysUpdaterMre.WaitOne(TimeSpan.FromMinutes(2));
+                if (clientKey.Length != realKeyHashed.Length) { continue; }
+
+                for (var i = 0; i < realKeyHashed.Length; i++)
+                {
+                    if (realKeyHashed[i] != clientKey[i])
+                    {
+                        continue;
+                    }
+                    else if (i == realKeyHashed.Length - 1)
+                    {
+                        return realKey.Value;
+                    }
+                }
             }
+            return null;
         }
     }
 }

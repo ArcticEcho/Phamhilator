@@ -121,16 +121,16 @@ namespace Phamhilator.Yam.UI
                     Task.Factory.StartNew(() =>
                     {
                         var question = PostFetcher.GetQuestion(message);
+                        var answer = PostFetcher.GetLatestAnswer(question);
 
-                        if (OnActiveQuestion != null)
+                        if (OnActiveQuestion != null && answer == null)
                         {
                             OnActiveQuestion(question);
+                            return;
                         }
 
                         if (OnActiveAnswer != null)
                         {
-                            var answer = PostFetcher.GetLatestAnswer(question);
-                            if (answer == null) { return; }
                             OnActiveAnswer(answer);
                         }
                     });

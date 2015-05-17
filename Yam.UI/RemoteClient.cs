@@ -28,7 +28,7 @@ namespace Phamhilator.Yam.UI
     public class RemoteClient
     {
         public TcpClient Socket { get; set; }
-        public string ApiKey { get; set; }
+        public byte[] ApiKey { get; set; }
         public string Owner { get; set; }
     }
 }
