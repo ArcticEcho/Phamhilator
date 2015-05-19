@@ -20,12 +20,11 @@
 
 
 
-using System.Collections.Generic;
-using System.Net;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Newtonsoft.Json;
 using System;
+using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
+using ServiceStack.Text;
 
 namespace Phamhilator.Yam.Core
 {
@@ -46,7 +45,7 @@ namespace Phamhilator.Yam.Core
 
             var trimmed = url.Trim();
             var res = new WebClient().DownloadString("http://urlex.org/json/" + trimmed);
-            var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(res);
+            var data = JsonObject.Parse(res);
 
             return data.Values.First();
         }

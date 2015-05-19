@@ -30,7 +30,7 @@ using System.Text.RegularExpressions;
 using CsQuery;
 using WebSocketSharp;
 using Microsoft.CSharp.RuntimeBinder;
-using Newtonsoft.Json.Linq;
+using ServiceStack.Text;
 
 namespace Phamhilator.Yam.Core
 {
@@ -49,30 +49,26 @@ namespace Phamhilator.Yam.Core
 
         public static Question GetQuestion(MessageEventArgs message)
         {
-            var t = ((dynamic)JObject.Parse(message.Data)).data;
-            var data = (dynamic)JObject.Parse(t.ToString());
-            var url = TrimUrl((string)data.url);
-            var host = (string)data.siteBaseHostAddress;
-            var title = WebUtility.HtmlDecode((string)data.titleEncodedFancy);
-            var authorName = WebUtility.HtmlDecode((string)data.ownerDisplayName);
-            var tags = new List<string>();
+            var obj = JsonObject.Parse(message.Data);
+            var data = obj.Get("data");
+            var innerObj = JsonSerializer.DeserializeFromString<Dictionary<string, object>>(data);
+
+            var url = TrimUrl((string)innerObj["url"]);
+            var host = (string)innerObj["siteBaseHostAddress"];
+            var title = WebUtility.HtmlDecode((string)innerObj["titleEncodedFancy"]);
+            var authorName = WebUtility.HtmlDecode((string)innerObj["ownerDisplayName"]);
+            var tags = JsonSerializer.DeserializeFromString<string[]>((string)innerObj["tags"]);
             var networkID = -1;
             var authorLink = "";
 
-            try
+            if (innerObj.ContainsKey("ownerUrl") && innerObj["ownerUrl"] != null)
             {
-                authorLink = TrimUrl((string)data.ownerUrl);
+                authorLink = TrimUrl((string)innerObj["ownerUrl"]);
             }
-            catch (RuntimeBinderException) { }
 
             if (!String.IsNullOrEmpty(authorLink))
             {
                 networkID = GetUserNetworkID(authorLink);
-            }
-
-            foreach (var tag in data.tags)
-            {
-                tags.Add((string)tag);
             }
 
             var html = new StringDownloader().DownloadString(url);
@@ -165,7 +161,7 @@ namespace Phamhilator.Yam.Core
                 networkID = GetUserNetworkID(authorLink);
             }
 
-            return new Question(postUrl, host, title, body, score, creationDate, authorName, authorLink, networkID, authorRep, tags, html);
+            return new Question(postUrl, host, title, body, score, creationDate, authorName, authorLink, networkID, authorRep, tags.ToArray(), html);
         }
 
         public static Answer GetAnswer(string postUrl)

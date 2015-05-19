@@ -20,14 +20,10 @@
 
 
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+using ServiceStack.Text;
 
 namespace Phamhilator.Yam.Core
 {
@@ -51,9 +47,9 @@ namespace Phamhilator.Yam.Core
             using (var reader = new StreamReader(response.GetResponseStream()))
             {
                 var content = reader.ReadToEnd();
-                dynamic resJson = JsonConvert.DeserializeObject(content);
+                var key = JsonObject.Parse(content).Get<string>("key");
 
-                return "http://hastebin.com/" + (string)resJson.key + ".hs";
+                return "http://hastebin.com/" + key + ".hs";
             }
         }
     }

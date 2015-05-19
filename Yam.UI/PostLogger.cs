@@ -1,13 +1,33 @@
-﻿using System;
+﻿/*
+ * Phamhilator. A .Net based bot network catching spam/low quality posts for Stack Exchange.
+ * Copyright © 2015, ArcticEcho.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+
+
+
+using System;
 using System.Collections.Concurrent;
-using System.IO;
-using System.IO.Compression;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Phamhilator.Yam.Core;
+using ServiceStack.Text;
 
 namespace Phamhilator.Yam.UI
 {
@@ -41,9 +61,9 @@ namespace Phamhilator.Yam.UI
             if (DataManager.DataExists("Yam", dataManagerLogKey))
             {
                 var bytes = DataManager.LoadRawData("Yam", dataManagerLogKey);
-                var uncompData = UncompressData(bytes);
+                var uncompData = DataUtilities.GZipDecompress(bytes);
                 var json = Encoding.UTF8.GetString(uncompData);
-                Log = JsonConvert.DeserializeObject<ConcurrentDictionary<uint, LogEntry>>(json);
+                Log = JsonSerializer.DeserializeFromString<ConcurrentDictionary<uint, LogEntry>>(json);
             }
             else
             {
@@ -91,6 +111,63 @@ namespace Phamhilator.Yam.UI
             EntryAdded(entry);
         }
 
+        public static HashSet<LogEntry> SearchLog(RemoteLogRequest req)
+        {
+            var fieldLower = req.SearchBy.Trim().ToLowerInvariant();
+            var entries = new HashSet<LogEntry>();
+            Func<LogEntry, string> getField = null;
+            Func<string, bool> search = null;
+
+            switch (fieldLower)
+            {
+                case "site":
+                {
+                    getField = new Func<LogEntry, string>(entry => entry.Post.Site);
+                    break;
+                }
+                case "title":
+                {
+                    getField = new Func<LogEntry, string>(entry => entry.Post.Title);
+                    break;
+                }
+                case "creationdate":
+                {
+                    getField = new Func<LogEntry, string>(entry => entry.Post.CreationDate.ToString());
+                    break;
+                }
+                case "authorname":
+                {
+                    getField = new Func<LogEntry, string>(entry => entry.Post.AuthorName);
+                    break;
+                }
+                case "authornetworkid":
+                {
+                    getField = new Func<LogEntry, string>(entry => entry.Post.AuthorNetworkID.ToString());
+                    break;
+                }
+            }
+
+            if (req.ExactMatch)
+            {
+                search = new Func<string, bool>(field => field == req.Key);
+            }
+            else
+            {
+                search = new Func<string, bool>(field => field.IndexOf(req.Key) != -1);
+            }
+
+            foreach (var entry in Log.Values)
+            {
+                if (entries.Count == 100) { break; }
+                if (search(getField(entry)) && (req.FetchQuestions == null ? true : (bool)req.FetchQuestions && entry.IsQuestion))
+                {
+                    entries.Add(entry);
+                }
+            }
+
+            return entries;
+        }
+
 
 
         private static void LoggerLoop()
@@ -111,9 +188,9 @@ namespace Phamhilator.Yam.UI
                     }
                 }
 
-                var json = JsonConvert.SerializeObject(Log);
+                var json = JsonSerializer.SerializeToString(Log);
                 var uncompData = Encoding.UTF8.GetBytes(json);
-                var compData = CompressData(uncompData);
+                var compData = DataUtilities.GZipCompress(uncompData);
 
                 LogSizeUncompressed = uncompData.Length;
                 LogSizeCompressed = compData.Length;
@@ -122,35 +199,6 @@ namespace Phamhilator.Yam.UI
             }
 
             loggerStoppedMre.Set();
-        }
-
-        private static byte[] CompressData(byte[] data)
-        {
-            byte[] compressed;
-
-            using (var compStrm = new MemoryStream())
-            {
-                using (var zipper = new GZipStream(compStrm, CompressionMode.Compress))
-                using (var ms = new MemoryStream(data))
-                {
-                    ms.CopyTo(zipper);
-                }
-
-                compressed = compStrm.ToArray();
-            }
-
-            return compressed;
-        }
-
-        private static byte[] UncompressData(byte[] data)
-        {
-            using (var msIn = new MemoryStream(data))
-            using (var unzipper = new GZipStream(msIn, CompressionMode.Decompress))
-            using (var msOut = new MemoryStream())
-            {
-                unzipper.CopyTo(msOut);
-                return msOut.ToArray();
-            }
         }
     }
 }

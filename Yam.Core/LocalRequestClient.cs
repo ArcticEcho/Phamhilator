@@ -22,13 +22,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+using ServiceStack.Text;
 
 namespace Phamhilator.Yam.Core
 {
@@ -175,14 +170,14 @@ namespace Phamhilator.Yam.Core
             {
                 if (req.Type == RequestType.Answer)
                 {
-                    var a = JsonConvert.DeserializeObject<Answer>(req.Data.ToString());
+                    var a = JsonSerializer.DeserializeFromString<Answer>(req.Data.ToString());
                     EventManager.CallListeners(req.Type, a);
                     return;
                 }
 
                 if (req.Type == RequestType.Question)
                 {
-                    var q = JsonConvert.DeserializeObject<Question>(req.Data.ToString());
+                    var q = JsonSerializer.DeserializeFromString<Question>(req.Data.ToString());
                     EventManager.CallListeners(req.Type, q);
                     return;
                 }

@@ -20,22 +20,12 @@
 
 
 
-using System;
-using Phamhilator.Yam.Core;
-
 namespace Phamhilator.Yam.UI
 {
-    public class LogEntry
+    public class RemoteClientConnectionRequest
     {
-        public Post Post { get; set; }
-        public bool IsQuestion { get; set; }
-        public DateTime Timestamp { get; set; }
-
-
-
-        public override int GetHashCode()
-        {
-            return Post == null ? -1 : Post.GetHashCode();
-        }
+        public byte[] ApiKey { get; set; }
+        public bool EnableCompression { get; set; }
+        public bool EnableEncryption { get; set; }
     }
 }

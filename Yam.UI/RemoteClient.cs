@@ -27,8 +27,18 @@ namespace Phamhilator.Yam.UI
 {
     public class RemoteClient
     {
+        public RemoteClientConnectionRequest ConnectionRequest { get; set; }
         public TcpClient Socket { get; set; }
-        public byte[] ApiKey { get; set; }
         public string Owner { get; set; }
+        public long TotalDataUploaded { get; set; }
+        public long TotalDataDownloaded { get; set; }
+        public DateTime FirstConnected { get; set; }
+
+
+
+        public override int GetHashCode()
+        {
+            return Owner == null ? -1 : Owner.GetHashCode();
+        }
     }
 }

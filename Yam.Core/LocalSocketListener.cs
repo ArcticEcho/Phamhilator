@@ -21,14 +21,11 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+using ServiceStack.Text;
 
 namespace Phamhilator.Yam.Core
 {
@@ -97,7 +94,7 @@ namespace Phamhilator.Yam.Core
 
                     TotalDataReceived += (uint)bytes.Length;
                     var json = Encoding.UTF8.GetString(bytes);
-                    var data = JsonConvert.DeserializeObject<LocalRequest>(json);
+                    var data = JsonSerializer.DeserializeFromString<LocalRequest>(json);
 
                     if (OnMessage == null || data == null) { continue; }
                     OnMessage(data);

@@ -27,7 +27,7 @@ namespace Phamhilator.Yam.Core
 {
     public class Question : Post
     {
-        public List<string> Tags { get; private set; }
+        public string[] Tags { get; private set; }
 
         public Post Base
         {
@@ -52,7 +52,7 @@ namespace Phamhilator.Yam.Core
 
 
 
-        public Question(string url, string site, string title, string body, int score, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep, List<string> tags, string html)
+        public Question(string url, string site, string title, string body, int score, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep, string[] tags, string html)
         {
             Url = url;
             Title = title;

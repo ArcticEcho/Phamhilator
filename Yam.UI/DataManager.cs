@@ -123,18 +123,18 @@ namespace Phamhilator.Yam.UI
 
 
 
-        private static void NotifyWaitingThreads(string safeKey)
-        {
-            lock (activeFiles[safeKey]) { Monitor.Pulse(activeFiles[safeKey]); }
-            activeFiles[safeKey] = false;
-        }
-
         private static void WaitForFile(string safeKey)
         {
             if ((bool?)activeFiles[safeKey] == true)
             {
                 lock (activeFiles[safeKey]) { Monitor.Wait(activeFiles[safeKey]); }
             }
+        }
+
+        private static void NotifyWaitingThreads(string safeKey)
+        {
+            lock (activeFiles[safeKey]) { Monitor.Pulse(activeFiles[safeKey]); }
+            activeFiles[safeKey] = false;
         }
 
         private static string GetSafeFileName(string owner, string key)

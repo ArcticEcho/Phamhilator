@@ -23,20 +23,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Sockets;
-using System.Text.RegularExpressions;
 using System.Net;
 using System.Threading;
+using System.Threading.Tasks;
 using ChatExchangeDotNet;
 using Phamhilator.Yam.Core;
-using Newtonsoft.Json;
 
 namespace Phamhilator.Yam.UI
 {
-    using RequestType = LocalRequest.RequestType;
     using System.Net.Mail;
+    using ServiceStack.Text;
+    using RequestType = LocalRequest.RequestType;
 
     public class Program
     {
@@ -83,6 +80,7 @@ namespace Phamhilator.Yam.UI
                 {
                     if (Char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
                     {
+                        Console.WriteLine("Stopping...");
                         shutdownMre.Set();
                         return;
                     }
@@ -170,13 +168,26 @@ namespace Phamhilator.Yam.UI
         private static void InitialiseRemoteServer()
         {
             remServer = new RemoteServer();
-            remServer.ClientConnected += client =>
+            remServer.RealtimePostClientConnected += client =>
             {
-                chatRoom.PostMessage("`Remote client: " + client.Owner + " has connected.`");
+                chatRoom.PostMessage("`Remote client: " + client.Owner + " has connected (real-time post socket).`");
             };
-            remServer.ClientDisconnected += client =>
+            remServer.RealtimePostClientDisconnected += client =>
             {
-                chatRoom.PostMessage("`Remote client: " + client.Owner + " has disconnected.`");
+                chatRoom.PostMessage("`Remote client: " + client.Owner + " has disconnected (real-time post socket).`");
+            };
+            remServer.LogQueryClientConnected += client =>
+            {
+                chatRoom.PostMessage("`Remote client: " + client.Owner + " has connected (log query socket).`");
+            };
+            remServer.LogQueryClientDisconnected += client =>
+            {
+                chatRoom.PostMessage("`Remote client: " + client.Owner + " has disconnected (log query socket).`");
+            };
+            remServer.LogQueryReceived += (client, req) =>
+            {
+                var entries = PostLogger.SearchLog(req);
+                remServer.SendLogEntries(client, entries);
             };
         }
 
@@ -186,12 +197,12 @@ namespace Phamhilator.Yam.UI
             locServer.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 phamErrorCount++;
-                chatRoom.PostMessage("Warning, error detected in Pham:\n\n" + JsonConvert.SerializeObject(req, Formatting.Indented));
+                chatRoom.PostMessage("Warning, error detected in Pham:\n\n" + req.Dump());
             }));
             locServer.GhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 ghamErrorCount++;
-                chatRoom.PostMessage("Warning, error detected in Gham:\n\n" + JsonConvert.SerializeObject(req, Formatting.Indented));
+                chatRoom.PostMessage("Warning, error detected in Gham:\n\n" + req.Dump());
             }));
             locServer.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
             {
@@ -261,7 +272,7 @@ namespace Phamhilator.Yam.UI
                     var yamErrorRate = getErrorRate(yamErrorCount);   var yamStatus = getStatus(yamErrorRate);
                     var phamErrorRate = getErrorRate(phamErrorCount); var phamStatus = getStatus(phamErrorRate);
                     var ghamErrorRate = getErrorRate(ghamErrorCount); var ghamStatus = getStatus(ghamErrorRate);
-                    var statusReport = "    Status report:\n    \n" +
+                    var statusReport = "    Status report:\n" +
                                        "    Yam:  " + yamStatus + " (" + yamErrorCount + " @ " + yamErrorRate + "/h)\n" +
                                        "    Pham: " + phamStatus + " (" + phamErrorCount + " @ " + phamErrorRate + "/h)\n" +
                                        "    Gham: " + ghamStatus + " (" + ghamErrorCount + " @ " + ghamErrorRate + "/h)";
@@ -274,7 +285,7 @@ namespace Phamhilator.Yam.UI
                     var uncomp = PostLogger.LogSizeUncompressed / 1024.0 / 1024;
                     var comp = PostLogger.LogSizeCompressed / 1024.0 / 1024;
                     var compRatio = Math.Round((uncomp / comp) * 100);
-                    var dataReport = "    Log report:\n    \n" +
+                    var dataReport = "    Log report:\n" +
                                      "    Items: " + items + "\n" +
                                      "    Update interval: " + PostLogger.UpdateInterval + " seconds \n" +
                                      "    Size (uncompressed): " + Math.Round(uncomp) + " MiB\n" +
@@ -293,9 +304,9 @@ namespace Phamhilator.Yam.UI
                     var overallTotal = phamRecTotal + phamSentTotal + ghamRecTotal + ghamSentTotal;
                     var overallPerSec = overallTotal / secsAlive;
                     var dataReport = "    Local Yam data report (in KiB):\n" +
-                                     "    Total transferred:  " + Math.Round(overallTotal) + " (~" + Math.Round(overallPerSec, 1) + "/s)\n    \n" +
+                                     "    Total transferred:  " + Math.Round(overallTotal) + " (~" + Math.Round(overallPerSec, 1) + "/s)\n" +
                                      "    Sent to Pham:       " + Math.Round(phamSentTotal) + " (~" + Math.Round(phamSentPerSec, 1) + "/s)\n" +
-                                     "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n    \n" +
+                                     "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n" +
                                      "    Sent to Gham:       " + Math.Round(ghamSentTotal) + " (~" + Math.Round(ghamSentPerSec, 1) + "/s)\n" +
                                      "    Received from Gham: " + Math.Round(ghamRecTotal) + " (~" + Math.Round(ghamRecPerSec, 1) + "/s)";
                     chatRoom.PostMessage(dataReport);
@@ -304,12 +315,15 @@ namespace Phamhilator.Yam.UI
                 case "REMOTE DATA":
                 {
                     var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
-                    var clientCount = remServer.Clients.Count;
-                    var overallTotal = remServer.TotalDataSent / 1024.0;
-                    var overallPerSec = Math.Round(overallTotal / secsAlive, 1);
+                    var clientCount = remServer.RealtimePostClients.Count;
+                    var overallSent = remServer.TotalDataUploaded / 1024.0;
+                    var overallSentPerSec = Math.Round(overallSent / secsAlive, 1);
+                    var overallRec = remServer.TotalDataDownloaded / 1024.0;
+                    var overallRecPerSec = Math.Round(overallRec / secsAlive, 1);
                     var dataReport = "    Remote Yam data report (in KiB):\n" +
-                                     "    Total transferred: " + Math.Round(overallTotal) + " (~" + overallPerSec + "/s)\n" +
-                                     "    Clients:           " + clientCount;
+                                     "    Total sent:     " + Math.Round(overallSent) + " (~" + overallSentPerSec + "/s)\n" +
+                                     "    Total received: " + Math.Round(overallRec) + " (~" + overallRecPerSec + "/s)\n" +
+                                     "    Clients (" + clientCount + ")" + ":    " + remServer.ClientsNamesPretty;
                     chatRoom.PostMessage(dataReport);
                     return;
                 }
@@ -329,7 +343,7 @@ namespace Phamhilator.Yam.UI
             locServer.SendData(true, locReq);
             locServer.SendData(false, locReq);
 
-            remServer.SendDataAll(q);
+            remServer.SendPost(q);
         }
 
         private static void HandleActiveAnswer(Answer a)
@@ -340,7 +354,7 @@ namespace Phamhilator.Yam.UI
             locServer.SendData(true, locReq);
             locServer.SendData(false, locReq);
 
-            remServer.SendDataAll(a);
+            remServer.SendPost(a);
         }
 
         private static void HandleDataManagerRequest(bool fromPham, LocalRequest req)

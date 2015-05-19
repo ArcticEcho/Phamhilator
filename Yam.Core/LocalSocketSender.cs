@@ -21,13 +21,10 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+using ServiceStack.Text;
 
 namespace Phamhilator.Yam.Core
 {
@@ -71,7 +68,7 @@ namespace Phamhilator.Yam.Core
             if (disposed) { return; }
             if (req == null) { throw new ArgumentNullException("req"); }
 
-            var json = JsonConvert.SerializeObject(req);
+            var json = JsonSerializer.SerializeToString(req);
             var bytes = Encoding.UTF8.GetBytes(json);
             TotalDataSent += (uint)broadcastSocket.Send(bytes, bytes.Length, targetEP);
         }
