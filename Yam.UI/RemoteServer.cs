@@ -200,6 +200,7 @@ namespace Phamhilator.Yam.UI
                     }
 
                     var size = bytes.Length;
+                    client.Key.Socket.Client.SendBufferSize = size;
                     client.Key.Socket.GetStream().Write(bytes, 0, size);
                     client.Key.TotalDataUploaded += size;
                 }
@@ -227,6 +228,7 @@ namespace Phamhilator.Yam.UI
             try
             {
                 var size = bytes.Length;
+                client.Socket.Client.SendBufferSize = size;
                 client.Socket.GetStream().Write(bytes, 0, size);
                 client.TotalDataUploaded += size;
             }
@@ -306,8 +308,6 @@ namespace Phamhilator.Yam.UI
                 return null;
             }
 
-            socket.Client.SendBufferSize = 256000;
-
             var client = new RemoteClient
             {
                 Socket = socket,
@@ -328,10 +328,13 @@ namespace Phamhilator.Yam.UI
         private void HandleRealtimePostClient(RemoteClient client)
         {
             var mre = new ManualResetEvent(false);
+            var waitTime = TimeSpan.FromMilliseconds(3000);
+
+            client.Socket.ReceiveBufferSize = 1024;
 
             while (!disposed && client.Socket.Connected)
             {
-                mre.WaitOne(TimeSpan.FromMilliseconds(1000));
+                mre.WaitOne(waitTime);
             }
 
             client.Socket.Close();
@@ -344,12 +347,29 @@ namespace Phamhilator.Yam.UI
         private void HandleLogQueryClient(RemoteClient client)
         {
             var mre = new ManualResetEvent(false);
+            var disconnect = false;
+            var lastQuery = DateTime.UtcNow;
+            var waitTime = TimeSpan.FromMilliseconds(500);
 
-            while (!disposed && client.Socket.Connected)
+            client.Socket.ReceiveBufferSize = 1024;
+
+            while (!disposed && client.Socket.Connected && !disconnect)
             {
                 if (client.Socket.Available == 0)
                 {
-                    mre.WaitOne(TimeSpan.FromMilliseconds(333));
+                    mre.WaitOne(waitTime);
+
+                    if ((DateTime.UtcNow - lastQuery).TotalSeconds > 30)
+                    {
+                        try
+                        {
+                            client.Socket.GetStream().Read(new byte[1], 0, 1);
+                        }
+                        catch (Exception)
+                        {
+                            disconnect = true;
+                        }
+                    }
                     continue;
                 }
 
@@ -358,8 +378,9 @@ namespace Phamhilator.Yam.UI
                 {
                     client.Socket.GetStream().Read(data, 0, client.Socket.Available);
                 }
-                catch (Exception) { continue; }
-                client.TotalDataDownloaded += client.Socket.Available;
+                catch (Exception) { break; }
+                client.TotalDataDownloaded += data.Length;
+                lastQuery = DateTime.UtcNow;
 
                 if (client.ConnectionRequest.EnableCompression)
                 {
