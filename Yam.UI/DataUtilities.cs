@@ -56,31 +56,33 @@ namespace Phamhilator.Yam.UI
 
         public static byte[] GZipCompress(byte[] data)
         {
-            byte[] compressed;
+            return data;
+            //byte[] compressed;
 
-            using (var compStrm = new MemoryStream())
-            {
-                using (var zipper = new GZipStream(compStrm, CompressionMode.Compress))
-                using (var ms = new MemoryStream(data))
-                {
-                    ms.CopyTo(zipper);
-                }
+            //using (var compStrm = new MemoryStream())
+            //{
+            //    using (var zipper = new GZipStream(compStrm, CompressionMode.Compress))
+            //    using (var ms = new MemoryStream(data))
+            //    {
+            //        ms.CopyTo(zipper);
+            //    }
 
-                compressed = compStrm.ToArray();
-            }
+            //    compressed = compStrm.ToArray();
+            //}
 
-            return compressed;
+            //return compressed;
         }
 
         public static byte[] GZipDecompress(byte[] data)
         {
-            using (var msIn = new MemoryStream(data))
-            using (var unzipper = new GZipStream(msIn, CompressionMode.Decompress))
-            using (var msOut = new MemoryStream())
-            {
-                unzipper.CopyTo(msOut);
-                return msOut.ToArray();
-            }
+            return data;
+            //using (var msIn = new MemoryStream(data))
+            //using (var unzipper = new GZipStream(msIn, CompressionMode.Decompress))
+            //using (var msOut = new MemoryStream())
+            //{
+            //    unzipper.CopyTo(msOut);
+            //    return msOut.ToArray();
+            //}
         }
 
 
