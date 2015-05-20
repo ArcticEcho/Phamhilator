@@ -55,19 +55,5 @@ namespace Phamhilator.Yam.UI
                 return msOut.ToArray();
             }
         }
-
-
-
-        private static byte[] GetIVFromKey(byte[] key)
-        {
-            var iv = new byte[16];
-
-            for (var i = 0; i < 16; i++)
-            {
-                iv[i] = key[i];
-            }
-
-            return iv;
-        }
     }
 }
