@@ -40,6 +40,7 @@ namespace Phamhilator.Yam.Core
                     Title = this.Title,
                     Body = this.Body,
                     Score = this.Score,
+                    CreationDate = this.CreationDate,
                     AuthorName = this.AuthorName,
                     AuthorLink = this.AuthorLink,
                     AuthorNetworkID = this.AuthorNetworkID,
