@@ -22,67 +22,38 @@
 
 using System.IO;
 using System.IO.Compression;
-using System.Security.Cryptography;
 
 namespace Phamhilator.Yam.UI
 {
     public static class DataUtilities
     {
-        public static byte[] AseEncrypt(byte[] data, byte[] key)
-        {
-            using (var ms = new MemoryStream())
-            using (var aes = new AesManaged() { Key = key, IV = GetIVFromKey(key) })
-            {
-                using (var cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
-                {
-                    cs.Write(data, 0, data.Length);
-                    return ms.ToArray();
-                }
-            }
-        }
-
-        public static byte[] AseDecrypt(byte[] data, byte[] key)
-        {
-            using (var ms = new MemoryStream())
-            using (var aes = new AesManaged() { Key = key, IV = GetIVFromKey(key) })
-            {
-                using (var cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Write))
-                {
-                    cs.Write(data, 0, data.Length);
-                    return ms.ToArray();
-                }
-            }
-        }
-
         public static byte[] GZipCompress(byte[] data)
         {
-            return data;
-            //byte[] compressed;
+            byte[] compressed;
 
-            //using (var compStrm = new MemoryStream())
-            //{
-            //    using (var zipper = new GZipStream(compStrm, CompressionMode.Compress))
-            //    using (var ms = new MemoryStream(data))
-            //    {
-            //        ms.CopyTo(zipper);
-            //    }
+            using (var compStrm = new MemoryStream())
+            {
+                using (var zipper = new GZipStream(compStrm, CompressionMode.Compress))
+                using (var ms = new MemoryStream(data))
+                {
+                    ms.CopyTo(zipper);
+                }
 
-            //    compressed = compStrm.ToArray();
-            //}
+                compressed = compStrm.ToArray();
+            }
 
-            //return compressed;
+            return compressed;
         }
 
         public static byte[] GZipDecompress(byte[] data)
         {
-            return data;
-            //using (var msIn = new MemoryStream(data))
-            //using (var unzipper = new GZipStream(msIn, CompressionMode.Decompress))
-            //using (var msOut = new MemoryStream())
-            //{
-            //    unzipper.CopyTo(msOut);
-            //    return msOut.ToArray();
-            //}
+            using (var msIn = new MemoryStream(data))
+            using (var unzipper = new GZipStream(msIn, CompressionMode.Decompress))
+            using (var msOut = new MemoryStream())
+            {
+                unzipper.CopyTo(msOut);
+                return msOut.ToArray();
+            }
         }
 
 

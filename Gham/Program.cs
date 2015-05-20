@@ -34,7 +34,7 @@ using ChatExchangeDotNet;
 using GibberishClassification;
 using Phamhilator.NLP;
 using Phamhilator.Yam.Core;
-using Newtonsoft.Json;
+using ServiceStack.Text;
 
 namespace Phamhilator.Gham
 {
@@ -132,11 +132,11 @@ namespace Phamhilator.Gham
             try
             {
                 models = new HashSet<PoSTModel>();
-                var modelCount = int.Parse(yamClient.RequestData("gham", "Model Count"));
+                var modelCount = int.Parse(yamClient.RequestData("Gham", "Model Count"));
                 for (var i = 0; i < modelCount; i++)
                 {
-                    var modelJson = yamClient.RequestData("gham", "PoST Model:" + i);
-                    models.Add(JsonConvert.DeserializeObject<PoSTModel>(modelJson));
+                    var modelJson = yamClient.RequestData("Gham", "PoST Model:" + i);
+                    models.Add(JsonSerializer.DeserializeFromString<PoSTModel>(modelJson));
                 }
             }
             catch (Exception ex)

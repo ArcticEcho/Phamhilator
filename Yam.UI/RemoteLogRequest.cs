@@ -9,8 +9,7 @@ namespace Phamhilator.Yam.UI
     public class RemoteLogRequest
     {
         public string SearchBy { get; set; }
-        public string Key { get; set; }
-        public bool ExactMatch { get; set; }
+        public string SearchPattern { get; set; }
         public bool? FetchQuestions { get; set; }
     }
 }

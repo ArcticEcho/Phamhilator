@@ -45,8 +45,10 @@ namespace Phamhilator.Yam.UI
         private bool disposed;
 
         public const string ApiKeysDataKey = "Registered API keys";
+        public delegate void ExceptionEventHandler(Exception ex);
         public delegate void ClientEventHandler(RemoteClient client);
         public delegate void LogQueryReceivedEventHandler(RemoteClient client, RemoteLogRequest request);
+        public event ExceptionEventHandler OnException;
         public event ClientEventHandler RealtimePostClientConnected;
         public event ClientEventHandler RealtimePostClientDisconnected;
         public event ClientEventHandler LogQueryClientConnected;
@@ -185,26 +187,18 @@ namespace Phamhilator.Yam.UI
 
             foreach (var client in RealtimePostClients)
             {
-                try
+                var json = JsonSerializer.SerializeToString(post);
+                var bytes = Encoding.UTF8.GetBytes(json);
+
+                if (client.Key.EnableCompression)
                 {
-                    var json = JsonSerializer.SerializeToString(post);
-                    var bytes = Encoding.UTF8.GetBytes(json);
-
-                    if (client.Key.ConnectionRequest.EnableEncryption)
-                    {
-                        bytes = DataUtilities.AseEncrypt(bytes, client.Key.ConnectionRequest.ApiKey);
-                    }
-                    if (client.Key.ConnectionRequest.EnableCompression)
-                    {
-                        bytes = DataUtilities.GZipCompress(bytes);
-                    }
-
-                    var size = bytes.Length;
-                    client.Key.Socket.Client.SendBufferSize = size;
-                    client.Key.Socket.GetStream().Write(bytes, 0, size);
-                    client.Key.TotalDataUploaded += size;
+                    bytes = DataUtilities.GZipCompress(bytes);
                 }
-                catch (IOException) { }
+
+                var size = bytes.Length;
+                client.Key.Socket.Client.SendBufferSize = size;
+                client.Key.Socket.GetStream().Write(bytes, 0, size);
+                client.Key.TotalDataUploaded += size;
             }
         }
 
@@ -216,23 +210,15 @@ namespace Phamhilator.Yam.UI
             var json = JsonSerializer.SerializeToString(entries);
             var bytes = Encoding.UTF8.GetBytes(json);
 
-            if (client.ConnectionRequest.EnableEncryption)
-            {
-                bytes = DataUtilities.AseEncrypt(bytes, client.ConnectionRequest.ApiKey);
-            }
-            if (client.ConnectionRequest.EnableCompression)
+            if (client.EnableCompression)
             {
                 bytes = DataUtilities.GZipCompress(bytes);
             }
 
-            try
-            {
-                var size = bytes.Length;
-                client.Socket.Client.SendBufferSize = size;
-                client.Socket.GetStream().Write(bytes, 0, size);
-                client.TotalDataUploaded += size;
-            }
-            catch (Exception) { }
+            var size = bytes.Length;
+            client.Socket.Client.SendBufferSize = size;
+            client.Socket.GetStream().Write(bytes, 0, size);
+            client.TotalDataUploaded += size;
         }
 
 
@@ -250,9 +236,10 @@ namespace Phamhilator.Yam.UI
                         HandleRealtimePostClient(client);
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //TODO: Log something?
+                    if (OnException == null) { continue; }
+                    OnException(ex);
                 }
             }
         }
@@ -270,9 +257,10 @@ namespace Phamhilator.Yam.UI
                         HandleLogQueryClient(client);
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //TODO: Log something?
+                    if (OnException == null) { continue; }
+                    OnException(ex);
                 }
             }
         }
@@ -294,13 +282,14 @@ namespace Phamhilator.Yam.UI
                 return null;
             }
 
-            owner = CheckApiKey(req.ApiKey);
+            var unhashedKey = "";
+            owner = CheckApiKey(req.ApiKey, out unhashedKey);
 
-            if (String.IsNullOrEmpty(owner))
+            if (String.IsNullOrEmpty(owner) || clients.Keys.Any(c => c.ApiKey == unhashedKey))
             {
                 try
                 {
-                    var message = Encoding.UTF8.GetBytes("Invalid API key.");
+                    var message = Encoding.UTF8.GetBytes("Connection rejected. :p");
                     socket.GetStream().Write(message, 0, message.Length);
                     socket.Close();
                 }
@@ -310,8 +299,10 @@ namespace Phamhilator.Yam.UI
 
             var client = new RemoteClient
             {
+                ApiKey = unhashedKey,
+                EnableCompression = req.EnableCompression,
+                EnableEncryption = req.EnableEncryption,
                 Socket = socket,
-                ConnectionRequest = req,
                 Owner = owner,
                 FirstConnected = DateTime.UtcNow
             };
@@ -328,13 +319,26 @@ namespace Phamhilator.Yam.UI
         private void HandleRealtimePostClient(RemoteClient client)
         {
             var mre = new ManualResetEvent(false);
-            var waitTime = TimeSpan.FromMilliseconds(3000);
+            var waitTime = TimeSpan.FromMilliseconds(500);
+            var lastCheck = DateTime.UtcNow;
 
             client.Socket.ReceiveBufferSize = 1024;
 
             while (!disposed && client.Socket.Connected)
             {
                 mre.WaitOne(waitTime);
+
+                if ((DateTime.UtcNow - lastCheck).TotalSeconds > 15)
+                {
+                    try
+                    {
+                        client.Socket.GetStream().Read(new byte[1], 0, 1);
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                }
             }
 
             client.Socket.Close();
@@ -347,19 +351,18 @@ namespace Phamhilator.Yam.UI
         private void HandleLogQueryClient(RemoteClient client)
         {
             var mre = new ManualResetEvent(false);
-            var disconnect = false;
-            var lastQuery = DateTime.UtcNow;
             var waitTime = TimeSpan.FromMilliseconds(500);
+            var lastQuery = DateTime.UtcNow;
 
             client.Socket.ReceiveBufferSize = 1024;
 
-            while (!disposed && client.Socket.Connected && !disconnect)
+            while (!disposed && client.Socket.Connected)
             {
                 if (client.Socket.Available == 0)
                 {
                     mre.WaitOne(waitTime);
 
-                    if ((DateTime.UtcNow - lastQuery).TotalSeconds > 30)
+                    if ((DateTime.UtcNow - lastQuery).TotalSeconds > 15)
                     {
                         try
                         {
@@ -367,7 +370,7 @@ namespace Phamhilator.Yam.UI
                         }
                         catch (Exception)
                         {
-                            disconnect = true;
+                            break;
                         }
                     }
                     continue;
@@ -382,13 +385,9 @@ namespace Phamhilator.Yam.UI
                 client.TotalDataDownloaded += data.Length;
                 lastQuery = DateTime.UtcNow;
 
-                if (client.ConnectionRequest.EnableCompression)
+                if (client.EnableCompression)
                 {
                     data = DataUtilities.GZipDecompress(data);
-                }
-                if (client.ConnectionRequest.EnableEncryption)
-                {
-                    data = DataUtilities.AseDecrypt(data, client.ConnectionRequest.ApiKey);
                 }
 
                 var json = Encoding.UTF8.GetString(data);
@@ -404,8 +403,9 @@ namespace Phamhilator.Yam.UI
             if (LogQueryClientDisconnected != null) { LogQueryClientDisconnected(client); }
         }
 
-        private string CheckApiKey(byte[] clientKey)
+        private string CheckApiKey(byte[] clientKey, out string unhashedKey)
         {
+            unhashedKey = null;
             foreach (var realKey in ApiKeys)
             {
                 byte[] realKeyHashed;
@@ -426,6 +426,7 @@ namespace Phamhilator.Yam.UI
                     }
                     else if (i == realKeyHashed.Length - 1)
                     {
+                        unhashedKey = realKey.Key;
                         return realKey.Value;
                     }
                 }

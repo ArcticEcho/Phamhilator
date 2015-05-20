@@ -50,7 +50,6 @@ namespace Phamhilator.Pham.UI
         {
             Console.Title = "Pham v2";
             Console.WriteLine("Pham v2.\nPress Ctrl + C to exit.\n");
-            AppDomain.CurrentDomain.UnhandledException += (o, ex) => Config.PrimaryRoom.PostMessage("Error:\n" + ex.ExceptionObject.ToString());
             Console.CancelKeyPress += (o, oo) => Close();
 
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
@@ -82,9 +81,13 @@ namespace Phamhilator.Pham.UI
         private static void InitialiseCore()
         {
             Console.Write("Initialising Yam client...");
-            yamClient = new LocalRequestClient("PHAM");
-
-            yamClient.UpdateData("Yam", "Authorised Users", "201151");
+            yamClient = new LocalRequestClient("Pham");
+            AppDomain.CurrentDomain.UnhandledException += (o, ex) => yamClient.SendData(new LocalRequest
+            {
+                Type = LocalRequest.RequestType.Exception,
+                ID = LocalRequest.GetNewID(),
+                Data = ex.ExceptionObject
+            });
 
             Console.Write("done.\nLoading log...");
             Config.Log = new ReportLog();
@@ -248,6 +251,19 @@ namespace Phamhilator.Pham.UI
                         CheckSendReport(answer, aMessage, aResults);
                     }
                 }
+            }));
+
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(ex =>
+            {
+                if (!Config.IsRunning) { return; }
+
+                yamClient.SendData(new LocalRequest
+                {
+                    Type = LocalRequest.RequestType.Exception,
+                    ID = LocalRequest.GetNewID(),
+                    Data = ex.Data,
+                    Options = ex.Options
+                });
             }));
         }
 

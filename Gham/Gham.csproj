@@ -60,7 +60,6 @@
     <Compile Include="KeyWord.cs" />
     <Compile Include="PoSTag.cs" />
     <Compile Include="PoSTags.cs" />
-    <Compile Include="PoSTModelFFDBManager.cs" />
     <Compile Include="PoSTModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

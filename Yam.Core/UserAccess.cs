@@ -22,10 +22,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using ChatExchangeDotNet;
 
 namespace Phamhilator.Yam.Core
@@ -34,7 +31,6 @@ namespace Phamhilator.Yam.Core
     {
         private const string dataKey = "Authorised Users";
         private static readonly List<User> owners = new List<User>();
-        private readonly Regex dataSplit = new Regex("\r\n", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private readonly LocalRequestClient client;
 
         public List<int> AuthorisedUsers { get; private set; }
@@ -110,7 +106,7 @@ namespace Phamhilator.Yam.Core
         {
             AuthorisedUsers = new List<int>();
             var data = client.RequestData("Yam", dataKey);
-            var idsStr = dataSplit.Split(data);
+            var idsStr = data.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var id in idsStr)
             {

@@ -25,6 +25,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using Phamhilator.Yam.Core;
 using ServiceStack.Text;
@@ -114,6 +115,7 @@ namespace Phamhilator.Yam.UI
         public static HashSet<LogEntry> SearchLog(RemoteLogRequest req)
         {
             var fieldLower = req.SearchBy.Trim().ToLowerInvariant();
+            var pattern = new Regex(req.SearchPattern, RegexOptions.Compiled | RegexOptions.CultureInvariant);
             var entries = new HashSet<LogEntry>();
             Func<LogEntry, string> getField = null;
             Func<string, bool> search = null;
@@ -128,6 +130,11 @@ namespace Phamhilator.Yam.UI
                 case "title":
                 {
                     getField = new Func<LogEntry, string>(entry => entry.Post.Title);
+                    break;
+                }
+                case "body":
+                {
+                    getField = new Func<LogEntry, string>(entry => entry.Post.Body);
                     break;
                 }
                 case "creationdate":
@@ -147,14 +154,7 @@ namespace Phamhilator.Yam.UI
                 }
             }
 
-            if (req.ExactMatch)
-            {
-                search = new Func<string, bool>(field => field == req.Key);
-            }
-            else
-            {
-                search = new Func<string, bool>(field => field.IndexOf(req.Key) != -1);
-            }
+            search = new Func<string, bool>(field => pattern.IsMatch(field));
 
             foreach (var entry in Log.Values)
             {
