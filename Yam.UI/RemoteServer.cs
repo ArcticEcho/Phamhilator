@@ -283,7 +283,7 @@ namespace Phamhilator.Yam.UI
             }
 
             var unhashedKey = "";
-            owner = CheckApiKey(req.ApiKey, out unhashedKey);
+            owner = CheckApiKey(req.HashedApiKey, out unhashedKey);
 
             if (String.IsNullOrEmpty(owner) || clients.Keys.Any(c => c.ApiKey == unhashedKey))
             {
@@ -300,7 +300,7 @@ namespace Phamhilator.Yam.UI
             var client = new RemoteClient
             {
                 ApiKey = unhashedKey,
-                EnableCompression = req.EnableCompression,
+                EnableCompression = req.UseGZip,
                 EnableEncryption = req.EnableEncryption,
                 Socket = socket,
                 Owner = owner,

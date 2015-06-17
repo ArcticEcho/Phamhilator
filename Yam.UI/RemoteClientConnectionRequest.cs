@@ -24,7 +24,7 @@ namespace Phamhilator.Yam.UI
 {
     public class RemoteClientConnectionRequest
     {
-        public byte[] ApiKey { get; set; }
-        public bool EnableCompression { get; set; }
+        public byte[] HashedApiKey { get; set; }
+        public bool UseGZip { get; set; }
     }
 }
