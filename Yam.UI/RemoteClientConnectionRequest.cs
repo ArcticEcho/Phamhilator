@@ -26,6 +26,5 @@ namespace Phamhilator.Yam.UI
     {
         public byte[] ApiKey { get; set; }
         public bool EnableCompression { get; set; }
-        public bool EnableEncryption { get; set; }
     }
 }
