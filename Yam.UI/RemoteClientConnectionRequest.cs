@@ -24,6 +24,9 @@ namespace Phamhilator.Yam.UI
 {
     public class RemoteClientConnectionRequest
     {
+        /// <summary>
+        /// The remote client's hashed (SHA-256) API key as a byte array.
+        /// </summary>
         public byte[] HashedApiKey { get; set; }
         public bool UseGZip { get; set; }
     }
