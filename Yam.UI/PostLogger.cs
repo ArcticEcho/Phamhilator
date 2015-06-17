@@ -176,7 +176,8 @@ namespace Phamhilator.Yam.UI
             {
                 loggerIntervalMre.WaitOne(UpdateInterval * 1000);
 
-                for (uint i = 0; i < Log.Count; i++)
+                var startKey = Log.Keys.Min();
+                for (uint i = startKey; i < Log.Count + startKey; i++)
                 {
                     if ((DateTime.UtcNow - Log[i].Timestamp).TotalDays > 5)
                     {

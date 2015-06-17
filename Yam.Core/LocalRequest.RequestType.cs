@@ -20,8 +20,6 @@
 
 
 
-using System;
-
 namespace Phamhilator.Yam.Core
 {
     public partial class LocalRequest

@@ -24,7 +24,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Phamhilator.Yam.Core
@@ -80,7 +79,7 @@ namespace Phamhilator.Yam.Core
                 }
                 catch (Exception ex)
                 {
-                    if (Object.Equals(eventType, exceptionEventType)) { continue; } // Avoid infinite loop.
+                    if (Equals(eventType, exceptionEventType)) { continue; } // Avoid infinite loop.
                     CallListeners(exceptionEventType, ex);
                 }
             }

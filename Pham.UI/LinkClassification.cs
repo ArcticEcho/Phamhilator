@@ -20,19 +20,15 @@
 
 
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Phamhilator.Pham.UI
 {
-    public class Link
+    public class LinkClassification
     {
-        public Link()
-        {
-
-        }
+        public LinkType Type { get; set; }
+        public bool BlackSiteFound { get; set; }
+        public bool WhiteSiteFound { get; set; }
+        public Dictionary<string, int> PhrasesFound { get; set; }
     }
 }

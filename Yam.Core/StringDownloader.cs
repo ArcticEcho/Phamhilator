@@ -20,6 +20,7 @@
 
 
 
+using System;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -41,15 +42,22 @@ namespace Phamhilator.Yam.Core
 
         public string DownloadString(string url)
         {
-            var req = (HttpWebRequest)WebRequest.Create(url);
-            req.Timeout = timeout;
-            req.Proxy = null;
-
-            using (var res = req.GetResponse())
-            using (var stream = res.GetResponseStream())
-            using (var sr = new StreamReader(stream, Encoding.UTF8))
+            try
             {
-                return sr.ReadToEnd();
+                var req = (HttpWebRequest)WebRequest.Create(url);
+                req.Timeout = timeout;
+                req.Proxy = null;
+
+                using (var res = req.GetResponse())
+                using (var stream = res.GetResponseStream())
+                using (var sr = new StreamReader(stream, Encoding.UTF8))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
     }

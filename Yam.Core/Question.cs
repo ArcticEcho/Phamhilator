@@ -21,7 +21,6 @@
 
 
 using System;
-using System.Collections.Generic;
 
 namespace Phamhilator.Yam.Core
 {
@@ -35,16 +34,16 @@ namespace Phamhilator.Yam.Core
             {
                 return new Post
                 {
-                    Url = this.Url,
-                    Site = this.Site,
-                    Title = this.Title,
-                    Body = this.Body,
-                    Score = this.Score,
-                    CreationDate = this.CreationDate,
-                    AuthorName = this.AuthorName,
-                    AuthorLink = this.AuthorLink,
-                    AuthorNetworkID = this.AuthorNetworkID,
-                    AuthorRep = this.AuthorRep
+                    Url = Url,
+                    Site = Site,
+                    Title = Title,
+                    Body = Body,
+                    Score = Score,
+                    CreationDate = CreationDate,
+                    AuthorName = AuthorName,
+                    AuthorLink = AuthorLink,
+                    AuthorNetworkID = AuthorNetworkID,
+                    AuthorRep = AuthorRep
                 };
             }
         }

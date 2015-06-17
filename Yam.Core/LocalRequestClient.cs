@@ -23,7 +23,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using ServiceStack.Text;
 
 namespace Phamhilator.Yam.Core
 {
@@ -35,7 +34,7 @@ namespace Phamhilator.Yam.Core
         private readonly LocalSocketListener listener;
         private bool disposed;
 
-        public EventManager<LocalRequest.RequestType> EventManager { get; private set; }
+        public EventManager<RequestType> EventManager { get; private set; }
 
         public ulong TotalDataReceived { get { return listener.TotalDataReceived; } }
 
@@ -45,7 +44,7 @@ namespace Phamhilator.Yam.Core
 
         public LocalRequestClient(string callerBot)
         {
-            if (String.IsNullOrEmpty(callerBot)) { throw new ArgumentException("callerBot"); }
+            if (string.IsNullOrEmpty(callerBot)) { throw new ArgumentException("callerBot"); }
             var caller = callerBot.ToUpperInvariant();
             if (caller != "GHAM" && caller != "PHAM") { throw new ArgumentException("Invalid 'callerBot' specified. Supported names include: 'PHAM' and 'GHAM'.", "callerBot"); }
             EventManager = new EventManager<RequestType>(RequestType.Exception);
@@ -91,40 +90,14 @@ namespace Phamhilator.Yam.Core
             sender.SendData(req);
         }
 
+        public bool DataExists(string owner, string key)
+        {
+            return bool.Parse((string)SendDataManagerRequest("CHK", owner, key));
+        }
+
         public string RequestData(string owner, string key)
         {
-            var reqId = LocalRequest.GetNewID();
-            LocalRequest response = null;
-            Action<LocalRequest> dataReceivedAction;
-            using (var dataWaitMre = new ManualResetEvent(false))
-            {
-                dataReceivedAction = new Action<LocalRequest>(r =>
-                {
-                    if (Guid.Parse((string)r.Options["FullFillReqID"]) == reqId)
-                    {
-                        response = r;
-                        dataWaitMre.Set();
-                    }
-                });
-                var req = new LocalRequest
-                {
-                    ID = reqId,
-                    Type = RequestType.DataManagerRequest,
-                    Options = new Dictionary<string, object>
-                    {
-                        { "DMReqType", "GET" },
-                        { "Owner", owner },
-                        { "Key", key }
-                    }
-                };
-                EventManager.ConnectListener(RequestType.DataManagerRequest, dataReceivedAction);
-                sender.SendData(req);
-                dataWaitMre.WaitOne();
-            }
-
-            EventManager.DisconnectListener(RequestType.DataManagerRequest, dataReceivedAction);
-
-            return (string)response.Data;
+            return (string)SendDataManagerRequest("GET", owner, key);
         }
 
         public void UpdateData(string owner, string key, string data)
@@ -164,23 +137,59 @@ namespace Phamhilator.Yam.Core
 
 
 
+        private object SendDataManagerRequest(string requestType, string owner, string key)
+        {
+            var reqId = LocalRequest.GetNewID();
+            LocalRequest response = null;
+            Action<LocalRequest> dataReceivedAction;
+            using (var dataWaitMre = new ManualResetEvent(false))
+            {
+                dataReceivedAction = new Action<LocalRequest>(r =>
+                {
+                    if (Guid.Parse((string)r.Options["FullFillReqID"]) == reqId)
+                    {
+                        response = r;
+                        dataWaitMre.Set();
+                    }
+                });
+                var req = new LocalRequest
+                {
+                    ID = reqId,
+                    Type = RequestType.DataManagerRequest,
+                    Options = new Dictionary<string, object>
+                    {
+                        { "DMReqType", requestType },
+                        { "Owner", owner },
+                        { "Key", key }
+                    }
+                };
+                EventManager.ConnectListener(RequestType.DataManagerRequest, dataReceivedAction);
+                sender.SendData(req);
+                dataWaitMre.WaitOne();
+            }
+
+            EventManager.DisconnectListener(RequestType.DataManagerRequest, dataReceivedAction);
+
+            return response.Data;
+        }
+
         private void HandleMessage(LocalRequest req)
         {
             try
             {
-                if (req.Type == RequestType.Answer)
+                if (req.Type == RequestType.Answer || req.Type == RequestType.Question)
                 {
-                    var a = JsonSerializer.DeserializeFromString<Answer>(req.Data.ToString());
-                    EventManager.CallListeners(req.Type, a);
+                    //var a = JsonSerializer.DeserializeFromString<Answer>((string)req.Data);
+                    EventManager.CallListeners(req.Type, req.Data);
                     return;
                 }
 
-                if (req.Type == RequestType.Question)
-                {
-                    var q = JsonSerializer.DeserializeFromString<Question>(req.Data.ToString());
-                    EventManager.CallListeners(req.Type, q);
-                    return;
-                }
+                //if (req.Type == RequestType.Question)
+                //{
+                //    //var q = JsonSerializer.DeserializeFromString<Question>((string)req.Data);
+                //    EventManager.CallListeners(req.Type, req.Data);
+                //    return;
+                //}
 
                 EventManager.CallListeners(req.Type, req);
             }

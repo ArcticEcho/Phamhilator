@@ -21,6 +21,7 @@
 
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -31,12 +32,12 @@ namespace Phamhilator.Yam.Core
     public static class LinkUnshortifier
     {
         private static readonly Regex shortLink = new Regex(@"(?is)^https?://(goo\.gl|bit\.ly|tinyurl\.com|ow\.ly|tiny\.cc|bit\.do|po\.st|bigly\.us|t\.co|r\.im|cli\.gs|short\.ie|kl\.am|idek\.net|i\.gd|hex\.io)/\w*$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-
+        private static readonly Dictionary<string, string> processedLinks = new Dictionary<string, string>();
 
 
         public static bool IsShortLink(string url)
         {
-            return !String.IsNullOrEmpty(url) && shortLink.IsMatch(url.Trim());
+            return !string.IsNullOrEmpty(url) && shortLink.IsMatch(url.Trim());
         }
 
         public static string UnshortifyLink(string url)
@@ -44,10 +45,19 @@ namespace Phamhilator.Yam.Core
             if (!IsShortLink(url)) { return url; }
 
             var trimmed = url.Trim();
+
+            if (processedLinks.ContainsKey(trimmed)) { return processedLinks[trimmed]; }
+
             var res = new WebClient().DownloadString("http://urlex.org/json/" + trimmed);
             var data = JsonObject.Parse(res);
+            var longLink = data.Values.First();
 
-            return data.Values.First();
+            if (!processedLinks.ContainsKey(url))
+            {
+                processedLinks[url] = longLink;
+            }
+
+            return longLink;
         }
     }
 }

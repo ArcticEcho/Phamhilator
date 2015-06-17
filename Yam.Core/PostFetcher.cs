@@ -29,7 +29,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using CsQuery;
 using WebSocketSharp;
-using Microsoft.CSharp.RuntimeBinder;
 using ServiceStack.Text;
 
 namespace Phamhilator.Yam.Core
@@ -66,7 +65,7 @@ namespace Phamhilator.Yam.Core
                 authorLink = TrimUrl((string)innerObj["ownerUrl"]);
             }
 
-            if (!String.IsNullOrEmpty(authorLink))
+            if (!string.IsNullOrEmpty(authorLink))
             {
                 networkID = GetUserNetworkID(authorLink);
             }
@@ -76,7 +75,7 @@ namespace Phamhilator.Yam.Core
 
             var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
-            var authorRep = PostFetcher.ParseRep(dom[".reputation-score"].Html());
+            var authorRep = ParseRep(dom[".reputation-score"].Html());
             var creationDate = DateTime.MaxValue;
             foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
             {
@@ -112,7 +111,7 @@ namespace Phamhilator.Yam.Core
             }
 
             var title = WebUtility.HtmlDecode(dom[".question-hyperlink"].Html());
-            var body = UnshortifyLinks(WebUtility.HtmlDecode(dom[".post-text"].Html().Trim()));
+            var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
             var creationDate = DateTime.MaxValue;
             foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
@@ -156,7 +155,7 @@ namespace Phamhilator.Yam.Core
                 }
             }
 
-            if (!String.IsNullOrEmpty(authorLink))
+            if (!string.IsNullOrEmpty(authorLink))
             {
                 networkID = GetUserNetworkID(authorLink);
             }
@@ -199,9 +198,10 @@ namespace Phamhilator.Yam.Core
 
         public static int ParseRep(string rep)
         {
-            if (String.IsNullOrEmpty(rep))  {  return 1; }
+            if (string.IsNullOrEmpty(rep))  {  return 1; }
 
             var trimmed = rep.Trim();
+            trimmed = trimmed.EndsWith("mil") ? trimmed.Substring(0, trimmed.Length - 3) : trimmed;
 
             if (trimmed.ToLowerInvariant().Contains("k"))
             {
@@ -250,7 +250,7 @@ namespace Phamhilator.Yam.Core
                     var bytes = new byte[2048];
                     strm.Read(bytes, 0, 2048);
                     var html = Encoding.UTF8.GetString(bytes);
-                    var id = new string(userNetworkID.Match(html).Value.Where(Char.IsDigit).ToArray());
+                    var id = new string(userNetworkID.Match(html).Value.Where(char.IsDigit).ToArray());
                     return int.Parse(id);
                 }
             }
@@ -265,7 +265,7 @@ namespace Phamhilator.Yam.Core
             var aDom = "#answer-" + id + " ";
 
             var score = int.Parse(dom[aDom + ".vote-count-post"][0].InnerHTML);
-            var body = UnshortifyLinks(WebUtility.HtmlDecode(dom[aDom + ".post-text"][0].InnerHTML.Trim()));
+            var body = WebUtility.HtmlDecode(dom[aDom + ".post-text"][0].InnerHTML.Trim());
             var url = "http://" + host + "/a/" + id;
             var authorName = "";
             var authorLink = "";
@@ -297,7 +297,7 @@ namespace Phamhilator.Yam.Core
                 }
             }
 
-            if (!String.IsNullOrEmpty(authorLink))
+            if (!string.IsNullOrEmpty(authorLink))
             {
                 networkID = GetUserNetworkID(authorLink);
             }
@@ -311,7 +311,7 @@ namespace Phamhilator.Yam.Core
 
         private static string TrimUrl(string url)
         {
-            if (String.IsNullOrEmpty(url)) { return null; }
+            if (string.IsNullOrEmpty(url)) { return null; }
 
             var trimmed = "";
             var fsCount = 0;
@@ -380,31 +380,6 @@ namespace Phamhilator.Yam.Core
             }
 
             return new string(array, 0, arrayIndex);
-        }
-
-        private static string UnshortifyLinks(string body)
-        {
-            var dom = CQ.Create(body);
-            var bodyCopy = body;
-            var shortLinks = new List<string>();
-
-            foreach (var link in dom["a"])
-            {
-                var url = link.Attributes["href"];
-
-                if (String.IsNullOrEmpty(url)) { continue; }
-
-                if (LinkUnshortifier.IsShortLink(url) && !shortLinks.Contains(url))
-                {
-                    shortLinks.Add(url);
-
-                    var longUrl = LinkUnshortifier.UnshortifyLink(url);
-
-                    bodyCopy = bodyCopy.Replace(url, longUrl);
-                }
-            }
-
-            return bodyCopy;
         }
     }
 }

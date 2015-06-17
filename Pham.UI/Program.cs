@@ -35,110 +35,68 @@ using Phamhilator.Yam.Core;
 using Phamhilator.Pham.Core;
 using ChatExchangeDotNet;
 using Phamhilator.FlagExchangeDotNet;
+using ServiceStack.Text;
 
 namespace Phamhilator.Pham.UI
 {
     public class Program
     {
+        private static ManualResetEvent shutdownMre = new ManualResetEvent(false);
+        private static readonly HashSet<Post> checkedPosts = new HashSet<Post>();
         private static LocalRequestClient yamClient;
         private static Client chatClient;
-        private static ActiveRooms roomsToJoin;
+        private static Room hq;
+        private static Room tavern;
+        private static UserAccess userAccess;
+        private static Flagger flagger;
+        private static LinkClassifier linkClassifier;
+        private static DateTime startTime;
+        //private static ActiveRooms roomsToJoin;
 
 
 
         static void Main(string[] args)
         {
             Console.Title = "Pham v2";
-            Console.WriteLine("Pham v2.\nPress Ctrl + C to exit.\n");
+            Console.WriteLine("Pham v2.\nPress Q to exit.\n");
             Console.CancelKeyPress += (o, oo) => Close();
-
-            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
             InitialiseFlagger();
             InitialiseCore();
             TryLogin();
             JoinRooms();
 
-            Config.IsRunning = true;
-            Stats.UpTime = DateTime.UtcNow;
+            //Config.IsRunning = true;
+            startTime = DateTime.UtcNow;
 
 #if DEBUG
-            Console.Write("\nPham v2 started (debug).");
-            Config.PrimaryRoom.PostMessage("`Pham v2 started` (**`debug`**)`.`");
+            Console.WriteLine("\nPham v2 started (debug).");
+            hq.PostMessage("`Pham v2 started` (**`debug`**)`.`");
 #else
-            Config.PrimaryRoom.PostMessage("`Pham v2 started.`");
+            hq.PostMessage("`Pham v2 started.`");
             Console.WriteLine("\nPham v2 started.");
 #endif
 
             ConnectYamClientEvents();
-        }
 
 
-
-        # region Private static auth/initialisation methods.
-
-        private static void InitialiseCore()
-        {
-            Console.Write("Initialising Yam client...");
-            yamClient = new LocalRequestClient("Pham");
-            AppDomain.CurrentDomain.UnhandledException += (o, ex) => yamClient.SendData(new LocalRequest
+            Task.Run(() =>
             {
-                Type = LocalRequest.RequestType.Exception,
-                ID = LocalRequest.GetNewID(),
-                Data = ex.ExceptionObject
+                while (true)
+                {
+                    if (char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
+                    {
+                        shutdownMre.Set();
+                        return;
+                    }
+                }
             });
 
-            Console.Write("done.\nLoading log...");
-            Config.Log = new ReportLog();
-
-            Console.Write("done.\nLoading config data...");
-            roomsToJoin = new ActiveRooms();
-            Config.Core = new Pham.Core.Pham();
-            Stats.PostedReports = new List<Report>();
-            Config.UserAccess = new UserAccess(ref yamClient);
-
-            Console.Write("done.\nLoading bad tag definitions...");
-            Config.BadTags = new BadTags();
-
-            Console.Write("done.\nLoading black terms...");
-            Config.BlackFilters = new Dictionary<FilterConfig, BlackFilter>()
-            {
-                { new FilterConfig(FilterClass.QuestionTitleName, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleName) },
-                { new FilterConfig(FilterClass.QuestionTitleOff, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleOff) },
-                { new FilterConfig(FilterClass.QuestionTitleSpam, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleSpam) },
-                { new FilterConfig(FilterClass.QuestionTitleLQ, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleLQ) },
-
-                { new FilterConfig(FilterClass.QuestionBodySpam, FilterType.Black), new BlackFilter(FilterClass.QuestionBodySpam) },
-                { new FilterConfig(FilterClass.QuestionBodyLQ, FilterType.Black), new BlackFilter(FilterClass.QuestionBodyLQ) },
-                { new FilterConfig(FilterClass.QuestionBodyOff, FilterType.Black), new BlackFilter(FilterClass.QuestionBodyOff) },
-
-                { new FilterConfig(FilterClass.AnswerSpam, FilterType.Black), new BlackFilter(FilterClass.AnswerSpam) },
-                { new FilterConfig(FilterClass.AnswerLQ, FilterType.Black), new BlackFilter(FilterClass.AnswerLQ) },
-                { new FilterConfig(FilterClass.AnswerOff, FilterType.Black), new BlackFilter(FilterClass.AnswerOff) },
-                { new FilterConfig(FilterClass.AnswerName, FilterType.Black), new BlackFilter(FilterClass.AnswerName) }
-            };
-
-            Console.Write("done.\nLoading white terms...");
-            Config.WhiteFilters = new Dictionary<FilterConfig, WhiteFilter>()
-            {
-                { new FilterConfig(FilterClass.QuestionTitleName, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleName) },
-                { new FilterConfig(FilterClass.QuestionTitleOff, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleOff) },
-                { new FilterConfig(FilterClass.QuestionTitleSpam, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleSpam) },
-                { new FilterConfig(FilterClass.QuestionTitleLQ, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleLQ) },
-
-                { new FilterConfig(FilterClass.QuestionBodySpam, FilterType.White), new WhiteFilter(FilterClass.QuestionBodySpam) },
-                { new FilterConfig(FilterClass.QuestionBodyLQ, FilterType.White), new WhiteFilter(FilterClass.QuestionBodyLQ) },
-                { new FilterConfig(FilterClass.QuestionBodyOff, FilterType.White), new WhiteFilter(FilterClass.QuestionBodyOff) },
-
-                { new FilterConfig(FilterClass.AnswerSpam, FilterType.White), new WhiteFilter(FilterClass.AnswerSpam) },
-                { new FilterConfig(FilterClass.AnswerLQ, FilterType.White), new WhiteFilter(FilterClass.AnswerLQ) },
-                { new FilterConfig(FilterClass.AnswerOff, FilterType.White), new WhiteFilter(FilterClass.AnswerOff) },
-                { new FilterConfig(FilterClass.AnswerName, FilterType.White), new WhiteFilter(FilterClass.AnswerName) }
-            };
-
-            Console.WriteLine("done.\n");
+            shutdownMre.WaitOne();
+            Close();
         }
+
+
 
         private static void InitialiseFlagger()
         {
@@ -153,10 +111,75 @@ namespace Phamhilator.Pham.UI
             Console.Write("Password: ");
             var password = Console.ReadLine();
 
-            Config.Flagger = new Flagger(name, email, password);
+            flagger = new Flagger(name, email, password);
 
             Thread.Sleep(3000);
             Console.Clear();
+        }
+
+        private static void InitialiseCore()
+        {
+            Console.Write("Initialising Yam client...");
+            yamClient = new LocalRequestClient("Pham");
+            AppDomain.CurrentDomain.UnhandledException += (o, ex) => yamClient.SendData(new LocalRequest
+            {
+                Type = LocalRequest.RequestType.Exception,
+                ID = LocalRequest.GetNewID(),
+                Data = ex.ExceptionObject
+            });
+
+            Console.Write("done.\nInitialising link classifier...");
+            linkClassifier = new LinkClassifier(ref yamClient);
+
+            //Console.Write("done.\nLoading log...");
+            //Config.Log = new ReportLog();
+
+            Console.Write("done.\nLoading config data...");
+            //roomsToJoin = new ActiveRooms();
+            //Config.Core = new Pham.Core.Pham();
+            //Stats.PostedReports = new List<Report>();
+            userAccess = new UserAccess(ref yamClient);
+
+            //Console.Write("done.\nLoading bad tag definitions...");
+            //Config.BadTags = new BadTags();
+
+            //Console.Write("done.\nLoading black terms...");
+            //Config.BlackFilters = new Dictionary<FilterConfig, BlackFilter>()
+            //{
+            //    { new FilterConfig(FilterClass.QuestionTitleName, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleName) },
+            //    { new FilterConfig(FilterClass.QuestionTitleOff, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleOff) },
+            //    { new FilterConfig(FilterClass.QuestionTitleSpam, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleSpam) },
+            //    { new FilterConfig(FilterClass.QuestionTitleLQ, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleLQ) },
+
+            //    { new FilterConfig(FilterClass.QuestionBodySpam, FilterType.Black), new BlackFilter(FilterClass.QuestionBodySpam) },
+            //    { new FilterConfig(FilterClass.QuestionBodyLQ, FilterType.Black), new BlackFilter(FilterClass.QuestionBodyLQ) },
+            //    { new FilterConfig(FilterClass.QuestionBodyOff, FilterType.Black), new BlackFilter(FilterClass.QuestionBodyOff) },
+
+            //    { new FilterConfig(FilterClass.AnswerSpam, FilterType.Black), new BlackFilter(FilterClass.AnswerSpam) },
+            //    { new FilterConfig(FilterClass.AnswerLQ, FilterType.Black), new BlackFilter(FilterClass.AnswerLQ) },
+            //    { new FilterConfig(FilterClass.AnswerOff, FilterType.Black), new BlackFilter(FilterClass.AnswerOff) },
+            //    { new FilterConfig(FilterClass.AnswerName, FilterType.Black), new BlackFilter(FilterClass.AnswerName) }
+            //};
+
+            //Console.Write("done.\nLoading white terms...");
+            //Config.WhiteFilters = new Dictionary<FilterConfig, WhiteFilter>()
+            //{
+            //    { new FilterConfig(FilterClass.QuestionTitleName, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleName) },
+            //    { new FilterConfig(FilterClass.QuestionTitleOff, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleOff) },
+            //    { new FilterConfig(FilterClass.QuestionTitleSpam, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleSpam) },
+            //    { new FilterConfig(FilterClass.QuestionTitleLQ, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleLQ) },
+
+            //    { new FilterConfig(FilterClass.QuestionBodySpam, FilterType.White), new WhiteFilter(FilterClass.QuestionBodySpam) },
+            //    { new FilterConfig(FilterClass.QuestionBodyLQ, FilterType.White), new WhiteFilter(FilterClass.QuestionBodyLQ) },
+            //    { new FilterConfig(FilterClass.QuestionBodyOff, FilterType.White), new WhiteFilter(FilterClass.QuestionBodyOff) },
+
+            //    { new FilterConfig(FilterClass.AnswerSpam, FilterType.White), new WhiteFilter(FilterClass.AnswerSpam) },
+            //    { new FilterConfig(FilterClass.AnswerLQ, FilterType.White), new WhiteFilter(FilterClass.AnswerLQ) },
+            //    { new FilterConfig(FilterClass.AnswerOff, FilterType.White), new WhiteFilter(FilterClass.AnswerOff) },
+            //    { new FilterConfig(FilterClass.AnswerName, FilterType.White), new WhiteFilter(FilterClass.AnswerName) }
+            //};
+
+            Console.WriteLine("done.\n");
         }
 
         private static void TryLogin()
@@ -191,233 +214,304 @@ namespace Phamhilator.Pham.UI
 
         private static void JoinRooms()
         {
-            Console.Write("Joining primary room: " + roomsToJoin.PrimaryRoomUrl + "...");
+            Console.Write("Joining HQ...");
 
-            Config.PrimaryRoom = chatClient.JoinRoom(roomsToJoin.PrimaryRoomUrl);
-            Config.PrimaryRoom.IgnoreOwnEvents = false;
-            Config.PrimaryRoom.StripMentionFromMessages = false;
-            Config.PrimaryRoom.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(HandlePrimaryNewMessage));
-            Config.PrimaryRoom.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message, Message>((oldMessage, newMessage) => HandlePrimaryNewMessage(newMessage)));
+            hq = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773");
+            //hq.IgnoreOwnEvents = false;
+            //hq.StripMentionFromMessages = false;
+            hq.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(HandleHqNewMessage));
+            hq.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message>(newMessage => HandleHqNewMessage(newMessage)));
 
-            Console.WriteLine("done.\nJoining secondary room(s):");
+            Console.Write("done.\nJoining Tavern...");
 
-            Config.SecondaryRooms = new List<Room>();
+            tavern = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89");
+            //tavern.IgnoreOwnEvents = false;
+            //tavern.StripMentionFromMessages = false;
+            tavern.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(HandleTavernNewMessage));
+            tavern.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message>(newMessage => HandleTavernNewMessage(newMessage)));
 
-            foreach (var roomUrl in roomsToJoin.SecondaryRoomUrls)
-            {
-                Console.Write("Room: " + roomUrl + "...");
-
-                var secRoom = chatClient.JoinRoom(roomUrl);
-                secRoom.IgnoreOwnEvents = false;
-                secRoom.StripMentionFromMessages = false;
-                secRoom.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(message => HandleSecondaryNewMessage(secRoom, message)));
-                secRoom.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message, Message>((oldMessage, newMessage) => HandleSecondaryNewMessage(secRoom, newMessage)));
-
-                Config.SecondaryRooms.Add(secRoom);
-
-                Console.WriteLine("done.");
-            }
+            Console.WriteLine("done.");
         }
 
         private static void ConnectYamClientEvents()
         {
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(question =>
             {
-                if (!Config.IsRunning) { return; }
-
-                lock (Config.Log)
+                if (question.Score <= 2 || question.AuthorRep <= 1000)
                 {
-                    if (Config.Log.Entries.All(p => p.PostUrl != question.Url))
-                    {
-                        var qResults = PostAnalyser.AnalyseQuestion(question);
-                        var qMessage = ReportMessageGenerator.GetQReport(qResults, question);
-
-                        CheckSendReport(question, qMessage, qResults);
-                    }
+                    CheckPost(question.Base);
                 }
+                //if (!Config.IsRunning) { return; }
+
+                //lock (Config.Log)
+                //{
+                //    if (Config.Log.Entries.All(p => p.PostUrl != question.Url))
+                //    {
+                //        var qResults = PostAnalyser.AnalyseQuestion(question);
+                //        var qMessage = ReportMessageGenerator.GetQReport(qResults, question);
+
+                //        CheckSendReport(question, qMessage, qResults);
+                //    }
+                //}
             }));
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(answer =>
             {
-                if (!Config.IsRunning) { return; }
-
-                lock (Config.Log)
+                if (answer.Score <= 2 || answer.AuthorRep <= 1000)
                 {
-                    if (Config.Log.Entries.All(p => p.PostUrl != answer.Url))
-                    {
-                        var aResults = PostAnalyser.AnalyseAnswer(answer);
-                        var aMessage = ReportMessageGenerator.GetPostReport(aResults, answer);
-
-                        CheckSendReport(answer, aMessage, aResults);
-                    }
+                    CheckPost(answer);
                 }
+                //if (!Config.IsRunning) { return; }
+
+                //lock (Config.Log)
+                //{
+                //    if (Config.Log.Entries.All(p => p.PostUrl != answer.Url))
+                //    {
+                //        var aResults = PostAnalyser.AnalyseAnswer(answer);
+                //        var aMessage = ReportMessageGenerator.GetPostReport(aResults, answer);
+
+                //        CheckSendReport(answer, aMessage, aResults);
+                //    }
+                //}
             }));
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(ex =>
             {
-                if (!Config.IsRunning) { return; }
+                //if (!Config.IsRunning) { return; }
 
                 yamClient.SendData(new LocalRequest
                 {
                     Type = LocalRequest.RequestType.Exception,
                     ID = LocalRequest.GetNewID(),
-                    Data = ex.Data,
+                    Data = ex.Data.ToString(),
                     Options = ex.Options
                 });
             }));
         }
 
-        # endregion
-
-        private static void HandlePrimaryNewMessage(Message message)
+        private static void CheckPost(Post post)
         {
-            if (message.Content.ToLowerInvariant() == ">>kill-it-with-no-regrets-for-sure")
-            {
-                KillBot(message);
-            }
-            else
-            {
-                var messages = CommandProcessor.ExacuteCommand(Config.PrimaryRoom, message);
+            if (checkedPosts.Contains(post)) { return; }
+            checkedPosts.Add(post);
 
-                if (messages == null || messages.Length == 0) { return; }
+            var results = linkClassifier.ClassifyLinks(post);
+            if (results == null || results.Count == 0 || results.All(r => r.Value.Type == LinkType.Clean)) { return; }
 
-                foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
-                {
-                    if (m.IsReply)
-                    {
-                        Config.PrimaryRoom.PostReply(message, m.Content);
-                    }
-                    else
-                    {
-                        Config.PrimaryRoom.PostMessage(m.Content);
-                    }
-                }
+            if (results.Values.Any(r => r.BlackSiteFound))
+            {
+                hq.PostMessage("`Link Classifier:` [`blacklisted site`](" + post.Url + ")`.`");
+                return;
             }
+            var logLink = Hastebin.PostDocument(results.Dump());
+
+            var linksFound = results.Count;
+            var phrasesFoundAll = 0;
+            var phrasesFoundDistinct = 0;
+            var diversity = 0;
+            var density = 0;
+            phrasesFoundAll = results.Values.Where(r => r.PhrasesFound != null).Sum(r => phrasesFoundAll += r.PhrasesFound.Values.Sum());
+            phrasesFoundDistinct = results.Values.Where(r => r.PhrasesFound != null).Select(r => r.PhrasesFound.Keys).Distinct().Count();
+
+            var report = "`Link Classifier:` [`" + linksFound + " link" + (linksFound > 1 ? "s" : "") + " found & " + phrasesFoundAll + " spam phrases detected`](" + post.Url + ") `(`[`log`](" + logLink +  ")`).`";
+
+            hq.PostMessage(report);
         }
 
-        private static void HandleSecondaryNewMessage(Room room, Message message)
+        private static void HandleHqNewMessage(Message message)
         {
-            if (!CommandProcessor.IsValidCommand(room, message)) { return; }
+            if (UserAccess.Owners.All(u => u.ID != message.Author.ID)) { return; }
 
-            var messages = CommandProcessor.ExacuteCommand(room, message);
+            var cmd = message.Content.ToLowerInvariant().Trim();
 
-            if (messages == null || messages.Length == 0) { return; }
-
-            foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
+            if (cmd.StartsWith("add spam phrase "))
             {
-                if (m.IsReply)
-                {
-                    room.PostReply(message, m.Content);
-                }
-                else
-                {
-                    room.PostMessage(m.Content);
-                }
+                var phrase = cmd.Remove(0, 16);
+                linkClassifier.AddSpamPhrase(phrase);
+                hq.PostReply(message, "`Phrase added.`");
             }
+            else if (cmd.StartsWith("remove spam phrase "))
+            {
+                var phrase = cmd.Remove(0, 18);
+                linkClassifier.RemoveSpamPhrase(phrase);
+                hq.PostReply(message, "`Phrase removed.`");
+            }
+            else if (cmd.StartsWith("add black site "))
+            {
+                var phrase = cmd.Remove(0, 15);
+                linkClassifier.AddBlackSite(phrase);
+                hq.PostReply(message, "`Black site added.`");
+            }
+            else if (cmd.StartsWith("remove black site "))
+            {
+                var phrase = cmd.Remove(0, 18);
+                linkClassifier.RemoveBlackSite(phrase);
+                hq.PostReply(message, "`Black removed added.`");
+            }
+            else if (cmd.StartsWith("add white site "))
+            {
+                var phrase = cmd.Remove(0, 15);
+                linkClassifier.AddWhiteSite(phrase);
+                hq.PostReply(message, "`White site added.`");
+            }
+            else if (cmd.StartsWith("remove white site "))
+            {
+                var phrase = cmd.Remove(0, 18);
+                linkClassifier.RemoveWhiteSite(phrase);
+                hq.PostReply(message, "`White site removed.`");
+            }
+            else if (cmd == "sync data")
+            {
+                linkClassifier.SyncData(ref yamClient);
+                hq.PostReply(message, "`Data sync'd.`");
+            }
+
+            //if (message.Content.ToLowerInvariant() == ">>kill-it-with-no-regrets-for-sure")
+            //{
+            //    KillBot(message);
+            //}
+            //else
+            //{
+            //    var messages = CommandProcessor.ExacuteCommand(Config.PrimaryRoom, message);
+
+            //    if (messages == null || messages.Length == 0) { return; }
+
+            //    foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
+            //    {
+            //        if (m.IsReply)
+            //        {
+            //            Config.PrimaryRoom.PostReply(message, m.Content);
+            //        }
+            //        else
+            //        {
+            //            Config.PrimaryRoom.PostMessage(m.Content);
+            //        }
+            //    }
+            //}
         }
 
-        private static void CheckSendReport(Post p, string messageBody, PostAnalysis info)
+        private static void HandleTavernNewMessage(Message message)
         {
-            Stats.TotalCheckedPosts++;
+            //if (!CommandProcessor.IsValidCommand(room, message)) { return; }
 
-            if (p == null || String.IsNullOrEmpty(messageBody) || info == null) { return; }
+            //var messages = CommandProcessor.ExacuteCommand(room, message);
 
-            Message chatMessage = null;
-            Report report = null;
+            //if (messages == null || messages.Length == 0) { return; }
 
-            if (info.Type == PostType.Clean) { return; }
-
-            chatMessage = Config.PrimaryRoom.PostMessage(messageBody);
-
-            switch (info.Type)
-            {
-                case PostType.Offensive:
-                {
-                    report = new Report { Message = chatMessage, Post = p, Analysis = info };
-                    break;
-                }
-
-                case PostType.BadUsername:
-                {
-                    report = new Report { Message = chatMessage, Post = p, Analysis = info };
-                    break;
-                }
-
-                case PostType.BadTagUsed:
-                {
-                    report = new Report { Message = chatMessage, Post = p, Analysis = info };
-                    break;
-                }
-
-                case PostType.LowQuality:
-                {
-                    report = new Report { Message = chatMessage, Post = p, Analysis = info };
-                    break;
-                }
-
-                case PostType.Spam:
-                {
-                    report = new Report { Message = chatMessage, Post = p, Analysis = info };
-                    break;
-                }
-
-                default:
-                {
-                    if (Stats.ReportedUsers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
-                    {
-                        report = new Report { Message = chatMessage, Post = p, Analysis = info };
-                    }
-                    break;
-                }
-            }
-
-            if (chatMessage != null && report != null)
-            {
-                Config.Log.AddEntry(new LogItem
-                {
-                    ReportLink = "http://chat." + chatMessage.Host + "/transcript/message/" + chatMessage.ID,
-                    PostUrl = p.Url,
-                    Site = p.Site,
-                    Title = p.Title,
-                    Body = p.Body,
-                    TimeStamp = DateTime.UtcNow,
-                    ReportType = info.Type,
-                    BlackTerms = info.BlackTermsFound.ToLogTerms().ToList(),
-                    WhiteTerms = info.WhiteTermsFound.ToLogTerms().ToList()
-                });
-                Stats.PostedReports.Add(report);
-
-                if (info.AutoTermsFound)
-                {
-                    foreach (var room in Config.SecondaryRooms)
-                    {
-                        var autoMessage = room.PostMessage(report.Message.Content);
-
-                        Stats.PostedReports.Add(new Report
-                        {
-                            Analysis = info,
-                            Message = autoMessage,
-                            Post = p
-                        });
-                    }
-                }
-            }
-
-            Stats.PostsCaught++;
+            //foreach (var m in messages.Where(m => m != null && !String.IsNullOrEmpty(m.Content)))
+            //{
+            //    if (m.IsReply)
+            //    {
+            //        room.PostReply(message, m.Content);
+            //    }
+            //    else
+            //    {
+            //        room.PostMessage(m.Content);
+            //    }
+            //}
         }
+
+        //private static void CheckSendReport(Post p, string messageBody, PostAnalysis info)
+        //{
+        //    Stats.TotalCheckedPosts++;
+
+        //    if (p == null || String.IsNullOrEmpty(messageBody) || info == null) { return; }
+
+        //    Message chatMessage = null;
+        //    Report report = null;
+
+        //    if (info.Type == PostType.Clean) { return; }
+
+        //    chatMessage = Config.PrimaryRoom.PostMessage(messageBody);
+
+        //    switch (info.Type)
+        //    {
+        //        case PostType.Offensive:
+        //        {
+        //            report = new Report { Message = chatMessage, Post = p, Analysis = info };
+        //            break;
+        //        }
+
+        //        case PostType.BadUsername:
+        //        {
+        //            report = new Report { Message = chatMessage, Post = p, Analysis = info };
+        //            break;
+        //        }
+
+        //        case PostType.BadTagUsed:
+        //        {
+        //            report = new Report { Message = chatMessage, Post = p, Analysis = info };
+        //            break;
+        //        }
+
+        //        case PostType.LowQuality:
+        //        {
+        //            report = new Report { Message = chatMessage, Post = p, Analysis = info };
+        //            break;
+        //        }
+
+        //        case PostType.Spam:
+        //        {
+        //            report = new Report { Message = chatMessage, Post = p, Analysis = info };
+        //            break;
+        //        }
+
+        //        default:
+        //        {
+        //            if (Stats.ReportedUsers.Any(spammer => spammer.Name == p.AuthorName && spammer.Site == p.Site))
+        //            {
+        //                report = new Report { Message = chatMessage, Post = p, Analysis = info };
+        //            }
+        //            break;
+        //        }
+        //    }
+
+        //    if (chatMessage != null && report != null)
+        //    {
+        //        Config.Log.AddEntry(new LogItem
+        //        {
+        //            ReportLink = "http://chat." + chatMessage.Host + "/transcript/message/" + chatMessage.ID,
+        //            PostUrl = p.Url,
+        //            Site = p.Site,
+        //            Title = p.Title,
+        //            Body = p.Body,
+        //            TimeStamp = DateTime.UtcNow,
+        //            ReportType = info.Type,
+        //            BlackTerms = info.BlackTermsFound.ToLogTerms().ToList(),
+        //            WhiteTerms = info.WhiteTermsFound.ToLogTerms().ToList()
+        //        });
+        //        Stats.PostedReports.Add(report);
+
+        //        if (info.AutoTermsFound)
+        //        {
+        //            foreach (var room in Config.SecondaryRooms)
+        //            {
+        //                var autoMessage = room.PostMessage(report.Message.Content);
+
+        //                Stats.PostedReports.Add(new Report
+        //                {
+        //                    Analysis = info,
+        //                    Message = autoMessage,
+        //                    Post = p
+        //                });
+        //            }
+        //        }
+        //    }
+
+        //    Stats.PostsCaught++;
+        //}
 
         private static void KillBot(Message message)
         {
-            if (Config.Shutdown) { return; }
+            //if (Config.Shutdown) { return; }
 
-            if (message.IsAuthorOwner())
-            {
-                Close("Kill command issued, closing Pham...", "`Killing...`", "`Kill successful!`");
-            }
-            else
-            {
-                Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported).`");
-            }
+            //if (message.IsAuthorOwner())
+            //{
+            //    Close("Kill command issued, closing Pham...", "`Killing...`", "`Kill successful!`");
+            //}
+            //else
+            //{
+            //    Config.PrimaryRoom.PostReply(message, "`Access denied (this incident will be reported).`");
+            //}
         }
 
         private static void Close(string consoleCloseMessage = "Closing Pham...", string roomClosingMessage = "`Stopping Pham v2...`", string roomClosedMessage = "`Pham v2 stopped.`")
@@ -426,7 +520,7 @@ namespace Phamhilator.Pham.UI
             // so post the shutdown message, otherwise, the bot hasn't been initialised so just exit.
             if (chatClient != null)
             {
-                Config.Shutdown = true;
+                //Config.Shutdown = true;
 
                 if (!String.IsNullOrEmpty(consoleCloseMessage))
                 {
@@ -435,32 +529,31 @@ namespace Phamhilator.Pham.UI
 
                 if (!String.IsNullOrEmpty(roomClosingMessage))
                 {
-                    Config.PrimaryRoom.PostMessage(roomClosingMessage);
+                    hq.PostMessage(roomClosingMessage);
                 }
 
                 yamClient.Dispose();
 
-                lock (Config.Log)
-                {
-                    Config.Log.Dispose();
-                }
+                //lock (Config.Log)
+                //{
+                //    Config.Log.Dispose();
+                //}
 
                 if (!String.IsNullOrEmpty(roomClosedMessage))
                 {
-                    Config.PrimaryRoom.PostMessage(roomClosedMessage);
+                    hq.PostMessage(roomClosedMessage);
                 }
 
-                foreach (var room in Config.SecondaryRooms)
-                {
-                    room.Leave();
-                }
-                Config.PrimaryRoom.Leave();
+                tavern.Leave();
+                hq.Leave();
 
                 Thread.Sleep(5000);
 
                 chatClient.Dispose();
             }
 
+            linkClassifier.SyncData(ref yamClient);
+            yamClient.Dispose();
             Process.GetCurrentProcess().Close();
         }
     }

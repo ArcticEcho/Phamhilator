@@ -236,7 +236,7 @@ namespace Phamhilator.Yam.UI
 
         private static void HandleChatCommand(Message command)
         {
-            if (!UserAccess.Owners.Select(u => u.ID).Contains(command.AuthorID)) { return; }
+            if (!UserAccess.Owners.Select(u => u.ID).Contains(command.Author.ID)) { return; }
 
             var cmd = command.Content.Trim().ToUpperInvariant();
 
@@ -254,7 +254,7 @@ namespace Phamhilator.Yam.UI
                 remServer.ApiKeys[key] = owner;
                 var otherKeys = DataManager.LoadData("Yam", RemoteServer.ApiKeysDataKey) + "\n";
                 DataManager.SaveData("Yam", RemoteServer.ApiKeysDataKey, otherKeys + owner + ":" + key);
-                SendApiKeyEmail(command.AuthorName, email, key);
+                SendApiKeyEmail(command.Author.Name, email, key);
 
                 chatRoom.PostReply(command, "`Client successfully added; an email has been sent with the API key.`");
                 return;
@@ -274,7 +274,7 @@ namespace Phamhilator.Yam.UI
                         var hoursAlive = (DateTime.UtcNow - startTime).TotalHours;
                         var getStatus = new Func<int, string>(er => er == 0 ? "Good" : er <= 2 ? "Ok" : "Bad");
                         var getErrorRate = new Func<uint, int>(ec => (int)Math.Round(ec / hoursAlive));
-                        var yamErrorRate = getErrorRate(yamErrorCount); var yamStatus = getStatus(yamErrorRate);
+                        var yamErrorRate = getErrorRate(yamErrorCount);   var yamStatus = getStatus(yamErrorRate);
                         var phamErrorRate = getErrorRate(phamErrorCount); var phamStatus = getStatus(phamErrorRate);
                         var ghamErrorRate = getErrorRate(ghamErrorCount); var ghamStatus = getStatus(ghamErrorRate);
                         var statusReport = "    Status report:\n" +
@@ -303,9 +303,9 @@ namespace Phamhilator.Yam.UI
                     {
                         var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
                         var phamRecTotal = locServer.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
-                        var phamSentTotal = locServer.DataSentPham / 1024.0; var phamSentPerSec = phamSentTotal / secsAlive;
+                        var phamSentTotal = locServer.DataSentPham / 1024.0;    var phamSentPerSec = phamSentTotal / secsAlive;
                         var ghamRecTotal = locServer.DataReceivedGham / 1024.0; var ghamRecPerSec = ghamRecTotal / secsAlive;
-                        var ghamSentTotal = locServer.DataSentGham / 1024.0; var ghamSentPerSec = ghamSentTotal / secsAlive;
+                        var ghamSentTotal = locServer.DataSentGham / 1024.0;    var ghamSentPerSec = ghamSentTotal / secsAlive;
                         var overallTotal = phamRecTotal + phamSentTotal + ghamRecTotal + ghamSentTotal;
                         var overallPerSec = overallTotal / secsAlive;
                         var dataReport = "    Local Yam data report (in KiB):\n" +
@@ -344,8 +344,9 @@ namespace Phamhilator.Yam.UI
         private static void HandleChatLogSearchRequest(Message command)
         {
             var req = command.Content.Remove(0, 11);
-            var postType = req.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)[0].ToLowerInvariant();
-            var searchBy = req.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)[1];
+            var split = req.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+            var postType = split[0].ToLowerInvariant();
+            var searchBy = split[1];
             var key = req.Remove(0, searchBy.Length + postType.Length + 2);
 
             var entries = PostLogger.SearchLog(new RemoteLogRequest
@@ -408,41 +409,14 @@ namespace Phamhilator.Yam.UI
                 {
                     case "GET":
                     {
-                        try
-                        {
-                            var requestedData = DataManager.LoadData(owner, key);
-                            var response = new LocalRequest
-                            {
-                                ID = LocalRequest.GetNewID(),
-                                Type = LocalRequest.RequestType.DataManagerRequest,
-                                Options = new Dictionary<string, object>
-                                {
-                                    { "FullFillReqID", req.ID },
-                                    { "Owner", owner },
-                                    { "Key", key }
-                                },
-                                Data = requestedData
-                            };
-
-                            locServer.SendData(fromPham, response);
-                        }
-                        catch (Exception ex)
-                        {
-                            chatRoom.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
-                            yamErrorCount++;
-
-                            // Post back to the listener (prevent the calling thread from hanging).
-                            var response = new LocalRequest
-                            {
-                                ID = LocalRequest.GetNewID(),
-                                Type = LocalRequest.RequestType.DataManagerRequest,
-                                Options = new Dictionary<string, object>
-                                {
-                                    { "FullFillReqID", req.ID }
-                                }
-                            };
-                            locServer.SendData(fromPham, response);
-                        }
+                        var requestedData = DataManager.LoadData(owner, key);
+                        SendDataManagerResponse(fromPham, req.ID, owner, key, requestedData);
+                        return;
+                    }
+                    case "CHK":
+                    {
+                        var dataExists = DataManager.DataExists(owner, key);
+                        SendDataManagerResponse(fromPham, req.ID, owner, key, dataExists);
                         return;
                     }
                     case "UPD":
@@ -464,6 +438,44 @@ namespace Phamhilator.Yam.UI
             catch (Exception ex)
             {
                 SendEx(fromPham, ex, new Dictionary<string, object> { { "ReceivedRequest", req } });
+            }
+        }
+
+        private static void SendDataManagerResponse(bool toPham, Guid fullFillReqID, string owner, string key, object data)
+        {
+            try
+            {
+                var response = new LocalRequest
+                {
+                    ID = LocalRequest.GetNewID(),
+                    Type = LocalRequest.RequestType.DataManagerRequest,
+                    Options = new Dictionary<string, object>
+                    {
+                        { "FullFillReqID", fullFillReqID },
+                        { "Owner", owner },
+                        { "Key", key }
+                    },
+                    Data = data
+                };
+
+                locServer.SendData(toPham, response);
+            }
+            catch (Exception ex)
+            {
+                chatRoom.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
+                yamErrorCount++;
+
+                // Post back to the listener (prevent the calling thread from hanging).
+                var response = new LocalRequest
+                {
+                    ID = LocalRequest.GetNewID(),
+                    Type = LocalRequest.RequestType.DataManagerRequest,
+                    Options = new Dictionary<string, object>
+                    {
+                        { "FullFillReqID", fullFillReqID }
+                    }
+                };
+                locServer.SendData(toPham, response);
             }
         }
 

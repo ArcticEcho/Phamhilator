@@ -105,6 +105,9 @@ namespace Phamhilator.Yam.Core
         private void PopulateAuthorisedUsers()
         {
             AuthorisedUsers = new List<int>();
+
+            if (!client.DataExists("Yam", dataKey)) { return; }
+
             var data = client.RequestData("Yam", dataKey);
             var idsStr = data.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 

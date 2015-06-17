@@ -170,7 +170,7 @@ namespace Phamhilator.Gham
 
         private static void HandleChatCommand(Message command)
         {
-            if (!UserAccess.Owners.Select(u => u.ID).Contains(command.AuthorID)) { return; }
+            if (!UserAccess.Owners.Select(u => u.ID).Contains(command.Author.ID)) { return; }
 
             var cmd = command.Content.Trim().ToUpperInvariant();
 
