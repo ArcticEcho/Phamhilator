@@ -301,7 +301,6 @@ namespace Phamhilator.Yam.UI
             {
                 ApiKey = unhashedKey,
                 EnableCompression = req.UseGZip,
-                EnableEncryption = req.EnableEncryption,
                 Socket = socket,
                 Owner = owner,
                 FirstConnected = DateTime.UtcNow
