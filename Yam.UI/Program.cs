@@ -391,7 +391,7 @@ namespace Phamhilator.Yam.UI
                 AuthorRep = q.AuthorRep
             });
 
-            var locReq = new LocalRequest { Type = LocalRequest.RequestType.Question, Data = q };
+            var locReq = new LocalRequest { Type = RequestType.Question, Data = q };
             locServer.SendData(true, locReq);
             locServer.SendData(false, locReq);
 
@@ -402,7 +402,7 @@ namespace Phamhilator.Yam.UI
         {
             PostLogger.EnqueuePost(false, a);
 
-            var locReq = new LocalRequest { Type = LocalRequest.RequestType.Answer, Data = a };
+            var locReq = new LocalRequest { Type = RequestType.Answer, Data = a };
             locServer.SendData(true, locReq);
             locServer.SendData(false, locReq);
 
@@ -460,7 +460,7 @@ namespace Phamhilator.Yam.UI
                 var response = new LocalRequest
                 {
                     ID = LocalRequest.GetNewID(),
-                    Type = LocalRequest.RequestType.DataManagerRequest,
+                    Type = RequestType.DataManagerRequest,
                     Options = new Dictionary<string, object>
                     {
                         { "FullFillReqID", fullFillReqID },
@@ -481,7 +481,7 @@ namespace Phamhilator.Yam.UI
                 var response = new LocalRequest
                 {
                     ID = LocalRequest.GetNewID(),
-                    Type = LocalRequest.RequestType.DataManagerRequest,
+                    Type = RequestType.DataManagerRequest,
                     Options = new Dictionary<string, object>
                     {
                         { "FullFillReqID", fullFillReqID }
@@ -498,18 +498,16 @@ namespace Phamhilator.Yam.UI
                 client.Port = 587;
                 client.Host = apiKeySenderHost;
                 client.EnableSsl = true;
-                client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential(apiKeySenderEmail, apiKeySenderPwd);
 
                 using (var mm = new MailMessage(apiKeySenderEmail, recipient)
                 {
                     Subject = "Phamhilator API Key",
                     Body = "This is an automated message sent from the Phamhilator Network (upon request from yourself).\n" +
-                            "Your application for an API key has been successfully received & accepted by " + acceptedBy + "!\n\n" +
-                            "Your API key is: " + key + "\n\n" +
-                            "Regards, The Pham Team."
+                           "Your application for an API key has been successfully received & accepted by " + acceptedBy + "!\n\n" +
+                           "Your API key is: " + key + "\n\n" +
+                           "Regards,\nThe Pham Team"
                 })
                 {
                     client.Send(mm);
