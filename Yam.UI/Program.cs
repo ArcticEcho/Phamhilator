@@ -351,7 +351,7 @@ namespace Phamhilator.Yam.UI
 
             var entries = PostLogger.SearchLog(new RemoteLogRequest
             {
-                PostType = postType == "questions" ? true : postType == "answers" ? false : (bool?)null,
+                PostType = postType,
                 SearchBy = searchBy,
                 SearchPattern = key
             });
