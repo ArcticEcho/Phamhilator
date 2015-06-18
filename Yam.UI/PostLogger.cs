@@ -156,10 +156,24 @@ namespace Phamhilator.Yam.UI
 
             search = new Func<string, bool>(field => pattern.IsMatch(field));
 
+            bool? fetchQs = null;
+            var postType = req.PostType.Trim().ToLowerInvariant();
+            if (!string.IsNullOrEmpty(req.PostType))
+            {
+                if (postType.StartsWith("question"))
+                {
+                    fetchQs = true;
+                }
+                else if (postType.StartsWith("answer"))
+                {
+                    fetchQs = false;
+                }
+            }
+
             foreach (var entry in Log.Values)
             {
                 if (entries.Count == 100) { break; }
-                if (search(getField(entry)) && (req.FetchQuestions == null ? true : (bool)req.FetchQuestions && entry.IsQuestion))
+                if (search(getField(entry)) && (fetchQs == null || (bool)fetchQs && entry.IsQuestion))
                 {
                     entries.Add(entry);
                 }

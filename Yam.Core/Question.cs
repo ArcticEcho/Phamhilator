@@ -28,26 +28,6 @@ namespace Phamhilator.Yam.Core
     {
         public string[] Tags { get; private set; }
 
-        public Post Base
-        {
-            get
-            {
-                return new Post
-                {
-                    Url = Url,
-                    Site = Site,
-                    Title = Title,
-                    Body = Body,
-                    Score = Score,
-                    CreationDate = CreationDate,
-                    AuthorName = AuthorName,
-                    AuthorLink = AuthorLink,
-                    AuthorNetworkID = AuthorNetworkID,
-                    AuthorRep = AuthorRep
-                };
-            }
-        }
-
         internal string Html { get; private set; }
 
 

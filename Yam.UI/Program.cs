@@ -351,7 +351,7 @@ namespace Phamhilator.Yam.UI
 
             var entries = PostLogger.SearchLog(new RemoteLogRequest
             {
-                FetchQuestions = postType == "questions" ? true : postType == "answers" ? false : (bool?)null,
+                PostType = postType == "questions" ? true : postType == "answers" ? false : (bool?)null,
                 SearchBy = searchBy,
                 SearchPattern = key
             });
@@ -377,7 +377,19 @@ namespace Phamhilator.Yam.UI
 
         private static void HandleActiveQuestion(Question q)
         {
-            PostLogger.EnqueuePost(true, q.Base);
+            PostLogger.EnqueuePost(true, new Post
+            {
+                Url = q.Url,
+                Site = q.Site,
+                Title = q.Title,
+                Body = q.Body,
+                Score = q.Score,
+                CreationDate = q.CreationDate,
+                AuthorName = q.AuthorName,
+                AuthorLink = q.AuthorLink,
+                AuthorNetworkID = q.AuthorNetworkID,
+                AuthorRep = q.AuthorRep
+            });
 
             var locReq = new LocalRequest { Type = LocalRequest.RequestType.Question, Data = q };
             locServer.SendData(true, locReq);

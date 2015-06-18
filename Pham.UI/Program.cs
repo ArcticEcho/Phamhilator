@@ -235,11 +235,23 @@ namespace Phamhilator.Pham.UI
 
         private static void ConnectYamClientEvents()
         {
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(question =>
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(q =>
             {
-                if (question.Score <= 2 || question.AuthorRep <= 1000)
+                if (q.Score <= 2 && q.AuthorRep <= 1000)
                 {
-                    CheckPost(question.Base);
+                    CheckPost(new Post
+                    {
+                        Url = q.Url,
+                        Site = q.Site,
+                        Title = q.Title,
+                        Body = q.Body,
+                        Score = q.Score,
+                        CreationDate = q.CreationDate,
+                        AuthorName = q.AuthorName,
+                        AuthorLink = q.AuthorLink,
+                        AuthorNetworkID = q.AuthorNetworkID,
+                        AuthorRep = q.AuthorRep
+                    });
                 }
                 //if (!Config.IsRunning) { return; }
 
@@ -255,11 +267,11 @@ namespace Phamhilator.Pham.UI
                 //}
             }));
 
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(answer =>
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(a =>
             {
-                if (answer.Score <= 2 || answer.AuthorRep <= 1000)
+                if (a.Score <= 2 && a.AuthorRep <= 1000)
                 {
-                    CheckPost(answer);
+                    CheckPost(a);
                 }
                 //if (!Config.IsRunning) { return; }
 
