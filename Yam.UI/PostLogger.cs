@@ -51,9 +51,9 @@ namespace Phamhilator.Yam.UI
         public static int LogSizeCompressed { get; private set; }
 
         /// <summary>
-        /// The interval at which to flush the log to disk (in seconds; default set to 120).
+        /// The interval at which to flush the log to disk (default set to 2 minutes).
         /// </summary>
-        public static int UpdateInterval { get; set; }
+        public static TimeSpan UpdateInterval { get; set; }
 
 
 
@@ -73,7 +73,7 @@ namespace Phamhilator.Yam.UI
 
             loggerIntervalMre = new ManualResetEvent(false);
             loggerStoppedMre = new ManualResetEvent(false);
-            UpdateInterval = 120;
+            UpdateInterval = TimeSpan.FromMinutes(2);
             loggerThread = new Thread(LoggerLoop) { IsBackground = true };
             loggerThread.Start();
         }
@@ -188,15 +188,14 @@ namespace Phamhilator.Yam.UI
         {
             while (!stop)
             {
-                loggerIntervalMre.WaitOne(UpdateInterval * 1000);
+                loggerIntervalMre.WaitOne(UpdateInterval);
 
-                var startKey = Log.Keys.Min();
-                for (uint i = startKey; i < Log.Count + startKey; i++)
+                foreach (var kv in Log)
                 {
-                    if ((DateTime.UtcNow - Log[i].Timestamp).TotalDays > 5)
+                    if ((DateTime.UtcNow - kv.Value.Timestamp).TotalDays > 5)
                     {
                         LogEntry entry;
-                        Log.TryRemove(i, out entry);
+                        Log.TryRemove(kv.Key, out entry);
 
                         if (EntryRemoved == null) { continue; }
                         EntryRemoved(entry);

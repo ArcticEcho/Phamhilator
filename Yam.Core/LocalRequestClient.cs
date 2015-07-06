@@ -140,7 +140,7 @@ namespace Phamhilator.Yam.Core
         private object SendDataManagerRequest(string requestType, string owner, string key)
         {
             var reqId = LocalRequest.GetNewID();
-            LocalRequest response = null;
+            var response = new LocalRequest();
             Action<LocalRequest> dataReceivedAction;
             using (var dataWaitMre = new ManualResetEvent(false))
             {
@@ -165,7 +165,7 @@ namespace Phamhilator.Yam.Core
                 };
                 EventManager.ConnectListener(RequestType.DataManagerRequest, dataReceivedAction);
                 sender.SendData(req);
-                dataWaitMre.WaitOne();
+                dataWaitMre.WaitOne(TimeSpan.FromSeconds(10));
             }
 
             EventManager.DisconnectListener(RequestType.DataManagerRequest, dataReceivedAction);
@@ -177,21 +177,18 @@ namespace Phamhilator.Yam.Core
         {
             try
             {
-                if (req.Type == RequestType.Answer || req.Type == RequestType.Question)
-                {
-                    //var a = JsonSerializer.DeserializeFromString<Answer>((string)req.Data);
-                    EventManager.CallListeners(req.Type, req.Data);
-                    return;
-                }
+                var data = req.Type == RequestType.Answer || req.Type == RequestType.Question ? req.Data : req;
 
-                //if (req.Type == RequestType.Question)
+                EventManager.CallListeners(req.Type, data);
+
+
+                //if (req.Type == RequestType.Answer || req.Type == RequestType.Question)
                 //{
-                //    //var q = JsonSerializer.DeserializeFromString<Question>((string)req.Data);
                 //    EventManager.CallListeners(req.Type, req.Data);
                 //    return;
                 //}
 
-                EventManager.CallListeners(req.Type, req);
+                //EventManager.CallListeners(req.Type, req);
             }
             catch (Exception ex)
             {
