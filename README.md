@@ -1,9 +1,8 @@
 
-Phamhilator [![Join the chat at https://gitter.im/ArcticEcho/Phamhilator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArcticEcho/Phamhilator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Stories in Ready](https://badge.waffle.io/ArcticEcho/Phamhilator.png?label=ready&title=Ready)](https://waffle.io/ArcticEcho/Phamhilator) [![Build Status](https://travis-ci.org/ArcticEcho/Phamhilator.svg?branch=master)](https://travis-ci.org/ArcticEcho/Phamhilator)
+Phamhilator [![Build status](https://ci.appveyor.com/api/projects/status/lf065rc2e4r64x03/branch/Pham-V2?svg=true)](https://ci.appveyor.com/project/ArcticEcho/phamhilator/branch/Pham-V2)
 ===========
 
-
-is a .NET-based network of internet bots written in `C#` that watch over the `/realtime tab` of [Stack Exchange][1].
+A .NET-based network of internet bots written in `C#`, which watch over the `/realtime tab` of [Stack Exchange][1].
 
 [Pham][2] and can be found at the [Low Quality Posts HQ][3].
 
