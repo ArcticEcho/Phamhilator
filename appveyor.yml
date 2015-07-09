@@ -1,0 +1,16 @@
+version: 1.0.{build}.0
+
+configuration: Release
+
+platform: Any CPU
+
+install:
+- git submodule update --init --recursive
+
+before_build:
+- nuget restore
+
+build:
+  project: Phamhilator.sln
+  parallel: true
+  verbosity: minimal
