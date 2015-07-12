@@ -22,19 +22,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using ChatExchangeDotNet;
 using GibberishClassification;
-using Phamhilator.NLP;
 using Phamhilator.Yam.Core;
-using ServiceStack.Text;
 
 namespace Phamhilator.Gham
 {
@@ -45,7 +38,6 @@ namespace Phamhilator.Gham
         private static Client chatClient;
         private static Room chatRoom;
         private static LocalRequestClient yamClient;
-        private static PoSTagger tagger;
         private static HashSet<PoSTModel> models;
         private static Thread nlpProcessor;
         private static bool shutdown;
@@ -60,12 +52,6 @@ namespace Phamhilator.Gham
             JoinRooms();
             Console.Write("done.\nStarting sockets...");
             InitialiseClient();
-            Console.Write("done.\nLoading core PoS tagger: ");
-            tagger = new PoSTagger();
-            Console.Write("\nRequesting models...");
-            LoadModels();
-            nlpProcessor = new Thread(NLPProcessor);
-            nlpProcessor.Start();
 
 #if DEBUG
             Console.Write("done.\nGham v2 started (debug), press Q to exit.\n");
@@ -127,35 +113,11 @@ namespace Phamhilator.Gham
             chatRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
         }
 
-        private static void LoadModels()
-        {
-            try
-            {
-                models = new HashSet<PoSTModel>();
-                var modelCount = int.Parse(yamClient.RequestData("Gham", "Model Count"));
-                for (var i = 0; i < modelCount; i++)
-                {
-                    var modelJson = yamClient.RequestData("Gham", "PoST Model:" + i);
-                    models.Add(JsonSerializer.DeserializeFromString<PoSTModel>(modelJson));
-                }
-            }
-            catch (Exception ex)
-            {
-                yamClient.SendData(new LocalRequest
-                {
-                    ID = LocalRequest.GetNewID(),
-                    Type = LocalRequest.RequestType.Exception,
-                    Data = ex
-                });
-                Console.WriteLine(ex);
-            }
-        }
-
         private static void InitialiseClient()
         {
             yamClient = new LocalRequestClient("GHAM");
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(CheckQuestionNLP));
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(CheckAnswerNLP));
+            //yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(???));
+            //yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(???));
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 yamClient.SendData(new LocalRequest
@@ -194,133 +156,6 @@ namespace Phamhilator.Gham
                     return;
                 }
             }
-        }
-
-        private static void CheckQuestionNLP(Question q)
-        {
-            if (nlpQuestionQueue.Count < 3 && q.Score < 2 && q.AuthorRep < 1000)
-            {
-                nlpQuestionQueue.Add(q);
-            }
-        }
-
-        private static void CheckAnswerNLP(Answer a)
-        {
-            if (nlpAnswerQueue.Count < 3 && a.Score < 2 && a.AuthorRep < 1000)
-            {
-                nlpAnswerQueue.Add(a);
-            }
-        }
-
-        private static void NLPProcessor()
-        {
-            var processQuestionNext = true;
-
-            while (!shutdown)
-            {
-                try
-                {
-                    Thread.Sleep(50);
-
-                    if (nlpQuestionQueue.Count < 0 && nlpAnswerQueue.Count < 0) { Thread.Sleep(100); continue; }
-
-                    if (processQuestionNext && nlpQuestionQueue.Count > 0)
-                    {
-                        var q = nlpQuestionQueue.First();
-                        nlpQuestionQueue.Remove(q);
-                        var cleanText = GetCleanText(q.Body);
-
-                        if (cleanText.Length < 10) { continue; }
-
-                        var safeTitle = PostFetcher.ChatEscapeString(q.Title, "");
-                        var cleanSentence = StringTools.GetSentences(cleanText)[0];
-                        var tags = tagger.TagString(cleanSentence).Split(' ');
-                        var words = Regex.Split(cleanSentence, @"\W").Where(s => !String.IsNullOrEmpty(s)).ToArray();
-
-                        foreach (var model in models)
-                        {
-                            var score = CheckTags(model, words, tags);
-
-                            if (score > 0.4)
-                            {
-                                chatRoom.PostMessage("**Spam Q** (`" + model.ModelID + "` @ "+ Math.Round(score * 100, 1) + "%): [" + safeTitle + "](" + q.Url + "), by [" + q.AuthorName + "](" + q.AuthorLink + "), on `" + q.Site + "`.");
-                                break;
-                            }
-                        }
-                    }
-
-                    if (!processQuestionNext && nlpAnswerQueue.Count > 0)
-                    {
-                        var a = nlpAnswerQueue.First();
-                        nlpAnswerQueue.Remove(a);
-                        var cleanText = GetCleanText(a.Body);
-
-                        if (cleanText.Length < 10) { continue; }
-
-                        var safeTitle = PostFetcher.ChatEscapeString(a.Title, " ");
-                        var cleanSentence = StringTools.GetSentences(cleanText)[0];
-                        var tags = tagger.TagString(cleanSentence).Split(' ');
-                        var words = cleanSentence.Split(' ').Where(s => !String.IsNullOrEmpty(s)).ToArray();
-
-                        foreach (var model in models)
-                        {
-                            var score = CheckTags(model, words, tags);
-
-                            if (score > 0.4)
-                            {
-                                chatRoom.PostMessage("**Spam A** (`" + model.ModelID + "` @ " + Math.Round(score * 100, 1) + "%): [" + safeTitle + "](" + a.Url + "), by [" + a.AuthorName + "](" + a.AuthorLink + "), on `" + a.Site + "`.");
-                                break;
-                            }
-                        }
-                    }
-
-                    processQuestionNext = !processQuestionNext;
-                }
-                catch (Exception ex)
-                {
-                    yamClient.SendData(new LocalRequest
-                    {
-                        ID = LocalRequest.GetNewID(),
-                        Type = LocalRequest.RequestType.Exception,
-                        Data = ex
-                    });
-                }
-            }
-        }
-
-        private static float CheckTags(PoSTModel model, string[] words, string[] sentenceTags)
-        {
-            var score = 0F;
-            var totalScore = model.Tags.Sum(t => t.SpamRating.Rating * t.SpamRating.Maturity);
-            var k = Math.Min(sentenceTags.Length, model.Tags.Length);
-
-            for (var i = 0; i < k; i++)
-            {
-                if (model.Tags[i].Tag == sentenceTags[i])
-                {
-                    score += model.Tags[i].SpamRating.Rating * model.Tags[i].SpamRating.Maturity;
-
-                    foreach (var blackWord in model.Tags[i].BlackKeyWords)
-                    {
-                        if (words.Contains(blackWord.Word))
-                        {
-                            score += blackWord.SpamRating.Rating;
-                            break;
-                        }
-                    }
-
-                    foreach (var whiteWord in model.Tags[i].WhiteKeyWords)
-                    {
-                        if (words.Contains(whiteWord.Word))
-                        {
-                            score -= whiteWord.SpamRating.Rating;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            return score / totalScore;
         }
 
         # region Gibberish checker.

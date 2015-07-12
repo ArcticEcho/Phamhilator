@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ClassificationResults.cs" />
     <Compile Include="LinkClassifier.cs" />
+    <Compile Include="LinkStripper.cs" />
     <Compile Include="LinkType.cs" />
     <Compile Include="LinkClassification.cs" />
     <Compile Include="PostClass.cs" />
@@ -76,10 +77,6 @@
     <ProjectReference Include="..\FlagExchange.Net\FlagExchange.Net\FlagExchange.Net.csproj">
       <Project>{8bac4155-8aee-4282-b64b-823397c75438}</Project>
       <Name>FlagExchange.Net</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pham.Core\Pham.Core.csproj">
-      <Project>{e9588d7b-6a4b-4832-9e67-cabe5673e407}</Project>
-      <Name>Pham.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yam.Core\Yam.Core.csproj">
       <Project>{5823ff27-6194-43d8-a16e-5943c2e34f09}</Project>

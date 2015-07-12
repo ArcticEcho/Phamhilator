@@ -31,122 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IKVM.AWT.WinForms, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.AWT.WinForms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Beans, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Beans.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Charsets, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Cldrdata, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Cldrdata.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Corba, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Corba.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Core, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Jdbc, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Localedata, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Localedata.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Management, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Management.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Media, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Media.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Misc, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Misc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Naming, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Naming.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Nashorn, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Nashorn.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Remoting, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Security, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Security.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Text, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Text.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Tools, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Tools.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Util, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.Util.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.API, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.Runtime, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.Runtime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IKVM.Runtime.JNI, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.0.5449.1\lib\IKVM.Runtime.JNI.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="stanford-postagger-3.5.1, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Stanford.NLP.POSTagger.3.5.1\lib\stanford-postagger-3.5.1.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -156,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PoSTagger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -164,10 +47,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="StringTools.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Resources\wsj-0-18-bidirectional-nodistsim.tagger" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
