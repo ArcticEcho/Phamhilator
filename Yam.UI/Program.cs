@@ -284,7 +284,7 @@ namespace Phamhilator.Yam.UI
                         chatRoom.PostMessage(statusReport);
                         return;
                     }
-                    case "LOG DATA":
+                    case "LOG STATS":
                     {
                         var items = PostLogger.Log.Count;
                         var uncomp = PostLogger.LogSizeUncompressed / 1024.0 / 1024;
@@ -292,14 +292,14 @@ namespace Phamhilator.Yam.UI
                         var compRatio = Math.Round((uncomp / comp) * 100);
                         var dataReport = "    Log report:\n" +
                                          "    Items: " + items + "\n" +
-                                         "    Update interval: " + PostLogger.UpdateInterval + " seconds \n" +
+                                         "    Update interval: " + PostLogger.UpdateInterval + "\n" +
                                          "    Size (uncompressed): " + Math.Round(uncomp) + " MiB\n" +
                                          "    Size (compressed): " + Math.Round(comp) + " MiB\n" +
                                          "    Compression %: " + compRatio + "\n";
                         chatRoom.PostMessage(dataReport);
                         return;
                     }
-                    case "LOCAL DATA":
+                    case "LOCAL STATS":
                     {
                         var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
                         var phamRecTotal = locServer.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
@@ -317,7 +317,7 @@ namespace Phamhilator.Yam.UI
                         chatRoom.PostMessage(dataReport);
                         return;
                     }
-                    case "REMOTE DATA":
+                    case "REMOTE STATS":
                     {
                         var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
                         var clientCount = remServer.RealtimePostClients.Count;
