@@ -75,6 +75,9 @@ namespace Phamhilator.Yam.Core
             {
                 try
                 {
+                    /*An exception of type 'System.ArgumentException' occurred in mscorlib.dll but was not handled in user code
+
+                    Additional information: Object of type 'System.Net.Sockets.SocketException' cannot be converted to type 'Phamhilator.Yam.Core.LocalRequest'.*/
                     Task.Factory.StartNew(() => listener.DynamicInvoke(args));
                 }
                 catch (Exception ex)
