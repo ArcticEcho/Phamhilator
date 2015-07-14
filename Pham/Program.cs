@@ -337,7 +337,6 @@ namespace Phamhilator.Pham.UI
             {
                 case "ADD CL":
                 {
-
                     // Add clean cue.
                     break;
                 }
@@ -374,6 +373,16 @@ namespace Phamhilator.Pham.UI
                 case "DEL OF":
                 {
                     // Remove offensive cue.
+                    break;
+                }
+                case "ADD FO":
+                {
+                    // Add foreign site.
+                    break;
+                }
+                case "DEL FO":
+                {
+                    // Remove foreign site.
                     break;
                 }
             }
