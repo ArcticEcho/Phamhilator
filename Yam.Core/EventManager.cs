@@ -73,18 +73,17 @@ namespace Phamhilator.Yam.Core
 
             foreach (var listener in ConnectedListeners[eventType].Values)
             {
-                try
-                {
-                    /*An exception of type 'System.ArgumentException' occurred in mscorlib.dll but was not handled in user code
-
-                    Additional information: Object of type 'System.Net.Sockets.SocketException' cannot be converted to type 'Phamhilator.Yam.Core.LocalRequest'.*/
-                    Task.Factory.StartNew(() => listener.DynamicInvoke(args));
-                }
-                catch (Exception ex)
-                {
-                    if (Equals(eventType, exceptionEventType)) { continue; } // Avoid infinite loop.
-                    CallListeners(exceptionEventType, ex);
-                }
+                Task.Factory.StartNew(() => 
+                {   try
+                    {
+                        listener.DynamicInvoke(args);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (Equals(eventType, exceptionEventType)) { return; } // Avoid infinite loop.
+                        CallListeners(exceptionEventType, ex);
+                    }
+                });
             }
         }
 

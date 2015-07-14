@@ -27,19 +27,19 @@ namespace Phamhilator.Yam.Core
 {
     public class Cue
     {
-        public Regex Pattern { get; set; }
-        public CueType Type { get; set; }
+        public string Pattern { get; private set; }
+        public CueType Type { get; private set; }
+        public bool EnglishOnly { get; private set; }
+        public bool IncludeCode { get; private set; }
+        public bool IncludeHtml { get; private set; }
         public float Weight { get; set; }
         public int Found { get; set; }
         public int Positive { get; set; }
         public int Negative { get; set; }
-        public bool EnglishOnly { get; set; }
-        public bool IncludeCode { get; set; }
-        public bool IncludeHtml { get; set; }
 
 
 
-        public Cue(Regex pattern, CueType type, float weight, int found, int pos, int neg, bool eng, bool code, bool html)
+        public Cue(string pattern, CueType type, float weight, int found, int pos, int neg, bool eng, bool code, bool html)
         {
             if (pattern == null) { throw new ArgumentNullException("pattern"); }
 
@@ -58,7 +58,14 @@ namespace Phamhilator.Yam.Core
 
         public override int GetHashCode()
         {
-            return Pattern == null ? -1 : Pattern.GetHashCode();
+            if (Pattern == null || Pattern.ToString() == null) { return -1; }
+
+            return Pattern.ToString().GetHashCode() + Type.GetHashCode();
+        }
+
+        public Regex GetRegex()
+        {
+            return new Regex(Pattern, RegexOptions.Compiled | RegexOptions.CultureInvariant);
         }
     }
 }

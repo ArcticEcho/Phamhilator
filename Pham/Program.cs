@@ -30,6 +30,7 @@ using Phamhilator.Yam.Core;
 using ChatExchangeDotNet;
 using Phamhilator.FlagExchangeDotNet;
 using ServiceStack.Text;
+using System.Text.RegularExpressions;
 
 namespace Phamhilator.Pham.UI
 {
@@ -189,14 +190,12 @@ namespace Phamhilator.Pham.UI
             Console.Write("Joining HQ...");
 
             hq = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773");
-            hq.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(HandleHqNewMessage));
-            hq.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message>(newMessage => HandleHqNewMessage(newMessage)));
+            hq.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleHqCommand));
 
             Console.Write("done.\nJoining Tavern...");
 
             tavern = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89");
-            tavern.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(HandleTavernNewMessage));
-            tavern.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message>(newMessage => HandleTavernNewMessage(newMessage)));
+            tavern.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleTavernCommand));
 
             Console.WriteLine("done.");
         }
@@ -274,6 +273,8 @@ namespace Phamhilator.Pham.UI
 
             foreach (CueType cueType in Enum.GetValues(typeof(CueType)))
             {
+                if (!foundCues.ContainsKey(cueType)) { continue; }
+
                 var cueScores = new List<float>();
 
                 foreach (var cue in foundCues[cueType])
@@ -313,82 +314,104 @@ namespace Phamhilator.Pham.UI
         {
             var msg = new MessageBuilder();
 
-            msg.AppendText("Junk title detected ", TextFormattingOptions.Bold);
-            msg.AppendText("(" + Math.Round(score, 2) + ")");
+            msg.AppendText(Enum.GetName(typeof(PostType), type), TextFormattingOptions.Bold);
+            msg.AppendText((title ? " title" : " body") + " ", TextFormattingOptions.Bold);
+            msg.AppendText("detected ", TextFormattingOptions.Bold);
+            msg.AppendText("(" + Math.Round(score, 2) + "): ");
             msg.AppendLink(post.Title, post.Url, null, TextFormattingOptions.InLineCode, WhiteSpace.None);
             msg.AppendText(".");
 
             hq.PostMessageFast(msg);
         }
 
-        private static void HandleHqNewMessage(Message message)
+        private static void HandleHqCommand(Message message)
         {
-            if (!UserAccess.Owners.Contains(message.Author) &&
-                !userAccess.AuthorisedUsers.Contains(message.Author.ID))
-            {
-                return;
-            }
+            //if (!UserAccess.Owners.Contains(message.Author))
+            //{
+            //    var t = 0;
+            //}
+
+            //if (!UserAccess.Owners.Contains(message.Author) &&
+            //    !userAccess.AuthorisedUsers.Contains(message.Author.ID))
+            //{
+            //    return;
+            //}
 
             var cmd = message.Content.Trim().ToUpperInvariant();
 
             if (cmd.Length < 6) { return; }
 
+            var reply = new MessageBuilder();
+            var eng = cmd[7] == 'E';
+            var code = cmd.Length > 11 && cmd[7 + (eng ? 4 : 0)] == 'C';
+            var html = cmd.Length > 16 && cmd[7 + (eng ? 4 : 0) + (code ? 5 : 0)] == 'H';
+            var pattern = message.Content.TrimStart().Remove(0, 7 + (eng ? 4 : 0) + (code ? 5 : 0) + (html ? 5 : 0));
+
             switch (cmd.Substring(0, 6))
             {
                 case "ADD CL":
                 {
-                    // Add clean cue.
+                    cueManager.AddCue(new Cue(pattern, CueType.Clean, 1, 0, 0, 0, eng, code, html));
                     break;
                 }
                 case "ADD LQ":
                 {
-                    // Add LQ cue.
+                    cueManager.AddCue(new Cue(pattern, CueType.LowQuality, 1, 0, 0, 0, eng, code, html));
                     break;
                 }
                 case "ADD SP":
                 {
-                    // Add spam cue.
+                    cueManager.AddCue(new Cue(pattern, CueType.Spam, 1, 0, 0, 0, eng, code, html));
                     break;
                 }
                 case "ADD OF":
                 {
-                    // Add offensive cue.
+                    cueManager.AddCue(new Cue(pattern, CueType.Offensive, 1, 0, 0, 0, eng, code, html));
                     break;
                 }
                 case "DEL CL":
                 {
-                    // Remove clean cue.
+                    cueManager.RemoveCue(CueType.Clean, pattern);
                     break;
                 }
                 case "DEL LQ":
                 {
-                    // Remove LQ cue.
+                    cueManager.RemoveCue(CueType.LowQuality, pattern);
                     break;
                 }
                 case "DEL SP":
                 {
-                    // Remove spam cue.
+                    cueManager.RemoveCue(CueType.Spam, pattern);
                     break;
                 }
                 case "DEL OF":
                 {
-                    // Remove offensive cue.
+                    cueManager.RemoveCue(CueType.Offensive, pattern);
                     break;
                 }
-                case "ADD FO":
+                case "ADD FS":
                 {
-                    // Add foreign site.
+                    cueManager.AddForeignSite(pattern);
                     break;
                 }
-                case "DEL FO":
+                case "DEL FS":
                 {
-                    // Remove foreign site.
+                    cueManager.RemoveForeignSite(pattern);
                     break;
+                }
+                default:
+                {
+                    reply.AppendText("Command not recognised.", TextFormattingOptions.InLineCode);
+                    hq.PostReply(message, reply);
+                    return;
                 }
             }
+
+            reply.AppendText("Command successfully executed.", TextFormattingOptions.InLineCode);
+            hq.PostReply(message, reply);
         }
 
-        private static void HandleTavernNewMessage(Message message)
+        private static void HandleTavernCommand(Message message)
         {
 
         }

@@ -44,6 +44,7 @@ namespace Phamhilator.Yam.Core
 
             yamClient = client;
             Cues = new HashSet<Cue>();
+            foreignSites = new HashSet<string>();
 
             if (!client.DataExists(client.Caller, cuesDataManagerKey))
             {
@@ -52,6 +53,11 @@ namespace Phamhilator.Yam.Core
 
             var cueJson = client.RequestData(client.Caller, cuesDataManagerKey);
             Cues = JsonSerializer.DeserializeFromString<HashSet<Cue>>(cueJson);
+
+            if (!client.DataExists(client.Caller, fSiteDataManagerKey))
+            {
+                return;
+            }
 
             var fSiteJson = client.RequestData(client.Caller, fSiteDataManagerKey);
             foreignSites = JsonSerializer.DeserializeFromString<HashSet<string>>(fSiteJson);
@@ -93,11 +99,11 @@ namespace Phamhilator.Yam.Core
             UpdateSavedCues();
         }
 
-        public void DeleteCue(Cue cue)
+        public void RemoveCue(CueType type, string cuePattern)
         {
-            if (cue == null) { throw new ArgumentNullException("cue"); }
+            if (cuePattern == null) { throw new ArgumentNullException("cuePattern"); }
 
-            Cues.Remove(cue);
+            Cues.RemoveWhere(c => c.Type == type && c.Pattern.ToString() == cuePattern);
 
             UpdateSavedCues();
         }
@@ -118,14 +124,27 @@ namespace Phamhilator.Yam.Core
 
                 foreach (var cue in typeCues)
                 {
-                    if (cue.Pattern.IsMatch(text))
+                    if (cue.GetRegex().IsMatch(text))
                     {
+                        cue.Found++;
                         typeCuesFound.Add(cue);
                     }
                 }
 
-                foundCues[cueType] = typeCuesFound;
+                if (typeCuesFound.Count > 0)
+                {
+                    foundCues[cueType] = typeCuesFound;
+                }
             }
+
+            foreach (var cueSet in foundCues)
+            foreach (var cue in cueSet.Value)
+            {
+                Cues.Remove(cue);
+                Cues.Add(cue);
+            }
+
+            UpdateSavedCues();
 
             return foundCues;
         }
