@@ -35,17 +35,15 @@ namespace Phamhilator.Pham.UI
 {
     public class Program
     {
-        private static ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static readonly HashSet<Post> checkedPosts = new HashSet<Post>();
+        private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static LocalRequestClient yamClient;
         private static Client chatClient;
         private static Room hq;
         private static Room tavern;
         private static UserAccess userAccess;
         private static Flagger flagger;
-        private static LinkClassifier linkClassifier;
         private static DateTime startTime;
-        //private static ActiveRooms roomsToJoin;
 
 
 
@@ -53,7 +51,7 @@ namespace Phamhilator.Pham.UI
         {
             Console.Title = "Pham v2";
             Console.WriteLine("Pham v2.\nPress Q to exit.\n");
-            //Console.CancelKeyPress += (o, oo) => Close();
+            Console.CancelKeyPress += (o, oo) => shutdownMre.Set();
 
             InitialiseFlagger();
             InitialiseCore();
@@ -61,13 +59,16 @@ namespace Phamhilator.Pham.UI
             JoinRooms();
 
             startTime = DateTime.UtcNow;
+            var startUpMsg = new MessageBuilder();
+            startUpMsg.AppendText("Pham v2 started", TextFormattingOptions.InLineCode);
 
 #if DEBUG
             Console.WriteLine("\nPham v2 started (debug).");
-            hq.PostMessage("`Pham v2 started` (**`debug`**)`.`");
+            startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
+            hq.PostMessageFast(startUpMsg);
 #else
-            hq.PostMessage("`Pham v2 started.`");
             Console.WriteLine("\nPham v2 started.");
+            hq.PostMessageFast(startUpMsg);
 #endif
 
             ConnectYamClientEvents();
@@ -85,6 +86,16 @@ namespace Phamhilator.Pham.UI
             });
 
             shutdownMre.WaitOne();
+
+            Console.WriteLine("Stopping...");
+
+            var shutdownMsg = new MessageBuilder();
+            shutdownMsg.AppendText("Pham v2 stopped.", TextFormattingOptions.InLineCode);
+
+            hq.PostMessageFast(shutdownMsg);
+
+            tavern.Leave();
+            hq.Leave();
         }
 
 
@@ -124,56 +135,9 @@ namespace Phamhilator.Pham.UI
                 Data = ex.ExceptionObject
             });
 
-            Console.Write("done.\nInitialising link classifier...");
-            linkClassifier = new LinkClassifier(ref yamClient);
-
-            //Console.Write("done.\nLoading log...");
-            //Config.Log = new ReportLog();
-
             Console.Write("done.\nLoading config data...");
-            //roomsToJoin = new ActiveRooms();
-            //Config.Core = new Pham.Core.Pham();
-            //Stats.PostedReports = new List<Report>();
+
             userAccess = new UserAccess(ref yamClient);
-
-            //Console.Write("done.\nLoading bad tag definitions...");
-            //Config.BadTags = new BadTags();
-
-            //Console.Write("done.\nLoading black terms...");
-            //Config.BlackFilters = new Dictionary<FilterConfig, BlackFilter>()
-            //{
-            //    { new FilterConfig(FilterClass.QuestionTitleName, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleName) },
-            //    { new FilterConfig(FilterClass.QuestionTitleOff, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleOff) },
-            //    { new FilterConfig(FilterClass.QuestionTitleSpam, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleSpam) },
-            //    { new FilterConfig(FilterClass.QuestionTitleLQ, FilterType.Black), new BlackFilter(FilterClass.QuestionTitleLQ) },
-
-            //    { new FilterConfig(FilterClass.QuestionBodySpam, FilterType.Black), new BlackFilter(FilterClass.QuestionBodySpam) },
-            //    { new FilterConfig(FilterClass.QuestionBodyLQ, FilterType.Black), new BlackFilter(FilterClass.QuestionBodyLQ) },
-            //    { new FilterConfig(FilterClass.QuestionBodyOff, FilterType.Black), new BlackFilter(FilterClass.QuestionBodyOff) },
-
-            //    { new FilterConfig(FilterClass.AnswerSpam, FilterType.Black), new BlackFilter(FilterClass.AnswerSpam) },
-            //    { new FilterConfig(FilterClass.AnswerLQ, FilterType.Black), new BlackFilter(FilterClass.AnswerLQ) },
-            //    { new FilterConfig(FilterClass.AnswerOff, FilterType.Black), new BlackFilter(FilterClass.AnswerOff) },
-            //    { new FilterConfig(FilterClass.AnswerName, FilterType.Black), new BlackFilter(FilterClass.AnswerName) }
-            //};
-
-            //Console.Write("done.\nLoading white terms...");
-            //Config.WhiteFilters = new Dictionary<FilterConfig, WhiteFilter>()
-            //{
-            //    { new FilterConfig(FilterClass.QuestionTitleName, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleName) },
-            //    { new FilterConfig(FilterClass.QuestionTitleOff, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleOff) },
-            //    { new FilterConfig(FilterClass.QuestionTitleSpam, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleSpam) },
-            //    { new FilterConfig(FilterClass.QuestionTitleLQ, FilterType.White), new WhiteFilter(FilterClass.QuestionTitleLQ) },
-
-            //    { new FilterConfig(FilterClass.QuestionBodySpam, FilterType.White), new WhiteFilter(FilterClass.QuestionBodySpam) },
-            //    { new FilterConfig(FilterClass.QuestionBodyLQ, FilterType.White), new WhiteFilter(FilterClass.QuestionBodyLQ) },
-            //    { new FilterConfig(FilterClass.QuestionBodyOff, FilterType.White), new WhiteFilter(FilterClass.QuestionBodyOff) },
-
-            //    { new FilterConfig(FilterClass.AnswerSpam, FilterType.White), new WhiteFilter(FilterClass.AnswerSpam) },
-            //    { new FilterConfig(FilterClass.AnswerLQ, FilterType.White), new WhiteFilter(FilterClass.AnswerLQ) },
-            //    { new FilterConfig(FilterClass.AnswerOff, FilterType.White), new WhiteFilter(FilterClass.AnswerOff) },
-            //    { new FilterConfig(FilterClass.AnswerName, FilterType.White), new WhiteFilter(FilterClass.AnswerName) }
-            //};
 
             Console.WriteLine("done.\n");
         }
@@ -213,16 +177,12 @@ namespace Phamhilator.Pham.UI
             Console.Write("Joining HQ...");
 
             hq = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773");
-            //hq.IgnoreOwnEvents = false;
-            //hq.StripMentionFromMessages = false;
             hq.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(HandleHqNewMessage));
             hq.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message>(newMessage => HandleHqNewMessage(newMessage)));
 
             Console.Write("done.\nJoining Tavern...");
 
             tavern = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/89");
-            //tavern.IgnoreOwnEvents = false;
-            //tavern.StripMentionFromMessages = false;
             tavern.EventManager.ConnectListener(EventType.MessagePosted, new Action<Message>(HandleTavernNewMessage));
             tavern.EventManager.ConnectListener(EventType.MessageEdited, new Action<Message>(newMessage => HandleTavernNewMessage(newMessage)));
 
@@ -276,76 +236,11 @@ namespace Phamhilator.Pham.UI
             if (checkedPosts.Contains(post)) { return; }
             checkedPosts.Add(post);
 
-            //var results = linkClassifier.ClassifyLinks(post);
-            //if (results == null || results.Count == 0 || results.All(r => r.Value.Type == LinkType.Clean)) { return; }
-
-            //if (results.Values.Any(r => r.BlackSiteFound))
-            //{
-            //    hq.PostMessage("`Link Classifier:` [`blacklisted site`](" + post.Url + ")`.`");
-            //    return;
-            //}
-            //var logLink = Hastebin.PostDocument(results.Dump());
-
-            //var linksFound = results.Count;
-            //var phrasesFoundAll = 0;
-            //var phrasesFoundDistinct = 0;
-            //var diversity = 0;
-            //var density = 0;
-            //phrasesFoundAll = results.Values.Where(r => r.PhrasesFound != null).Sum(r => phrasesFoundAll += r.PhrasesFound.Values.Sum());
-            //phrasesFoundDistinct = results.Values.Where(r => r.PhrasesFound != null).Select(r => r.PhrasesFound.Keys).Distinct().Count();
-
-            //var report = "`Link Classifier:` [`" + linksFound + " link" + (linksFound > 1 ? "s" : "") + " found & " + phrasesFoundAll + " spam phrases detected`](" + post.Url + ") `(`[`log`](" + logLink +  ")`).`";
-
-            //hq.PostMessage(report);
         }
 
         private static void HandleHqNewMessage(Message message)
         {
-            if (UserAccess.Owners.All(u => u.ID != message.Author.ID)) { return; }
 
-            var cmd = message.Content.ToLowerInvariant().Trim();
-
-            if (cmd.StartsWith("add spam phrase "))
-            {
-                var phrase = cmd.Remove(0, 16);
-                linkClassifier.AddSpamPhrase(phrase);
-                hq.PostReply(message, "`Phrase added.`");
-            }
-            else if (cmd.StartsWith("remove spam phrase "))
-            {
-                var phrase = cmd.Remove(0, 18);
-                linkClassifier.RemoveSpamPhrase(phrase);
-                hq.PostReply(message, "`Phrase removed.`");
-            }
-            else if (cmd.StartsWith("add black site "))
-            {
-                var phrase = cmd.Remove(0, 15);
-                linkClassifier.AddBlackSite(phrase);
-                hq.PostReply(message, "`Black site added.`");
-            }
-            else if (cmd.StartsWith("remove black site "))
-            {
-                var phrase = cmd.Remove(0, 18);
-                linkClassifier.RemoveBlackSite(phrase);
-                hq.PostReply(message, "`Black removed added.`");
-            }
-            else if (cmd.StartsWith("add white site "))
-            {
-                var phrase = cmd.Remove(0, 15);
-                linkClassifier.AddWhiteSite(phrase);
-                hq.PostReply(message, "`White site added.`");
-            }
-            else if (cmd.StartsWith("remove white site "))
-            {
-                var phrase = cmd.Remove(0, 18);
-                linkClassifier.RemoveWhiteSite(phrase);
-                hq.PostReply(message, "`White site removed.`");
-            }
-            else if (cmd == "sync data")
-            {
-                linkClassifier.SyncData(ref yamClient);
-                hq.PostReply(message, "`Data sync'd.`");
-            }
         }
 
         private static void HandleTavernNewMessage(Message message)

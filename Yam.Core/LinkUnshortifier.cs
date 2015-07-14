@@ -57,7 +57,7 @@ namespace Phamhilator.Yam.Core
                 processedLinks[url] = longLink;
             }
 
-            return longLink;
+            return Regex.Unescape(longLink);
         }
     }
 }

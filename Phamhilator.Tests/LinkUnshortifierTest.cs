@@ -20,11 +20,10 @@
 
 
 
-using System;
+
+using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Phamhilator.Yam.Core;
-
-
 
 namespace Phamhilator.Tests
 {
@@ -60,7 +59,7 @@ namespace Phamhilator.Tests
             Assert.AreSame("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq", longUrl);
 
             longUrl = LinkUnshortifier.UnshortifyLink("http://goo.gl/yvgSRd");
-            Assert.AreSame("http://www.optimalstackfacts.org/", longUrl);
+            StringAssert.Matches(longUrl, new Regex(@"^http\:\/\/www\.optimalstackfacts\.org\/$"));
         }
     }
 }

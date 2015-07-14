@@ -48,11 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassificationResults.cs" />
-    <Compile Include="LinkClassifier.cs" />
     <Compile Include="LinkStripper.cs" />
-    <Compile Include="LinkType.cs" />
-    <Compile Include="LinkClassification.cs" />
     <Compile Include="PostClass.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
