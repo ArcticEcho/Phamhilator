@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="DataManager.cs" />
     <Compile Include="DataUtilities.cs" />
+    <Compile Include="IPFetcher.cs" />
     <Compile Include="LogEntry.cs" />
     <Compile Include="PostLogger.cs" />
     <Compile Include="Program.cs" />

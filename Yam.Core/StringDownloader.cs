@@ -24,6 +24,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading;
 
 namespace Phamhilator.Yam.Core
 {
@@ -42,23 +43,31 @@ namespace Phamhilator.Yam.Core
 
         public string DownloadString(string url)
         {
-            try
-            {
-                var req = (HttpWebRequest)WebRequest.Create(url);
-                req.Timeout = timeout;
-                req.Proxy = null;
+            var ex = new Exception("Unable to fetch string.");
 
-                using (var res = req.GetResponse())
-                using (var stream = res.GetResponseStream())
-                using (var sr = new StreamReader(stream, Encoding.UTF8))
+            for (var i = 0; i < 3; i++)
+            {
+                try
                 {
-                    return sr.ReadToEnd();
+                    var req = (HttpWebRequest)WebRequest.Create(url);
+                    req.Timeout = timeout;
+                    req.Proxy = null;
+
+                    using (var res = req.GetResponse())
+                    using (var stream = res.GetResponseStream())
+                    using (var sr = new StreamReader(stream, Encoding.UTF8))
+                    {
+                        return sr.ReadToEnd();
+                    }
+                }
+                catch (Exception e)
+                {
+                    ex = e;
+                    Thread.Sleep(5000);
                 }
             }
-            catch (Exception)
-            {
-                return null;
-            }
+
+            throw ex;
         }
     }
 }

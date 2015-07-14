@@ -102,7 +102,7 @@ namespace Phamhilator.Yam.UI
 
         private static void GetApiKeyEmailCreds()
         {
-            Console.WriteLine("Please enter your API key email sender email credentials.\n");
+            Console.WriteLine("Please enter your API key email credentials.\n");
 
             Console.Write("Email: ");
             apiKeySenderEmail = Console.ReadLine();
@@ -493,6 +493,8 @@ namespace Phamhilator.Yam.UI
 
         private static void SendApiKeyEmail(string acceptedBy, string recipient, string key)
         {
+            var ip = IPFetcher.FetchIP();
+
             using (var client = new SmtpClient())
             {
                 client.Port = 587;
@@ -506,7 +508,8 @@ namespace Phamhilator.Yam.UI
                     Subject = "Phamhilator API Key",
                     Body = "This is an automated message sent from the Phamhilator Network (upon request from yourself).\n" +
                            "Your application for an API key has been successfully received & accepted by " + acceptedBy + "!\n\n" +
-                           "Your API key is: " + key + "\n\n" +
+                           "Your API key is: " + key + "\n" +
+                           "Our server's IP: " + ip + "\n\n" +
                            "Regards,\nThe Pham Team"
                 })
                 {
