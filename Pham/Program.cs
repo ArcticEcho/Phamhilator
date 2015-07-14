@@ -193,30 +193,28 @@ namespace Phamhilator.Pham.UI
         {
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(q =>
             {
-                if (q.Score <= 2 && q.AuthorRep <= 1000)
+                if (q.Score > 2 || q.AuthorRep > 1000) { return; }
+
+                CheckPost(new Post
                 {
-                    CheckPost(new Post
-                    {
-                        Url = q.Url,
-                        Site = q.Site,
-                        Title = q.Title,
-                        Body = q.Body,
-                        Score = q.Score,
-                        CreationDate = q.CreationDate,
-                        AuthorName = q.AuthorName,
-                        AuthorLink = q.AuthorLink,
-                        AuthorNetworkID = q.AuthorNetworkID,
-                        AuthorRep = q.AuthorRep
-                    });
-                }
+                    Url = q.Url,
+                    Site = q.Site,
+                    Title = q.Title,
+                    Body = q.Body,
+                    Score = q.Score,
+                    CreationDate = q.CreationDate,
+                    AuthorName = q.AuthorName,
+                    AuthorLink = q.AuthorLink,
+                    AuthorNetworkID = q.AuthorNetworkID,
+                    AuthorRep = q.AuthorRep
+                });
             }));
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(a =>
             {
-                if (a.Score <= 2 && a.AuthorRep <= 1000)
-                {
-                    CheckPost(a);
-                }
+                if (a.Score > 2 || a.AuthorRep > 1000) { return; }
+
+                CheckPost(a);
             }));
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(ex =>
@@ -236,6 +234,7 @@ namespace Phamhilator.Pham.UI
             if (checkedPosts.Contains(post)) { return; }
             checkedPosts.Add(post);
 
+            // Add magic here...
         }
 
         private static void HandleHqNewMessage(Message message)
