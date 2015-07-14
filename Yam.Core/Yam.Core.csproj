@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Answer.cs" />
+    <Compile Include="Cue.cs" />
+    <Compile Include="CueManager.cs" />
+    <Compile Include="CueType.cs" />
     <Compile Include="EventManager.cs" />
     <Compile Include="Hastebin.cs" />
     <Compile Include="LinkUnshortifier.cs" />
@@ -63,6 +66,7 @@
     <Compile Include="LocalSocketPort-LocalSocketMulticastAddress.cs" />
     <Compile Include="LocalSocketSender.cs" />
     <Compile Include="Post.cs" />
+    <Compile Include="PostType.cs" />
     <Compile Include="PostFetcher.cs" />
     <Compile Include="LocalSocketListener.cs" />
     <Compile Include="LocalRequestClient.cs" />

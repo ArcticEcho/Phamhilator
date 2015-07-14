@@ -35,6 +35,7 @@ namespace Phamhilator.Pham.UI
 {
     public class Program
     {
+        private static string thresholdDataManagerKey = "Threshold";
         private static readonly HashSet<Post> checkedPosts = new HashSet<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static LocalRequestClient yamClient;
@@ -43,7 +44,9 @@ namespace Phamhilator.Pham.UI
         private static Room tavern;
         private static UserAccess userAccess;
         private static Flagger flagger;
+        private static CueManager cueManager;
         private static DateTime startTime;
+        private static float threshold;
 
 
 
@@ -138,6 +141,15 @@ namespace Phamhilator.Pham.UI
             Console.Write("done.\nLoading config data...");
 
             userAccess = new UserAccess(ref yamClient);
+            if (!yamClient.DataExists("Pham", thresholdDataManagerKey))
+            {
+                yamClient.UpdateData("Pham", thresholdDataManagerKey, "0");
+            }
+            threshold = float.Parse(yamClient.RequestData("Pham", thresholdDataManagerKey));
+
+            Console.Write("done.\nInitialising CueManager...");
+
+            cueManager = new CueManager(ref yamClient);
 
             Console.WriteLine("done.\n");
         }
@@ -234,12 +246,137 @@ namespace Phamhilator.Pham.UI
             if (checkedPosts.Contains(post)) { return; }
             checkedPosts.Add(post);
 
-            // Add magic here...
+            // Check title.
+            var titleCues = cueManager.FindCues(post.Title, post.Site);
+            var titleType = CheckCues(titleCues);
+
+            // Check body.
+            var bodyCues = cueManager.FindCues(post.Body, post.Site);
+            var bodyType = CheckCues(titleCues);
+
+            if (titleType.Key != PostType.Clean)
+            {
+                ReportPost(post, titleType.Key, titleType.Value, true);
+            }
+            else if (bodyType.Key != PostType.Clean)
+            {
+                ReportPost(post, bodyType.Key, bodyType.Value, false);
+            }
+        }
+
+        private static KeyValuePair<PostType, float> CheckCues(Dictionary<CueType, HashSet<Cue>> foundCues)
+        {
+            var clean = new KeyValuePair<PostType, float>(PostType.Clean, 0);
+            if (foundCues == null || foundCues.Count == 0) { return clean; }
+            if (foundCues.Keys.Count == 1 && foundCues.ContainsKey(CueType.Clean)) { return clean; }
+
+            var scores = new Dictionary<CueType, List<float>>();
+
+            foreach (CueType cueType in Enum.GetValues(typeof(CueType)))
+            {
+                var cueScores = new List<float>();
+
+                foreach (var cue in foundCues[cueType])
+                {
+                    var score = cue.Weight;
+                    score -= cue.Negative / cue.Found;
+                    score += cue.Positive / cue.Found;
+                    cueScores.Add(score);
+                }
+
+                scores[cueType] = cueScores;
+            }
+
+            if (foundCues.ContainsKey(CueType.Clean))
+            {
+                var cleanTotal = scores[CueType.Clean].Sum();
+                var badTotal = scores.Sum(x => x.Value.Sum()) - cleanTotal;
+                if (badTotal - cleanTotal < 0) { return clean; }
+            }
+
+            var highestScore = new KeyValuePair<CueType, float>(CueType.Clean, 0);
+
+            foreach (var scoreSet in scores)
+            {
+                var sum = scoreSet.Value.Sum();
+
+                if (sum > highestScore.Value)
+                {
+                    highestScore = new KeyValuePair<CueType, float>(scoreSet.Key, sum);
+                }
+            }
+
+            return new KeyValuePair<PostType, float>((PostType)(int)highestScore.Key, highestScore.Value);
+        }
+
+        private static void ReportPost(Post post, PostType type, float score, bool title)
+        {
+            var msg = new MessageBuilder();
+
+            msg.AppendText("Junk title detected ", TextFormattingOptions.Bold);
+            msg.AppendText("(" + Math.Round(score, 2) + ")");
+            msg.AppendLink(post.Title, post.Url, null, TextFormattingOptions.InLineCode, WhiteSpace.None);
+            msg.AppendText(".");
+
+            hq.PostMessageFast(msg);
         }
 
         private static void HandleHqNewMessage(Message message)
         {
+            if (!UserAccess.Owners.Contains(message.Author) &&
+                !userAccess.AuthorisedUsers.Contains(message.Author.ID))
+            {
+                return;
+            }
 
+            var cmd = message.Content.Trim().ToUpperInvariant();
+
+            if (cmd.Length < 6) { return; }
+
+            switch (cmd.Substring(0, 6))
+            {
+                case "ADD CL":
+                {
+
+                    // Add clean cue.
+                    break;
+                }
+                case "ADD LQ":
+                {
+                    // Add LQ cue.
+                    break;
+                }
+                case "ADD SP":
+                {
+                    // Add spam cue.
+                    break;
+                }
+                case "ADD OF":
+                {
+                    // Add offensive cue.
+                    break;
+                }
+                case "DEL CL":
+                {
+                    // Remove clean cue.
+                    break;
+                }
+                case "DEL LQ":
+                {
+                    // Remove LQ cue.
+                    break;
+                }
+                case "DEL SP":
+                {
+                    // Remove spam cue.
+                    break;
+                }
+                case "DEL OF":
+                {
+                    // Remove offensive cue.
+                    break;
+                }
+            }
         }
 
         private static void HandleTavernNewMessage(Message message)

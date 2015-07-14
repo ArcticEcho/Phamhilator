@@ -36,6 +36,8 @@ namespace Phamhilator.Yam.Core
 
         public EventManager<RequestType> EventManager { get; private set; }
 
+        public string Caller { get; private set; }
+
         public ulong TotalDataReceived { get { return listener.TotalDataReceived; } }
 
         public ulong TotalDataSent { get { return sender.TotalDataSent; } }
@@ -47,8 +49,9 @@ namespace Phamhilator.Yam.Core
             if (string.IsNullOrEmpty(callerBot)) { throw new ArgumentException("callerBot"); }
             var caller = callerBot.ToUpperInvariant();
             if (caller != "GHAM" && caller != "PHAM") { throw new ArgumentException("Invalid 'callerBot' specified. Supported names include: 'PHAM' and 'GHAM'.", "callerBot"); }
-            EventManager = new EventManager<RequestType>(RequestType.Exception);
-            
+
+            Caller = callerBot;
+
             var listenPort = (int)(caller == "PHAM" ? LocalSocketPort.YamToPham : LocalSocketPort.YamToGham);
             var sendPort = (int)(caller == "PHAM" ? LocalSocketPort.PhamToYam : LocalSocketPort.GhamToYam);
 

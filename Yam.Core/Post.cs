@@ -36,5 +36,12 @@ namespace Phamhilator.Yam.Core
         public string AuthorName { get; set; }
         public string AuthorLink { get; set; }
         public int AuthorNetworkID { get; set; }
+
+
+
+        public override int GetHashCode()
+        {
+            return String.IsNullOrEmpty(Url) ? -1 : Url.GetHashCode();
+        }
     }
 }

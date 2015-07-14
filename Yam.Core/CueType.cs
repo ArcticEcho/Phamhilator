@@ -20,13 +20,13 @@
 
 
 
-namespace Phamhilator.Pham.UI
+namespace Phamhilator.Yam.Core
 {
-    public enum PostClass
+    public enum CueType
     {
         Clean,
-        Offensive,
+        LowQuality,
         Spam,
-        LowQuality
+        Offensive
     }
 }
