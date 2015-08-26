@@ -21,21 +21,30 @@
 
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Phamhilator.Yam.Core;
 
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Pham.UI
 {
-    public class LogEntry
+    public class LoggedPostsManager
     {
-        public Post Post { get; set; }
-        public bool IsQuestion { get; set; }
-        public DateTime Timestamp { get; set; }
+        private const string logDataManagerKey = "Logged Posts";
+        private readonly HashSet<string> postUrls;
 
 
-
-        public override int GetHashCode()
+        public LoggedPostsManager(ref LocalRequestClient yamClient)
         {
-            return Post == null ? -1 : Post.GetHashCode();
+            postUrls = new HashSet<string>();
+            var data = yamClient.RequestData("Pham", logDataManagerKey);
+            var urls = data.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var url in urls)
+            {
+                postUrls.Add(url);
+            }
         }
     }
 }

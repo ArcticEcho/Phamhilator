@@ -137,11 +137,6 @@ namespace Phamhilator.Yam.UI
                     getField = new Func<LogEntry, string>(entry => entry.Post.Body);
                     break;
                 }
-                case "creationdate":
-                {
-                    getField = new Func<LogEntry, string>(entry => entry.Post.CreationDate.ToString());
-                    break;
-                }
                 case "authorname":
                 {
                     getField = new Func<LogEntry, string>(entry => entry.Post.AuthorName);
@@ -173,6 +168,7 @@ namespace Phamhilator.Yam.UI
             foreach (var entry in Log.Values)
             {
                 if (entries.Count == 100) { break; }
+                if (entry.Post.CreationDate < req.StartDate && entry.Post.CreationDate > req.EndDate) { continue; }
                 if (search(getField(entry)) && (fetchQs == null || (bool)fetchQs && entry.IsQuestion))
                 {
                     entries.Add(entry);

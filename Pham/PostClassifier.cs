@@ -22,9 +22,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.UI
@@ -33,15 +30,13 @@ namespace Phamhilator.Pham.UI
     {
         private ModelGenerator modelGen;
         private HashSet<string[]> models;
-        private readonly bool dvWorthy;
 
 
 
-        public PostClassifier(string[] badPostModels, bool dvWorthyModels)
+        public PostClassifier(string[] badPostModels)
         {
             modelGen = new ModelGenerator();
             models = new HashSet<string[]>();
-            dvWorthy = dvWorthyModels;
 
             foreach (var model in badPostModels)
             {
@@ -51,7 +46,7 @@ namespace Phamhilator.Pham.UI
 
 
 
-        public SuggestedAction ClassifyPost(Post post)
+        public double ClassifyPost(Post post)
         {
             var postModel = modelGen.GenerateModel(post.Body);
             var highestMatch = -1D;
@@ -59,13 +54,10 @@ namespace Phamhilator.Pham.UI
             foreach (var model in models)
             {
                 var score = MatchScore(postModel, model);
-
                 highestMatch = Math.Max(highestMatch, score);
             }
 
-            return highestMatch > (3 / 2D) ? 
-                   (dvWorthy ? SuggestedAction.DV : SuggestedAction.CV) :
-                   SuggestedAction.Nothing;
+            return highestMatch;
         }
 
 

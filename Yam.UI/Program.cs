@@ -353,7 +353,9 @@ namespace Phamhilator.Yam.UI
             {
                 PostType = postType,
                 SearchBy = searchBy,
-                SearchPattern = key
+                SearchPattern = key,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddDays(-7)
             });
 
             if (entries.Count == 0)

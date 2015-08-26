@@ -22,14 +22,19 @@
 
 using System;
 
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Yam.Core
 {
-    public class RemoteLogRequest
+    public class LogEntry
     {
-        public string SearchBy { get; set; }
-        public string SearchPattern { get; set; }
-        public string PostType { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public Post Post { get; set; }
+        public bool IsQuestion { get; set; }
+        public DateTime Timestamp { get; set; }
+
+
+
+        public override int GetHashCode()
+        {
+            return Post == null ? -1 : Post.GetHashCode();
+        }
     }
 }

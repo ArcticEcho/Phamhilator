@@ -62,6 +62,7 @@
     <Compile Include="LocalRequest.RequestType.cs" />
     <Compile Include="LocalSocketPort-LocalSocketMulticastAddress.cs" />
     <Compile Include="LocalSocketSender.cs" />
+    <Compile Include="LogEntry.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostType.cs" />
     <Compile Include="PostFetcher.cs" />

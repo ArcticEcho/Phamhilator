@@ -37,7 +37,8 @@ namespace Phamhilator.Pham.UI
     public class Program
     {
         private const string thresholdDataManagerKey = "Threshold";
-        private const string modelsDataManagerKey = "Models";
+        private const string cvModelsDataManagerKey = "CV Models";
+        private const string dvModelsDataManagerKey = "DV Models";
         private static readonly HashSet<Post> checkedPosts = new HashSet<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static LocalRequestClient yamClient;
@@ -46,7 +47,8 @@ namespace Phamhilator.Pham.UI
         private static Room socvr;
         private static UserAccess userAccess;
         private static Flagger flagger;
-        private static PostClassifier classifier;
+        private static PostClassifier cvClassifier;
+        private static PostClassifier dvClassifier;
         private static DateTime startTime;
         private static float threshold;
 
@@ -150,12 +152,19 @@ namespace Phamhilator.Pham.UI
             }
             threshold = float.Parse(yamClient.RequestData("Pham", thresholdDataManagerKey));
 
-            if (!yamClient.DataExists("Pham", modelsDataManagerKey))
+            if (!yamClient.DataExists("Pham", cvModelsDataManagerKey))
             {
-                yamClient.UpdateData("Pham", modelsDataManagerKey, "");
+                yamClient.UpdateData("Pham", cvModelsDataManagerKey, "");
             }
-            var models = yamClient.RequestData("Pham", modelsDataManagerKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            classifier = new PostClassifier(models, true);
+            var cvModels = yamClient.RequestData("Pham", cvModelsDataManagerKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            cvClassifier = new PostClassifier(cvModels);
+
+            if (!yamClient.DataExists("Pham", dvModelsDataManagerKey))
+            {
+                yamClient.UpdateData("Pham", dvModelsDataManagerKey, "");
+            }
+            var dvModels = yamClient.RequestData("Pham", dvModelsDataManagerKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            dvClassifier = new PostClassifier(dvModels);
 
             Console.WriteLine("done.\n");
         }
@@ -250,12 +259,15 @@ namespace Phamhilator.Pham.UI
             if (checkedPosts.Contains(post) || post.Site != "stackoverflow.com") { return; }
             checkedPosts.Add(post);
 
-            var result = classifier.ClassifyPost(post);
+            var cvScore = cvClassifier.ClassifyPost(post);
+            var dvScore = dvClassifier.ClassifyPost(post);
 
-            if (result != SuggestedAction.Nothing)
+            if (Math.Max(cvScore, dvScore) < (3 / 2D))
             {
-                ReportPost(post, result == SuggestedAction.DV);
+                return;
             }
+
+            ReportPost(post, cvScore > dvScore);
         }
 
         private static void ReportPost(Post post, bool dvWorthy)
@@ -275,89 +287,7 @@ namespace Phamhilator.Pham.UI
 
         private static void HandleHqCommand(Message message)
         {
-            //if (!UserAccess.Owners.Contains(message.Author))
-            //{
-            //    var t = 0;
-            //}
 
-            //if (!UserAccess.Owners.Contains(message.Author) &&
-            //    !userAccess.AuthorisedUsers.Contains(message.Author.ID))
-            //{
-            //    return;
-            //}
-
-            //var cmd = message.Content.Trim().ToUpperInvariant();
-
-            //if (cmd.Length < 6) { return; }
-
-            //var reply = new MessageBuilder();
-            //var eng = cmd[7] == 'E';
-            //var code = cmd.Length > 11 && cmd[7 + (eng ? 4 : 0)] == 'C';
-            //var html = cmd.Length > 16 && cmd[7 + (eng ? 4 : 0) + (code ? 5 : 0)] == 'H';
-            //var pattern = message.Content.TrimStart().Remove(0, 7 + (eng ? 4 : 0) + (code ? 5 : 0) + (html ? 5 : 0));
-
-            //switch (cmd.Substring(0, 6))
-            //{
-            //    case "ADD CL":
-            //    {
-            //        cueManager.AddCue(new Cue(pattern, ChunckType.Clean, 1, 0, 0, 0, eng, code, html));
-            //        break;
-            //    }
-            //    case "ADD LQ":
-            //    {
-            //        cueManager.AddCue(new Cue(pattern, ChunckType.LowQuality, 1, 0, 0, 0, eng, code, html));
-            //        break;
-            //    }
-            //    case "ADD SP":
-            //    {
-            //        cueManager.AddCue(new Cue(pattern, ChunckType.Spam, 1, 0, 0, 0, eng, code, html));
-            //        break;
-            //    }
-            //    case "ADD OF":
-            //    {
-            //        cueManager.AddCue(new Cue(pattern, ChunckType.Offensive, 1, 0, 0, 0, eng, code, html));
-            //        break;
-            //    }
-            //    case "DEL CL":
-            //    {
-            //        cueManager.RemoveCue(ChunckType.Clean, pattern);
-            //        break;
-            //    }
-            //    case "DEL LQ":
-            //    {
-            //        cueManager.RemoveCue(ChunckType.LowQuality, pattern);
-            //        break;
-            //    }
-            //    case "DEL SP":
-            //    {
-            //        cueManager.RemoveCue(ChunckType.Spam, pattern);
-            //        break;
-            //    }
-            //    case "DEL OF":
-            //    {
-            //        cueManager.RemoveCue(ChunckType.Offensive, pattern);
-            //        break;
-            //    }
-            //    case "ADD FS":
-            //    {
-            //        cueManager.AddForeignSite(pattern);
-            //        break;
-            //    }
-            //    case "DEL FS":
-            //    {
-            //        cueManager.RemoveForeignSite(pattern);
-            //        break;
-            //    }
-            //    default:
-            //    {
-            //        reply.AppendText("Command not recognised.", TextFormattingOptions.InLineCode);
-            //        hq.PostReply(message, reply);
-            //        return;
-            //    }
-            //}
-
-            //reply.AppendText("Command successfully executed.", TextFormattingOptions.InLineCode);
-            //hq.PostReply(message, reply);
         }
 
         private static void HandleSocvrCommand(Message message)
