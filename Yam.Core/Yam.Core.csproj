@@ -55,9 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Answer.cs" />
-    <Compile Include="Cue.cs" />
-    <Compile Include="CueManager.cs" />
-    <Compile Include="CueType.cs" />
     <Compile Include="EventManager.cs" />
     <Compile Include="Hastebin.cs" />
     <Compile Include="LinkUnshortifier.cs" />
