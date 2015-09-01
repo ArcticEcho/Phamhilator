@@ -118,15 +118,9 @@ namespace Phamhilator.Yam.UI
             var pattern = new Regex(req.SearchPattern, RegexOptions.Compiled | RegexOptions.CultureInvariant);
             var entries = new HashSet<LogEntry>();
             Func<LogEntry, string> getField = null;
-            Func<string, bool> search = null;
 
             switch (fieldLower)
             {
-                case "site":
-                {
-                    getField = new Func<LogEntry, string>(entry => entry.Post.Site);
-                    break;
-                }
                 case "title":
                 {
                     getField = new Func<LogEntry, string>(entry => entry.Post.Title);
@@ -135,6 +129,11 @@ namespace Phamhilator.Yam.UI
                 case "body":
                 {
                     getField = new Func<LogEntry, string>(entry => entry.Post.Body);
+                    break;
+                }
+                case "site":
+                {
+                    getField = new Func<LogEntry, string>(entry => entry.Post.Site);
                     break;
                 }
                 case "authorname":
@@ -149,7 +148,7 @@ namespace Phamhilator.Yam.UI
                 }
             }
 
-            search = new Func<string, bool>(field => pattern.IsMatch(field));
+            var search = new Func<string, bool>(field => pattern.IsMatch(field));
 
             bool? fetchQs = null;
             var postType = req.PostType.Trim().ToLowerInvariant();
@@ -168,8 +167,13 @@ namespace Phamhilator.Yam.UI
             foreach (var entry in Log.Values)
             {
                 if (entries.Count == 100) { break; }
-                if (entry.Post.CreationDate < req.StartDate && entry.Post.CreationDate > req.EndDate) { continue; }
-                if (search(getField(entry)) && (fetchQs == null || (bool)fetchQs && entry.IsQuestion))
+                if ((entry.Post.CreationDate < req.StartCreationDate || entry.Post.CreationDate > req.EndCreationDate) ||
+                    (entry.Timestamp < req.StartEntryDate || entry.Timestamp > req.EndEntryDate) ||
+                    (!string.IsNullOrWhiteSpace(req.Site) && entry.Post.Site == req.Site))
+                {
+                    continue;
+                }
+                if (search(getField(entry)) && (fetchQs == null || (bool)fetchQs && entry.IsQuestion || !(bool)fetchQs && !entry.IsQuestion))
                 {
                     entries.Add(entry);
                 }

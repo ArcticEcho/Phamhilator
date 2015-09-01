@@ -42,7 +42,9 @@ namespace Phamhilator.Yam.UI
         private static string apiKeySenderPwd;
         private static string apiKeySenderHost;
         private static Client chatClient;
-        private static Room chatRoom;
+        private static AuthorisedUsers authUsers;
+        private static Room hq;
+        private static Room socvr;
         private static RealtimePostSocket postSocket;
         private static LocalServer locServer;
         private static RemoteServer remServer;
@@ -58,8 +60,10 @@ namespace Phamhilator.Yam.UI
             Console.Title = "Yam v2";
             GetApiKeyEmailCreds();
             TryLogin();
-            Console.Write("Joining chat room...");
+            Console.Write("Joining chat room(s)...");
             JoinRooms();
+            Console.Write("done.\nInitialising config data...");
+            InitialiseConfigData();
             Console.Write("done.\nInitialising log...");
             PostLogger.InitialiseLogger();
             Console.Write("done.\nStarting server...");
@@ -67,10 +71,12 @@ namespace Phamhilator.Yam.UI
             InitialiseRemoteServer();
 #if DEBUG
             Console.Write("done.\nYam v2 started (debug), press Q to exit.\n");
-            chatRoom.PostMessage("`Yam v2 started` (**`debug`**)`.`");
+            hq.PostMessageFast("`Yam v2 started` (**`debug`**)`.`");
+            socvr.PostMessageFast("`Yam v2 started` (**`debug`**)`.`");
 #else
             Console.Write("done.\nYam v2 started, press Q to exit.\n");
-            chatRoom.PostMessage("`Yam v2 started.`");
+            hq.PostMessageFast("`Yam v2 started.`");
+            socvr.PostMessageFast("`Yam v2 started.`");
 #endif
             startTime = DateTime.UtcNow;
 
@@ -95,8 +101,10 @@ namespace Phamhilator.Yam.UI
             locServer.Dispose();
             remServer.Dispose();
             PostLogger.StopLogger();
-            chatRoom.PostMessage("`Yam v2 stopped.`");
-            chatRoom.Leave();
+            hq.PostMessageFast("`Yam v2 stopped.`");
+            socvr.PostMessageFast("`Yam v2 stopped.`");
+            hq.Leave();
+            socvr.Leave();
             chatClient.Dispose();
         }
 
@@ -159,10 +167,20 @@ namespace Phamhilator.Yam.UI
 
         private static void JoinRooms()
         {
-            chatRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
-            chatRoom.IgnoreOwnEvents = true;
-            chatRoom.StripMentionFromMessages = true;
-            chatRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
+            hq = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/");
+            hq.IgnoreOwnEvents = true;
+            hq.StripMention = true;
+            hq.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(hq, m)));
+
+            socvr = chatClient.JoinRoom("http://chat.stackoverflow.com/rooms/41570/");//("http://chat.stackoverflow.com/rooms/68414");//
+            socvr.IgnoreOwnEvents = true;
+            socvr.StripMention = true;
+            socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
+        }
+
+        private static void InitialiseConfigData()
+        {
+            authUsers = new AuthorisedUsers();
         }
 
         private static void InitialiseRemoteServer()
@@ -170,19 +188,19 @@ namespace Phamhilator.Yam.UI
             remServer = new RemoteServer();
             remServer.RealtimePostClientConnected += client =>
             {
-                chatRoom.PostMessage("`Remote client: " + client.Owner + " has connected (real-time post socket).`");
+                hq.PostMessage("`Remote client: " + client.Owner + " has connected (real-time post socket).`");
             };
             remServer.RealtimePostClientDisconnected += client =>
             {
-                chatRoom.PostMessage("`Remote client: " + client.Owner + " has disconnected (real-time post socket).`");
+                hq.PostMessage("`Remote client: " + client.Owner + " has disconnected (real-time post socket).`");
             };
             remServer.LogQueryClientConnected += client =>
             {
-                chatRoom.PostMessage("`Remote client: " + client.Owner + " has connected (log query socket).`");
+                hq.PostMessage("`Remote client: " + client.Owner + " has connected (log query socket).`");
             };
             remServer.LogQueryClientDisconnected += client =>
             {
-                chatRoom.PostMessage("`Remote client: " + client.Owner + " has disconnected (log query socket).`");
+                hq.PostMessage("`Remote client: " + client.Owner + " has disconnected (log query socket).`");
             };
             remServer.LogQueryReceived += (client, req) =>
             {
@@ -197,12 +215,12 @@ namespace Phamhilator.Yam.UI
             locServer.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 phamErrorCount++;
-                chatRoom.PostMessage("Warning, error detected in Pham:\n\n" + req.Dump());
+                hq.PostMessage("Warning, error detected in Pham:\n\n" + req.Dump());
             }));
             locServer.GhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 ghamErrorCount++;
-                chatRoom.PostMessage("Warning, error detected in Gham:\n\n" + req.Dump());
+                hq.PostMessage("Warning, error detected in Gham:\n\n" + req.Dump());
             }));
             locServer.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
             {
@@ -234,17 +252,160 @@ namespace Phamhilator.Yam.UI
             postSocket.OnActiveAnswer += HandleActiveAnswer;
         }
 
-        private static void HandleChatCommand(Message command)
+        private static void HandleChatCommand(Room room, Message command)
         {
-            if (!UserAccess.Owners.Select(u => u.ID).Contains(command.Author.ID)) { return; }
+            try
+            {
+                if (UserAccess.Owners.Any(id => id == command.Author.ID) || command.Author.IsRoomOwner || command.Author.IsMod)
+                {
+                    var cmdMatches = HandleOwnerCommand(room, command);
 
+                    if (!cmdMatches)
+                    {
+                        cmdMatches = HandlePrivilegedUserCommand(room, command);
+
+                        if (!cmdMatches)
+                        {
+                            cmdMatches = HandleNormalUserCommand(room, command);
+
+                            if (!cmdMatches)
+                            {
+                                room.PostReplyFast(command, "`Command not recognised.`");
+                            }
+                        }
+                    }
+                }
+                else if (authUsers.IDs.Any(id => id == command.Author.ID))
+                {
+                    var cmdMatches = HandlePrivilegedUserCommand(room, command);
+
+                    if (!cmdMatches)
+                    {
+                        cmdMatches = HandleNormalUserCommand(room, command);
+
+                        if (!cmdMatches)
+                        {
+                            room.PostReplyFast(command, "`Command not recognised (at your current access level).`");
+                        }
+                    }
+                }
+                else
+                {
+                    var cmdMatches = HandleNormalUserCommand(room, command);
+
+                    if (!cmdMatches)
+                    {
+                        room.PostReplyFast(command, "`Command not recognised (at your current access level).`");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                room.PostReplyFast(command, "Unable to execute command: " + ex.Message);
+            }
+        }
+
+        private static bool HandleNormalUserCommand(Room room, Message command)
+        {
             var cmd = command.Content.Trim().ToUpperInvariant();
 
-            if (cmd.StartsWith("SEARCH LOG"))
+            switch (cmd)
             {
-                HandleChatLogSearchRequest(command);
+                case "STATUS":
+                {
+                    var hoursAlive = (DateTime.UtcNow - startTime).TotalHours;
+                    var getStatus = new Func<int, string>(er => er == 0 ? "Good" : er <= 2 ? "Ok" : "Bad");
+                    var getErrorRate = new Func<uint, int>(ec => (int)Math.Round(ec / hoursAlive));
+                    var yamErrorRate = getErrorRate(yamErrorCount);   var yamStatus = getStatus(yamErrorRate);
+                    var phamErrorRate = getErrorRate(phamErrorCount); var phamStatus = getStatus(phamErrorRate);
+                    var ghamErrorRate = getErrorRate(ghamErrorCount); var ghamStatus = getStatus(ghamErrorRate);
+                    var statusReport = "    Status report:\n" +
+                                        "    Yam:  " + yamStatus + " (" + yamErrorCount + " @ " + yamErrorRate + "/h)\n" +
+                                        "    Pham: " + phamStatus + " (" + phamErrorCount + " @ " + phamErrorRate + "/h)\n" +
+                                        "    Gham: " + ghamStatus + " (" + ghamErrorCount + " @ " + ghamErrorRate + "/h)";
+                    room.PostMessageFast(statusReport);
+                    return true;
+                }
+                case "LOG STATS":
+                {
+                    var items = PostLogger.Log.Count;
+                    var uncomp = PostLogger.LogSizeUncompressed / 1024.0 / 1024;
+                    var comp = PostLogger.LogSizeCompressed / 1024.0 / 1024;
+                    var compRatio = Math.Round((uncomp / comp) * 100);
+                    var dataReport = "    Log report:\n" +
+                                        "    Items: " + items + "\n" +
+                                        "    Update interval: " + PostLogger.UpdateInterval + "\n" +
+                                        "    Size (uncompressed): " + Math.Round(uncomp) + " MiB\n" +
+                                        "    Size (compressed): " + Math.Round(comp) + " MiB\n" +
+                                        "    Compression %: " + compRatio + "\n";
+                    room.PostMessageFast(dataReport);
+                    return true;
+                }
+                case "LOCAL STATS":
+                {
+                    var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
+                    var phamRecTotal = locServer.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
+                    var phamSentTotal = locServer.DataSentPham / 1024.0;    var phamSentPerSec = phamSentTotal / secsAlive;
+                    var ghamRecTotal = locServer.DataReceivedGham / 1024.0; var ghamRecPerSec = ghamRecTotal / secsAlive;
+                    var ghamSentTotal = locServer.DataSentGham / 1024.0;    var ghamSentPerSec = ghamSentTotal / secsAlive;
+                    var overallTotal = phamRecTotal + phamSentTotal + ghamRecTotal + ghamSentTotal;
+                    var overallPerSec = overallTotal / secsAlive;
+                    var dataReport = "    Local Yam data report (in KiB):\n" +
+                                        "    Total transferred:  " + Math.Round(overallTotal) + " (~" + Math.Round(overallPerSec, 1) + "/s)\n" +
+                                        "    Sent to Pham:       " + Math.Round(phamSentTotal) + " (~" + Math.Round(phamSentPerSec, 1) + "/s)\n" +
+                                        "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n" +
+                                        "    Sent to Gham:       " + Math.Round(ghamSentTotal) + " (~" + Math.Round(ghamSentPerSec, 1) + "/s)\n" +
+                                        "    Received from Gham: " + Math.Round(ghamRecTotal) + " (~" + Math.Round(ghamRecPerSec, 1) + "/s)";
+                    room.PostMessageFast(dataReport);
+                    return true;
+                }
+                case "REMOTE STATS":
+                {
+                    var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
+                    var clientCount = remServer.RealtimePostClients.Count;
+                    var overallSent = remServer.TotalDataUploaded / 1024.0;
+                    var overallSentPerSec = Math.Round(overallSent / secsAlive, 1);
+                    var overallRec = remServer.TotalDataDownloaded / 1024.0;
+                    var overallRecPerSec = Math.Round(overallRec / secsAlive, 1);
+                    var dataReport = "    Remote Yam data report (in KiB):\n" +
+                                        "    Total sent:     " + Math.Round(overallSent) + " (~" + overallSentPerSec + "/s)\n" +
+                                        "    Total received: " + Math.Round(overallRec) + " (~" + overallRecPerSec + "/s)\n" +
+                                        "    Clients (" + clientCount + ")" + ":    " + remServer.ClientsNamesPretty;
+                    room.PostMessageFast(dataReport);
+                    return true;
+                }
+                case "COMMANDS":
+                {
+                    var msg = "`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Yam-Chat-Commands \"Chat Commands Wiki\")`.`";
+                    room.PostReplyFast(command, msg);
+                    return true;
+                }
+                default:
+                {
+                    return false;
+                }
             }
-            else if (cmd.StartsWith("ADD REMOTE CLIENT"))
+        }
+
+        private static bool HandlePrivilegedUserCommand(Room room, Message command)
+        {
+            if (command.Content.Trim().ToUpperInvariant().StartsWith("SEARCH LOG"))
+            {
+                HandleChatLogSearchRequest(room, command);
+            }
+            else
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool HandleOwnerCommand(Room room, Message command)
+        {
+            var cmd = command.Content.Trim().ToUpperInvariant();
+
+            if (cmd.StartsWith("ADD REMOTE CLIENT"))
             {
                 var emailKeyPair = command.Content.Trim().Remove(0, 17).Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                 var owner = emailKeyPair[0];
@@ -256,92 +417,22 @@ namespace Phamhilator.Yam.UI
                 DataManager.SaveData("Yam", RemoteServer.ApiKeysDataKey, otherKeys + owner + ":" + key);
                 SendApiKeyEmail(command.Author.Name, email, key);
 
-                chatRoom.PostReply(command, "`Client successfully added; an email has been sent with the API key.`");
-                return;
+                room.PostReply(command, "`Client successfully added; an email has been sent with the API key.`");
+            }
+            else if (cmd == "STOP")
+            {
+                room.PostReply(command, "`Stopping...`");
+                shutdownMre.Set();
             }
             else
             {
-                switch (cmd)
-                {
-                    case "STOP":
-                    {
-                        chatRoom.PostReply(command, "`Stopping...`");
-                        shutdownMre.Set();
-                        return;
-                    }
-                    case "STATUS":
-                    {
-                        var hoursAlive = (DateTime.UtcNow - startTime).TotalHours;
-                        var getStatus = new Func<int, string>(er => er == 0 ? "Good" : er <= 2 ? "Ok" : "Bad");
-                        var getErrorRate = new Func<uint, int>(ec => (int)Math.Round(ec / hoursAlive));
-                        var yamErrorRate = getErrorRate(yamErrorCount);   var yamStatus = getStatus(yamErrorRate);
-                        var phamErrorRate = getErrorRate(phamErrorCount); var phamStatus = getStatus(phamErrorRate);
-                        var ghamErrorRate = getErrorRate(ghamErrorCount); var ghamStatus = getStatus(ghamErrorRate);
-                        var statusReport = "    Status report:\n" +
-                                           "    Yam:  " + yamStatus + " (" + yamErrorCount + " @ " + yamErrorRate + "/h)\n" +
-                                           "    Pham: " + phamStatus + " (" + phamErrorCount + " @ " + phamErrorRate + "/h)\n" +
-                                           "    Gham: " + ghamStatus + " (" + ghamErrorCount + " @ " + ghamErrorRate + "/h)";
-                        chatRoom.PostMessage(statusReport);
-                        return;
-                    }
-                    case "LOG STATS":
-                    {
-                        var items = PostLogger.Log.Count;
-                        var uncomp = PostLogger.LogSizeUncompressed / 1024.0 / 1024;
-                        var comp = PostLogger.LogSizeCompressed / 1024.0 / 1024;
-                        var compRatio = Math.Round((uncomp / comp) * 100);
-                        var dataReport = "    Log report:\n" +
-                                         "    Items: " + items + "\n" +
-                                         "    Update interval: " + PostLogger.UpdateInterval + "\n" +
-                                         "    Size (uncompressed): " + Math.Round(uncomp) + " MiB\n" +
-                                         "    Size (compressed): " + Math.Round(comp) + " MiB\n" +
-                                         "    Compression %: " + compRatio + "\n";
-                        chatRoom.PostMessage(dataReport);
-                        return;
-                    }
-                    case "LOCAL STATS":
-                    {
-                        var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
-                        var phamRecTotal = locServer.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
-                        var phamSentTotal = locServer.DataSentPham / 1024.0;    var phamSentPerSec = phamSentTotal / secsAlive;
-                        var ghamRecTotal = locServer.DataReceivedGham / 1024.0; var ghamRecPerSec = ghamRecTotal / secsAlive;
-                        var ghamSentTotal = locServer.DataSentGham / 1024.0;    var ghamSentPerSec = ghamSentTotal / secsAlive;
-                        var overallTotal = phamRecTotal + phamSentTotal + ghamRecTotal + ghamSentTotal;
-                        var overallPerSec = overallTotal / secsAlive;
-                        var dataReport = "    Local Yam data report (in KiB):\n" +
-                                         "    Total transferred:  " + Math.Round(overallTotal) + " (~" + Math.Round(overallPerSec, 1) + "/s)\n" +
-                                         "    Sent to Pham:       " + Math.Round(phamSentTotal) + " (~" + Math.Round(phamSentPerSec, 1) + "/s)\n" +
-                                         "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n" +
-                                         "    Sent to Gham:       " + Math.Round(ghamSentTotal) + " (~" + Math.Round(ghamSentPerSec, 1) + "/s)\n" +
-                                         "    Received from Gham: " + Math.Round(ghamRecTotal) + " (~" + Math.Round(ghamRecPerSec, 1) + "/s)";
-                        chatRoom.PostMessage(dataReport);
-                        return;
-                    }
-                    case "REMOTE STATS":
-                    {
-                        var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
-                        var clientCount = remServer.RealtimePostClients.Count;
-                        var overallSent = remServer.TotalDataUploaded / 1024.0;
-                        var overallSentPerSec = Math.Round(overallSent / secsAlive, 1);
-                        var overallRec = remServer.TotalDataDownloaded / 1024.0;
-                        var overallRecPerSec = Math.Round(overallRec / secsAlive, 1);
-                        var dataReport = "    Remote Yam data report (in KiB):\n" +
-                                         "    Total sent:     " + Math.Round(overallSent) + " (~" + overallSentPerSec + "/s)\n" +
-                                         "    Total received: " + Math.Round(overallRec) + " (~" + overallRecPerSec + "/s)\n" +
-                                         "    Clients (" + clientCount + ")" + ":    " + remServer.ClientsNamesPretty;
-                        chatRoom.PostMessage(dataReport);
-                        return;
-                    }
-                    default:
-                    {
-                        chatRoom.PostReply(command, "`Command not recognised.`");
-                        return;
-                    }
-                }
+                return false;
             }
+
+            return true;
         }
 
-        private static void HandleChatLogSearchRequest(Message command)
+        private static void HandleChatLogSearchRequest(Room room, Message command)
         {
             var req = command.Content.Remove(0, 11);
             var split = req.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -353,14 +444,12 @@ namespace Phamhilator.Yam.UI
             {
                 PostType = postType,
                 SearchBy = searchBy,
-                SearchPattern = key,
-                StartDate = DateTime.UtcNow,
-                EndDate = DateTime.UtcNow.AddDays(-7)
+                SearchPattern = key
             });
 
             if (entries.Count == 0)
             {
-                chatRoom.PostReply(command, "`No entries found.`");
+                room.PostReply(command, "`No entries found.`");
             }
             else
             {
@@ -368,11 +457,11 @@ namespace Phamhilator.Yam.UI
                 var link = Hastebin.PostDocument(entriesDump);
                 if (entries.Count == 1)
                 {
-                    chatRoom.PostReply(command, "[`1 entry found`](" + link + ")`.`");
+                    room.PostReply(command, "[`1 entry found`](" + link + ")`.`");
                 }
                 else
                 {
-                    chatRoom.PostReply(command, "[`" + entries.Count + " entries found`](" + link + ")`.`");
+                    room.PostReply(command, "[`" + entries.Count + " entries found`](" + link + ")`.`");
                 }
             }
         }
@@ -476,7 +565,7 @@ namespace Phamhilator.Yam.UI
             }
             catch (Exception ex)
             {
-                chatRoom.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
+                hq.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
                 yamErrorCount++;
 
                 // Post back to the listener (prevent the calling thread from hanging).
@@ -534,7 +623,7 @@ namespace Phamhilator.Yam.UI
             catch (Exception e)
             {
                 yamErrorCount++;
-                chatRoom.PostMessage("Detected error in Yam:\n\n" + e.ToString());
+                hq.PostMessage("Detected error in Yam:\n\n" + e.ToString());
             }
         }
     }

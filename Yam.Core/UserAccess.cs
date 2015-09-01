@@ -23,53 +23,37 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using ChatExchangeDotNet;
 
 namespace Phamhilator.Yam.Core
 {
-    public class UserAccess
+    public class UserAccess : IDisposable
     {
         private const string dataKey = "Authorised Users";
-        private static readonly List<User> owners = new List<User>();
+        private readonly ManualResetEvent mre = new ManualResetEvent(false);
         private readonly LocalRequestClient client;
+        private bool dispose;
 
         public List<int> AuthorisedUsers { get; private set; }
 
-        static public List<User> Owners
+        static public int[] Owners
         {
             get
             {
-                lock (owners)
+                return new[]
                 {
-                    if (owners.Count == 0) { PopulateOwners("meta.stackexchange.com", 773); }
-                    return owners;
-                }
-            }
-        }
-
-        static public string OwnerNames
-        {
-            get
-            {
-                var names = "";
-
-                for (var i = 0; i < owners.Count; i++)
-                {
-                    if (i == owners.Count - 2)
-                    {
-                        names += owners[i].Name + " & ";
-                    }
-                    else if (i == owners.Count - 1)
-                    {
-                        names += owners[i].Name;
-                    }
-                    else
-                    {
-                        names += owners[i].Name + ", ";
-                    }
-                }
-
-                return names;
+                    227577,  // Sam (MSE)
+                    2246344, // Sam (SO)
+                    266094,  // Uni (MSE)
+                    3622940, // Uni (SO)
+                    229438,  // Fox (MSE)
+                    2619912, // Fox (SO)
+                    194047,  // Jan (MSE)
+                    245360,  // Pat (MSE)
+                    202832,  // Moo (MSE)
+                };
             }
         }
 
@@ -81,9 +65,25 @@ namespace Phamhilator.Yam.Core
 
             this.client = client;
             PopulateAuthorisedUsers();
+            Task.Run(() => RefreshAuthorisedUsers());
+        }
+
+        ~UserAccess()
+        {
+            Dispose();
         }
 
 
+
+        public void Dispose()
+        {
+            if (dispose) { return; }
+            dispose = true;
+
+            mre.Set();
+            mre.Dispose();
+            GC.SuppressFinalize(this);
+        }
 
         public void AddAuthorisedUser(int id)
         {
@@ -117,21 +117,14 @@ namespace Phamhilator.Yam.Core
             }
         }
 
-        static private void PopulateOwners(string host, int roomID)
+        private void RefreshAuthorisedUsers()
         {
-            var sam = new User(host, roomID, 227577);
-            var uni = new User(host, roomID, 266094);
-            var fox = new User(host, roomID, 229438);
-            var jan = new User(host, roomID, 194047);
-            var pat = new User(host, roomID, 245360);
-            var moo = new User(host, roomID, 202832);
+            while (!dispose)
+            {
+                mre.WaitOne(TimeSpan.FromSeconds(1));
 
-            owners.Add(sam);
-            owners.Add(uni);
-            owners.Add(fox);
-            owners.Add(jan);
-            owners.Add(pat);
-            owners.Add(moo);
+                PopulateAuthorisedUsers();
+            }
         }
     }
 }

@@ -132,7 +132,7 @@ namespace Phamhilator.Gham
 
         private static void HandleChatCommand(Message command)
         {
-            if (!UserAccess.Owners.Select(u => u.ID).Contains(command.Author.ID)) { return; }
+            if (UserAccess.Owners.All(id => id != command.Author.ID)) { return; }
 
             var cmd = command.Content.Trim().ToUpperInvariant();
 

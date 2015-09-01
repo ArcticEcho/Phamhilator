@@ -59,7 +59,25 @@ namespace Phamhilator.Yam.UI
         {
             if (String.IsNullOrEmpty(owner) || String.IsNullOrEmpty(key)) { return false; }
             var safeKey = GetSafeFileName(owner, key);
-            return activeFiles.ContainsKey(safeKey);
+            var path = Path.Combine(root, safeKey);
+
+            if (File.Exists(path))
+            {
+                if (!activeFiles.ContainsKey(safeKey))
+                {
+                    activeFiles[safeKey] = false;
+                }
+
+                return true;
+            }
+
+            if (activeFiles.ContainsKey(safeKey))
+            {
+                object temp;
+                activeFiles.TryRemove(safeKey, out temp);
+            }
+
+            return false;
         }
 
         public static string LoadData(string owner, string key)

@@ -29,7 +29,20 @@ namespace Phamhilator.Yam.UI
         public string SearchBy { get; set; }
         public string SearchPattern { get; set; }
         public string PostType { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime StartCreationDate { get; set; }
+        public DateTime EndCreationDate { get; set; }
+        public DateTime StartEntryDate { get; set; }
+        public DateTime EndEntryDate { get; set; }
+        public string Site { get; set; }
+
+
+
+        public RemoteLogRequest()
+        {
+            StartCreationDate = DateTime.MinValue;
+            EndCreationDate = DateTime.MaxValue;
+            StartEntryDate = DateTime.MinValue;
+            EndEntryDate = DateTime.MaxValue;
+        }
     }
 }
