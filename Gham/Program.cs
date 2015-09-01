@@ -109,7 +109,7 @@ namespace Phamhilator.Gham
         {
             chatRoom = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/low-quality-posts-hq");
             chatRoom.IgnoreOwnEvents = true;
-            chatRoom.StripMentionFromMessages = true;
+            chatRoom.StripMention = true;
             chatRoom.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleChatCommand));
         }
 
