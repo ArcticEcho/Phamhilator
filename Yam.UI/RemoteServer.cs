@@ -202,7 +202,7 @@ namespace Phamhilator.Yam.UI
             }
         }
 
-        public void SendLogEntries(RemoteClient client, HashSet<LogEntry> entries)
+        public void SendLogEntries(RemoteClient client, LogEntry[] entries)
         {
             if (client == null) { throw new ArgumentNullException("client"); }
             if (entries == null) { throw new ArgumentNullException("entries"); }

@@ -24,25 +24,33 @@ using System;
 
 namespace Phamhilator.Yam.UI
 {
+    /// <summary>
+    /// See https://github.com/ArcticEcho/Phamhilator/wiki/Yam-API for more details.
+    /// </summary>
     public class RemoteLogRequest
     {
-        public string SearchBy { get; set; }
-        public string SearchPattern { get; set; }
         public string PostType { get; set; }
-        public DateTime StartCreationDate { get; set; }
-        public DateTime EndCreationDate { get; set; }
-        public DateTime StartEntryDate { get; set; }
-        public DateTime EndEntryDate { get; set; }
         public string Site { get; set; }
+        public string Title { get; set; }
+        public string Body { get; set; }
+        public string Score { get; set; }
+        public string CreatedAfter { get; set; }
+        public string CreatedBefore { get; set; }
+        public string EntryAddedAfter { get; set; }
+        public string EntryAddedBefore { get; set; }
+        public string AuthorName { get; set; }
+        public string AuthorRep { get; set; }
+        public string AuthorNetworkID { get; set; }
 
 
 
         public RemoteLogRequest()
         {
-            StartCreationDate = DateTime.MinValue;
-            EndCreationDate = DateTime.MaxValue;
-            StartEntryDate = DateTime.MinValue;
-            EndEntryDate = DateTime.MaxValue;
+            // Dear future maintainer, don't forget to update these values once we reach 2200.
+            CreatedAfter = "1970-1-1";
+            CreatedBefore = "2200-1-1";
+            EntryAddedAfter = "1970-1-1";
+            EntryAddedBefore = "2200-1-1";
         }
     }
 }

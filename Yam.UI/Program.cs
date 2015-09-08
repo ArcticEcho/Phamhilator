@@ -33,11 +33,13 @@ using ServiceStack.Text;
 
 namespace Phamhilator.Yam.UI
 {
+    using System.Text.RegularExpressions;
     using RequestType = LocalRequest.RequestType;
 
     public class Program
     {
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
+        private static readonly Regex logSearchReg = new Regex("(?i)(site:|title:|body:|score:|createdAfter:|createdBefore:|authorName:|authorRep:|authorNetworkID:)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static string apiKeySenderEmail;
         private static string apiKeySenderPwd;
         private static string apiKeySenderHost;
@@ -101,8 +103,8 @@ namespace Phamhilator.Yam.UI
             locServer.Dispose();
             remServer.Dispose();
             PostLogger.StopLogger();
-            hq.PostMessageFast("`Yam v2 stopped.`");
-            socvr.PostMessageFast("`Yam v2 stopped.`");
+            hq.PostMessageFast("`Shutdown successful.`");
+            socvr.PostMessageFast("`Shutdown successful.`");
             hq.Leave();
             socvr.Leave();
             chatClient.Dispose();
@@ -204,7 +206,7 @@ namespace Phamhilator.Yam.UI
             };
             remServer.LogQueryReceived += (client, req) =>
             {
-                var entries = PostLogger.SearchLog(req);
+                var entries = PostLogger.SearchLog(req, 250);
                 remServer.SendLogEntries(client, entries);
             };
         }
@@ -262,7 +264,7 @@ namespace Phamhilator.Yam.UI
 
                     if (!cmdMatches)
                     {
-                        cmdMatches = HandlePrivilegedUserCommand(room, command);
+                        cmdMatches = HandlePrivilegedUserCommand(room, command, true);
 
                         if (!cmdMatches)
                         {
@@ -277,7 +279,7 @@ namespace Phamhilator.Yam.UI
                 }
                 else if (authUsers.IDs.Any(id => id == command.Author.ID))
                 {
-                    var cmdMatches = HandlePrivilegedUserCommand(room, command);
+                    var cmdMatches = HandlePrivilegedUserCommand(room, command, false);
 
                     if (!cmdMatches)
                     {
@@ -387,11 +389,11 @@ namespace Phamhilator.Yam.UI
             }
         }
 
-        private static bool HandlePrivilegedUserCommand(Room room, Message command)
+        private static bool HandlePrivilegedUserCommand(Room room, Message command, bool isOwner)
         {
-            if (command.Content.Trim().ToUpperInvariant().StartsWith("SEARCH LOG"))
+            if (command.Content.Trim().ToUpperInvariant().StartsWith("SEARCH"))
             {
-                HandleChatLogSearchRequest(room, command);
+                HandleChatLogSearchRequest(room, command, isOwner);
             }
             else
             {
@@ -419,6 +421,20 @@ namespace Phamhilator.Yam.UI
 
                 room.PostReply(command, "`Client successfully added; an email has been sent with the API key.`");
             }
+            else if (cmd.StartsWith("ADD USER"))
+            {
+                var id = 0;
+
+                if (!int.TryParse(new string(cmd.Where(char.IsDigit).ToArray()), out id))
+                {
+                    room.PostReply(command, "`Please enter a valid user ID..`");
+                    return true;
+                }
+
+                authUsers.AddUser(id);
+
+                room.PostReply(command, "`User added.`");
+            }
             else if (cmd == "STOP")
             {
                 room.PostReply(command, "`Stopping...`");
@@ -432,36 +448,82 @@ namespace Phamhilator.Yam.UI
             return true;
         }
 
-        private static void HandleChatLogSearchRequest(Room room, Message command)
+        private static void HandleChatLogSearchRequest(Room room, Message command, bool isOwner)
         {
-            var req = command.Content.Remove(0, 11);
-            var split = req.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-            var postType = split[0].ToLowerInvariant();
-            var searchBy = split[1];
-            var key = req.Remove(0, searchBy.Length + postType.Length + 2);
-
-            var entries = PostLogger.SearchLog(new RemoteLogRequest
+            var cmd = command.Content.Remove(0, 7).ToLowerInvariant();
+            var postType = cmd.Substring(0, 3);
+            var searchParams = logSearchReg.Split(cmd).Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
+            var req = new RemoteLogRequest
             {
-                PostType = postType,
-                SearchBy = searchBy,
-                SearchPattern = key
-            });
+                PostType = postType
+            };
 
-            if (entries.Count == 0)
+            for (var i = 0; i < searchParams.Length; i++)
+            {
+                if (searchParams[i].ToLowerInvariant() == "site:")
+                {
+                    req.Site = searchParams[i + 1].Trim();
+                    continue;
+                }
+                if (searchParams[i].ToLowerInvariant() == "title:")
+                {
+                    req.Title = searchParams[i + 1].Trim();
+                    continue;
+                }
+                if (searchParams[i].ToLowerInvariant() == "body:")
+                {
+                    req.Body = searchParams[i + 1].Trim();
+                    continue;
+                }
+                if (searchParams[i].ToLowerInvariant() == "score:")
+                {
+                    req.Score = searchParams[i + 1].Trim();
+                    continue;
+                }
+                if (searchParams[i].ToLowerInvariant() == "createdafter:")
+                {
+                    req.CreatedAfter = searchParams[i + 1].Trim();
+                    continue;
+                }
+                if (searchParams[i].ToLowerInvariant() == "createdbefore:")
+                {
+                    req.CreatedBefore = searchParams[i + 1].Trim();
+                    continue;
+                }
+                if (searchParams[i].ToLowerInvariant() == "authorname:")
+                {
+                    req.AuthorName = searchParams[i + 1].Trim();
+                    continue;
+                }
+                if (searchParams[i].ToLowerInvariant() == "authorrep:")
+                {
+                    req.AuthorRep = searchParams[i + 1].Trim();
+                    continue;
+                }
+                if (searchParams[i].ToLowerInvariant() == "authornetworkid:")
+                {
+                    req.AuthorNetworkID = searchParams[i + 1].Trim();
+                    continue;
+                }
+            }
+
+            var entries = PostLogger.SearchLog(req, isOwner ? 500 : 100);
+
+            if (entries.Length == 0)
             {
                 room.PostReply(command, "`No entries found.`");
             }
             else
             {
-                var entriesDump = entries.Dump();
+                var entriesDump = entries.Dump().Replace("\n			__type: \"Phamhilator.Yam.Core.Answer, Yam.Core\",", "");
                 var link = Hastebin.PostDocument(entriesDump);
-                if (entries.Count == 1)
+                if (entries.Length == 1)
                 {
                     room.PostReply(command, "[`1 entry found`](" + link + ")`.`");
                 }
                 else
                 {
-                    room.PostReply(command, "[`" + entries.Count + " entries found`](" + link + ")`.`");
+                    room.PostReply(command, "[`" + entries.Length + " entries found`](" + link + ")`.`");
                 }
             }
         }

@@ -112,72 +112,160 @@ namespace Phamhilator.Yam.UI
             EntryAdded(entry);
         }
 
-        public static HashSet<LogEntry> SearchLog(RemoteLogRequest req)
+        public static LogEntry[] SearchLog(RemoteLogRequest req, int maxEntries)
         {
-            var fieldLower = req.SearchBy.Trim().ToLowerInvariant();
-            var pattern = new Regex(req.SearchPattern, RegexOptions.Compiled | RegexOptions.CultureInvariant);
-            var entries = new HashSet<LogEntry>();
-            Func<LogEntry, string> getField = null;
+            var regexes = GetRemoteLogReqRegexes(req);
+            var entries = new LogEntry[0];
 
-            switch (fieldLower)
+            if (regexes.ContainsKey("Site"))
             {
-                case "title":
-                {
-                    getField = new Func<LogEntry, string>(entry => entry.Post.Title);
-                    break;
-                }
-                case "body":
-                {
-                    getField = new Func<LogEntry, string>(entry => entry.Post.Body);
-                    break;
-                }
-                case "site":
-                {
-                    getField = new Func<LogEntry, string>(entry => entry.Post.Site);
-                    break;
-                }
-                case "authorname":
-                {
-                    getField = new Func<LogEntry, string>(entry => entry.Post.AuthorName);
-                    break;
-                }
-                case "authornetworkid":
-                {
-                    getField = new Func<LogEntry, string>(entry => entry.Post.AuthorNetworkID.ToString());
-                    break;
-                }
+                entries = Log.Values.Where(entry => regexes["Site"].IsMatch(entry.Post.Site)).ToArray();
+            }
+            if (regexes.ContainsKey("Title"))
+            {
+                entries = entries.Where(entry => regexes["Title"].IsMatch(entry.Post.Title)).ToArray();
+            }
+            if (regexes.ContainsKey("Body"))
+            {
+                entries = entries.Where(entry => regexes["Body"].IsMatch(entry.Post.Body)).ToArray();
+            }
+            if (regexes.ContainsKey("AuthorName"))
+            {
+                entries = entries.Where(entry => regexes["AuthorName"].IsMatch(entry.Post.AuthorName)).ToArray();
+            }
+            if (regexes.ContainsKey("AuthorNetworkID"))
+            {
+                entries = entries.Where(entry => regexes["AuthorNetworkID"].IsMatch(entry.Post.AuthorNetworkID.ToString())).ToArray();
             }
 
-            var search = new Func<string, bool>(field => pattern.IsMatch(field));
+            entries = FilterByPostTypeAndTime(entries, req);
 
+            //TODO: Add support for filtering by Score and AuthorRep.
+
+            return entries;
+        }
+
+        private static Dictionary<string, Regex> GetRemoteLogReqRegexes(RemoteLogRequest req)
+        {
+            var regexes = new Dictionary<string, Regex>();
+            if (req == null) { return regexes; }
+
+            if (!string.IsNullOrWhiteSpace(req.Site))
+            {
+                if (!req.Site.IsValidRegex())
+                {
+                    throw new Exception("Invalid regex supplied for search field: Site.");
+                }
+
+                var reg = new Regex(req.Site, RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+                if (reg.IsReDoS())
+                {
+                    throw new Exception("ReDoS pattern detected for search field: Site.");
+                }
+
+                regexes.Add("Site", reg);
+            }
+            if (!string.IsNullOrWhiteSpace(req.Title))
+            {
+                if (!req.Title.IsValidRegex())
+                {
+                    throw new Exception("Invalid regex supplied for search field: Title.");
+                }
+
+                var reg = new Regex(req.Title, RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+                if (reg.IsReDoS())
+                {
+                    throw new Exception("ReDoS pattern detected for search field: Title.");
+                }
+
+                regexes.Add("Title", reg);
+
+            }
+            if (!string.IsNullOrWhiteSpace(req.Body))
+            {
+                if (!req.Body.IsValidRegex())
+                {
+                    throw new Exception("Invalid regex supplied for search field: Body.");
+                }
+
+                var reg = new Regex(req.Body, RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+                if (reg.IsReDoS())
+                {
+                    throw new Exception("ReDoS pattern detected for search field: Body.");
+                }
+
+                regexes.Add("Body", reg);
+            }
+            if (!string.IsNullOrWhiteSpace(req.AuthorName))
+            {
+                if (!req.AuthorName.IsValidRegex())
+                {
+                    throw new Exception("Invalid regex supplied for search field: AuthorName.");
+                }
+
+                var reg = new Regex(req.AuthorName, RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+                if (reg.IsReDoS())
+                {
+                    throw new Exception("ReDoS pattern detected for search field: AuthorName.");
+                }
+
+                regexes.Add("AuthorName", reg);
+            }
+            if (!string.IsNullOrWhiteSpace(req.AuthorNetworkID))
+            {
+                if (!req.AuthorNetworkID.IsValidRegex())
+                {
+                    throw new Exception("Invalid regex supplied for search field: AuthorNetworkID.");
+                }
+
+                var reg = new Regex(req.AuthorNetworkID, RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+                if (reg.IsReDoS())
+                {
+                    throw new Exception("ReDoS pattern detected for search field: AuthorNetworkID.");
+                }
+
+                regexes.Add("AuthorNetworkID", reg);
+            }
+
+            return regexes;
+        }
+
+        private static LogEntry[] FilterByPostTypeAndTime(LogEntry[] entries, RemoteLogRequest req)
+        {
             bool? fetchQs = null;
             var postType = req.PostType.Trim().ToLowerInvariant();
             if (!string.IsNullOrEmpty(req.PostType))
             {
-                if (postType.StartsWith("question"))
+                if (postType.StartsWith("q"))
                 {
                     fetchQs = true;
                 }
-                else if (postType.StartsWith("answer"))
+                else if (postType.StartsWith("a"))
                 {
                     fetchQs = false;
                 }
             }
 
-            foreach (var entry in Log.Values)
+            var createdAfter = DateTime.Parse(req.CreatedAfter);
+            var createdBefore = DateTime.Parse(req.CreatedBefore);
+            var entryAddedAfter = DateTime.Parse(req.EntryAddedAfter);
+            var entryAddedBefore = DateTime.Parse(req.EntryAddedBefore);
+
+            entries = entries.Where(entry =>
             {
-                if (entries.Count == 100) { break; }
-                if ((entry.Post.CreationDate < req.StartCreationDate || entry.Post.CreationDate > req.EndCreationDate) ||
-                    (entry.Timestamp < req.StartEntryDate || entry.Timestamp > req.EndEntryDate) ||
-                    (!string.IsNullOrWhiteSpace(req.Site) && entry.Post.Site == req.Site))
+                if ((entry.Post.CreationDate > createdAfter && entry.Post.CreationDate < createdBefore) &&
+                   (entry.Timestamp > entryAddedAfter && entry.Timestamp < entryAddedBefore) &&
+                   (fetchQs == null || (bool)fetchQs && entry.IsQuestion || !(bool)fetchQs && !entry.IsQuestion))
                 {
-                    continue;
+                    return true;
                 }
-                if (search(getField(entry)) && (fetchQs == null || (bool)fetchQs && entry.IsQuestion || !(bool)fetchQs && !entry.IsQuestion))
-                {
-                    entries.Add(entry);
-                }
-            }
+                return false;
+            }).ToArray();
 
             return entries;
         }
