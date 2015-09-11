@@ -140,7 +140,7 @@ namespace Phamhilator.Yam.UI
 
             entries = FilterByPostTypeAndTime(entries, req);
 
-            //TODO: Add support for filtering by Score and AuthorRep.
+            entries = FilterByNumericalProperties(entries, req);
 
             return entries;
         }
@@ -235,6 +235,64 @@ namespace Phamhilator.Yam.UI
             return regexes;
         }
 
+        private static LogEntry[] FilterByNumericalProperties(LogEntry[] entries, RemoteLogRequest req)
+        {
+            var filtered = entries;
+
+            if (!string.IsNullOrWhiteSpace(req.AuthorRep))
+            {
+                var predicate = GetNumericalPropertyPredicate(req.AuthorRep);
+
+                filtered = filtered.Where(e => predicate(e.Post.AuthorRep)).ToArray();
+            }
+
+            if (!string.IsNullOrWhiteSpace(req.Score))
+            {
+                var predicate = GetNumericalPropertyPredicate(req.Score);
+
+                filtered = filtered.Where(e => predicate(e.Post.Score)).ToArray();
+            }
+
+            return filtered;
+        }
+
+        private static Func<int, bool> GetNumericalPropertyPredicate(string expression)
+        {
+            var ex = expression.Trim();
+            var exVal = 0;
+
+            if (string.IsNullOrWhiteSpace(expression) ||
+                !int.TryParse(ex.Remove(0, ex[1] == '=' ? 2 : 1), out exVal))
+            {
+                throw new Exception("Invalid mathematical expression for property: AuthorRep.");
+            }
+
+            return new Func<int, bool>(val =>
+            {
+                if (ex.StartsWith("<="))
+                {
+                    return val <= exVal;
+                }
+                if (ex.StartsWith(">="))
+                {
+                    return val >= exVal;
+                }
+                if (ex[0] == '<')
+                {
+                    return val < exVal;
+                }
+                if (ex[0] == '>')
+                {
+                    return val > exVal;
+                }
+                if (char.IsDigit(ex[0]) || ex[0] == '-')
+                {
+                    return val == exVal;
+                }
+                return false;
+            });
+        }
+
         private static LogEntry[] FilterByPostTypeAndTime(LogEntry[] entries, RemoteLogRequest req)
         {
             bool? fetchQs = null;
@@ -256,7 +314,7 @@ namespace Phamhilator.Yam.UI
             var entryAddedAfter = DateTime.Parse(req.EntryAddedAfter);
             var entryAddedBefore = DateTime.Parse(req.EntryAddedBefore);
 
-            entries = entries.Where(entry =>
+            var filtered = entries.Where(entry =>
             {
                 if ((entry.Post.CreationDate > createdAfter && entry.Post.CreationDate < createdBefore) &&
                    (entry.Timestamp > entryAddedAfter && entry.Timestamp < entryAddedBefore) &&
@@ -267,7 +325,7 @@ namespace Phamhilator.Yam.UI
                 return false;
             }).ToArray();
 
-            return entries;
+            return filtered;
         }
 
 

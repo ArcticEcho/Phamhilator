@@ -71,11 +71,11 @@ namespace Phamhilator.Yam.Core
             }
 
             var html = new StringDownloader().DownloadString(url);
-            var dom = CQ.Create(html);
+            var dom = CQ.Create(html, Encoding.UTF8);
 
             var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
-            var authorRep = ParseRep(dom[".reputation-score"].Html());
+            var authorRep = ParseRep(dom[".post-signature.owner .reputation-score"].Html());
             var creationDate = DateTime.MaxValue;
             foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
             {
@@ -129,26 +129,26 @@ namespace Phamhilator.Yam.Core
             var networkID = -1;
             int authorRep;
 
-            if (dom[".reputation-score"][0] != null)
+            if (dom[".post-signature.owner .reputation-score"][0] != null)
             {
                 // Normal answer.
-                authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details a"][0].InnerHTML));
-                authorLink = TrimUrl("http://" + host + dom[".user-details a"][0].Attributes["href"]);
-                authorRep = ParseRep(dom[".reputation-score"][0].InnerHTML);
+                authorName = WebUtility.HtmlDecode(StripTags(dom[".post-signature.owner .user-details a"][0].InnerHTML));
+                authorLink = TrimUrl("http://" + host + dom[".post-signature.owner .user-details a"][0].Attributes["href"]);
+                authorRep = ParseRep(dom[".post-signature.owner .reputation-score"][0].InnerHTML);
             }
             else
             {
-                if (dom[".user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
+                if (dom[".post-signature.owner .user-details a"].Any(e => e.Attributes["href"] != null && e.Attributes["href"].Contains("/users/")))
                 {
                     // Community wiki.
-                    authorName = WebUtility.HtmlDecode(StripTags(dom[".user-details a"][1].InnerHTML));
-                    authorLink = TrimUrl("http://" + host + dom[".user-details a"][1].Attributes["href"]);
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[".post-signature.owner .user-details a"][1].InnerHTML));
+                    authorLink = TrimUrl("http://" + host + dom[".post-signature.owner .user-details a"][1].Attributes["href"]);
                     authorRep = 1;
                 }
                 else
                 {
                     // Dead account owner.
-                    authorName = WebUtility.HtmlDecode(StripTags(dom[ ".user-details"][0].InnerHTML));
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[".post-signature.owner .user-details"][0].InnerHTML));
                     authorName = authorName.Remove(authorName.Length - 4);
                     authorLink = null;
                     authorRep = 1;
@@ -243,12 +243,12 @@ namespace Phamhilator.Yam.Core
             try
             {
                 var req = (HttpWebRequest)WebRequest.Create(authorProfileLink);
-                req.AddRange(0, 2048);
+                req.AddRange(0, 4096);
                 var res = (HttpWebResponse)req.GetResponse();
                 using (var strm = res.GetResponseStream())
                 {
-                    var bytes = new byte[2048];
-                    strm.Read(bytes, 0, 2048);
+                    var bytes = new byte[4096];
+                    strm.Read(bytes, 0, 4096);
                     var html = Encoding.UTF8.GetString(bytes);
                     var id = new string(userNetworkID.Match(html).Value.Where(char.IsDigit).ToArray());
                     return int.Parse(id);
@@ -273,23 +273,23 @@ namespace Phamhilator.Yam.Core
             var authorRep = 0;
             var creationDate = DateTime.Parse(dom[".post-signature .user-info .user-action-time .relativetime"].Last()[0].Attributes["title"]);
 
-            var authorE = dom[aDom + ".user-details"].Last()[0];
+            var authorE = dom[aDom + ".post-signature .user-details"].Last()[0];
 
             if (authorE.InnerHTML.Contains("<a href=\"/users/"))
             {
-                authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details a"].Last()[0].InnerHTML).Trim());
-                authorLink = TrimUrl("http://" + host + dom[aDom + ".user-details a"].Last()[0].Attributes["href"].Trim());
+                authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".post-signature .user-details a"].Last()[0].InnerHTML).Trim());
+                authorLink = TrimUrl("http://" + host + dom[aDom + ".post-signature .user-details a"].Last()[0].Attributes["href"].Trim());
 
                 if (authorE.InnerHTML.Contains("class=\"reputation-score\""))
                 {
-                    authorRep = ParseRep(dom[aDom + ".reputation-score"].Last()[0].InnerHTML.Trim());
+                    authorRep = ParseRep(dom[aDom + ".post-signature .reputation-score"].Last()[0].InnerHTML.Trim());
                 }
             }
             else
             {
                 if (Regex.IsMatch(authorE.InnerHTML, "(?s)^\\s*<a.*?/revisions\".*?>.*</a>\\s*$", RegexOptions.CultureInvariant))
                 {
-                    authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".user-details a"].Last()[0].InnerHTML).Trim());
+                    authorName = WebUtility.HtmlDecode(StripTags(dom[aDom + ".post-signature .user-details a"].Last()[0].InnerHTML).Trim());
                 }
                 else
                 {

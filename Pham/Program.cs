@@ -31,6 +31,7 @@ using ChatExchangeDotNet;
 using Phamhilator.FlagExchangeDotNet;
 using ServiceStack.Text;
 using System.Text.RegularExpressions;
+using CsQuery;
 
 namespace Phamhilator.Pham.UI
 {

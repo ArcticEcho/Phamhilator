@@ -303,7 +303,7 @@ namespace Phamhilator.Yam.UI
             }
             catch (Exception ex)
             {
-                room.PostReplyFast(command, "Unable to execute command: " + ex.Message);
+                room.PostReplyFast(command, "`Unable to execute command: " + ex.Message + "`");
             }
         }
 
@@ -450,7 +450,7 @@ namespace Phamhilator.Yam.UI
 
         private static void HandleChatLogSearchRequest(Room room, Message command, bool isOwner)
         {
-            var cmd = command.Content.Remove(0, 7).ToLowerInvariant();
+            var cmd = command.Content.Remove(0, 7);
             var postType = cmd.Substring(0, 3);
             var searchParams = logSearchReg.Split(cmd).Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
             var req = new RemoteLogRequest
