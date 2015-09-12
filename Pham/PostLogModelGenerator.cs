@@ -35,28 +35,32 @@ namespace Phamhilator.Pham.UI
 {
     public class PostLogModelGenerator : IDisposable
     {
-        private const string cvDataKey = "CV Models";
-        private const string dvQDataKey = "DV Q Models";
-        private const string dvADataKey = "DV A Models";
         private readonly ManualResetEvent mre = new ManualResetEvent(false);
         private readonly HashSet<int> checkedPosts = new HashSet<int>();
         private readonly ModelGenerator modelGen = new ModelGenerator();
         private readonly LocalRequestClient client;
         private readonly PostClassifier cvC;
-        private readonly PostClassifier dvC;
+        private readonly PostClassifier dvQC;
+        private readonly PostClassifier dvAC;
         private bool dispose;
 
+        public const string CVDataKey = "CV Models";
+        public const string DVQDataKey = "DV Q Models";
+        public const string DVADataKey = "DV A Models";
 
 
-        public PostLogModelGenerator(ref LocalRequestClient yamClient, ref PostClassifier cvClassifier, ref PostClassifier dvClassifier)
+
+        public PostLogModelGenerator(ref LocalRequestClient yamClient, ref PostClassifier cvClassifier, ref PostClassifier dvQClassifier, ref PostClassifier dvAClassifier)
         {
             if (yamClient == null) { throw new ArgumentNullException("yamClient"); }
             if (cvClassifier == null) { throw new ArgumentNullException("cvClassifier"); }
-            if (dvClassifier == null) { throw new ArgumentNullException("dvClassifier"); }
+            if (dvQClassifier == null) { throw new ArgumentNullException("dvQClassifier"); }
+            if (dvAClassifier == null) { throw new ArgumentNullException("dvAClassifier"); }
 
             client = yamClient;
             cvC = cvClassifier;
-            dvC = dvClassifier;
+            dvQC = dvQClassifier;
+            dvAC = dvAClassifier;
 
             Task.Run(() => GenLoop());
         }
@@ -170,19 +174,21 @@ namespace Phamhilator.Pham.UI
             }
 
             var allModels = "";
-            if (client.DataExists("Pham", dvQDataKey))
+            if (client.DataExists("Pham", DVQDataKey))
             {
-                allModels = client.RequestData("Pham", dvQDataKey);
+                allModels = client.RequestData("Pham", DVQDataKey);
             }
             allModels += "\n" + model;
 
             if (entry.IsQuestion)
             {
-                client.UpdateData("Pham", dvQDataKey, allModels.Trim());
+                dvQC.Models.Add(modelAry);
+                client.UpdateData("Pham", DVQDataKey, allModels.Trim());
             }
             else
             {
-                client.UpdateData("Pham", dvADataKey, allModels.Trim());
+                dvAC.Models.Add(modelAry);
+                client.UpdateData("Pham", DVADataKey, allModels.Trim());
             }
         }
 
@@ -196,13 +202,14 @@ namespace Phamhilator.Pham.UI
             }
 
             var allModels = "";
-            if (client.DataExists("Pham", cvDataKey))
+            if (client.DataExists("Pham", CVDataKey))
             {
-                allModels = client.RequestData("Pham", cvDataKey);
+                allModels = client.RequestData("Pham", CVDataKey);
             }
             allModels += "\n" + model;
 
-            client.UpdateData("Pham", cvDataKey, allModels.Trim());
+            cvC.Models.Add(modelAry);
+            client.UpdateData("Pham", CVDataKey, allModels.Trim());
         }
     }
 }

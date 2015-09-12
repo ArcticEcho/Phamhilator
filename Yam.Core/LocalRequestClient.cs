@@ -26,6 +26,8 @@ using System.Threading;
 
 namespace Phamhilator.Yam.Core
 {
+    using System.Collections.Concurrent;
+    using System.Linq;
     using RequestType = LocalRequest.RequestType;
 
     public partial class LocalRequestClient : IDisposable
@@ -97,6 +99,7 @@ namespace Phamhilator.Yam.Core
         {
             var reqId = LocalRequest.GetNewID();
             var response = new LocalRequest();
+            var data = new ConcurrentDictionary<string, LogEntry>();
             Action<LocalRequest> dataReceivedAction;
             using (var dataWaitMre = new ManualResetEvent(false))
             {
@@ -104,14 +107,19 @@ namespace Phamhilator.Yam.Core
                 {
                     if (Guid.Parse((string)r.Options["FullFillReqID"]) == reqId)
                     {
-                        response = r;
-                        dataWaitMre.Set();
+                        if (r.Data is string && (string)r.Data == "<EOT>")
+                        {
+                            dataWaitMre.Set();
+                            return;
+                        }
+                        var e = (LogEntry)r.Data;
+                        data[e.Post.Url] = e;
                     }
                 });
                 var req = new LocalRequest
                 {
                     ID = reqId,
-                    Type = RequestType.DataManagerRequest,
+                    Type = RequestType.LogSearch,
                     Data = logReq
                 };
                 EventManager.ConnectListener(RequestType.LogSearch, dataReceivedAction);
@@ -121,7 +129,7 @@ namespace Phamhilator.Yam.Core
 
             EventManager.DisconnectListener(RequestType.LogSearch, dataReceivedAction);
 
-            return response.Data == null ? null : (LogEntry[])response.Data;
+            return data.Values.ToArray();
         }
 
         public bool DataExists(string owner, string key)

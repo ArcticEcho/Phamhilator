@@ -123,28 +123,39 @@ namespace Phamhilator.Pham.UI
         private string TagInlineCode(string body)
         {
             var tagged = body;
-            var m = inlineCode.Match(tagged);
+            var m = inlineCode.Matches(tagged);
+            var matches = new List<Match>();
 
-            while (m.Success)
+            foreach (Match match in m)
             {
-                var code = tagged.Substring(m.Index, m.Length);
-
-                tagged.Remove(m.Index, m.Length);
-
-                if (code.Length < 6)
+                if (matches.Count == 0 || match.Index < matches[0].Index)
                 {
-                    tagged.Insert(m.Index, " !IC-S! ");
-                }
-                else if (code.Length < 26)
-                {
-                    tagged.Insert(m.Index, " !IB-M! ");
+                    matches.Add(match);
                 }
                 else
                 {
-                    tagged.Insert(m.Index, " !IB-L! ");
+                    matches.Insert(0, match);
                 }
+            }
 
-                m = inlineCode.Match(tagged);
+            foreach (var match in matches)
+            {
+                var code = tagged.Substring(match.Index, match.Length);
+
+                tagged = tagged.Remove(match.Index, match.Length);
+
+                if (code.Length < 6)
+                {
+                    tagged = tagged.Insert(match.Index, " !IC-S! ");
+                }
+                else if (code.Length < 26)
+                {
+                    tagged = tagged.Insert(match.Index, " !IC-M! ");
+                }
+                else
+                {
+                    tagged = tagged.Insert(match.Index, " !IC-L! ");
+                }
             }
 
             return tagged;
@@ -160,19 +171,19 @@ namespace Phamhilator.Pham.UI
                 var quote = tagged.Substring(m.Index, m.Length);
                 var lines = quote.Split('\n');
 
-                tagged.Remove(m.Index, m.Length);
+                tagged = tagged.Remove(m.Index, m.Length);
 
                 if (lines.Length < 4)
                 {
-                    tagged.Insert(m.Index, " !BC-S! ");
+                    tagged = tagged.Insert(m.Index, " !BC-S! ");
                 }
                 else if (lines.Length < 11)
                 {
-                    tagged.Insert(m.Index, " !BC-M! ");
+                    tagged = tagged.Insert(m.Index, " !BC-M! ");
                 }
                 else
                 {
-                    tagged.Insert(m.Index, " !BC-L! ");
+                    tagged = tagged.Insert(m.Index, " !BC-L! ");
                 }
 
                 m = blockQuote.Match(tagged);
@@ -188,8 +199,6 @@ namespace Phamhilator.Pham.UI
 
             while (m.Success)
             {
-                var code = tagged.Substring(m.Index, m.Length);
-
                 tagged = tagged.Remove(m.Index, m.Length);
                 tagged = tagged.Insert(m.Index, " !L! ");
 

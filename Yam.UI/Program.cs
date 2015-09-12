@@ -234,11 +234,11 @@ namespace Phamhilator.Yam.UI
             }));
             locServer.PhamEventManager.ConnectListener(RequestType.LogSearch, new Action<LocalRequest>(req =>
             {
-                HandleDataManagerRequest(true, req);
+                HandleLocalLogSearchRequest(true, req);
             }));
             locServer.GhamEventManager.ConnectListener(RequestType.LogSearch, new Action<LocalRequest>(req =>
             {
-                HandleDataManagerRequest(false, req);
+                HandleLocalLogSearchRequest(false, req);
             }));
             //server.PhamEventManager.ConnectListener(RequestType.Info, new Action<LocalRequest>(req =>
             //{
@@ -617,10 +617,26 @@ namespace Phamhilator.Yam.UI
 
         private static void HandleLocalLogSearchRequest(bool fromPham, LocalRequest req)
         {
-            if (req.Data == null || !(req.Data is RemoteLogRequest) || req.Options == null || !req.Options.ContainsKey("FullFillReqID"))
+            if (req.Data == null || !(req.Data is RemoteLogRequest))
             {
                 SendEx(fromPham, new Exception("Invalid local log search request."));
                 return;
+            }
+
+            var entries = PostLogger.SearchLog((RemoteLogRequest)req.Data, int.MaxValue);
+
+            foreach (var e in entries)
+            {
+                locServer.SendData(fromPham, new LocalRequest
+                {
+                    ID = LocalRequest.GetNewID(),
+                    Type = RequestType.LogSearch,
+                    Options = new Dictionary<string, object>
+                    {
+                        { "FullFillReqID", req.ID }
+                    },
+                    Data = e
+                });
             }
             locServer.SendData(fromPham, new LocalRequest
             {
@@ -630,7 +646,7 @@ namespace Phamhilator.Yam.UI
                 {
                     { "FullFillReqID", req.ID }
                 },
-                Data = PostLogger.SearchLog((RemoteLogRequest)req.Data, int.MaxValue)
+                Data = "<EOT>"
             });
         }
 

@@ -27,27 +27,27 @@ using System.Collections.Generic;
 using Phamhilator.Yam.Core;
 using ChatExchangeDotNet;
 using Phamhilator.FlagExchangeDotNet;
+using System.Linq;
 
 namespace Phamhilator.Pham.UI
 {
     public class Program
     {
         private const string thresholdDataManagerKey = "Threshold";
-        private const string cvModelsDataManagerKey = "CV Models";
-        private const string dvModelsDataManagerKey = "DV Models";
-        private static readonly HashSet<Post> checkedPosts = new HashSet<Post>();
+        private static readonly List<Post> checkedPosts = new List<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static LocalRequestClient yamClient;
         private static Client chatClient;
         private static Room hq;
         private static Room socvr;
-        private static UserAccess userAccess;
+        private static UserAccess authUsers;
         private static Flagger flagger;
+        private static PostLogModelGenerator autoModelGen;
         private static PostClassifier cvClassifier;
-        private static PostClassifier dvClassifier;
+        private static PostClassifier dvQClassifier;
+        private static PostClassifier dvAClassifier;
         private static DateTime startTime;
-        private static float threshold;
-
+        private static double threshold;
 
 
 
@@ -94,12 +94,13 @@ namespace Phamhilator.Pham.UI
             Console.WriteLine("Stopping...");
 
             var shutdownMsg = new MessageBuilder();
-            shutdownMsg.AppendText("Pham v2 stopped.", TextFormattingOptions.InLineCode);
+            shutdownMsg.AppendText("Shutdown successful.", TextFormattingOptions.InLineCode);
 
             hq.PostMessageFast(shutdownMsg);
+            socvr.PostMessageFast(shutdownMsg);
 
-            socvr.Leave();
             hq.Leave();
+            socvr.Leave();
         }
 
 
@@ -140,28 +141,42 @@ namespace Phamhilator.Pham.UI
                 Data = ex.ExceptionObject
             });
 
-            Console.Write("done.\nLoading models...");
+            Console.Write("done.\nGathering config data...");
 
-            userAccess = new UserAccess(ref yamClient);
+            authUsers = new UserAccess(ref yamClient);
+
             if (!yamClient.DataExists("Pham", thresholdDataManagerKey))
             {
-                yamClient.UpdateData("Pham", thresholdDataManagerKey, "0");
+                yamClient.UpdateData("Pham", thresholdDataManagerKey, (3 / 2F).ToString());
             }
-            threshold = float.Parse(yamClient.RequestData("Pham", thresholdDataManagerKey));
+            threshold = double.Parse(yamClient.RequestData("Pham", thresholdDataManagerKey));
 
-            if (!yamClient.DataExists("Pham", cvModelsDataManagerKey))
+            Console.Write("done.\nLoading models...");
+
+            if (!yamClient.DataExists("Pham", PostLogModelGenerator.CVDataKey))
             {
-                yamClient.UpdateData("Pham", cvModelsDataManagerKey, "");
+                yamClient.UpdateData("Pham", PostLogModelGenerator.CVDataKey, "");
             }
-            var cvModels = yamClient.RequestData("Pham", cvModelsDataManagerKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var cvModels = yamClient.RequestData("Pham", PostLogModelGenerator.CVDataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             cvClassifier = new PostClassifier(cvModels);
 
-            if (!yamClient.DataExists("Pham", dvModelsDataManagerKey))
+            if (!yamClient.DataExists("Pham", PostLogModelGenerator.DVQDataKey))
             {
-                yamClient.UpdateData("Pham", dvModelsDataManagerKey, "");
+                yamClient.UpdateData("Pham", PostLogModelGenerator.DVQDataKey, "");
             }
-            var dvModels = yamClient.RequestData("Pham", dvModelsDataManagerKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            dvClassifier = new PostClassifier(dvModels);
+            var dvQModels = yamClient.RequestData("Pham", PostLogModelGenerator.DVQDataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            dvQClassifier = new PostClassifier(dvQModels);
+
+            if (!yamClient.DataExists("Pham", PostLogModelGenerator.DVADataKey))
+            {
+                yamClient.UpdateData("Pham", PostLogModelGenerator.DVADataKey, "");
+            }
+            var dvAModels = yamClient.RequestData("Pham", PostLogModelGenerator.DVADataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            dvAClassifier = new PostClassifier(dvAModels);
+
+            Console.Write("done.\nStarting auto model generator...");
+
+            autoModelGen = new PostLogModelGenerator(ref yamClient, ref cvClassifier, ref dvQClassifier, ref dvAClassifier);
 
             Console.WriteLine("done.\n");
         }
@@ -215,9 +230,7 @@ namespace Phamhilator.Pham.UI
         {
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(q =>
             {
-                if (q.Score > 2) { return; }
-
-                CheckPost(new Post
+                CheckPost(true, new Post
                 {
                     Url = q.Url,
                     Site = q.Site,
@@ -234,9 +247,7 @@ namespace Phamhilator.Pham.UI
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(a =>
             {
-                if (a.Score > 2) { return; }
-
-                CheckPost(a);
+                CheckPost(false, a);
             }));
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(ex =>
@@ -251,15 +262,28 @@ namespace Phamhilator.Pham.UI
             }));
         }
 
-        private static void CheckPost(Post post)
+        private static void CheckPost(bool isQuestion, Post post)
         {
             if (checkedPosts.Contains(post) || post.Site != "stackoverflow.com") { return; }
+            while (checkedPosts.Count > 3000)
+            {
+                checkedPosts.RemoveAt(0);
+            }
             checkedPosts.Add(post);
 
             var cvScore = cvClassifier.ClassifyPost(post);
-            var dvScore = dvClassifier.ClassifyPost(post);
+            var dvScore = 0D;
 
-            if (Math.Max(cvScore, dvScore) < (3 / 2D))
+            if (isQuestion)
+            {
+                dvScore = dvQClassifier.ClassifyPost(post);
+            }
+            else
+            {
+                dvScore = dvAClassifier.ClassifyPost(post);
+            }
+
+            if (Math.Max(cvScore, dvScore) < threshold)
             {
                 return;
             }
@@ -291,5 +315,108 @@ namespace Phamhilator.Pham.UI
         {
 
         }
+
+        private static void HandleChatCommand(Room room, Message command)
+        {
+            try
+            {
+                if (UserAccess.Owners.Any(id => id == command.Author.ID) || command.Author.IsRoomOwner || command.Author.IsMod)
+                {
+                    var cmdMatches = HandleOwnerCommand(room, command);
+
+                    if (!cmdMatches)
+                    {
+                        cmdMatches = HandlePrivilegedUserCommand(room, command, true);
+
+                        if (!cmdMatches)
+                        {
+                            cmdMatches = HandleNormalUserCommand(room, command);
+
+                            if (!cmdMatches)
+                            {
+                                room.PostReplyFast(command, "`Command not recognised.`");
+                            }
+                        }
+                    }
+                }
+                else if (authUsers.AuthorisedUsers.Any(id => id == command.Author.ID))
+                {
+                    var cmdMatches = HandlePrivilegedUserCommand(room, command, false);
+
+                    if (!cmdMatches)
+                    {
+                        cmdMatches = HandleNormalUserCommand(room, command);
+
+                        if (!cmdMatches)
+                        {
+                            room.PostReplyFast(command, "`Command not recognised (at your current access level).`");
+                        }
+                    }
+                }
+                else
+                {
+                    var cmdMatches = HandleNormalUserCommand(room, command);
+
+                    if (!cmdMatches)
+                    {
+                        room.PostReplyFast(command, "`Command not recognised (at your current access level).`");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                room.PostReplyFast(command, "`Unable to execute command: " + ex.Message + "`");
+            }
+        }
+
+        private static bool HandleNormalUserCommand(Room room, Message command)
+        {
+            if (command.Content.Trim().ToUpperInvariant() == "THRESHOLD")
+            {
+                room.PostReplyFast(command, "`Current threshold set to: " + threshold + "%.`");
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool HandlePrivilegedUserCommand(Room room, Message command, bool isOwner)
+        {
+            return false;
+        }
+
+        private static bool HandleOwnerCommand(Room room, Message command)
+        {
+            var cmd = command.Content.Trim().ToUpperInvariant();
+
+            if (cmd.StartsWith("SET THRESHOLD"))
+            {
+                var newVal = cmd.Remove(0, 14);
+                var newThreshold = 0D;
+
+                if (!double.TryParse(newVal, out newThreshold) || newThreshold < 1 || newThreshold > 100)
+                {
+                    room.PostReply(command, "`Please specify a valid percentage.`");
+                    return true;
+                }
+
+                threshold = newThreshold;
+                yamClient.UpdateData("Pham", thresholdDataManagerKey, threshold.ToString());
+
+                room.PostReply(command, "`Threshold successfully updated.`");
+            }
+            else if (cmd == "STOP")
+            {
+                room.PostReply(command, "`Stopping...`");
+                shutdownMre.Set();
+            }
+            else
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

@@ -308,7 +308,7 @@ namespace Phamhilator.Yam.UI
         private static LogEntry[] FilterByPostTypeAndTime(LogEntry[] entries, RemoteLogRequest req)
         {
             bool? fetchQs = null;
-            var postType = req.PostType.Trim().ToLowerInvariant();
+            var postType = req.PostType == null ? "" : req.PostType.Trim().ToLowerInvariant();
             if (!string.IsNullOrEmpty(req.PostType))
             {
                 if (postType.StartsWith("q"))
