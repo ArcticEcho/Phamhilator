@@ -76,6 +76,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Question.cs" />
+    <Compile Include="RemoteLogRequest.cs" />
     <Compile Include="StringDownloader.cs" />
     <Compile Include="UserAccess.cs" />
   </ItemGroup>

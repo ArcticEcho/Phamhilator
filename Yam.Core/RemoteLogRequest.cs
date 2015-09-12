@@ -20,9 +20,7 @@
 
 
 
-using System;
-
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Yam.Core
 {
     /// <summary>
     /// See https://github.com/ArcticEcho/Phamhilator/wiki/Yam-API for more details.

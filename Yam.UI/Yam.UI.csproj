@@ -70,7 +70,6 @@
     <Compile Include="LocalServer.cs" />
     <Compile Include="RemoteClient.cs" />
     <Compile Include="RemoteClientConnectionRequest.cs" />
-    <Compile Include="RemoteLogRequest.cs" />
     <Compile Include="RemoteServer.cs" />
     <Compile Include="RemoteSocketSender.cs" />
   </ItemGroup>

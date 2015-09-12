@@ -57,7 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoggedPostsManager.cs" />
+    <Compile Include="PostLogModelGenerator.cs" />
     <Compile Include="ModelGenerator.cs" />
     <Compile Include="PostClassifier.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

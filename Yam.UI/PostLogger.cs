@@ -139,10 +139,22 @@ namespace Phamhilator.Yam.UI
             }
 
             entries = FilterByPostTypeAndTime(entries, req);
-
             entries = FilterByNumericalProperties(entries, req);
 
-            return entries;
+            var trimmed = new HashSet<LogEntry>();
+            foreach (var e in entries)
+            {
+                if (trimmed.Count < maxEntries)
+                {
+                    trimmed.Add(e);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return trimmed.ToArray();
         }
 
         private static Dictionary<string, Regex> GetRemoteLogReqRegexes(RemoteLogRequest req)

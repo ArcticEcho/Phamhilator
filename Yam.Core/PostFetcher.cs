@@ -302,7 +302,7 @@ namespace Phamhilator.Yam.Core
                 networkID = GetUserNetworkID(authorLink);
             }
 
-            var excerpt = StripTags(body);
+            var excerpt = StripTags(body).Replace("\n", " ");
 
             excerpt = excerpt.Length > 75 ? excerpt.Substring(0, 72) + "..." : excerpt;
 

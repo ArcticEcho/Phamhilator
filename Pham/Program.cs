@@ -21,17 +21,12 @@
 
 
 using System;
-using System.Linq;
 using System.Threading;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Phamhilator.Yam.Core;
 using ChatExchangeDotNet;
 using Phamhilator.FlagExchangeDotNet;
-using ServiceStack.Text;
-using System.Text.RegularExpressions;
-using CsQuery;
 
 namespace Phamhilator.Pham.UI
 {
@@ -52,6 +47,7 @@ namespace Phamhilator.Pham.UI
         private static PostClassifier dvClassifier;
         private static DateTime startTime;
         private static float threshold;
+
 
 
 
@@ -144,7 +140,7 @@ namespace Phamhilator.Pham.UI
                 Data = ex.ExceptionObject
             });
 
-            Console.Write("done.\nSetting up...");
+            Console.Write("done.\nLoading models...");
 
             userAccess = new UserAccess(ref yamClient);
             if (!yamClient.DataExists("Pham", thresholdDataManagerKey))
@@ -209,7 +205,7 @@ namespace Phamhilator.Pham.UI
 
             Console.Write("done.\nJoining SOCVR...");
 
-            socvr = chatClient.JoinRoom("http://http://chat.stackoverflow.com/rooms/68414");//chat.stackoverflow.com/rooms/41570");
+            socvr = chatClient.JoinRoom("http://chat.stackoverflow.com/rooms/68414");//("http://chat.stackoverflow.com/rooms/41570");//
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleSocvrCommand));
 
             Console.WriteLine("done.");
@@ -219,7 +215,7 @@ namespace Phamhilator.Pham.UI
         {
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(q =>
             {
-                if (q.Score > 2 || q.AuthorRep > 1000) { return; }
+                if (q.Score > 2) { return; }
 
                 CheckPost(new Post
                 {
@@ -238,7 +234,7 @@ namespace Phamhilator.Pham.UI
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(a =>
             {
-                if (a.Score > 2 || a.AuthorRep > 1000) { return; }
+                if (a.Score > 2) { return; }
 
                 CheckPost(a);
             }));
@@ -268,7 +264,7 @@ namespace Phamhilator.Pham.UI
                 return;
             }
 
-            ReportPost(post, cvScore > dvScore);
+            ReportPost(post, dvScore > cvScore);
         }
 
         private static void ReportPost(Post post, bool dvWorthy)

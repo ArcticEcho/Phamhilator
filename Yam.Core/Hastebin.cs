@@ -35,6 +35,8 @@ namespace Phamhilator.Yam.Core
             var data = Encoding.UTF8.GetBytes(documentContent);
 
             request.Method = "POST";
+            request.Headers["Origin"] = "http://hastebin.com/";
+            request.Referer = "http://hastebin.com/";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
 

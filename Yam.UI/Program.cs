@@ -217,18 +217,26 @@ namespace Phamhilator.Yam.UI
             locServer.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 phamErrorCount++;
-                hq.PostMessage("Warning, error detected in Pham:\n\n" + req.Dump());
+                hq.PostMessage("Warning, exception thrown from Pham:\n\n" + req.Dump());
             }));
             locServer.GhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 ghamErrorCount++;
-                hq.PostMessage("Warning, error detected in Gham:\n\n" + req.Dump());
+                hq.PostMessage("Warning, exception thrown from Gham:\n\n" + req.Dump());
             }));
             locServer.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
             {
                 HandleDataManagerRequest(true, req);
             }));
             locServer.GhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
+            {
+                HandleDataManagerRequest(false, req);
+            }));
+            locServer.PhamEventManager.ConnectListener(RequestType.LogSearch, new Action<LocalRequest>(req =>
+            {
+                HandleDataManagerRequest(true, req);
+            }));
+            locServer.GhamEventManager.ConnectListener(RequestType.LogSearch, new Action<LocalRequest>(req =>
             {
                 HandleDataManagerRequest(false, req);
             }));
@@ -335,7 +343,7 @@ namespace Phamhilator.Yam.UI
                     var comp = PostLogger.LogSizeCompressed / 1024.0 / 1024;
                     var compRatio = Math.Round((uncomp / comp) * 100);
                     var dataReport = "    Log report:\n" +
-                                        "    Items: " + items + "\n" +
+                                        "    Posts: " + items + "\n" +
                                         "    Update interval: " + PostLogger.UpdateInterval + "\n" +
                                         "    Size (uncompressed): " + Math.Round(uncomp) + " MiB\n" +
                                         "    Size (compressed): " + Math.Round(comp) + " MiB\n" +
@@ -507,7 +515,7 @@ namespace Phamhilator.Yam.UI
                 }
             }
 
-            var entries = PostLogger.SearchLog(req, isOwner ? 500 : 100);
+            var entries = PostLogger.SearchLog(req, isOwner ? 250 : 100);
 
             if (entries.Length == 0)
             {
@@ -515,8 +523,53 @@ namespace Phamhilator.Yam.UI
             }
             else
             {
-                var entriesDump = entries.Dump().Replace("\n			__type: \"Phamhilator.Yam.Core.Answer, Yam.Core\",", "");
-                var link = Hastebin.PostDocument(entriesDump);
+                var entriesDump = Regex.Replace(entries.Dump(), "\r\n.*?__type: \"Phamhilator.Yam.Core.Answer, Yam.Core\",", "");
+                string link;
+
+                try
+                {
+                    link = Hastebin.PostDocument(entriesDump);
+                }
+                catch (WebException ex1)
+                {
+                    try
+                    {
+                        if (ex1.Response != null && ((HttpWebResponse)ex1.Response).StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            var trimmed = new HashSet<LogEntry>();
+                            foreach (var e in entries)
+                            {
+                                if (trimmed.Count < (isOwner ? 125 : 50))
+                                {
+                                    trimmed.Add(e);
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            entriesDump = Regex.Replace(entries.Dump(), "\r\n.*?__type: \"Phamhilator.Yam.Core.Answer, Yam.Core\",", "");
+                            link = Hastebin.PostDocument(entriesDump);
+                        }
+                        else
+                        {
+                            throw ex1;
+                        }
+                    }
+                    catch (WebException ex2)
+                    {
+                        if (ex2.Response != null && ((HttpWebResponse)ex2.Response).StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            room.PostReplyFast(command, "`Unable to upload entries (too much data).`");
+                            return;
+                        }
+                        else
+                        {
+                            throw ex2;
+                        }
+                    }
+                }
+
                 if (entries.Length == 1)
                 {
                     room.PostReply(command, "[`1 entry found`](" + link + ")`.`");
@@ -560,6 +613,25 @@ namespace Phamhilator.Yam.UI
             locServer.SendData(false, locReq);
 
             remServer.SendPost(a);
+        }
+
+        private static void HandleLocalLogSearchRequest(bool fromPham, LocalRequest req)
+        {
+            if (req.Data == null || !(req.Data is RemoteLogRequest) || req.Options == null || !req.Options.ContainsKey("FullFillReqID"))
+            {
+                SendEx(fromPham, new Exception("Invalid local log search request."));
+                return;
+            }
+            locServer.SendData(fromPham, new LocalRequest
+            {
+                ID = LocalRequest.GetNewID(),
+                Type = RequestType.LogSearch,
+                Options = new Dictionary<string, object>
+                {
+                    { "FullFillReqID", req.ID }
+                },
+                Data = PostLogger.SearchLog((RemoteLogRequest)req.Data, int.MaxValue)
+            });
         }
 
         private static void HandleDataManagerRequest(bool fromPham, LocalRequest req)
@@ -685,7 +757,8 @@ namespace Phamhilator.Yam.UI
             catch (Exception e)
             {
                 yamErrorCount++;
-                hq.PostMessage("Detected error in Yam:\n\n" + e.ToString());
+                hq.PostMessage("Warning, exception thrown from Yam:\n\n" + e.ToString());
+                socvr.PostMessage("Warning, exception thrown from Yam:\n\n" + e.ToString());
             }
         }
     }

@@ -93,6 +93,37 @@ namespace Phamhilator.Yam.Core
             sender.SendData(req);
         }
 
+        public LogEntry[] SendLoqRequest(RemoteLogRequest logReq)
+        {
+            var reqId = LocalRequest.GetNewID();
+            var response = new LocalRequest();
+            Action<LocalRequest> dataReceivedAction;
+            using (var dataWaitMre = new ManualResetEvent(false))
+            {
+                dataReceivedAction = new Action<LocalRequest>(r =>
+                {
+                    if (Guid.Parse((string)r.Options["FullFillReqID"]) == reqId)
+                    {
+                        response = r;
+                        dataWaitMre.Set();
+                    }
+                });
+                var req = new LocalRequest
+                {
+                    ID = reqId,
+                    Type = RequestType.DataManagerRequest,
+                    Data = logReq
+                };
+                EventManager.ConnectListener(RequestType.LogSearch, dataReceivedAction);
+                sender.SendData(req);
+                dataWaitMre.WaitOne(TimeSpan.FromSeconds(60));
+            }
+
+            EventManager.DisconnectListener(RequestType.LogSearch, dataReceivedAction);
+
+            return response.Data == null ? null : (LogEntry[])response.Data;
+        }
+
         public bool DataExists(string owner, string key)
         {
             return bool.Parse((string)SendDataManagerRequest("CHK", owner, key));
@@ -168,7 +199,7 @@ namespace Phamhilator.Yam.Core
                 };
                 EventManager.ConnectListener(RequestType.DataManagerRequest, dataReceivedAction);
                 sender.SendData(req);
-                dataWaitMre.WaitOne(TimeSpan.FromSeconds(10));
+                dataWaitMre.WaitOne(TimeSpan.FromSeconds(60));
             }
 
             EventManager.DisconnectListener(RequestType.DataManagerRequest, dataReceivedAction);
@@ -183,15 +214,6 @@ namespace Phamhilator.Yam.Core
                 var data = req.Type == RequestType.Answer || req.Type == RequestType.Question ? req.Data : req;
 
                 EventManager.CallListeners(req.Type, data);
-
-
-                //if (req.Type == RequestType.Answer || req.Type == RequestType.Question)
-                //{
-                //    EventManager.CallListeners(req.Type, req.Data);
-                //    return;
-                //}
-
-                //EventManager.CallListeners(req.Type, req);
             }
             catch (Exception ex)
             {

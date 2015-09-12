@@ -29,18 +29,19 @@ namespace Phamhilator.Pham.UI
     public class PostClassifier
     {
         private ModelGenerator modelGen;
-        private HashSet<string[]> models;
+
+        internal HashSet<string[]> Models { get; private set; }
 
 
 
         public PostClassifier(string[] badPostModels)
         {
             modelGen = new ModelGenerator();
-            models = new HashSet<string[]>();
+            Models = new HashSet<string[]>();
 
             foreach (var model in badPostModels)
             {
-                models.Add(model.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries));
+                Models.Add(model.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries));
             }
         }
 
@@ -51,7 +52,7 @@ namespace Phamhilator.Pham.UI
             var postModel = modelGen.GenerateModel(post.Body);
             var highestMatch = -1D;
 
-            foreach (var model in models)
+            foreach (var model in Models)
             {
                 var score = MatchScore(postModel, model);
                 highestMatch = Math.Max(highestMatch, score);

@@ -31,6 +31,7 @@ namespace Phamhilator.Yam.Core
             Command,
             Question,
             Answer,
+            LogSearch,
             Exception
         }
     }
