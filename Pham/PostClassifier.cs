@@ -22,6 +22,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.UI
@@ -58,7 +59,11 @@ namespace Phamhilator.Pham.UI
                 highestMatch = Math.Max(highestMatch, score);
             }
 
-            return highestMatch;
+            var modLen = postModel.Sum(t => t.Length);
+            var lexDensScore = ((1D / modLen) * Math.Log(post.Body.Length)) * 0.5;
+            lexDensScore += (1 - ((double)modLen / post.Body.Length)) * 0.5;
+
+            return Math.Max(highestMatch, lexDensScore);
         }
 
 
@@ -88,7 +93,7 @@ namespace Phamhilator.Pham.UI
                     }
                     else
                     {
-                        matchScore -= (1D / largeTagsLen) * (Math.Min(dist, 5D) / 5);
+                        matchScore -= (1D / largeTagsLen) * (Math.Min(dist, 3D) / 3);
                     }
                 }
             }
@@ -112,7 +117,7 @@ namespace Phamhilator.Pham.UI
                     }
                     else
                     {
-                        matchScore -= (1D / tagsB.Length) * (Math.Min(dist, 5D) / 5);
+                        matchScore -= (1D / tagsB.Length) * (Math.Min(dist, 3D) / 3);
                     }
                 }
             }

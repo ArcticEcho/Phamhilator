@@ -216,12 +216,12 @@ namespace Phamhilator.Pham.UI
             Console.Write("Joining HQ...");
 
             hq = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773");
-            hq.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleHqCommand));
+            hq.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(hq, m)));
 
             Console.Write("done.\nJoining SOCVR...");
 
             socvr = chatClient.JoinRoom("http://chat.stackoverflow.com/rooms/68414");//("http://chat.stackoverflow.com/rooms/41570");//
-            socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(HandleSocvrCommand));
+            socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
 
             Console.WriteLine("done.");
         }
@@ -271,11 +271,12 @@ namespace Phamhilator.Pham.UI
             }
             checkedPosts.Add(post);
 
-            var cvScore = cvClassifier.ClassifyPost(post);
-            var dvScore = 0D;
+            var cvScore = -1D;
+            var dvScore = -1D;
 
             if (isQuestion)
             {
+                cvScore = cvClassifier.ClassifyPost(post);
                 dvScore = dvQClassifier.ClassifyPost(post);
             }
             else
@@ -288,14 +289,21 @@ namespace Phamhilator.Pham.UI
                 return;
             }
 
-            ReportPost(post, dvScore > cvScore);
+            ReportPost(post, isQuestion, dvScore > cvScore);
         }
 
-        private static void ReportPost(Post post, bool dvWorthy)
+        private static void ReportPost(Post post, bool isQuestion, bool dvWorthy)
         {
             var msg = new MessageBuilder();
 
-            msg.AppendText((dvWorthy ? "DV" : "CV") + "-plz", TextFormattingOptions.Tag);
+            if (isQuestion)
+            {
+                msg.AppendText((dvWorthy ? "dv" : "cv") + "-plz", TextFormattingOptions.Tag);
+            }
+            else
+            {
+                msg.AppendText("naa", TextFormattingOptions.Tag);
+            }
             msg.AppendText(": ");
             msg.AppendLink(post.Title.Replace("\n", " "), post.Url, "Score: " + post.Score, TextFormattingOptions.None, WhiteSpace.None);
             msg.AppendText(", by ");
@@ -304,16 +312,6 @@ namespace Phamhilator.Pham.UI
 
             hq.PostMessageFast(msg);
             socvr.PostMessageFast(msg);
-        }
-
-        private static void HandleHqCommand(Message message)
-        {
-
-        }
-
-        private static void HandleSocvrCommand(Message message)
-        {
-
         }
 
         private static void HandleChatCommand(Room room, Message command)
@@ -373,7 +371,7 @@ namespace Phamhilator.Pham.UI
         {
             if (command.Content.Trim().ToUpperInvariant() == "THRESHOLD")
             {
-                room.PostReplyFast(command, "`Current threshold set to: " + threshold + "%.`");
+                room.PostReplyFast(command, "`Current threshold set to: " + threshold * 100 + "%.`");
                 return true;
             }
 
@@ -400,7 +398,7 @@ namespace Phamhilator.Pham.UI
                     return true;
                 }
 
-                threshold = newThreshold;
+                threshold = newThreshold / 100;
                 yamClient.UpdateData("Pham", thresholdDataManagerKey, threshold.ToString());
 
                 room.PostReply(command, "`Threshold successfully updated.`");
