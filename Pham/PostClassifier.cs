@@ -60,8 +60,8 @@ namespace Phamhilator.Pham.UI
             }
 
             var modLen = postModel.Sum(t => t.Length);
-            var lexDensScore = ((1D / modLen) * Math.Log(post.Body.Length)) * 0.5;
-            lexDensScore += (1 - ((double)modLen / post.Body.Length)) * 0.5;
+            var lexDensScore = ((1D / modLen) * Math.Log(post.Body.Length)) * (2 / 3D);
+            lexDensScore += (1 - ((double)modLen / post.Body.Length)) * (1 / 3D);
 
             return Math.Max(highestMatch, lexDensScore);
         }

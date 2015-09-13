@@ -289,26 +289,18 @@ namespace Phamhilator.Pham.UI
                 return;
             }
 
-            ReportPost(post, isQuestion, dvScore > cvScore);
+            ReportPost(post, dvScore, cvScore);
         }
 
-        private static void ReportPost(Post post, bool isQuestion, bool dvWorthy)
+        private static void ReportPost(Post post,  double scoreDV, double scoreCV)
         {
             var msg = new MessageBuilder();
 
-            if (isQuestion)
-            {
-                msg.AppendText((dvWorthy ? "dv" : "cv") + "-plz", TextFormattingOptions.Tag);
-            }
-            else
-            {
-                msg.AppendText("naa", TextFormattingOptions.Tag);
-            }
-            msg.AppendText(": ");
-            msg.AppendLink(post.Title.Replace("\n", " "), post.Url, "Score: " + post.Score, TextFormattingOptions.None, WhiteSpace.None);
-            msg.AppendText(", by ");
-            msg.AppendLink(post.AuthorName, post.AuthorLink, "Reputation: " + post.AuthorRep, TextFormattingOptions.None, WhiteSpace.None);
-            msg.AppendText(".");
+            msg.AppendText("Low quality (DV: " + Math.Round(scoreDV, 2) + " • CV: " + Math.Round(scoreCV, 2) + ")? ", TextFormattingOptions.InLineCode);
+            msg.AppendLink(post.Title.Replace("\n", " "), post.Url, "Score: " + post.Score, TextFormattingOptions.InLineCode, WhiteSpace.None);
+            msg.AppendText(", by ", TextFormattingOptions.InLineCode);
+            msg.AppendLink(post.AuthorName, post.AuthorLink, "Reputation: " + post.AuthorRep, TextFormattingOptions.InLineCode, WhiteSpace.None);
+            msg.AppendText(".", TextFormattingOptions.InLineCode);
 
             hq.PostMessageFast(msg);
             socvr.PostMessageFast(msg);
