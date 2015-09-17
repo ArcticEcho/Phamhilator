@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using ChatExchangeDotNet;
-using GibberishClassification;
+//using GibberishClassification;
 using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Gham
@@ -162,44 +162,44 @@ namespace Phamhilator.Gham
 
         private static void CheckQuestionForGibberish(Question question)
         {
-            var safeTitle = PostFetcher.ChatEscapeString(question.Title, " ");
-            var cleanTitle = GetCleanText(question.Title);
+        //    var safeTitle = PostFetcher.ChatEscapeString(question.Title, " ");
+        //    var cleanTitle = GetCleanText(question.Title);
 
-            if (cleanTitle.Length < 10) { return; }
+        //    if (cleanTitle.Length < 10) { return; }
 
-            var titleRes = GibberishClassifier.Classify(cleanTitle);
+        //    var titleRes = GibberishClassifier.Classify(cleanTitle);
 
-            if (titleRes > 75)
-            {
-                chatRoom.PostMessage("**Low Quality Q** (" + Math.Round(titleRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
-                return;
-            }
+        //    if (titleRes > 75)
+        //    {
+        //        chatRoom.PostMessage("**Low Quality Q** (" + Math.Round(titleRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
+        //        return;
+        //    }
 
-            var plainBody = GetCleanText(question.Body);
+        //    var plainBody = GetCleanText(question.Body);
 
-            if (plainBody.Length < 10) { return; }
+        //    if (plainBody.Length < 10) { return; }
 
-            var bodyRes = GibberishClassifier.Classify(plainBody);
+        //    var bodyRes = GibberishClassifier.Classify(plainBody);
 
-            if (bodyRes > 75)
-            {
-                chatRoom.PostMessage("**Low Quality Q** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
-            }
+        //    if (bodyRes > 75)
+        //    {
+        //        chatRoom.PostMessage("**Low Quality Q** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + question.Url + ").");
+        //    }
         }
 
         private static void CheckAnswerForGibberish(Answer answer)
         {
-            var plainBody = GetCleanText(answer.Body);
+            //var plainBody = GetCleanText(answer.Body);
 
-            if (plainBody.Length < 10) { return; }
+            //if (plainBody.Length < 10) { return; }
 
-            var safeTitle = PostFetcher.ChatEscapeString(answer.Title, " ");
-            var bodyRes = GibberishClassifier.Classify(plainBody);
+            //var safeTitle = PostFetcher.ChatEscapeString(answer.Title, " ");
+            //var bodyRes = GibberishClassifier.Classify(plainBody);
 
-            if (bodyRes > 75)
-            {
-                chatRoom.PostMessage("**Low Quality A** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + answer.Url + ").");
-            }
+            //if (bodyRes > 75)
+            //{
+            //    chatRoom.PostMessage("**Low Quality A** (" + Math.Round(bodyRes, 1) + "%): [" + safeTitle + "](" + answer.Url + ").");
+            //}
         }
 
         # endregion

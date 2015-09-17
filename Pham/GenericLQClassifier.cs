@@ -31,7 +31,12 @@ namespace Phamhilator.Pham.UI
     {
         public static KeyValuePair<string, double> ClassifyAnswer(string[] model, Answer post)
         {
-            // Link-only
+            // Ignore code-only answers.
+            if (model.Length < 5 && model.ContainsCodeBlockTag())
+            {
+                return new KeyValuePair<string, double>("Clean", 0);
+            }
+
             if (model.Length < 4 && !model.ContainsCodeBlockTag() &&
                 !model.ContainsBlockQuoteTag() && !model.ContainsInlineCodeTag() &&
                 !model.ContainsPictureTag() && model.ContainsLinkTag())
@@ -39,12 +44,11 @@ namespace Phamhilator.Pham.UI
                 return new KeyValuePair<string, double>("Link-only", 1);
             }
 
-            // Code-only (depending on accuracy, we may need to filter by code block size too).
-            if (!post.IsAccepted && model.Length < 4 && !model.ContainsLinkTag() &&
-                !model.ContainsBlockQuoteTag() && !model.ContainsInlineCodeTag() &&
-                !model.ContainsPictureTag() && post.Score < 1 && model.Any(t => t == "•CB-L•"))
+            if (!model.ContainsCodeBlockTag() && !model.ContainsBlockQuoteTag() &&
+                !model.ContainsInlineCodeTag() && !model.ContainsPictureTag() &&
+                !model.ContainsLinkTag() && model.Sum(t => t.Length + 1) - 1 > post.Body.Length * 0.9)
             {
-                return new KeyValuePair<string, double>("Code-only", 1);
+                return new KeyValuePair<string, double>("VLQ", 1);
             }
 
             var genScore = ClassifyPost(model, post, 60, 10);
@@ -55,12 +59,18 @@ namespace Phamhilator.Pham.UI
 
         public static KeyValuePair<string, double> ClassifyQuestion(string[] model, Question post)
         {
-            // Code-only (depending on accuracy, we may need to filter by code block size too).
-            if (model.Length < 4 && !model.ContainsLinkTag() &&
+            if (model.Length < 6 && !model.ContainsLinkTag() &&
                 !model.ContainsBlockQuoteTag() && !model.ContainsInlineCodeTag() &&
-                !model.ContainsPictureTag() && post.Score < 6 && model.Any(t => t == "•CB-L•"))
+                !model.ContainsPictureTag() && post.Score < 1 && model.Any(t => t == "•CB-L•"))
             {
                 return new KeyValuePair<string, double>("Code dump", 1);
+            }
+
+            if (!model.ContainsCodeBlockTag() && !model.ContainsBlockQuoteTag() &&
+               !model.ContainsInlineCodeTag() && !model.ContainsPictureTag() &&
+               !model.ContainsLinkTag() && model.Sum(t => t.Length + 1) - 1 > post.Body.Length * 0.9)
+            {
+                return new KeyValuePair<string, double>("VLQ", 1);
             }
 
             var genScore = ClassifyPost(model, post, 30, 5);
@@ -73,7 +83,7 @@ namespace Phamhilator.Pham.UI
 
         private static double ClassifyPost(string[] model, Post post, int rotPeriodDays, double voteDecayMax)
         {
-            var modLen = model.Sum(t => t.Length);
+            var modLen = model.Sum(t => t.Length + 1) - 1;
             var lexDensScore = ((1D / modLen) * Math.Log10(post.Body.Length)) * 3 * (2 / 3D);
             lexDensScore += (1 - ((double)modLen / post.Body.Length)) * (1 / 3D);
             lexDensScore *= model.ContainsBlockQuoteTag() ? 0.87 : 1;

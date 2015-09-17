@@ -31,8 +31,8 @@ namespace Phamhilator.Pham.UI
     {
         private const RegexOptions regOpts = RegexOptions.Compiled | RegexOptions.CultureInvariant;
         private Regex codeBlock = new Regex("(?is)<pre.*?><code>.*?</code></pre>", regOpts);
-        private Regex inlineCode = new Regex("(?is)<code>.*?</code>", regOpts);
-        private Regex blockQuote = new Regex("(?is)<blockquote>.*?</blockquote>", regOpts);
+        private Regex inlineCode = new Regex("(?is)<code.*?>", regOpts);
+        private Regex blockQuote = new Regex("(?is)<blockquote.*?>", regOpts);
         private Regex link = new Regex("(?is)<a.*?>", regOpts);
         private Regex pic = new Regex("(?is)<img.*?>", regOpts);
         private Regex htmlTags = new Regex("(?is)<.*?>", regOpts);
@@ -66,6 +66,21 @@ namespace Phamhilator.Pham.UI
             words = RemoveStopwords(words, 750);
 
             return words;
+        }
+
+        private string[] RemoveStopwords(string[] words, int stopwordCount)
+        {
+            var stripped = new List<string>();
+
+            foreach (var w in words)
+            {
+                if (!IsStopword(w, stopwordCount))
+                {
+                    stripped.Add(w);
+                }
+            }
+
+            return stripped.ToArray();
         }
 
 
@@ -261,21 +276,6 @@ namespace Phamhilator.Pham.UI
             expanded = expanded.Replace("'s", "");
 
             return expanded;
-        }
-
-        private string[] RemoveStopwords(string[] words, int stopwordCount)
-        {
-            var stripped = new List<string>();
-
-            foreach (var w in words)
-            {
-                if (!IsStopword(w, stopwordCount))
-                {
-                    stripped.Add(w);
-                }
-            }
-
-            return stripped.ToArray();
         }
 
         private bool IsStopword(string word, int stopwordCount)
