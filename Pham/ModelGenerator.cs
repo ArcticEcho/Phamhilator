@@ -63,7 +63,7 @@ namespace Phamhilator.Pham.UI
             }
 
             words = words.Where(w => !string.IsNullOrWhiteSpace(w) && w.Length > 1).ToArray();
-            words = RemoveStopwords(words, 500);
+            words = RemoveStopwords(words, 750);
 
             return words;
         }

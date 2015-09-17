@@ -70,10 +70,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GibberishClassifier.NET\GibberishClassification\GibberishClassification.csproj">
-      <Project>{09569529-5ed5-41f7-8b58-f61af8aa738b}</Project>
-      <Name>GibberishClassification</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NLP\NLP.csproj">
       <Project>{ff9060ca-0692-4170-a98b-c01bb03e726a}</Project>
       <Name>NLP</Name>

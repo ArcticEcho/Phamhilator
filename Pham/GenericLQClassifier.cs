@@ -32,7 +32,7 @@ namespace Phamhilator.Pham.UI
         public static KeyValuePair<string, double> ClassifyAnswer(string[] model, Answer post)
         {
             // Link-only
-            if (model.Length < 2 && !model.ContainsCodeBlockTag() &&
+            if (model.Length < 4 && !model.ContainsCodeBlockTag() &&
                 !model.ContainsBlockQuoteTag() && !model.ContainsInlineCodeTag() &&
                 !model.ContainsPictureTag() && model.ContainsLinkTag())
             {
@@ -40,9 +40,9 @@ namespace Phamhilator.Pham.UI
             }
 
             // Code-only (depending on accuracy, we may need to filter by code block size too).
-            if (model.Length < 2 && !model.ContainsLinkTag() &&
+            if (!post.IsAccepted && model.Length < 4 && !model.ContainsLinkTag() &&
                 !model.ContainsBlockQuoteTag() && !model.ContainsInlineCodeTag() &&
-                !model.ContainsPictureTag() && model.ContainsCodeBlockTag())
+                !model.ContainsPictureTag() && post.Score < 1 && model.Any(t => t == "•CB-L•"))
             {
                 return new KeyValuePair<string, double>("Code-only", 1);
             }
