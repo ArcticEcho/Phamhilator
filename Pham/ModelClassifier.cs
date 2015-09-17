@@ -22,12 +22,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.UI
 {
-    public class PostClassifier
+    public class ModelClassifier
     {
         private ModelGenerator modelGen;
 
@@ -35,7 +34,7 @@ namespace Phamhilator.Pham.UI
 
 
 
-        public PostClassifier(string[] badPostModels)
+        public ModelClassifier(string[] badPostModels)
         {
             modelGen = new ModelGenerator();
             Models = new HashSet<string[]>();
@@ -48,9 +47,8 @@ namespace Phamhilator.Pham.UI
 
 
 
-        public double ClassifyPost(Post post)
+        public double ClassifyPost(string[] postModel, Post post)
         {
-            var postModel = modelGen.GenerateModel(post.Body);
             var highestMatch = -1D;
 
             foreach (var model in Models)
@@ -59,16 +57,12 @@ namespace Phamhilator.Pham.UI
                 highestMatch = Math.Max(highestMatch, score);
             }
 
-            var modLen = postModel.Sum(t => t.Length);
-            var lexDensScore = ((1D / modLen) * Math.Log(post.Body.Length)) * (2 / 3D);
-            lexDensScore += (1 - ((double)modLen / post.Body.Length)) * (1 / 3D);
-
-            return Math.Max(highestMatch, lexDensScore);
+            return highestMatch;
         }
 
 
 
-        private static double MatchScore(string[] tagsA, string[] tagsB)
+        private double MatchScore(string[] tagsA, string[] tagsB)
         {
             var largeTagsLen = Math.Max(tagsA.Length, tagsB.Length);
             var matchScore = 0D;
@@ -125,7 +119,7 @@ namespace Phamhilator.Pham.UI
             return matchScore;
         }
 
-        private static int WordDist(string x, int xIndex, string[] tags)
+        private int WordDist(string x, int xIndex, string[] tags)
         {
             var distAhead = -1;
             var distBehind = -1;

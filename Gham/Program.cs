@@ -63,7 +63,7 @@ namespace Phamhilator.Gham
 
             while (!shutdown)
             {
-                if (Char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
+                if (char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
                 {
                     shutdown = true;
                 }

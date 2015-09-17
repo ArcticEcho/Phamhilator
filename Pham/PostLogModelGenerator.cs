@@ -39,9 +39,9 @@ namespace Phamhilator.Pham.UI
         private readonly HashSet<int> checkedPosts = new HashSet<int>();
         private readonly ModelGenerator modelGen = new ModelGenerator();
         private readonly LocalRequestClient client;
-        private readonly PostClassifier cvC;
-        private readonly PostClassifier dvQC;
-        private readonly PostClassifier dvAC;
+        private readonly ModelClassifier cvC;
+        private readonly ModelClassifier dvQC;
+        private readonly ModelClassifier dvAC;
         private bool dispose;
 
         public const string CVDataKey = "CV Models";
@@ -50,7 +50,7 @@ namespace Phamhilator.Pham.UI
 
 
 
-        public PostLogModelGenerator(ref LocalRequestClient yamClient, ref PostClassifier cvClassifier, ref PostClassifier dvQClassifier, ref PostClassifier dvAClassifier)
+        public PostLogModelGenerator(ref LocalRequestClient yamClient, ref ModelClassifier cvClassifier, ref ModelClassifier dvQClassifier, ref ModelClassifier dvAClassifier)
         {
             if (yamClient == null) { throw new ArgumentNullException("yamClient"); }
             if (cvClassifier == null) { throw new ArgumentNullException("cvClassifier"); }
@@ -115,7 +115,7 @@ namespace Phamhilator.Pham.UI
                     if (dispose) { return; }
                 }
 
-                mre.WaitOne(TimeSpan.FromSeconds((max - 360) * 10));
+                mre.WaitOne(TimeSpan.FromSeconds(Math.Max((max - 360) * 10, 0)));
             }
         }
 
@@ -154,7 +154,7 @@ namespace Phamhilator.Pham.UI
                 var dom = CQ.CreateFromUrl(url);
                 var qStatus = dom[".question-status"].Html();
 
-                if (qStatus.Contains("too broad") || qStatus.Contains("closed"))
+                if (qStatus.Contains("on hold") || qStatus.Contains("closed"))
                 {
                     return true;
                 }

@@ -23,21 +23,26 @@
 using System;
 
 ﻿namespace Phamhilator.Yam.Core
- {
-     public class Answer : Post
-     {
-         public Answer(string url, string title, string body, string site, int score, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep)
-         {
-             Url = url;
-             Title = title;
-             Body = body;
-             Site = site;
-             Score = score;
-             CreationDate = creationDate;
-             AuthorName = authorName;
-             AuthorLink = authorLink;
-             AuthorNetworkID = authorNetworkID;
-             AuthorRep = authorRep;
-         }
-     }
- }
+{
+    public class Answer : Post
+    {
+        public bool IsAccepted { get; private set; }
+
+
+
+        public Answer(string url, string title, string body, string site, int score, bool accepted, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep)
+        {
+            Url = url;
+            Title = title;
+            Body = body;
+            Site = site;
+            Score = score;
+            IsAccepted = accepted;
+            CreationDate = creationDate;
+            AuthorName = authorName;
+            AuthorLink = authorLink;
+            AuthorNetworkID = authorNetworkID;
+            AuthorRep = authorRep;
+        }
+    }
+}

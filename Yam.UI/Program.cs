@@ -71,14 +71,19 @@ namespace Phamhilator.Yam.UI
             Console.Write("done.\nStarting server...");
             InitialiseLocalServer();
             InitialiseRemoteServer();
+
+            var startUpMsg = new MessageBuilder();
+            startUpMsg.AppendText("Yam v2 started", TextFormattingOptions.InLineCode);
+
 #if DEBUG
             Console.Write("done.\nYam v2 started (debug), press Q to exit.\n");
-            hq.PostMessageFast("`Yam v2 started` (**`debug`**)`.`");
-            socvr.PostMessageFast("`Yam v2 started` (**`debug`**)`.`");
+            startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
+            hq.PostMessageFast(startUpMsg);
+            socvr.PostMessageFast(startUpMsg);
 #else
             Console.Write("done.\nYam v2 started, press Q to exit.\n");
-            hq.PostMessageFast("`Yam v2 started.`");
-            socvr.PostMessageFast("`Yam v2 started.`");
+            hq.PostMessageFast(startUpMsg);
+            socvr.PostMessageFast(startUpMsg);
 #endif
             startTime = DateTime.UtcNow;
 
@@ -86,7 +91,7 @@ namespace Phamhilator.Yam.UI
             {
                 while (true)
                 {
-                    if (Char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
+                    if (char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
                     {
                         Console.WriteLine("Stopping...");
                         shutdownMre.Set();

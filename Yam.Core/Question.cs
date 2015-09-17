@@ -27,18 +27,20 @@ namespace Phamhilator.Yam.Core
     public class Question : Post
     {
         public string[] Tags { get; private set; }
+        public bool IsClosed { get; private set; }
 
         internal string Html { get; private set; }
 
 
 
-        public Question(string url, string site, string title, string body, int score, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep, string[] tags, string html)
+        public Question(string url, string site, string title, string body, int score, bool closed, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep, string[] tags, string html)
         {
             Url = url;
             Title = title;
             Body = body;
             Site = site;
             Score = score;
+            IsClosed = closed;
             CreationDate = creationDate;
             AuthorName = authorName;
             AuthorLink = authorLink;

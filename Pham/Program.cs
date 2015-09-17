@@ -28,6 +28,7 @@ using Phamhilator.Yam.Core;
 using ChatExchangeDotNet;
 using Phamhilator.FlagExchangeDotNet;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Phamhilator.Pham.UI
 {
@@ -42,10 +43,11 @@ namespace Phamhilator.Pham.UI
         private static Room socvr;
         private static UserAccess authUsers;
         private static Flagger flagger;
+        private static ModelGenerator modelGen;
         private static PostLogModelGenerator autoModelGen;
-        private static PostClassifier cvClassifier;
-        private static PostClassifier dvQClassifier;
-        private static PostClassifier dvAClassifier;
+        private static ModelClassifier cvClassifier;
+        private static ModelClassifier dvQClassifier;
+        private static ModelClassifier dvAClassifier;
         private static DateTime startTime;
         private static double threshold;
 
@@ -70,9 +72,11 @@ namespace Phamhilator.Pham.UI
             Console.WriteLine("\nPham v2 started (debug).");
             startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
             hq.PostMessageFast(startUpMsg);
+            socvr.PostMessageFast(startUpMsg);
 #else
             Console.WriteLine("\nPham v2 started.");
             hq.PostMessageFast(startUpMsg);
+            socvr.PostMessageFast(startUpMsg);
 #endif
 
             ConnectYamClientEvents();
@@ -153,26 +157,28 @@ namespace Phamhilator.Pham.UI
 
             Console.Write("done.\nLoading models...");
 
+            modelGen = new ModelGenerator();
+
             if (!yamClient.DataExists("Pham", PostLogModelGenerator.CVDataKey))
             {
                 yamClient.UpdateData("Pham", PostLogModelGenerator.CVDataKey, "");
             }
             var cvModels = yamClient.RequestData("Pham", PostLogModelGenerator.CVDataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            cvClassifier = new PostClassifier(cvModels);
+            cvClassifier = new ModelClassifier(cvModels);
 
             if (!yamClient.DataExists("Pham", PostLogModelGenerator.DVQDataKey))
             {
                 yamClient.UpdateData("Pham", PostLogModelGenerator.DVQDataKey, "");
             }
             var dvQModels = yamClient.RequestData("Pham", PostLogModelGenerator.DVQDataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            dvQClassifier = new PostClassifier(dvQModels);
+            dvQClassifier = new ModelClassifier(dvQModels);
 
             if (!yamClient.DataExists("Pham", PostLogModelGenerator.DVADataKey))
             {
                 yamClient.UpdateData("Pham", PostLogModelGenerator.DVADataKey, "");
             }
             var dvAModels = yamClient.RequestData("Pham", PostLogModelGenerator.DVADataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            dvAClassifier = new PostClassifier(dvAModels);
+            dvAClassifier = new ModelClassifier(dvAModels);
 
             Console.Write("done.\nStarting auto model generator...");
 
@@ -228,27 +234,9 @@ namespace Phamhilator.Pham.UI
 
         private static void ConnectYamClientEvents()
         {
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(q =>
-            {
-                CheckPost(true, new Post
-                {
-                    Url = q.Url,
-                    Site = q.Site,
-                    Title = q.Title,
-                    Body = q.Body,
-                    Score = q.Score,
-                    CreationDate = q.CreationDate,
-                    AuthorName = q.AuthorName,
-                    AuthorLink = q.AuthorLink,
-                    AuthorNetworkID = q.AuthorNetworkID,
-                    AuthorRep = q.AuthorRep
-                });
-            }));
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(CheckQuestion));
 
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(a =>
-            {
-                CheckPost(false, a);
-            }));
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(CheckAnswer));
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(ex =>
             {
@@ -262,45 +250,77 @@ namespace Phamhilator.Pham.UI
             }));
         }
 
-        private static void CheckPost(bool isQuestion, Post post)
+        private static void CheckQuestion(Question q)
         {
-            if (checkedPosts.Contains(post) || post.Site != "stackoverflow.com") { return; }
+            if (checkedPosts.Contains(q) || q.Site != "stackoverflow.com") { return; }
             while (checkedPosts.Count > 3000)
             {
                 checkedPosts.RemoveAt(0);
             }
-            checkedPosts.Add(post);
+            checkedPosts.Add(q);
 
-            var cvScore = -1D;
-            var dvScore = -1D;
+            var model = modelGen.GenerateModel(q.Body);
+            var cvScore = cvClassifier.ClassifyPost(model, q);
+            var dvScore = dvQClassifier.ClassifyPost(model, q);
+            var genScore = GenericLQClassifier.ClassifyQuestion(model, q);
 
-            if (isQuestion)
-            {
-                cvScore = cvClassifier.ClassifyPost(post);
-                dvScore = dvQClassifier.ClassifyPost(post);
-            }
-            else
-            {
-                dvScore = dvAClassifier.ClassifyPost(post);
-            }
-
-            if (Math.Max(cvScore, dvScore) < threshold)
+            if (cvScore < threshold && dvScore < threshold && genScore.Value < threshold)
             {
                 return;
             }
 
-            ReportPost(post, dvScore, cvScore);
+            if (cvScore > dvScore && cvScore > genScore.Value)
+            {
+                ReportPost(q, new KeyValuePair<string, double>("CV-worthy", cvScore));
+            }
+            else if (dvScore > cvScore && dvScore > genScore.Value)
+            {
+                ReportPost(q, new KeyValuePair<string, double>("DV-worthy", dvScore));
+            }
+            else
+            {
+                ReportPost(q, genScore);
+            }
         }
 
-        private static void ReportPost(Post post,  double scoreDV, double scoreCV)
+        private static void CheckAnswer(Answer a)
+        {
+            if (checkedPosts.Contains(a) || a.Site != "stackoverflow.com") { return; }
+            while (checkedPosts.Count > 3000)
+            {
+                checkedPosts.RemoveAt(0);
+            }
+            checkedPosts.Add(a);
+
+            var model = modelGen.GenerateModel(a.Body);
+            var dvScore = dvQClassifier.ClassifyPost(model, a);
+            var genScore = GenericLQClassifier.ClassifyAnswer(model, a);
+
+            if (dvScore < threshold && genScore.Value < threshold)
+            {
+                return;
+            }
+
+            if (dvScore > genScore.Value)
+            {
+                ReportPost(a, new KeyValuePair<string, double>("DV-worthy", dvScore));
+            }
+            else
+            {
+                ReportPost(a, genScore);
+            }
+        }
+
+        private static void ReportPost(Post post, KeyValuePair<string, double> score)
         {
             var msg = new MessageBuilder();
 
-            msg.AppendText("Low quality (DV: " + Math.Round(scoreDV, 2) + " • CV: " + Math.Round(scoreCV, 2) + ")? ", TextFormattingOptions.InLineCode);
-            msg.AppendLink(post.Title.Replace("\n", " "), post.Url, "Score: " + post.Score, TextFormattingOptions.InLineCode, WhiteSpace.None);
-            msg.AppendText(", by ", TextFormattingOptions.InLineCode);
-            msg.AppendLink(post.AuthorName, post.AuthorLink, "Reputation: " + post.AuthorRep, TextFormattingOptions.InLineCode, WhiteSpace.None);
-            msg.AppendText(".", TextFormattingOptions.InLineCode);
+            msg.AppendText(score.Key, TextFormattingOptions.Bold);
+            msg.AppendText(" (" + Math.Round(score.Value, 2) + ") ");
+            msg.AppendLink(post.Title, post.Url, "Score: " + post.Score, TextFormattingOptions.None, WhiteSpace.None);
+            msg.AppendText(", by ");
+            msg.AppendLink(post.AuthorName, post.AuthorLink, "Reputation: " + post.AuthorRep, TextFormattingOptions.None, WhiteSpace.None);
+            msg.AppendText(".");
 
             hq.PostMessageFast(msg);
             socvr.PostMessageFast(msg);

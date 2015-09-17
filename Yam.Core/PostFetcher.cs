@@ -75,6 +75,7 @@ namespace Phamhilator.Yam.Core
 
             var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
+            var isClosed = IsQuestionClosed(dom);
             var authorRep = ParseRep(dom[".post-signature.owner .reputation-score"].Html());
             var creationDate = DateTime.MaxValue;
             foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
@@ -87,7 +88,7 @@ namespace Phamhilator.Yam.Core
                 }
             }
 
-            return new Question(url, host, title, body, score, creationDate, authorName, authorLink, networkID, authorRep, tags, html);
+            return new Question(url, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags, html);
         }
 
         public static Question GetQuestion(string postUrl)
@@ -113,6 +114,7 @@ namespace Phamhilator.Yam.Core
             var title = WebUtility.HtmlDecode(dom[".question-hyperlink"].Html());
             var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
+            var isClosed = IsQuestionClosed(dom);
             var creationDate = DateTime.MaxValue;
             foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
             {
@@ -160,7 +162,7 @@ namespace Phamhilator.Yam.Core
                 networkID = GetUserNetworkID(authorLink);
             }
 
-            return new Question(postUrl, host, title, body, score, creationDate, authorName, authorLink, networkID, authorRep, tags.ToArray(), html);
+            return new Question(postUrl, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags.ToArray(), html);
         }
 
         public static Answer GetAnswer(string postUrl)
@@ -194,6 +196,38 @@ namespace Phamhilator.Yam.Core
             }
 
             return null;
+        }
+
+        public static bool IsQuestionClosed(CQ dom)
+        {
+            try
+            {
+                var qStatus = dom[".question-status"].Html();
+
+                if (qStatus.Contains("on hold") || qStatus.Contains("closed"))
+                {
+                    return true;
+                }
+            }
+            catch (WebException) { }
+
+            return false;
+        }
+
+        public static bool IsAnswerAccepted(CQ dom)
+        {
+            try
+            {
+                var qStatus = dom[".vote-accepted-on"];
+
+                if (qStatus != null && !string.IsNullOrWhiteSpace(qStatus.Html()))
+                {
+                    return true;
+                }
+            }
+            catch (WebException) { }
+
+            return false;
         }
 
         public static int ParseRep(string rep)
@@ -256,7 +290,7 @@ namespace Phamhilator.Yam.Core
             }
             catch (Exception)
             {
-                return -1;
+                return -2;
             }
         }
 
@@ -264,14 +298,15 @@ namespace Phamhilator.Yam.Core
         {
             var aDom = "#answer-" + id + " ";
 
-            var score = int.Parse(dom[aDom + ".vote-count-post"][0].InnerHTML);
-            var body = WebUtility.HtmlDecode(dom[aDom + ".post-text"][0].InnerHTML.Trim());
             var url = "http://" + host + "/a/" + id;
+            var body = WebUtility.HtmlDecode(dom[aDom + ".post-text"][0].InnerHTML.Trim());
+            var score = int.Parse(dom[aDom + ".vote-count-post"][0].InnerHTML);
+            var isAccepted = IsAnswerAccepted(dom[aDom]);
+            var creationDate = DateTime.Parse(dom[".post-signature .user-info .user-action-time .relativetime"].Last()[0].Attributes["title"]);
             var authorName = "";
             var authorLink = "";
             var networkID = -1;
             var authorRep = 0;
-            var creationDate = DateTime.Parse(dom[".post-signature .user-info .user-action-time .relativetime"].Last()[0].Attributes["title"]);
 
             var authorE = dom[aDom + ".post-signature .user-details"].Last()[0];
 
@@ -302,11 +337,14 @@ namespace Phamhilator.Yam.Core
                 networkID = GetUserNetworkID(authorLink);
             }
 
-            var excerpt = StripTags(body).Replace("\n", " ");
+            var excerpt = Regex.Replace(StripTags(body).Replace("\n", " "), @"\s+", " ");
+            if (excerpt.Length > 80)
+            {
+                var lstWrdI = excerpt.IndexOf(' ', 75);
+                excerpt = excerpt.Remove(lstWrdI) + "...";
+            }
 
-            excerpt = excerpt.Length > 75 ? excerpt.Substring(0, 72) + "..." : excerpt;
-
-            return new Answer(url, excerpt, body, host, score, creationDate, authorName, authorLink, networkID, authorRep);
+            return new Answer(url, excerpt, body, host, score, isAccepted, creationDate, authorName, authorLink, networkID, authorRep);
         }
 
         private static string TrimUrl(string url)

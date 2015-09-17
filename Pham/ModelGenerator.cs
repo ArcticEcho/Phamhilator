@@ -33,9 +33,10 @@ namespace Phamhilator.Pham.UI
         private Regex codeBlock = new Regex("(?is)<pre.*?><code>.*?</code></pre>", regOpts);
         private Regex inlineCode = new Regex("(?is)<code>.*?</code>", regOpts);
         private Regex blockQuote = new Regex("(?is)<blockquote>.*?</blockquote>", regOpts);
-        private Regex link = new Regex("(?is)<a.*?</a>", regOpts);
+        private Regex link = new Regex("(?is)<a.*?>", regOpts);
+        private Regex pic = new Regex("(?is)<img.*?>", regOpts);
         private Regex htmlTags = new Regex("(?is)<.*?>", regOpts);
-        private Regex modelTags = new Regex(@"\![A-Z-]*?\!", regOpts);
+        private Regex modelTags = new Regex(@"\•[A-Z-]*?\•", regOpts);
         private string[] stopwords;
 
 
@@ -52,7 +53,7 @@ namespace Phamhilator.Pham.UI
             var prepared = PrepareBody(body);
             var words = prepared.Split(new[]
             {
-                '.', ',', ':', ';', '(', ')', '{', '}', '[', ']', '?', '/', '\\', ' ', '\n'
+                '.', ',', ':', ';', '(', ')', '{', '}', '[', ']', '?', '!', '/', '\\', ' ', '\n'
             }, StringSplitOptions.RemoveEmptyEntries);
 
             for (var i = 0; i < words.Length; i++)
@@ -85,6 +86,7 @@ namespace Phamhilator.Pham.UI
             tagged = TagInlineCode(tagged);
             tagged = TagBlockQuotes(tagged);
             tagged = TagLinks(tagged);
+            tagged = TagPictures(tagged);
 
             return tagged;
         }
@@ -103,15 +105,15 @@ namespace Phamhilator.Pham.UI
 
                 if (lines.Length < 4)
                 {
-                    tagged = tagged.Insert(m.Index, " !CB-S! ");
+                    tagged = tagged.Insert(m.Index, " •CB-S• ");
                 }
                 else if (lines.Length < 26)
                 {
-                    tagged = tagged.Insert(m.Index, " !CB-M! ");
+                    tagged = tagged.Insert(m.Index, " •CB-M• ");
                 }
                 else
                 {
-                    tagged = tagged.Insert(m.Index, " !CB-L! ");
+                    tagged = tagged.Insert(m.Index, " •CB-L• ");
                 }
 
                 m = codeBlock.Match(tagged);
@@ -146,15 +148,15 @@ namespace Phamhilator.Pham.UI
 
                 if (code.Length < 6)
                 {
-                    tagged = tagged.Insert(match.Index, " !IC-S! ");
+                    tagged = tagged.Insert(match.Index, " •IC-S• ");
                 }
                 else if (code.Length < 26)
                 {
-                    tagged = tagged.Insert(match.Index, " !IC-M! ");
+                    tagged = tagged.Insert(match.Index, " •IC-M• ");
                 }
                 else
                 {
-                    tagged = tagged.Insert(match.Index, " !IC-L! ");
+                    tagged = tagged.Insert(match.Index, " •IC-L• ");
                 }
             }
 
@@ -175,15 +177,15 @@ namespace Phamhilator.Pham.UI
 
                 if (lines.Length < 4)
                 {
-                    tagged = tagged.Insert(m.Index, " !BC-S! ");
+                    tagged = tagged.Insert(m.Index, " •BQ-S• ");
                 }
                 else if (lines.Length < 11)
                 {
-                    tagged = tagged.Insert(m.Index, " !BC-M! ");
+                    tagged = tagged.Insert(m.Index, " •BQ-M• ");
                 }
                 else
                 {
-                    tagged = tagged.Insert(m.Index, " !BC-L! ");
+                    tagged = tagged.Insert(m.Index, " •BQ-L• ");
                 }
 
                 m = blockQuote.Match(tagged);
@@ -200,9 +202,25 @@ namespace Phamhilator.Pham.UI
             while (m.Success)
             {
                 tagged = tagged.Remove(m.Index, m.Length);
-                tagged = tagged.Insert(m.Index, " !L! ");
+                tagged = tagged.Insert(m.Index, " •L• ");
 
                 m = link.Match(tagged);
+            }
+
+            return tagged;
+        }
+
+        private string TagPictures(string body)
+        {
+            var tagged = body;
+            var m = pic.Match(tagged);
+
+            while (m.Success)
+            {
+                tagged = tagged.Remove(m.Index, m.Length);
+                tagged = tagged.Insert(m.Index, " •P• ");
+
+                m = pic.Match(tagged);
             }
 
             return tagged;

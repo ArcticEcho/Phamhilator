@@ -57,9 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extension.cs" />
+    <Compile Include="GenericLQClassifier.cs" />
     <Compile Include="PostLogModelGenerator.cs" />
     <Compile Include="ModelGenerator.cs" />
-    <Compile Include="PostClassifier.cs" />
+    <Compile Include="ModelClassifier.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
