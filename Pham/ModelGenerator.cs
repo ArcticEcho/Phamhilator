@@ -30,14 +30,15 @@ namespace Phamhilator.Pham.UI
     public class ModelGenerator
     {
         private const RegexOptions regOpts = RegexOptions.Compiled | RegexOptions.CultureInvariant;
-        private Regex codeBlock = new Regex("(?is)<pre.*?><code>.*?</code></pre>", regOpts);
-        private Regex inlineCode = new Regex("(?is)<code.*?>", regOpts);
-        private Regex blockQuote = new Regex("(?is)<blockquote.*?>", regOpts);
-        private Regex link = new Regex("(?is)<a.*?>", regOpts);
-        private Regex pic = new Regex("(?is)<img.*?>", regOpts);
-        private Regex htmlTags = new Regex("(?is)<.*?>", regOpts);
-        private Regex modelTags = new Regex(@"\•[A-Z-]*?\•", regOpts);
+        private readonly Regex inlineCode = new Regex("(?is)<code>.*?</code>", regOpts);
+        private readonly Regex blockQuote = new Regex("(?is)<blockquote.*?></blockquote>", regOpts);
+        private readonly Regex link = new Regex("(?is)<a.*?</a>", regOpts);
+        private readonly Regex pic = new Regex("(?is)<img.*?>", regOpts);
+        private readonly Regex htmlTags = new Regex("(?is)<.*?>", regOpts);
+        private readonly Regex modelTags = new Regex(@"\•[A-Z-]*?\•", regOpts);
         private string[] stopwords;
+
+        internal static readonly Regex CodeBlock = new Regex("(?is)<pre.*?><code>.*?</code></pre>", regOpts);
 
 
 
@@ -109,7 +110,7 @@ namespace Phamhilator.Pham.UI
         private string TagCodeBlocks(string body)
         {
             var tagged = body;
-            var m = codeBlock.Match(tagged);
+            var m = CodeBlock.Match(tagged);
 
             while (m.Success)
             {
@@ -131,7 +132,7 @@ namespace Phamhilator.Pham.UI
                     tagged = tagged.Insert(m.Index, " •CB-L• ");
                 }
 
-                m = codeBlock.Match(tagged);
+                m = CodeBlock.Match(tagged);
             }
 
             return tagged;

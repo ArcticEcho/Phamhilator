@@ -28,7 +28,6 @@ using Phamhilator.Yam.Core;
 using ChatExchangeDotNet;
 using Phamhilator.FlagExchangeDotNet;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Phamhilator.Pham.UI
 {

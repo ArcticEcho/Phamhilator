@@ -23,6 +23,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.UI
@@ -32,7 +33,7 @@ namespace Phamhilator.Pham.UI
         public static KeyValuePair<string, double> ClassifyAnswer(string[] model, Answer post)
         {
             // Ignore code-only answers.
-            if (model.Length < 5 && model.ContainsCodeBlockTag())
+            if (model.Length < 6 && model.ContainsCodeBlockTag())
             {
                 return new KeyValuePair<string, double>("Clean", 0);
             }
@@ -59,11 +60,12 @@ namespace Phamhilator.Pham.UI
 
         public static KeyValuePair<string, double> ClassifyQuestion(string[] model, Question post)
         {
-            if (model.Length < 6 && !model.ContainsLinkTag() &&
+            var cdScore = CalcCodeDumpScore(model, post);
+            if (cdScore > 0.9 && !model.ContainsLinkTag() &&
                 !model.ContainsBlockQuoteTag() && !model.ContainsInlineCodeTag() &&
-                !model.ContainsPictureTag() && post.Score < 1 && model.Any(t => t == "•CB-L•"))
+                !model.ContainsPictureTag() && post.Score < 1)
             {
-                return new KeyValuePair<string, double>("Code dump", 1);
+                return new KeyValuePair<string, double>("Code dump", cdScore);
             }
 
             if (!model.ContainsCodeBlockTag() && !model.ContainsBlockQuoteTag() &&
@@ -80,6 +82,21 @@ namespace Phamhilator.Pham.UI
         }
 
 
+
+        private static double CalcCodeDumpScore(string[] model, Post post)
+        {
+            if (!model.ContainsCodeBlockTag()) { return 0; }
+
+            var matches = ModelGenerator.CodeBlock.Matches(post.Body);
+            var codeFactor = 0D;
+
+            foreach (Match m in matches)
+            {
+                codeFactor += m.Length;
+            }
+
+            return codeFactor / (codeFactor + model.Sum(t => t.StartsWith("•CB") ? 0 : t.Length + 1));
+        }
 
         private static double ClassifyPost(string[] model, Post post, int rotPeriodDays, double voteDecayMax)
         {
