@@ -39,7 +39,8 @@ namespace Phamhilator.Yam.Core
         private static readonly Regex shareLinkIDParser = new Regex(@".*(q|a)/|/\d*", regOpts);
         private static readonly Regex isShareLink = new Regex(@"(q|a)/\d*/\d*$", regOpts);
         private static readonly Regex escapeChars = new Regex(@"[_*`\[\]]", regOpts);
-        public static readonly Regex userNetworkID = new Regex(@"accountId: \d+", regOpts);
+        private static readonly Regex userNetworkID = new Regex(@"accountId: \d+", regOpts);
+        private static readonly Regex questionStatusDiv = new Regex("(?s)<div class=\"question-status.*?</div>", regOpts);
 
         public static readonly Regex HostParser = new Regex(@".*//|/.*", regOpts);
         public static readonly Regex PostIDParser = new Regex(@"\D*/|\D.*", regOpts);
@@ -73,7 +74,7 @@ namespace Phamhilator.Yam.Core
             var html = new StringDownloader().DownloadString(url);
             var dom = CQ.Create(html, Encoding.UTF8);
 
-            var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
+            var body = WebUtility.HtmlDecode(questionStatusDiv.Replace(dom[".post-text"].Html(), "").Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
             var isClosed = IsQuestionClosed(dom);
             var authorRep = ParseRep(dom[".post-signature.owner .reputation-score"].Html());
@@ -112,7 +113,7 @@ namespace Phamhilator.Yam.Core
             }
 
             var title = WebUtility.HtmlDecode(dom[".question-hyperlink"].Html());
-            var body = WebUtility.HtmlDecode(dom[".post-text"].Html().Trim());
+            var body = WebUtility.HtmlDecode(questionStatusDiv.Replace(dom[".post-text"].Html(), "").Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
             var isClosed = IsQuestionClosed(dom);
             var creationDate = DateTime.MaxValue;

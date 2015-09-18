@@ -61,9 +61,9 @@ namespace Phamhilator.Pham.UI
         public static KeyValuePair<string, double> ClassifyQuestion(string[] model, Question post)
         {
             var cdScore = CalcCodeDumpScore(model, post);
-            if (cdScore > 0.9 && !model.ContainsLinkTag() &&
+            if (cdScore > 0.75 && !model.ContainsLinkTag() &&
                 !model.ContainsBlockQuoteTag() && !model.ContainsInlineCodeTag() &&
-                !model.ContainsPictureTag() && post.Score < 1)
+                !model.ContainsPictureTag() && post.Score < 2)
             {
                 return new KeyValuePair<string, double>("Code dump", cdScore);
             }
@@ -85,17 +85,17 @@ namespace Phamhilator.Pham.UI
 
         private static double CalcCodeDumpScore(string[] model, Post post)
         {
-            if (!model.ContainsCodeBlockTag()) { return 0; }
+            if (!model.Any(t => t == "•CB-M•" || t == "•CB-L•")) { return 0; }
 
             var matches = ModelGenerator.CodeBlock.Matches(post.Body);
             var codeFactor = 0D;
 
             foreach (Match m in matches)
             {
-                codeFactor += m.Length;
+                codeFactor += m.Value.Count(c => c == '\n');
             }
 
-            return codeFactor / (codeFactor + model.Sum(t => t.StartsWith("•CB") ? 0 : t.Length + 1));
+            return 1 - (model.Length / codeFactor);
         }
 
         private static double ClassifyPost(string[] model, Post post, int rotPeriodDays, double voteDecayMax)

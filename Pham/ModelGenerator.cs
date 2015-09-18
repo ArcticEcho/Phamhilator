@@ -101,8 +101,8 @@ namespace Phamhilator.Pham.UI
             var tagged = TagCodeBlocks(body);
             tagged = TagInlineCode(tagged);
             tagged = TagBlockQuotes(tagged);
-            tagged = TagLinks(tagged);
             tagged = TagPictures(tagged);
+            tagged = TagLinks(tagged);
 
             return tagged;
         }
