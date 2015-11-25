@@ -71,11 +71,11 @@ namespace Phamhilator.Pham.UI
             Console.WriteLine("\nPham v2 started (debug).");
             startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
             hq.PostMessageFast(startUpMsg);
-            socvr.PostMessageFast(startUpMsg);
+            //socvr.PostMessageFast(startUpMsg);
 #else
             Console.WriteLine("\nPham v2 started.");
             hq.PostMessageFast(startUpMsg);
-            socvr.PostMessageFast(startUpMsg);
+            //socvr.PostMessageFast(startUpMsg);
 #endif
 
             ConnectYamClientEvents();
@@ -100,7 +100,7 @@ namespace Phamhilator.Pham.UI
             shutdownMsg.AppendText("Shutdown successful.", TextFormattingOptions.InLineCode);
 
             hq.PostMessageFast(shutdownMsg);
-            socvr.PostMessageFast(shutdownMsg);
+            //socvr.PostMessageFast(shutdownMsg);
 
             hq.Leave();
             socvr.Leave();
@@ -225,7 +225,7 @@ namespace Phamhilator.Pham.UI
 
             Console.Write("done.\nJoining SOCVR...");
 
-            socvr = chatClient.JoinRoom("http://chat.stackoverflow.com/rooms/68414");//("http://chat.stackoverflow.com/rooms/41570");//
+            socvr = chatClient.JoinRoom("http://chat.stackoverflow.com/rooms/41570");//("http://chat.stackoverflow.com/rooms/68414");//
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
 
             Console.WriteLine("done.");

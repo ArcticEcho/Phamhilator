@@ -52,17 +52,19 @@ namespace Phamhilator.Pham.UI
 
         public PostLogModelGenerator(ref LocalRequestClient yamClient, ref ModelClassifier cvClassifier, ref ModelClassifier dvQClassifier, ref ModelClassifier dvAClassifier)
         {
-            if (yamClient == null) { throw new ArgumentNullException("yamClient"); }
-            if (cvClassifier == null) { throw new ArgumentNullException("cvClassifier"); }
-            if (dvQClassifier == null) { throw new ArgumentNullException("dvQClassifier"); }
-            if (dvAClassifier == null) { throw new ArgumentNullException("dvAClassifier"); }
+            //TODO: Disable this for now.
 
-            client = yamClient;
-            cvC = cvClassifier;
-            dvQC = dvQClassifier;
-            dvAC = dvAClassifier;
+            //if (yamClient == null) { throw new ArgumentNullException("yamClient"); }
+            //if (cvClassifier == null) { throw new ArgumentNullException("cvClassifier"); }
+            //if (dvQClassifier == null) { throw new ArgumentNullException("dvQClassifier"); }
+            //if (dvAClassifier == null) { throw new ArgumentNullException("dvAClassifier"); }
 
-            Task.Run(() => GenLoop());
+            //client = yamClient;
+            //cvC = cvClassifier;
+            //dvQC = dvQClassifier;
+            //dvAC = dvAClassifier;
+
+            //Task.Run(() => GenLoop());
         }
 
 

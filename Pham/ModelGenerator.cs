@@ -60,28 +60,20 @@ namespace Phamhilator.Pham.UI
             for (var i = 0; i < words.Length; i++)
             {
                 if (modelTags.IsMatch(words[i])) { continue; }
-                words[i] = new string(words[i].Where(char.IsLetterOrDigit).ToArray());
-            }
-
-            words = words.Where(w => !string.IsNullOrWhiteSpace(w) && w.Length > 1).ToArray();
-            words = RemoveStopwords(words, 750);
-
-            return words;
-        }
-
-        private string[] RemoveStopwords(string[] words, int stopwordCount)
-        {
-            var stripped = new List<string>();
-
-            foreach (var w in words)
-            {
-                if (!IsStopword(w, stopwordCount))
+                if (words[i].All(char.IsDigit))
                 {
-                    stripped.Add(w);
+                    words[i] = "";
+                }
+                else
+                {
+                    words[i] = new string(words[i].Where(char.IsLetterOrDigit).ToArray());
                 }
             }
 
-            return stripped.ToArray();
+            words = words.Where(w => !string.IsNullOrWhiteSpace(w) && (w.Length > 1 || w == "i" || w == "a")).ToArray();
+            words = KeepStopwords(words, 400);
+
+          return words;
         }
 
 
@@ -277,6 +269,21 @@ namespace Phamhilator.Pham.UI
             expanded = expanded.Replace("'s", "");
 
             return expanded;
+        }
+
+        private string[] KeepStopwords(string[] words, int stopwordCount)
+        {
+            var stopwords = new List<string>();
+
+            foreach (var w in words)
+            {
+                if (IsStopword(w, stopwordCount) || modelTags.IsMatch(w) || w == "i" || w == "a")
+                {
+                    stopwords.Add(w);
+                }
+            }
+
+            return stopwords.ToArray();
         }
 
         private bool IsStopword(string word, int stopwordCount)

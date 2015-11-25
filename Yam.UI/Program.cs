@@ -45,7 +45,6 @@ namespace Phamhilator.Yam.UI
         private static string apiKeySenderHost;
         private static Client chatClient;
         private static AuthorisedUsers authUsers;
-        private static Room hq;
         private static Room socvr;
         private static RealtimePostSocket postSocket;
         private static LocalServer locServer;
@@ -60,12 +59,9 @@ namespace Phamhilator.Yam.UI
         private static void Main(string[] args)
         {
             Console.Title = "Yam v2";
-            GetApiKeyEmailCreds();
-            TryLogin();
+            InitialiseFromConfig();
             Console.Write("Joining chat room(s)...");
             JoinRooms();
-            Console.Write("done.\nInitialising config data...");
-            InitialiseConfigData();
             Console.Write("done.\nInitialising log...");
             PostLogger.InitialiseLogger();
             Console.Write("done.\nStarting server...");
@@ -78,12 +74,10 @@ namespace Phamhilator.Yam.UI
 #if DEBUG
             Console.Write("done.\nYam v2 started (debug), press Q to exit.\n");
             startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
-            hq.PostMessageFast(startUpMsg);
-            socvr.PostMessageFast(startUpMsg);
+            //socvr.PostMessageFast(startUpMsg);
 #else
             Console.Write("done.\nYam v2 started, press Q to exit.\n");
-            hq.PostMessageFast(startUpMsg);
-            socvr.PostMessageFast(startUpMsg);
+            //socvr.PostMessageFast(startUpMsg);
 #endif
             startTime = DateTime.UtcNow;
 
@@ -108,85 +102,34 @@ namespace Phamhilator.Yam.UI
             locServer.Dispose();
             remServer.Dispose();
             PostLogger.StopLogger();
-            hq.PostMessageFast("`Shutdown successful.`");
-            socvr.PostMessageFast("`Shutdown successful.`");
-            hq.Leave();
+            //socvr.PostMessageFast("`Shutdown successful.`");
             socvr.Leave();
             chatClient.Dispose();
         }
 
-        private static void GetApiKeyEmailCreds()
-        {
-            Console.WriteLine("Please enter your API key email credentials.\n");
-
-            Console.Write("Email: ");
-            apiKeySenderEmail = Console.ReadLine();
-
-            Console.Write("Password: ");
-            apiKeySenderPwd = Console.ReadLine();
-
-            var domain = apiKeySenderEmail.Split('@')[1].ToLowerInvariant();
-            switch(domain)
-            {
-                case "gmail.com":
-                {
-                    apiKeySenderHost = "smtp.gmail.com";
-                    return;
-                }
-                case "outlook.com":
-                {
-                    apiKeySenderHost = "smtp-mail.outlook.com";
-                    return;
-                }
-                //TODO: Add more later.
-            }
-        }
-
-        private static void TryLogin()
-        {
-            var success = false;
-            while (true)
-            {
-                Console.WriteLine("\nPlease enter your Stack Exchange OpenID credentials.\n");
-
-                Console.Write("Email: ");
-                var email = Console.ReadLine();
-
-                Console.Write("Password: ");
-                var password = Console.ReadLine();
-
-                try
-                {
-                    Console.Write("\nAuthenticating...");
-                    chatClient = new Client(email, password);
-                    Console.WriteLine("login successful!");
-                    success = true;
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("failed to login.");
-                }
-                Thread.Sleep(3000);
-                Console.Clear();
-                if (success) { return; }
-            }
-        }
-
         private static void JoinRooms()
         {
-            hq = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773/");
-            hq.IgnoreOwnEvents = true;
-            hq.StripMention = true;
-            hq.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(hq, m)));
+            var cr = new ConfigReader();
 
-            socvr = chatClient.JoinRoom("http://chat.stackoverflow.com/rooms/41570/");//("http://chat.stackoverflow.com/rooms/68414");//
+            socvr = chatClient.JoinRoom(cr.GetSetting("room"));
             socvr.IgnoreOwnEvents = true;
             socvr.StripMention = true;
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
         }
 
-        private static void InitialiseConfigData()
+        private static void InitialiseFromConfig()
         {
+            var cr = new ConfigReader();
+
+            var email = cr.GetSetting("se email");
+            var pwd = cr.GetSetting("se pass");
+
+            chatClient = new Client(email, pwd);
+
+            apiKeySenderEmail = cr.GetSetting("api key sender email");
+            apiKeySenderPwd = cr.GetSetting("api key sender pass");
+            apiKeySenderHost = cr.GetSetting("smtp host");
+
             authUsers = new AuthorisedUsers();
         }
 
@@ -195,19 +138,19 @@ namespace Phamhilator.Yam.UI
             remServer = new RemoteServer();
             remServer.RealtimePostClientConnected += client =>
             {
-                hq.PostMessage("`Remote client: " + client.Owner + " has connected (real-time post socket).`");
+                Console.WriteLine("Remote client: " + client.Owner + " has connected (real-time post socket).");
             };
             remServer.RealtimePostClientDisconnected += client =>
             {
-                hq.PostMessage("`Remote client: " + client.Owner + " has disconnected (real-time post socket).`");
+                Console.WriteLine("Remote client: " + client.Owner + " has disconnected (real-time post socket).");
             };
             remServer.LogQueryClientConnected += client =>
             {
-                hq.PostMessage("`Remote client: " + client.Owner + " has connected (log query socket).`");
+                Console.WriteLine("Remote client: " + client.Owner + " has connected (log query socket).");
             };
             remServer.LogQueryClientDisconnected += client =>
             {
-                hq.PostMessage("`Remote client: " + client.Owner + " has disconnected (log query socket).`");
+                Console.WriteLine("Remote client: " + client.Owner + " has disconnected (log query socket).");
             };
             remServer.LogQueryReceived += (client, req) =>
             {
@@ -222,12 +165,12 @@ namespace Phamhilator.Yam.UI
             locServer.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 phamErrorCount++;
-                hq.PostMessage("Warning, exception thrown from Pham:\n\n" + req.Dump());
+                Console.WriteLine("Warning, exception thrown from Pham:\n\n" + req.Dump());
             }));
             locServer.GhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
                 ghamErrorCount++;
-                hq.PostMessage("Warning, exception thrown from Gham:\n\n" + req.Dump());
+                Console.WriteLine("Warning, exception thrown from Gham:\n\n" + req.Dump());
             }));
             locServer.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
             {
@@ -281,12 +224,7 @@ namespace Phamhilator.Yam.UI
 
                         if (!cmdMatches)
                         {
-                            cmdMatches = HandleNormalUserCommand(room, command);
-
-                            if (!cmdMatches)
-                            {
-                                room.PostReplyFast(command, "`Command not recognised.`");
-                            }
+                            HandleNormalUserCommand(room, command);
                         }
                     }
                 }
@@ -296,22 +234,12 @@ namespace Phamhilator.Yam.UI
 
                     if (!cmdMatches)
                     {
-                        cmdMatches = HandleNormalUserCommand(room, command);
-
-                        if (!cmdMatches)
-                        {
-                            room.PostReplyFast(command, "`Command not recognised (at your current access level).`");
-                        }
+                        HandleNormalUserCommand(room, command);
                     }
                 }
                 else
                 {
-                    var cmdMatches = HandleNormalUserCommand(room, command);
-
-                    if (!cmdMatches)
-                    {
-                        room.PostReplyFast(command, "`Command not recognised (at your current access level).`");
-                    }
+                    HandleNormalUserCommand(room, command);
                 }
             }
             catch (Exception ex)
@@ -720,7 +648,7 @@ namespace Phamhilator.Yam.UI
             }
             catch (Exception ex)
             {
-                hq.PostMessage("Detected error in Yam:\n\n" + ex.ToString());
+                Console.WriteLine("Detected error in Yam:\n\n" + ex.ToString());
                 yamErrorCount++;
 
                 // Post back to the listener (prevent the calling thread from hanging).
@@ -778,8 +706,8 @@ namespace Phamhilator.Yam.UI
             catch (Exception e)
             {
                 yamErrorCount++;
-                hq.PostMessage("Warning, exception thrown from Yam:\n\n" + e.ToString());
-                socvr.PostMessage("Warning, exception thrown from Yam:\n\n" + e.ToString());
+                Console.WriteLine("Warning, exception thrown from Yam:\n\n" + e.ToString());
+                //socvr.PostMessage("Warning, exception thrown from Yam:\n\n" + e.ToString());
             }
         }
     }
