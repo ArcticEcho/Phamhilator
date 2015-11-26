@@ -64,6 +64,7 @@
     <Compile Include="DataManager.cs" />
     <Compile Include="DataUtilities.cs" />
     <Compile Include="IPFetcher.cs" />
+    <Compile Include="LogReader.cs" />
     <Compile Include="PostLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

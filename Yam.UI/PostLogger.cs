@@ -23,6 +23,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,6 +36,7 @@ namespace Phamhilator.Yam.UI
     public static class PostLogger
     {
         private const string dataManagerLogKey = "Post Log";
+        private static readonly ConcurrentDictionary<uint, LogEntry> logQueue = new ConcurrentDictionary<uint, LogEntry>();
         private static ManualResetEvent loggerIntervalMre;
         private static ManualResetEvent loggerStoppedMre;
         private static Thread loggerThread;
@@ -44,7 +46,6 @@ namespace Phamhilator.Yam.UI
         public static event EntryEventHandler EntryAdded;
         public static event EntryEventHandler EntryRemoved;
 
-        public static ConcurrentDictionary<uint, LogEntry> Log { get; private set; }
 
         public static int LogSizeUncompressed { get; private set; }
 
@@ -59,17 +60,17 @@ namespace Phamhilator.Yam.UI
 
         public static void InitialiseLogger()
         {
-            if (DataManager.DataExists("Yam", dataManagerLogKey))
-            {
-                var bytes = DataManager.LoadRawData("Yam", dataManagerLogKey);
-                var uncompData = DataUtilities.GZipDecompress(bytes);
-                var json = Encoding.UTF8.GetString(uncompData);
-                Log = JsonSerializer.DeserializeFromString<ConcurrentDictionary<uint, LogEntry>>(json);
-            }
-            else
-            {
-                Log = new ConcurrentDictionary<uint, LogEntry>();
-            }
+            //if (DataManager.DataExists("Yam", dataManagerLogKey))
+            //{
+            //    var bytes = DataManager.LoadRawData("Yam", dataManagerLogKey);
+            //    var uncompData = DataUtilities.GZipDecompress(bytes);
+            //    var json = Encoding.UTF8.GetString(uncompData);
+            //    Log = JsonSerializer.DeserializeFromString<ConcurrentDictionary<uint, LogEntry>>(json);
+            //}
+            //else
+            //{
+            //    Log = new ConcurrentDictionary<uint, LogEntry>();
+            //}
 
             loggerIntervalMre = new ManualResetEvent(false);
             loggerStoppedMre = new ManualResetEvent(false);
@@ -96,16 +97,16 @@ namespace Phamhilator.Yam.UI
                 Timestamp = DateTime.UtcNow
             };
 
-            if (Log.Values.Contains(entry)) { return; }
+            if (logQueue.Values.Contains(entry)) { return; }
 
-            if (Log.Count == 0)
+            if (logQueue.Count == 0)
             {
-                Log[0] = entry;
+                logQueue[0] = entry;
             }
             else
             {
-                var index = Log.Keys.Max() + 1;
-                Log[index] = entry;
+                var index = logQueue.Keys.Max() + 1;
+                logQueue[index] = entry;
             }
 
             if (EntryAdded == null) { return; }
@@ -116,10 +117,11 @@ namespace Phamhilator.Yam.UI
         {
             var regexes = GetRemoteLogReqRegexes(req);
             var entries = new LogEntry[0];
+            var reader = new LogReader();
 
             if (regexes.ContainsKey("Site"))
             {
-                entries = Log.Values.Where(entry => regexes["Site"].IsMatch(entry.Post.Site)).ToArray();
+                entries = reader.GetEnteries().Where(entry => regexes["Site"].IsMatch(entry.Post.Site)).ToArray();
             }
             if (regexes.ContainsKey("Title"))
             {
@@ -142,6 +144,7 @@ namespace Phamhilator.Yam.UI
             entries = FilterByNumericalProperties(entries, req);
 
             var trimmed = new HashSet<LogEntry>();
+            
             foreach (var e in entries)
             {
                 if (trimmed.Count < maxEntries)
@@ -347,13 +350,13 @@ namespace Phamhilator.Yam.UI
             while (!stop)
             {
                 loggerIntervalMre.WaitOne(UpdateInterval);
+                var log = new LogReader().GetEnteries();
 
-                foreach (var kv in Log)
+                foreach (var entry in log)
                 {
-                    if ((DateTime.UtcNow - kv.Value.Timestamp).TotalDays > 5)
+                    if ((DateTime.UtcNow - entry.Timestamp).TotalDays > 5)
                     {
-                        LogEntry entry;
-                        Log.TryRemove(kv.Key, out entry);
+                        //TODO: Remove old entries.
 
                         if (EntryRemoved == null) { continue; }
                         EntryRemoved(entry);

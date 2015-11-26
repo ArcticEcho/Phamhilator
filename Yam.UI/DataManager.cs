@@ -101,6 +101,24 @@ namespace Phamhilator.Yam.UI
             return data;
         }
 
+        public static IEnumerable<string> LoadLines(string owner, string key)
+        {
+            var k = GetSafeFileName(owner, key);
+            if (!activeFiles.ContainsKey(k)) { throw new KeyNotFoundException(); }
+
+            WaitForFile(k);
+
+            activeFiles[k] = true;
+
+            var data = File.ReadAllLines(Path.Combine(root, k));
+            foreach (var line in data)
+            {
+                yield return line;
+            }
+
+            NotifyWaitingThreads(k);
+        }
+
         public static void SaveData(string owner, string key, string data)
         {
             var bytes = Encoding.UTF8.GetBytes(data);
