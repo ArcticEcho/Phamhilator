@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLP", "NLP\NLP.csproj", "{FF9060CA-0692-4170-A98B-C01BB03E726A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5823FF27-6194-43D8-A16E-5943C2E34F09} = {5823FF27-6194-43D8-A16E-5943C2E34F09}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gham", "Gham\Gham.csproj", "{993E523C-48D4-44D7-AFD2-272F35564BCA}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -21,6 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pham", "Pham\Pham.csproj", 
 	ProjectSection(ProjectDependencies) = postProject
 		{5823FF27-6194-43D8-A16E-5943C2E34F09} = {5823FF27-6194-43D8-A16E-5943C2E34F09}
 		{8BAC4155-8AEE-4282-B64B-823397C75438} = {8BAC4155-8AEE-4282-B64B-823397C75438}
+		{FF9060CA-0692-4170-A98B-C01BB03E726A} = {FF9060CA-0692-4170-A98B-C01BB03E726A}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagExchange.Net", "FlagExchange.Net\FlagExchange.Net\FlagExchange.Net.csproj", "{8BAC4155-8AEE-4282-B64B-823397C75438}"
