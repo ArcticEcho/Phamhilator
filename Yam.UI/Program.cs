@@ -63,7 +63,6 @@ namespace Phamhilator.Yam.UI
             Console.Write("Joining chat room(s)...");
             JoinRooms();
             Console.Write("done.\nInitialising log...");
-            PostLogger.InitialiseLogger();
             Console.Write("done.\nStarting server...");
             InitialiseLocalServer();
             InitialiseRemoteServer();
@@ -74,7 +73,6 @@ namespace Phamhilator.Yam.UI
 #if DEBUG
             Console.Write("done.\nYam v2 started (debug), press Q to exit.\n");
             startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
-            //socvr.PostMessageFast(startUpMsg);
 #else
             Console.Write("done.\nYam v2 started, press Q to exit.\n");
             //socvr.PostMessageFast(startUpMsg);
@@ -101,8 +99,6 @@ namespace Phamhilator.Yam.UI
             postSocket.Dispose();
             locServer.Dispose();
             remServer.Dispose();
-            PostLogger.StopLogger();
-            //socvr.PostMessageFast("`Shutdown successful.`");
             socvr.Leave();
             chatClient.Dispose();
         }
@@ -144,19 +140,6 @@ namespace Phamhilator.Yam.UI
             {
                 Console.WriteLine("Remote client: " + client.Owner + " has disconnected (real-time post socket).");
             };
-            remServer.LogQueryClientConnected += client =>
-            {
-                Console.WriteLine("Remote client: " + client.Owner + " has connected (log query socket).");
-            };
-            remServer.LogQueryClientDisconnected += client =>
-            {
-                Console.WriteLine("Remote client: " + client.Owner + " has disconnected (log query socket).");
-            };
-            remServer.LogQueryReceived += (client, req) =>
-            {
-                var entries = PostLogger.SearchLog(req, 250);
-                remServer.SendLogEntries(client, entries);
-            };
         }
 
         private static void InitialiseLocalServer()
@@ -180,30 +163,6 @@ namespace Phamhilator.Yam.UI
             {
                 HandleDataManagerRequest(false, req);
             }));
-            locServer.PhamEventManager.ConnectListener(RequestType.LogSearch, new Action<LocalRequest>(req =>
-            {
-                HandleLocalLogSearchRequest(true, req);
-            }));
-            locServer.GhamEventManager.ConnectListener(RequestType.LogSearch, new Action<LocalRequest>(req =>
-            {
-                HandleLocalLogSearchRequest(false, req);
-            }));
-            //server.PhamEventManager.ConnectListener(RequestType.Info, new Action<LocalRequest>(req =>
-            //{
-            //    // Do something...
-            //}));
-            //server.GhamEventManager.ConnectListener(RequestType.Info, new Action<LocalRequest>(req =>
-            //{
-            //    // Do something...
-            //}));
-            //server.PhamEventManager.ConnectListener(RequestType.Command, new Action<LocalRequest>(req =>
-            //{
-            //    // Do something...
-            //}));
-            //server.GhamEventManager.ConnectListener(RequestType.Command, new Action<LocalRequest>(req =>
-            //{
-            //    // Do something...
-            //}));
 
             postSocket = new RealtimePostSocket(true);
             postSocket.OnActiveQuestion += HandleActiveQuestion;
@@ -269,21 +228,6 @@ namespace Phamhilator.Yam.UI
                     room.PostMessageFast(statusReport);
                     return true;
                 }
-                case "LOG STATS":
-                {
-                    var items = PostLogger.Log.Count;
-                    var uncomp = PostLogger.LogSizeUncompressed / 1024.0 / 1024;
-                    var comp = PostLogger.LogSizeCompressed / 1024.0 / 1024;
-                    var compRatio = Math.Round((uncomp / comp) * 100);
-                    var dataReport = "    Log report:\n" +
-                                        "    Posts: " + items + "\n" +
-                                        "    Update interval: " + PostLogger.UpdateInterval + "\n" +
-                                        "    Size (uncompressed): " + Math.Round(uncomp) + " MiB\n" +
-                                        "    Size (compressed): " + Math.Round(comp) + " MiB\n" +
-                                        "    Compression %: " + compRatio + "\n";
-                    room.PostMessageFast(dataReport);
-                    return true;
-                }
                 case "LOCAL STATS":
                 {
                     var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
@@ -332,15 +276,6 @@ namespace Phamhilator.Yam.UI
 
         private static bool HandlePrivilegedUserCommand(Room room, Message command, bool isOwner)
         {
-            if (command.Content.Trim().ToUpperInvariant().StartsWith("SEARCH"))
-            {
-                HandleChatLogSearchRequest(room, command, isOwner);
-            }
-            else
-            {
-                return false;
-            }
-
             return true;
         }
 
@@ -389,147 +324,8 @@ namespace Phamhilator.Yam.UI
             return true;
         }
 
-        private static void HandleChatLogSearchRequest(Room room, Message command, bool isOwner)
-        {
-            var cmd = command.Content.Remove(0, 7);
-            var postType = cmd.Substring(0, 3);
-            var searchParams = logSearchReg.Split(cmd).Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
-            var req = new RemoteLogRequest
-            {
-                PostType = postType
-            };
-
-            for (var i = 0; i < searchParams.Length; i++)
-            {
-                if (searchParams[i].ToLowerInvariant() == "site:")
-                {
-                    req.Site = searchParams[i + 1].Trim();
-                    continue;
-                }
-                if (searchParams[i].ToLowerInvariant() == "title:")
-                {
-                    req.Title = searchParams[i + 1].Trim();
-                    continue;
-                }
-                if (searchParams[i].ToLowerInvariant() == "body:")
-                {
-                    req.Body = searchParams[i + 1].Trim();
-                    continue;
-                }
-                if (searchParams[i].ToLowerInvariant() == "score:")
-                {
-                    req.Score = searchParams[i + 1].Trim();
-                    continue;
-                }
-                if (searchParams[i].ToLowerInvariant() == "createdafter:")
-                {
-                    req.CreatedAfter = searchParams[i + 1].Trim();
-                    continue;
-                }
-                if (searchParams[i].ToLowerInvariant() == "createdbefore:")
-                {
-                    req.CreatedBefore = searchParams[i + 1].Trim();
-                    continue;
-                }
-                if (searchParams[i].ToLowerInvariant() == "authorname:")
-                {
-                    req.AuthorName = searchParams[i + 1].Trim();
-                    continue;
-                }
-                if (searchParams[i].ToLowerInvariant() == "authorrep:")
-                {
-                    req.AuthorRep = searchParams[i + 1].Trim();
-                    continue;
-                }
-                if (searchParams[i].ToLowerInvariant() == "authornetworkid:")
-                {
-                    req.AuthorNetworkID = searchParams[i + 1].Trim();
-                    continue;
-                }
-            }
-
-            var entries = PostLogger.SearchLog(req, isOwner ? 250 : 100);
-
-            if (entries.Length == 0)
-            {
-                room.PostReply(command, "`No entries found.`");
-            }
-            else
-            {
-                var entriesDump = Regex.Replace(entries.Dump(), "\r\n.*?__type: \"Phamhilator.Yam.Core.Answer, Yam.Core\",", "");
-                string link;
-
-                try
-                {
-                    link = Hastebin.PostDocument(entriesDump);
-                }
-                catch (WebException ex1)
-                {
-                    try
-                    {
-                        if (ex1.Response != null && ((HttpWebResponse)ex1.Response).StatusCode == HttpStatusCode.BadRequest)
-                        {
-                            var trimmed = new HashSet<LogEntry>();
-                            foreach (var e in entries)
-                            {
-                                if (trimmed.Count < (isOwner ? 125 : 50))
-                                {
-                                    trimmed.Add(e);
-                                }
-                                else
-                                {
-                                    break;
-                                }
-                            }
-                            entriesDump = Regex.Replace(entries.Dump(), "\r\n.*?__type: \"Phamhilator.Yam.Core.Answer, Yam.Core\",", "");
-                            link = Hastebin.PostDocument(entriesDump);
-                        }
-                        else
-                        {
-                            throw ex1;
-                        }
-                    }
-                    catch (WebException ex2)
-                    {
-                        if (ex2.Response != null && ((HttpWebResponse)ex2.Response).StatusCode == HttpStatusCode.BadRequest)
-                        {
-                            room.PostReplyFast(command, "`Unable to upload entries (too much data).`");
-                            return;
-                        }
-                        else
-                        {
-                            throw ex2;
-                        }
-                    }
-                }
-
-                if (entries.Length == 1)
-                {
-                    room.PostReply(command, "[`1 entry found`](" + link + ")`.`");
-                }
-                else
-                {
-                    room.PostReply(command, "[`" + entries.Length + " entries found`](" + link + ")`.`");
-                }
-            }
-        }
-
         private static void HandleActiveQuestion(Question q)
         {
-            PostLogger.EnqueuePost(true, new Post
-            {
-                Url = q.Url,
-                Site = q.Site,
-                Title = q.Title,
-                Body = q.Body,
-                Score = q.Score,
-                CreationDate = q.CreationDate,
-                AuthorName = q.AuthorName,
-                AuthorLink = q.AuthorLink,
-                AuthorNetworkID = q.AuthorNetworkID,
-                AuthorRep = q.AuthorRep
-            });
-
             var locReq = new LocalRequest { Type = RequestType.Question, Data = q };
             locServer.SendData(true, locReq);
             locServer.SendData(false, locReq);
@@ -539,48 +335,11 @@ namespace Phamhilator.Yam.UI
 
         private static void HandleActiveAnswer(Answer a)
         {
-            PostLogger.EnqueuePost(false, a);
-
             var locReq = new LocalRequest { Type = RequestType.Answer, Data = a };
             locServer.SendData(true, locReq);
             locServer.SendData(false, locReq);
 
             remServer.SendPost(a);
-        }
-
-        private static void HandleLocalLogSearchRequest(bool fromPham, LocalRequest req)
-        {
-            if (req.Data == null || !(req.Data is RemoteLogRequest))
-            {
-                SendEx(fromPham, new Exception("Invalid local log search request."));
-                return;
-            }
-
-            var entries = PostLogger.SearchLog((RemoteLogRequest)req.Data, int.MaxValue);
-
-            foreach (var e in entries)
-            {
-                locServer.SendData(fromPham, new LocalRequest
-                {
-                    ID = LocalRequest.GetNewID(),
-                    Type = RequestType.LogSearch,
-                    Options = new Dictionary<string, object>
-                    {
-                        { "FullFillReqID", req.ID }
-                    },
-                    Data = e
-                });
-            }
-            locServer.SendData(fromPham, new LocalRequest
-            {
-                ID = LocalRequest.GetNewID(),
-                Type = RequestType.LogSearch,
-                Options = new Dictionary<string, object>
-                {
-                    { "FullFillReqID", req.ID }
-                },
-                Data = "<EOT>"
-            });
         }
 
         private static void HandleDataManagerRequest(bool fromPham, LocalRequest req)
@@ -707,7 +466,6 @@ namespace Phamhilator.Yam.UI
             {
                 yamErrorCount++;
                 Console.WriteLine("Warning, exception thrown from Yam:\n\n" + e.ToString());
-                //socvr.PostMessage("Warning, exception thrown from Yam:\n\n" + e.ToString());
             }
         }
     }
