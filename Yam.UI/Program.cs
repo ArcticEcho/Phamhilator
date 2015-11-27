@@ -62,7 +62,6 @@ namespace Phamhilator.Yam.UI
             InitialiseFromConfig();
             Console.Write("Joining chat room(s)...");
             JoinRooms();
-            Console.Write("done.\nInitialising log...");
             Console.Write("done.\nStarting server...");
             InitialiseLocalServer();
             InitialiseRemoteServer();
