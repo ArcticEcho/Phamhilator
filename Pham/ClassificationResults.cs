@@ -20,26 +20,33 @@
 
 
 
-using System.IO;
-
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Pham.UI
 {
-    class ConfigReader
+    public class ClassificationResults
     {
-        public string GetSetting(string settingName)
+        public enum SuggestedAction
         {
-            var st = settingName.ToLowerInvariant();
-            var dataz = File.ReadAllLines("Yam Settings.txt");
+            Nothing,
+            Edit,
+            Close,
+            Delete
+        }
 
-            foreach (var line in dataz)
-            {
-                if (line.ToLowerInvariant().StartsWith(st))
-                {
-                    return line.Remove(0, line.IndexOf(":") + 1);
-                }
-            }
 
-            return null;
+
+        public SuggestedAction Action { get; }
+
+        public float Severity { get; }
+
+        public float Similarity { get; }
+
+
+
+        public ClassificationResults(SuggestedAction act, float matchScore, float estimatedUrgency)
+        {
+            Action = act;
+            Similarity = matchScore;
+            Severity = estimatedUrgency;
         }
     }
 }

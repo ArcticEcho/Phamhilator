@@ -1,4 +1,4 @@
-﻿Note: you'll need to copy this file to the output directory of your compiler (and rename it to "Settings.txt").
+﻿Note: you'll need to copy this file to the output directory of your compiler (and rename it to "Yam Settings.txt").
 
 SE Email:mybelovedtrash@gmail.com
 SE Password:correct horse battery staple

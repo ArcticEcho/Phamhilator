@@ -26,209 +26,71 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Phamhilator.Yam.Core;
 using ChatExchangeDotNet;
-using Phamhilator.FlagExchangeDotNet;
 using System.Linq;
+using System.Collections.Concurrent;
 
 namespace Phamhilator.Pham.UI
 {
     public class Program
     {
-        private const string thresholdDataManagerKey = "Threshold";
-        private static readonly List<Post> checkedPosts = new List<Post>();
+        private static readonly ConcurrentStack<Post> checkedPosts = new ConcurrentStack<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static LocalRequestClient yamClient;
         private static Client chatClient;
-        private static Room hq;
         private static Room socvr;
         private static UserAccess authUsers;
-        private static Flagger flagger;
-        private static ModelGenerator modelGen;
-        private static PostLogModelGenerator autoModelGen;
-        private static ModelClassifier cvClassifier;
-        private static ModelClassifier dvQClassifier;
-        private static ModelClassifier dvAClassifier;
         private static DateTime startTime;
-        private static double threshold;
 
 
 
         static void Main(string[] args)
         {
             Console.Title = "Pham v2";
-            Console.WriteLine("Pham v2.\nPress Q to exit.\n");
             Console.CancelKeyPress += (o, oo) => shutdownMre.Set();
 
-            InitialiseFlagger();
-            InitialiseCore();
-            TryLogin();
+            Console.Write("Authenticating...");
+            AuthenticateChatClient();
+            Console.Write("done.\nJoining chat room...");
             JoinRooms();
+            Console.WriteLine("done.\n");
 
             startTime = DateTime.UtcNow;
-            var startUpMsg = new MessageBuilder();
-            startUpMsg.AppendText("Pham v2 started", TextFormattingOptions.InLineCode);
 
 #if DEBUG
-            Console.WriteLine("\nPham v2 started (debug).");
-            startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
-            hq.PostMessageFast(startUpMsg);
-            //socvr.PostMessageFast(startUpMsg);
+            Console.WriteLine("Pham v2 started (debug).");
 #else
-            Console.WriteLine("\nPham v2 started.");
-            hq.PostMessageFast(startUpMsg);
-            //socvr.PostMessageFast(startUpMsg);
+            Console.WriteLine("Pham v2 started.");
 #endif
 
             ConnectYamClientEvents();
-
-            Task.Run(() =>
-            {
-                while (true)
-                {
-                    if (char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
-                    {
-                        shutdownMre.Set();
-                        return;
-                    }
-                }
-            });
 
             shutdownMre.WaitOne();
 
             Console.WriteLine("Stopping...");
 
-            var shutdownMsg = new MessageBuilder();
-            shutdownMsg.AppendText("Shutdown successful.", TextFormattingOptions.InLineCode);
-
-            hq.PostMessageFast(shutdownMsg);
-            //socvr.PostMessageFast(shutdownMsg);
-
-            hq.Leave();
             socvr.Leave();
+            chatClient.Dispose();
+            yamClient.Dispose();
         }
 
 
 
-        private static void InitialiseFlagger()
+        private static void AuthenticateChatClient()
         {
-            Console.Write("Enable flagging module (Y/N): ");
-            var enable = Console.ReadLine().Trim().ToUpperInvariant();
+            var cr = new ConfigReader();
 
-            if (!enable.StartsWith("Y")) { return; }
+            var email = cr.GetSetting("se email");
+            var pwd = cr.GetSetting("se pass");
 
-            Console.WriteLine("Please enter your Stack Exchange OpenID flagging module credentials (account must have 200+ rep).\n");
-
-            Console.Write("Username (case sensitive): ");
-            var name = Console.ReadLine();
-
-            Console.Write("Email: ");
-            var email = Console.ReadLine();
-
-            Console.Write("Password: ");
-            var password = Console.ReadLine();
-
-            flagger = new Flagger(name, email, password);
-
-            Thread.Sleep(3000);
-            Console.Clear();
-        }
-
-        private static void InitialiseCore()
-        {
-            Console.Write("Initialising Yam client...");
-
-            yamClient = new LocalRequestClient("Pham");
-            AppDomain.CurrentDomain.UnhandledException += (o, ex) => yamClient.SendData(new LocalRequest
-            {
-                Type = LocalRequest.RequestType.Exception,
-                ID = LocalRequest.GetNewID(),
-                Data = ex.ExceptionObject
-            });
-
-            Console.Write("done.\nGathering config data...");
-
-            authUsers = new UserAccess(ref yamClient);
-
-            if (!yamClient.DataExists("Pham", thresholdDataManagerKey))
-            {
-                yamClient.UpdateData("Pham", thresholdDataManagerKey, (3 / 2F).ToString());
-            }
-            threshold = double.Parse(yamClient.RequestData("Pham", thresholdDataManagerKey));
-
-            Console.Write("done.\nLoading models...");
-
-            modelGen = new ModelGenerator();
-
-            if (!yamClient.DataExists("Pham", PostLogModelGenerator.CVDataKey))
-            {
-                yamClient.UpdateData("Pham", PostLogModelGenerator.CVDataKey, "");
-            }
-            var cvModels = yamClient.RequestData("Pham", PostLogModelGenerator.CVDataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            cvClassifier = new ModelClassifier(cvModels);
-
-            if (!yamClient.DataExists("Pham", PostLogModelGenerator.DVQDataKey))
-            {
-                yamClient.UpdateData("Pham", PostLogModelGenerator.DVQDataKey, "");
-            }
-            var dvQModels = yamClient.RequestData("Pham", PostLogModelGenerator.DVQDataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            dvQClassifier = new ModelClassifier(dvQModels);
-
-            if (!yamClient.DataExists("Pham", PostLogModelGenerator.DVADataKey))
-            {
-                yamClient.UpdateData("Pham", PostLogModelGenerator.DVADataKey, "");
-            }
-            var dvAModels = yamClient.RequestData("Pham", PostLogModelGenerator.DVADataKey).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            dvAClassifier = new ModelClassifier(dvAModels);
-
-            Console.Write("done.\nStarting auto model generator...");
-
-            autoModelGen = new PostLogModelGenerator(ref yamClient, ref cvClassifier, ref dvQClassifier, ref dvAClassifier);
-
-            Console.WriteLine("done.\n");
-        }
-
-        private static void TryLogin()
-        {
-            var success = false;
-            while (true)
-            {
-                Console.WriteLine("Please enter your Stack Exchange OpenID credentials.\n");
-
-                Console.Write("Email: ");
-                var email = Console.ReadLine();
-
-                Console.Write("Password: ");
-                var password = Console.ReadLine();
-
-                try
-                {
-                    Console.Write("\nAuthenticating...");
-                    chatClient = new Client(email, password);
-                    Console.WriteLine("login successful!");
-                    success = true;
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("failed to login.");
-                }
-                Thread.Sleep(3000);
-                Console.Clear();
-                if (success) { return; }
-            }
+            chatClient = new Client(email, pwd);
         }
 
         private static void JoinRooms()
         {
-            Console.Write("Joining HQ...");
+            var cr = new ConfigReader();
 
-            hq = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773");
-            hq.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(hq, m)));
-
-            Console.Write("done.\nJoining SOCVR...");
-
-            socvr = chatClient.JoinRoom("http://chat.stackoverflow.com/rooms/41570");//("http://chat.stackoverflow.com/rooms/68414");//
+            socvr = chatClient.JoinRoom(cr.GetSetting("room"));
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
-
-            Console.WriteLine("done.");
         }
 
         private static void ConnectYamClientEvents()
@@ -252,62 +114,27 @@ namespace Phamhilator.Pham.UI
         private static void CheckQuestion(Question q)
         {
             if (checkedPosts.Contains(q) || q.Site != "stackoverflow.com") { return; }
-            while (checkedPosts.Count > 3000)
+            while (checkedPosts.Count > 1000)
             {
-                checkedPosts.RemoveAt(0);
+                Post temp;
+                checkedPosts.TryPop(out temp);
             }
-            checkedPosts.Add(q);
+            checkedPosts.Push(q);
 
-            var model = modelGen.GenerateModel(q.Body);
-            var cvScore = cvClassifier.ClassifyPost(model, q);
-            var dvScore = dvQClassifier.ClassifyPost(model, q);
-            var genScore = GenericLQClassifier.ClassifyQuestion(model, q);
-
-            if (cvScore < threshold && dvScore < threshold && genScore.Value < threshold)
-            {
-                return;
-            }
-
-            if (cvScore > dvScore && cvScore > genScore.Value)
-            {
-                ReportPost(q, new KeyValuePair<string, double>("CV-worthy", cvScore));
-            }
-            else if (dvScore > cvScore && dvScore > genScore.Value)
-            {
-                ReportPost(q, new KeyValuePair<string, double>("DV-worthy", dvScore));
-            }
-            else
-            {
-                ReportPost(q, genScore);
-            }
+            // TODO: Checking magic.
         }
 
         private static void CheckAnswer(Answer a)
         {
             if (checkedPosts.Contains(a) || a.Site != "stackoverflow.com") { return; }
-            while (checkedPosts.Count > 3000)
+            while (checkedPosts.Count > 1000)
             {
-                checkedPosts.RemoveAt(0);
+                Post temp;
+                checkedPosts.TryPop(out temp);
             }
-            checkedPosts.Add(a);
-
-            var model = modelGen.GenerateModel(a.Body);
-            var dvScore = dvQClassifier.ClassifyPost(model, a);
-            var genScore = GenericLQClassifier.ClassifyAnswer(model, a);
-
-            if (dvScore < threshold && genScore.Value < threshold)
-            {
-                return;
-            }
-
-            if (dvScore > genScore.Value)
-            {
-                ReportPost(a, new KeyValuePair<string, double>("DV-worthy", dvScore));
-            }
-            else
-            {
-                ReportPost(a, genScore);
-            }
+            checkedPosts.Push(a);
+            
+            //TODO: Checking magic.
         }
 
         private static void ReportPost(Post post, KeyValuePair<string, double> score)
@@ -321,7 +148,6 @@ namespace Phamhilator.Pham.UI
             msg.AppendLink(post.AuthorName, post.AuthorLink, "Reputation: " + post.AuthorRep, TextFormattingOptions.None, WhiteSpace.None);
             msg.AppendText(".");
 
-            hq.PostMessageFast(msg);
             socvr.PostMessageFast(msg);
         }
 

@@ -22,14 +22,14 @@
 
 using System.IO;
 
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Pham
 {
     class ConfigReader
     {
         public string GetSetting(string settingName)
         {
             var st = settingName.ToLowerInvariant();
-            var dataz = File.ReadAllLines("Yam Settings.txt");
+            var dataz = File.ReadAllLines("Pham Settings.txt");
 
             foreach (var line in dataz)
             {

@@ -59,8 +59,9 @@ namespace Phamhilator.Yam.UI
         private static void Main(string[] args)
         {
             Console.Title = "Yam v2";
+            Console.Write("Authenticating...");
             InitialiseFromConfig();
-            Console.Write("Joining chat room(s)...");
+            Console.Write("done\n.Joining chat room(s)...");
             JoinRooms();
             Console.Write("done.\nStarting server...");
             InitialiseLocalServer();
@@ -107,8 +108,6 @@ namespace Phamhilator.Yam.UI
             var cr = new ConfigReader();
 
             socvr = chatClient.JoinRoom(cr.GetSetting("room"));
-            socvr.IgnoreOwnEvents = true;
-            socvr.StripMention = true;
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
         }
 
