@@ -22,11 +22,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Phamhilator.NLP
 {
     public class GlobalTfIdfRecorder
     {
+        private bool minipulatedSinceLastRecalc;
+
         public Dictionary<string, Term> Terms { get; } = new Dictionary<string, Term>();
 
 
@@ -62,55 +65,58 @@ namespace Phamhilator.NLP
 
 
 
-        public void AddTerm(string term, uint docID)
+        public void AddDocument(uint documentID, IDictionary<string, ushort> termTFs)
         {
-            if (string.IsNullOrWhiteSpace(term))
-            {
-                throw new ArgumentException("'term' can not be null, empty or entirely whitespace.", "term");
-            }
+            if (termTFs == null) throw new ArgumentNullException("termTFs");
 
-            if (Terms.ContainsKey(term))
+            foreach (var term in termTFs.Keys)
             {
-                Terms[term].TF++;
-
-                if (!Terms[term].DocumentIDs.Contains(docID))
+                if (Terms.ContainsKey(term))
                 {
-                    Terms[term].DocumentIDs.Add(docID);
+                    Terms[term].TF += termTFs[term];
+                    Terms[term].DocumentIDs.Add(documentID);
                 }
-            }
-            else
-            {
-                Terms[term] = new Term
+                else
                 {
-                    DocumentIDs = new HashSet<uint>
+                    Terms[term] = new Term
                     {
-                        docID
-                    },
-                    Value = term,
-                    TF = 1
-                };
+                        DocumentIDs = new HashSet<uint>
+                        {
+                            documentID
+                        },
+                        Value = term,
+                        TF = termTFs[term]
+                    };
+                }
             }
         }
 
-        public void RemoveTerm(string term, ushort count = 1)
+        public void RemoveDocument(uint documentID, IDictionary<string, ushort> termTFs)
         {
-            if (string.IsNullOrWhiteSpace(term))
+            if (termTFs == null) throw new ArgumentNullException("termTFs");
+            if (Terms.All(x => !x.Value.DocumentIDs.Contains(documentID)))
             {
-                throw new ArgumentException("'term' can not be null, empty or entirely whitespace.", "term");
+                throw new KeyNotFoundException("Can not find any terms with the specified document ID.");
             }
-            if (count == 0)
+            if (!termTFs.Keys.All(Terms.ContainsKey))
             {
-                throw new ArgumentOutOfRangeException("count", "'count' must be more than 0.");
+                throw new KeyNotFoundException("Not all specified terms can be found in the current collection.");
             }
-            if (!Terms.ContainsKey(term)) throw new KeyNotFoundException();
 
-            if (Terms[term].TF >= count)
+            foreach (var term in termTFs.Keys)
             {
-                Terms.Remove(term);
-            }
-            else
-            {
-                Terms[term].TF -= count;
+                if (Terms[term].DocumentIDs.Contains(documentID))
+                {
+                    if (Terms[term].DocumentIDs.Count == 1)
+                    {
+                        Terms.Remove(term);
+                    }
+                    else
+                    {
+                        Terms[term].DocumentIDs.Remove(documentID);
+                        Terms[term].TF -= termTFs[term];
+                    }
+                }
             }
         }
 
@@ -140,6 +146,145 @@ namespace Phamhilator.NLP
 
                 Terms[term].IDF = (float)Math.Log(totalDocCount / docsFound);
             }
+
+            minipulatedSinceLastRecalc = false;
+        }
+
+        /// <summary>
+        /// Calculates the cosine similarity of the given tokenised string
+        /// compared to the current collection of Terms.
+        /// </summary>
+        /// <param name="terms">A collection of tokens (i.e., words) for a given string.</param>
+        /// <returns>
+        /// A dictionary containing a collection of highest
+        /// matching document IDs (the key) with their given similarity (the value).
+        /// </returns>
+        public Dictionary<uint, float> CalculateSimilarity(IEnumerable<string> terms, ushort maxDocsToReturn)
+        {
+            if (minipulatedSinceLastRecalc)
+            {
+                RecalculateIDFs();
+            }
+
+            var queryIdf = CalculateQueryIDF(terms);
+
+            // To prevent calculating the similarity for every document,
+            // we'll take all the documents which actually contain at least 
+            // one of the query's terms.
+            var matchingTerms = Terms.Values.Where(x => terms.Any(y => y == x.Value));
+            var matchingDocIDs = new HashSet<uint>();
+            foreach (var term in matchingTerms)
+            foreach (var docID in term.DocumentIDs)
+            {
+                if (!matchingDocIDs.Contains(docID))
+                {
+                    matchingDocIDs.Add(docID);
+                }
+            }
+
+            // Reconstruct the documents from our term collection.
+            var docs = new Dictionary<uint, HashSet<string>>();
+            foreach (var docID in matchingDocIDs)
+            {
+                docs[docID] = GetDocument(docID);
+            }
+
+            // Calculate the Euclidean lengths of the documents.
+            var docLengths = new Dictionary<uint, float>();
+            var queryLength = CalculateDocumentLength(new HashSet<string>(terms));
+            foreach (var docID in docs.Keys)
+            {
+                docLengths[docID] = CalculateDocumentLength(docs[docID]);
+            }
+
+            // FINALLY, phew! We made it this far. So now we can
+            // actually calculate the cosine similarity for the documents.
+            var docSimilarities = new Dictionary<uint, float>();
+            foreach (var docID in docs.Keys)
+            {
+                var sim = 0D;
+
+                foreach (var term in queryIdf.Keys)
+                {
+                    if (docs[docID].Contains(term))
+                    {
+                        sim += queryIdf[term] * Terms[term].IDF;
+                    }
+                }
+
+                docSimilarities[docID] = (float)sim / (queryLength * docLengths[docID]);
+            }
+
+            // Now lets get the top x docs.
+            var topDocs = new Dictionary<uint, float>();
+            var temp = docSimilarities.OrderByDescending(x => x.Value);
+            var safeMax = Math.Min(docSimilarities.Count, maxDocsToReturn);
+            foreach (var doc in temp)
+            {
+                if (topDocs.Count == safeMax) break;
+
+                topDocs[doc.Key] = doc.Value;
+            }
+
+            return topDocs;
+        }
+
+        private float CalculateDocumentLength(HashSet<string> terms)
+        {
+            var len = 0D;
+
+            foreach (var term in terms)
+            {
+                len += Terms[term].IDF * Terms[term].IDF;
+            }
+
+            return (float)Math.Sqrt(len);
+        }
+
+        private Dictionary<string, float> CalculateQueryIDF(IEnumerable<string> terms)
+        {
+            var tf = new Dictionary<string, ushort>();
+
+            foreach (var term in terms)
+            {
+                if (tf.ContainsKey(term))
+                {
+                    tf[term]++;
+                }
+                else
+                {
+                    tf[term] = 1;
+                }
+            }
+
+            var maxFrec = (float)tf.Max(x => x.Value);
+
+            var idf = new Dictionary<string, float>();
+
+            foreach (var term in tf.Keys)
+            {
+                if (Terms.ContainsKey(term))
+                {
+                    idf[term] = (maxFrec / tf[term]) * Terms[term].IDF;
+                }
+            }
+
+            return idf;
+        }
+
+        private HashSet<string> GetDocument(uint docID)
+        {
+            var terms = new HashSet<string>();
+
+            foreach (var term in Terms.Values)
+            {
+                if (term.DocumentIDs.Contains(docID))
+                {
+                    terms.Add(term.Value);
+                }
+            }
+
+            return terms;
         }
     }
 }

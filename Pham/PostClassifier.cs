@@ -34,13 +34,15 @@ namespace Phamhilator.Pham.UI
     public class PostClassifier
     {
         private readonly PostModelGenerator modelGen = new PostModelGenerator();
-        private BagOfWords bow;
+        //private BagOfWords bow;
 
-        public ConcurrentDictionary<int, PostModel> Models { get; } = new ConcurrentDictionary<int, PostModel>();
+        //public ConcurrentDictionary<int, PostModel> Models { get; } = new ConcurrentDictionary<int, PostModel>();
 
-        public BagOfWords.WeightMode WeightMethod { get; set; } = BagOfWords.WeightMode.TFIDF;
+        //public BagOfWords.WeightMode WeightMethod { get; set; } = BagOfWords.WeightMode.TFIDF;
 
-        //TODO: Look into cosine similarity.
+        public GlobalTfIdfRecorder TFIDFRecorder { get; private set; }
+
+
 
         public ClassificationResults ClassifyPost(Post post)
         {
