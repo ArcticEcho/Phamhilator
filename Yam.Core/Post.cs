@@ -26,6 +26,7 @@ namespace Phamhilator.Yam.Core
 {
     public class Post
     {
+        public uint ID { get; set; }
         public string Url { get; set; }
         public string Site { get; set; }
         public string Title { get; set; }

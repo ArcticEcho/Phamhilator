@@ -28,7 +28,7 @@ namespace Phamhilator.NLP
 {
     public class GlobalTfIdfRecorder
     {
-        private bool minipulatedSinceLastRecalc;
+        public bool MinipulatedSinceLastRecalc { get; private set; }
 
         public Dictionary<string, Term> Terms { get; } = new Dictionary<string, Term>();
 
@@ -53,15 +53,30 @@ namespace Phamhilator.NLP
                     Terms[term] = new Term
                     {
                         DocumentIDs = new HashSet<uint>
-                        {
-                            docID
-                        },
+                    {
+                        docID
+                    },
                         Value = term,
                         TF = 1
                     };
                 }
             }
         }
+
+        public GlobalTfIdfRecorder(IDictionary<string, Term> terms)
+        {
+            Terms = (Dictionary<string, Term>)terms;
+        }
+
+        public GlobalTfIdfRecorder(IEnumerable<Term> terms)
+        {
+            foreach (var term in terms)
+            {
+                Terms[term.Value] = term;
+            }
+        }
+
+        public GlobalTfIdfRecorder() { }
 
 
 
@@ -147,7 +162,7 @@ namespace Phamhilator.NLP
                 Terms[term].IDF = (float)Math.Log(totalDocCount / docsFound);
             }
 
-            minipulatedSinceLastRecalc = false;
+            MinipulatedSinceLastRecalc = false;
         }
 
         /// <summary>
@@ -159,9 +174,9 @@ namespace Phamhilator.NLP
         /// A dictionary containing a collection of highest
         /// matching document IDs (the key) with their given similarity (the value).
         /// </returns>
-        public Dictionary<uint, float> CalculateSimilarity(IEnumerable<string> terms, ushort maxDocsToReturn)
+        public Dictionary<uint, float> GetSimilarity(IEnumerable<string> terms, ushort maxDocsToReturn)
         {
-            if (minipulatedSinceLastRecalc)
+            if (MinipulatedSinceLastRecalc)
             {
                 RecalculateIDFs();
             }

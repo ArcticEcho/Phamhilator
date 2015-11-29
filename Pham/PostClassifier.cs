@@ -21,40 +21,101 @@
 
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Phamhilator.NLP;
 using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.UI
 {
-    public class PostClassifier
+    public class PostClassifier : IDisposable
     {
         private readonly PostModelGenerator modelGen = new PostModelGenerator();
-        //private BagOfWords bow;
+        private readonly Logger<Term> termLog;
+        private bool dispose;
 
-        //public ConcurrentDictionary<int, PostModel> Models { get; } = new ConcurrentDictionary<int, PostModel>();
-
-        //public BagOfWords.WeightMode WeightMethod { get; set; } = BagOfWords.WeightMode.TFIDF;
-
-        public GlobalTfIdfRecorder TFIDFRecorder { get; private set; }
+        public GlobalTfIdfRecorder TfIdfRecorder { get; private set; }
 
 
+
+        public PostClassifier(string termLogPath)
+        {
+            termLog = new Logger<Term>(termLogPath);
+            TfIdfRecorder = new GlobalTfIdfRecorder(termLog);
+        }
+
+        ~PostClassifier()
+        {
+            Dispose();
+        }
+
+
+
+        public void Dispose()
+        {
+            if (dispose) return;
+            dispose = true;
+
+            UpdateLog();
+
+            GC.SuppressFinalize(this);
+        }
 
         public ClassificationResults ClassifyPost(Post post)
         {
-            //var modelTerms = Models.Values.Select(x => x.Terms);
-            //var postTerms = modelGen.GetModel(post.Body);
+            if (TfIdfRecorder.MinipulatedSinceLastRecalc)
+            {
+                TfIdfRecorder.RecalculateIDFs();
+            }
 
-            //bow = new BagOfWords(postTerms)
-            //{
-            //    Mode = WeightMethod
-            //};
+            var postTermTFs = modelGen.GetModel(post.Body);
+            var sim = ToSimpleTermCollection(postTermTFs);
+
+            var docs = TfIdfRecorder.GetSimilarity(sim, 10);
+
+            //TODO: Do stuff with docs.
 
             return null;
+        }
+
+        public void AddPostToModels(Post post)
+        {
+            var postTermTFs = modelGen.GetModel(post.Body);
+
+            TfIdfRecorder.AddDocument(post.ID, postTermTFs);
+        }
+
+        public void RemovePostFromModels(Post post)
+        {
+            var postTermTFs = modelGen.GetModel(post.Body);
+
+            TfIdfRecorder.RemoveDocument(post.ID, postTermTFs);
+        }
+
+
+
+        private void UpdateLog()
+        {
+            termLog.ClearLog();
+
+            termLog.EnqueueItems(TfIdfRecorder.Terms.Values);
+        }
+
+        private string[] ToSimpleTermCollection(IDictionary<string, ushort> termTFs)
+        {
+            var simple = new string[termTFs.Sum(x => x.Value)];
+            var i = 0;
+
+            foreach (var term in termTFs)
+            {
+                for (var k = 0; k < term.Value; k++)
+                {
+                    simple[i] = term.Key;
+                    i++;
+                }
+            }
+
+            return simple;
         }
     }
 }

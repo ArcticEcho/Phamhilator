@@ -36,14 +36,11 @@ namespace Phamhilator.Yam.Core
     public static class PostFetcher
     {
         private const RegexOptions regOpts = RegexOptions.CultureInvariant | RegexOptions.Compiled;
-        private static readonly Regex shareLinkIDParser = new Regex(@".*(q|a)/|/\d*", regOpts);
-        private static readonly Regex isShareLink = new Regex(@"(q|a)/\d*/\d*$", regOpts);
-        private static readonly Regex escapeChars = new Regex(@"[_*`\[\]]", regOpts);
+        private static readonly Regex hostParser = new Regex(@".*//|/.*", regOpts);
+        private static readonly Regex postIDParser = new Regex(@"(?i)/(q(uestions)?|a)/(\d+)/?", regOpts);
         private static readonly Regex userNetworkID = new Regex(@"accountId: \d+", regOpts);
         private static readonly Regex questionStatusDiv = new Regex("(?s)<div class=\"question-status.*?</div>", regOpts);
 
-        public static readonly Regex HostParser = new Regex(@".*//|/.*", regOpts);
-        public static readonly Regex PostIDParser = new Regex(@"\D*/|\D.*", regOpts);
 
 
 
@@ -54,7 +51,9 @@ namespace Phamhilator.Yam.Core
             var innerObj = JsonSerializer.DeserializeFromString<Dictionary<string, object>>(data);
 
             var url = TrimUrl((string)innerObj["url"]);
-            var host = (string)innerObj["siteBaseHostAddress"];
+            var id = 0u;
+            var host = "";
+            GetPostInfo(url, out host, out id);
             var title = WebUtility.HtmlDecode((string)innerObj["titleEncodedFancy"]);
             var authorName = WebUtility.HtmlDecode((string)innerObj["ownerDisplayName"]);
             var tags = JsonSerializer.DeserializeFromString<string[]>((string)innerObj["tags"]);
@@ -89,13 +88,13 @@ namespace Phamhilator.Yam.Core
                 }
             }
 
-            return new Question(url, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags, html);
+            return new Question(id, url, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags, html);
         }
 
         public static Question GetQuestion(string postUrl)
         {
             string host;
-            int id;
+            uint id;
 
             GetPostInfo(postUrl, out host, out id);
 
@@ -163,13 +162,13 @@ namespace Phamhilator.Yam.Core
                 networkID = GetUserNetworkID(authorLink);
             }
 
-            return new Question(postUrl, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags.ToArray(), html);
+            return new Question(id, postUrl, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags.ToArray(), html);
         }
 
         public static Answer GetAnswer(string postUrl)
         {
             string host;
-            int id;
+            uint id;
 
             GetPostInfo(postUrl, out host, out id);
 
@@ -186,7 +185,7 @@ namespace Phamhilator.Yam.Core
 
             var dom = CQ.Create(question.Html, Encoding.UTF8);
             var host = "";
-            var questionID = 0;
+            var questionID = 0u;
 
             GetPostInfo(question.Url, out host, out questionID);
 
@@ -255,22 +254,6 @@ namespace Phamhilator.Yam.Core
             return (int)float.Parse(trimmed);
         }
 
-        public static string ChatEscapeString(string input, string newlineReplace = "")
-        {
-            var output = input.Replace("\n", newlineReplace).Replace("\\n", newlineReplace);
-
-            for (var i = 0; i < output.Length; i++)
-            {
-                if (escapeChars.IsMatch(output[i].ToString(CultureInfo.InvariantCulture)))
-                {
-                    output = output.Insert(i, "\\");
-                    i++;
-                }
-            }
-
-            return output.Trim();
-        }
-
 
 
         private static int GetUserNetworkID(string authorProfileLink)
@@ -299,6 +282,7 @@ namespace Phamhilator.Yam.Core
         {
             var aDom = "#answer-" + id + " ";
 
+            var postId = uint.Parse(id);
             var url = "http://" + host + "/a/" + id;
             var body = WebUtility.HtmlDecode(dom[aDom + ".post-text"][0].InnerHTML.Trim());
             var score = int.Parse(dom[aDom + ".vote-count-post"][0].InnerHTML);
@@ -345,7 +329,7 @@ namespace Phamhilator.Yam.Core
                 excerpt = excerpt.Remove(lstWrdI) + "...";
             }
 
-            return new Answer(url, excerpt, body, host, score, isAccepted, creationDate, authorName, authorLink, networkID, authorRep);
+            return new Answer(postId, url, excerpt, body, host, score, isAccepted, creationDate, authorName, authorLink, networkID, authorRep);
         }
 
         private static string TrimUrl(string url)
@@ -373,18 +357,11 @@ namespace Phamhilator.Yam.Core
             return trimmed.Trim();
         }
 
-        private static void GetPostInfo(string postUrl, out string host, out int id)
+        private static void GetPostInfo(string postUrl, out string host, out uint id)
         {
-            host = HostParser.Replace(postUrl, "");
+            host = hostParser.Replace(postUrl, "");
 
-            if (isShareLink.IsMatch(postUrl))
-            {
-                id = int.Parse(shareLinkIDParser.Replace(postUrl, ""));
-            }
-            else
-            {
-                id = int.Parse(PostIDParser.Replace(postUrl, ""));
-            }
+            id = uint.Parse(postIDParser.Match(postUrl).Groups[3].Value);
         }
 
         private static string StripTags(string source)

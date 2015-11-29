@@ -30,8 +30,9 @@ using System;
 
 
 
-        public Answer(string url, string title, string body, string site, int score, bool accepted, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep)
+        public Answer(uint id, string url, string title, string body, string site, int score, bool accepted, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep)
         {
+            ID = id;
             Url = url;
             Title = title;
             Body = body;

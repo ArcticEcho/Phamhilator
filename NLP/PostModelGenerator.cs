@@ -80,14 +80,14 @@ namespace Phamhilator.NLP
 
 
 
-        public Dictionary<string, int> GetModel(string text)
+        public Dictionary<string, ushort> GetModel(string text)
         {
             var prepared = PrepareBody(text);
             var words = prepared.Split(new[]
             {
                 '.', ',', ':', ';', '(', ')', '{', '}', '[', ']', '?', '!', '/', '\\', ' ', '\n', '-'
             }, StringSplitOptions.RemoveEmptyEntries);
-            var wf = new Dictionary<string, int>();
+            var wf = new Dictionary<string, ushort>();
 
             for (var i = 0; i < words.Length; i++)
             {

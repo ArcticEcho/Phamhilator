@@ -30,7 +30,7 @@ using ServiceStack.Text;
 
 namespace Phamhilator.Pham.UI
 {
-    // No clue how this work, just some ideas.
+    // No clue how this will work, just some ideas.
     // Severity 0: 1 hour
     // Severity 1: 6 hours
     // Severity 2: 12 hours
@@ -39,6 +39,7 @@ namespace Phamhilator.Pham.UI
     public partial class Logger<T> : IEnumerable<T>, IDisposable
     {
         private readonly ManualResetEvent itemRemoverMre = new ManualResetEvent(false);
+        private readonly HashSet<T> removeItemsQueue = new HashSet<T>();
         private readonly object lockObj = new object();
         private readonly string logPath;
         private bool dispose;
@@ -58,11 +59,14 @@ namespace Phamhilator.Pham.UI
             logPath = logFileName;
 
             InitialiseCount();
+
+            Task.Run(() => RemoveItems());
         }
 
         public Logger(string logFileName, TimeSpan itemTtl, TimeSpan logClearRate)
         {
             TimeToLive = itemTtl;
+            LogClearRate = logClearRate;
             logPath = logFileName;
 
             InitialiseCount();
@@ -98,8 +102,11 @@ namespace Phamhilator.Pham.UI
                     if (string.IsNullOrWhiteSpace(line)) continue;
 
                     var entry = JsonSerializer.DeserializeFromString<Entry>(line);
+                    var data = (T)entry.Data;
 
-                    yield return (T)entry.Data;
+                    if (removeItemsQueue.Contains(data)) continue;
+
+                    yield return data;
                 }
             }
         }
@@ -116,6 +123,52 @@ namespace Phamhilator.Pham.UI
             lock (lockObj)
             {
                 File.AppendAllLines(logPath, new[] { json });
+
+                Count++;
+            }
+        }
+
+        public void EnqueueItems(IEnumerable<T> items)
+        {
+            lock (lockObj)
+            {
+                foreach (var item in items)
+                {
+                    var entry = new Entry
+                    {
+                        Data = item,
+                        Timestamp = DateTime.UtcNow
+                    };
+                    var json = JsonSerializer.SerializeToString(entry);
+
+                    File.AppendAllLines(logPath, new[] { json });
+
+                    Count++;
+                }
+            }
+        }
+
+        public void RemoveItem(T item)
+        {
+            if (removeItemsQueue.Contains(item))
+            {
+                throw new ArgumentException("This item is already queued for removal.", "item");
+            }
+
+            lock (lockObj)
+            {
+                removeItemsQueue.Add(item);
+                Count--;
+            }
+        }
+
+        public void ClearLog()
+        {
+            lock (lockObj)
+            {
+                File.WriteAllText(logPath, "");
+                removeItemsQueue.Clear();
+                Count = 0;
             }
         }
 
@@ -157,16 +210,22 @@ namespace Phamhilator.Pham.UI
                         if (string.IsNullOrWhiteSpace(line)) continue;
 
                         var entry = JsonSerializer.DeserializeFromString<Entry>(line);
+                        var data = (T)entry.Data;
 
-                        if ((DateTime.UtcNow - entry.Timestamp) < ttl)
+                        if ((DateTime.UtcNow - entry.Timestamp) < ttl && !removeItemsQueue.Contains(data))
                         {
                             File.AppendAllLines(temp, new[] { line });
                         }
                         else
                         {
+                            if (removeItemsQueue.Contains(data))
+                            {
+                                removeItemsQueue.Remove(data);
+                            }
+
                             if (ItemRemovedEvent == null) continue;
 
-                            ItemRemovedEvent((T)entry.Data);
+                            ItemRemovedEvent(data);
                         }
                     }
 

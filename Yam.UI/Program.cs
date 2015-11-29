@@ -26,7 +26,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading;
-using System.Threading.Tasks;
 using ChatExchangeDotNet;
 using Phamhilator.Yam.Core;
 using ServiceStack.Text;

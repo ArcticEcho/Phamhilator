@@ -33,8 +33,9 @@ namespace Phamhilator.Yam.Core
 
 
 
-        public Question(string url, string site, string title, string body, int score, bool closed, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep, string[] tags, string html)
+        public Question(uint id, string url, string site, string title, string body, int score, bool closed, DateTime creationDate, string authorName, string authorLink, int authorNetworkID, int authorRep, string[] tags, string html)
         {
+            ID = id;
             Url = url;
             Title = title;
             Body = body;
