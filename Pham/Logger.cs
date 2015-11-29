@@ -196,44 +196,49 @@ namespace Phamhilator.Pham.UI
 
         private void RemoveItems()
         {
-            var ttl = (TimeSpan)TimeToLive;
+            var clearRate = TimeToLive == null ? TimeSpan.FromMinutes(5) : LogClearRate;
 
             while (!dispose)
             {
-                lock (lockObj)
+                if (TimeToLive != null || removeItemsQueue.Count > 0)
                 {
-                    var lines = File.ReadLines(logPath);
-                    var temp = Path.GetTempFileName();
-
-                    foreach (var line in lines)
+                    lock (lockObj)
                     {
-                        if (string.IsNullOrWhiteSpace(line)) continue;
+                        var lines = File.ReadLines(logPath);
+                        var temp = Path.GetTempFileName();
 
-                        var entry = JsonSerializer.DeserializeFromString<Entry>(line);
-                        var data = (T)entry.Data;
+                        foreach (var line in lines)
+                        {
+                            if (string.IsNullOrWhiteSpace(line)) continue;
 
-                        if ((DateTime.UtcNow - entry.Timestamp) < ttl && !removeItemsQueue.Contains(data))
-                        {
-                            File.AppendAllLines(temp, new[] { line });
-                        }
-                        else
-                        {
-                            if (removeItemsQueue.Contains(data))
+                            var entry = JsonSerializer.DeserializeFromString<Entry>(line);
+                            var data = (T)entry.Data;
+
+                            if (!removeItemsQueue.Contains(data))
+                            {
+                                if (TimeToLive != null && (DateTime.UtcNow - entry.Timestamp) < TimeToLive)
+                                {
+                                    File.AppendAllLines(temp, new[] { line });
+                                }
+                                else
+                                {
+                                    if (ItemRemovedEvent == null) continue;
+
+                                    ItemRemovedEvent(data);
+                                }
+                            }
+                            else
                             {
                                 removeItemsQueue.Remove(data);
                             }
-
-                            if (ItemRemovedEvent == null) continue;
-
-                            ItemRemovedEvent(data);
                         }
-                    }
 
-                    File.Delete(logPath);
-                    File.Move(temp, logPath);
+                        File.Delete(logPath);
+                        File.Move(temp, logPath);
+                    }
                 }
 
-                itemRemoverMre.WaitOne(LogClearRate);
+                itemRemoverMre.WaitOne(clearRate);
             }
         }
 
