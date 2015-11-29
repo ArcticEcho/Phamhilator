@@ -46,13 +46,13 @@ namespace Phamhilator.Pham.UI
 
         public ClassificationResults ClassifyPost(Post post)
         {
-            var modelTerms = Models.Values.Select(x => x.Terms);
-            var postTerms = modelGen.GetModel(post.Body);
+            //var modelTerms = Models.Values.Select(x => x.Terms);
+            //var postTerms = modelGen.GetModel(post.Body);
 
-            bow = new BagOfWords(postTerms)
-            {
-                Mode = WeightMethod
-            };
+            //bow = new BagOfWords(postTerms)
+            //{
+            //    Mode = WeightMethod
+            //};
 
             return null;
         }
