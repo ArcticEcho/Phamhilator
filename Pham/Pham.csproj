@@ -62,7 +62,7 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Logger.Entry.cs" />
     <Compile Include="PostClassifier.cs" />
-    <Compile Include="PostModel.cs" />
+    <Compile Include="PostModelStats.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

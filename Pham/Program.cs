@@ -35,6 +35,8 @@ namespace Phamhilator.Pham.UI
         private static readonly ConcurrentStack<Post> checkedPosts = new ConcurrentStack<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static LocalRequestClient yamClient;
+        private static PostClassifier cvClassifier;
+        private static PostClassifier dvClassifier;
         private static Logger<Post> logger;
         private static Client chatClient;
         private static Room socvr;
@@ -54,8 +56,14 @@ namespace Phamhilator.Pham.UI
 
             Console.Write("Authenticating...");
             AuthenticateChatClient();
-            Console.Write("done.\nInitialising from config...");
-            InitialiseFromConfig();
+            Console.Write("done.\nConnecting Yam client...");
+            ConnectYamCLient();
+            Console.Write("done.\nReading post log...");
+            ReadPostLog();
+            Console.Write("done.\nInitialising CV classifier...");
+            InitialiseCVClassifier();
+            Console.Write("done.\nInitialising DV classifier...");
+            InitialiseDVClassifier();
             Console.Write("done.\nJoining chat room...");
             JoinRooms();
             Console.WriteLine("done.\n");
@@ -70,14 +78,23 @@ namespace Phamhilator.Pham.UI
 
             shutdownMre.WaitOne();
 
-            Console.WriteLine("Stopping...");
+            Console.Write("Stopping...");
 
             socvr?.Leave();
+            shutdownMre?.Dispose();
             chatClient?.Dispose();
+            authUsers?.Dispose();
+            cvClassifier?.Dispose();
+            dvClassifier?.Dispose();
+            logger?.Dispose();
             yamClient?.Dispose();
+
+            Console.WriteLine("done.");
         }
 
 
+
+        #region Program initialisation.
 
         private static void AuthenticateChatClient()
         {
@@ -89,15 +106,18 @@ namespace Phamhilator.Pham.UI
             chatClient = new Client(email, pwd);
         }
 
-        private static void JoinRooms()
+        private static void ReadPostLog()
         {
             var cr = new ConfigReader();
-
-            socvr = chatClient.JoinRoom(cr.GetSetting("room"));
-            socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
+            var mins = 0;
+            if (!int.TryParse(cr.GetSetting("logclear"), out mins))
+            {
+                mins = 5;
+            }
+            logger = new Logger<Post>("Post Log.txt", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
         }
 
-        private static void InitialiseFromConfig()
+        private static void ConnectYamCLient()
         {
             yamClient = new LocalRequestClient("Pham");
 
@@ -117,15 +137,29 @@ namespace Phamhilator.Pham.UI
             }));
 
             authUsers = new UserAccess(ref yamClient);
-
-            var cr = new ConfigReader();
-            var mins = 0;
-            if (!int.TryParse(cr.GetSetting("logclear"), out mins))
-            {
-                mins = 5;
-            }
-            logger = new Logger<Post>("Log", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
         }
+
+        private static void InitialiseCVClassifier()
+        {
+            cvClassifier = new PostClassifier("CV Terms.txt");
+        }
+
+        private static void InitialiseDVClassifier()
+        {
+            cvClassifier = new PostClassifier("DV Terms.txt");
+        }
+
+        private static void JoinRooms()
+        {
+            var cr = new ConfigReader();
+
+            socvr = chatClient.JoinRoom(cr.GetSetting("room"));
+            socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
+        }
+
+        #endregion
+
+        #region Post checking.
 
         private static void CheckQuestion(Question q)
         {
@@ -165,6 +199,10 @@ namespace Phamhilator.Pham.UI
 
             socvr.PostMessageFast(report);
         }
+
+        #endregion
+
+        #region Chat command handling.
 
         private static void HandleChatCommand(Room room, Message command)
         {
@@ -229,5 +267,7 @@ namespace Phamhilator.Pham.UI
 
             return true;
         }
+
+        #endregion
     }
 }

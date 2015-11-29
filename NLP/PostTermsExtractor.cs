@@ -27,7 +27,7 @@ using System.Text.RegularExpressions;
 
 namespace Phamhilator.NLP
 {
-    public class PostModelGenerator
+    public class PostTermsExtractor
     {
         private const RegexOptions regOpts = RegexOptions.Compiled | RegexOptions.CultureInvariant;
         private readonly Regex CodeBlock = new Regex("(?is)<pre.*?><code>.*?</code></pre>", regOpts);
@@ -42,7 +42,7 @@ namespace Phamhilator.NLP
 
 
 
-        public PostModelGenerator()
+        public PostTermsExtractor()
         {
             specContractionsRegex = new Dictionary<Regex, string>
             {
@@ -80,7 +80,7 @@ namespace Phamhilator.NLP
 
 
 
-        public Dictionary<string, ushort> GetModel(string text)
+        public Dictionary<string, ushort> GetTerms(string text)
         {
             var prepared = PrepareBody(text);
             var words = prepared.Split(new[]

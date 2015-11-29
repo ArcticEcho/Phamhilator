@@ -30,7 +30,7 @@ namespace Phamhilator.Pham.UI
 {
     public class PostClassifier : IDisposable
     {
-        private readonly PostModelGenerator modelGen = new PostModelGenerator();
+        private readonly PostTermsExtractor modelGen = new PostTermsExtractor();
         private readonly Logger<Term> termLog;
         private bool dispose;
 
@@ -63,15 +63,19 @@ namespace Phamhilator.Pham.UI
 
         public ClassificationResults ClassifyPost(Post post)
         {
-            if (TfIdfRecorder.MinipulatedSinceLastRecalc)
-            {
-                TfIdfRecorder.RecalculateIDFs();
-            }
-
-            var postTermTFs = modelGen.GetModel(post.Body);
+            var postTermTFs = modelGen.GetTerms(post.Body);
             var sim = ToSimpleTermCollection(postTermTFs);
+            var docs = new Dictionary<uint, float>();
 
-            var docs = TfIdfRecorder.GetSimilarity(sim, 10);
+            lock (TfIdfRecorder)
+            {
+                if (TfIdfRecorder.MinipulatedSinceLastRecalc)
+                {
+                    TfIdfRecorder.RecalculateIDFs();
+                }
+
+                docs = TfIdfRecorder.GetSimilarity(sim, 10);
+            }
 
             //TODO: Do stuff with docs.
 
@@ -80,16 +84,22 @@ namespace Phamhilator.Pham.UI
 
         public void AddPostToModels(Post post)
         {
-            var postTermTFs = modelGen.GetModel(post.Body);
+            var postTermTFs = modelGen.GetTerms(post.Body);
 
-            TfIdfRecorder.AddDocument(post.ID, postTermTFs);
+            lock (TfIdfRecorder)
+            {
+                TfIdfRecorder.AddDocument(post.ID, postTermTFs);
+            }
         }
 
         public void RemovePostFromModels(Post post)
         {
-            var postTermTFs = modelGen.GetModel(post.Body);
+            var postTermTFs = modelGen.GetTerms(post.Body);
 
-            TfIdfRecorder.RemoveDocument(post.ID, postTermTFs);
+            lock (TfIdfRecorder)
+            {
+                TfIdfRecorder.RemoveDocument(post.ID, postTermTFs);
+            }
         }
 
 

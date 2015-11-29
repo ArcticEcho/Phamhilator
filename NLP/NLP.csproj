@@ -49,7 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PostModelGenerator.cs" />
+    <Compile Include="PostTermsExtractor.cs" />
     <Compile Include="Term.cs" />
   </ItemGroup>
   <ItemGroup>

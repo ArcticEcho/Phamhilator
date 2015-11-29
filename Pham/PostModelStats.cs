@@ -25,13 +25,19 @@ using System.Collections.Generic;
 
 namespace Phamhilator.Pham.UI
 {
-    public class PostModel
+    public class PostModelStats
     {
-        public Dictionary<string, ushort> Terms { get; set; }
+        public uint PostID { get; set; }
+
+        public Dictionary<string, ushort> TermTFs { get; set; }
 
         public TimeSpan TimeAlive { get; set; }
 
-        public byte? Downvotes { get; set; }
+        public short Score { get; set; }
+
+        public int Views { get; set; }
+
+        public bool Closed { get; set; }
 
         public bool Deleted { get; set; }
     }

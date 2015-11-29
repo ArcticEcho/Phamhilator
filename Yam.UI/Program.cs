@@ -32,13 +32,11 @@ using ServiceStack.Text;
 
 namespace Phamhilator.Yam.UI
 {
-    using System.Text.RegularExpressions;
     using RequestType = LocalRequest.RequestType;
 
     public class Program
     {
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
-        private static readonly Regex logSearchReg = new Regex("(?i)(site:|title:|body:|score:|createdAfter:|createdBefore:|authorName:|authorRep:|authorNetworkID:)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static string apiKeySenderEmail;
         private static string apiKeySenderPwd;
         private static string apiKeySenderHost;
@@ -86,13 +84,18 @@ namespace Phamhilator.Yam.UI
 
             shutdownMre.WaitOne();
 
+            Console.Write("Stopping...");
+
+            socvr?.Leave();
             shutdownMre.Dispose();
             postSocket?.Close();
             postSocket?.Dispose();
             locServer?.Dispose();
             remServer?.Dispose();
-            socvr?.Leave();
+            authUsers?.Dispose();
             chatClient?.Dispose();
+
+            Console.WriteLine("done.");
         }
 
         private static void JoinRooms()
