@@ -37,7 +37,7 @@ namespace Phamhilator.Pham.UI
         private static LocalRequestClient yamClient;
         private static PostClassifier cvClassifier;
         private static PostClassifier dvClassifier;
-        private static Logger<Post> logger;
+        //private static Logger<Post> logger;
         private static Client chatClient;
         private static Room socvr;
         private static UserAccess authUsers;
@@ -86,7 +86,7 @@ namespace Phamhilator.Pham.UI
             authUsers?.Dispose();
             cvClassifier?.Dispose();
             dvClassifier?.Dispose();
-            logger?.Dispose();
+            //logger?.Dispose();
             yamClient?.Dispose();
 
             Console.WriteLine("done.");
@@ -108,13 +108,14 @@ namespace Phamhilator.Pham.UI
 
         private static void ReadPostLog()
         {
-            var cr = new ConfigReader();
-            var mins = 0;
-            if (!int.TryParse(cr.GetSetting("logclear"), out mins))
-            {
-                mins = 5;
-            }
-            logger = new Logger<Post>("Post Log.txt", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
+            // Initialise PostCheckBack, not this log.
+            //var cr = new ConfigReader();
+            //var mins = 0;
+            //if (!int.TryParse(cr.GetSetting("logclear"), out mins))
+            //{
+            //    mins = 5;
+            //}
+            //logger = new Logger<Post>("Post Log.txt", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
         }
 
         private static void ConnectYamCLient()
@@ -141,12 +142,12 @@ namespace Phamhilator.Pham.UI
 
         private static void InitialiseCVClassifier()
         {
-            cvClassifier = new PostClassifier("CV Terms.txt");
+            cvClassifier = new PostClassifier("CV Terms.txt", ClassificationResults.SuggestedAction.Close);
         }
 
         private static void InitialiseDVClassifier()
         {
-            cvClassifier = new PostClassifier("DV Terms.txt");
+            dvClassifier = new PostClassifier("DV Terms.txt", ClassificationResults.SuggestedAction.Delete);
         }
 
         private static void JoinRooms()
@@ -171,9 +172,37 @@ namespace Phamhilator.Pham.UI
             }
             checkedPosts.Push(q);
 
-            Task.Run(() => logger.EnqueueItem(q));
+            //Task.Run(() => logger.EnqueueItem(q));
 
-            //TODO: Checking magic.
+            //var edRes = ???
+            var cvRes = cvClassifier.ClassifyPost(q);
+            var dvRes = dvClassifier.ClassifyPost(q);
+
+            //var edScore = ???
+            var cvScore = cvRes.Similarity * (cvRes.Severity * 0.5);
+            var dvScore = dvRes.Similarity * (dvRes.Severity * 0.5);
+
+            //if (edScore > 0.6 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
+            //{
+            //    ReportPost(q, edRes);
+            //    return;
+            //}
+            if (cvScore > 0.6 && /*cvScore > edScore * 1.1 &&*/ cvScore > dvScore * 0.9)
+            {
+                ReportPost(q, cvRes);
+                return;
+            }
+            if (dvScore > 0.6 && /*dvScore > edScore * 1.2 &&*/ dvScore > cvScore * 1.1)
+            {
+                ReportPost(q, cvRes);
+                return;
+            }
+
+            // If that ^ goes weird, resort to requesting an edit (if within threshold).
+            //if (edScore > 0.6)
+            //{
+            //    ReportPost(q, edRes);
+            //}
         }
 
         private static void CheckAnswer(Answer a)
@@ -186,9 +215,37 @@ namespace Phamhilator.Pham.UI
             }
             checkedPosts.Push(a);
 
-            Task.Run(() => logger.EnqueueItem(a));
+            //Task.Run(() => logger.EnqueueItem(a));
 
-            //TODO: Checking magic.
+            //var edRes = ???
+            var cvRes = cvClassifier.ClassifyPost(a);
+            var dvRes = dvClassifier.ClassifyPost(a);
+
+            //var edScore = ???
+            var cvScore = cvRes.Similarity * (cvRes.Severity * 0.5);
+            var dvScore = dvRes.Similarity * (dvRes.Severity * 0.5);
+
+            //if (edScore > 0.6 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
+            //{
+            //    ReportPost(a, edRes);
+            //    return;
+            //}
+            if (cvScore > 0.6 && /*cvScore > edScore * 1.1 &&*/ cvScore > dvScore * 0.9)
+            {
+                ReportPost(a, cvRes);
+                return;
+            }
+            if (dvScore > 0.6 && /*dvScore > edScore * 1.2 &&*/ dvScore > cvScore * 1.1)
+            {
+                ReportPost(a, cvRes);
+                return;
+            }
+
+            // If that ^ goes weird, resort to requesting an edit (if within threshold).
+            //if (edScore > 0.6)
+            //{
+            //    ReportPost(a, edRes);
+            //}
         }
 
         private static void ReportPost(Post post, ClassificationResults results)

@@ -31,17 +31,19 @@ namespace Phamhilator.Pham.UI
     public class PostClassifier : IDisposable
     {
         private readonly PostTermsExtractor modelGen = new PostTermsExtractor();
+        private readonly GlobalTfIdfRecorder tfIdfRecorder;
         private readonly Logger<Term> termLog;
+        private readonly ClassificationResults.SuggestedAction action;
         private bool dispose;
 
-        public GlobalTfIdfRecorder TfIdfRecorder { get; private set; }
 
 
 
-        public PostClassifier(string termLogPath)
+        public PostClassifier(string termLogPath, ClassificationResults.SuggestedAction termAction)
         {
+            action = termAction;
             termLog = new Logger<Term>(termLogPath);
-            TfIdfRecorder = new GlobalTfIdfRecorder(termLog);
+            tfIdfRecorder = new GlobalTfIdfRecorder(termLog);
         }
 
         ~PostClassifier()
@@ -64,31 +66,40 @@ namespace Phamhilator.Pham.UI
         public ClassificationResults ClassifyPost(Post post)
         {
             var postTermTFs = modelGen.GetTerms(post.Body);
-            var sim = ToSimpleTermCollection(postTermTFs);
+            var simple = ToSimpleTermCollection(postTermTFs);
             var docs = new Dictionary<uint, float>();
 
-            lock (TfIdfRecorder)
+            lock (tfIdfRecorder)
             {
-                if (TfIdfRecorder.MinipulatedSinceLastRecalc)
+                if (tfIdfRecorder.MinipulatedSinceLastRecalc)
                 {
-                    TfIdfRecorder.RecalculateIDFs();
+                    tfIdfRecorder.RecalculateIDFs();
                 }
 
-                docs = TfIdfRecorder.GetSimilarity(sim, 10);
+                docs = tfIdfRecorder.GetSimilarity(simple, 5);
             }
 
-            //TODO: Do stuff with docs.
+            // Average the similarity results.
+            var match = 0F;
+            var sims = docs.Values.OrderByDescending(x => x).ToArray();
+            var simsLen = (float)sims.Length;
+            for (var i = 0; i < sims.Length; i++)
+            {
+                match += (sims[i] * (simsLen - i / simsLen)) / simsLen;
+            }
 
-            return null;
+            // Use logged posts data to calc urgency.
+
+            return new ClassificationResults(action, match, 0);
         }
 
         public void AddPostToModels(Post post)
         {
             var postTermTFs = modelGen.GetTerms(post.Body);
 
-            lock (TfIdfRecorder)
+            lock (tfIdfRecorder)
             {
-                TfIdfRecorder.AddDocument(post.ID, postTermTFs);
+                tfIdfRecorder.AddDocument(post.ID, postTermTFs);
             }
         }
 
@@ -96,9 +107,9 @@ namespace Phamhilator.Pham.UI
         {
             var postTermTFs = modelGen.GetTerms(post.Body);
 
-            lock (TfIdfRecorder)
+            lock (tfIdfRecorder)
             {
-                TfIdfRecorder.RemoveDocument(post.ID, postTermTFs);
+                tfIdfRecorder.RemoveDocument(post.ID, postTermTFs);
             }
         }
 
@@ -108,7 +119,7 @@ namespace Phamhilator.Pham.UI
         {
             termLog.ClearLog();
 
-            termLog.EnqueueItems(TfIdfRecorder.Terms.Values);
+            termLog.EnqueueItems(tfIdfRecorder.Terms.Values);
         }
 
         private string[] ToSimpleTermCollection(IDictionary<string, ushort> termTFs)

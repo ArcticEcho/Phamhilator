@@ -21,16 +21,22 @@
 
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Phamhilator.Pham.UI
 {
-    public partial class Logger<T>
+    public class EditClassifier
     {
-        public class Entry
+        public ClassificationResults ClassifyPost(PostClassifier post)
         {
-            public object Data { get; set; }
-
-            public DateTime Timestamp { get; set; }
+            throw new NotImplementedException();
+            //TODO: Finish off implementation.
         }
+
+
+
     }
 }

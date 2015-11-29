@@ -30,12 +30,6 @@ using ServiceStack.Text;
 
 namespace Phamhilator.Pham.UI
 {
-    // No clue how this will work, just some ideas.
-    // Severity 0: 1 hour
-    // Severity 1: 6 hours
-    // Severity 2: 12 hours
-    // Severity 3: 24 hours
-
     public partial class Logger<T> : IEnumerable<T>, IDisposable
     {
         private readonly ManualResetEvent itemRemoverMre = new ManualResetEvent(false);
@@ -44,7 +38,7 @@ namespace Phamhilator.Pham.UI
         private readonly string logPath;
         private bool dispose;
 
-        public TimeSpan LogClearRate { get; }
+        public TimeSpan FlushRate { get; }
 
         public TimeSpan? TimeToLive { get; }
 
@@ -63,10 +57,10 @@ namespace Phamhilator.Pham.UI
             Task.Run(() => RemoveItems());
         }
 
-        public Logger(string logFileName, TimeSpan itemTtl, TimeSpan logClearRate)
+        public Logger(string logFileName, TimeSpan itemTtl, TimeSpan flushRate)
         {
             TimeToLive = itemTtl;
-            LogClearRate = logClearRate;
+            FlushRate = flushRate;
             logPath = logFileName;
 
             InitialiseCount();
@@ -196,7 +190,7 @@ namespace Phamhilator.Pham.UI
 
         private void RemoveItems()
         {
-            var clearRate = TimeToLive == null ? TimeSpan.FromMinutes(5) : LogClearRate;
+            var clearRate = TimeToLive == null ? TimeSpan.FromMinutes(5) : FlushRate;
 
             while (!dispose)
             {

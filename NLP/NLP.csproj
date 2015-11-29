@@ -50,6 +50,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="PostTermsExtractor.cs" />
+    <Compile Include="StringTools.cs" />
     <Compile Include="Term.cs" />
   </ItemGroup>
   <ItemGroup>

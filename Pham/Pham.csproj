@@ -59,8 +59,10 @@
   <ItemGroup>
     <Compile Include="ClassificationResults.cs" />
     <Compile Include="ConfigReader.cs" />
+    <Compile Include="EditClassifier.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Logger.Entry.cs" />
+    <Compile Include="PostCheckBack.cs" />
     <Compile Include="PostClassifier.cs" />
     <Compile Include="PostModelStats.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
