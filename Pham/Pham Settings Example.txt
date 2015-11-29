@@ -1,5 +1,6 @@
 ﻿Note: you'll need to copy this file to the output directory of your compiler (and rename it to "Pham Settings.txt").
 
+LogClearRateMin:5
 SE Email:mybelovedtrash@gmail.com
 SE Password:correct horse battery staple
 RoomURL:http://chat.stackoverflow.com/rooms/41570/so-close-vote-reviewers

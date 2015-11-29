@@ -59,6 +59,10 @@
   <ItemGroup>
     <Compile Include="ClassificationResults.cs" />
     <Compile Include="ConfigReader.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Logger.Entry.cs" />
+    <Compile Include="PostClassifier.cs" />
+    <Compile Include="PostModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,9 +83,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlagExchange.Net\FlagExchange.Net\FlagExchange.Net.csproj">
-      <Project>{8bac4155-8aee-4282-b64b-823397c75438}</Project>
-      <Name>FlagExchange.Net</Name>
+    <ProjectReference Include="..\NLP\NLP.csproj">
+      <Project>{ff9060ca-0692-4170-a98b-c01bb03e726a}</Project>
+      <Name>NLP</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yam.Core\Yam.Core.csproj">
       <Project>{5823ff27-6194-43d8-a16e-5943c2e34f09}</Project>

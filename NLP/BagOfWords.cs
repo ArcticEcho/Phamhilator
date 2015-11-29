@@ -52,14 +52,12 @@ namespace Phamhilator.NLP
 
         public Dictionary<string, int> Terms { get; } = new Dictionary<string, int>();
 
-        public WeightMode Mode { get; set; }
+        public WeightMode Mode { get; set; } = WeightMode.TFIDF;
 
 
 
-        public BagOfWords(IEnumerable<string> terms, WeightMode mode = WeightMode.TFIDF)
+        public BagOfWords(IEnumerable<string> terms)
         {
-            Mode = mode;
-
             foreach (var term in terms)
             {
                 if (Terms.ContainsKey(term))
@@ -73,9 +71,14 @@ namespace Phamhilator.NLP
             }
         }
 
+        public BagOfWords(IDictionary<string, int> terms)
+        {
+            Terms = (Dictionary<string, int>)terms;
+        }
 
 
-        public float GetWeightedTermValue(string term, ICollection<IEnumerable<string>> termsCollection = null)
+
+        public float GetWeightedTermValue(string term, ICollection<IDictionary<string, int>> termsCollection = null)
         {
             if (string.IsNullOrWhiteSpace(term) || !Terms.ContainsKey(term)) return -1;
 
@@ -110,27 +113,20 @@ namespace Phamhilator.NLP
             return val;
         }
 
-
-
-        private double CalcIDF(string term, ICollection<IEnumerable<string>> termsCollection)
+        private double CalcIDF(string term, ICollection<IDictionary<string, int>> docs)
         {
-            var termsFound = 0D;
-            var totalCols = 0;
+            var df = 0D;
+            var totalDocs = docs.Count;
 
-            foreach (var termCol in termsCollection)
+            foreach (var termCol in docs)
             {
-                totalCols++;
-
-                foreach (var t in termCol)
+                if (termCol.ContainsKey(term))
                 {
-                    if (t == term)
-                    {
-                        termsFound++;
-                    }
+                    df++;
                 }
             }
 
-            return Math.Log(totalCols / termsFound);
+            return Math.Log(totalDocs / df);
         }
     }
 }

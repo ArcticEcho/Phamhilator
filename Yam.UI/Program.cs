@@ -59,6 +59,12 @@ namespace Phamhilator.Yam.UI
         private static void Main(string[] args)
         {
             Console.Title = "Yam v2";
+            Console.CancelKeyPress += (o, oo) =>
+            {
+                oo.Cancel = true;
+                shutdownMre.Set();
+            };
+
             Console.Write("Authenticating...");
             InitialiseFromConfig();
             Console.Write("done\n.Joining chat room(s)...");
@@ -71,7 +77,7 @@ namespace Phamhilator.Yam.UI
             startUpMsg.AppendText("Yam v2 started", TextFormattingOptions.InLineCode);
 
 #if DEBUG
-            Console.Write("done.\nYam v2 started (debug), press Q to exit.\n");
+            Console.Write("done.\nYam v2 started (debug).\n");
             startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
 #else
             Console.Write("done.\nYam v2 started, press Q to exit.\n");
@@ -79,28 +85,15 @@ namespace Phamhilator.Yam.UI
 #endif
             startTime = DateTime.UtcNow;
 
-            Task.Run(() =>
-            {
-                while (true)
-                {
-                    if (char.ToLowerInvariant(Console.ReadKey(true).KeyChar) == 'q')
-                    {
-                        Console.WriteLine("Stopping...");
-                        shutdownMre.Set();
-                        return;
-                    }
-                }
-            });
-
             shutdownMre.WaitOne();
 
             shutdownMre.Dispose();
-            postSocket.Close();
-            postSocket.Dispose();
-            locServer.Dispose();
-            remServer.Dispose();
-            socvr.Leave();
-            chatClient.Dispose();
+            postSocket?.Close();
+            postSocket?.Dispose();
+            locServer?.Dispose();
+            remServer?.Dispose();
+            socvr?.Leave();
+            chatClient?.Dispose();
         }
 
         private static void JoinRooms()
@@ -201,7 +194,7 @@ namespace Phamhilator.Yam.UI
             }
             catch (Exception ex)
             {
-                room.PostReplyFast(command, "`Unable to execute command: " + ex.Message + "`");
+                room.PostReplyFast(command, $"`Unable to execute command: {ex.Message}`");
             }
         }
 
@@ -274,7 +267,7 @@ namespace Phamhilator.Yam.UI
 
         private static bool HandlePrivilegedUserCommand(Room room, Message command, bool isOwner)
         {
-            return true;
+            return false;
         }
 
         private static bool HandleOwnerCommand(Room room, Message command)

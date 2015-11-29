@@ -39,7 +39,7 @@ namespace Phamhilator.Pham.UI
             if (post == null || results == null ||
                 results.Action == ClassificationResults.SuggestedAction.Nothing)
             {
-                return "Insufficient data.";
+                return null;
             }
 
             var msg = new MessageBuilder();

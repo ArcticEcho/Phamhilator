@@ -36,6 +36,7 @@ namespace Phamhilator.Pham.UI
         private static readonly ConcurrentStack<Post> checkedPosts = new ConcurrentStack<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static LocalRequestClient yamClient;
+        private static Logger<Post> logger;
         private static Client chatClient;
         private static Room socvr;
         private static UserAccess authUsers;
@@ -46,10 +47,16 @@ namespace Phamhilator.Pham.UI
         static void Main(string[] args)
         {
             Console.Title = "Pham v2";
-            Console.CancelKeyPress += (o, oo) => shutdownMre.Set();
+            Console.CancelKeyPress += (o, oo) =>
+            {
+                oo.Cancel = true;
+                shutdownMre.Set();
+            };
 
             Console.Write("Authenticating...");
             AuthenticateChatClient();
+            Console.Write("done.\nInitialising from config...");
+            InitialiseFromConfig();
             Console.Write("done.\nJoining chat room...");
             JoinRooms();
             Console.WriteLine("done.\n");
@@ -62,15 +69,13 @@ namespace Phamhilator.Pham.UI
             Console.WriteLine("Pham v2 started.");
 #endif
 
-            ConnectYamClientEvents();
-
             shutdownMre.WaitOne();
 
             Console.WriteLine("Stopping...");
 
-            socvr.Leave();
-            chatClient.Dispose();
-            yamClient.Dispose();
+            socvr?.Leave();
+            chatClient?.Dispose();
+            yamClient?.Dispose();
         }
 
 
@@ -93,8 +98,10 @@ namespace Phamhilator.Pham.UI
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
         }
 
-        private static void ConnectYamClientEvents()
+        private static void InitialiseFromConfig()
         {
+            yamClient = new LocalRequestClient("Pham");
+
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(CheckQuestion));
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(CheckAnswer));
@@ -109,11 +116,21 @@ namespace Phamhilator.Pham.UI
                     Options = ex.Options
                 });
             }));
+
+            authUsers = new UserAccess(ref yamClient);
+
+            var cr = new ConfigReader();
+            var mins = 0;
+            if (!int.TryParse(cr.GetSetting("logclear"), out mins))
+            {
+                mins = 5;
+            }
+            logger = new Logger<Post>("Log", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
         }
 
         private static void CheckQuestion(Question q)
         {
-            if (checkedPosts.Contains(q) || q.Site != "stackoverflow.com") { return; }
+            if (checkedPosts.Contains(q) || q.Site != "stackoverflow.com") return;
             while (checkedPosts.Count > 1000)
             {
                 Post temp;
@@ -121,34 +138,33 @@ namespace Phamhilator.Pham.UI
             }
             checkedPosts.Push(q);
 
-            // TODO: Checking magic.
+            Task.Run(() => logger.EnqueueItem(q));
+
+            //TODO: Checking magic.
         }
 
         private static void CheckAnswer(Answer a)
         {
-            if (checkedPosts.Contains(a) || a.Site != "stackoverflow.com") { return; }
+            if (checkedPosts.Contains(a) || a.Site != "stackoverflow.com") return;
             while (checkedPosts.Count > 1000)
             {
                 Post temp;
                 checkedPosts.TryPop(out temp);
             }
             checkedPosts.Push(a);
-            
+
+            Task.Run(() => logger.EnqueueItem(a));
+
             //TODO: Checking magic.
         }
 
-        private static void ReportPost(Post post, KeyValuePair<string, double> score)
+        private static void ReportPost(Post post, ClassificationResults results)
         {
-            var msg = new MessageBuilder();
+            var report = ReportFormatter.FormatReport(post, results);
 
-            msg.AppendText(score.Key, TextFormattingOptions.Bold);
-            msg.AppendText(" (" + Math.Round(score.Value, 2) + ") ");
-            msg.AppendLink(post.Title, post.Url, "Score: " + post.Score, TextFormattingOptions.None, WhiteSpace.None);
-            msg.AppendText(", by ");
-            msg.AppendLink(post.AuthorName, post.AuthorLink, "Reputation: " + post.AuthorRep, TextFormattingOptions.None, WhiteSpace.None);
-            msg.AppendText(".");
+            if (string.IsNullOrWhiteSpace(report)) return;
 
-            socvr.PostMessageFast(msg);
+            socvr.PostMessageFast(report);
         }
 
         private static void HandleChatCommand(Room room, Message command)
@@ -165,12 +181,7 @@ namespace Phamhilator.Pham.UI
 
                         if (!cmdMatches)
                         {
-                            cmdMatches = HandleNormalUserCommand(room, command);
-
-                            if (!cmdMatches)
-                            {
-                                room.PostReplyFast(command, "`Command not recognised.`");
-                            }
+                            HandleNormalUserCommand(room, command);
                         }
                     }
                 }
@@ -180,38 +191,22 @@ namespace Phamhilator.Pham.UI
 
                     if (!cmdMatches)
                     {
-                        cmdMatches = HandleNormalUserCommand(room, command);
-
-                        if (!cmdMatches)
-                        {
-                            room.PostReplyFast(command, "`Command not recognised (at your current access level).`");
-                        }
+                        HandleNormalUserCommand(room, command);
                     }
                 }
                 else
                 {
-                    var cmdMatches = HandleNormalUserCommand(room, command);
-
-                    if (!cmdMatches)
-                    {
-                        room.PostReplyFast(command, "`Command not recognised (at your current access level).`");
-                    }
+                    HandleNormalUserCommand(room, command);
                 }
             }
             catch (Exception ex)
             {
-                room.PostReplyFast(command, "`Unable to execute command: " + ex.Message + "`");
+                room.PostReplyFast(command, $"`Unable to execute command: {ex.Message}`");
             }
         }
 
         private static bool HandleNormalUserCommand(Room room, Message command)
         {
-            if (command.Content.Trim().ToUpperInvariant() == "THRESHOLD")
-            {
-                room.PostReplyFast(command, "`Current threshold set to: " + threshold * 100 + "%.`");
-                return true;
-            }
-
             return false;
         }
 
@@ -224,25 +219,8 @@ namespace Phamhilator.Pham.UI
         {
             var cmd = command.Content.Trim().ToUpperInvariant();
 
-            if (cmd.StartsWith("SET THRESHOLD"))
+            if (cmd == "STOP")
             {
-                var newVal = cmd.Remove(0, 14);
-                var newThreshold = 0D;
-
-                if (!double.TryParse(newVal, out newThreshold) || newThreshold < 1 || newThreshold > 100)
-                {
-                    room.PostReply(command, "`Please specify a valid percentage.`");
-                    return true;
-                }
-
-                threshold = newThreshold / 100;
-                yamClient.UpdateData("Pham", thresholdDataManagerKey, threshold.ToString());
-
-                room.PostReply(command, "`Threshold successfully updated.`");
-            }
-            else if (cmd == "STOP")
-            {
-                room.PostReply(command, "`Stopping...`");
                 shutdownMre.Set();
             }
             else
@@ -252,6 +230,5 @@ namespace Phamhilator.Pham.UI
 
             return true;
         }
-
     }
 }
