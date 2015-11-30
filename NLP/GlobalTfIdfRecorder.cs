@@ -28,7 +28,7 @@ namespace Phamhilator.NLP
 {
     public class GlobalTfIdfRecorder
     {
-        public bool MinipulatedSinceLastRecalc { get; private set; }
+        public bool MinipulatedSinceLastRecalc { get; private set; } = true;
 
         public Dictionary<string, Term> Terms { get; } = new Dictionary<string, Term>();
 
@@ -53,9 +53,9 @@ namespace Phamhilator.NLP
                     Terms[term] = new Term
                     {
                         DocumentIDs = new HashSet<uint>
-                    {
-                        docID
-                    },
+                        {
+                            docID
+                        },
                         Value = term,
                         TF = 1
                     };
@@ -250,7 +250,10 @@ namespace Phamhilator.NLP
 
             foreach (var term in terms)
             {
-                len += Terms[term].IDF * Terms[term].IDF;
+                if (Terms.ContainsKey(term))
+                {
+                    len += Terms[term].IDF * Terms[term].IDF;
+                }
             }
 
             return (float)Math.Sqrt(len);

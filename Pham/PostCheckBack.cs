@@ -36,15 +36,20 @@ namespace Phamhilator.Pham.UI
         private Logger<Post> logger;
         private bool dispose;
 
+        public Action<Post> PostMatch { get; set; }
+
+
 
         public PostCheckBack(string postLogPath, TimeSpan postTTL, TimeSpan flushRate)
         {
             logger = new Logger<Post>(postLogPath, postTTL, flushRate);
+
+            Task.Run(() => CheckPosts());
         }
 
         ~PostCheckBack()
         {
-
+            Dispose();
         }
 
 
@@ -61,7 +66,7 @@ namespace Phamhilator.Pham.UI
 
 
 
-        private void CheckPost()
+        private void CheckPosts()
         {
             while (!dispose)
             {

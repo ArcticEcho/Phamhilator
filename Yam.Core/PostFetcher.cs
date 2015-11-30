@@ -43,7 +43,6 @@ namespace Phamhilator.Yam.Core
 
 
 
-
         public static Question GetQuestion(MessageEventArgs message)
         {
             var obj = JsonObject.Parse(message.Data);

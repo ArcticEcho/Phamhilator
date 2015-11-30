@@ -38,7 +38,6 @@ namespace Phamhilator.Pham.UI
 
 
 
-
         public PostClassifier(string termLogPath, ClassificationResults.SuggestedAction termAction)
         {
             action = termAction;
