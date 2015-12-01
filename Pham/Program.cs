@@ -76,6 +76,8 @@ namespace Phamhilator.Pham.UI
             Console.WriteLine("Pham v2 started.");
 #endif
 
+            NotifyYamOfStartup();
+
             shutdownMre.WaitOne();
 
             Console.Write("Stopping...");
@@ -156,6 +158,16 @@ namespace Phamhilator.Pham.UI
 
             socvr = chatClient.JoinRoom(cr.GetSetting("room"));
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
+        }
+
+        private static void NotifyYamOfStartup()
+        {
+            yamClient.SendData(new LocalRequest
+            {
+                ID = LocalRequest.GetNewID(),
+                Type = LocalRequest.RequestType.Info,
+                Data = "ALIVE"
+            });
         }
 
         #endregion

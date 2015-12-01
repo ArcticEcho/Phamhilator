@@ -79,7 +79,7 @@ namespace Phamhilator.Yam.UI
 #endif
             startTime = DateTime.UtcNow;
 
-            Console.Write("Starting Pham...");
+            Console.Write("\nStarting Pham...");
             StartPham();
             Console.WriteLine("done.\n");
 
@@ -181,7 +181,7 @@ namespace Phamhilator.Yam.UI
 
         private static void StartPham()
         {
-            var files = Directory.EnumerateFiles("");
+            var files = Directory.EnumerateFiles(".");
             var phamExeCrTime = DateTime.MinValue;
             var phamExe = "";
 
@@ -189,11 +189,17 @@ namespace Phamhilator.Yam.UI
             {
                 var name = Path.GetFileName(file);
                 var fileCrTime = new FileInfo(file).CreationTimeUtc;
-                if (name.Contains("Pham") && fileCrTime > phamExeCrTime)
+                if (name.Contains("Pham") && name.EndsWith(".exe") && fileCrTime > phamExeCrTime)
                 {
                     phamExe = file;
                     phamExeCrTime = fileCrTime;
                 }
+            }
+
+            if (string.IsNullOrWhiteSpace(phamExe))
+            {
+                Console.Write("unable to find Pham executable. Skipped start-up.");
+                return;
             }
 
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
