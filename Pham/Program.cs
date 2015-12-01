@@ -76,12 +76,11 @@ namespace Phamhilator.Pham.UI
             Console.WriteLine("Pham v2 started.");
 #endif
 
-            NotifyYamOfStartup();
+            SendYamInfo("ALIVE");
 
             shutdownMre.WaitOne();
 
             Console.Write("Stopping...");
-
             socvr?.Leave();
             shutdownMre?.Dispose();
             chatClient?.Dispose();
@@ -89,8 +88,10 @@ namespace Phamhilator.Pham.UI
             cvClassifier?.Dispose();
             dvClassifier?.Dispose();
             //logger?.Dispose();
-            yamClient?.Dispose();
 
+            SendYamInfo("DEAD");
+
+            yamClient?.Dispose();
             Console.WriteLine("done.");
         }
 
@@ -168,13 +169,13 @@ namespace Phamhilator.Pham.UI
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
         }
 
-        private static void NotifyYamOfStartup()
+        private static void SendYamInfo(string data)
         {
             yamClient.SendData(new LocalRequest
             {
                 ID = LocalRequest.GetNewID(),
                 Type = LocalRequest.RequestType.Info,
-                Data = "ALIVE"
+                Data = data
             });
         }
 

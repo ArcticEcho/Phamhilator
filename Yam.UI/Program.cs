@@ -292,7 +292,7 @@ namespace Phamhilator.Yam.UI
             {
                 case "STATUS":
                 {
-                    var statusReport = $"Yes, I'm alive ({DateTime.UtcNow - startTime}).";
+                    var statusReport = $"`Yes, I'm alive ({DateTime.UtcNow - startTime}).`";
                     room.PostMessageFast(statusReport);
                     return true;
                 }
@@ -337,7 +337,7 @@ namespace Phamhilator.Yam.UI
                 }
                 case "VERSION":
                 {
-                    var msg = $"My current version is: {updater.CurrentVersion}.";
+                    var msg = $"`My current version is: `{updater.CurrentVersion}.`";
                     room.PostReplyFast(command, msg);
                     return true;
                 }

@@ -123,7 +123,7 @@ namespace Phamhilator.Yam.UI
 
         private void RemoveOldFile(string filename)
         {
-            var files = Directory.EnumerateFiles(Directory.GetCurrentDirectory());
+            var files = Directory.EnumerateFiles(".");
             var fn = Path.GetFileNameWithoutExtension(filename).Replace(".", @"\.");
 
             foreach (var file in files)
