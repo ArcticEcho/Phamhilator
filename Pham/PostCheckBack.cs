@@ -36,7 +36,9 @@ namespace Phamhilator.Pham.UI
         private Logger<Post> logger;
         private bool dispose;
 
-        public Action<Post> PostMatch { get; set; }
+        public Action<Post> ClosedPostFound { get; set; }
+
+        public Action<Post> DeletedPostFound { get; set; }
 
 
 
@@ -64,6 +66,11 @@ namespace Phamhilator.Pham.UI
             GC.SuppressFinalize(this);
         }
 
+        public void AddPost(Post post)
+        {
+
+        }
+
 
 
         private void CheckPosts()
@@ -71,6 +78,8 @@ namespace Phamhilator.Pham.UI
             while (!dispose)
             {
                 checkBackMre.WaitOne(TimeSpan.FromMinutes(5));
+
+
 
                 // No clue how this will work, just some ideas.
                 // Severity 0: 1 hour

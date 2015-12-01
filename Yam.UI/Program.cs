@@ -64,21 +64,16 @@ namespace Phamhilator.Yam.UI
 
             Console.Write("Authenticating...");
             InitialiseFromConfig();
-            Console.Write("done\n.Joining chat room(s)...");
+            Console.Write("done.\nJoining chat room(s)...");
             JoinRooms();
             Console.Write("done.\nStarting server...");
             InitialiseLocalServer();
             InitialiseRemoteServer();
 
-            var startUpMsg = new MessageBuilder();
-            startUpMsg.AppendText("Yam v2 started", TextFormattingOptions.InLineCode);
-
 #if DEBUG
-            Console.Write("done.\nYam v2 started (debug).\n");
-            startUpMsg.AppendText(" - debug.", TextFormattingOptions.Bold | TextFormattingOptions.InLineCode);
+            Console.WriteLine("done.\nYam v2 started (debug).\n");
 #else
-            Console.Write("done.\nYam v2 started, press Q to exit.\n");
-            //socvr.PostMessageFast(startUpMsg);
+            Console.WriteLine("done.\nYam v2 started.\n");
 #endif
             startTime = DateTime.UtcNow;
 

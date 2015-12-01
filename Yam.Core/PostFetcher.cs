@@ -30,6 +30,7 @@ using System.Text.RegularExpressions;
 using CsQuery;
 using WebSocketSharp;
 using ServiceStack.Text;
+using System.IO;
 
 namespace Phamhilator.Yam.Core
 {
@@ -37,6 +38,7 @@ namespace Phamhilator.Yam.Core
     {
         private const RegexOptions regOpts = RegexOptions.CultureInvariant | RegexOptions.Compiled;
         private static readonly Regex hostParser = new Regex(@".*//|/.*", regOpts);
+        private static readonly Regex isQuestionUrl = new Regex(@"(?i)/(q(uestions)?)/(\d+)/?", regOpts);
         private static readonly Regex postIDParser = new Regex(@"(?i)/(q(uestions)?|a)/(\d+)/?", regOpts);
         private static readonly Regex userNetworkID = new Regex(@"accountId: \d+", regOpts);
         private static readonly Regex questionStatusDiv = new Regex("(?s)<div class=\"question-status.*?</div>", regOpts);
@@ -195,6 +197,45 @@ namespace Phamhilator.Yam.Core
             }
 
             return null;
+        }
+
+        public static bool IsPostDeleted(string url)
+        {
+            try
+            {
+                if (isQuestionUrl.IsMatch(url))
+                {
+                    new WebClient().DownloadData(url);
+                }
+                else
+                {
+                    var id = 0u;
+                    var host = "";
+                    GetPostInfo(url, out host, out id);
+                    new WebClient().DownloadString("http://" + host + "/posts/ajax-load-realtime/" + id);
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null && ((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.NotFound)
+                {
+                    if (!isQuestionUrl.IsMatch(url)) return true;
+
+                    using (var str = ex.Response.GetResponseStream())
+                    using (var sr = new StreamReader(str))
+                    {
+                        var html = sr.ReadToEnd();
+                        var dom = CQ.Create(html);
+
+                        if (dom[".leftcol"].Html().Contains("reasons of moderation"))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
         public static bool IsQuestionClosed(CQ dom)
