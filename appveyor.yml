@@ -6,6 +6,23 @@ assembly_info:
   assembly_version: '1.0.0.0'
   assembly_file_version: '{version}'
   assembly_informational_version: '1.0.0-beta'
+  
+artifacts:
+- path: Phamhilator\Yam.UI\bin\Release\Yam.UI.exe
+  name: Yam.UI.exe
+- path: Phamhilator\Yam.UI\bin\Release\ChectExchange.Net.dll
+  name: ChatExchange.Net.Net.dll
+- path: Phamhilator\Yam.UI\bin\Release\CsQuery.dll
+  name: CsQuery.dll
+- path: Phamhilator\Yam.UI\bin\Release\ServiceStack.Text.Dll
+  name: ServiceStack.Text.dll
+- path: Phamhilator\Yam.UI\bin\Release\websocket-sharp.dll
+  name: websocket-sharp.dll
+- path: Phamhilator\Yam.UI\bin\Release\Yam.Core.dll
+  name: Yam.Core.dll
+  
+- path: Phamhilator\Pham\bin\Release\Pham.exe
+  name: Pham.exe
 
 configuration: Release
 
