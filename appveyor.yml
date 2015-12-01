@@ -28,9 +28,9 @@ artifacts:
 - path: Yam.UI\bin\Release\Yam.Core.dll
   name: Yam.Core.dll
   
-- path: Phamhilator\Pham\bin\Release\Pham.exe
+- path: Pham\bin\Release\Pham.exe
   name: Pham.exe
-- path: Phamhilator\Pham\bin\Release\NLP.dll
+- path: Pham\bin\Release\NLP.dll
   name: NLP.dll
 
 build:
