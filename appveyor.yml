@@ -15,7 +15,7 @@ before_build:
 - nuget restore
   
 artifacts:
-- path: phamhilator\Yam.UI\bin\Release\Yam.UI.exe
+- path: Yam.UI\bin\Release\Yam.UI.exe
 
 build:
   project: Phamhilator.sln
