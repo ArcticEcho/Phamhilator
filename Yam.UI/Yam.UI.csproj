@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppveyorUpdater.cs" />
     <Compile Include="AuthorisedUsers.cs" />
     <Compile Include="ConfigReader.cs" />
     <Compile Include="DataManager.cs" />

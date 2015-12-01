@@ -1,4 +1,5 @@
 ﻿Note: you'll need to copy this file to the output directory of your compiler (and rename it to "Yam Settings.txt").
+(If you aren't able to get an Appveyor API key, just leave the field blank.)
 
 SE Email:mybelovedtrash@gmail.com
 SE Password:correct horse battery staple

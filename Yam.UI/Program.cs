@@ -22,6 +22,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -46,10 +48,8 @@ namespace Phamhilator.Yam.UI
         private static RealtimePostSocket postSocket;
         private static LocalServer locServer;
         private static RemoteServer remServer;
+        private static AppveyorUpdater updater;
         private static DateTime startTime;
-        private static uint yamErrorCount;
-        private static uint phamErrorCount;
-        private static uint ghamErrorCount;
 
 
 
@@ -64,6 +64,8 @@ namespace Phamhilator.Yam.UI
 
             Console.Write("Authenticating...");
             InitialiseFromConfig();
+            Console.Write("done.\nInitialising updater...");
+            InitialiseUpdater();
             Console.Write("done.\nJoining chat room(s)...");
             JoinRooms();
             Console.Write("done.\nStarting server...");
@@ -71,11 +73,15 @@ namespace Phamhilator.Yam.UI
             InitialiseRemoteServer();
 
 #if DEBUG
-            Console.WriteLine("done.\nYam v2 started (debug).\n");
+            Console.WriteLine("done.\nYam v2 started (debug).");
 #else
-            Console.WriteLine("done.\nYam v2 started.\n");
+            Console.WriteLine("done.\nYam v2 started.");
 #endif
             startTime = DateTime.UtcNow;
+
+            Console.Write("Starting Pham...");
+            StartPham();
+            Console.WriteLine("done.\n");
 
             shutdownMre.WaitOne();
 
@@ -117,6 +123,17 @@ namespace Phamhilator.Yam.UI
             authUsers = new AuthorisedUsers();
         }
 
+        private static void InitialiseUpdater()
+        {
+            var cr = new ConfigReader();
+            var tkn = cr.GetSetting("appveyor");
+
+            if (!string.IsNullOrWhiteSpace(tkn))
+            {
+                updater = new AppveyorUpdater(tkn, "ArcticEcho", "phamhilator");
+            }
+        }
+
         private static void InitialiseRemoteServer()
         {
             remServer = new RemoteServer();
@@ -135,26 +152,73 @@ namespace Phamhilator.Yam.UI
             locServer = new LocalServer();
             locServer.PhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
             {
-                phamErrorCount++;
                 Console.WriteLine("Warning, exception thrown from Pham:\n\n" + req.Dump());
-            }));
-            locServer.GhamEventManager.ConnectListener(RequestType.Exception, new Action<LocalRequest>(req =>
-            {
-                ghamErrorCount++;
-                Console.WriteLine("Warning, exception thrown from Gham:\n\n" + req.Dump());
             }));
             locServer.PhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
             {
                 HandleDataManagerRequest(true, req);
             }));
-            locServer.GhamEventManager.ConnectListener(RequestType.DataManagerRequest, new Action<LocalRequest>(req =>
+            locServer.PhamEventManager.ConnectListener(RequestType.Info, new Action<LocalRequest>(req =>
             {
-                HandleDataManagerRequest(false, req);
+                var data = ((string)req?.Data ?? "").Trim().ToUpperInvariant();
+                switch (data)
+                {
+                    case "ALIVE":
+                    {
+                        break;
+                    }
+                    case "DEAD":
+                    {
+                        break;
+                    }
+                }
             }));
 
             postSocket = new RealtimePostSocket(true);
             postSocket.OnActiveQuestion += HandleActiveQuestion;
             postSocket.OnActiveAnswer += HandleActiveAnswer;
+        }
+
+        private static void StartPham()
+        {
+            var files = Directory.EnumerateFiles("");
+            var phamExeCrTime = DateTime.MinValue;
+            var phamExe = "";
+
+            foreach (var file in files)
+            {
+                var name = Path.GetFileName(file);
+                var fileCrTime = new FileInfo(file).CreationTimeUtc;
+                if (name.Contains("Pham") && fileCrTime > phamExeCrTime)
+                {
+                    phamExe = file;
+                    phamExeCrTime = fileCrTime;
+                }
+            }
+
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+            {
+                Process.Start(phamExe);
+            }
+            else
+            {
+                Process.Start($"mono {phamExe}");
+            }
+
+            var waitMre = new ManualResetEvent(false);
+            var act = new Action<LocalRequest>(req =>
+            {
+                if (((string)req?.Data ?? "").Trim().ToUpperInvariant() == "ALIVE")
+                {
+                    waitMre.Set();
+                }
+            });
+            locServer.PhamEventManager.ConnectListener(RequestType.Info, act);
+
+            waitMre.WaitOne();
+            waitMre.Dispose();
+            
+            locServer.PhamEventManager.DisconnectListener(RequestType.Info, act);
         }
 
         private static void HandleChatCommand(Room room, Message command)
@@ -203,16 +267,7 @@ namespace Phamhilator.Yam.UI
             {
                 case "STATUS":
                 {
-                    var hoursAlive = (DateTime.UtcNow - startTime).TotalHours;
-                    var getStatus = new Func<int, string>(er => er == 0 ? "Good" : er <= 2 ? "Ok" : "Bad");
-                    var getErrorRate = new Func<uint, int>(ec => (int)Math.Round(ec / hoursAlive));
-                    var yamErrorRate = getErrorRate(yamErrorCount);   var yamStatus = getStatus(yamErrorRate);
-                    var phamErrorRate = getErrorRate(phamErrorCount); var phamStatus = getStatus(phamErrorRate);
-                    var ghamErrorRate = getErrorRate(ghamErrorCount); var ghamStatus = getStatus(ghamErrorRate);
-                    var statusReport = "    Status report:\n" +
-                                        "    Yam:  " + yamStatus + " (" + yamErrorCount + " @ " + yamErrorRate + "/h)\n" +
-                                        "    Pham: " + phamStatus + " (" + phamErrorCount + " @ " + phamErrorRate + "/h)\n" +
-                                        "    Gham: " + ghamStatus + " (" + ghamErrorCount + " @ " + ghamErrorRate + "/h)";
+                    var statusReport = $"Yes, I'm alive ({DateTime.UtcNow - startTime}).";
                     room.PostMessageFast(statusReport);
                     return true;
                 }
@@ -252,6 +307,12 @@ namespace Phamhilator.Yam.UI
                 case "COMMANDS":
                 {
                     var msg = "`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Yam-Chat-Commands \"Chat Commands Wiki\")`.`";
+                    room.PostReplyFast(command, msg);
+                    return true;
+                }
+                case "VERSION":
+                {
+                    var msg = $"My current version is: {updater.CurrentVersion}.";
                     room.PostReplyFast(command, msg);
                     return true;
                 }
@@ -304,12 +365,79 @@ namespace Phamhilator.Yam.UI
                 room.PostReply(command, "`Stopping...`");
                 shutdownMre.Set();
             }
+            else if (cmd == "UPDATE")
+            {
+                UpdateBots(room, command);
+            }
             else
             {
                 return false;
             }
 
             return true;
+        }
+
+        private static void UpdateBots(Room rm, Message cmd)
+        {
+            if (updater == null)
+            {
+                rm.PostReplyFast(cmd, "This feature has been disabled by the host (API key not specified).");
+                return;
+            }
+
+            var remVer = updater.LatestVersion;
+
+            if (updater.CurrentVersion == remVer)
+            {
+                rm.PostReplyFast(cmd, "There aren't any updates available at the moment.");
+                return;
+            }
+
+            rm.PostReplyFast(cmd, $"I've found (and now applying) a new version, `{remVer}`:");
+            rm.PostMessageFast($"> {updater.LatestVerMessage}");
+
+            var exes = updater.UpdateAssemblies();
+
+            if (exes != null)
+            {
+                rm.PostReplyFast(cmd, "Update successful! Now rebooting...");
+                locServer.SendData(true, new LocalRequest
+                {
+                    ID = LocalRequest.GetNewID(),
+                    Type = RequestType.Command,
+                    Data = "SHUTDOWN"
+                });
+
+                var waitMre = new ManualResetEvent(false);
+                var act = new Action<LocalRequest>(req =>
+                {
+                    if (((string)req?.Data ?? "").Trim().ToUpperInvariant() == "DEAD")
+                    {
+                        waitMre.Set();
+                    }
+                });
+                locServer.PhamEventManager.ConnectListener(RequestType.Info, act);
+
+                waitMre.WaitOne();
+                waitMre.Dispose();
+
+                var yamExe = exes.First(x => Path.GetFileName(x).Contains("Yam"));
+
+                if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                {
+                    Process.Start(yamExe);
+                }
+                else
+                {
+                    Process.Start($"mono {yamExe}");
+                }
+
+                shutdownMre.Set();
+            }
+            else
+            {
+                rm.PostReplyFast(cmd, "Update failed!");
+            }
         }
 
         private static void HandleActiveQuestion(Question q)
@@ -395,8 +523,7 @@ namespace Phamhilator.Yam.UI
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Detected error in Yam:\n\n" + ex.ToString());
-                yamErrorCount++;
+                Console.WriteLine("Error thrown from Yam:\n\n" + ex.ToString());
 
                 // Post back to the listener (prevent the calling thread from hanging).
                 var response = new LocalRequest
@@ -452,7 +579,6 @@ namespace Phamhilator.Yam.UI
             }
             catch (Exception e)
             {
-                yamErrorCount++;
                 Console.WriteLine("Warning, exception thrown from Yam:\n\n" + e.ToString());
             }
         }
