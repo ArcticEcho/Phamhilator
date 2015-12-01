@@ -139,6 +139,14 @@ namespace Phamhilator.Pham.UI
                 });
             }));
 
+            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Command, new Action<LocalRequest>(req =>
+            {
+                if (((string)req?.Data ?? "").Trim().ToUpperInvariant() == "SHUTDOWN")
+                {
+                    shutdownMre.Set();
+                }
+            }));
+
             authUsers = new UserAccess(ref yamClient);
         }
 

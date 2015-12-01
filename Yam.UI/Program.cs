@@ -50,6 +50,7 @@ namespace Phamhilator.Yam.UI
         private static RemoteServer remServer;
         private static AppveyorUpdater updater;
         private static DateTime startTime;
+        private static bool phamAlive;
 
 
 
@@ -80,8 +81,8 @@ namespace Phamhilator.Yam.UI
             startTime = DateTime.UtcNow;
 
             Console.Write("\nStarting Pham...");
-            StartPham();
-            Console.WriteLine("done.\n");
+            var wroteToConsole = StartPham();
+            if (!wroteToConsole) Console.WriteLine("done.\n");
 
             shutdownMre.WaitOne();
 
@@ -98,6 +99,8 @@ namespace Phamhilator.Yam.UI
 
             Console.WriteLine("done.");
         }
+
+
 
         private static void JoinRooms()
         {
@@ -179,7 +182,7 @@ namespace Phamhilator.Yam.UI
             postSocket.OnActiveAnswer += HandleActiveAnswer;
         }
 
-        private static void StartPham()
+        private static bool StartPham()
         {
             var files = Directory.EnumerateFiles(".");
             var phamExeCrTime = DateTime.MinValue;
@@ -198,8 +201,8 @@ namespace Phamhilator.Yam.UI
 
             if (string.IsNullOrWhiteSpace(phamExe))
             {
-                Console.Write("unable to find Pham executable. Skipped start-up.");
-                return;
+                Console.WriteLine("unable to find Pham executable. Skipped start-up.");
+                return true;
             }
 
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
@@ -216,15 +219,31 @@ namespace Phamhilator.Yam.UI
             {
                 if (((string)req?.Data ?? "").Trim().ToUpperInvariant() == "ALIVE")
                 {
-                    waitMre.Set();
+                    waitMre?.Set();
+                    phamAlive = true;
                 }
             });
             locServer.PhamEventManager.ConnectListener(RequestType.Info, act);
+            locServer.PhamEventManager.ConnectListener(RequestType.Info, new Action<LocalRequest>(req =>
+            {
+                if (((string)req?.Data ?? "").Trim().ToUpperInvariant() == "DEAD")
+                {
+                    phamAlive = false;
+                }
+            }));
 
-            waitMre.WaitOne();
+            waitMre.WaitOne(TimeSpan.FromMinutes(3));
             waitMre.Dispose();
-            
+
             locServer.PhamEventManager.DisconnectListener(RequestType.Info, act);
+
+            if (!phamAlive)
+            {
+                Console.WriteLine("failed to start Pham (timed out).");
+                return true;
+            }
+
+            return false;
         }
 
         private static void HandleChatCommand(Room room, Message command)
