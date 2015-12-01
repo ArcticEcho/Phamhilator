@@ -1,6 +1,0 @@
-[submodule "ChatExchange.Net"]
-	path = ChatExchange.Net
-	url = https://github.com/ArcticEcho/ChatExchange.Net
-[submodule "GibberishClassifier.NET"]
-	path = GibberishClassifier.NET
-	url = https://github.com/ProgramFOX/GibberishClassifier.NET
