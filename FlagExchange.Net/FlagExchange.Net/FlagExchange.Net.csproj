@@ -7,7 +7,7 @@
     <ProjectGuid>{8BAC4155-8AEE-4282-B64B-823397C75438}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FlagExchangeDotNet</RootNamespace>
+    <RootNamespace>Phamhilator.FlagExchangeDotNet</RootNamespace>
     <AssemblyName>FlagExchange.Net</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

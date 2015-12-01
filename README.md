@@ -1,6 +1,4 @@
-
 Phamhilator [![Build status](https://ci.appveyor.com/api/projects/status/lf065rc2e4r64x03/branch/master?svg=true)](https://ci.appveyor.com/project/ArcticEcho/phamhilator/branch/master)
-===========
 
 A .NET-based network of internet bots written in `C#`, which watch over the `/realtime tab` of [Stack Exchange][1].
 

@@ -1,84 +1,85 @@
-﻿using System;
+﻿/*
+ * Phamhilator. A .Net based bot network catching spam/low quality posts for Stack Exchange.
+ * Copyright © 2015, ArcticEcho.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-
-
-namespace NLP
+namespace Phamhilator.NLP
 {
     public static class StringTools
     {
-        private static Regex multiWhiteSpace = new Regex(@"\s{2,}", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static Regex realWords = new Regex(@"[a-zA-Z]+\b", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static Regex realWordsMergedContraction = new Regex(@"[a-zA-Z']+\b", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static RegexOptions regOpts = RegexOptions.Compiled | RegexOptions.CultureInvariant;
+        private static Regex multiWhitespace = new Regex(@"\s+", regOpts);
+        private static Regex ieEg = new Regex(@"\b(i\.e|e\.g)\.?", regOpts);
+        private static Regex inncorrectIs = new Regex(@"\bi\b", regOpts);
+        private static Regex inncorrectAfterPeriod = new Regex(@"\.\s*?[a-z]", regOpts);
 
 
-        public static List<string> SplitSentences(this string input)
+
+        /// <summary>
+        /// Calculates a text's punctuation-chars to normal word-chars ratio.
+        /// </summary>
+        public static double PunctuationRatio(string text)
         {
-            return GetSentences(input);
-        }
+            var punctCharCount = 0F;
+            var wordCharCount = 0;
 
-        public static int WordCount(this string input, bool realWordsOnly = true, bool mergeContractions = true)
-        {
-            return GetWordCount(input, realWordsOnly, mergeContractions);
-        }
-
-        public static List<string> GetSentences(string input)
-        {
-            var sentences = new List<string>();
-            var endOfSentence = @"(\!|\?|\.\s)";
-            var endChar = @"(\!|\?|\.)";
-            var split = Regex.Split(input, endOfSentence);
-
-            for (var i = 0; i < split.Length; i++)
+            foreach (var c in text)
             {
-                if (!String.IsNullOrEmpty(split[i]) && !String.IsNullOrWhiteSpace(split[i]) && split[i].Length > 2)
+                if (char.IsPunctuation(c))
                 {
-                    if (Regex.IsMatch(split[i], endChar))
-                    {
-                        sentences.Add(split[i].Trim());
-                    }
-                    else
-                    {
-                        sentences.Add((split[i] + split[i + 1]).Trim());
-                    }
+                    punctCharCount++;
+                }
+                else if (char.IsLetterOrDigit(c))
+                {
+                    wordCharCount++;
                 }
             }
 
-            return sentences;
+            return punctCharCount / wordCharCount;
         }
 
-        public static int GetWordCount(string input, bool realWordsOnly = true, bool mergeContractions = true)
+        /// <summary>
+        /// Estimates how well capitalised a post is.
+        /// </summary>
+        /// <returns>A number between 0 and 1.
+        /// Where 1 indicates good capitalisation.</returns>
+        public static double CapitalisationScore(string text)
         {
-            var trimmed = multiWhiteSpace.Replace(input.Trim(), " ");
-            var count = 0;
+            throw new NotImplementedException();
 
-            if (realWordsOnly)
-            {
-                if (mergeContractions)
-                {
-                    count = realWordsMergedContraction.Matches(trimmed).Count;
-                }
-                else
-                {
-                    count = realWords.Matches(trimmed).Count;
-                }
-            }
-            else
-            {
-                foreach (var c in trimmed)
-                {
-                    if (c == ' ')
-                    {
-                        count++;
-                    }
-                }
-            }
-           
-            return count;
+            var t = multiWhitespace.Replace(text, " ");
+            var badCapCount = 0D;
+
+            badCapCount += inncorrectIs.Matches(t).Count;
+            badCapCount += inncorrectAfterPeriod.Matches(ieEg.Replace(t, "")).Count;
+
+            //TODO: Finish off implementation.
+
+            return 1 - (badCapCount / t.Length);
         }
     }
 }
