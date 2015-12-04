@@ -21,13 +21,13 @@
 
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace Phamhilator.Yam.Core
 {
-    using System.Collections.Concurrent;
-    using System.Linq;
     using RequestType = LocalRequest.RequestType;
 
     public partial class LocalRequestClient : IDisposable
@@ -40,17 +40,20 @@ namespace Phamhilator.Yam.Core
 
         public string Caller { get; private set; }
 
-        public ulong TotalDataReceived { get { return listener.TotalDataReceived; } }
+        public ulong TotalDataReceived => listener.TotalDataReceived;
 
-        public ulong TotalDataSent { get { return sender.TotalDataSent; } }
+        public ulong TotalDataSent => sender.TotalDataSent;
 
 
 
         public LocalRequestClient(string callerBot)
         {
-            if (string.IsNullOrEmpty(callerBot)) { throw new ArgumentException("callerBot"); }
+            if (string.IsNullOrEmpty(callerBot)) throw new ArgumentException("callerBot");
             var caller = callerBot.ToUpperInvariant();
-            if (caller != "GHAM" && caller != "PHAM") { throw new ArgumentException("Invalid 'callerBot' specified. Supported names include: 'PHAM' and 'GHAM'.", "callerBot"); }
+            if (caller != "GHAM" && caller != "PHAM")
+            {
+                throw new ArgumentException("Invalid 'callerBot' specified. Supported names include: 'PHAM' and 'GHAM'.", "callerBot");
+            }
 
             Caller = callerBot;
 
@@ -77,20 +80,19 @@ namespace Phamhilator.Yam.Core
 
         public void Dispose()
         {
-            if (disposed) { return; }
-
+            if (disposed) return;
             disposed = true;
 
-            listener.Dispose();
-            sender.Dispose();
+            listener?.Dispose();
+            sender?.Dispose();
 
             GC.SuppressFinalize(this);
         }
 
         public void SendData(LocalRequest req)
         {
-            if (disposed) { return; }
-            if (req == null) { throw new ArgumentNullException("req"); }
+            if (disposed) return;
+            if (req == null) throw new ArgumentNullException("req");
 
             sender.SendData(req);
         }
@@ -124,7 +126,7 @@ namespace Phamhilator.Yam.Core
                 };
                 EventManager.ConnectListener(RequestType.LogSearch, dataReceivedAction);
                 sender.SendData(req);
-                dataWaitMre.WaitOne(TimeSpan.FromSeconds(60));
+                dataWaitMre.WaitOne(TimeSpan.FromSeconds(30));
             }
 
             EventManager.DisconnectListener(RequestType.LogSearch, dataReceivedAction);
@@ -150,9 +152,9 @@ namespace Phamhilator.Yam.Core
                 Type = RequestType.DataManagerRequest,
                 Options = new Dictionary<string, object>
                 {
-                    { "DMReqType", "UPD" },
-                    { "Owner", owner },
-                    { "Key", key }
+                    ["DMReqType"] = "UPD",
+                    ["Owner"] = owner,
+                    ["Key"] = key
                 },
                 Data = data
             };
@@ -168,9 +170,9 @@ namespace Phamhilator.Yam.Core
                 Type = RequestType.DataManagerRequest,
                 Options = new Dictionary<string, object>
                 {
-                    { "DMReqType", "DEL" },
-                    { "Owner", owner },
-                    { "Key", key }
+                    ["DMReqType"] = "DEL",
+                    ["Owner"] = owner,
+                    ["Key"] = key
                 }
             };
 
@@ -200,9 +202,9 @@ namespace Phamhilator.Yam.Core
                     Type = RequestType.DataManagerRequest,
                     Options = new Dictionary<string, object>
                     {
-                        { "DMReqType", requestType },
-                        { "Owner", owner },
-                        { "Key", key }
+                        ["DMReqType"] = requestType,
+                        ["Owner"] = owner,
+                        ["Key"] = key
                     }
                 };
                 EventManager.ConnectListener(RequestType.DataManagerRequest, dataReceivedAction);

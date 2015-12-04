@@ -156,15 +156,15 @@ namespace Phamhilator.NLP
 
                 if (lines.Length < 4)
                 {
-                    tagged = tagged.Insert(m.Index, " •CB-S• ");
+                    tagged = tagged.Insert(m.Index, " •CBS• ");
                 }
                 else if (lines.Length < 26)
                 {
-                    tagged = tagged.Insert(m.Index, " •CB-M• ");
+                    tagged = tagged.Insert(m.Index, " •CBM• ");
                 }
                 else
                 {
-                    tagged = tagged.Insert(m.Index, " •CB-L• ");
+                    tagged = tagged.Insert(m.Index, " •CBL• ");
                 }
 
                 m = CodeBlock.Match(tagged);
@@ -199,15 +199,15 @@ namespace Phamhilator.NLP
 
                 if (code.Length < 6)
                 {
-                    tagged = tagged.Insert(match.Index, " •IC-S• ");
+                    tagged = tagged.Insert(match.Index, " •ICS• ");
                 }
                 else if (code.Length < 26)
                 {
-                    tagged = tagged.Insert(match.Index, " •IC-M• ");
+                    tagged = tagged.Insert(match.Index, " •ICM• ");
                 }
                 else
                 {
-                    tagged = tagged.Insert(match.Index, " •IC-L• ");
+                    tagged = tagged.Insert(match.Index, " •ICL• ");
                 }
             }
 
@@ -228,15 +228,15 @@ namespace Phamhilator.NLP
 
                 if (lines.Length < 4)
                 {
-                    tagged = tagged.Insert(m.Index, " •BQ-S• ");
+                    tagged = tagged.Insert(m.Index, " •BQS• ");
                 }
                 else if (lines.Length < 11)
                 {
-                    tagged = tagged.Insert(m.Index, " •BQ-M• ");
+                    tagged = tagged.Insert(m.Index, " •BQM• ");
                 }
                 else
                 {
-                    tagged = tagged.Insert(m.Index, " •BQ-L• ");
+                    tagged = tagged.Insert(m.Index, " •BQL• ");
                 }
 
                 m = blockQuote.Match(tagged);

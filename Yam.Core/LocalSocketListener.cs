@@ -59,7 +59,6 @@ namespace Phamhilator.Yam.Core
 
         ~LocalSocketListener()
         {
-            if (disposed) { return; }
             Dispose();
         }
 
@@ -67,12 +66,12 @@ namespace Phamhilator.Yam.Core
 
         public void Dispose()
         {
-            if (disposed) { return; }
+            if (disposed) return;
             disposed = true;
 
-            listener.Close();
-            listenerThreadDeadMRE.WaitOne();
-            listenerThreadDeadMRE.Dispose();
+            listener?.Close();
+            listenerThreadDeadMRE?.WaitOne();
+            listenerThreadDeadMRE?.Dispose();
 
             GC.SuppressFinalize(this);
         }
@@ -90,18 +89,18 @@ namespace Phamhilator.Yam.Core
                 {
                     bytes = listener.Receive(ref ep);
 
-                    if (bytes == null || bytes.Length == 0) { continue; }
+                    if (bytes == null || bytes.Length == 0) continue;
 
                     TotalDataReceived += (uint)bytes.Length;
                     var json = Encoding.UTF8.GetString(bytes);
                     var data = JsonSerializer.DeserializeFromString<LocalRequest>(json);
 
-                    if (OnMessage == null || data == null) { continue; }
+                    if (OnMessage == null || data == null) continue;
                     OnMessage(data);
                 }
                 catch (Exception ex)
                 {
-                    if (OnException == null) { continue; }
+                    if (OnException == null) continue;
                     OnException(ex);
                 }
             }

@@ -34,9 +34,6 @@ namespace Phamhilator.Yam.Core
 
     public static class LocalSocketMulticastAddress
     {
-        public static IPAddress Address
-        {
-            get { return IPAddress.Parse("239.0.0.222"); }
-        }
+        public static IPAddress Address => IPAddress.Parse("239.0.0.222");
     }
 }

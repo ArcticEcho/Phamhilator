@@ -72,7 +72,7 @@ namespace Phamhilator.Pham.UI
         public void AddPost(Post post)
         {
             if (logger.Count < (60 * 60 * 24) / chkRate.TotalSeconds &&
-                (DateTime.UtcNow - post.CreationDate).TotalMinutes < 4)
+                (DateTime.UtcNow - post.CreationDate).TotalMinutes <= 10)
             {
                 logger.EnqueueItem(post);
             }

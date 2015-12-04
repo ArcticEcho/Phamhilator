@@ -114,7 +114,7 @@ namespace Phamhilator.Pham.UI
             var mins = 0;
             if (!int.TryParse(cr.GetSetting("postmodel"), out mins))
             {
-                mins = 5;
+                mins = 3;
             }
 
             checkBack = new PostCheckBack("Post Log.txt", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
@@ -149,10 +149,21 @@ namespace Phamhilator.Pham.UI
 
             yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Command, new Action<LocalRequest>(req =>
             {
-                if (((string)req?.Data ?? "").Trim().ToUpperInvariant() == "SHUTDOWN")
+                var cmd = ((string)req?.Data ?? "").Trim().ToUpperInvariant();
+
+                switch (cmd)
                 {
-                    shutdownMre.Set();
-                }
+                    case "SHUTDOWN":
+                    {
+                        shutdownMre.Set();
+                        break;
+                    }
+                    case "STATUS":
+                    {
+                        SendYamInfo("ALIVE");
+                        break;
+                    }
+                } 
             }));
 
             authUsers = new UserAccess(ref yamClient);
@@ -211,19 +222,19 @@ namespace Phamhilator.Pham.UI
             var cvScore = cvRes.Similarity * (cvRes.Severity * 0.5);
             var dvScore = dvRes.Similarity * (dvRes.Severity * 0.5);
 
-            //if (edScore > 0.6 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
+            //if (edScore > 0.5 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
             //{
             //    ReportPost(q, edRes);
             //    return;
             //}
-            if (cvScore > 0.6 && /*cvScore > edScore * 1.1 &&*/ cvScore > dvScore * 0.9)
+            if (cvScore > 0.5 && /*cvScore > edScore * 1.1 &&*/ cvScore > dvScore * 0.9)
             {
                 ReportPost(q, cvRes);
                 return;
             }
-            if (dvScore > 0.6 && /*dvScore > edScore * 1.2 &&*/ dvScore > cvScore * 1.1)
+            if (dvScore > 0.5 && /*dvScore > edScore * 1.2 &&*/ dvScore > cvScore * 1.1)
             {
-                ReportPost(q, cvRes);
+                ReportPost(q, dvRes);
                 return;
             }
 
@@ -255,17 +266,17 @@ namespace Phamhilator.Pham.UI
             var cvScore = cvRes.Similarity * (cvRes.Severity * 0.5);
             var dvScore = dvRes.Similarity * (dvRes.Severity * 0.5);
 
-            //if (edScore > 0.6 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
+            //if (edScore > 0.5 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
             //{
             //    ReportPost(a, edRes);
             //    return;
             //}
-            if (cvScore > 0.6 && /*cvScore > edScore * 1.1 &&*/ cvScore > dvScore * 0.9)
+            if (cvScore > 0.5 && /*cvScore > edScore * 1.1 &&*/ cvScore > dvScore * 0.9)
             {
                 ReportPost(a, cvRes);
                 return;
             }
-            if (dvScore > 0.6 && /*dvScore > edScore * 1.2 &&*/ dvScore > cvScore * 1.1)
+            if (dvScore > 0.5 && /*dvScore > edScore * 1.2 &&*/ dvScore > cvScore * 1.1)
             {
                 ReportPost(a, cvRes);
                 return;

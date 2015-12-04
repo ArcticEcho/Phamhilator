@@ -73,15 +73,13 @@ namespace Phamhilator.Pham.UI
                 docs = tfIdfRecorder.GetSimilarity(simple, 5);
             }
 
+            //TODO: This will need some experimentation.
             // Average the similarity results.
             var match = 0F;
-            var sims = docs.Values.OrderByDescending(x => x).ToArray();
-            var simsLen = (float)sims.Length;
-            for (var i = 0; i < sims.Length; i++)
+            var sims = docs.Values.Where(x => x >= 2 / 3F).ToArray();
+            foreach (var s in sims)
             {
-                //TODO: UPDATE THE BLEEPING AVERAGING FUNCTION. To:
-                // 1st * 2, 2nd * 1.8, 3rd * 1, 4th * (1 / 1.8), 5th * 0.5.
-                match += (sims[i] * (simsLen - i / simsLen)) / simsLen;
+                match += s / sims.Length;
             }
 
             // Use logged posts data to calc urgency.
