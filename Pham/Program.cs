@@ -37,7 +37,7 @@ namespace Phamhilator.Pham.UI
         private static LocalRequestClient yamClient;
         private static PostClassifier cvClassifier;
         private static PostClassifier dvClassifier;
-        //private static Logger<Post> logger;
+        private static PostCheckBack checkBack;
         private static Client chatClient;
         private static Room socvr;
         private static UserAccess authUsers;
@@ -58,8 +58,8 @@ namespace Phamhilator.Pham.UI
             AuthenticateChatClient();
             Console.Write("done.\nConnecting Yam client...");
             ConnectYamCLient();
-            Console.Write("done.\nReading post log...");
-            ReadPostLog();
+            Console.Write("done.\nStarting post model generator...");
+            StartPostCheckBack();
             Console.Write("done.\nInitialising CV classifier...");
             InitialiseCVClassifier();
             Console.Write("done.\nInitialising DV classifier...");
@@ -87,7 +87,6 @@ namespace Phamhilator.Pham.UI
             authUsers?.Dispose();
             cvClassifier?.Dispose();
             dvClassifier?.Dispose();
-            //logger?.Dispose();
 
             SendYamInfo("DEAD");
 
@@ -109,16 +108,24 @@ namespace Phamhilator.Pham.UI
             chatClient = new Client(email, pwd);
         }
 
-        private static void ReadPostLog()
+        private static void StartPostCheckBack()
         {
-            // Initialise PostCheckBack, not this log.
-            //var cr = new ConfigReader();
-            //var mins = 0;
-            //if (!int.TryParse(cr.GetSetting("logclear"), out mins))
-            //{
-            //    mins = 5;
-            //}
-            //logger = new Logger<Post>("Post Log.txt", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
+            var cr = new ConfigReader();
+            var mins = 0;
+            if (!int.TryParse(cr.GetSetting("postmodel"), out mins))
+            {
+                mins = 5;
+            }
+
+            checkBack = new PostCheckBack("Post Log.txt", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
+            checkBack.ClosedPostFound = new Action<Post>(q =>
+            {
+                cvClassifier.AddPostToModels(q);
+            });
+            checkBack.DeletedPostFound = new Action<Post>(p =>
+            {
+                dvClassifier.AddPostToModels(p);
+            });
         }
 
         private static void ConnectYamCLient()
@@ -185,15 +192,16 @@ namespace Phamhilator.Pham.UI
 
         private static void CheckQuestion(Question q)
         {
-            if (checkedPosts.Contains(q) || q.Site != "stackoverflow.com") return;
-            while (checkedPosts.Count > 1000)
+            if (checkedPosts.Contains(q) || q.Site != "stackoverflow.com" ||
+                q.AuthorRep > 10000 || q.Score > 2) return;
+            while (checkedPosts.Count > 500)
             {
                 Post temp;
                 checkedPosts.TryPop(out temp);
             }
             checkedPosts.Push(q);
 
-            //Task.Run(() => logger.EnqueueItem(q));
+            Task.Run(() => checkBack.AddPost(q));
 
             //var edRes = ???
             var cvRes = cvClassifier.ClassifyPost(q);
@@ -228,15 +236,16 @@ namespace Phamhilator.Pham.UI
 
         private static void CheckAnswer(Answer a)
         {
-            if (checkedPosts.Contains(a) || a.Site != "stackoverflow.com") return;
-            while (checkedPosts.Count > 1000)
+            if (checkedPosts.Contains(a) || a.Site != "stackoverflow.com" ||
+                a.AuthorRep > 1000 || a.Score > 1) return;
+            while (checkedPosts.Count > 500)
             {
                 Post temp;
                 checkedPosts.TryPop(out temp);
             }
             checkedPosts.Push(a);
 
-            //Task.Run(() => logger.EnqueueItem(a));
+            Task.Run(() => checkBack.AddPost(a));
 
             //var edRes = ???
             var cvRes = cvClassifier.ClassifyPost(a);
@@ -344,7 +353,7 @@ namespace Phamhilator.Pham.UI
             }
 
             return true;
-        }
+        } 
 
         #endregion
     }

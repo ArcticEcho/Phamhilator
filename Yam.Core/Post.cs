@@ -37,6 +37,7 @@ namespace Phamhilator.Yam.Core
         public string AuthorName { get; set; }
         public string AuthorLink { get; set; }
         public int AuthorNetworkID { get; set; }
+        public bool IsQuestion { get; set; }
 
 
 

@@ -45,7 +45,7 @@ namespace Phamhilator.Yam.Core
 
 
 
-        public static Question GetQuestion(MessageEventArgs message)
+        public static Question GetQuestion(MessageEventArgs message, out CQ dom)
         {
             var obj = JsonObject.Parse(message.Data);
             var data = obj.Get("data");
@@ -54,7 +54,7 @@ namespace Phamhilator.Yam.Core
             var url = TrimUrl((string)innerObj["url"]);
             var id = 0u;
             var host = "";
-            GetPostInfo(url, out host, out id);
+            ParsePostLink(url, out host, out id);
             var title = WebUtility.HtmlDecode((string)innerObj["titleEncodedFancy"]);
             var authorName = WebUtility.HtmlDecode((string)innerObj["ownerDisplayName"]);
             var tags = JsonSerializer.DeserializeFromString<string[]>((string)innerObj["tags"]);
@@ -72,11 +72,11 @@ namespace Phamhilator.Yam.Core
             }
 
             var html = new StringDownloader().DownloadString(url);
-            var dom = CQ.Create(html, Encoding.UTF8);
+            dom = CQ.Create(html, Encoding.UTF8);
 
             var body = WebUtility.HtmlDecode(questionStatusDiv.Replace(dom[".post-text"].Html(), "").Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
-            var isClosed = IsQuestionClosed(dom);
+            var isClosed = IsQuestionClosed(dom, url);
             var authorRep = ParseRep(dom[".post-signature.owner .reputation-score"].Html());
             var creationDate = DateTime.MaxValue;
             foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
@@ -89,20 +89,17 @@ namespace Phamhilator.Yam.Core
                 }
             }
 
-            return new Question(id, url, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags, html);
+            return new Question(id, url, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags);
         }
 
-        public static Question GetQuestion(string postUrl)
+        public static Question GetQuestion(CQ dom, string postUrl)
         {
             string host;
             uint id;
 
-            GetPostInfo(postUrl, out host, out id);
+            ParsePostLink(postUrl, out host, out id);
 
-            var html = new StringDownloader().DownloadString(postUrl);
-            var dom = CQ.Create(html, Encoding.UTF8);
             var tags = new List<string>();
-
             foreach (var tag in dom[".post-taglist a"])
             {
                 var t = tag.Attributes["href"];
@@ -115,7 +112,7 @@ namespace Phamhilator.Yam.Core
             var title = WebUtility.HtmlDecode(dom[".question-hyperlink"].Html());
             var body = WebUtility.HtmlDecode(questionStatusDiv.Replace(dom[".post-text"].Html(), "").Trim());
             var score = int.Parse(dom[".vote-count-post"].Html());
-            var isClosed = IsQuestionClosed(dom);
+            var isClosed = IsQuestionClosed(dom, postUrl);
             var creationDate = DateTime.MaxValue;
             foreach (var timestamp in dom[".post-signature .user-info .user-action-time .relativetime"])
             {
@@ -163,7 +160,7 @@ namespace Phamhilator.Yam.Core
                 networkID = GetUserNetworkID(authorLink);
             }
 
-            return new Question(id, postUrl, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags.ToArray(), html);
+            return new Question(id, postUrl, host, title, body, score, isClosed, creationDate, authorName, authorLink, networkID, authorRep, tags.ToArray());
         }
 
         public static Answer GetAnswer(string postUrl)
@@ -171,7 +168,7 @@ namespace Phamhilator.Yam.Core
             string host;
             uint id;
 
-            GetPostInfo(postUrl, out host, out id);
+            ParsePostLink(postUrl, out host, out id);
 
             var getUrl = "http://" + host + "/posts/ajax-load-realtime/" + id;
             var html = new StringDownloader().DownloadString(getUrl);
@@ -180,27 +177,27 @@ namespace Phamhilator.Yam.Core
             return GetAnswer(dom, host, id.ToString(CultureInfo.InvariantCulture));
         }
 
-        public static Answer GetLatestAnswer(Question question)
+        public static Answer GetLatestAnswer(CQ questionDom, string questionUrl)
         {
-            if (string.IsNullOrEmpty(question.Html)) { return null; }
+            if (questionDom == null) return null;
 
-            var dom = CQ.Create(question.Html, Encoding.UTF8);
             var host = "";
             var questionID = 0u;
 
-            GetPostInfo(question.Url, out host, out questionID);
+            ParsePostLink(questionUrl, out host, out questionID);
 
-            foreach (var a in dom[".answer"])
+            foreach (var a in questionDom[".answer"])
             {
                 var id = a.Attributes["data-answerid"];
-                return GetAnswer(dom, host, id);
+                return GetAnswer(questionDom, host, id);
             }
 
             return null;
         }
 
-        public static bool IsPostDeleted(string url)
+        public static bool IsPostDeleted(string url, out CQ dom)
         {
+            dom = null;
             try
             {
                 if (isQuestionUrl.IsMatch(url))
@@ -211,8 +208,8 @@ namespace Phamhilator.Yam.Core
                 {
                     var id = 0u;
                     var host = "";
-                    GetPostInfo(url, out host, out id);
-                    new WebClient().DownloadString("http://" + host + "/posts/ajax-load-realtime/" + id);
+                    ParsePostLink(url, out host, out id);
+                    dom = CQ.CreateFromUrl("http://" + host + "/posts/ajax-load-realtime/" + id);
                 }
             }
             catch (WebException ex)
@@ -225,7 +222,6 @@ namespace Phamhilator.Yam.Core
                     using (var sr = new StreamReader(str))
                     {
                         var html = sr.ReadToEnd();
-                        var dom = CQ.Create(html);
 
                         if (dom[".leftcol"].Html().Contains("reasons of moderation"))
                         {
@@ -238,18 +234,25 @@ namespace Phamhilator.Yam.Core
             return false;
         }
 
-        public static bool IsQuestionClosed(CQ dom)
+        public static bool IsQuestionClosed(CQ dom, string url)
         {
-            try
+            if (!isQuestionUrl.IsMatch(url))
             {
-                var qStatus = dom[".question-status"].Html();
-
-                if (qStatus.Contains("on hold") || qStatus.Contains("closed"))
-                {
-                    return true;
-                }
+                return false;
             }
-            catch (WebException) { }
+            else
+            {
+                try
+                {
+                    var qStatus = dom[".question-status"]?.Html();
+
+                    if (qStatus != null && (qStatus.Contains("on hold") || qStatus.Contains("closed")))
+                    {
+                        return true;
+                    }
+                }
+                catch { }
+            }
 
             return false;
         }
@@ -265,12 +268,21 @@ namespace Phamhilator.Yam.Core
                     return true;
                 }
             }
-            catch (WebException) { }
+            catch { }
 
             return false;
         }
 
-        public static int ParseRep(string rep)
+        public static void ParsePostLink(string postUrl, out string host, out uint id)
+        {
+            host = hostParser.Replace(postUrl, "");
+
+            id = uint.Parse(postIDParser.Match(postUrl).Groups[3].Value);
+        }
+
+
+
+        private static int ParseRep(string rep)
         {
             if (string.IsNullOrEmpty(rep))  {  return 1; }
 
@@ -293,8 +305,6 @@ namespace Phamhilator.Yam.Core
 
             return (int)float.Parse(trimmed);
         }
-
-
 
         private static int GetUserNetworkID(string authorProfileLink)
         {
@@ -395,13 +405,6 @@ namespace Phamhilator.Yam.Core
             }
 
             return trimmed.Trim();
-        }
-
-        private static void GetPostInfo(string postUrl, out string host, out uint id)
-        {
-            host = hostParser.Replace(postUrl, "");
-
-            id = uint.Parse(postIDParser.Match(postUrl).Groups[3].Value);
         }
 
         private static string StripTags(string source)

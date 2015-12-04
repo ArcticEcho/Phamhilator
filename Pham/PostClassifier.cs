@@ -70,11 +70,6 @@ namespace Phamhilator.Pham.UI
 
             lock (tfIdfRecorder)
             {
-                if (tfIdfRecorder.MinipulatedSinceLastRecalc)
-                {
-                    tfIdfRecorder.RecalculateIDFs();
-                }
-
                 docs = tfIdfRecorder.GetSimilarity(simple, 5);
             }
 
@@ -84,12 +79,14 @@ namespace Phamhilator.Pham.UI
             var simsLen = (float)sims.Length;
             for (var i = 0; i < sims.Length; i++)
             {
+                //TODO: UPDATE THE BLEEPING AVERAGING FUNCTION. To:
+                // 1st * 2, 2nd * 1.8, 3rd * 1, 4th * (1 / 1.8), 5th * 0.5.
                 match += (sims[i] * (simsLen - i / simsLen)) / simsLen;
             }
 
             // Use logged posts data to calc urgency.
 
-            return new ClassificationResults(action, match, 0);
+            return new ClassificationResults(action, match, 1);
         }
 
         public void AddPostToModels(Post post)

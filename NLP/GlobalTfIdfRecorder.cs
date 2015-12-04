@@ -28,7 +28,7 @@ namespace Phamhilator.NLP
 {
     public class GlobalTfIdfRecorder
     {
-        public bool MinipulatedSinceLastRecalc { get; private set; } = true;
+        private bool minipulatedSinceLastRecalc = true;
 
         public Dictionary<string, Term> Terms { get; } = new Dictionary<string, Term>();
 
@@ -84,6 +84,8 @@ namespace Phamhilator.NLP
         {
             if (termTFs == null) throw new ArgumentNullException("termTFs");
 
+            minipulatedSinceLastRecalc = true;
+
             foreach (var term in termTFs.Keys)
             {
                 if (Terms.ContainsKey(term))
@@ -117,6 +119,8 @@ namespace Phamhilator.NLP
             {
                 throw new KeyNotFoundException("Not all specified terms can be found in the current collection.");
             }
+
+            minipulatedSinceLastRecalc = true;
 
             foreach (var term in termTFs.Keys)
             {
@@ -162,7 +166,7 @@ namespace Phamhilator.NLP
                 Terms[term].IDF = (float)Math.Log(totalDocCount / docsFound);
             }
 
-            MinipulatedSinceLastRecalc = false;
+            minipulatedSinceLastRecalc = false;
         }
 
         /// <summary>
@@ -176,7 +180,7 @@ namespace Phamhilator.NLP
         /// </returns>
         public Dictionary<uint, float> GetSimilarity(IEnumerable<string> terms, ushort maxDocsToReturn)
         {
-            if (MinipulatedSinceLastRecalc)
+            if (minipulatedSinceLastRecalc)
             {
                 RecalculateIDFs();
             }

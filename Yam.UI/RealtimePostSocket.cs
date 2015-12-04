@@ -24,6 +24,7 @@ using System;
 using System.Threading.Tasks;
 using WebSocketSharp;
 using Phamhilator.Yam.Core;
+using CsQuery;
 
 namespace Phamhilator.Yam.UI
 {
@@ -45,7 +46,7 @@ namespace Phamhilator.Yam.UI
         {
             get
             {
-                return socket == null ? WebSocketState.Closed : socket.ReadyState;
+                return socket?.ReadyState ?? WebSocketState.Closed;
             }
         }
 
@@ -73,10 +74,11 @@ namespace Phamhilator.Yam.UI
 
         public void Dispose()
         {
-            if (disposed) { return; }
-
+            if (disposed) return;
             disposed = true;
+
             Close();
+
             GC.SuppressFinalize(this);
         }
 
@@ -113,14 +115,15 @@ namespace Phamhilator.Yam.UI
             socket.OnOpen += (o, oo) => socket.Send("155-questions-active");
             socket.OnMessage += (o, message) =>
             {
-                if (OnActiveQuestion == null && OnActiveAnswer == null) { return; }
+                if (OnActiveQuestion == null && OnActiveAnswer == null) return;
 
                 try
                 {
                     Task.Factory.StartNew(() =>
                     {
-                        var question = PostFetcher.GetQuestion(message);
-                        var answer = PostFetcher.GetLatestAnswer(question);
+                        CQ dom;
+                        var question = PostFetcher.GetQuestion(message, out dom);
+                        var answer = PostFetcher.GetLatestAnswer(dom, question.Url);
 
                         if (OnActiveQuestion != null && answer == null)
                         {

@@ -1,6 +1,9 @@
-﻿Note: you'll need to copy this file to the output directory of your compiler (and rename it to "Pham Settings.txt").
+﻿Note: you'll need to copy this file to the output directory of your compiler
+(and rename it to "Pham Settings.txt").
+The "PostModelGenerationRate" field dictates how many minutes
+to wait before starting the model generation process for a new post.
 
-LogClearRateMin:5
+PostModelGenerationRate:5
 SE Email:mybelovedtrash@gmail.com
 SE Password:correct horse battery staple
 RoomURL:http://chat.stackoverflow.com/rooms/41570/so-close-vote-reviewers

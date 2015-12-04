@@ -21,7 +21,15 @@ namespace Phamhilator.Yam.UI
         private readonly string proj;
         private readonly string tkn;
 
-        public string CurrentVersion { get; } = currentVer;
+        public string CurrentVersion
+        {
+            get
+            {
+                if (currentVer == "1.0.0.0") return "";
+
+                return currentVer;
+            }
+        }
 
         public string LatestVersion
         {
@@ -61,12 +69,13 @@ namespace Phamhilator.Yam.UI
         /// </returns>
         public List<string> UpdateAssemblies()
         {
-            if (CurrentVersion == LatestVersion) return null;
+            var remVer = LatestVersion;
 
-            try
-            {
+            if (CurrentVersion == remVer) return null;
+
+            //try
+            //{
                 var newExes = new List<string>();
-                var remVer = LatestVersion;
                 var projJson = Encoding.UTF8.GetString(Get($"projects/{owner}/{proj}"));
                 var jobId = DynamicJson.Deserialize(projJson).build.jobs[0].jobId;
                 var artifRes = Encoding.UTF8.GetString(Get("buildjobs/" + jobId + "/artifacts"));
@@ -85,11 +94,11 @@ namespace Phamhilator.Yam.UI
                 }
 
                 return newExes;
-            }
-            catch // For now, we'll just return null. Might change this later.
-            {
-                return null;
-            }
+            //}
+            //catch // For now, we'll just return null. Might change this later.
+            //{
+            //    return null;
+            //}
         }
 
 

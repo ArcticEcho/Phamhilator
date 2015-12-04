@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using CsQuery;
 using Phamhilator.Yam.Core;
 
 namespace Phamhilator.Pham.UI
@@ -34,6 +35,7 @@ namespace Phamhilator.Pham.UI
     {
         private readonly ManualResetEvent checkBackMre = new ManualResetEvent(false);
         private Logger<Post> logger;
+        private TimeSpan chkRate;
         private bool dispose;
 
         public Action<Post> ClosedPostFound { get; set; }
@@ -42,9 +44,10 @@ namespace Phamhilator.Pham.UI
 
 
 
-        public PostCheckBack(string postLogPath, TimeSpan postTTL, TimeSpan flushRate)
+        public PostCheckBack(string postLogPath, TimeSpan postTTL, TimeSpan checkRate)
         {
-            logger = new Logger<Post>(postLogPath, postTTL, flushRate);
+            logger = new Logger<Post>(postLogPath, postTTL, TimeSpan.FromMinutes(15));
+            chkRate = checkRate;
 
             Task.Run(() => CheckPosts());
         }
@@ -68,7 +71,11 @@ namespace Phamhilator.Pham.UI
 
         public void AddPost(Post post)
         {
-
+            if (logger.Count < (60 * 60 * 24) / chkRate.TotalSeconds &&
+                (DateTime.UtcNow - post.CreationDate).TotalMinutes < 4)
+            {
+                logger.EnqueueItem(post);
+            }
         }
 
 
@@ -77,17 +84,33 @@ namespace Phamhilator.Pham.UI
         {
             while (!dispose)
             {
-                checkBackMre.WaitOne(TimeSpan.FromMinutes(5));
+                checkBackMre.WaitOne(chkRate);
 
+                var post = new Post
+                {
+                    CreationDate = DateTime.MaxValue
+                };
 
+                foreach (var p in logger)
+                {
+                    if (p.CreationDate < post.CreationDate)
+                    {
+                        post = p;
+                    }
+                }
 
-                // No clue how this will work, just some ideas.
-                // Severity 0: 1 hour
-                // Severity 1: 6 hours
-                // Severity 2: 12 hours
-                // Severity 3: 24 hours
+                CQ dom;
 
-                //TODO: Add more complex stuff (PostFetcher may contain some helpful methods)...
+                if (PostFetcher.IsPostDeleted(post.Url, out dom) && DeletedPostFound != null)
+                {
+                    DeletedPostFound(post);
+                }
+                else if (PostFetcher.IsQuestionClosed(dom, post.Url) && ClosedPostFound != null)
+                {
+                    ClosedPostFound(post);
+                }
+
+                logger.RemoveItem(post);
             }
         }
     }

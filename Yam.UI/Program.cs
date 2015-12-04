@@ -280,7 +280,7 @@ namespace Phamhilator.Yam.UI
             }
             catch (Exception ex)
             {
-                room.PostReplyFast(command, $"`Unable to execute command: {ex.Message}`");
+                room.PostReplyFast(command, $"`Unable to execute command: {ex/*.Message*/}`");
             }
         }
 
@@ -290,7 +290,7 @@ namespace Phamhilator.Yam.UI
 
             switch (cmd)
             {
-                case "STATUS":
+                case "ALIVE":
                 {
                     var statusReport = $"`Yes, I'm alive ({DateTime.UtcNow - startTime}).`";
                     room.PostMessageFast(statusReport);
