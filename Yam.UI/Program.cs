@@ -345,7 +345,7 @@ namespace Phamhilator.Yam.UI
                 }
                 case "VERSION":
                 {
-                    var msg = $"`My current version is: `{updater.CurrentVersion}.`";
+                    var msg = $"`My current version is: {updater.CurrentVersion}.`";
                     room.PostReplyFast(command, msg);
                     return true;
                 }
@@ -426,7 +426,7 @@ namespace Phamhilator.Yam.UI
                 return;
             }
 
-            rm.PostReplyFast(cmd, $"I've found (and now applying) a new version, `{remVer}`:");
+            rm.PostReplyFast(cmd, $"Updating to `{remVer}`:");
             rm.PostMessageFast($"> {updater.LatestVerMessage}");
 
             var exes = updater.UpdateAssemblies();
