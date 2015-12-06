@@ -1,13 +1,32 @@
-﻿using System;
+﻿/*
+ * Phamhilator. A .Net based bot network catching spam/low quality posts for Stack Exchange.
+ * Copyright © 2015, ArcticEcho.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+
+
+
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using ServiceStack;
 using ServiceStack.Text;
 
@@ -15,28 +34,27 @@ namespace Phamhilator.Yam.UI
 {
     public class AppveyorUpdater
     {
-        private static readonly string currentVer = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+        private static readonly Version currentVer = new Version(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion);
         private const string apiUrl = "https://ci.appveyor.com/api/";
         private readonly string owner;
         private readonly string proj;
         private readonly string tkn;
 
-        public string CurrentVersion
+        public Version CurrentVersion
         {
             get
             {
-                if (currentVer == "1.0.0.0") return "";
-
                 return currentVer;
             }
         }
 
-        public string LatestVersion
+        public Version LatestVersion
         {
             get
             {
                 var projJson = Encoding.UTF8.GetString(Get($"projects/{owner}/{proj}"));
-                return DynamicJson.Deserialize(projJson).build.version;
+                var verStr = DynamicJson.Deserialize(projJson).build.version;
+                return new Version(verStr);
             }
         }
 
@@ -138,8 +156,15 @@ namespace Phamhilator.Yam.UI
             foreach (var file in files)
             {
                 var oldFn = Path.GetFileNameWithoutExtension(file);
-                if (Regex.IsMatch(oldFn, @"\d+\.\d+\.\d+\.\d+ - " + fn) &&
-                    !fn.StartsWith(currentVer))
+                var fileInfo = FileVersionInfo.GetVersionInfo(file);
+                var fileVer = default(Version);
+
+                if (Version.MatchesFormat(fileInfo.FileVersion))
+                {
+                    fileVer = new Version(fileInfo.FileVersion);
+                }
+
+                if (Regex.IsMatch(oldFn, @"\d+\.\d+\.\d+\.\d+ - " + fn) && fileVer < currentVer)
                 {
                     File.Delete(file);
                 }

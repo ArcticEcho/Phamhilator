@@ -211,11 +211,18 @@ namespace Phamhilator.Yam.UI
                 foreach (var file in files)
                 {
                     var name = Path.GetFileName(file);
-                    var fileCrTime = new FileInfo(file).CreationTimeUtc;
-                    if (name.Contains("Pham") && name.EndsWith(".exe") && fileCrTime > phamExeCrTime)
+                    var fileInfo = FileVersionInfo.GetVersionInfo(file);
+                    var fileVer = default(Version);
+
+                    if (Version.MatchesFormat(fileInfo.FileVersion))
+                    {
+                        fileVer = new Version(fileInfo.FileVersion);
+                    }
+
+                    if (name.Contains("Pham") && name.EndsWith(".exe") && fileVer == updater.CurrentVersion)
                     {
                         phamExe = file;
-                        phamExeCrTime = fileCrTime;
+                        break;
                     }
                 }
 
@@ -300,7 +307,7 @@ namespace Phamhilator.Yam.UI
             {
                 case "ALIVE":
                 {
-                    var statusReport = $"`Yes, I'm alive ({DateTime.UtcNow - startTime}).`";
+                    var statusReport = $"Yes, I'm alive (`{DateTime.UtcNow - startTime}`).";
                     room.PostMessageFast(statusReport);
                     return true;
                 }
@@ -339,13 +346,13 @@ namespace Phamhilator.Yam.UI
                 }
                 case "COMMANDS":
                 {
-                    var msg = "`See` [`here`](https://github.com/ArcticEcho/Phamhilator/wiki/Yam-Chat-Commands \"Chat Commands Wiki\")`.`";
+                    var msg = "See [here](https://github.com/ArcticEcho/Phamhilator/wiki/Yam-Chat-Commands \"Chat Commands Wiki\").";
                     room.PostReplyFast(command, msg);
                     return true;
                 }
                 case "VERSION":
                 {
-                    var msg = $"`My current version is: {updater.CurrentVersion}.`";
+                    var msg = $"My current version is: `{updater.CurrentVersion}`.";
                     room.PostReplyFast(command, msg);
                     return true;
                 }
@@ -377,7 +384,7 @@ namespace Phamhilator.Yam.UI
                 DataManager.SaveData("Yam", RemoteServer.ApiKeysDataKey, otherKeys + owner + ":" + key);
                 SendApiKeyEmail(command.Author.Name, email, key);
 
-                room.PostReply(command, "`Client successfully added; an email has been sent with the API key.`");
+                room.PostReply(command, "Client successfully added; an email has been sent with the API key.");
             }
             else if (cmd.StartsWith("ADD USER"))
             {
@@ -385,17 +392,17 @@ namespace Phamhilator.Yam.UI
 
                 if (!int.TryParse(new string(cmd.Where(char.IsDigit).ToArray()), out id))
                 {
-                    room.PostReply(command, "`Please enter a valid user ID..`");
+                    room.PostReply(command, "Please enter a valid user ID..");
                     return true;
                 }
 
                 authUsers.AddUser(id);
 
-                room.PostReply(command, "`User added.`");
+                room.PostReply(command, "User added.");
             }
             else if (cmd == "STOP")
             {
-                room.PostReply(command, "`Stopping...`");
+                room.PostReply(command, "Stopping...");
                 shutdownMre.Set();
             }
             else if (cmd == "UPDATE")
