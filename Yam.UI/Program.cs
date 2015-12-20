@@ -311,39 +311,6 @@ namespace Phamhilator.Yam.UI
                     room.PostMessageFast(statusReport);
                     return true;
                 }
-                case "LOCAL STATS":
-                {
-                    var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
-                    var phamRecTotal = locServer.DataReceivedPham / 1024.0; var phamRecPerSec = phamRecTotal / secsAlive;
-                    var phamSentTotal = locServer.DataSentPham / 1024.0;    var phamSentPerSec = phamSentTotal / secsAlive;
-                    var ghamRecTotal = locServer.DataReceivedGham / 1024.0; var ghamRecPerSec = ghamRecTotal / secsAlive;
-                    var ghamSentTotal = locServer.DataSentGham / 1024.0;    var ghamSentPerSec = ghamSentTotal / secsAlive;
-                    var overallTotal = phamRecTotal + phamSentTotal + ghamRecTotal + ghamSentTotal;
-                    var overallPerSec = overallTotal / secsAlive;
-                    var dataReport = "    Local Yam data report (in KiB):\n" +
-                                        "    Total transferred:  " + Math.Round(overallTotal) + " (~" + Math.Round(overallPerSec, 1) + "/s)\n" +
-                                        "    Sent to Pham:       " + Math.Round(phamSentTotal) + " (~" + Math.Round(phamSentPerSec, 1) + "/s)\n" +
-                                        "    Received from Pham: " + Math.Round(phamRecTotal) + " (~" + Math.Round(phamRecPerSec, 1) + "/s)\n" +
-                                        "    Sent to Gham:       " + Math.Round(ghamSentTotal) + " (~" + Math.Round(ghamSentPerSec, 1) + "/s)\n" +
-                                        "    Received from Gham: " + Math.Round(ghamRecTotal) + " (~" + Math.Round(ghamRecPerSec, 1) + "/s)";
-                    room.PostMessageFast(dataReport);
-                    return true;
-                }
-                case "REMOTE STATS":
-                {
-                    var secsAlive = (DateTime.UtcNow - startTime).TotalSeconds;
-                    var clientCount = remServer.RealtimePostClients.Count;
-                    var overallSent = remServer.TotalDataUploaded / 1024.0;
-                    var overallSentPerSec = Math.Round(overallSent / secsAlive, 1);
-                    var overallRec = remServer.TotalDataDownloaded / 1024.0;
-                    var overallRecPerSec = Math.Round(overallRec / secsAlive, 1);
-                    var dataReport = "    Remote Yam data report (in KiB):\n" +
-                                        "    Total sent:     " + Math.Round(overallSent) + " (~" + overallSentPerSec + "/s)\n" +
-                                        "    Total received: " + Math.Round(overallRec) + " (~" + overallRecPerSec + "/s)\n" +
-                                        "    Clients (" + clientCount + ")" + ":    " + remServer.ClientsNamesPretty;
-                    room.PostMessageFast(dataReport);
-                    return true;
-                }
                 case "COMMANDS":
                 {
                     var msg = "See [here](https://github.com/ArcticEcho/Phamhilator/wiki/Yam-Chat-Commands \"Chat Commands Wiki\").";
