@@ -91,7 +91,7 @@
       <Project>{5823ff27-6194-43d8-a16e-5943c2e34f09}</Project>
       <Name>Yam.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yam.UI\Updater.csproj">
+    <ProjectReference Include="..\Updater\Updater.csproj">
       <Project>{53b36231-4989-4180-9f0a-db1748afc61e}</Project>
       <Name>Updater</Name>
     </ProjectReference>

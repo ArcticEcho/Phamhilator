@@ -38,14 +38,12 @@ namespace Phamhilator.Pham.UI
         private const string wikiCmdsLink = "https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands";
         private static readonly ConcurrentStack<Post> checkedPosts = new ConcurrentStack<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
-        private static LocalRequestClient yamClient;
         private static PostClassifier cvClassifier;
         private static PostClassifier dvClassifier;
         private static PostCheckBack checkBack;
         private static AppveyorUpdater updater;
         private static Client chatClient;
         private static Room socvr;
-        private static UserAccess authUsers;
         private static DateTime startTime;
 
 
@@ -61,8 +59,6 @@ namespace Phamhilator.Pham.UI
 
             Console.Write("Authenticating...");
             AuthenticateChatClient();
-            Console.Write("done.\nConnecting Yam client...");
-            ConnectYamCLient();
             Console.Write("done.\nStarting post model generator...");
             StartPostCheckBack();
             Console.Write("done.\nInitialising CV classifier...");
@@ -81,21 +77,15 @@ namespace Phamhilator.Pham.UI
             Console.WriteLine("Pham v2 started.");
 #endif
 
-            SendYamInfo("ALIVE");
-
             shutdownMre.WaitOne();
 
             Console.Write("Stopping...");
             socvr?.Leave();
             shutdownMre?.Dispose();
             chatClient?.Dispose();
-            authUsers?.Dispose();
             cvClassifier?.Dispose();
             dvClassifier?.Dispose();
 
-            SendYamInfo("DEAD");
-
-            yamClient?.Dispose();
             Console.WriteLine("done.");
         }
 
@@ -126,47 +116,6 @@ namespace Phamhilator.Pham.UI
             });
         }
 
-        private static void ConnectYamCLient()
-        {
-            yamClient = new LocalRequestClient("Pham");
-
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Question, new Action<Question>(CheckQuestion));
-
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Answer, new Action<Answer>(CheckAnswer));
-
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Exception, new Action<LocalRequest>(ex =>
-            {
-                yamClient.SendData(new LocalRequest
-                {
-                    Type = LocalRequest.RequestType.Exception,
-                    ID = LocalRequest.GetNewID(),
-                    Data = ex.Data.ToString(),
-                    Options = ex.Options
-                });
-            }));
-
-            yamClient.EventManager.ConnectListener(LocalRequest.RequestType.Command, new Action<LocalRequest>(req =>
-            {
-                var cmd = ((string)req?.Data ?? "").Trim().ToUpperInvariant();
-
-                switch (cmd)
-                {
-                    case "SHUTDOWN":
-                    {
-                        shutdownMre.Set();
-                        break;
-                    }
-                    case "STATUS":
-                    {
-                        SendYamInfo("ALIVE");
-                        break;
-                    }
-                } 
-            }));
-
-            authUsers = new UserAccess(ref yamClient);
-        }
-
         private static void InitialiseCVClassifier()
         {
             cvClassifier = new PostClassifier("CV Terms.txt", ClassificationResults.SuggestedAction.Close);
@@ -183,16 +132,6 @@ namespace Phamhilator.Pham.UI
 
             socvr = chatClient.JoinRoom(cr.GetSetting("room"));
             socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
-        }
-
-        private static void SendYamInfo(string data)
-        {
-            yamClient.SendData(new LocalRequest
-            {
-                ID = LocalRequest.GetNewID(),
-                Type = LocalRequest.RequestType.Info,
-                Data = data
-            });
         }
 
         #endregion
@@ -311,7 +250,7 @@ namespace Phamhilator.Pham.UI
 
                     if (!cmdMatches)
                     {
-                        cmdMatches = HandlePrivilegedUserCommand(room, command, true);
+                        cmdMatches = HandlePrivilegedUserCommand(room, command);
 
                         if (!cmdMatches)
                         {
@@ -321,7 +260,7 @@ namespace Phamhilator.Pham.UI
                 }
                 else if (command.Author.Reputation >= 3000)
                 {
-                    var cmdMatches = HandlePrivilegedUserCommand(room, command, false);
+                    var cmdMatches = HandlePrivilegedUserCommand(room, command);
 
                     if (!cmdMatches)
                     {
