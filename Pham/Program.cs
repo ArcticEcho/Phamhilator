@@ -41,7 +41,7 @@ namespace Phamhilator.Pham.UI
         private static PostClassifier cvClassifier;
         private static PostClassifier dvClassifier;
         private static PostCheckBack checkBack;
-        private static AppveyorUpdater updater;
+        private static AppveyorUpdater updater; //TODO: Not used yet.
         private static Client chatClient;
         private static Room socvr;
         private static DateTime startTime;
