@@ -23,10 +23,9 @@
 using System;
 using System.Threading.Tasks;
 using WebSocketSharp;
-using Phamhilator.Yam.Core;
 using CsQuery;
 
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Yam.Core
 {
     public class RealtimePostSocket : IDisposable
     {

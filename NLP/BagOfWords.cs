@@ -26,7 +26,7 @@ using System.Linq;
 
 namespace Phamhilator.NLP
 {
-    public class GlobalTfIdfRecorder
+    public class BagOfWords
     {
         private bool minipulatedSinceLastRecalc = true;
 
@@ -34,7 +34,7 @@ namespace Phamhilator.NLP
 
 
 
-        public GlobalTfIdfRecorder(IDictionary<uint, IEnumerable<string>> docIDWithTerms)
+        public BagOfWords(IDictionary<uint, IEnumerable<string>> docIDWithTerms)
         {
             foreach (var docID in docIDWithTerms.Keys)
             foreach (var term in docIDWithTerms[docID])
@@ -63,12 +63,12 @@ namespace Phamhilator.NLP
             }
         }
 
-        public GlobalTfIdfRecorder(IDictionary<string, Term> terms)
+        public BagOfWords(IDictionary<string, Term> terms)
         {
             Terms = (Dictionary<string, Term>)terms;
         }
 
-        public GlobalTfIdfRecorder(IEnumerable<Term> terms)
+        public BagOfWords(IEnumerable<Term> terms)
         {
             foreach (var term in terms)
             {
@@ -76,13 +76,22 @@ namespace Phamhilator.NLP
             }
         }
 
-        public GlobalTfIdfRecorder() { }
+        public BagOfWords() { }
 
 
+
+        public bool ContainsDocument(uint docID)
+        {
+            return Terms.Values.Any(x => x.DocumentIDs.Contains(docID));
+        }
 
         public void AddDocument(uint documentID, IDictionary<string, ushort> termTFs)
         {
             if (termTFs == null) throw new ArgumentNullException("termTFs");
+            if (ContainsDocument(documentID))
+            {
+                throw new ArgumentException("A document with this ID already exists.", "documentID");
+            }
 
             minipulatedSinceLastRecalc = true;
 
@@ -111,13 +120,13 @@ namespace Phamhilator.NLP
         public void RemoveDocument(uint documentID, IDictionary<string, ushort> termTFs)
         {
             if (termTFs == null) throw new ArgumentNullException("termTFs");
-            if (Terms.All(x => !x.Value.DocumentIDs.Contains(documentID)))
+            if (!ContainsDocument(documentID))
             {
-                throw new KeyNotFoundException("Can not find any terms with the specified document ID.");
+                throw new KeyNotFoundException("Cannot find any documents with the specified ID.");
             }
             if (!termTFs.Keys.All(Terms.ContainsKey))
             {
-                throw new KeyNotFoundException("Not all specified terms can be found in the current collection.");
+                throw new KeyNotFoundException("Not all the specified terms can be found in the current collection.");
             }
 
             minipulatedSinceLastRecalc = true;
@@ -170,7 +179,7 @@ namespace Phamhilator.NLP
         }
 
         /// <summary>
-        /// Calculates the cosine similarity of the given tokenised string
+        /// Calculates the cosine similarity of the given strings (normally words)
         /// compared to the current collection of Terms.
         /// </summary>
         /// <param name="terms">A collection of tokens (i.e., words) for a given string.</param>

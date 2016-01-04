@@ -31,7 +31,7 @@ namespace Phamhilator.Pham.UI
     public class PostClassifier : IDisposable
     {
         private readonly PostTermsExtractor modelGen = new PostTermsExtractor();
-        private readonly GlobalTfIdfRecorder tfIdfRecorder;
+        private readonly BagOfWords bow;
         private readonly Logger<Term> termLog;
         private readonly ClassificationResults.SuggestedAction action;
         private bool dispose;
@@ -42,7 +42,7 @@ namespace Phamhilator.Pham.UI
         {
             action = termAction;
             termLog = new Logger<Term>(termLogPath);
-            tfIdfRecorder = new GlobalTfIdfRecorder(termLog);
+            bow = new BagOfWords(termLog);
         }
 
         ~PostClassifier()
@@ -57,7 +57,12 @@ namespace Phamhilator.Pham.UI
             if (dispose) return;
             dispose = true;
 
-            UpdateLog();
+            termLog.Clear();
+            foreach (var t in bow.Terms.Values)
+            {
+                termLog.EnqueueItem(t);
+            }
+            termLog.Dispose();
 
             GC.SuppressFinalize(this);
         }
@@ -68,9 +73,9 @@ namespace Phamhilator.Pham.UI
             var simple = ToSimpleTermCollection(postTermTFs);
             var docs = new Dictionary<uint, float>();
 
-            lock (tfIdfRecorder)
+            lock (bow)
             {
-                docs = tfIdfRecorder.GetSimilarity(simple, 5);
+                docs = bow.GetSimilarity(simple, 5);
             }
 
             //TODO: This will need some experimentation.
@@ -83,38 +88,36 @@ namespace Phamhilator.Pham.UI
             }
 
             // Use logged posts data to calc urgency.
+            var urg = 1;
 
-            return new ClassificationResults(action, match, 1);
+            return new ClassificationResults(action, match, urg);
         }
 
         public void AddPostToModels(Post post)
         {
+            if (bow.ContainsDocument(post.ID)) return;
+
             var postTermTFs = modelGen.GetTerms(post.Body);
 
-            lock (tfIdfRecorder)
+            lock (bow)
             {
-                tfIdfRecorder.AddDocument(post.ID, postTermTFs);
+                bow.AddDocument(post.ID, postTermTFs);
             }
         }
 
         public void RemovePostFromModels(Post post)
         {
+            if (!bow.ContainsDocument(post.ID)) return;
+
             var postTermTFs = modelGen.GetTerms(post.Body);
 
-            lock (tfIdfRecorder)
+            lock (bow)
             {
-                tfIdfRecorder.RemoveDocument(post.ID, postTermTFs);
+                bow.RemoveDocument(post.ID, postTermTFs);
             }
         }
 
 
-
-        private void UpdateLog()
-        {
-            termLog.ClearLog();
-
-            termLog.EnqueueItems(tfIdfRecorder.Terms.Values);
-        }
 
         private string[] ToSimpleTermCollection(IDictionary<string, ushort> termTFs)
         {
@@ -122,12 +125,10 @@ namespace Phamhilator.Pham.UI
             var i = 0;
 
             foreach (var term in termTFs)
+            for (var k = 0; k < term.Value; k++)
             {
-                for (var k = 0; k < term.Value; k++)
-                {
-                    simple[i] = term.Key;
-                    i++;
-                }
+                simple[i] = term.Key;
+                i++;
             }
 
             return simple;

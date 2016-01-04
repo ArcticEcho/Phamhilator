@@ -30,7 +30,7 @@ using System.Text.RegularExpressions;
 using ServiceStack;
 using ServiceStack.Text;
 
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Updater
 {
     public class AppveyorUpdater
     {
@@ -91,32 +91,25 @@ namespace Phamhilator.Yam.UI
 
             if (CurrentVersion == remVer) return null;
 
-            //try
-            //{
-                var newExes = new List<string>();
-                var projJson = Encoding.UTF8.GetString(Get($"projects/{owner}/{proj}"));
-                var jobId = DynamicJson.Deserialize(projJson).build.jobs[0].jobId;
-                var artifRes = Encoding.UTF8.GetString(Get("buildjobs/" + jobId + "/artifacts"));
-                var artifJson = JsonSerializer.DeserializeFromString<Dictionary<string, object>[]>(artifRes);
+            var newExes = new List<string>();
+            var projJson = Encoding.UTF8.GetString(Get($"projects/{owner}/{proj}"));
+            var jobId = DynamicJson.Deserialize(projJson).build.jobs[0].jobId;
+            var artifRes = Encoding.UTF8.GetString(Get("buildjobs/" + jobId + "/artifacts"));
+            var artifJson = JsonSerializer.DeserializeFromString<Dictionary<string, object>[]>(artifRes);
 
-                foreach (var file in artifJson)
+            foreach (var file in artifJson)
+            {
+                var newFile = $"{remVer} - {file["name"]}";
+                RemoveOldFile(file["name"]);
+                GetFile($"buildjobs/{jobId}/artifacts/{file["fileName"]}", newFile);
+
+                if (file["name"].EndsWith(".exe"))
                 {
-                    var newFile = $"{remVer} - {file["name"]}";
-                    RemoveOldFile(file["name"]);
-                    GetFile($"buildjobs/{jobId}/artifacts/{file["fileName"]}", newFile);
-
-                    if (file["name"].EndsWith(".exe"))
-                    {
-                        newExes.Add(Path.Combine(Directory.GetCurrentDirectory(), newFile));
-                    }
+                    newExes.Add(Path.Combine(Directory.GetCurrentDirectory(), newFile));
                 }
+            }
 
-                return newExes;
-            //}
-            //catch // For now, we'll just return null. Might change this later.
-            //{
-            //    return null;
-            //}
+            return newExes;
         }
 
 

@@ -21,9 +21,6 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CsQuery;
@@ -33,6 +30,7 @@ namespace Phamhilator.Pham.UI
 {
     public class PostCheckBack : IDisposable
     {
+        private const int secsPerDay = 60 * 60 * 24;
         private readonly ManualResetEvent checkBackMre = new ManualResetEvent(false);
         private Logger<Post> logger;
         private TimeSpan chkRate;
@@ -44,9 +42,9 @@ namespace Phamhilator.Pham.UI
 
 
 
-        public PostCheckBack(string postLogPath, TimeSpan postTTL, TimeSpan checkRate)
+        public PostCheckBack(string postLogPath, TimeSpan checkRate)
         {
-            logger = new Logger<Post>(postLogPath, postTTL, TimeSpan.FromMinutes(15));
+            logger = new Logger<Post>(postLogPath);
             chkRate = checkRate;
 
             Task.Run(() => CheckPosts());
@@ -64,14 +62,18 @@ namespace Phamhilator.Pham.UI
             if (dispose) return;
             dispose = true;
 
-            //TODO: Do stuff.
+            checkBackMre?.Set();
+            checkBackMre?.Dispose();
+            logger?.Dispose();
 
             GC.SuppressFinalize(this);
         }
 
         public void AddPost(Post post)
         {
-            if (logger.Count < (60 * 60 * 24) / chkRate.TotalSeconds &&
+            if (dispose) return;
+
+            if (logger.Count < secsPerDay / chkRate.TotalSeconds &&
                 (DateTime.UtcNow - post.CreationDate).TotalMinutes <= 10)
             {
                 logger.EnqueueItem(post);
@@ -85,6 +87,8 @@ namespace Phamhilator.Pham.UI
             while (!dispose)
             {
                 checkBackMre.WaitOne(chkRate);
+
+                if (dispose) return;
 
                 var post = new Post
                 {

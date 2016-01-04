@@ -20,19 +20,17 @@
 
 
 
+using System;
+
 namespace Phamhilator.Yam.Core
 {
-    public partial class LocalRequest
+    public sealed partial class Logger<T>
     {
-        public enum RequestType
+        public class Entry
         {
-            DataManagerRequest,
-            Info,
-            Command,
-            Question,
-            Answer,
-            LogSearch,
-            Exception
+            public object Data { get; set; }
+
+            public DateTime Timestamp { get; set; }
         }
     }
 }

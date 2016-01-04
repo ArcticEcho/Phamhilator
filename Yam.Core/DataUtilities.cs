@@ -21,25 +21,39 @@
 
 
 using System.IO;
+using System.IO.Compression;
 
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Yam.Core
 {
-    class ConfigReader
+    public static class DataUtilities
     {
-        public string GetSetting(string settingName)
+        public static byte[] GZipCompress(byte[] data)
         {
-            var st = settingName.ToLowerInvariant();
-            var dataz = File.ReadAllLines("Yam Settings.txt");
+            byte[] compressed;
 
-            foreach (var line in dataz)
+            using (var compStrm = new MemoryStream())
             {
-                if (line.ToLowerInvariant().StartsWith(st))
+                using (var zipper = new GZipStream(compStrm, CompressionMode.Compress))
+                using (var ms = new MemoryStream(data))
                 {
-                    return line.Remove(0, line.IndexOf(":") + 1);
+                    ms.CopyTo(zipper);
                 }
+
+                compressed = compStrm.ToArray();
             }
 
-            return null;
+            return compressed;
+        }
+
+        public static byte[] GZipDecompress(byte[] data)
+        {
+            using (var msIn = new MemoryStream(data))
+            using (var unzipper = new GZipStream(msIn, CompressionMode.Decompress))
+            using (var msOut = new MemoryStream())
+            {
+                unzipper.CopyTo(msOut);
+                return msOut.ToArray();
+            }
         }
     }
 }

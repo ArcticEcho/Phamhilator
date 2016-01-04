@@ -27,17 +27,22 @@ using Phamhilator.Yam.Core;
 using ChatExchangeDotNet;
 using System.Linq;
 using System.Collections.Concurrent;
+using Phamhilator.Updater;
+using System.IO;
+using System.Diagnostics;
 
 namespace Phamhilator.Pham.UI
 {
     public class Program
     {
+        private const string wikiCmdsLink = "https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands";
         private static readonly ConcurrentStack<Post> checkedPosts = new ConcurrentStack<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static LocalRequestClient yamClient;
         private static PostClassifier cvClassifier;
         private static PostClassifier dvClassifier;
         private static PostCheckBack checkBack;
+        private static AppveyorUpdater updater;
         private static Client chatClient;
         private static Room socvr;
         private static UserAccess authUsers;
@@ -110,14 +115,7 @@ namespace Phamhilator.Pham.UI
 
         private static void StartPostCheckBack()
         {
-            var cr = new ConfigReader();
-            var mins = 0;
-            if (!int.TryParse(cr.GetSetting("postmodel"), out mins))
-            {
-                mins = 3;
-            }
-
-            checkBack = new PostCheckBack("Post Log.txt", TimeSpan.FromHours(24), TimeSpan.FromMinutes(mins));
+            checkBack = new PostCheckBack("post-log.txt", TimeSpan.FromMinutes(1));
             checkBack.ClosedPostFound = new Action<Post>(q =>
             {
                 cvClassifier.AddPostToModels(q);
@@ -306,7 +304,8 @@ namespace Phamhilator.Pham.UI
         {
             try
             {
-                if (UserAccess.Owners.Any(id => id == command.Author.ID) || command.Author.IsRoomOwner || command.Author.IsMod)
+                if (UserAccess.Owners.Any(id => id == command.Author.ID) ||
+                    command.Author.IsRoomOwner || command.Author.IsMod)
                 {
                     var cmdMatches = HandleOwnerCommand(room, command);
 
@@ -320,7 +319,7 @@ namespace Phamhilator.Pham.UI
                         }
                     }
                 }
-                else if (authUsers.AuthorisedUsers.Any(id => id == command.Author.ID))
+                else if (command.Author.Reputation >= 3000)
                 {
                     var cmdMatches = HandlePrivilegedUserCommand(room, command, false);
 
@@ -342,29 +341,119 @@ namespace Phamhilator.Pham.UI
 
         private static bool HandleNormalUserCommand(Room room, Message command)
         {
-            return false;
+            var cmd = command.Content.Trim().ToUpperInvariant();
+
+            switch (cmd)
+            {
+                case "ALIVE":
+                {
+                    var statusReport = $"Yes, I'm alive (`{DateTime.UtcNow - startTime}`).";
+                    room.PostMessageFast(statusReport);
+                    return true;
+                }
+                case "COMMANDS":
+                {
+                    var msg = $"See [here]({wikiCmdsLink} \"Chat Commands Wiki\").";
+                    room.PostReplyFast(command, msg);
+                    return true;
+                }
+                case "VERSION":
+                {
+                    var msg = $"My current version is: `{updater.CurrentVersion}`.";
+                    room.PostReplyFast(command, msg);
+                    return true;
+                }
+                default:
+                {
+                    return false;
+                }
+            }
         }
 
-        private static bool HandlePrivilegedUserCommand(Room room, Message command, bool isOwner)
+        private static bool HandlePrivilegedUserCommand(Room room, Message command)
         {
-            return false;
+            var cmd = command.Content.Trim().ToUpperInvariant();
+
+            switch (cmd)
+            {
+                case "DEL":
+                {
+                    room.DeleteMessage(command.ParentID);
+                    return true;
+                }
+                default:
+                {
+                    return false;
+                }
+            }
         }
 
         private static bool HandleOwnerCommand(Room room, Message command)
         {
             var cmd = command.Content.Trim().ToUpperInvariant();
 
-            if (cmd == "STOP")
+            switch (cmd)
             {
+                case "STOP":
+                {
+                    shutdownMre.Set();
+                    return true;
+                }
+                case "UPDATE":
+                {
+                    UpdateBot(room, command);
+                    return true;
+                }
+                default:
+                {
+                    return false;
+                }
+            }
+        }
+
+        private static void UpdateBot(Room rm, Message cmd)
+        {
+            if (updater == null)
+            {
+                rm.PostReplyFast(cmd, "This feature has been disabled by the host (API key not specified).");
+                return;
+            }
+
+            var remVer = updater.LatestVersion;
+
+            if (updater.CurrentVersion == remVer)
+            {
+                rm.PostReplyFast(cmd, "There aren't any updates available at the moment.");
+                return;
+            }
+
+            rm.PostReplyFast(cmd, $"Updating to `{remVer}`:");
+            rm.PostMessageFast($"> {updater.LatestVerMessage}");
+
+            var exes = updater.UpdateAssemblies();
+
+            if (exes != null)
+            {
+                rm.PostReplyFast(cmd, "Update successful! Now rebooting...");
+
+                var phamExe = exes.First(x => Path.GetFileName(x).Contains("Pham"));
+
+                if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                {
+                    Process.Start(phamExe);
+                }
+                else
+                {
+                    Process.Start($"mono {phamExe}");
+                }
+
                 shutdownMre.Set();
             }
             else
             {
-                return false;
+                rm.PostReplyFast(cmd, "Update failed!");
             }
-
-            return true;
-        } 
+        }
 
         #endregion
     }

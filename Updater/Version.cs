@@ -23,7 +23,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Phamhilator.Yam.UI
+namespace Phamhilator.Updater
 {
     public struct Version
     {
