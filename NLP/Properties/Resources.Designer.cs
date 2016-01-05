@@ -59,5 +59,15 @@ namespace Phamhilator.NLP.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Model {
+            get {
+                object obj = ResourceManager.GetObject("Model", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

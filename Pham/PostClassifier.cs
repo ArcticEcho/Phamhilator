@@ -30,7 +30,7 @@ namespace Phamhilator.Pham.UI
 {
     public class PostClassifier : IDisposable
     {
-        private readonly PostTermsExtractor modelGen = new PostTermsExtractor();
+        private readonly PosTagger modelGen = new PosTagger();
         private readonly BagOfWords bow;
         private readonly Logger<Term> termLog;
         private readonly ClassificationResults.SuggestedAction action;
@@ -69,7 +69,7 @@ namespace Phamhilator.Pham.UI
 
         public ClassificationResults ClassifyPost(Post post)
         {
-            var postTermTFs = modelGen.GetTerms(post.Body);
+            var postTermTFs = modelGen.GetTags(post.Body);
             var simple = ToSimpleTermCollection(postTermTFs);
             var docs = new Dictionary<uint, float>();
 
@@ -94,7 +94,7 @@ namespace Phamhilator.Pham.UI
         {
             if (bow.ContainsDocument(post.ID)) return;
 
-            var postTermTFs = modelGen.GetTerms(post.Body);
+            var postTermTFs = modelGen.GetTags(post.Body);
 
             lock (bow)
             {
@@ -106,7 +106,7 @@ namespace Phamhilator.Pham.UI
         {
             if (!bow.ContainsDocument(post.ID)) return;
 
-            var postTermTFs = modelGen.GetTerms(post.Body);
+            var postTermTFs = modelGen.GetTags(post.Body);
 
             lock (bow)
             {

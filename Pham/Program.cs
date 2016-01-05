@@ -42,9 +42,10 @@ namespace Phamhilator.Pham.UI
         private static PostClassifier cvClassifier;
         private static PostClassifier dvClassifier;
         private static PostCheckBack checkBack;
-        private static AppveyorUpdater updater; //TODO: Not used yet.
+        //private static AppveyorUpdater updater; //TODO: Not used yet.
         private static Client chatClient;
         private static Room socvr;
+        private static Room lqphq;
         private static DateTime startTime;
 
 
@@ -60,8 +61,8 @@ namespace Phamhilator.Pham.UI
 
             Console.Write("Authenticating...");
             AuthenticateChatClient();
-            Console.Write("done.\nInitialising updater...");
-            InitialiseUpdater();
+            //Console.Write("done.\nInitialising updater...");
+            //InitialiseUpdater();
             Console.Write("done.\nStarting post websocket...");
             StartPostWebSocket();
             Console.Write("done.\nStarting post model generator...");
@@ -76,7 +77,7 @@ namespace Phamhilator.Pham.UI
 
             startTime = DateTime.UtcNow;
 
-            var startupMsg = $"Pham {updater.CurrentVersion} started.";
+            var startupMsg = $"Pham v2 started.";
             Console.WriteLine(startupMsg);
             socvr.PostMessageFast(startupMsg);
 
@@ -108,11 +109,11 @@ namespace Phamhilator.Pham.UI
             chatClient = new Client(email, pwd);
         }
 
-        private static void InitialiseUpdater()
-        {
-            var cr = new ConfigReader();
-            updater = new AppveyorUpdater(cr.GetSetting("appveyor"), "ArcticEcho", "Phamhilator");
-        }
+        //private static void InitialiseUpdater()
+        //{
+        //    var cr = new ConfigReader();
+        //    updater = new AppveyorUpdater(cr.GetSetting("appveyor"), "ArcticEcho", "Phamhilator");
+        //}
 
         private static void StartPostWebSocket()
         {
@@ -155,6 +156,14 @@ namespace Phamhilator.Pham.UI
 
             socvr.EventManager.ConnectListener(EventType.MessageReply,
                 new Action<Message, Message>((p, c) => HandleChatCommand(socvr, c)));
+
+            lqphq = chatClient.JoinRoom("http://chat.meta.stackexchange.com/rooms/773");
+
+            lqphq.EventManager.ConnectListener(EventType.UserMentioned,
+                new Action<Message>(m => HandleChatCommand(lqphq, m)));
+
+            lqphq.EventManager.ConnectListener(EventType.MessageReply,
+                new Action<Message, Message>((p, c) => HandleChatCommand(lqphq, c)));
         }
 
         #endregion
@@ -271,12 +280,12 @@ namespace Phamhilator.Pham.UI
                     room.PostReplyFast(command, msg);
                     return true;
                 }
-                case "VERSION":
-                {
-                    var msg = $"My current version is: `{updater.CurrentVersion}`.";
-                    room.PostReplyFast(command, msg);
-                    return true;
-                }
+                //case "VERSION":
+                //{
+                //    var msg = $"My current version is: `{updater.CurrentVersion}`.";
+                //    room.PostReplyFast(command, msg);
+                //    return true;
+                //}
                 default:
                 {
                     return false;
@@ -313,11 +322,11 @@ namespace Phamhilator.Pham.UI
                     shutdownMre.Set();
                     return true;
                 }
-                case "UPDATE":
-                {
-                    UpdateBot(room, command);
-                    return true;
-                }
+                //case "UPDATE":
+                //{
+                //    UpdateBot(room, command);
+                //    return true;
+                //}
                 default:
                 {
                     return false;
@@ -325,49 +334,49 @@ namespace Phamhilator.Pham.UI
             }
         }
 
-        private static void UpdateBot(Room rm, Message cmd)
-        {
-            if (updater == null)
-            {
-                rm.PostReplyFast(cmd, "This feature has been disabled by the host (API key not specified).");
-                return;
-            }
+        //private static void UpdateBot(Room rm, Message cmd)
+        //{
+        //    if (updater == null)
+        //    {
+        //        rm.PostReplyFast(cmd, "This feature has been disabled by the host (API key not specified).");
+        //        return;
+        //    }
 
-            var remVer = updater.LatestVersion;
+        //    var remVer = updater.LatestVersion;
 
-            if (updater.CurrentVersion == remVer)
-            {
-                rm.PostReplyFast(cmd, "There aren't any updates available at the moment.");
-                return;
-            }
+        //    if (updater.CurrentVersion == remVer)
+        //    {
+        //        rm.PostReplyFast(cmd, "There aren't any updates available at the moment.");
+        //        return;
+        //    }
 
-            rm.PostReplyFast(cmd, $"Updating to `{remVer}`:");
-            rm.PostMessageFast($"> {updater.LatestVerMessage}");
+        //    rm.PostReplyFast(cmd, $"Updating to `{remVer}`:");
+        //    rm.PostMessageFast($"> {updater.LatestVerMessage}");
 
-            var exes = updater.UpdateAssemblies();
+        //    var exes = updater.UpdateAssemblies();
 
-            if (exes != null)
-            {
-                rm.PostReplyFast(cmd, "Update successful! Now rebooting...");
+        //    if (exes != null)
+        //    {
+        //        rm.PostReplyFast(cmd, "Update successful! Now rebooting...");
 
-                var phamExe = exes.First(x => Path.GetFileName(x).Contains("Pham"));
+        //        var phamExe = exes.First(x => Path.GetFileName(x).Contains("Pham"));
 
-                if (Environment.OSVersion.Platform == PlatformID.Win32NT)
-                {
-                    Process.Start(phamExe);
-                }
-                else
-                {
-                    Process.Start($"mono {phamExe}");
-                }
+        //        if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+        //        {
+        //            Process.Start(phamExe);
+        //        }
+        //        else
+        //        {
+        //            Process.Start($"mono {phamExe}");
+        //        }
 
-                shutdownMre.Set();
-            }
-            else
-            {
-                rm.PostReplyFast(cmd, "Update failed!");
-            }
-        }
+        //        shutdownMre.Set();
+        //    }
+        //    else
+        //    {
+        //        rm.PostReplyFast(cmd, "Update failed!");
+        //    }
+        //}
 
         #endregion
     }
