@@ -15,22 +15,21 @@ before_build:
 - nuget restore
   
 artifacts:
-- path: Yam.UI\bin\Release\Yam.UI.exe
-  name: Yam.UI.exe
-- path: Yam.UI\bin\Release\ChectExchange.Net.dll
+- path: Yam.Core\bin\Release\ChectExchange.Net.dll
   name: ChatExchange.Net.Net.dll
-- path: Yam.UI\bin\Release\CsQuery.dll
+- path: Yam.Core\bin\Release\CsQuery.dll
   name: CsQuery.dll
-- path: Yam.UI\bin\Release\ServiceStack.Text.Dll
+- path: Yam.Core\bin\Release\ServiceStack.Text.Dll
   name: ServiceStack.Text.dll
-- path: Yam.UI\bin\Release\websocket-sharp.dll
+- path: Yam.Core\bin\Release\websocket-sharp.dll
   name: websocket-sharp.dll
-- path: Yam.UI\bin\Release\Yam.Core.dll
+- path: Yam.Core\bin\Release\Yam.Core.dll
   name: Yam.Core.dll
   
 - path: Pham\bin\Release\Pham.exe
   name: Pham.exe
-- path: Pham\bin\Release\NLP.dll
+  
+- path: NLP\bin\Release\NLP.dll
   name: NLP.dll
 
 build:
