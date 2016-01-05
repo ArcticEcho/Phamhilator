@@ -29,7 +29,7 @@ namespace Phamhilator.Pham
         public string GetSetting(string settingName)
         {
             var st = settingName.ToLowerInvariant();
-            var dataz = File.ReadAllLines("Pham Settings.txt");
+            var dataz = File.ReadAllLines("settings.txt");
 
             foreach (var line in dataz)
             {

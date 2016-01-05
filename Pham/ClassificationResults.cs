@@ -36,17 +36,14 @@ namespace Phamhilator.Pham.UI
 
         public SuggestedAction Action { get; }
 
-        public float Severity { get; }
-
         public float Similarity { get; }
 
 
 
-        public ClassificationResults(SuggestedAction act, float matchScore, float estimatedUrgency)
+        public ClassificationResults(SuggestedAction act, float matchScore)
         {
             Action = act;
             Similarity = matchScore;
-            Severity = estimatedUrgency;
         }
     }
 }

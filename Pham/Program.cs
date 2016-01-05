@@ -38,6 +38,7 @@ namespace Phamhilator.Pham.UI
         private const string wikiCmdsLink = "https://github.com/ArcticEcho/Phamhilator/wiki/Chat-Commands";
         private static readonly ConcurrentStack<Post> checkedPosts = new ConcurrentStack<Post>();
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
+        private static RealtimePostSocket postSocket;
         private static PostClassifier cvClassifier;
         private static PostClassifier dvClassifier;
         private static PostCheckBack checkBack;
@@ -59,6 +60,10 @@ namespace Phamhilator.Pham.UI
 
             Console.Write("Authenticating...");
             AuthenticateChatClient();
+            Console.Write("done.\nInitialising updater...");
+            InitialiseUpdater();
+            Console.Write("done.\nStarting post websocket...");
+            StartPostWebSocket();
             Console.Write("done.\nStarting post model generator...");
             StartPostCheckBack();
             Console.Write("done.\nInitialising CV classifier...");
@@ -80,6 +85,8 @@ namespace Phamhilator.Pham.UI
             shutdownMre.WaitOne();
 
             Console.Write("Stopping...");
+            socvr?.PostMessageFast("Bye.");
+
             socvr?.Leave();
             shutdownMre?.Dispose();
             chatClient?.Dispose();
@@ -101,6 +108,19 @@ namespace Phamhilator.Pham.UI
             var pwd = cr.GetSetting("se pass");
 
             chatClient = new Client(email, pwd);
+        }
+
+        private static void InitialiseUpdater()
+        {
+            var cr = new ConfigReader();
+            updater = new AppveyorUpdater(cr.GetSetting("appveyor"), "ArcticEcho", "Phamhilator");
+        }
+
+        private static void StartPostWebSocket()
+        {
+            postSocket = new RealtimePostSocket(true);
+            postSocket.OnActiveQuestion += p => CheckPost(p);
+            postSocket.OnActiveAnswer += p => CheckPost(p);
         }
 
         private static void StartPostCheckBack()
@@ -138,40 +158,36 @@ namespace Phamhilator.Pham.UI
 
         #region Post checking.
 
-        private static void CheckQuestion(Question q)
+        private static void CheckPost(Post p)
         {
-            if (checkedPosts.Contains(q) || q.Site != "stackoverflow.com" ||
-                q.AuthorRep > 10000 || q.Score > 2) return;
+            if (checkedPosts.Contains(p) || p.Site != "stackoverflow.com" ||
+                p.AuthorRep > 10000 || p.Score > 2) return;
             while (checkedPosts.Count > 500)
             {
                 Post temp;
                 checkedPosts.TryPop(out temp);
             }
-            checkedPosts.Push(q);
+            checkedPosts.Push(p);
 
-            Task.Run(() => checkBack.AddPost(q));
+            Task.Run(() => checkBack.AddPost(p));
 
             //var edRes = ???
-            var cvRes = cvClassifier.ClassifyPost(q);
-            var dvRes = dvClassifier.ClassifyPost(q);
-
-            //var edScore = ???
-            var cvScore = cvRes.Similarity * (cvRes.Severity * 0.5);
-            var dvScore = dvRes.Similarity * (dvRes.Severity * 0.5);
+            var cvRes = cvClassifier.ClassifyPost(p);
+            var dvRes = dvClassifier.ClassifyPost(p);
 
             //if (edScore > 0.5 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
             //{
             //    ReportPost(q, edRes);
             //    return;
             //}
-            if (cvScore > 0.5 && /*cvScore > edScore * 1.1 &&*/ cvScore > dvScore * 0.9)
+            if (cvRes.Similarity > 0.5 && cvRes.Similarity > dvRes.Similarity * 0.9)
             {
-                ReportPost(q, cvRes);
+                ReportPost(p, cvRes);
                 return;
             }
-            if (dvScore > 0.5 && /*dvScore > edScore * 1.2 &&*/ dvScore > cvScore * 1.1)
+            if (dvRes.Similarity > 0.5 && dvRes.Similarity > cvRes.Similarity * 1.1)
             {
-                ReportPost(q, dvRes);
+                ReportPost(p, dvRes);
                 return;
             }
 
@@ -179,50 +195,6 @@ namespace Phamhilator.Pham.UI
             //if (edScore > 0.6)
             //{
             //    ReportPost(q, edRes);
-            //}
-        }
-
-        private static void CheckAnswer(Answer a)
-        {
-            if (checkedPosts.Contains(a) || a.Site != "stackoverflow.com" ||
-                a.AuthorRep > 1000 || a.Score > 1) return;
-            while (checkedPosts.Count > 500)
-            {
-                Post temp;
-                checkedPosts.TryPop(out temp);
-            }
-            checkedPosts.Push(a);
-
-            Task.Run(() => checkBack.AddPost(a));
-
-            //var edRes = ???
-            var cvRes = cvClassifier.ClassifyPost(a);
-            var dvRes = dvClassifier.ClassifyPost(a);
-
-            //var edScore = ???
-            var cvScore = cvRes.Similarity * (cvRes.Severity * 0.5);
-            var dvScore = dvRes.Similarity * (dvRes.Severity * 0.5);
-
-            //if (edScore > 0.5 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
-            //{
-            //    ReportPost(a, edRes);
-            //    return;
-            //}
-            if (cvScore > 0.5 && /*cvScore > edScore * 1.1 &&*/ cvScore > dvScore * 0.9)
-            {
-                ReportPost(a, cvRes);
-                return;
-            }
-            if (dvScore > 0.5 && /*dvScore > edScore * 1.2 &&*/ dvScore > cvScore * 1.1)
-            {
-                ReportPost(a, cvRes);
-                return;
-            }
-
-            // If that ^ goes weird, resort to requesting an edit (if within threshold).
-            //if (edScore > 0.6)
-            //{
-            //    ReportPost(a, edRes);
             //}
         }
 

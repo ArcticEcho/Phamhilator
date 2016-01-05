@@ -87,10 +87,7 @@ namespace Phamhilator.Pham.UI
                 match += s / sims.Length;
             }
 
-            // Use logged posts data to calc urgency.
-            var urg = 1;
-
-            return new ClassificationResults(action, match, urg);
+            return new ClassificationResults(action, match);
         }
 
         public void AddPostToModels(Post post)

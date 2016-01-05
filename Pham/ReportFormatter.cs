@@ -43,14 +43,13 @@ namespace Phamhilator.Pham.UI
             }
 
             var msg = new MessageBuilder();
-            var resData = $"Severity: {Math.Round(results.Severity * 100)}%. " +
-                          $"Similarity: {Math.Round(results.Similarity * 100)}%";
+            var resData = $"Similarity: {Math.Round(results.Similarity * 100)}%";
 
             switch (results.Action)
             {
                 case ClassificationResults.SuggestedAction.Edit:
                 {
-                    msg.AppendLink("Edit", editUrl, resData, results.Severity >= 0.75 ?
+                    msg.AppendLink("Edit", editUrl, resData, results.Similarity >= 0.75 ?
                         TextFormattingOptions.Bold :
                         TextFormattingOptions.None,
                         WhiteSpace.None);
@@ -58,7 +57,7 @@ namespace Phamhilator.Pham.UI
                 }
                 case ClassificationResults.SuggestedAction.Close:
                 {
-                    msg.AppendLink("Close", closeUrl, resData, results.Severity >= 0.75 ?
+                    msg.AppendLink("Close", closeUrl, resData, results.Similarity >= 0.75 ?
                         TextFormattingOptions.Bold :
                         TextFormattingOptions.None,
                         WhiteSpace.None);
@@ -66,7 +65,7 @@ namespace Phamhilator.Pham.UI
                 }
                 case ClassificationResults.SuggestedAction.Delete:
                 {
-                    msg.AppendLink("Delete", deleteUrl, resData, results.Severity >= 0.75 ?
+                    msg.AppendLink("Delete", deleteUrl, resData, results.Similarity >= 0.75 ?
                         TextFormattingOptions.Bold :
                         TextFormattingOptions.None,
                         WhiteSpace.None);
