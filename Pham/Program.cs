@@ -76,11 +76,9 @@ namespace Phamhilator.Pham.UI
 
             startTime = DateTime.UtcNow;
 
-#if DEBUG
-            Console.WriteLine("Pham v2 started (debug).");
-#else
-            Console.WriteLine("Pham v2 started.");
-#endif
+            var startupMsg = $"Pham {updater.CurrentVersion} started.";
+            Console.WriteLine(startupMsg);
+            socvr.PostMessageFast(startupMsg);
 
             shutdownMre.WaitOne();
 
@@ -151,7 +149,12 @@ namespace Phamhilator.Pham.UI
             var cr = new ConfigReader();
 
             socvr = chatClient.JoinRoom(cr.GetSetting("room"));
-            socvr.EventManager.ConnectListener(EventType.UserMentioned, new Action<Message>(m => HandleChatCommand(socvr, m)));
+
+            socvr.EventManager.ConnectListener(EventType.UserMentioned,
+                new Action<Message>(m => HandleChatCommand(socvr, m)));
+
+            socvr.EventManager.ConnectListener(EventType.MessageReply,
+                new Action<Message, Message>((p, c) => HandleChatCommand(socvr, c)));
         }
 
         #endregion
