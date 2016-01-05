@@ -15,8 +15,6 @@ before_build:
 - nuget restore
   
 artifacts:
-- path: Yam.Core\bin\Release\ChectExchange.Net.dll
-  name: ChatExchange.Net.Net.dll
 - path: Yam.Core\bin\Release\CsQuery.dll
   name: CsQuery.dll
 - path: Yam.Core\bin\Release\ServiceStack.Text.Dll
@@ -26,6 +24,8 @@ artifacts:
 - path: Yam.Core\bin\Release\Yam.Core.dll
   name: Yam.Core.dll
   
+- path: Pham\bin\Release\ChectExchange.Net.dll
+  name: ChatExchange.Net.Net.dll
 - path: Pham\bin\Release\Pham.exe
   name: Pham.exe
   
