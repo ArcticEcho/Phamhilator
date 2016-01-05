@@ -31,6 +31,9 @@ artifacts:
   
 - path: NLP\bin\Release\NLP.dll
   name: NLP.dll
+  
+- path: Updater\bin\Release\Updater.dll
+  name: Updater.dll
 
 build:
   project: Phamhilator.sln
