@@ -55,7 +55,7 @@ namespace Phamhilator.NLP
 
 
 
-        public Dictionary<string, ushort> GetTags(string text)
+        public Dictionary<string, ushort> GetModel(string text)
         {
             var prepared = PrepareBody(text);
             var tagged = tagger.tagString(prepared);

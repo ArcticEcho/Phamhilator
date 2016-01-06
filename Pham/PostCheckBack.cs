@@ -36,9 +36,11 @@ namespace Phamhilator.Pham.UI
         private TimeSpan chkRate;
         private bool dispose;
 
-        public Action<Post> ClosedPostFound { get; set; }
+        public Action<Post> ClosedQuestionFound { get; set; }
 
-        public Action<Post> DeletedPostFound { get; set; }
+        public Action<Post> DeletedQuestionFound { get; set; }
+
+        public Action<Post> DeletedAnswerFound { get; set; }
 
 
 
@@ -114,14 +116,21 @@ namespace Phamhilator.Pham.UI
                 if (timeAlive.TotalDays > 1)
                 {
                     CQ dom;
-
-                    if (PostFetcher.IsPostDeleted(post.Url, out dom) && DeletedPostFound != null)
+                    if (post.IsQuestion && DeletedQuestionFound != null && ClosedQuestionFound != null)
                     {
-                        DeletedPostFound(post);
+                        if (PostFetcher.IsPostDeleted(post.Url, out dom))
+                        {
+                            DeletedQuestionFound(post);
+                        }
+                        else if (PostFetcher.IsQuestionClosed(dom, post.Url, false))
+                        {
+                            ClosedQuestionFound(post);
+                        }
                     }
-                    else if (PostFetcher.IsQuestionClosed(dom, post.Url, false) && ClosedPostFound != null)
+                    else if (!post.IsQuestion && PostFetcher.IsPostDeleted(post.Url, out dom) &&
+                        DeletedAnswerFound != null)
                     {
-                        ClosedPostFound(post);
+                        DeletedAnswerFound(post);
                     }
 
                     logger.RemoveItem(post);

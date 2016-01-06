@@ -69,7 +69,7 @@ namespace Phamhilator.Pham.UI
 
         public ClassificationResults ClassifyPost(Post post)
         {
-            var postTermTFs = modelGen.GetTags(post.Body);
+            var postTermTFs = modelGen.GetModel(post.Body);
             var simple = ToSimpleTermCollection(postTermTFs);
             var docs = new Dictionary<uint, float>();
 
@@ -94,7 +94,7 @@ namespace Phamhilator.Pham.UI
         {
             if (bow.ContainsDocument(post.ID)) return;
 
-            var postTermTFs = modelGen.GetTags(post.Body);
+            var postTermTFs = modelGen.GetModel(post.Body);
 
             lock (bow)
             {
@@ -106,7 +106,7 @@ namespace Phamhilator.Pham.UI
         {
             if (!bow.ContainsDocument(post.ID)) return;
 
-            var postTermTFs = modelGen.GetTags(post.Body);
+            var postTermTFs = modelGen.GetModel(post.Body);
 
             lock (bow)
             {

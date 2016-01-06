@@ -62,7 +62,6 @@
     <Compile Include="EditClassifier.cs" />
     <Compile Include="PostCheckBack.cs" />
     <Compile Include="PostClassifier.cs" />
-    <Compile Include="PostModelStats.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

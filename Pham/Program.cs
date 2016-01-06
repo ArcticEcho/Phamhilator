@@ -40,7 +40,8 @@ namespace Phamhilator.Pham.UI
         private static readonly ManualResetEvent shutdownMre = new ManualResetEvent(false);
         private static RealtimePostSocket postSocket;
         private static PostClassifier cvClassifier;
-        private static PostClassifier dvClassifier;
+        private static PostClassifier qdvClassifier;
+        private static PostClassifier advClassifier;
         private static PostCheckBack checkBack;
         //private static AppveyorUpdater updater; //TODO: Not used yet.
         private static Client chatClient;
@@ -69,9 +70,11 @@ namespace Phamhilator.Pham.UI
             StartPostCheckBack();
             Console.Write("done.\nInitialising CV classifier...");
             InitialiseCVClassifier();
-            Console.Write("done.\nInitialising DV classifier...");
-            InitialiseDVClassifier();
-            Console.Write("done.\nJoining chat room...");
+            Console.Write("done.\nInitialising Q DV classifier...");
+            InitialiseQDVClassifier();
+            Console.Write("done.\nInitialising A DV classifier...");
+            InitialiseQDVClassifier();
+            Console.Write("done.\nJoining chat room(s)...");
             JoinRooms();
             Console.WriteLine("done.\n");
 
@@ -94,7 +97,8 @@ namespace Phamhilator.Pham.UI
             shutdownMre?.Dispose();
             chatClient?.Dispose();
             cvClassifier?.Dispose();
-            dvClassifier?.Dispose();
+            qdvClassifier?.Dispose();
+            advClassifier?.Dispose();
             checkBack?.Dispose();
 
             Console.WriteLine("done.");
@@ -129,25 +133,34 @@ namespace Phamhilator.Pham.UI
 
         private static void StartPostCheckBack()
         {
-            checkBack = new PostCheckBack("post-log.txt", TimeSpan.FromMinutes(1));
-            checkBack.ClosedPostFound = new Action<Post>(q =>
+            checkBack = new PostCheckBack("post-checkback-log.txt", TimeSpan.FromMinutes(1));
+            checkBack.ClosedQuestionFound = new Action<Post>(q =>
             {
                 cvClassifier.AddPostToModels(q);
             });
-            checkBack.DeletedPostFound = new Action<Post>(p =>
+            checkBack.DeletedQuestionFound = new Action<Post>(p =>
             {
-                dvClassifier.AddPostToModels(p);
+                qdvClassifier.AddPostToModels(p);
+            });
+            checkBack.DeletedAnswerFound = new Action<Post>(p =>
+            {
+                qdvClassifier.AddPostToModels(p);
             });
         }
 
         private static void InitialiseCVClassifier()
         {
-            cvClassifier = new PostClassifier("CV Terms.txt", ClassificationResults.SuggestedAction.Close);
+            cvClassifier = new PostClassifier("cv-models.txt", ClassificationResults.SuggestedAction.Close);
         }
 
-        private static void InitialiseDVClassifier()
+        private static void InitialiseQDVClassifier()
         {
-            dvClassifier = new PostClassifier("DV Terms.txt", ClassificationResults.SuggestedAction.Delete);
+            qdvClassifier = new PostClassifier("qdv-models.txt", ClassificationResults.SuggestedAction.Delete);
+        }
+
+        private static void InitialiseADVClassifier()
+        {
+            advClassifier = new PostClassifier("adv-models.txt", ClassificationResults.SuggestedAction.Delete);
         }
 
         private static void JoinRooms()
@@ -179,7 +192,7 @@ namespace Phamhilator.Pham.UI
         {
             if (checkedPosts.Contains(p) || p.Site != "stackoverflow.com" ||
                 p.AuthorRep > 10000 || p.Score > 2) return;
-            while (checkedPosts.Count > 500)
+            while (checkedPosts.Count > 1000)
             {
                 Post temp;
                 checkedPosts.TryPop(out temp);
@@ -188,31 +201,40 @@ namespace Phamhilator.Pham.UI
 
             Task.Run(() => checkBack.AddPost(p));
 
-            //var edRes = ???
-            var cvRes = cvClassifier.ClassifyPost(p);
-            var dvRes = dvClassifier.ClassifyPost(p);
+            if (p.IsQuestion)
+            {
+                CheckQuestion(p);
+            }
+            else
+            {
+                CheckAnswer(p);
+            }
+        }
 
-            //if (edScore > 0.5 && edScore > cvScore * 0.9 && edScore > dvScore * 0.8)
-            //{
-            //    ReportPost(q, edRes);
-            //    return;
-            //}
+        private static void CheckQuestion(Post p)
+        {
+            var cvRes = cvClassifier.ClassifyPost(p);
+            var dvRes = qdvClassifier.ClassifyPost(p);
+
             if (cvRes.Similarity > 0.5 && cvRes.Similarity > dvRes.Similarity * 0.9)
             {
                 ReportPost(p, cvRes);
-                return;
             }
-            if (dvRes.Similarity > 0.5 && dvRes.Similarity > cvRes.Similarity * 1.1)
+            else if (dvRes.Similarity > 0.5 && dvRes.Similarity > cvRes.Similarity * 1.1)
+            {
+                ReportPost(p, dvRes);
+            }
+        }
+
+        private static void CheckAnswer(Post p)
+        {
+            var dvRes = advClassifier.ClassifyPost(p);
+
+            if (dvRes.Similarity > 0.5)
             {
                 ReportPost(p, dvRes);
                 return;
             }
-
-            // If that ^ goes weird, resort to requesting an edit (if within threshold).
-            //if (edScore > 0.6)
-            //{
-            //    ReportPost(q, edRes);
-            //}
         }
 
         private static void ReportPost(Post post, ClassificationResults results)
@@ -222,6 +244,7 @@ namespace Phamhilator.Pham.UI
             if (string.IsNullOrWhiteSpace(report)) return;
 
             socvr.PostMessageFast(report);
+            lqphq.PostMessageFast(report);
         }
 
         #endregion
