@@ -64,8 +64,6 @@ namespace Phamhilator.Pham.UI
             AuthenticateChatClient();
             //Console.Write("done.\nInitialising updater...");
             //InitialiseUpdater();
-            Console.Write("done.\nStarting post websocket...");
-            StartPostWebSocket();
             Console.Write("done.\nStarting post model generator...");
             StartPostCheckBack();
             Console.Write("done.\nInitialising CV classifier...");
@@ -73,9 +71,11 @@ namespace Phamhilator.Pham.UI
             Console.Write("done.\nInitialising Q DV classifier...");
             InitialiseQDVClassifier();
             Console.Write("done.\nInitialising A DV classifier...");
-            InitialiseQDVClassifier();
+            InitialiseADVClassifier();
             Console.Write("done.\nJoining chat room(s)...");
             JoinRooms();
+            Console.Write("done.\nStarting post websocket...");
+            StartPostWebSocket();
             Console.WriteLine("done.\n");
 
             startTime = DateTime.UtcNow;
@@ -190,24 +190,31 @@ namespace Phamhilator.Pham.UI
 
         private static void CheckPost(Post p)
         {
-            if (checkedPosts.Contains(p) || p.Site != "stackoverflow.com" ||
-                p.AuthorRep > 10000 || p.Score > 2) return;
-            while (checkedPosts.Count > 1000)
+            try
             {
-                Post temp;
-                checkedPosts.TryPop(out temp);
-            }
-            checkedPosts.Push(p);
+                if (checkedPosts.Contains(p) || p.Site != "stackoverflow.com" ||
+                    p.AuthorRep > 10000 || p.Score > 2) return;
+                while (checkedPosts.Count > 1000)
+                {
+                    Post temp;
+                    checkedPosts.TryPop(out temp);
+                }
+                checkedPosts.Push(p);
 
-            Task.Run(() => checkBack.AddPost(p));
+                Task.Run(() => checkBack.AddPost(p));
 
-            if (p.IsQuestion)
-            {
-                CheckQuestion(p);
+                if (p.IsQuestion)
+                {
+                    CheckQuestion(p);
+                }
+                else
+                {
+                    CheckAnswer(p);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                CheckAnswer(p);
+                Console.WriteLine(ex);
             }
         }
 
@@ -286,6 +293,7 @@ namespace Phamhilator.Pham.UI
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 room.PostReplyFast(command, $"`Unable to execute command: {ex.Message}`");
             }
         }

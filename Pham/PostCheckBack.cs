@@ -88,52 +88,59 @@ namespace Phamhilator.Pham.UI
         {
             while (!dispose)
             {
-                checkBackMre.WaitOne(chkRate);
-
-                if (dispose) return;
-
-                var post = new Post
+                try
                 {
-                    CreationDate = DateTime.MaxValue
-                };
+                    checkBackMre.WaitOne(chkRate);
 
-                foreach (var p in logger)
-                {
-                    if (p.CreationDate < post.CreationDate)
+                    if (dispose) return;
+
+                    var post = new Post
                     {
-                        post = p;
-                    }
-                }
+                        CreationDate = DateTime.MaxValue
+                    };
 
-                var timeAlive = DateTime.UtcNow - post.CreationDate;
-
-                if (timeAlive.TotalDays > 2)
-                {
-                    logger.RemoveItem(post);
-                    continue;
-                }
-
-                if (timeAlive.TotalDays > 1)
-                {
-                    CQ dom;
-                    if (post.IsQuestion && DeletedQuestionFound != null && ClosedQuestionFound != null)
+                    foreach (var p in logger)
                     {
-                        if (PostFetcher.IsPostDeleted(post.Url, out dom))
+                        if (p.CreationDate < post.CreationDate)
                         {
-                            DeletedQuestionFound(post);
-                        }
-                        else if (PostFetcher.IsQuestionClosed(dom, post.Url, false))
-                        {
-                            ClosedQuestionFound(post);
+                            post = p;
                         }
                     }
-                    else if (!post.IsQuestion && PostFetcher.IsPostDeleted(post.Url, out dom) &&
-                        DeletedAnswerFound != null)
+
+                    var timeAlive = DateTime.UtcNow - post.CreationDate;
+
+                    if (timeAlive.TotalDays > 2)
                     {
-                        DeletedAnswerFound(post);
+                        logger.RemoveItem(post);
+                        continue;
                     }
 
-                    logger.RemoveItem(post);
+                    if (timeAlive.TotalDays > 1)
+                    {
+                        CQ dom;
+                        if (post.IsQuestion && DeletedQuestionFound != null && ClosedQuestionFound != null)
+                        {
+                            if (PostFetcher.IsPostDeleted(post.Url, out dom))
+                            {
+                                DeletedQuestionFound(post);
+                            }
+                            else if (PostFetcher.IsQuestionClosed(dom, post.Url, false))
+                            {
+                                ClosedQuestionFound(post);
+                            }
+                        }
+                        else if (!post.IsQuestion && PostFetcher.IsPostDeleted(post.Url, out dom) &&
+                            DeletedAnswerFound != null)
+                        {
+                            DeletedAnswerFound(post);
+                        }
+
+                        logger.RemoveItem(post);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
                 }
             }
         }

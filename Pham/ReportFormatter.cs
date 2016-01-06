@@ -28,9 +28,9 @@ namespace Phamhilator.Pham.UI
 {
     static class ReportFormatter
     {
-        private const string editUrl = "https://github.com/ArcticEcho/Phamhilator/wiki/Pham-Report-Types#edit";
-        private const string closeUrl = "https://github.com/ArcticEcho/Phamhilator/wiki/Pham-Report-Types#close";
-        private const string deleteUrl = "https://github.com/ArcticEcho/Phamhilator/wiki/Pham-Report-Types#delete";
+        private const string editUrl = "https://github.com/ArcticEcho/Phamhilator/wiki/Report-Types#edit";
+        private const string closeUrl = "https://github.com/ArcticEcho/Phamhilator/wiki/Report-Types#close";
+        private const string deleteUrl = "https://github.com/ArcticEcho/Phamhilator/wiki/Report-Types#delete";
 
 
 
