@@ -80,17 +80,22 @@ namespace Phamhilator.Pham.UI
             var startupMsg = $"Pham v2 started.";
             Console.WriteLine(startupMsg);
             socvr.PostMessageFast(startupMsg);
+            lqphq.PostMessageFast(startupMsg);
 
             shutdownMre.WaitOne();
 
             Console.Write("Stopping...");
             socvr?.PostMessageFast("Bye.");
+            lqphq?.PostMessageFast("Bye.");
 
+            lqphq?.Leave();
             socvr?.Leave();
+            postSocket?.Dispose();
             shutdownMre?.Dispose();
             chatClient?.Dispose();
             cvClassifier?.Dispose();
             dvClassifier?.Dispose();
+            checkBack?.Dispose();
 
             Console.WriteLine("done.");
         }

@@ -234,7 +234,7 @@ namespace Phamhilator.Yam.Core
             return false;
         }
 
-        public static bool IsQuestionClosed(CQ dom, string url)
+        public static bool IsQuestionClosed(CQ dom, string url, bool includeDupe = true)
         {
             if (!isQuestionUrl.IsMatch(url))
             {
@@ -246,7 +246,9 @@ namespace Phamhilator.Yam.Core
                 {
                     var qStatus = dom[".question-status"]?.Html();
 
-                    if (qStatus != null && (qStatus.Contains("on hold") || qStatus.Contains("closed")))
+                    if (qStatus != null &&
+                        ((qStatus.Contains("on hold") || qStatus.Contains("closed")) ||
+                        (includeDupe && qStatus.Contains("duplicate"))))
                     {
                         return true;
                     }

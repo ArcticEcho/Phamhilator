@@ -74,7 +74,7 @@ namespace Phamhilator.Pham.UI
             if (dispose) return;
 
             if (logger.Count < secsPerDay / chkRate.TotalSeconds &&
-                (DateTime.UtcNow - post.CreationDate).TotalMinutes <= 10)
+                (DateTime.UtcNow - post.CreationDate).TotalDays < 1)
             {
                 logger.EnqueueItem(post);
             }
@@ -103,18 +103,29 @@ namespace Phamhilator.Pham.UI
                     }
                 }
 
-                CQ dom;
+                var timeAlive = DateTime.UtcNow - post.CreationDate;
 
-                if (PostFetcher.IsPostDeleted(post.Url, out dom) && DeletedPostFound != null)
+                if (timeAlive.TotalDays > 2)
                 {
-                    DeletedPostFound(post);
-                }
-                else if (PostFetcher.IsQuestionClosed(dom, post.Url) && ClosedPostFound != null)
-                {
-                    ClosedPostFound(post);
+                    logger.RemoveItem(post);
+                    continue;
                 }
 
-                logger.RemoveItem(post);
+                if (timeAlive.TotalDays > 1)
+                {
+                    CQ dom;
+
+                    if (PostFetcher.IsPostDeleted(post.Url, out dom) && DeletedPostFound != null)
+                    {
+                        DeletedPostFound(post);
+                    }
+                    else if (PostFetcher.IsQuestionClosed(dom, post.Url, false) && ClosedPostFound != null)
+                    {
+                        ClosedPostFound(post);
+                    }
+
+                    logger.RemoveItem(post);
+                }
             }
         }
     }
