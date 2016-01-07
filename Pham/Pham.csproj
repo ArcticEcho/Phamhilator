@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ClassificationResults.cs" />
     <Compile Include="ConfigReader.cs" />
+    <Compile Include="ConfigWriter.cs" />
     <Compile Include="EditClassifier.cs" />
     <Compile Include="PostCheckBack.cs" />
     <Compile Include="PostClassifier.cs" />

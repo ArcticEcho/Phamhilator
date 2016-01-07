@@ -34,7 +34,7 @@ namespace Phamhilator.Pham.UI
 
 
 
-        public static string FormatReport(Post post, ClassificationResults results)
+        public static string FormatReport(Post post, ClassificationResults results, float threshold)
         {
             if (post == null || results == null ||
                 results.Action == ClassificationResults.SuggestedAction.Nothing)
@@ -43,13 +43,14 @@ namespace Phamhilator.Pham.UI
             }
 
             var msg = new MessageBuilder();
+            var boldTh = 1 - ((1 - threshold) / 2);
             var resData = $"Similarity: {Math.Round(results.Similarity * 100)}%";
 
             switch (results.Action)
             {
                 case ClassificationResults.SuggestedAction.Edit:
                 {
-                    msg.AppendLink("Edit", editUrl, resData, results.Similarity >= 0.75 ?
+                    msg.AppendLink("Edit", editUrl, resData, results.Similarity >= boldTh ?
                         TextFormattingOptions.Bold :
                         TextFormattingOptions.None,
                         WhiteSpace.None);
@@ -57,7 +58,7 @@ namespace Phamhilator.Pham.UI
                 }
                 case ClassificationResults.SuggestedAction.Close:
                 {
-                    msg.AppendLink("Close", closeUrl, resData, results.Similarity >= 0.75 ?
+                    msg.AppendLink("Close", closeUrl, resData, results.Similarity >= boldTh ?
                         TextFormattingOptions.Bold :
                         TextFormattingOptions.None,
                         WhiteSpace.None);
@@ -65,7 +66,7 @@ namespace Phamhilator.Pham.UI
                 }
                 case ClassificationResults.SuggestedAction.Delete:
                 {
-                    msg.AppendLink("Delete", deleteUrl, resData, results.Similarity >= 0.75 ?
+                    msg.AppendLink("Delete", deleteUrl, resData, results.Similarity >= boldTh ?
                         TextFormattingOptions.Bold :
                         TextFormattingOptions.None,
                         WhiteSpace.None);

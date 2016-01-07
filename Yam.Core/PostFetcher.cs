@@ -223,7 +223,9 @@ namespace Phamhilator.Yam.Core
                     {
                         var html = sr.ReadToEnd();
 
-                        if (dom[".leftcol"].Html().Contains("reasons of moderation"))
+                        dom = CQ.Create(html);
+
+                        if ((dom[".leftcol"]?.Html() ?? "").Contains("reasons of moderation"))
                         {
                             return true;
                         }

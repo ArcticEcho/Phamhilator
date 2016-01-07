@@ -39,6 +39,7 @@ namespace Phamhilator.NLP
         private readonly Regex htmlTags = new Regex("(?is)<.*?>", regOpts);
         private readonly Regex taggedChunks = new Regex("•_[A-Z]+ ([A-Z]+)_[A-Z]+ •_[A-Z]+", regOpts);
         private readonly Regex modelTags = new Regex(@"\S+_(\S+)", regOpts);
+        private readonly Regex nonEng = new Regex(@"[^\x00-\x7F]+", regOpts);
         private readonly MaxentTagger tagger;
 
 
@@ -84,7 +85,8 @@ namespace Phamhilator.NLP
 
         private string PrepareBody(string text)
         {
-            var clean = text.ToLowerInvariant();
+            var clean = nonEng.Replace(text, "");
+            clean = text.ToLowerInvariant();
             clean = TagChunks(clean);
             clean = htmlTags.Replace(clean, " ");
 

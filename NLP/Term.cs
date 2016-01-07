@@ -26,12 +26,10 @@ namespace Phamhilator.NLP
 {
     public class Term
     {
-        public HashSet<uint> DocumentIDs { get; set; }
+        public Dictionary<uint, int> DocumentIDsByTFs { get; set; }
 
         public string Value { get; set; }
 
         public float IDF { get; set; }
-
-        public ushort TF { get; set; }
     }
 }

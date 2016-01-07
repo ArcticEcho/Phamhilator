@@ -30,16 +30,32 @@ namespace Phamhilator.Pham.UI
 {
     public class PostClassifier : IDisposable
     {
+        private readonly ConfigWriter cw = new ConfigWriter();
         private readonly PosTagger modelGen = new PosTagger();
         private readonly BagOfWords bow;
         private readonly Logger<Term> termLog;
         private readonly ClassificationResults.SuggestedAction action;
+        private float thresh = -1;
         private bool dispose;
+
+        public float Threshold
+        {
+            get
+            {
+                return thresh;
+            }
+            set
+            {
+                thresh = value;
+                cw.UpdateSetting("Threshold", value.ToString());
+            }
+        }
 
 
 
         public PostClassifier(string termLogPath, ClassificationResults.SuggestedAction termAction)
         {
+            thresh = float.Parse(new ConfigReader().GetSetting("Threshold") ?? "0.75");
             action = termAction;
             termLog = new Logger<Term>(termLogPath);
             bow = new BagOfWords(termLog);
@@ -81,7 +97,7 @@ namespace Phamhilator.Pham.UI
             //TODO: This will need some experimentation.
             // Average the similarity results.
             var match = 0F;
-            var sims = docs.Values.Where(x => x >= 2 / 3F).ToArray();
+            var sims = docs.Values.Where(x => x >= thresh).ToArray();
             foreach (var s in sims)
             {
                 match += s / sims.Length;

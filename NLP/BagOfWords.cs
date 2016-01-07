@@ -34,35 +34,6 @@ namespace Phamhilator.NLP
 
 
 
-        public BagOfWords(IDictionary<uint, IEnumerable<string>> docIDWithTerms)
-        {
-            foreach (var docID in docIDWithTerms.Keys)
-            foreach (var term in docIDWithTerms[docID])
-            {
-                if (Terms.ContainsKey(term))
-                {
-                    Terms[term].TF++;
-
-                    if (!Terms[term].DocumentIDs.Contains(docID))
-                    {
-                        Terms[term].DocumentIDs.Add(docID);
-                    }
-                }
-                else
-                {
-                    Terms[term] = new Term
-                    {
-                        DocumentIDs = new HashSet<uint>
-                        {
-                            docID
-                        },
-                        Value = term,
-                        TF = 1
-                    };
-                }
-            }
-        }
-
         public BagOfWords(IDictionary<string, Term> terms)
         {
             Terms = (Dictionary<string, Term>)terms;
@@ -82,7 +53,7 @@ namespace Phamhilator.NLP
 
         public bool ContainsDocument(uint docID)
         {
-            return Terms.Values.Any(x => x.DocumentIDs.Contains(docID));
+            return Terms.Values.Any(x => x.DocumentIDsByTFs.ContainsKey(docID));
         }
 
         public void AddDocument(uint documentID, IDictionary<string, ushort> termTFs)
@@ -99,19 +70,17 @@ namespace Phamhilator.NLP
             {
                 if (Terms.ContainsKey(term))
                 {
-                    Terms[term].TF += termTFs[term];
-                    Terms[term].DocumentIDs.Add(documentID);
+                    Terms[term].DocumentIDsByTFs[documentID] = termTFs[term];
                 }
                 else
                 {
                     Terms[term] = new Term
                     {
-                        DocumentIDs = new HashSet<uint>
+                        DocumentIDsByTFs = new Dictionary<uint, int>
                         {
-                            documentID
+                            [documentID] = termTFs[term]
                         },
-                        Value = term,
-                        TF = termTFs[term]
+                        Value = term
                     };
                 }
             }
@@ -133,16 +102,15 @@ namespace Phamhilator.NLP
 
             foreach (var term in termTFs.Keys)
             {
-                if (Terms[term].DocumentIDs.Contains(documentID))
+                if (Terms[term].DocumentIDsByTFs.ContainsKey(documentID))
                 {
-                    if (Terms[term].DocumentIDs.Count == 1)
+                    if (Terms[term].DocumentIDsByTFs.Count == 1)
                     {
                         Terms.Remove(term);
                     }
                     else
                     {
-                        Terms[term].DocumentIDs.Remove(documentID);
-                        Terms[term].TF -= termTFs[term];
+                        Terms[term].DocumentIDsByTFs.Remove(documentID);
                     }
                 }
             }
@@ -155,10 +123,10 @@ namespace Phamhilator.NLP
                 Terms[term].IDF = 0;
             }
 
+            // Get all the document IDs.
             var totalDocs = new HashSet<uint>();
-
             foreach (var term in Terms.Values)
-            foreach (var docID in term.DocumentIDs)
+            foreach (var docID in term.DocumentIDsByTFs.Keys)
             {
                 if (!totalDocs.Contains(docID))
                 {
@@ -170,9 +138,10 @@ namespace Phamhilator.NLP
 
             foreach (var term in Terms.Keys)
             {
-                var docsFound = Terms[term].DocumentIDs.Count;
+                // How many documents contain the term?
+                var docsFound = Terms[term].DocumentIDsByTFs.Count;
 
-                Terms[term].IDF = (float)Math.Log(totalDocCount / docsFound);
+                Terms[term].IDF = (float)Math.Log(totalDocCount / docsFound, 2);
             }
 
             minipulatedSinceLastRecalc = false;
@@ -194,7 +163,8 @@ namespace Phamhilator.NLP
                 RecalculateIDFs();
             }
 
-            var queryIdf = CalculateQueryIDF(terms);
+            var queryVector = CalculateQueryTfIdfVector(terms);
+            var queryLength = CalculateQueryLength(queryVector);
 
             // To prevent calculating the similarity for every document,
             // we'll take all the documents which actually contain at least 
@@ -202,7 +172,7 @@ namespace Phamhilator.NLP
             var matchingTerms = Terms.Values.Where(x => terms.Any(y => y == x.Value));
             var matchingDocIDs = new HashSet<uint>();
             foreach (var term in matchingTerms)
-            foreach (var docID in term.DocumentIDs)
+            foreach (var docID in term.DocumentIDsByTFs.Keys)
             {
                 if (!matchingDocIDs.Contains(docID))
                 {
@@ -211,7 +181,7 @@ namespace Phamhilator.NLP
             }
 
             // Reconstruct the documents from our term collection.
-            var docs = new Dictionary<uint, HashSet<string>>();
+            var docs = new Dictionary<uint, List<string>>();
             foreach (var docID in matchingDocIDs)
             {
                 docs[docID] = GetDocument(docID);
@@ -219,10 +189,9 @@ namespace Phamhilator.NLP
 
             // Calculate the Euclidean lengths of the documents.
             var docLengths = new Dictionary<uint, float>();
-            var queryLength = CalculateDocumentLength(new HashSet<string>(terms));
             foreach (var docID in docs.Keys)
             {
-                docLengths[docID] = CalculateDocumentLength(docs[docID]);
+                docLengths[docID] = CalculateDocumentLength(docID, docs[docID]);
             }
 
             // FINALLY, phew! We made it this far. So now we can
@@ -232,15 +201,15 @@ namespace Phamhilator.NLP
             {
                 var sim = 0D;
 
-                foreach (var term in queryIdf.Keys)
+                foreach (var term in queryVector.Keys)
                 {
                     if (docs[docID].Contains(term))
-                    {
-                        sim += queryIdf[term] * Terms[term].IDF;
+                    { //        query tf-idf   x   the term's idf   x    the term's tf
+                        sim += queryVector[term] * (Terms[term].IDF * Terms[term].DocumentIDsByTFs[docID]);
                     }
                 }
 
-                docSimilarities[docID] = (float)sim / (queryLength * docLengths[docID]);
+                docSimilarities[docID] = (float)sim / Math.Max((queryLength * docLengths[docID]), 1);
             }
 
             // Now lets get the top x docs.
@@ -257,7 +226,7 @@ namespace Phamhilator.NLP
             return topDocs;
         }
 
-        private float CalculateDocumentLength(HashSet<string> terms)
+        private float CalculateDocumentLength(uint docID, List<string> terms)
         {
             var len = 0D;
 
@@ -265,14 +234,27 @@ namespace Phamhilator.NLP
             {
                 if (Terms.ContainsKey(term))
                 {
-                    len += Terms[term].IDF * Terms[term].IDF;
+                    len += Terms[term].IDF * Terms[term].DocumentIDsByTFs[docID] *
+                           Terms[term].IDF * Terms[term].DocumentIDsByTFs[docID];
                 }
             }
 
             return (float)Math.Sqrt(len);
         }
 
-        private Dictionary<string, float> CalculateQueryIDF(IEnumerable<string> terms)
+        private float CalculateQueryLength(Dictionary<string, float> queryVector)
+        {
+            var len = 0D;
+
+            foreach (var tfidf in queryVector.Values)
+            {
+                len += tfidf * tfidf;
+            }
+
+            return (float)Math.Sqrt(len);
+        }
+
+        private Dictionary<string, float> CalculateQueryTfIdfVector(IEnumerable<string> terms)
         {
             var tf = new Dictionary<string, ushort>();
 
@@ -290,28 +272,31 @@ namespace Phamhilator.NLP
 
             var maxFrec = (float)tf.Max(x => x.Value);
 
-            var idf = new Dictionary<string, float>();
+            var tfIdf = new Dictionary<string, float>();
 
             foreach (var term in tf.Keys)
             {
                 if (Terms.ContainsKey(term))
                 {
-                    idf[term] = (maxFrec / tf[term]) * Terms[term].IDF;
+                    tfIdf[term] = (maxFrec / tf[term]) * Terms[term].IDF;
                 }
             }
 
-            return idf;
+            return tfIdf;
         }
 
-        private HashSet<string> GetDocument(uint docID)
+        private List<string> GetDocument(uint docID)
         {
-            var terms = new HashSet<string>();
+            var terms = new List<string>();
 
             foreach (var term in Terms.Values)
             {
-                if (term.DocumentIDs.Contains(docID))
+                if (term.DocumentIDsByTFs.Keys.Contains(docID))
                 {
-                    terms.Add(term.Value);
+                    for (var i = 0; i < term.DocumentIDsByTFs[docID]; i++)
+                    {
+                        terms.Add(term.Value);
+                    }
                 }
             }
 

@@ -144,7 +144,7 @@ namespace Phamhilator.Pham.UI
             });
             checkBack.DeletedAnswerFound = new Action<Post>(p =>
             {
-                qdvClassifier.AddPostToModels(p);
+                advClassifier.AddPostToModels(p);
             });
         }
 
@@ -246,7 +246,7 @@ namespace Phamhilator.Pham.UI
 
         private static void ReportPost(Post post, ClassificationResults results)
         {
-            var report = ReportFormatter.FormatReport(post, results);
+            var report = ReportFormatter.FormatReport(post, results, cvClassifier.Threshold);
 
             if (string.IsNullOrWhiteSpace(report)) return;
 
@@ -316,6 +316,12 @@ namespace Phamhilator.Pham.UI
                     room.PostReplyFast(command, msg);
                     return true;
                 }
+                case "THRESHOLD":
+                {
+                    var msg = $"My current threshold is: `{cvClassifier.Threshold * 100}`%.";
+                    room.PostMessageFast(msg);
+                    return true;
+                }
                 //case "VERSION":
                 //{
                 //    var msg = $"My current version is: `{updater.CurrentVersion}`.";
@@ -351,23 +357,43 @@ namespace Phamhilator.Pham.UI
         {
             var cmd = command.Content.Trim().ToUpperInvariant();
 
-            switch (cmd)
+            if (cmd == "STOP")
             {
-                case "STOP":
+                shutdownMre.Set();
+                return true;
+            }
+            if (cmd.StartsWith("SET THRESHOLD"))
+            {
+                var th = 0F;
+
+                if (!float.TryParse(cmd.Remove(0, 14), out th))
                 {
-                    shutdownMre.Set();
+                    room.PostReplyFast(command, "Try using your hands to type a valid number between 0 and 1.");
                     return true;
                 }
-                //case "UPDATE":
-                //{
-                //    UpdateBot(room, command);
-                //    return true;
-                //}
-                default:
+
+                if (th < 0 || th > 1)
                 {
-                    return false;
+                    room.PostReplyFast(command, "Threshold must be between 0 and 1 (and *don't* include the % sign).");
+                    return true;
                 }
+
+                cvClassifier.Threshold = th;
+                qdvClassifier.Threshold = th;
+                advClassifier.Threshold = th;
+
+                room.PostReplyFast(command, "Threshold updated.");
+
+                return true;
             }
+
+            //case "UPDATE":
+            //{
+            //    UpdateBot(room, command);
+            //    return true;
+            //}
+
+            return false;
         }
 
         //private static void UpdateBot(Room rm, Message cmd)
