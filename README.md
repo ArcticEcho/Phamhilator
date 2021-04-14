@@ -1,4 +1,4 @@
-#Phamhilator [![Build status](https://ci.appveyor.com/api/projects/status/lf065rc2e4r64x03/branch/master?svg=true)](https://ci.appveyor.com/project/ArcticEcho/phamhilator/branch/master)
+# Phamhilator [![Build status](https://ci.appveyor.com/api/projects/status/lf065rc2e4r64x03/branch/master?svg=true)](https://ci.appveyor.com/project/ArcticEcho/phamhilator/branch/master)
 
 A .NET-based chatbot that watches over the `/realtime` tab of [Stack Exchange][1] for low quality posts.
 
