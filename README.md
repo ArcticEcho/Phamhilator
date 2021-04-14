@@ -1,6 +1,6 @@
 #Phamhilator [![Build status](https://ci.appveyor.com/api/projects/status/lf065rc2e4r64x03/branch/master?svg=true)](https://ci.appveyor.com/project/ArcticEcho/phamhilator/branch/master)
 
-A .NET-based chatbot written in C#, which watch over the `/realtime` tab of [Stack Exchange][1].
+A .NET-based chatbot that watches over the `/realtime` tab of [Stack Exchange][1] for low quality posts.
 
 When running, [Pham][2] and can be found at the [Low Quality Posts HQ][3].
 
